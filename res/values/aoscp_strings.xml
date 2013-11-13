@@ -67,5 +67,11 @@
     <string name="power_notifications_ringtone_title">Notification sound</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
+	
+	<!-- ADB debugging notifications -->
+    <string name="enable_adb_custom">Android debugging</string>
+    <string name="enable_adb_summary_custom">Enable the Android Debug Bridge (adb) interface</string>
+    <string name="adb_notify">ADB notification</string>
+    <string name="adb_notify_summary">Display a notification when android debugging is enabled</string>
 
 </resources>
