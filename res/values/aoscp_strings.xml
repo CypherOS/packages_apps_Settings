@@ -267,5 +267,16 @@
 	<!-- Notification count -->
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+	
+	<!-- Smart pulldown-->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open quick settings when there are %1$s notifications</string>
+    <string name="smart_pulldown_none_summary">Open quick settings when there are no notifications</string>
+	<string name="smart_pulldown_dismissable_summary">Open quick settings when there are non dismissable notifications</string>
+	<string name="smart_pulldown_ongoing_summary">Open quick settings when there are no ongoing notifications</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_none">No notifications</string>
+    <string name="smart_pulldown_dismissable">No dismissable</string>
+    <string name="smart_pulldown_ongoing">No ongoing</string>
  
 </resources>
