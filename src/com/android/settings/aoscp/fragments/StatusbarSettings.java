@@ -62,6 +62,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private static final String STATUSBAR_CLOCK_DATE_FORMAT = "clock_date_format";
 	private static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
+	private static final String SMART_PULLDOWN = "smart_pulldown";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -89,6 +90,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                 Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1, UserHandle.USER_CURRENT);
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
+		
+		mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
+        mSmartPulldown.setOnPreferenceChangeListener(this);
+        int smartPulldown = Settings.System.getInt(resolver,
+                Settings.System.QS_SMART_PULLDOWN, 0);
+        mSmartPulldown.setValue(String.valueOf(smartPulldown));
+        updateSmartPulldownSummary(smartPulldown);
 		
 		mStatusBarClockSeconds = (SwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
         mStatusBarClockSeconds.setChecked((Settings.System.getInt(
@@ -171,6 +179,11 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(resolver, Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
+            return true;
+		} else if (preference == mSmartPulldown) {
+            int smartPulldown = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
+            updateSmartPulldownSummary(smartPulldown);
             return true;
 		} else if (preference == mStatusBarClockSeconds) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -301,6 +314,26 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
         }
 	}
+	
+	private void updateSmartPulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // Smart pulldown deactivated
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_off));
+		} else if (value == 1) {
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_dismissable_summary));
+		} else if (value == 2) {
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_ongoing_summary));
+        } else if (value == 3) {
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_none_summary));
+        } else {
+            String type = res.getString(value == 1
+                    ? R.string.smart_pulldown_dismissable
+                    : R.string.smart_pulldown_ongoing);
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
+        }
+    }
 	
 	@Override
     protected int getMetricsCategory() {
