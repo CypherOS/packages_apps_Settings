@@ -15,4 +15,11 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/system_settings_title">
 
+		<!-- PowerMenu settings -->
+		<PreferenceScreen
+                android:key="power_menu_settings"
+                android:title="@string/powermenu_settings_title"
+				android:summary="@string/powermenu_settings_title_summary"
+                android:fragment="com.android.settings.aoscp.fragments.PowerMenuSettings" />
+		
 </PreferenceScreen>
