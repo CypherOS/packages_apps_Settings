@@ -59,7 +59,6 @@
     <string name="powermenu_settings_title">PowerMenu</string>
 	<string name="powermenu_settings_title_summary">Change what shows on your native power menu with an array of options</string>
     <!-- Power menu customization -->
-    <string name="power_menu_power_title">Power off</string>
     <string name="power_menu_reboot_title">Reboot</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
     <string name="power_menu_airplane_title">Airplane mode</string>
