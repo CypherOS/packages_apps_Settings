@@ -6075,7 +6075,7 @@
     <string name="vibrate_when_ringing_title">Also vibrate for calls</string>
 
     <!-- Sound: Title for the other sounds option and associated settings page. [CHAR LIMIT=30] -->
-    <string name="other_sound_settings">Other sounds</string>
+    <string name="other_sound_settings">Other settings</string>
 
     <!-- Sound: Other sounds: Title for the option enabling touch sounds for dial pad tones. [CHAR LIMIT=30] -->
     <string name="dial_pad_tones_title">Dial pad tones</string>
