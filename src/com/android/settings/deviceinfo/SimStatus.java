@@ -68,7 +68,6 @@ import java.util.List;
  * # Phone Number
  * # Network
  * # Roaming
- * # Device Id (IMEI in GSM and MEID in CDMA)
  * # Network type
  * # Operator info (area info cell broadcast for Brazil)
  * # Signal Strength
@@ -85,8 +84,6 @@ public class SimStatus extends SettingsPreferenceFragment {
     private static final String KEY_LATEST_AREA_INFO = "latest_area_info";
     private static final String KEY_PHONE_NUMBER = "number";
     private static final String KEY_SIGNAL_STRENGTH = "signal_strength";
-    private static final String KEY_IMEI = "imei";
-    private static final String KEY_IMEI_SV = "imei_sv";
     private static final String KEY_ICCID = "iccid";
     private static final String COUNTRY_ABBREVIATION_BRAZIL = "br";
 
@@ -414,8 +411,6 @@ public class SimStatus extends SettingsPreferenceFragment {
         }
         // If formattedNumber is null or empty, it'll display as "Unknown".
         setSummaryText(KEY_PHONE_NUMBER, formattedNumber);
-        setSummaryText(KEY_IMEI, mPhone.getImei());
-        setSummaryText(KEY_IMEI_SV, mPhone.getDeviceSvn());
 
         if (!mShowICCID) {
             removePreferenceFromScreen(KEY_ICCID);
