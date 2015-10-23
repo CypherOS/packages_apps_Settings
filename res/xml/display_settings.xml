@@ -118,6 +118,12 @@
                 android:summary="%s"
                 android:title="@string/display_auto_rotate_title" />
         -->
+		
+		<com.android.settings.preference.GlobalSettingSwitchPreference
+                android:key="wake_when_plugged_or_unplugged"
+                android:title="@string/wake_when_plugged_or_unplugged_title"
+                android:summary="@string/wake_when_plugged_or_unplugged_summary"
+                android:defaultValue="false" />
 
         <PreferenceScreen
                 android:key="wifi_display"
