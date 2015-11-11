@@ -146,6 +146,9 @@
 	<!-- Lockscreen charging current indicator  -->
     <string name="lockscreen_charging_current_title">Charging info</string>
     <string name="lockscreen_charging_current_summary">Displays the maximum current and voltage on lockscreen</string>
+	<!-- Lockscreen tap-to sleep -->
+    <string name="double_tap_sleep_anywhere_title">Tap to sleep anywhere</string>
+    <string name="double_tap_sleep_anywhere_summary">Double tap anywhere on the lockscreen to put the device to sleep</string>
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
