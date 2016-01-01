@@ -32,6 +32,10 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List
+
 public class AppOpsSummary extends InstrumentedFragment {
     // layout inflater object used to inflate views
     private LayoutInflater mInflater;
@@ -105,10 +109,19 @@ public class AppOpsSummary extends InstrumentedFragment {
         mRootView = rootView;
 
         mPageNames = getResources().getTextArray(R.array.app_ops_categories);
+		
+		int defaultTab = -1;
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            defaultTab = Arrays.asList(mPageNames).indexOf(bundle.getString("appops_tab", ""));
+        }
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
         mViewPager.setAdapter(adapter);
+		if (defaultTab >= 0) {
+            mViewPager.setCurrentItem(defaultTab);
+        }
         mViewPager.setOnPageChangeListener(adapter);
         PagerTabStrip tabs = (PagerTabStrip) rootView.findViewById(R.id.tabs);
 
