@@ -24,6 +24,13 @@
     <string name="default_string">Default</string>
     <string name="add">Add</string>
     <string name="choose_app">Choose app</string>
+	
+	<!-- Feature reset -->
+	<string name="reset_all_settings">RESET ALL</string>
+    <string name="reset_selected_settings">RESET SELECTED</string>
+    <string name="reset_settings_title">Feature reset</string>
+    <string name="reset_settings_summary">Reset all CypherOS features</string>
+    <string name="keywords_settings_reset">reset</string>
 
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">CypherOS version</string>
