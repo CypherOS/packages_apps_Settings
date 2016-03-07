@@ -84,7 +84,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
-    private static final String KEY_DOZE = "doze";
+    private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_NIGHT_MODE = "night_mode";
@@ -103,7 +103,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private TimeoutListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
     private Preference mScreenSaverPreference;
-    private SwitchPreference mDozePreference;
+    private PreferenceScreen mDozeFragement;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
 	
@@ -152,14 +152,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             }
 
-            mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
-            if (mDozePreference != null) {
-                if (isDozeAvailable(activity)) {
-                    mDozePreference.setOnPreferenceChangeListener(this);
-                } else {
-                    displayPrefs.removePreference(mDozePreference);
-                }
-            }
+            mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
+            if (!isDozeAvailable(activity)) {
+                getPreferenceScreen().removePreference(mDozeFragement);
+                mDozeFragement = null;
+		    }
 
             mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
             if (mCameraGesturePreference != null) {
@@ -327,6 +324,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateState();
+		
+		boolean dozeEnabled = Settings.Secure.getInt(
+                getContentResolver(), Settings.Secure.DOZE_ENABLED, 1) != 0;
+        if (mDozeFragement != null) {
+            mDozeFragement.setSummary(dozeEnabled
+                    ? R.string.summary_doze_enabled : R.string.summary_doze_disabled);
+        }
+		
 		getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
@@ -364,12 +369,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int brightnessMode = Settings.System.getInt(getContentResolver(),
                     SCREEN_BRIGHTNESS_MODE, SCREEN_BRIGHTNESS_MODE_MANUAL);
             mAutoBrightnessPreference.setChecked(brightnessMode != SCREEN_BRIGHTNESS_MODE_MANUAL);
-        }
-
-        // Update doze if it is available.
-        if (mDozePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED, 1);
-            mDozePreference.setChecked(value != 0);
         }
 
         // Update camera gesture #1 if it is available.
@@ -414,10 +413,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean auto = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
-        }
-        if (preference == mDozePreference) {
-            boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), DOZE_ENABLED, value ? 1 : 0);
         }
         if (preference == mCameraGesturePreference) {
             boolean value = (Boolean) objValue;
@@ -515,7 +510,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                         result.add(KEY_AUTO_BRIGHTNESS);
                     }
                     if (!isDozeAvailable(context)) {
-                        result.add(KEY_DOZE);
+                        result.add(KEY_DOZE_FRAGMENT);
                     }
                     if (!RotationPolicy.isRotationLockToggleVisible(context)) {
                         result.add(KEY_AUTO_ROTATE);
