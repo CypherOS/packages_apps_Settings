@@ -27,13 +27,11 @@ import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
 import android.app.backup.IBackupManager;
 import android.bluetooth.BluetoothAdapter;
-import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.IShortcutService;
 import android.content.pm.PackageManager;
@@ -44,7 +42,6 @@ import android.net.NetworkUtils;
 import android.net.wifi.IWifiManager;
 import android.net.wifi.WifiInfo;
 import android.hardware.usb.IUsbManager;
-import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
@@ -73,9 +70,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ThreadedRenderer;
 import android.view.IWindowManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityManager;
 import android.webkit.IWebViewUpdateService;
 import android.webkit.WebViewProviderInfo;
@@ -187,7 +182,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String WIFI_VERBOSE_LOGGING_KEY = "wifi_verbose_logging";
     private static final String WIFI_AGGRESSIVE_HANDOVER_KEY = "wifi_aggressive_handover";
     private static final String WIFI_ALLOW_SCAN_WITH_TRAFFIC_KEY = "wifi_allow_scan_with_traffic";
-    private static final String USB_CONFIGURATION_KEY = "select_usb_configuration";
+    private static final String WIFI_LEGACY_DHCP_CLIENT_KEY = "legacy_dhcp_client";
     private static final String MOBILE_DATA_ALWAYS_ON = "mobile_data_always_on";
     private static final String KEY_COLOR_MODE = "color_mode";
     private static final String FORCE_RESIZABLE_KEY = "force_resizable_activities";
@@ -292,7 +287,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mForceRtlLayout;
     private ListPreference mDebugHwOverdraw;
     private ListPreference mLogdSize;
-    private ListPreference mUsbConfiguration;
     private ListPreference mTrackFrameTime;
     private ListPreference mShowNonRectClip;
     private ListPreference mWindowAnimationScale;
@@ -452,7 +446,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mWifiAllowScansWithTraffic = findAndInitSwitchPref(WIFI_ALLOW_SCAN_WITH_TRAFFIC_KEY);
         mMobileDataAlwaysOn = findAndInitSwitchPref(MOBILE_DATA_ALWAYS_ON);
         mLogdSize = addListPreference(SELECT_LOGD_SIZE_KEY);
-        mUsbConfiguration = addListPreference(USB_CONFIGURATION_KEY);
         mWebViewProvider = addListPreference(WEBVIEW_PROVIDER_KEY);
         mWebViewMultiprocess = findAndInitSwitchPref(WEBVIEW_MULTIPROCESS_KEY);
         mBluetoothDisableAbsVolume = findAndInitSwitchPref(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_KEY);
@@ -667,17 +660,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(UsbManager.ACTION_USB_STATE);
-        if (getActivity().registerReceiver(mUsbReceiver, filter) == null) {
-            updateUsbConfigurationValues();
-        }
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
 
@@ -686,7 +668,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
         mSwitchBar.removeOnSwitchChangeListener(this);
         mSwitchBar.hide();
-        getActivity().unregisterReceiver(mUsbReceiver);
     }
 
     void updateSwitchPreference(SwitchPreference switchPreference, boolean value) {
@@ -1655,36 +1636,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateLogdSizeValues();
     }
 
-    private void updateUsbConfigurationValues() {
-        if (mUsbConfiguration != null) {
-            UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-
-            String[] values = getResources().getStringArray(R.array.usb_configuration_values);
-            String[] titles = getResources().getStringArray(R.array.usb_configuration_titles);
-            int index = 0;
-            for (int i = 0; i < titles.length; i++) {
-                if (manager.isFunctionEnabled(values[i])) {
-                    index = i;
-                    break;
-                }
-            }
-            mUsbConfiguration.setValue(values[index]);
-            mUsbConfiguration.setSummary(titles[index]);
-            mUsbConfiguration.setOnPreferenceChangeListener(this);
-        }
-    }
-
-    private void writeUsbConfigurationOption(Object newValue) {
-        UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
-        String function = newValue.toString();
-        manager.setCurrentFunction(function);
-        if (function.equals("none")) {
-            manager.setUsbDataUnlocked(false);
-        } else {
-            manager.setUsbDataUnlocked(true);
-        }
-    }
-
     private void updateCpuUsageOptions() {
         updateSwitchPreference(mShowCpuUsage,
                 Settings.Global.getInt(getActivity().getContentResolver(),
@@ -2128,9 +2079,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mLogdSize) {
             writeLogdSizeOption(newValue);
             return true;
-        } else if (preference == mUsbConfiguration) {
-            writeUsbConfigurationOption(newValue);
-            return true;
         } else if (preference == mWindowAnimationScale) {
             writeAnimationScaleOption(0, mWindowAnimationScale, newValue);
             return true;
@@ -2286,13 +2234,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             (new SystemPropPoker()).execute();
         }
     }
-
-    private BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            updateUsbConfigurationValues();
-        }
-    };
 
     public static class SystemPropPoker extends AsyncTask<Void, Void, Void> {
         @Override
