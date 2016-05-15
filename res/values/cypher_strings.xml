@@ -24,6 +24,8 @@
     <string name="vendor_version_default">Unknown</string>
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
+	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
+    <string name="local_backup_password_title">Desktop backup password</string>
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
