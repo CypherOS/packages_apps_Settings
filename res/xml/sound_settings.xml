@@ -104,6 +104,11 @@
                 settings:useAdminDisabledSummary="true"
                 settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
                 android:fragment="com.android.settings.notification.ZenModeSettings" />
+				
+		<PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 	
 	</PreferenceCategory>
 

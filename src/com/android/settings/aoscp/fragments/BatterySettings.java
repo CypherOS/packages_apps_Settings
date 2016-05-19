@@ -48,13 +48,28 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 	
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+	
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
+
+    private static final String CATEGORY_BATTERY_LED = "battery_led";
+
+    private Preference mBattLedFragment;
 
     private ListPreference mStatusBarBatteryShowPercent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.advanced_battery_settings);  
+        addPreferencesFromResource(R.xml.advanced_battery_settings); 
+
+		final PreferenceCategory leds = (PreferenceCategory) findPreference(CATEGORY_BATTERY_LED);
+
+        mBattLedFragment = findPreference(KEY_BATTERY_LIGHT);
+        //remove battery led settings if device doesnt support it
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+            leds.removePreference(findPreference(CATEGORY_BATTERY_LED));
+        }	
     }
 	
     @Override

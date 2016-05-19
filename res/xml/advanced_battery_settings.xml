@@ -22,5 +22,16 @@
             android:dialogTitle="@string/status_bar_battery_percentage_title"
             android:entries="@array/status_bar_battery_percentage_entries"
             android:entryValues="@array/status_bar_battery_percentage_values" />
+			
+	<PreferenceCategory
+        android:key="battery_led"
+        android:title="@string/battery_led_category" >
+		
+        <PreferenceScreen
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
