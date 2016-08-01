@@ -66,4 +66,7 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
+	
+	<!-- Phone info shortcut -->
+    <string name="device_info_title">Phone info</string>
 </resources>
