@@ -30,6 +30,9 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+	<!-- Phone info shortcut -->
+    <string name="device_info_title">Phone info</string>
+	
 	<!-- Addition settings -->
 	<string name="advanced_battery_settings_title">Advanced</string>
 	<string name="advanced_battery_settings_title_summary">More available options to improve your power usage experience</string>
