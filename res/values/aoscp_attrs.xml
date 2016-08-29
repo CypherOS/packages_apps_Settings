@@ -29,4 +29,9 @@
         <attr name="unitsLeft" format="string|reference" />
         <attr name="unitsRight" format="string|reference" />
     </declare-styleable>
+	
+	<declare-styleable name="ListWithEntrySummaryPreference">
+        <!-- Summaries of entry -->
+        <attr name="entrySummaries" format="reference" />
+    </declare-styleable>
 </resources>
