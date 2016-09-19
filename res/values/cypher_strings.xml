@@ -19,6 +19,9 @@
 	<!-- About phone screen, CypherOS API -->
 	<string name="aoscp_api_level">CypherOS version</string>
     <string name="aoscp_api_level_default">Unknown</string>
+	<!-- Vendor version -->
+    <string name="vendor_version">Vendor version</string>
+    <string name="vendor_version_default">Unknown</string>
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
