@@ -21,6 +21,9 @@
  	<!-- About phone screen, CypherOS API -->
  	<string name="aoscp_api_title">API</string>
     <string name="aoscp_api_default">Unspecified</string>
+	<!-- About phone screen, Vendor version -->
+    <string name="vendor_version">Vendor version</string>
+    <string name="vendor_version_default">Unknown</string>
 	<!-- About phone screen, CypherOS Release ID -->
 	<string name="aoscp_release_id">Release ID</string>
     <string name="aoscp_release_id_default">Unspecified</string>
