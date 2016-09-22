@@ -67,7 +67,10 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
 		PreferenceScreen prefScreen = getPreferenceScreen();
 
         Preference permissions = getPreferenceScreen().findPreference(KEY_APP_PERM);
-        permissions.setIntent(new Intent(Intent.ACTION_MANAGE_PERMISSIONS));
+        final Intent intent = new Intent(Intent.ACTION_MANAGE_PERMISSIONS);
+        if (!getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
+            permissions.setIntent(intent);
+        }
 
         ApplicationsState applicationsState = ApplicationsState.getInstance(
                 getActivity().getApplication());
