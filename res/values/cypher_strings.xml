@@ -350,5 +350,8 @@
 	<!-- Quick Settings -->
 	<string name="quick_settings_title">Quick settings</string>
 	<string name="quick_settings_title_summary">Adjust the logic and layout of the quick settings panel</string>
+	<!-- Advanced data tile -->
+    <string name="qs_advanced_data_title">Data on tap</string>
+    <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>
  
 </resources>
