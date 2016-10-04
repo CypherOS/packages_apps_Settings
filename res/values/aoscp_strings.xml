@@ -73,7 +73,10 @@
     <string name="qs_brightness_slider_summary">Show brightness slider on quick settings panel</string>
 	<!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Data on tap</string>
-    <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>
+    <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>	
+	<!-- BT easy toggle -->
+    <string name="qs_bt_easy_toggle_title">Bluetooth on tap</string>
+    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with on tap</string>
 	
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
