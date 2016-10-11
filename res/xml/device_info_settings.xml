@@ -16,6 +16,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
+		
+		<!-- CypherOS logo -->
+        <PreferenceScreen android:key="aoscp_logo"
+                android:enabled="false"
+                android:layout="@layout/aoscp_about_logo" />
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
