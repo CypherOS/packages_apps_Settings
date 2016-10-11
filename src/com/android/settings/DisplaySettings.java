@@ -58,9 +58,7 @@ import com.android.settingslib.RestrictedPreference;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
-import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
@@ -81,15 +79,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
-    private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
     private static final String KEY_DOZE = "doze";
-    private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_NIGHT_MODE = "night_mode";
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
-    private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
-            = "camera_double_tap_power_gesture";
     private static final String KEY_WALLPAPER = "wallpaper";
     private static final String KEY_VR_DISPLAY_PREF = "vr_display_pref";
 
@@ -98,12 +92,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private TimeoutListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
     private Preference mScreenSaverPreference;
-    private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
-    private SwitchPreference mTapToWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
-    private SwitchPreference mCameraDoubleTapPowerGesturePreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -142,15 +133,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             }
 
-            mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
-            if (mLiftToWakePreference != null) {
-                if (isLiftToWakeAvailable(activity)) {
-                    mLiftToWakePreference.setOnPreferenceChangeListener(this);
-                } else {
-                    displayPrefs.removePreference(mLiftToWakePreference);
-                }
-            }
-
             mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
             if (mDozePreference != null) {
                 if (isDozeAvailable(activity)) {
@@ -160,31 +142,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 }
             }
 
-            mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-            if (mTapToWakePreference != null) {
-                if (isTapToWakeAvailable(getResources())) {
-                    mTapToWakePreference.setOnPreferenceChangeListener(this);
-                } else {
-                    displayPrefs.removePreference(mTapToWakePreference);
-                }
-            }
-
             mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
             if (mCameraGesturePreference != null) {
                 if (isCameraGestureAvailable(getResources())) {
                     mCameraGesturePreference.setOnPreferenceChangeListener(this);
                 } else {
                     displayPrefs.removePreference(mCameraGesturePreference);
-                }
-            }
-
-            mCameraDoubleTapPowerGesturePreference =
-                    (SwitchPreference) findPreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
-            if (mCameraDoubleTapPowerGesturePreference != null) {
-                if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-                    mCameraDoubleTapPowerGesturePreference.setOnPreferenceChangeListener(this);
-                } else {
-                    displayPrefs.removePreference(mCameraDoubleTapPowerGesturePreference);
                 }
             }
 
@@ -282,11 +245,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_allowAllRotations);
     }
 
-    private static boolean isLiftToWakeAvailable(Context context) {
-        SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null;
-    }
-
     private static boolean isDozeAvailable(Context context) {
         String name = Build.IS_DEBUGGABLE ? SystemProperties.get("debug.doze.component") : null;
         if (TextUtils.isEmpty(name)) {
@@ -294,10 +252,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     com.android.internal.R.string.config_dozeComponent);
         }
         return !TextUtils.isEmpty(name);
-    }
-
-    private static boolean isTapToWakeAvailable(Resources res) {
-        return res.getBoolean(com.android.internal.R.bool.config_supportDoubleTapWake);
     }
 
     private static boolean isAutomaticBrightnessAvailable(Resources res) {
@@ -309,11 +263,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.integer.config_cameraLaunchGestureSensorType) != -1;
         return configSet &&
                 !SystemProperties.getBoolean("gesture.disable_camera_launch", false);
-    }
-
-    private static boolean isCameraDoubleTapPowerGestureAvailable(Resources res) {
-        return res.getBoolean(
-                com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
     }
 
     private static boolean isVrDisplayModeAvailable(Context context) {
@@ -382,35 +331,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAutoBrightnessPreference.setChecked(brightnessMode != SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
 
-        // Update lift-to-wake if it is available.
-        if (mLiftToWakePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), WAKE_GESTURE_ENABLED, 0);
-            mLiftToWakePreference.setChecked(value != 0);
-        }
-
         // Update doze if it is available.
         if (mDozePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED, 1);
             mDozePreference.setChecked(value != 0);
         }
 
-        // Update tap to wake if it is available.
-        if (mTapToWakePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
-            mTapToWakePreference.setChecked(value != 0);
-        }
-
         // Update camera gesture #1 if it is available.
         if (mCameraGesturePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), CAMERA_GESTURE_DISABLED, 0);
             mCameraGesturePreference.setChecked(value == 0);
-        }
-
-        // Update camera gesture #2 if it is available.
-        if (mCameraDoubleTapPowerGesturePreference != null) {
-            int value = Settings.Secure.getInt(
-                    getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
-            mCameraDoubleTapPowerGesturePreference.setChecked(value == 0);
         }
     }
 
@@ -450,26 +380,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
         }
-        if (preference == mLiftToWakePreference) {
-            boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), WAKE_GESTURE_ENABLED, value ? 1 : 0);
-        }
         if (preference == mDozePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), DOZE_ENABLED, value ? 1 : 0);
         }
-        if (preference == mTapToWakePreference) {
-            boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, value ? 1 : 0);
-        }
         if (preference == mCameraGesturePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_GESTURE_DISABLED,
-                    value ? 0 : 1 /* Backwards because setting is for disabling */);
-        }
-        if (preference == mCameraDoubleTapPowerGesturePreference) {
-            boolean value = (Boolean) objValue;
-            Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                     value ? 0 : 1 /* Backwards because setting is for disabling */);
         }
         if (preference == mNightModePreference) {
@@ -562,23 +479,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
                         result.add(KEY_AUTO_BRIGHTNESS);
                     }
-                    if (!isLiftToWakeAvailable(context)) {
-                        result.add(KEY_LIFT_TO_WAKE);
-                    }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
                     }
                     if (!RotationPolicy.isRotationLockToggleVisible(context)) {
                         result.add(KEY_AUTO_ROTATE);
                     }
-                    if (!isTapToWakeAvailable(context.getResources())) {
-                        result.add(KEY_TAP_TO_WAKE);
-                    }
                     if (!isCameraGestureAvailable(context.getResources())) {
                         result.add(KEY_CAMERA_GESTURE);
-                    }
-                    if (!isCameraDoubleTapPowerGestureAvailable(context.getResources())) {
-                        result.add(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
                     }
                     if (!isVrDisplayModeAvailable(context)) {
                         result.add(KEY_VR_DISPLAY_PREF);

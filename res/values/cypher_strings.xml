@@ -19,5 +19,11 @@
 	<!-- About phone screen, CypherOS API -->
 	<string name="aoscp_api_level">CypherOS version</string>
     <string name="aoscp_api_level_default">Unknown</string>
+	
+	<!-- Gesture Settings -->
+	<string name="gesture_settings_title">Gestures</string>
+	<!-- Double-snap summary loaders -->
+	<string name="camera_double_tap_power_gesture_on">Double-snap is currently active</string>
+	<string name="camera_double_tap_power_gesture_off">Double-snap is currently non-active</string>
 
 </resources>
