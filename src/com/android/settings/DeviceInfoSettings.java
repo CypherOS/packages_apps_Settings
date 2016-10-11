@@ -71,9 +71,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MBN_VERSION = "mbn_version";
     private static final String PROPERTY_MBN_VERSION = "persist.mbn.version";
-    private static final String KEY_AOKP_VERSION = "aokp_version";
+    private static final String KEY_AOSCP_VERSION = "aoscp_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
-    private static final String KEY_MOD_API_LEVEL = "mod_api_level";
+    private static final String KEY_AOSCP_API_LEVEL = "aoscp_api_level";
     private static final String KEY_QGP_VERSION = "qgp_version";
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
 
@@ -132,11 +132,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_MBN_VERSION, PROPERTY_MBN_VERSION);
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_MBN_VERSION,
                 PROPERTY_MBN_VERSION);
-        findPreference(KEY_AOKP_VERSION).setSummary("ro.aokp.version");
-        findPreference(KEY_AOKP_VERSION).setEnabled(true);
+        findPreference(KEY_AOSCP_VERSION).setSummary("ro.aoscp.version");
+        findPreference(KEY_AOSCP_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
-        setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
-        findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
+        setApiLevel(KEY_AOSCP_API_LEVEL, "ro.aoscp.api");
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -383,12 +382,18 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         startActivityForResult(intent, 0);
     }
 
-    private static String constructApiLevelString() {
-        int sdkInt = cyanogenmod.os.Build.CM_VERSION.SDK_INT;
-        StringBuilder builder = new StringBuilder();
-        builder.append(cyanogenmod.os.Build.getNameForSDKInt(sdkInt))
-                .append(" (" + sdkInt + ")");
-        return builder.toString();
+    private void setApiLevel(String preference, String property) {
+        try {
+            String api = SystemProperties.get(property,
+                    getResources().getString(R.string.aoscp_api_level_default));
+            findPreference(preference).setSummary(api);
+            if (api.contains(",")) {
+                findPreference(preference).setTitle(
+                        getResources().getString(R.string.aoscp_api_level));
+            }
+        } catch (RuntimeException e) {
+            // No recovery
+        }
     }
 
     private static class SummaryProvider implements SummaryLoader.SummaryProvider {
