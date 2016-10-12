@@ -2767,7 +2767,7 @@
         <!-- Keep compatibility with old shortcuts. -->
         <activity android:name="Settings$SoundSettingsActivity"
                 android:label="@string/sound_settings"
-                android:icon="@drawable/ic_settings_sound"
+                android:icon="@drawable/ic_settings_notifications"
                 android:taskAffinity=""
                 android:exported="true">
             <intent-filter android:priority="1">
@@ -2817,21 +2817,6 @@
                 android:value="com.android.settings.notification.OtherSoundSettings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
-        </activity>
-
-        <!-- Show apps for which application-level notification settings are applicable -->
-        <activity android:name="Settings$NotificationAppListActivity"
-                android:label="@string/app_notifications_title"
-                android:icon="@drawable/ic_settings_notifications"
-                android:exported="true"
-                android:taskAffinity="">
-            <intent-filter android:priority="8">
-                <action android:name="com.android.settings.action.SETTINGS" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                       android:value="com.android.settings.category.device" />
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.applications.NotificationApps" />
         </activity>
 
         <!-- Show application-level notification settings (app passed in as extras) -->

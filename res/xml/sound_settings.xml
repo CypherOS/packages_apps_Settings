@@ -89,6 +89,12 @@
                         android:targetPackage="com.android.cellbroadcastreceiver"
                         android:targetClass="com.android.cellbroadcastreceiver.CellBroadcastSettings" />
         </com.android.settingslib.RestrictedPreference>
+		
+		<!-- Notification settings -->
+		<PreferenceScreen
+                android:key="notification_settings"
+                android:title="@string/app_notifications_title"
+                android:fragment="com.android.settings.applications.NotificationApps" />
 
         <!-- Other sounds -->
         <Preference
