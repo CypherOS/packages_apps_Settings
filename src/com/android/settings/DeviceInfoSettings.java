@@ -118,7 +118,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             getPreferenceScreen().removePreference(findPreference(KEY_SECURITY_PATCH));
         }
 		
-        String vendorfingerprint = SystemProperties.get("ro.build.fingerprint");
+        String vendorfingerprint = SystemProperties.get("ro.vendor.build.fingerprint");
         if (vendorfingerprint != null && !TextUtils.isEmpty(vendorfingerprint)) {
             String[] splitfingerprint = vendorfingerprint.split("/");
             String vendorid = splitfingerprint[3];
