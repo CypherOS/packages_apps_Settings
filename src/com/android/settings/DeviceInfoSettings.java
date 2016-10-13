@@ -118,7 +118,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             getPreferenceScreen().removePreference(findPreference(KEY_SECURITY_PATCH));
         }
 		
-		String vendorfingerprint = SystemProperties.get("ro.vendor.build.fingerprint");
+        String vendorfingerprint = SystemProperties.get("ro.build.fingerprint");
         if (vendorfingerprint != null && !TextUtils.isEmpty(vendorfingerprint)) {
             String[] splitfingerprint = vendorfingerprint.split("/");
             String vendorid = splitfingerprint[3];
@@ -142,10 +142,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_MBN_VERSION, PROPERTY_MBN_VERSION);
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_MBN_VERSION,
                 PROPERTY_MBN_VERSION);
-        findPreference(KEY_AOSCP_VERSION).setSummary("ro.aoscp.version");
+        findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
-        setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
-        setApiLevel(KEY_AOSCP_API_LEVEL, "ro.aoscp.api");
+        setValueSummary(KEY_MOD_BUILD_DATE, Build.DATE);
+        setApiLevel(KEY_AOSCP_API_LEVEL, Build.API);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -293,7 +293,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             }
         } else if (preference.getKey().equals(KEY_DEVICE_FEEDBACK)) {
             sendFeedback();
-        } else if (preference.getKey().equals(KEY_AOKP_VERSION)) {
+        } else if (preference.getKey().equals(KEY_AOSCP_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {

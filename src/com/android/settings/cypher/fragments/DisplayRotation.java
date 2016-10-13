@@ -141,16 +141,18 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
             if (preference == mRotation270Pref && ((Boolean) objValue)
                     || preference != mRotation270Pref && mRotation270Pref.isChecked()) {
                 mode |= ROTATION_270_MODE;
-		    }
+            }
+
             if (mode == 0) {
                 mode |= ROTATION_0_MODE;
                 mRotation0Pref.setChecked(true);
             }
+
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             return true;
         }
-        return false
+        return false;
     }
 
     @Override

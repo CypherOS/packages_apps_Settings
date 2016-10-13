@@ -35,6 +35,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings.Global;
 import android.provider.Settings.System;
+import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -220,11 +221,11 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
         // power state change notification sounds
         mPowerSounds = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS);
-        mPowerSounds.setChecked(Global.getInt(getContentResolver(),
-                Global.POWER_NOTIFICATIONS_ENABLED, 0) != 0);
+        mPowerSounds.setChecked(Secure.getInt(getContentResolver(),
+                Secure.POWER_NOTIFICATIONS_ENABLED, 0) != 0);
         mPowerSoundsVibrate = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
-        mPowerSoundsVibrate.setChecked(Global.getInt(getContentResolver(),
-                Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
+        mPowerSoundsVibrate.setChecked(Secure.getInt(getContentResolver(),
+                Secure.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator == null || !vibrator.hasVibrator()) {
             removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
@@ -232,13 +233,13 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
         mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
         String currentPowerRingtonePath =
-                Global.getString(getContentResolver(), Global.POWER_NOTIFICATIONS_RINGTONE);
+                Secure.getString(getContentResolver(), Secure.POWER_NOTIFICATIONS_RINGTONE);
 
         // set to default notification if we don't yet have one
         if (currentPowerRingtonePath == null) {
                 currentPowerRingtonePath = System.DEFAULT_NOTIFICATION_URI.toString();
-                Global.putString(getContentResolver(),
-                        Global.POWER_NOTIFICATIONS_RINGTONE, currentPowerRingtonePath);
+                Secure.putString(getContentResolver(),
+                        Secure.POWER_NOTIFICATIONS_RINGTONE, currentPowerRingtonePath);
         }
         // is it silent ?
         if (currentPowerRingtonePath.equals(POWER_NOTIFICATIONS_SILENT_URI)) {
@@ -272,19 +273,19 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mPowerSounds) {
-            Global.putInt(getContentResolver(),
-                    Global.POWER_NOTIFICATIONS_ENABLED,
+            Secure.putInt(getContentResolver(),
+                    Secure.POWER_NOTIFICATIONS_ENABLED,
                     mPowerSounds.isChecked() ? 1 : 0);
 
         } else if (preference == mPowerSoundsVibrate) {
-            Global.putInt(getContentResolver(),
-                    Global.POWER_NOTIFICATIONS_VIBRATE,
+            Secure.putInt(getContentResolver(),
+                    Secure.POWER_NOTIFICATIONS_VIBRATE,
                     mPowerSoundsVibrate.isChecked() ? 1 : 0);
 
         } else if (preference == mPowerSoundsRingtone) {
             launchNotificationSoundPicker(REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE,
-                    Global.getString(getContentResolver(),
-                            Global.POWER_NOTIFICATIONS_RINGTONE));
+                    Secure.getString(getContentResolver(),
+                            Secure.POWER_NOTIFICATIONS_RINGTONE));
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preference);
@@ -391,8 +392,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         }
 
         mPowerSoundsRingtone.setSummary(toneName);
-        Global.putString(getContentResolver(),
-                Global.POWER_NOTIFICATIONS_RINGTONE, toneUriPath);
+        Secure.putString(getContentResolver(),
+                Secure.POWER_NOTIFICATIONS_RINGTONE, toneUriPath);
     }
 
     @Override

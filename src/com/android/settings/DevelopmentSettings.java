@@ -94,6 +94,8 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.RestrictedSwitchPreference;
 
+import cyanogenmod.providers.CMSettings;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -698,8 +700,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mHaveDebugSettings = false;
         updateSwitchPreference(mEnableAdb, Settings.Global.getInt(cr,
                 Settings.Global.ADB_ENABLED, 0) != 0);
-        updateSwitchPreference(mAdbNotify, Settings.Secure.getInt(cr,
-                Settings.Secure.ADB_NOTIFY, 1) != 0);
+        updateSwitchPreference(mAdbNotify, CMSettings.Secure.getInt(cr,
+                CMSettings.Secure.ADB_NOTIFY, 1) != 0);
         updateAdbOverNetwork();
         if (mEnableTerminal != null) {
             updateSwitchPreference(mEnableTerminal,
@@ -765,8 +767,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     private void updateAdbOverNetwork() {
-        int port = Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Secure.ADB_PORT, 0);
+        int port = CMSettings.Secure.getInt(getActivity().getContentResolver(),
+                CMSettings.Secure.ADB_PORT, 0);
         boolean enabled = port > 0;
 
         updateSwitchPreference(mAdbOverNetwork, enabled);
@@ -1948,8 +1950,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 updateBugreportOptions();
             }
         } else if (preference == mAdbNotify) {
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.ADB_NOTIFY,
+            CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                    CMSettings.Secure.ADB_NOTIFY,
                     mAdbNotify.isChecked() ? 1 : 0);
         } else if (preference == mAdbOverNetwork) {
             if (mAdbOverNetwork.isChecked()) {
@@ -1964,8 +1966,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                         .show();
                 mAdbTcpDialog.setOnDismissListener(this);
             } else {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, -1);
+                CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                        CMSettings.Secure.ADB_PORT, -1);
                 updateAdbOverNetwork();
             }
         } else if (preference == mClearAdbKeys) {
@@ -2213,8 +2215,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         } else if (dialog == mAdbTcpDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, 5555);
+                CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                        CMSettings.Secure.ADB_PORT, 5555);
             }
         } else if (dialog == mAdbKeysDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
