@@ -54,15 +54,10 @@
                 android:title="@string/doze_title"
                 android:summary="@string/doze_summary" />
 
-        <!-- LiveDisplay -->
+        <!-- LiveDisplay
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
             android:key="livedisplay"
-            cm:requiresFeature="org.cyanogenmod.livedisplay" />
-
-        <!-- Rotation -->
-        <org.cyanogenmod.internal.cmparts.CMPartsPreference
-            android:key="rotation"
-            cm:requiresFeature="android.hardware.sensor.accelerometer" />
+            cm:requiresFeature="org.cyanogenmod.livedisplay" /> -->
 
         <!-- Hide night mode for now
         <ListPreference
@@ -120,15 +115,15 @@
             android:key="lights"
             android:title="@string/lights_label">
 
-        <!-- Battery light -->
+        <!-- Battery light
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
                 android:key="battery_lights"
-                cm:requiresConfig="@*android:bool/config_intrusiveBatteryLed" />
+                cm:requiresConfig="@*android:bool/config_intrusiveBatteryLed" /> -->
 
-        <!-- Notification lights -->
+        <!-- Notification lights
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
                 android:key="notification_lights"
-                cm:requiresConfig="@*android:bool/config_intrusiveNotificationLed" />
+                cm:requiresConfig="@*android:bool/config_intrusiveNotificationLed" /> -->
 
     </PreferenceCategory>
 
