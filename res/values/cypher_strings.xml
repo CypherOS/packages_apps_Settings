@@ -358,5 +358,6 @@
     <string name="qs_rows_portrait_title">Portrait rows</string>
     <string name="qs_rows_landscape_title">Landscape rows</string>
     <string name="qs_columns_title">Columns</string>
+	<string name="sysui_qqs_count_title">Shortcut count</string>
  
 </resources>

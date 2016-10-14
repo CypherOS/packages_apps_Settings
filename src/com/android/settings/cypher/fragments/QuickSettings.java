@@ -55,10 +55,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 	private static final String PREF_ROWS_PORTRAIT = "qs_rows_portrait";
     private static final String PREF_ROWS_LANDSCAPE = "qs_rows_landscape";
     private static final String PREF_COLUMNS = "qs_columns";
+	private static final String PREF_SYSUI_QQS_COUNT = "sysui_qqs_count_key";
 	
 	private ListPreference mRowsPortrait;
 	private ListPreference mRowsLandscape;
     private ListPreference mQsColumns;
+	private ListPreference mSysuiQqsCount;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,26 +73,33 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 		int defaultValue;
 		
 		mRowsPortrait = (ListPreference) findPreference(PREF_ROWS_PORTRAIT);
-            int rowsPortrait = Settings.Secure.getInt(resolver,
-                    Settings.Secure.QS_ROWS_PORTRAIT, 3);
-            mRowsPortrait.setValue(String.valueOf(rowsPortrait));
-            mRowsPortrait.setSummary(mRowsPortrait.getEntry());
-            mRowsPortrait.setOnPreferenceChangeListener(this);
+        int rowsPortrait = Settings.Secure.getInt(resolver,
+                Settings.Secure.QS_ROWS_PORTRAIT, 3);
+        mRowsPortrait.setValue(String.valueOf(rowsPortrait));
+        mRowsPortrait.setSummary(mRowsPortrait.getEntry());
+        mRowsPortrait.setOnPreferenceChangeListener(this);
 
-            defaultValue = getResources().getInteger(com.android.internal.R.integer.config_qs_num_rows_landscape_default);
-            mRowsLandscape = (ListPreference) findPreference(PREF_ROWS_LANDSCAPE);
-            int rowsLandscape = Settings.Secure.getInt(resolver,
-                    Settings.Secure.QS_ROWS_LANDSCAPE, defaultValue);
-            mRowsLandscape.setValue(String.valueOf(rowsLandscape));
-            mRowsLandscape.setSummary(mRowsLandscape.getEntry());
-            mRowsLandscape.setOnPreferenceChangeListener(this);
+        defaultValue = getResources().getInteger(com.android.internal.R.integer.config_qs_num_rows_landscape_default);
+        mRowsLandscape = (ListPreference) findPreference(PREF_ROWS_LANDSCAPE);
+        int rowsLandscape = Settings.Secure.getInt(resolver,
+                Settings.Secure.QS_ROWS_LANDSCAPE, defaultValue);
+        mRowsLandscape.setValue(String.valueOf(rowsLandscape));
+        mRowsLandscape.setSummary(mRowsLandscape.getEntry());
+        mRowsLandscape.setOnPreferenceChangeListener(this);
 
-            mQsColumns = (ListPreference) findPreference(PREF_COLUMNS);
-            int columnsQs = Settings.Secure.getInt(resolver,
-                    Settings.Secure.QS_COLUMNS, 3);
-            mQsColumns.setValue(String.valueOf(columnsQs));
-            mQsColumns.setSummary(mQsColumns.getEntry());
-            mQsColumns.setOnPreferenceChangeListener(this);
+        mQsColumns = (ListPreference) findPreference(PREF_COLUMNS);
+        int columnsQs = Settings.Secure.getInt(resolver,
+                Settings.Secure.QS_COLUMNS, 3);
+        mQsColumns.setValue(String.valueOf(columnsQs));
+        mQsColumns.setSummary(mQsColumns.getEntry());
+        mQsColumns.setOnPreferenceChangeListener(this);
+			
+        mSysuiQqsCount = (ListPreference) findPreference(PREF_SYSUI_QQS_COUNT);
+        int SysuiQqsCount = Settings.Secure.getInt(resolver,
+                Settings.Secure.QQS_COUNT, 5);
+        mSysuiQqsCount.setValue(Integer.toString(SysuiQqsCount));
+        mSysuiQqsCount.setSummary(mSysuiQqsCount.getEntry());
+        mSysuiQqsCount.setOnPreferenceChangeListener(this);
 		
 	}
 	
