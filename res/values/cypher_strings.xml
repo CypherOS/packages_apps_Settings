@@ -383,7 +383,10 @@
 	<string name="qs_layout_category_title">Layout</string>
 	<!-- BT easy toggle -->
     <string name="qs_bt_easy_toggle_title">Bluetooth on tap</string>
-    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with on tap</string>
+    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with one tap</string>
+	<!-- WiFi easy toggle -->
+    <string name="qs_wifi_easy_toggle_title">WiFi on tap</string>
+    <string name="qs_wifi_easy_toggle_summary">Enable or disable wifi with one tap</string>
 	<!-- Quick settings tiles columns and rows config -->
     <string name="qs_rows_portrait_title">Portrait rows</string>
     <string name="qs_rows_landscape_title">Landscape rows</string>
