@@ -57,5 +57,15 @@
     <string name="power_notifications_ringtone_title">Suono di notifica</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silenzioso</string>
+	
+        <!-- Display : Rotation -->
+    <string name="display_rotation_title">Rotazione</string>
+    <string name="display_rotation_disabled">Disabilitata</string>
+    <string name="display_rotation_unit">Gradi</string>
+    <string name="display_rotation_category_title">Modalità rotazione</string>
+    <string name="display_rotation_0_title">0 gradi</string>
+    <string name="display_rotation_90_title">90 gradi</string>
+    <string name="display_rotation_180_title">180 gradi</string>
+    <string name="display_rotation_270_title">270 gradi</string>
  
 </resources>
