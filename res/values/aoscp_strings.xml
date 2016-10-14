@@ -76,7 +76,10 @@
     <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>	
 	<!-- BT easy toggle -->
     <string name="qs_bt_easy_toggle_title">Bluetooth on tap</string>
-    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with on tap</string>
+    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with one tap</string>
+	<!-- WiFi easy toggle -->
+    <string name="qs_wifi_easy_toggle_title">WiFi on tap</string>
+    <string name="qs_wifi_easy_toggle_summary">Enable or disable wifi with one tap</string>
 	
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
