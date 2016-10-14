@@ -353,5 +353,10 @@
 	<!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Data on tap</string>
     <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>
+	<string name="qs_layout_category_title">Layout</string>
+	<!-- Quick settings tiles columns and rows config -->
+    <string name="qs_rows_portrait_title">Portrait rows</string>
+    <string name="qs_rows_landscape_title">Landscape rows</string>
+    <string name="qs_columns_title">Columns</string>
  
 </resources>

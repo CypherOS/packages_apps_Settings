@@ -20,21 +20,14 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.ComponentName;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
+import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
@@ -50,7 +43,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.settings.R;
-import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import java.util.ArrayList;
@@ -60,6 +52,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "QuickSettings";
 	
+	private static final String PREF_ROWS_PORTRAIT = "qs_rows_portrait";
+    private static final String PREF_ROWS_LANDSCAPE = "qs_rows_landscape";
+    private static final String PREF_COLUMNS = "qs_columns";
+	
+	private ListPreference mRowsPortrait;
+	private ListPreference mRowsLandscape;
+    private ListPreference mQsColumns;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +68,29 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
+		int defaultValue;
+		
+		mRowsPortrait = (ListPreference) findPreference(PREF_ROWS_PORTRAIT);
+            int rowsPortrait = Settings.Secure.getInt(resolver,
+                    Settings.Secure.QS_ROWS_PORTRAIT, 3);
+            mRowsPortrait.setValue(String.valueOf(rowsPortrait));
+            mRowsPortrait.setSummary(mRowsPortrait.getEntry());
+            mRowsPortrait.setOnPreferenceChangeListener(this);
+
+            defaultValue = getResources().getInteger(com.android.internal.R.integer.config_qs_num_rows_landscape_default);
+            mRowsLandscape = (ListPreference) findPreference(PREF_ROWS_LANDSCAPE);
+            int rowsLandscape = Settings.Secure.getInt(resolver,
+                    Settings.Secure.QS_ROWS_LANDSCAPE, defaultValue);
+            mRowsLandscape.setValue(String.valueOf(rowsLandscape));
+            mRowsLandscape.setSummary(mRowsLandscape.getEntry());
+            mRowsLandscape.setOnPreferenceChangeListener(this);
+
+            mQsColumns = (ListPreference) findPreference(PREF_COLUMNS);
+            int columnsQs = Settings.Secure.getInt(resolver,
+                    Settings.Secure.QS_COLUMNS, 3);
+            mQsColumns.setValue(String.valueOf(columnsQs));
+            mQsColumns.setSummary(mQsColumns.getEntry());
+            mQsColumns.setOnPreferenceChangeListener(this);
 		
 	}
 	
@@ -75,6 +98,37 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
     }
+	
+	@Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        int intValue;
+        int index;
+        
+        if (preference == mRowsPortrait) {
+            intValue = Integer.valueOf((String) newValue);
+            index = mRowsPortrait.findIndexOfValue((String) newValue);
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.QS_ROWS_PORTRAIT, intValue);
+            preference.setSummary(mRowsPortrait.getEntries()[index]);
+            return true;
+        } else if (preference == mRowsLandscape) {
+            intValue = Integer.valueOf((String) newValue);
+            index = mRowsLandscape.findIndexOfValue((String) newValue);
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.QS_ROWS_LANDSCAPE, intValue);
+            preference.setSummary(mRowsLandscape.getEntries()[index]);
+            return true;
+        } else if (preference == mQsColumns) {
+            intValue = Integer.valueOf((String) newValue);
+            index = mQsColumns.findIndexOfValue((String) newValue);
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.QS_COLUMNS, intValue);
+            preference.setSummary(mQsColumns.getEntries()[index]);
+            return true;
+        }
+        return false;		
+    }   
 	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
