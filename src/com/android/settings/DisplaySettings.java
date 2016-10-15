@@ -171,10 +171,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
 
             if (RotationPolicy.isRotationLockToggleVisible(activity)) {
-                    mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
-                } else {
-                    displayPrefs.removePreference(mDisplayRotationPreference);
-                }
+                mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
+            } else {
+                displayPrefs.removePreference(mDisplayRotationPreference);
             }
 
             DropDownPreference vrDisplayPref =
@@ -184,7 +183,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     vrDisplayPref.setEntries(new CharSequence[] {
                             activity.getString(R.string.display_vr_pref_low_persistence),
                             activity.getString(R.string.display_vr_pref_off),
-                    });
+                       });
                     vrDisplayPref.setEntryValues(new CharSequence[] { "0", "1" });
 
                     final Context c = activity;
@@ -207,20 +206,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                             }
                             return true;
                         }
-                    });
-                } else {
+                       });
+                }
+                else {
                     displayPrefs.removePreference(vrDisplayPref);
                 }
             }
-        }
 
-        mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
-        if (mNightModePreference != null) {
-            final UiModeManager uiManager = (UiModeManager) getSystemService(
-                    Context.UI_MODE_SERVICE);
-            final int currentNightMode = uiManager.getNightMode();
-            mNightModePreference.setValue(String.valueOf(currentNightMode));
-            mNightModePreference.setOnPreferenceChangeListener(this);
+            mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
+            if (mNightModePreference != null) {
+               final UiModeManager uiManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
+               final int currentNightMode = uiManager.getNightMode();
+               mNightModePreference.setValue(String.valueOf(currentNightMode));
+               mNightModePreference.setOnPreferenceChangeListener(this);
+            }
         }
     }
 
