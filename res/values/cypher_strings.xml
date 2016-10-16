@@ -27,6 +27,10 @@
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
     <string name="local_backup_password_title">Desktop backup password</string>
 	
+	<!-- Addition settings -->
+	<string name="addition_settings_title">Additions</string>
+	<!-- TODO: Summary loaders -->
+	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
 	<!-- Double-snap summary loaders -->

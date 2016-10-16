@@ -110,6 +110,25 @@
         </activity>
 		
 		<!-- Keep compatibility with old shortcuts. -->
+        <activity android:name="Settings$AdditionsActivity"
+                android:label="@string/addition_settings_title"
+                android:icon="@drawable/ic_settings_additions"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <intent-filter android:priority="7">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                       android:value="com.android.settings.category.device" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.cypher.Additions" />
+        </activity>
+		
+		<!-- Keep compatibility with old shortcuts. -->
         <activity android:name="Settings$GesturesActivity"
                 android:label="@string/gesture_settings_title"
                 android:icon="@drawable/ic_settings_gestures"

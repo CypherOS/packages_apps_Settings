@@ -17,6 +17,7 @@
 package com.android.settings.search;
 
 import android.provider.SearchIndexableResource;
+import com.android.settings.cypher.Additions;
 import com.android.settings.cypher.Gestures;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
@@ -150,6 +151,13 @@ public final class SearchIndexableResources {
                         R.xml.configure_notification_settings,
                         ConfigureNotificationSettings.class.getName(),
                         R.drawable.ic_settings_notifications));
+						
+		sResMap.put(Additions.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(Additions.class.getName()),
+                        NO_DATA_RES_ID,
+                        Additions.class.getName(),
+                        R.drawable.ic_settings_additions));
 						
 		sResMap.put(Gestures.class.getName(),
                 new SearchIndexableResource(
