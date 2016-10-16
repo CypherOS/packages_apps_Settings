@@ -30,6 +30,11 @@
                     android:targetPackage="com.android.settings"
                     android:targetClass="com.android.settings.Settings$StatusActivity" />
         </PreferenceScreen>
+		
+		<!-- Software information -->
+        <PreferenceScreen android:key="software_info"
+                android:title="@string/software_info_settings_title"
+                android:fragment="com.android.settings.cypher.deviceinfo.SoftwareInfo" />
 
         <!-- Manual -->
         <PreferenceScreen

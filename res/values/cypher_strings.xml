@@ -22,6 +22,18 @@
 	<!-- Vendor version -->
     <string name="vendor_version">Vendor version</string>
     <string name="vendor_version_default">Unknown</string>
+	<!-- Software information-->
+	<string name="software_info_settings_title">Software information</string>
+	<!-- Build notes -->
+	<string name="buildnotes_settings_title">Build notes</string>
+	<string name="buildnotes_settings_title_summary">Check out the latest changes in CypherOS to know what\'s the what on your current release</string>
+	<string name="buildnotes_settings_error">Unable to load buildnotes</string>
+	<!-- Social category -->
+    <string name="social_category_title">Social</string>
+	<string name="website_preference_title">On-The-Web</string>
+	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
+	<string name="google_preference_title">CypherPlus</string>
+	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
