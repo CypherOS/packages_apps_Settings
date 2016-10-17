@@ -145,8 +145,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, Build.DATE);
-        setApiLevel(KEY_AOSCP_API_LEVEL, Build.API);
-		findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
+        setValueSummary(KEY_AOSCP_API_LEVEL, "ro.aoscp.api");
+        findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -391,20 +391,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         Intent intent = new Intent(Intent.ACTION_BUG_REPORT);
         intent.setPackage(reporterPackage);
         startActivityForResult(intent, 0);
-    }
-
-    private void setApiLevel(String preference, String property) {
-        try {
-            String api = SystemProperties.get(property,
-                    getResources().getString(R.string.aoscp_api_level_default));
-            findPreference(preference).setSummary(api);
-            if (api.contains(",")) {
-                findPreference(preference).setTitle(
-                        getResources().getString(R.string.aoscp_api_level));
-            }
-        } catch (RuntimeException e) {
-            // No recovery
-        }
     }
 
     private static class SummaryProvider implements SummaryLoader.SummaryProvider {

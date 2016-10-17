@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.aosip;
+package com.android.settings.cypher.fragments;
 
 import java.util.HashMap;
 import java.util.HashSet;
