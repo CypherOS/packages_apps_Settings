@@ -265,5 +265,9 @@
 	<!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
     <string name="show_battery_percentage">Show battery percentage</string>
     <string name="show_battery_percentage_summary">Show battery percentage when not charging</string>
+	
+	<!-- double tap statusbar to sleep -->
+    <string name="double_tap_to_sleep_title">Tap to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double tap on the status bar to put the device to sleep</string>
  
 </resources>
