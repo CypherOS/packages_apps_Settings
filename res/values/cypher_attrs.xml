@@ -10,17 +10,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-        android:title="@string/addition_settings_title">
-		
-		<!-- Statusbar settings -->
-		<PreferenceScreen
-                android:key="statusbar_settings"
-                android:title="@string/statusbar_settings_title"
-				android:summary="@string/statusbar_settings_title_summary"
-                android:fragment="com.android.settings.cypher.fragments.StatusbarSettings"
-                android:icon="@drawable/ic_settings_statusbar" />
-
-</PreferenceScreen>
+<resources>
+	
+	<declare-styleable name="SeekBarPreference">
+        <attr name="interval" format="integer" />
+        <attr name="minimum" format="integer" />
+        <attr name="unitsLeft" format="string|reference" />
+        <attr name="unitsRight" format="string|reference" />
+    </declare-styleable>
+</resources>

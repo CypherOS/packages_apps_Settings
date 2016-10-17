@@ -10,17 +10,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-        android:title="@string/addition_settings_title">
-		
-		<!-- Statusbar settings -->
-		<PreferenceScreen
-                android:key="statusbar_settings"
-                android:title="@string/statusbar_settings_title"
-				android:summary="@string/statusbar_settings_title_summary"
-                android:fragment="com.android.settings.cypher.fragments.StatusbarSettings"
-                android:icon="@drawable/ic_settings_statusbar" />
-
-</PreferenceScreen>
+    <!-- Overlays for NetworkTraffic to use -->
+    <integer name="maskUp">0x00000001</integer>
+    <integer name="maskDown">0x00000002</integer>
+    <integer name="maskUnit">0x00000004</integer>
+    <integer name="maskPeriod">0xFFFF0000</integer>
+</resources>

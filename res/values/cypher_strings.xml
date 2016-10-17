@@ -183,5 +183,87 @@
     <string name="volume_steps_15">15</string>
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
+	
+	<!-- Statusbar Settings -->
+	<string name="statusbar_settings_title">Statusbar</string>
+	<string name="statusbar_settings_title_summary">Change the look and feel of your statusbar with an array of customizations</string>
+    <!-- Status bar - Clock -->
+    <string name="status_bar_clock_title">Clock &amp; date</string>
+    <string name="status_bar_clock_style_title">Position</string>
+    <string name="status_bar_clock_style_right">Right</string>
+    <string name="status_bar_clock_style_left">Left</string>
+    <string name="status_bar_clock_style_center">Center</string>
+    <string name="status_bar_clock_style_hidden">Hidden</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_am_pm_normal">Normal</string>
+    <string name="status_bar_am_pm_small">Small</string>
+    <string name="status_bar_am_pm_hidden">Hidden</string>
+	<!-- Statusbar - Date -->
+	<string name="clock_date_display">Date</string>
+    <string name="clock_date_display_summary">Display custom date before the clock</string>
+    <string name="clock_date_display_none">Don\'t show</string>
+    <string name="clock_date_display_small">Small font size</string>
+    <string name="clock_date_display_normal">Normal font size</string>
+    <string name="clock_date_style">Date style</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Lowercase</string>
+    <string name="clock_date_style_uppercase">Uppercase</string>
+    <string name="clock_date_format_custom">Custom java format</string>
+    <string name="clock_date_format">Date format</string>
+    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+	
+	<!-- Status bar quick qs pulldown -->
+    <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
+    <string name="status_bar_quick_qs_pulldown_summary">Drag down the right edge of the statusbar to reveal quick settings</string>
+	
+	<!-- Network traffic -->
+    <string name="network_traffic_title">Network traffic</string>
+	<string name="network_traffic_title_summary">Monitor your incoming and outgoing data and wifi speeds from the statusbar</string>
+    <string name="show_network_traffic_state">Status bar traffic monitor</string>
+    <string name="show_network_traffic_unit">Display unit</string>
+    <string name="show_network_traffic_frequency">Update interval</string>
+    <string name="show_network_traffic_disable">Disabled</string>
+    <string name="show_network_traffic_up">Outgoing</string>
+    <string name="show_network_traffic_down">Incoming</string>
+    <string name="show_network_traffic_all">Outgoing and incoming</string>
+    <string name="show_network_traffic_bit">Bits per second</string>
+    <string name="show_network_traffic_byte">Bytes per second</string>
+    <string name="show_network_traffic_500">500 ms</string>
+    <string name="show_network_traffic_1000">1000 ms</string>
+    <string name="show_network_traffic_1500">1500 ms</string>
+    <string name="show_network_traffic_2000">2000 ms</string>
+    <string name="network_traffic_autohide">Auto hide</string>
+    <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
+    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+	<string name="network_traffic_hidearrow">Hide arrows</string>
+    <string name="network_traffic_hidearrow_summary">Hide the arrows in the traffic indicator</string>
+	
+	<!-- Smart pulldown-->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open quick settings when there are %1$s notifications</string>
+    <string name="smart_pulldown_none_summary">Open quick settings when there are no notifications</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_none">no notifications</string>
+    <string name="smart_pulldown_dismissable">no dismissable</string>
+    <string name="smart_pulldown_ongoing">no ongoing</string>
+	
+	<!-- Quick pull down-->
+    <string name="quick_pulldown_title">Quick pulldown</string>
+    <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
+    <string name="quick_pulldown_summary_always">Always show Quick Settings on status bar pulldown</string>
+    <string name="quick_pulldown_off">Off</string>
+    <string name="quick_pulldown_left">Left</string>
+    <string name="quick_pulldown_right">Right</string>
+    <string name="quick_pulldown_always">Always</string>
+	
+	<!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Navbar tuner</string>
+    <string name="navbar_tuner_summary">Customize buttons and layout</string>
+	
+	<!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
+    <string name="show_battery_percentage">Show battery percentage</string>
+    <string name="show_battery_percentage_summary">Show battery percentage when not charging</string>
  
 </resources>
