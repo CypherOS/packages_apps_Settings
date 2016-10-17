@@ -12,20 +12,45 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+	 <!-- General strings -->
+  <string name="ok">OK</string>
+  <string name="reset">Ripristina</string>
+  <string name="attention">Attenzione</string>
+  <string name="enabled">Abilitato</string>
+  <string name="default_string">Predefinito</string>
+  <string name="add">Aggiungi</string>
+  <string name="choose_app">Seleziona app</string>
+	
     <!-- About phone screen, CypherOS version -->
-    <string name="aoscp_version_title">Versione CypherOS</string>
-    <string name="aoscp_version_default">Sconosciuto</string>
+  <string name="aoscp_version_title">Versione CypherOS</string>
+  <string name="aoscp_version_default">Sconosciuto</string>
 	<string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	<!-- About phone screen, CypherOS API -->
 	<string name="aoscp_api_level">Versione CypherOS</string>
-    <string name="aoscp_api_level_default">Sconosciuto</string>
+  <string name="aoscp_api_level_default">Sconosciuto</string>
 	<!-- Vendor version -->
-    <string name="vendor_version">Versione fornitore</string>
-    <string name="vendor_version_default">Sconosciuto</string>
+  <string name="vendor_version">Versione fornitore</string>
+  <string name="vendor_version_default">Sconosciuto</string>
+    <!-- Software information-->
+	<string name="software_info_settings_title">Informazioni Software</string>
+	<!-- Build notes -->
+	<string name="buildnotes_settings_title">Note di rilascio</string>
+	<string name="buildnotes_settings_title_summary">Scopri le ultime modifiche di CypherOS e sapere cosa è cambiato sul vostro rilascio corrente</string>
+	<string name="buildnotes_settings_error">Impossibile caricare le note di rilascio</string>
+	<!-- Social category -->
+  <string name="social_category_title">Sociale</string>
+	<string name="website_preference_title">On-The-Web</string>
+	<string name="website_preference_title_summary">Dai uno sguardo al nostro sito web per le ultime informazioni di rilascio e aggiornamento</string>
+	<string name="google_preference_title">CypherPlus</string>
+	<string name="google_preference_title_summary">Resta in contatto con gli utenti e gli sviluppatori di CypherOS sulla comunità Google Plus</string>
 	<!-- Phone info shortcut -->
-    <string name="device_info_title">Informazioni telefono</string>
+  <string name="device_info_title">Informazioni telefono</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
-    <string name="local_backup_password_title">Password di backup desktop</string>
+  <string name="local_backup_password_title">Password di backup desktop</string>
+
+	<!-- Addition settings -->
+	<string name="addition_settings_title">Aggiunte</string>
+	<!-- TODO: Summary loaders -->
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gesti</string>
@@ -34,38 +59,215 @@
 	<string name="camera_double_tap_power_gesture_off">Doppio scatto è attualmente disattivato</string>
 	
 	<!-- Volume settings - Volume adjustment sound -->
-    <string name="volume_adjust_sounds_title">Suoni di regolazione del volume</string>
+  <string name="volume_adjust_sounds_title">Suoni di regolazione del volume</string>
 	
 	<!-- ADB debugging notifications -->
-    <string name="enable_adb_custom">Android debugging</string>
-    <string name="enable_adb_summary_custom">Attiva l\'interfaccia di Android Debug Bridge (ADB)</string>
-    <string name="adb_notify">Notifica ADB</string>
-    <string name="adb_notify_summary">Visualizza una notifica quando è attivato il debug di android</string>
+  <string name="enable_adb_custom">Android debugging</string>
+  <string name="enable_adb_summary_custom">Attiva l\'interfaccia di Android Debug Bridge (ADB)</string>
+  <string name="adb_notify">Notifica ADB</string>
+  <string name="adb_notify_summary">Visualizza una notifica quando è attivato il debug di android</string>
 	
 	<string name="adb_over_network">ADB in rete</string>
-    <string name="adb_over_network_summary">Abilita il debug TCP/IP tramite l\'interfaccia di rete (Wi\u2011Fi, reti USB). Questa impostazione viene reimpostata al riavvio</string>
-    <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
+  <string name="adb_over_network_summary">Abilita il debug TCP/IP tramite l\'interfaccia di rete (Wi\u2011Fi, reti USB). Questa impostazione viene reimpostata al riavvio</string>
+  <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
 
 	<!-- Category title for Charging sounds -->
-    <string name="power_notifications_category_title">Suoni di ricarica</string>
+  <string name="power_notifications_category_title">Suoni di ricarica</string>
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
-    <string name="power_notifications_enable_title">Abilita</string>
-    <string name="power_notifications_enable_summary">Riproduci un suono quando si collega o scollega il caricabatterie</string>
+  <string name="power_notifications_enable_title">Abilita</string>
+  <string name="power_notifications_enable_summary">Riproduci un suono quando si collega o scollega il caricabatterie</string>
     <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
-    <string name="power_notifications_vibrate_title">Vibrazione</string>
+  <string name="power_notifications_vibrate_title">Vibrazione</string>
     <!-- Sound settings, Charging sounds ringtone selection, preference label -->
-    <string name="power_notifications_ringtone_title">Suono di notifica</string>
+  <string name="power_notifications_ringtone_title">Suono di notifica</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
-    <string name="power_notifications_ringtone_silent">Silenzioso</string>
+  <string name="power_notifications_ringtone_silent">Silenzioso</string>
 	
         <!-- Display : Rotation -->
-    <string name="display_rotation_title">Rotazione</string>
-    <string name="display_rotation_disabled">Disabilitata</string>
-    <string name="display_rotation_unit">Gradi</string>
-    <string name="display_rotation_category_title">Modalità rotazione</string>
-    <string name="display_rotation_0_title">0 gradi</string>
-    <string name="display_rotation_90_title">90 gradi</string>
-    <string name="display_rotation_180_title">180 gradi</string>
-    <string name="display_rotation_270_title">270 gradi</string>
+  <string name="display_rotation_title">Rotazione</string>
+  <string name="display_rotation_disabled">Disabilitata</string>
+  <string name="display_rotation_unit">Gradi</string>
+  <string name="display_rotation_category_title">Modalità rotazione</string>
+  <string name="display_rotation_0_title">0 gradi</string>
+  <string name="display_rotation_90_title">90 gradi</string>
+  <string name="display_rotation_180_title">180 gradi</string>
+  <string name="display_rotation_270_title">270 gradi</string>
+    
+	<!-- Advanced storage settings -->
+  <string name="storage_advanced_titlebar">Archiviazione avanzata</string>
+  <string name="storage_menu_advanced">Avanzate</string>
+
+   <!-- USB data automatic unlock -->
+  <string name="usb_data_auto_unlock_title">Sblocca i dati USB</string>
+  <string name="usb_data_auto_unlock_summary">Consenti l\'accesso ai dati di sblocco per la memoria del telefono tramite USB (MTP, PTP)</string>
+  <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che ci si connette ad un PC. La schermata di blocco protetta disattiva questa opzione automaticamente.\n\nQuesto è ancora una funzione sperimentale, utilizzalo con cautela.</string>
+ 
+   <!-- Sound settings -->
+  <string name="advanced_sound_title">Avanzate</string>
+  <string name="sound_title">Suono</string>
+
+   <!-- Safe headset volume restore checkbox -->
+  <string name="safe_headset_volume_title">Volume cuffie sicuro</string>
+  <string name="safe_headset_volume_summary">Previene un livello alto del volume quando gli auricolari vengono inseriti</string>
+  <string name="safe_headset_volume_warning_dialog_text">Ascoltare ad alto volume per lunghi periodi può danneggiare l\'udito. Disabilitalo con attenzione.</string>
+
+  <!-- Less Notification sounds -->
+  <string name="notifications_category_title">Notifiche</string>
+  <string name="less_notification_sounds_title">Suoni di notifica meno frequenti</string>
+  <string name="less_notification_sounds_summary">Limita i suoni di notifica di ogni app per suonare solo una volta e per il periodo di tempo impostato</string>
+  <string name="less_notification_sounds_default">Comportamento predefinito</string>
+  <string name="less_notification_sounds_3s">3 secondi</string>
+  <string name="less_notification_sounds_5s">5 secondi</string>
+  <string name="less_notification_sounds_10s">10 secondi</string>
+  <string name="less_notification_sounds_15s">15 secondi</string>
+  <string name="less_notification_sounds_30s">30 secondi</string>
+  <string name="less_notification_sounds_45s">45 secondi</string>
+  <string name="less_notification_sounds_1m">1 minuto</string>
+  <string name="less_notification_sounds_2m">2 minuti</string>
+  <string name="less_notification_sounds_5m">5 minuti</string>
+
+  <!-- Bluetooth accept all files -->
+  <string name="bluetooth_accept_all_files">Accetta tutti i tipi di file</string>
+
+  <!-- Doze pulse options -->
+  <string name="summary_doze_enabled">Abilitato</string>
+  <string name="summary_doze_disabled">Disabilitato</string>
+  <string name="doze_overwrite_value_title">Sovrascrittura predefinita</string>
+  <string name="doze_overwrite_value_summary">Consente di forzatura dei valori predefiniti con la configurazione utente</string>
+  <string name="doze_pulse_title">Impostazioni configurabili dall\'utente</string>
+  <string name="doze_pulse_duration_in_title">Dissolvenza in entrata</string>
+  <string name="doze_pulse_duration_in_summary"></string>
+  <string name="doze_pulse_duration_visible_title">Durata visibile</string>
+  <string name="doze_pulse_duration_visible_summary"></string>
+  <string name="doze_pulse_duration_out_title">Dissolvenza in uscita</string>
+  <string name="doze_pulse_duration_out_summary"></string>
+  <string name="doze_trigger_pickup_title">Attivazione gesto sollevamento</string>
+  <string name="doze_trigger_pickup_summary_on">Doze pulse sarà attivato dagli eventi del sensore gesto di sollevamento</string>
+  <string name="doze_trigger_pickup_summary_off">Il sensore gesto di sollevamento non sarà utilizzato come un meccanismo di attivazione</string>
+  <string name="doze_trigger_notification_title">Attivazione notifica</string>
+  <string name="doze_trigger_notification_summary_on">Doze pulse sarà attivato dalle notifiche</string>
+  <string name="doze_trigger_notification_summary_off">Le notifiche non saranno utilizzate come attivazione</string>
+  <string name="doze_brightness_level_title">Livello di luminosità</string>
+  <string name="onehundred_ms">100 ms</string>
+  <string name="twofifty_ms">250 ms</string>
+  <string name="fivehundred_ms_default">500 ms (predefinito)</string>
+  <string name="sevenfifty_ms">750 ms</string>
+  <string name="one_second">1 s</string>
+  <string name="onehalf_second">1.5 s</string>
+  <string name="two_second">2 s</string>
+  <string name="twohalf_second">2.5 s</string>
+  <string name="three_second_default">3 s (predefinito)</string>
+  <string name="threehalf_second">3.5 s</string>
+  <string name="four_second">4 s</string>
+  <string name="fourhalf_second">4.5 s</string>
+  <string name="five_second">5 s</string>
+
+    <!-- Camera sound switch -->
+  <string name="camera_sounds_title">Suono otturatore fotocamera</string>
+  <string name="camera_sounds_summary">Abilita il suono dell\'otturatore della fotocamera di sistema</string>
+  <string name="camera_sound_warning_dialog_text">Disattivare il suono dell\'otturatore della fotocamera è illegale in alcune zone!Si prega di controllare la legge applicabile nel vostro paese</string>
+
+    <!-- Volume Steps -->
+  <string name="volume_steps_title">Livelli volume</string>
+  <string name="volume_steps_alarm_title">Livello volume: Sveglia</string>
+  <string name="volume_steps_dtmf_title">Livello volume: DTMF</string>
+  <string name="volume_steps_music_title">Livello volume: Media</string>
+  <string name="volume_steps_notification_title">Livello volume: Notifica</string>
+  <string name="volume_steps_ring_title">Livello volume: Suoneria</string>
+  <string name="volume_steps_system_title">Livello volume: Sistema</string>
+  <string name="volume_steps_voice_call_title">Livello volume: Chiamata vocale</string>
+  <string name="volume_steps_reset">Ripritina</string>
+  <string name="volume_steps_60">60</string>
+  <string name="volume_steps_45">45</string>
+  <string name="volume_steps_30">30</string>
+  <string name="volume_steps_15">15</string>
+  <string name="volume_steps_7">7</string>
+  <string name="volume_steps_5">5</string>
+
+    <!-- Statusbar Settings -->
+  <string name="statusbar_settings_title">Barra di stato</string>
+  <string name="statusbar_settings_title_summary">Cambia l\'aspetto grafico della vostra barra di stato con una serie di personalizzazioni</string>
+    <!-- Status bar - Clock -->
+  <string name="status_bar_clock_title">Orologio &amp; data</string>
+  <string name="status_bar_clock_style_title">Posizione</string>
+  <string name="status_bar_clock_style_right">Destra</string>
+  <string name="status_bar_clock_style_left">Sinistra</string>
+  <string name="status_bar_clock_style_center">Centro</string>
+  <string name="status_bar_clock_style_hidden">Nascosto</string>
+  <string name="status_bar_am_pm_title">AM/PM</string>
+  <string name="status_bar_am_pm_info">24 ore è abilitato</string>
+  <string name="status_bar_am_pm_normal">Normale</string>
+  <string name="status_bar_am_pm_small">Piccolo</string>
+  <string name="status_bar_am_pm_hidden">Nascosto</string>
+    <!-- Statusbar - Date -->
+	<string name="clock_date_display">Data</string>
+  <string name="clock_date_display_summary">Mostra la data personalizzata prima dell\'orologio</string>
+  <string name="clock_date_display_none">Non mostrare</string>
+  <string name="clock_date_display_small">Caratteri piccoli</string>
+  <string name="clock_date_display_normal">Carattere normali</string>
+  <string name="clock_date_style">Stile data</string>
+  <string name="clock_date_style_normal">Normale</string>
+  <string name="clock_date_style_lowercase">Minuscolo</string>
+  <string name="clock_date_style_uppercase">Maiuscolo</string>
+  <string name="clock_date_format_custom">Formato Java personalizzato</string>
+  <string name="clock_date_format">Formato data</string>
+  <string name="clock_date_string_edittext_title">Deve essere in formato data ad esempio. MM/dd/yy</string>
+  <string name="clock_date_string_edittext_summary">Inserire una stringa</string>
+
+    <!-- Status bar quick qs pulldown -->
+  <string name="status_bar_quick_qs_pulldown_title">Discesa rapida</string>
+  <string name="status_bar_quick_qs_pulldown_summary">Lato destro della barra di stato tira giù le impostazioni rapide</string>
+
+  <!-- Network traffic -->
+  <string name="network_traffic_title">Traffico di rete</string>
+  <string name="network_traffic_title_summary">Monitora la velocità di trasferimento dati e wifi in entrata e in uscita dalla barra di stato</string>
+  <string name="show_network_traffic_state">Monitora il traffico di rete nella barra di stato</string>
+  <string name="show_network_traffic_unit">Unità di visualizzazione</string>
+  <string name="show_network_traffic_frequency">Intervallo di aggiornamento</string>
+  <string name="show_network_traffic_disable">Disabilitato</string>
+  <string name="show_network_traffic_up">In uscita</string>
+  <string name="show_network_traffic_down">In entrata</string>
+  <string name="show_network_traffic_all">In uscita e in entrata</string>
+  <string name="show_network_traffic_bit">Bit al secondo</string>
+  <string name="show_network_traffic_byte">Byte al secondo</string>
+  <string name="show_network_traffic_500">500 ms</string>
+  <string name="show_network_traffic_1000">1000 ms</string>
+  <string name="show_network_traffic_1500">1500 ms</string>
+  <string name="show_network_traffic_2000">2000 ms</string>
+  <string name="network_traffic_autohide">Nascondi automaticamente</string>
+  <string name="network_traffic_autohide_summary">Nascondi il traffico rete quando non c\'è attività</string>
+
+  <string name="network_traffic_hidearrow">Nascondi frecce</string>
+  <string name="network_traffic_hidearrow_summary">Nascondere le frecce degli indicatori di traffico</string>
+
+  <!--Smart PullDown-->
+  <string name="smart_pulldown_title">Discesa intelligente</string>
+  <string name="smart_pulldown_summary">Apri le impostazioni rapide quando ci sono %1$s notifiche presenti</string>
+  <string name="smart_pulldown_none_summary">Apri le impostazioni rapide quando non ci sono notifiche presenti</string>
+  <string name="smart_pulldown_off">Spenta</string>
+  <string name="smart_pulldown_none">Nessuna notifica</string>
+  <string name="smart_pulldown_dismissable">Nessuna rimovibile</string>
+  <string name="smart_pulldown_ongoing">Nessuna in corso</string>
+
+  <!-- Quick pull down-->
+  <string name="quick_pulldown_title">Discesa rapida</string>
+  <string name="quick_pulldown_summary">Il bodo %1$s della barra di stato tira giù Impostazioni rapide</string>
+  <string name="quick_pulldown_summary_always">Mostra sempre le impostazioni rapide sulla barra di stato a tendina</string>
+  <string name="quick_pulldown_off">Spento</string>
+  <string name="quick_pulldown_left">Sinistra</string>
+  <string name="quick_pulldown_right">Destra</string>
+  <string name="quick_pulldown_always">Sempre</string>
+
+  <!-- Navbar tuner -->
+  <string name="navbar_tuner_title">Sintonizzatore barra di navigazione</string>
+  <string name="navbar_tuner_summary">Personalizzare i pulsanti e la disposizione</string>
+	
+  <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
+  <string name="show_battery_percentage">Visualizza la percentuale della batteria</string>
+  <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
+	
+  <!-- double tap statusbar to sleep -->
+  <string name="double_tap_to_sleep_title">Tocco per sospendere</string>
+  <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
  
 </resources>
