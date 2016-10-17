@@ -63,14 +63,14 @@ import java.util.List;
 public class StatusbarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "StatusbarSettings";
-	
-	private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
-    private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
-	private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "clock_date_display";
-    private static final String STATUS_BAR_CLOCK_DATE_STYLE = "clock_date_style";
-    private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "clock_date_format";
-	private static final String QUICK_PULLDOWN = "quick_pulldown";
-	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
+    private static final String STATUS_BAR_CLOCK_AM_PM_STYLE = "status_bar_clock_am_pm_style";
+    private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "status_bar_clock_date_display";
+    private static final String STATUS_BAR_CLOCK_DATE_STYLE = "status_bar_clock_date_style";
+    private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "status_bar_clock_date_format";
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
+    private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -78,13 +78,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
-	private ListPreference mClockDateDisplay;
+    private ListPreference mClockDateDisplay;
     private ListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
-	private ListPreference mQuickPulldown;
-	private ListPreference mSmartPulldown;
-	
-	@Override
+    private ListPreference mQuickPulldown;
+    private ListPreference mSmartPulldown;
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.statusbar_settings);
@@ -106,7 +106,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         updateSmartPulldownSummary(smartPulldown);
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
-        mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
+        mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_CLOCK_AM_PM_STYLE);
 		mClockDateDisplay = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_DISPLAY);
         mClockDateStyle = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_STYLE);
 
@@ -121,14 +121,14 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
         } else {
             int statusBarAmPm = Settings.System.getInt(resolver,
-                    Settings.System.STATUS_BAR_AM_PM, 2);
+                    Settings.System.STATUS_BAR_CLOCK_AM_PM_STYLE, 2);
             mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntry());
             mStatusBarAmPm.setOnPreferenceChangeListener(this);
         }
 		
-		int clockDateDisplay = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK_DATE_DISPLAY, 0);
+        int clockDateDisplay = Settings.System.getInt(resolver,
+                    Settings.System.STATUS_BAR_CLOCK_DATE_DISPLAY, 0);
         mClockDateDisplay.setValue(String.valueOf(clockDateDisplay));
         mClockDateDisplay.setSummary(mClockDateDisplay.getEntry());
         mClockDateDisplay.setOnPreferenceChangeListener(this);
@@ -190,7 +190,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             int statusBarAmPm = Integer.valueOf((String) newValue);
             int index = mStatusBarAmPm.findIndexOfValue((String) newValue);
             Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_AM_PM, statusBarAmPm);
+                    resolver, Settings.System.STATUS_BAR_CLOCK_AM_PM_STYLE, statusBarAmPm);
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[index]);
             return true;
 		} else if (preference == mClockDateDisplay) {

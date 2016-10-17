@@ -26,10 +26,10 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.preference.SeekBarPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
-import com.android.settings.SeekBarPreference;
 
 public class NetworkTraffic extends PreferenceFragment
             implements OnPreferenceChangeListener  {
@@ -40,7 +40,7 @@ public class NetworkTraffic extends PreferenceFragment
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
     private static final String NETWORK_TRAFFIC_UNIT = "network_traffic_unit";
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
-	private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
+    private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
     private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
     private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
@@ -53,7 +53,7 @@ public class NetworkTraffic extends PreferenceFragment
     private ListPreference mNetTrafficState;
     private ListPreference mNetTrafficUnit;
     private ListPreference mNetTrafficPeriod;
-	private SwitchPreference mNetTrafficHidearrow;
+    private SwitchPreference mNetTrafficHidearrow;
     private SwitchPreference mNetTrafficAutohide;
     private SeekBarPreference mNetTrafficAutohideThreshold;
 
@@ -70,14 +70,12 @@ public class NetworkTraffic extends PreferenceFragment
         mNetTrafficUnit = (ListPreference) prefSet.findPreference(NETWORK_TRAFFIC_UNIT);
         mNetTrafficPeriod = (ListPreference) prefSet.findPreference(NETWORK_TRAFFIC_PERIOD);
 		
-		mNetTrafficHidearrow =
-            (SwitchPreference) prefSet.findPreference(NETWORK_TRAFFIC_HIDEARROW);
+        mNetTrafficHidearrow = (SwitchPreference) prefSet.findPreference(NETWORK_TRAFFIC_HIDEARROW);
         mNetTrafficHidearrow.setChecked((Settings.System.getInt(resolver,
                 Settings.System.NETWORK_TRAFFIC_HIDEARROW, 0) == 1));
         mNetTrafficHidearrow.setOnPreferenceChangeListener(this);
 
-        mNetTrafficAutohide =
-            (SwitchPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE);
+        mNetTrafficAutohide = (SwitchPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE);
         mNetTrafficAutohide.setChecked((Settings.System.getInt(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1));
         mNetTrafficAutohide.setOnPreferenceChangeListener(this);
@@ -85,8 +83,8 @@ public class NetworkTraffic extends PreferenceFragment
         mNetTrafficAutohideThreshold = (SeekBarPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
         int netTrafficAutohideThreshold = Settings.System.getInt(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
-            mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold / 1);
-            mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
+        mNetTrafficAutohideThreshold.setProgress(netTrafficAutohideThreshold / 1);
+        mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
 
         // TrafficStats will return UNSUPPORTED if the device does not support it.
         if (TrafficStats.getTotalTxBytes() != TrafficStats.UNSUPPORTED &&

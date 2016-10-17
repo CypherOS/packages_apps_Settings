@@ -58,41 +58,38 @@ import java.util.List;
 
 public class Additions extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "Additions";
-	
-	@Override
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.addition_settings);
+        addPreferencesFromResource(R.xml.addition_settings);
 		
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
-	}
-	
-	@Override
+    }
+
+    @Override
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
     }
-	
-	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    ArrayList<SearchIndexableResource> result =
-                            new ArrayList<SearchIndexableResource>();
 
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.addition_settings;
-                    result.add(sir);
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER = new BaseSearchIndexProvider() {
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context, boolean enabled) {
+            ArrayList<SearchIndexableResource> result = new ArrayList<SearchIndexableResource>();
 
-                    return result;
-                }
+            SearchIndexableResource sir = new SearchIndexableResource(context);
+            sir.xmlResId = R.xml.addition_settings;
+            result.add(sir);
 
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    ArrayList<String> result = new ArrayList<String>();
-                    return result;
-                }
-            };
+            return result;
+        }
+
+        @Override
+        public List<String> getNonIndexableKeys(Context context) {
+            ArrayList<String> result = new ArrayList<String>();
+            return result;
+        }
+    };
 }
