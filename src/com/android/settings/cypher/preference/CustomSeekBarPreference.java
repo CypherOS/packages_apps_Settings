@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package com.android.settings.aicp.preference;
+package com.android.settings.cypher.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
