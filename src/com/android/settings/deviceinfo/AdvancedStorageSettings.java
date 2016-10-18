@@ -36,7 +36,7 @@ import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-import com.mrapocalypse.screwdshop.prefs.SystemSettingSwitchPreference;
+import com.android.settings.preference.SystemSettingSwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -52,7 +52,7 @@ public class AdvancedStorageSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.SCREWD;
+        return MetricsEvent.ADDITIONS;
     }
 
     @Override
