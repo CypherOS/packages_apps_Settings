@@ -49,7 +49,7 @@
   <string name="local_backup_password_title">Password di backup desktop</string>
 
 	<!-- Addition settings -->
-	<string name="addition_settings_title">Aggiunte</string>
+	<string name="addition_settings_title">Impostazioni aggiuntive</string>
 	<!-- TODO: Summary loaders -->
 	
 	<!-- Gesture Settings -->
@@ -108,8 +108,8 @@
 
    <!-- Safe headset volume restore checkbox -->
   <string name="safe_headset_volume_title">Volume cuffie sicuro</string>
-  <string name="safe_headset_volume_summary">Previene un livello alto del volume quando gli auricolari vengono inseriti</string>
-  <string name="safe_headset_volume_warning_dialog_text">Ascoltare ad alto volume per lunghi periodi può danneggiare l\'udito. Disabilitalo con attenzione.</string>
+  <string name="safe_headset_volume_summary">Previene un livello elevato del volume quando gli auricolari vengono collegati</string>
+  <string name="safe_headset_volume_warning_dialog_text">Ascoltare audio con un volume troppo elevato per lunghi periodi di tempo può danneggiare l\'udito. Disabilitalo con attenzione.</string>
 
   <!-- Less Notification sounds -->
   <string name="notifications_category_title">Notifiche</string>
@@ -186,7 +186,7 @@
 
     <!-- Statusbar Settings -->
   <string name="statusbar_settings_title">Barra di stato</string>
-  <string name="statusbar_settings_title_summary">Cambia l\'aspetto grafico della vostra barra di stato con una serie di personalizzazioni</string>
+  <string name="statusbar_settings_title_summary">Cambia l\'aspetto grafico della tua barra di stato con una serie di personalizzazioni</string>
     <!-- Status bar - Clock -->
   <string name="status_bar_clock_title">Orologio &amp; data</string>
   <string name="status_bar_clock_style_title">Posizione</string>
@@ -238,7 +238,7 @@
   <string name="network_traffic_autohide_summary">Nascondi il traffico rete quando non c\'è attività</string>
 
   <string name="network_traffic_hidearrow">Nascondi frecce</string>
-  <string name="network_traffic_hidearrow_summary">Nascondere le frecce degli indicatori di traffico</string>
+  <string name="network_traffic_hidearrow_summary">Nascondi le frecce degli indicatori di traffico</string>
 
   <!--Smart PullDown-->
   <string name="smart_pulldown_title">Discesa intelligente</string>
@@ -251,7 +251,7 @@
 
   <!-- Quick pull down-->
   <string name="quick_pulldown_title">Discesa rapida</string>
-  <string name="quick_pulldown_summary">Il bodo %1$s della barra di stato tira giù Impostazioni rapide</string>
+  <string name="quick_pulldown_summary">Il bordo %1$s della barra di stato tira giù le impostazioni rapide</string>
   <string name="quick_pulldown_summary_always">Mostra sempre le impostazioni rapide sulla barra di stato a tendina</string>
   <string name="quick_pulldown_off">Spento</string>
   <string name="quick_pulldown_left">Sinistra</string>
@@ -260,14 +260,24 @@
 
   <!-- Navbar tuner -->
   <string name="navbar_tuner_title">Sintonizzatore barra di navigazione</string>
-  <string name="navbar_tuner_summary">Personalizzare i pulsanti e la disposizione</string>
+  <string name="navbar_tuner_summary">Personalizza i pulsanti e la disposizione</string>
 	
   <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
-  <string name="show_battery_percentage">Visualizza la percentuale della batteria</string>
+  <string name="show_battery_percentage">Percentuale batteria</string>
   <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
 	
   <!-- double tap statusbar to sleep -->
   <string name="double_tap_to_sleep_title">Tocco per sospendere</string>
   <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
  
+	<!-- Color Picker -->
+    <string name="dialog_color_picker">Selettore del colore</string>
+    <string name="press_color_to_apply">Premi sul colore qui sotto per applicarlo</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Esadecimale:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Imposta</string>
+    <string name="color_default">Predefinito</string>
+	
 </resources>
