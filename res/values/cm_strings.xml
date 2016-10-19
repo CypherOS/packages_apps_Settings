@@ -274,5 +274,8 @@
 
     <!-- title for lock screen weather preference -->
     <string name="lockscreen_weather_enabled_title">Show weather</string>
+	
+	<!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
 
 </resources>
