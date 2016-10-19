@@ -258,13 +258,24 @@
     <string name="quick_pulldown_right">Right</string>
     <string name="quick_pulldown_always">Always</string>
 	
+	<!-- Color tuner options -->
+    <string name="display_color_title">Screen color &amp; appearance</string>
+    <string name="display_color_summary">screen color controls and night mode</string>
+	
 	<!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navbar tuner</string>
     <string name="navbar_tuner_summary">Customize buttons and layout</string>
+	<!-- Multiwindow navbar gesture -->
+    <string name="nav_gesture_title">Enable multiwindow swipe-up gesture</string>
+    <string name="nav_gesture_summary">Gesture to enter multiwindow by swiping up from the recents button</string>
 	
 	<!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
     <string name="show_battery_percentage">Show battery percentage</string>
     <string name="show_battery_percentage_summary">Show battery percentage when not charging</string>
+	
+	<!-- statusbar icon blacklist -->
+    <string name="status_bar_icon_blacklist_title">Statusbar icons</string>
+    <string name="status_bar_icon_blacklist_summary">Configure what icons are shown on status bar</string>
 	
 	<!-- double tap statusbar to sleep -->
     <string name="double_tap_to_sleep_title">Tap to sleep</string>

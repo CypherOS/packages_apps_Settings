@@ -67,6 +67,14 @@
             android:summary="@string/night_mode_summary"
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" /> -->
+			
+		<PreferenceScreen
+            android:title="@string/display_color_title"
+            android:summary="@string/display_color_summary">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.ColorAndAppearanceActivity" />
+        </PreferenceScreen>
 
         <com.android.settings.TimeoutListPreference
                 android:key="screen_timeout"
