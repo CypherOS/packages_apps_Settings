@@ -249,7 +249,7 @@
   <string name="smart_pulldown_dismissable">Nessuna rimovibile</string>
   <string name="smart_pulldown_ongoing">Nessuna in corso</string>
 
-  <!-- Quick pull down-->
+   <!-- Quick pull down-->
   <string name="quick_pulldown_title">Discesa rapida</string>
   <string name="quick_pulldown_summary">Il bordo %1$s della barra di stato tira giù le impostazioni rapide</string>
   <string name="quick_pulldown_summary_always">Mostra sempre le impostazioni rapide sulla barra di stato a tendina</string>
@@ -258,17 +258,32 @@
   <string name="quick_pulldown_right">Destra</string>
   <string name="quick_pulldown_always">Sempre</string>
 
-  <!-- Navbar tuner -->
-  <string name="navbar_tuner_title">Sintonizzatore barra di navigazione</string>
-  <string name="navbar_tuner_summary">Personalizza i pulsanti e la disposizione</string>
+   <!-- Color tuner options -->
+   <string name="display_color_title">Colore dello schermo &amp; aspetto</string>
+   <string name="display_color_summary">Controlli del colore dello schermo e della modalità notte</string>
 	
-  <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
-  <string name="show_battery_percentage">Percentuale batteria</string>
-  <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
+   <!-- Navbar tuner -->
+   <string name="navbar_tuner_title">Sintonizzatore barra di navigazione</string>
+   <string name="navbar_tuner_summary">Personalizza i pulsanti e la disposizione</string>
+   <!-- Multiwindow navbar gesture -->
+   <string name="nav_gesture_title">Abilita finestre multiple con gesto</string>
+   <string name="nav_gesture_summary">Fai un gesto di entrata nella finestra scorrendo su dal pulsante recenti</string>
 	
-  <!-- double tap statusbar to sleep -->
-  <string name="double_tap_to_sleep_title">Tocco per sospendere</string>
-  <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
+    <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
+    <string name="show_battery_percentage">Visualizza percentuale della batteria</string>
+    <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
+	
+    <!-- statusbar icon blacklist -->
+    <string name="status_bar_icon_blacklist_title">Icone della barra di stato</string>
+    <string name="status_bar_icon_blacklist_summary">Configura quali icone dovranno essere mostrate sulla barra di stato</string>
+	
+   <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
+   <string name="show_battery_percentage">Percentuale batteria</string>
+   <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
+	
+   <!-- double tap statusbar to sleep -->
+   <string name="double_tap_to_sleep_title">Tocco per sospendere</string>
+   <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
  
 	<!-- Color Picker -->
     <string name="dialog_color_picker">Selettore del colore</string>
@@ -280,4 +295,59 @@
     <string name="set">Imposta</string>
     <string name="color_default">Predefinito</string>
 	
+	<!-- Brightness control -->
+    <string name="status_bar_toggle_brightness">Controllo della luminosità</string>
+    <string name="status_bar_toggle_brightness_summary">Regola la luminosità scorrendo sopra la barra di stato</string>
+	
+	<!-- Wake when connected/disconnected -->
+    <string name="wake_when_plugged_or_unplugged_title">Risveglio al collegamento</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Accendi lo schermo quando si collega o scollega il caricabatterie</string>
+	
+	<!-- Notification/Battery lights -->
+    <string name="led_category">Controlli Led</string>
+    <string name="edit_light_settings">Modifica impostazioni luce</string>
+    <string name="pulse_speed_title">Velocità e lunghezza di impulso</string>
+    <string name="default_time">Normale</string>
+    <string name="custom_time">Personalizzato</string>
+    <string name="dialog_delete_title">Elimina</string>
+    <string name="dialog_delete_message">Rimuovi l\'elemento selezionato?</string>
+    <string name="pulse_length_always_on">Sempre acceso</string>
+    <string name="pulse_length_very_short">Molto breve</string>
+    <string name="pulse_length_short">Breve</string>
+    <string name="pulse_length_normal">Normale</string>
+    <string name="pulse_length_long">Lungo</string>
+    <string name="pulse_length_very_long">Molto lungo</string>
+    <string name="pulse_speed_very_fast">Molto veloce</string>
+    <string name="pulse_speed_fast">Veloce</string>
+    <string name="pulse_speed_normal">Normale</string>
+    <string name="pulse_speed_slow">Lento</string>
+    <string name="pulse_speed_very_slow">Molto lento</string>
+    <string name="battery_light_title">Luce batteria</string>
+    <string name="battery_low_pulse_title">Impulso se batteria bassa</string>
+    <string name="battery_light_list_title">Colori</string>
+    <string name="battery_light_low_color_title">Batteria scarica</string>
+    <string name="battery_light_medium_color_title">Ricarica</string>
+    <string name="battery_light_full_color_title">Carico al (90%)</string>
+    <string name="battery_light_really_full_color_title">Carico al (100%)</string>
+    <string name="notification_light_title">Luce di notifica</string>
+    <string name="notification_light_general_title">Generale</string>
+    <string name="notification_light_applist_title">Applicazioni</string>
+    <string name="advanced">Avanzate</string>
+    <string name="notification_light_use_custom">Usa valori personalizzati</string>
+    <string name="notification_light_default_value">Predefinito</string>
+    <string name="notification_light_no_apps_summary">Per aggiungere al controllo app, attivare \'%1$s\' e premere \'\u002b\' sulla barra dei menù</string>
+    <string name="allow_lights_title">Luci in modalità non disturbare</string>
+    <string name="notification_light_screen_on">Luci con schermo acceso</string>
+	
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">Etichetta Operatore</string>
+    <string name="carrier_label_settings_summary">Personalizza l\'etichetta operatore</string>
+    <string name="custom_carrier_label_title">Etichetta operatore personalizzata</string>
+    <string name="custom_carrier_label_explain">Si prega di inserire una nuova etichetta. Lasciare vuoto per tornare a quella predefinita.</string>
+    <string name="custom_carrier_label_notset">Etichetta operatore personalizzata attualmente non impostata</string>
+    <string name="show_carrier_title">Etichetta operatore</string>
+    <string name="show_carrier_disabled">Disabilitato</string>
+    <string name="show_carrier_keyguard">Blocco schermo</string>
+    <string name="show_carrier_statusbar">Barra di stato</string>
+    <string name="show_carrier_enabled">Blocco schermo &amp; Barra di stato</string>
 </resources>
