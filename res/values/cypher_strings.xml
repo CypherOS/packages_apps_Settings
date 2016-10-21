@@ -346,5 +346,9 @@
     <string name="show_carrier_keyguard">Lockscreen</string>
     <string name="show_carrier_statusbar">Statusbar</string>
     <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+	
+	<!-- Quick Settings -->
+	<string name="quick_settings_title">Quick settings</string>
+	<string name="quick_settings_title_summary">Adjust the logic and layout of the quick settings panel</string>
  
 </resources>

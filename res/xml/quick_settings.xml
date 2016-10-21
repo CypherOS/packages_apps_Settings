@@ -13,22 +13,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-        android:title="@string/addition_settings_title">
+        android:title="@string/quick_settings_title">
 		
-		<!-- Statusbar settings -->
-		<PreferenceScreen
-                android:key="statusbar_settings"
-                android:title="@string/statusbar_settings_title"
-				android:summary="@string/statusbar_settings_title_summary"
-                android:fragment="com.android.settings.cypher.fragments.StatusbarSettings"
-                android:icon="@drawable/ic_settings_statusbar" />
-				
-		<!-- Quick settings -->
-		<PreferenceScreen
-                android:key="quick_settings"
-                android:title="@string/quick_settings_title"
-				android:summary="@string/quick_settings_title_summary"
-                android:fragment="com.android.settings.cypher.fragments.QuickSettings"
-                android:icon="@drawable/ic_settings_quick_settings" />
-
+		
 </PreferenceScreen>
