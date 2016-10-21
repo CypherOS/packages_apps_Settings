@@ -495,7 +495,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                         R.bool.config_additional_system_update_setting_enable)) {
                     keys.add(KEY_UPDATE_SETTING);
                 }
-                final UserManager um = UserManager.get(context);
                 return keys;
             }
 
