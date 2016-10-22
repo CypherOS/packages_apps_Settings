@@ -27,10 +27,10 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,7 +40,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
-import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -111,8 +110,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
 
     private void updateDozeOptions() {
         if (mDozePulseIn != null) {
-            final int statusDozePulseIn = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_IN, 500);
+            final int statusDozePulseIn = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_IN, 500);
             mDozePulseIn.setValue(String.valueOf(statusDozePulseIn));
             int index = mDozePulseIn.findIndexOfValue(String.valueOf(statusDozePulseIn));
             if (index != -1) {
@@ -120,8 +119,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             }
         }
         if (mDozePulseVisible != null) {
-            final int statusDozePulseVisible = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_VISIBLE, 3000);
+            final int statusDozePulseVisible = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_VISIBLE, 3000);
             mDozePulseVisible.setValue(String.valueOf(statusDozePulseVisible));
             int index = mDozePulseVisible.findIndexOfValue(String.valueOf(statusDozePulseVisible));
             if (index != -1) {
@@ -129,8 +128,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             }
         }
         if (mDozePulseOut != null) {
-            final int statusDozePulseOut = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_OUT, 500);
+            final int statusDozePulseOut = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_OUT, 500);
             mDozePulseOut.setValue(String.valueOf(statusDozePulseOut));
             int index = mDozePulseOut.findIndexOfValue(String.valueOf(statusDozePulseOut));
             if (index != -1) {
@@ -179,22 +178,22 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             int dozePulseIn = Integer.parseInt((String)objValue);
             int index = mDozePulseIn.findIndexOfValue((String) objValue);
             mDozePulseIn.setSummary(mDozePulseIn.getEntries()[index]);
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_IN, dozePulseIn);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_IN, dozePulseIn);
         }
         if (preference == mDozePulseVisible) {
             int dozePulseVisible = Integer.parseInt((String)objValue);
             int index = mDozePulseVisible.findIndexOfValue((String) objValue);
             mDozePulseVisible.setSummary(mDozePulseVisible.getEntries()[index]);
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_VISIBLE, dozePulseVisible);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_VISIBLE, dozePulseVisible);
         }
         if (preference == mDozePulseOut) {
             int dozePulseOut = Integer.parseInt((String)objValue);
             int index = mDozePulseOut.findIndexOfValue((String) objValue);
             mDozePulseOut.setSummary(mDozePulseOut.getEntries()[index]);
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.DOZE_PULSE_DURATION_OUT, dozePulseOut);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_PULSE_DURATION_OUT, dozePulseOut);
         }
         return true;
     }
@@ -261,8 +260,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
 
             final int dozeBrightnessConfig = getResources().getInteger(
                     com.android.internal.R.integer.config_screenBrightnessDoze);
-            mCurrentBrightness = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.DOZE_SCREEN_BRIGHTNESS, dozeBrightnessConfig);
+            mCurrentBrightness = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_SCREEN_BRIGHTNESS, dozeBrightnessConfig);
 
             final PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
             mMaxBrightness = pm.getMaximumScreenBrightnessSetting();
@@ -283,8 +282,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 try {
                     int newBacklight = Integer.valueOf(mBacklightInput.getText().toString());
-                    Settings.Secure.putInt(getContext().getContentResolver(),
-                            Settings.Secure.DOZE_SCREEN_BRIGHTNESS, newBacklight);
+                    Settings.System.putInt(getContext().getContentResolver(),
+                            Settings.System.DOZE_SCREEN_BRIGHTNESS, newBacklight);
                 } catch (NumberFormatException e) {
                     Log.d(TAG, "NumberFormatException " + e);
                 }
