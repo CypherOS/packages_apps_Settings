@@ -149,10 +149,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         //Remove led category if device doesnt support notification or battery
         if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)
-                && !getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-            prefScreen.removePreference(findPreference(CATEGORY_LEDS));
+            prefScreen.removePreference(findPreference(CATEGORY_BLEDS));
         }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);

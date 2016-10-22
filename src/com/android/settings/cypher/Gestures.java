@@ -187,10 +187,11 @@ public class Gestures extends SettingsPreferenceFragment implements
 
         private void updateSummary() {
             boolean camgest = Settings.Secure.getInt(
-			        getContentResolver(), Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0) !== 1;
+			        getContentResolver(), Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0) != 1;
 		    if (mCameraDoubleTapPowerGesturePreference != null) {
                 mCameraDoubleTapPowerGesturePreference.setSummary(camgest
-                        ? R.string.camera_double_tap_power_gesture_on : R.string.camera_double_tap_power_gesture_off));
+                        ? R.string.camera_double_tap_power_gesture_on : R.string.camera_double_tap_power_gesture_off);
+			}
         }
     }
 

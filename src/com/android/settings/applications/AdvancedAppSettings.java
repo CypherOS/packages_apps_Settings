@@ -22,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -66,6 +67,7 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.advanced_apps);
+		PreferenceScreen prefScreen = getPreferenceScreen();
 
         Preference permissions = getPreferenceScreen().findPreference(KEY_APP_PERM);
         permissions.setIntent(new Intent(Intent.ACTION_MANAGE_PERMISSIONS));
@@ -77,6 +79,12 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
         if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveNotificationLed)) {
             nleds.removePreference(findPreference(KEY_NOTIFICATION_LIGHT));
+        }
+		
+		//Remove led category if device doesnt support notification or battery
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            prefScreen.removePreference(findPreference(CATEGORY_NLEDS));
         }
 
         ApplicationsState applicationsState = ApplicationsState.getInstance(
