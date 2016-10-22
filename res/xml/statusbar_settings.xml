@@ -54,8 +54,8 @@
             android:summary="@string/status_bar_toggle_brightness_summary"
             android:defaultValue="false" />
 		
-    <PreferenceCategory
-        android:title="@string/status_bar_clock_title">
+    <PreferenceCategory android:key="statusbar_clock_category"
+            android:title="@string/status_bar_clock_title">
 
         <ListPreference
             android:key="status_bar_clock"
