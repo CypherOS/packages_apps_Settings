@@ -65,10 +65,10 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "StatusbarSettings";
 
     private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
-    private static final String STATUS_BAR_CLOCK_AM_PM_STYLE = "status_bar_clock_am_pm_style";
-    private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "status_bar_clock_date_display";
-    private static final String STATUS_BAR_CLOCK_DATE_STYLE = "status_bar_clock_date_style";
-    private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "status_bar_clock_date_format";
+    private static final String STATUS_BAR_CLOCK_AM_PM_STYLE = "status_bar_am_pm";
+    private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "clock_date_display";
+    private static final String STATUS_BAR_CLOCK_DATE_STYLE = "clock_date_style";
+    private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "clock_date_format";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
