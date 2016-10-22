@@ -154,26 +154,20 @@
             android:dependency="battery_light_enabled" />
 
     </PreferenceCategory>
+	
+	<PreferenceCategory
+        android:key="leds"
+        android:title="@string/led_category" >
 
-    <PreferenceCategory
-        android:key="colors_list"
-        android:title="@string/battery_light_list_title"
-        android:dependency="battery_light_enabled" >
+        <PreferenceScreen
+            android:key="notification_light"
+            android:title="@string/notification_light_title"
+            android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
-        <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="low_color"
-            android:title="@string/battery_light_low_color_title"
-            android:persistent="false" />
-
-        <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="medium_color"
-            android:title="@string/battery_light_medium_color_title"
-            android:persistent="false" />
-
-        <com.android.settings.notificationlight.ApplicationLightPreference
-            android:key="full_color"
-            android:title="@string/battery_light_full_color_title"
-            android:persistent="false" />
+        <PreferenceScreen
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
     </PreferenceCategory>
 

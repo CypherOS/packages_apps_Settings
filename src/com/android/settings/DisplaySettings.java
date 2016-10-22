@@ -100,7 +100,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
 
-    private static final String CATEGORY_LEDS = "general_section";
+    private static final String CATEGORY_LEDS = "leds";
 
     private Preference mNotifLedFrag;
     private Preference mBattLedFrag;
