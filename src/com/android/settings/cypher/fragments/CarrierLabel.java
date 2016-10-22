@@ -36,7 +36,7 @@ import com.android.settings.cypher.preference.CustomSeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class CarrierLabel extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
@@ -73,7 +73,7 @@ public class CarrierLabel extends SettingsPreferenceFragment
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
 		
-		mStatusBarCarrierSize = (SeekBarPreferenceCham) prefSet.findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
+		mStatusBarCarrierSize = (CustomSeekBarPreference) prefSet.findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
         mStatusBarCarrierSize.setValue(Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14));
         mStatusBarCarrierSize.setOnPreferenceChangeListener(this);

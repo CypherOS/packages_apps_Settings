@@ -1862,24 +1862,18 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     @Override
-    public boolean onPreferenceClick(Preference preference) {
-        if (preference == mRootAppops) {
+	public boolean onPreferenceClick(Preference preference) {
+        if (preference == mWindowAnimationScale ||
+                preference == mTransitionAnimationScale ||
+                preference == mAnimatorDurationScale) {
+            ((AnimationScalePreference) preference).click();
+        } else if (preference == mRootAppops) {
             Activity mActivity = getActivity();
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.putExtra("appops_tab", getString(R.string.app_ops_categories_su));
             intent.setClass(mActivity, AppOpsSummaryActivity.class);
             mActivity.startActivity(intent);
             return true;
-        }
-        return false;
-    }
-
-    @Override
-	public boolean onPreferenceClick(Preference preference) {
-        if (preference == mWindowAnimationScale ||
-                preference == mTransitionAnimationScale ||
-                preference == mAnimatorDurationScale) {
-            ((AnimationScalePreference) preference).click();
         }
         return false;
     }
