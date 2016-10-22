@@ -300,7 +300,7 @@
     <string name="wake_when_plugged_or_unplugged_summary">Turn on screen when connecting or disconnecting charger</string>
 	
 	<!-- Notification/Battery lights -->
-    <string name="led_category">System LED</string>
+    <string name="led_category">Lights</string>
     <string name="edit_light_settings">Edit light settings</string>
     <string name="pulse_speed_title">Pulse length and speed</string>
     <string name="default_time">Normal</string>

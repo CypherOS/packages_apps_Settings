@@ -97,12 +97,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
 	
-	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
 
-    private static final String CATEGORY_LEDS = "leds";
+    private static final String CATEGORY_BLEDS = "bleds";
 
-    private Preference mNotifLedFrag;
     private Preference mBattLedFrag;
 
     private Preference mFontSizePref;
@@ -140,20 +138,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         PreferenceCategory displayPrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_DISPLAY);
 				
-		final PreferenceCategory leds = (PreferenceCategory) findPreference(CATEGORY_LEDS);
-
-        mNotifLedFrag = findPreference(KEY_NOTIFICATION_LIGHT);
-        //Remove notification led settings if device doesnt support it
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            leds.removePreference(findPreference(KEY_NOTIFICATION_LIGHT));
-        }
+		final PreferenceCategory bleds = (PreferenceCategory) findPreference(CATEGORY_BLEDS);
 
         mBattLedFrag = findPreference(KEY_BATTERY_LIGHT);
         //Remove battery led settings if device doesnt support it
         if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-            leds.removePreference(findPreference(KEY_BATTERY_LIGHT));
+            bleds.removePreference(findPreference(KEY_BATTERY_LIGHT));
         }
 
         //Remove led category if device doesnt support notification or battery

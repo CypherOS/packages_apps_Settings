@@ -156,13 +156,8 @@
     </PreferenceCategory>
 	
 	<PreferenceCategory
-        android:key="leds"
+        android:key="bleds"
         android:title="@string/led_category" >
-
-        <PreferenceScreen
-            android:key="notification_light"
-            android:title="@string/notification_light_title"
-            android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
         <PreferenceScreen
             android:key="battery_light"

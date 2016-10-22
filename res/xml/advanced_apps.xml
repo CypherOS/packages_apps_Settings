@@ -23,6 +23,15 @@
         android:key="manage_perms"
         android:title="@string/app_permissions"
         settings:keywords="@string/keywords_app_permissions" />
+		
+	<PreferenceCategory android:key="nleds"
+        android:title="@string/led_category">
+		
+	    <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+	</PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/default_apps_title">
