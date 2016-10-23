@@ -29,10 +29,11 @@
             android:entryValues="@array/smart_pulldown_values"
             android:persistent="false" />
 			
-		<Preference
+		<PreferenceScreen
             android:key="nettraffrag" 
             android:title="@string/network_traffic_title"
-            android:summary="@string/network_traffic_title_summary" />
+            android:summary="@string/network_traffic_title_summary"
+            android:fragment="com.android.settings.cypher.fragments.NetworkTraffic"	/>
 			
 		<PreferenceScreen
             android:title="@string/status_bar_icon_blacklist_title"
