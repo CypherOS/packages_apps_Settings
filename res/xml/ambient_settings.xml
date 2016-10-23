@@ -27,7 +27,7 @@
         android:summary="@string/doze_summary"
         android:persistent="false" />
 
-    <com.mrapocalypse.screwdshop.prefs.SystemSettingSwitchPreference
+    <com.android.settings.preference.SystemSettingSwitchPreference
         android:key="doze_overwrite_value"
         android:title="@string/doze_overwrite_value_title"
         android:summary="@string/doze_overwrite_value_summary"
