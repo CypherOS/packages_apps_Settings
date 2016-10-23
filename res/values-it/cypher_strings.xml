@@ -350,4 +350,17 @@
     <string name="show_carrier_keyguard">Blocco schermo</string>
     <string name="show_carrier_statusbar">Barra di stato</string>
     <string name="show_carrier_enabled">Blocco schermo &amp; Barra di stato</string>
+	
+	<!-- Quick Settings -->
+	<string name="quick_settings_title">Impostazioni rapide</string>
+	<string name="quick_settings_title_summary">Regola la logica e la disposizione del pannello impostazioni rapide</string>
+	<!-- Advanced data tile -->
+    <string name="qs_advanced_data_title">Dati al tocco</string>
+    <string name="qs_advanced_data_summary">Attiva o disattiva i dati del cellulare con un solo tocco</string>
+	<string name="qs_layout_category_title">Disposizione</string>
+	<!-- Quick settings tiles columns and rows config -->
+    <string name="qs_rows_portrait_title">Righe in verticale</string>
+    <string name="qs_rows_landscape_title">Righe in orizzontale</string>
+    <string name="qs_columns_title">Colonne</string>
+	<string name="sysui_qqs_count_title">Conteggio scelta rapida</string>
 </resources>
