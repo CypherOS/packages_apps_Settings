@@ -49,6 +49,14 @@
                 settings:keywords="@string/keywords_display_auto_brightness"
                 android:summary="@string/auto_brightness_summary" />
 				
+		<PreferenceScreen
+            android:title="@string/display_color_title"
+            android:summary="@string/display_color_summary">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.ColorAndAppearanceActivity" />
+        </PreferenceScreen>
+				
 	    <PreferenceScreen
                 android:key="doze_fragment"
                 android:title="@string/doze_title"
@@ -67,14 +75,6 @@
             android:summary="@string/night_mode_summary"
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" /> -->
-			
-		<PreferenceScreen
-            android:title="@string/display_color_title"
-            android:summary="@string/display_color_summary">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.tuner.ColorAndAppearanceActivity" />
-        </PreferenceScreen>
 
         <com.android.settings.TimeoutListPreference
                 android:key="screen_timeout"
@@ -135,23 +135,6 @@
                 android:key="vr_display_pref"
                 android:summary="%s"
                 android:title="@string/display_vr_pref_title" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="general_section"
-        android:title="@string/notification_light_general_title">
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="battery_light_enabled"
-            android:title="@string/battery_light_title"
-            android:defaultValue="@bool/def_battery_light_enabled" />
-
-        <com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="battery_light_pulse"
-            android:title="@string/battery_low_pulse_title"
-            android:defaultValue="@bool/def_battery_light_pulse"
-            android:dependency="battery_light_enabled" />
 
     </PreferenceCategory>
 	

@@ -146,7 +146,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 PROPERTY_MBN_VERSION);
         findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
-        setValueSummary(KEY_MOD_BUILD_DATE, Build.DATE);
+        setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
         setValueSummary(KEY_AOSCP_API_LEVEL, "ro.aoscp.api");
         findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
 

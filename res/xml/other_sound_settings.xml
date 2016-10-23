@@ -53,6 +53,13 @@
             android:key="dock_audio_media"
             android:title="@string/dock_audio_media_title"
             android:summary="%s" />
+			
+	<!-- Advanced options -->
+        <PreferenceScreen
+            android:key="advanced_sound_settings"
+            android:title="@string/advanced_sound_title"
+            android:persistent="false"
+            android:fragment="com.android.settings.cypher.fragments.SoundSettings" />
 
     <!-- Emergency tone -->
     <DropDownPreference

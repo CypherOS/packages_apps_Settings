@@ -44,25 +44,6 @@
                 android:icon="@*android:drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title" />
 
-        <!-- Also vibrate for calls -->
-        <SwitchPreference
-                android:key="vibrate_when_ringing"
-                android:title="@string/vibrate_when_ringing_title" />
-
-        <!-- Volume Steps -->
-        <PreferenceScreen
-                android:key="volume_steps"
-                android:title="@string/volume_steps_title"
-                android:fragment="com.android.settings.cypher.fragments.VolumeSteps" />
-
-        <!-- Interruptions -->
-        <com.android.settingslib.RestrictedPreference
-                android:key="zen_mode"
-                android:title="@string/zen_mode_settings_title"
-                settings:useAdminDisabledSummary="true"
-                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-                android:fragment="com.android.settings.notification.ZenModeSettings" />
-
         <!-- Phone ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="ringtone"
@@ -84,8 +65,27 @@
                 android:dialogTitle="@string/alarm_ringtone_title"
                 android:persistent="false"
                 android:ringtoneType="alarm" />
+		
+		<!-- Also vibrate for calls -->
+        <SwitchPreference
+                android:key="vibrate_when_ringing"
+                android:title="@string/vibrate_when_ringing_title" />
 
+        <!-- Volume Steps -->
+        <PreferenceScreen
+                android:key="volume_steps"
+                android:title="@string/volume_steps_title"
+                android:fragment="com.android.settings.cypher.fragments.VolumeSteps" />
+
+        <!-- Interruptions -->
         <com.android.settingslib.RestrictedPreference
+                android:key="zen_mode"
+                android:title="@string/zen_mode_settings_title"
+                settings:useAdminDisabledSummary="true"
+                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
+                android:fragment="com.android.settings.notification.ZenModeSettings" />
+				
+		<com.android.settingslib.RestrictedPreference
                 android:key="cell_broadcast_settings"
                 android:title="@string/cell_broadcast_settings"
                 settings:useAdminDisabledSummary="true">
@@ -107,12 +107,5 @@
                 android:title="@string/other_sound_settings"
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
-
-        <!-- Advanced options -->
-        <PreferenceScreen
-                android:key="advanced_sound_settings"
-                android:title="@string/advanced_sound_title"
-                android:persistent="false"
-                android:fragment="com.android.settings.cypher.fragments.SoundSettings" />
 
 </PreferenceScreen>
