@@ -122,9 +122,9 @@
     </string-array>
 
     <string-array name="status_bar_am_pm_entries" translatable="false">
+	    <item>@string/status_bar_am_pm_hidden</item>
+		<item>@string/status_bar_am_pm_small</item>
         <item>@string/status_bar_am_pm_normal</item>
-        <item>@string/status_bar_am_pm_small</item>
-        <item>@string/status_bar_am_pm_hidden</item>
     </string-array>
 
     <string-array name="status_bar_am_pm_values" translatable="false">
