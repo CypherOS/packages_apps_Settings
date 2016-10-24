@@ -24,8 +24,7 @@
 		<com.android.settings.preference.SystemSettingSwitchPreference
                 android:key="double_tap_sleep_gesture"
                 android:title="@string/double_tap_to_sleep_title"
-                android:summary="@string/double_tap_to_sleep_summary"
-                android:defaultValue="true" />
+                android:summary="@string/double_tap_to_sleep_summary" />
 				
 		<SwitchPreference
                 android:key="lift_to_wake"

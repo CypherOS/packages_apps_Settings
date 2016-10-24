@@ -151,7 +151,7 @@ public class Gestures extends SettingsPreferenceFragment implements
         if (preference == mCameraDoubleTapPowerGesturePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
-                    value ? 1 : 0);
+                    value ? 0 : 1);
         }
 		if (preference == mTapToWakePreference) {
             boolean value = (Boolean) objValue;
