@@ -52,6 +52,27 @@
 	<string name="addition_settings_title">Impostazioni aggiuntive</string>
 	<!-- TODO: Summary loaders -->
 	
+	<!-- Addition settings -->
+	<string name="system_settings_title">Sistema</string>
+	<string name="system_settings_title_summary">Riconfigurare le funzionalità specifiche del sistema per semplificare la tua esperienza</string>
+	<!-- Power Menu fragment -->
+    <string name="powermenu_settings_title">Menù accensione</string>
+	<string name="powermenu_settings_title_summary">Cambia quello che viene mostrato sul menù accensione nativo con una serie di opzioni</string>
+    <!-- Power menu customization -->
+    <string name="power_menu_reboot_title">Riavvio</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+	<string name="power_menu_screenrecord_title">Screenrecord</string>
+	<string name="power_menu_torch_title">Torcia elettrica</string>
+    <string name="power_menu_airplane_title">Modalità aereo</string>
+    <string name="power_menu_users_title">Cambia utente</string>
+    <string name="power_menu_search_title">Ricerca</string>
+    <string name="power_menu_voice_title">Ricerca vocale</string>
+    <string name="power_menu_settings_title">Impostazioni di scelta rapida</string>
+    <string name="power_menu_lockdown_title">Blocco dispositivo</string>
+    <string name="power_menu_bug_report_title">Segnalazione errori</string>
+    <string name="power_menu_sound_title">Pannello suoni</string>
+    <string name="power_menu_bug_report_disabled">La segnalazione errori è disattivata nelle impostazioni di sviluppo</string>
+	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gesti</string>
 	<!-- Double-snap summary loaders -->
@@ -363,4 +384,13 @@
     <string name="qs_rows_landscape_title">Righe in orizzontale</string>
     <string name="qs_columns_title">Colonne</string>
 	<string name="sysui_qqs_count_title">Conteggio scelta rapida</string>
+	
+	<!-- Force expand notifications -->
+    <string name="notification_force_expand_title">Forza l\'espansione delle notifiche</string>
+    <string name="notification_force_expand_summary">Espandi automaticemente le notifiche sulle applicazioni che lo supportano</string>
+	
+	<!-- Notification count -->
+    <string name="status_bar_notif_count_title">Numero di notifica</string>
+    <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
+	
 </resources>
