@@ -30,5 +30,13 @@
 				android:summary="@string/quick_settings_title_summary"
                 android:fragment="com.android.settings.cypher.fragments.QuickSettings"
                 android:icon="@drawable/ic_settings_quick_settings" />
+				
+		<!-- System settings -->
+		<PreferenceScreen
+                android:key="system_settings"
+                android:title="@string/system_settings_title"
+				android:summary="@string/system_settings_title_summary"
+                android:fragment="com.android.settings.cypher.fragments.SystemSettings"
+                android:icon="@drawable/ic_settings_system_settings" />
 
 </PreferenceScreen>

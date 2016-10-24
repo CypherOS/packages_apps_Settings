@@ -52,6 +52,10 @@
 	<string name="addition_settings_title">Additions</string>
 	<!-- TODO: Summary loaders -->
 	
+	<!-- Addition settings -->
+	<string name="system_settings_title">System</string>
+	<string name="system_settings_title_summary">Re-configure system specific features to simplify your experience</string>
+	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
 	<!-- Double-snap summary loaders -->
