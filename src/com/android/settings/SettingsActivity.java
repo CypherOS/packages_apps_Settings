@@ -236,7 +236,6 @@ public class SettingsActivity extends SettingsDrawerActivity
     private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
 
     private static final String LTE_4G_FRAGMENT = "com.android.settings.Lte4GEnableSetting";
-    private static final String PROFILEMGR_MAIN_FRAGMENT = "com.android.settings.ProfileMgrMain";
     private static final String MOBILENETWORK_FRAGMENT = "com.android.settings.MobileNetworkMain";
     private String mFragmentClass;
     private String mActivityAction;
@@ -266,7 +265,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.ManageApplicationsActivity.class.getName(),
             Settings.PowerUsageSummaryActivity.class.getName(),
             //personal_section
-            Settings.ProfileMgrMainActivity.class.getName(),
             Settings.LocationSettingsActivity.class.getName(),
             Settings.SecuritySettingsActivity.class.getName(),
             Settings.InputMethodAndLanguageSettingsActivity.class.getName(),
@@ -1064,14 +1062,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             return null;
         }
 
-        if (PROFILEMGR_MAIN_FRAGMENT.equals(fragmentName)) {
-            Intent profilemgrIntent = new Intent();
-            profilemgrIntent.setAction("com.codeaurora.STARTPROFILE");
-            profilemgrIntent.setPackage("com.android.profile");
-            startActivity(profilemgrIntent);
-            finish();
-            return null;
-        }
         if (MOBILENETWORK_FRAGMENT.equals(fragmentName)) {
             Intent mobileNetworkIntent = new Intent();
             mobileNetworkIntent.setAction("android.settings.DATA_ROAMING_SETTINGS");
@@ -1192,10 +1182,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.OtherDeviceFunctionsSettingsActivity.class.getName()),
                 getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
-
-        setTileEnabled(new ComponentName(packageName,
-                Settings.ProfileMgrMainActivity.class.getName()),
-                getResources().getBoolean(R.bool.config_profilemgrmain_enabled), isAdmin, pm);
 
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                     DevelopmentSettings.PREF_SHOW, android.os.Build.TYPE.equals("eng"))
