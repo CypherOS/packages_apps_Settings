@@ -32,10 +32,10 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.cypher.preference.CustomSeekBarPreference;
 
-public class NetworkTrafficSettings extends SettingsPreferenceFragment
+public class NetworkTraffic extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 
-    private static final String TAG = "NetworkTrafficSettings";
+    private static final String TAG = "NetworkTraffic";
 
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
     private static final String NETWORK_TRAFFIC_UNIT = "network_traffic_unit";
