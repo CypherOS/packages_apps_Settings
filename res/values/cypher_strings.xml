@@ -34,9 +34,9 @@
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software information</string>
 	<!-- Build notes -->
-	<string name="buildnotes_settings_title">Build notes</string>
+	<string name="buildnotes_settings_title">Release notes</string>
 	<string name="buildnotes_settings_title_summary">Check out the latest changes in CypherOS to know what\'s the what on your current release</string>
-	<string name="buildnotes_settings_error">Unable to load buildnotes</string>
+	<string name="buildnotes_settings_error">Unable to load Release Notes</string>
 	<!-- Social category -->
     <string name="social_category_title">Social</string>
 	<string name="website_preference_title">On-The-Web</string>
