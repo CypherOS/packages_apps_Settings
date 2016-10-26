@@ -26,9 +26,9 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.preference.SeekBarPreference;
 import android.provider.Settings;
 
+import com.android.settings.cypher.preference.CustomSeekBarPreference;
 import com.android.settings.R;
 
 public class NetworkTraffic extends PreferenceFragment
@@ -55,7 +55,7 @@ public class NetworkTraffic extends PreferenceFragment
     private ListPreference mNetTrafficPeriod;
     private SwitchPreference mNetTrafficHidearrow;
     private SwitchPreference mNetTrafficAutohide;
-    private SeekBarPreference mNetTrafficAutohideThreshold;
+    private CustomSeekBarPreference mNetTrafficAutohideThreshold;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

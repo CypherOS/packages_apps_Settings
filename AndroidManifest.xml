@@ -1335,7 +1335,7 @@
             </intent-filter>
         </activity>
 
-        <!-- <activity android:name="Settings$AppOpsSummaryActivity"
+        <activity android:name="Settings$AppOpsSummaryActivity"
                 android:label="@*cyanogenmod.platform:string/privacy_guard_manager_title"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
@@ -1348,7 +1348,7 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.applications.AppOpsSummary" />
-        </activity> -->
+        </activity>
 
         <activity android:name="Settings$BackgroundCheckSummaryActivity"
                 android:label="@string/background_check_title"
