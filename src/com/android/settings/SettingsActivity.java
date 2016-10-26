@@ -237,6 +237,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final String LTE_4G_FRAGMENT = "com.android.settings.Lte4GEnableSetting";
     private static final String MOBILENETWORK_FRAGMENT = "com.android.settings.MobileNetworkMain";
+	private static final String SYSTEM_UPDATE = "android.settings.SystemUpdateActivity";
     private String mFragmentClass;
     private String mActivityAction;
 
@@ -277,6 +278,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.PrintSettingsActivity.class.getName(),
             Settings.PaymentSettingsActivity.class.getName(),
             Settings.TimerSwitchSettingsActivity.class.getName(),
+			Settings.SystemUpdateActivity.class.getName(),
             Settings.OtherDeviceFunctionsSettingsActivity.class.getName(),
     };
 
@@ -1070,6 +1072,11 @@ public class SettingsActivity extends SettingsDrawerActivity
             finish();
             return null;
         }
+		
+		if (SYSTEM_UPDATE.equals(fragmentName)) {
+            SystemUpdateHandle ();
+            return null;
+        }
 
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
@@ -1092,6 +1099,38 @@ public class SettingsActivity extends SettingsDrawerActivity
         transaction.commitAllowingStateLoss();
         getFragmentManager().executePendingTransactions();
         return f;
+    }
+	
+	public void SystemUpdateHandle () {
+        CarrierConfigManager configManager =
+                (CarrierConfigManager) getBaseContext().getSystemService(
+                        Context.CARRIER_CONFIG_SERVICE);
+        PersistableBundle b = configManager.getConfig();
+        if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
+            Utils.ciActionOnSysUpdate(getBaseContext(),b);
+        }
+        // internal build don't handle system update, use gms for reference design
+        Intent newIntent = new Intent("android.settings.SYSTEM_UPDATE_SETTINGS");
+        PackageManager pm = getBaseContext().getPackageManager();
+        List<ResolveInfo> list = pm.queryIntentActivities(
+                newIntent, 0);
+        int listSize = list.size();
+         for (int j = 0; j < listSize; j++) {
+            ResolveInfo resolveInfo = list.get(j);
+            int flags = resolveInfo.activityInfo.applicationInfo.flags;
+            if ((flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                // Replace the intent with this specific
+                // activity
+                newIntent = new Intent().setClassName(
+                        resolveInfo.activityInfo.packageName,
+                        resolveInfo.activityInfo.name);
+                newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(newIntent);
+                finish();
+                return;
+            }
+
+        }
     }
 
     private void updateTilesList() {
@@ -1181,6 +1220,11 @@ public class SettingsActivity extends SettingsDrawerActivity
         //other settings visible in RJIL
         setTileEnabled(new ComponentName(packageName,
                         Settings.OtherDeviceFunctionsSettingsActivity.class.getName()),
+                getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
+				
+		//SystemUPdate visible in RJIL
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.SystemUpdateActivity.class.getName()),
                 getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
 
         final boolean showDev = mDevelopmentPreferences.getBoolean(
