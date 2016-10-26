@@ -30,7 +30,7 @@ import android.util.Log;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.preference.CustomSeekBarPreference;
+import com.android.settings.cypher.preference.CustomSeekBarPreference;
 
 public class NetworkTrafficSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
