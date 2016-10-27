@@ -35,8 +35,11 @@
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"
                 settings:keywords="@string/keywords_display_wallpaper"
-                android:fragment="com.android.settings.WallpaperTypeSettings"
-                settings:useAdminDisabledSummary="true" />
+                settings:useAdminDisabledSummary="true" >
+                <intent
+                        android:targetPackage="@string/config_wallpaper_picker_package"
+                        android:targetClass="@string/config_wallpaper_picker_class" />
+        </com.android.settingslib.RestrictedPreference>
 				
 		<PreferenceScreen
                 android:key="screensaver"
@@ -66,6 +69,13 @@
         <org.cyanogenmod.internal.cmparts.CMPartsPreference
             android:key="livedisplay"
             cm:requiresFeature="org.cyanogenmod.livedisplay" /> -->
+
+        <com.android.settings.display.NightDisplayPreference
+                android:key="night_display"
+                android:title="@string/night_display_title"
+                android:fragment="com.android.settings.display.NightDisplaySettings"
+                android:widgetLayout="@null"
+                settings:keywords="@string/keywords_display_night_display" />
 
         <!-- Hide night mode for now
         <ListPreference

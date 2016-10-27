@@ -45,6 +45,7 @@ import com.android.settings.deviceinfo.StorageSettings;
 import com.android.settings.display.ScreenZoomSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
+import com.android.settings.gestures.GestureSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
@@ -268,6 +269,13 @@ public final class SearchIndexableResources {
                         UserSettings.class.getName(),
                         R.drawable.ic_settings_multiuser));
 
+        sResMap.put(GestureSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(GestureSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        GestureSettings.class.getName(),
+                        R.drawable.ic_settings_gestures));
+
         sResMap.put(LocationSettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(LocationSettings.class.getName()),
@@ -320,7 +328,7 @@ public final class SearchIndexableResources {
         sResMap.put(DateTimeSettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(DateTimeSettings.class.getName()),
-                        R.xml.date_time_prefs,
+                        NO_DATA_RES_ID,
                         DateTimeSettings.class.getName(),
                         R.drawable.ic_settings_date_time));
 

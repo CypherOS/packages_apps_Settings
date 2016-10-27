@@ -48,6 +48,7 @@ import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.internal.app.NightDisplayController;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.view.RotationPolicy;
@@ -87,6 +88,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
+    private static final String KEY_NIGHT_DISPLAY = "night_display";
     private static final String KEY_NIGHT_MODE = "night_mode";
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
     private static final String KEY_WALLPAPER = "wallpaper";
@@ -112,7 +114,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mDozeFragement;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
-	
 	private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
         @Override
@@ -173,17 +174,54 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     displayPrefs.removePreference(mAutoBrightnessPreference);
                 }
             }
+		}
 
-            mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-            if (!isDozeAvailable(activity)) {
-                getPreferenceScreen().removePreference(mDozeFragement);
-                mDozeFragement = null;
-		    }
+        if (!NightDisplayController.isAvailable(activity)) {
+            removePreference(KEY_NIGHT_DISPLAY);
+        }
 
-            mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
-            if (mCameraGesturePreference != null) {
-                if (isCameraGestureAvailable(getResources())) {
-                    mCameraGesturePreference.setOnPreferenceChangeListener(this);
+        if (isLiftToWakeAvailable(activity)) {
+            mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
+            mLiftToWakePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_LIFT_TO_WAKE);
+        }
+
+        if (isDozeAvailable(activity)) {
+            mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
+            mDozePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_DOZE);
+        }
+
+        mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
+        if (!isDozeAvailable(activity)) {
+            getPreferenceScreen().removePreference(mDozeFragement);
+            mDozeFragement = null;
+	    }
+
+        mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
+        if (mCameraGesturePreference != null) {
+            if (isCameraGestureAvailable(getResources())) {
+            mCameraGesturePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_CAMERA_GESTURE);
+        }
+
+        if (RotationPolicy.isRotationLockToggleVisible(activity)) {
+            DropDownPreference rotatePreference =
+                    (DropDownPreference) findPreference(KEY_AUTO_ROTATE);
+            int rotateLockedResourceId;
+            // The following block sets the string used when rotation is locked.
+            // If the device locks specifically to portrait or landscape (rather than current
+            // rotation), then we use a different string to include this information.
+            if (allowAllRotations(activity)) {
+                rotateLockedResourceId = R.string.display_auto_rotate_stay_in_current;
+            } else {
+                if (RotationPolicy.getRotationLockOrientation(activity)
+                        == Configuration.ORIENTATION_PORTRAIT) {
+                    rotateLockedResourceId =
+                            R.string.display_auto_rotate_stay_in_portrait;
                 } else {
                     displayPrefs.removePreference(mCameraGesturePreference);
                 }
@@ -455,6 +493,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mDozePreference) {
+            MetricsLogger.action(getActivity(), MetricsEvent.ACTION_AMBIENT_DISPLAY);
+        }
+        return super.onPreferenceTreeClick(preference);
+    }
+
+    @Override
     protected int getHelpResource() {
         return R.string.help_uri_display;
     }
@@ -530,6 +576,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
                         result.add(KEY_AUTO_BRIGHTNESS);
+                    }
+                    if (!NightDisplayController.isAvailable(context)) {
+                        result.add(KEY_NIGHT_DISPLAY);
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE_FRAGMENT);

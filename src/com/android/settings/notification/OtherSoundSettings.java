@@ -39,6 +39,8 @@ import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.provider.Settings.System;
 import android.provider.Settings.Secure;
+import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.Preference;
 import android.telephony.TelephonyManager;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -79,7 +81,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VIBRATE_ON_TOUCH = "vibrate_on_touch";
     private static final String KEY_DOCK_AUDIO_MEDIA = "dock_audio_media";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
-
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
@@ -98,6 +99,10 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
 
     private SwitchPreference mCameraSounds;
+
+    // Boot Sounds needs to be a system property so it can be accessed during boot.
+    private static final String KEY_BOOT_SOUNDS = "boot_sounds";
+    private static final String PROPERTY_BOOT_SOUNDS = "persist.sys.bootanim.play_sound";
 
     private static final SettingPref PREF_DIAL_PAD_TONES = new SettingPref(
             TYPE_SYSTEM, KEY_DIAL_PAD_TONES, System.DTMF_TONE_WHEN_DIALING, DEFAULT_ON) {
@@ -207,6 +212,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
         PREF_EMERGENCY_TONE,
     };
 
+    private SwitchPreference mBootSounds;
+
     private final SettingsObserver mSettingsObserver = new SettingsObserver();
 
     private Context mContext;
@@ -270,6 +277,9 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
 		mCameraSounds = (SwitchPreference) findPreference(KEY_CAMERA_SOUNDS);
         mCameraSounds.setChecked(SystemProperties.getBoolean(PROP_CAMERA_SOUND, true));
         mCameraSounds.setOnPreferenceChangeListener(this);
+
+        mBootSounds = (SwitchPreference) findPreference(KEY_BOOT_SOUNDS);
+        mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
     }
 
     @Override
@@ -300,11 +310,13 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
             launchNotificationSoundPicker(REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE,
                     Secure.getString(getContentResolver(),
                             Secure.POWER_NOTIFICATIONS_RINGTONE));
+		} else if (preference == mBootSounds) {
+            SystemProperties.set(PROPERTY_BOOT_SOUNDS, mBootSounds.isChecked() ? "1" : "0");
+            return false;
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preference);
         }
-
         return true;
     }
 

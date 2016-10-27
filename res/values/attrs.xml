@@ -136,6 +136,15 @@
         <attr name="allowDividerBelow" format="boolean" />
     </declare-styleable>
 
+	<!-- For GesturePreference -->
+    <declare-styleable name="GesturePreference">
+        <attr name="animation" format="reference" />
+    </declare-styleable>
+
+    <!-- For AspectRatioFrameLayout -->
+    <declare-styleable name="AspectRatioFrameLayout">
+        <attr name="aspectRatio" format="float" />
+		
     <!-- Value to pass to callback when restore button is pressed -->
     <declare-styleable name="ColorPreference">
         <attr name="defaultColorValue" format="integer" />

@@ -61,6 +61,11 @@
             android:persistent="false"
             android:fragment="com.android.settings.cypher.fragments.SoundSettings" />
 
+    <!-- Boot sounds -->
+    <SwitchPreference
+            android:key="boot_sounds"
+            android:title="@string/boot_sounds_title" />
+
     <!-- Emergency tone -->
     <DropDownPreference
             android:key="emergency_tone"
