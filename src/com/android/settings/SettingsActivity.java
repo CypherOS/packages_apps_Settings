@@ -28,7 +28,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -36,13 +35,11 @@ import android.content.res.Configuration;
 import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
-import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -236,7 +233,6 @@ public class SettingsActivity extends SettingsDrawerActivity
     private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
 
     private static final String LTE_4G_FRAGMENT = "com.android.settings.Lte4GEnableSetting";
-    private static final String MOBILENETWORK_FRAGMENT = "com.android.settings.MobileNetworkMain";
 	private static final String SYSTEM_UPDATE = "android.settings.SystemUpdateActivity";
     private String mFragmentClass;
     private String mActivityAction;
@@ -249,8 +245,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             //wireless_section
             WifiSettingsActivity.class.getName(),
             Settings.BluetoothSettingsActivity.class.getName(),
-            Settings.MobileNetworkMainActivity.class.getName(),
-            Settings.TetherSettingsActivity.class.getName(),
             Settings.DataUsageSummaryActivity.class.getName(),
             Settings.RoamingSettingsActivity.class.getName(),
             Settings.SimSettingsActivity.class.getName(),
@@ -279,7 +273,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.PaymentSettingsActivity.class.getName(),
             Settings.TimerSwitchSettingsActivity.class.getName(),
 			Settings.SystemUpdateActivity.class.getName(),
-            Settings.OtherDeviceFunctionsSettingsActivity.class.getName(),
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -294,7 +287,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             WifiP2pSettings.class.getName(),
             VpnSettings.class.getName(),
             DateTimeSettings.class.getName(),
-            OtherDeviceFunctionsSettings.class.getName(),
             LocaleListEditor.class.getName(),
             InputMethodAndLanguageSettings.class.getName(),
             AvailableVirtualKeyboardFragment.class.getName(),
@@ -1063,15 +1055,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             finish();
             return null;
         }
-
-        if (MOBILENETWORK_FRAGMENT.equals(fragmentName)) {
-            Intent mobileNetworkIntent = new Intent();
-            mobileNetworkIntent.setAction("android.settings.DATA_ROAMING_SETTINGS");
-            mobileNetworkIntent.setPackage("com.qualcomm.qti.networksetting");
-            startActivity(mobileNetworkIntent);
-            finish();
-            return null;
-        }
 		
 		if (SYSTEM_UPDATE.equals(fragmentName)) {
             SystemUpdateHandle ();
@@ -1158,23 +1141,6 @@ public class SettingsActivity extends SettingsDrawerActivity
                 Settings.BluetoothSettingsActivity.class.getName()),
                 pm.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH), isAdmin, pm);
 
-        //visible in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.TetherSettingsActivity.class.getName()),
-                ((getResources().getBoolean(R.bool.config_settings_rjil_layout))&&
-                pm.hasSystemFeature(PackageManager.FEATURE_WIFI)), isAdmin, pm);
-
-        //visible in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.MobileNetworkMainActivity.class.getName()),
-                ((getResources().getBoolean(R.bool.config_settings_rjil_layout))&&
-                pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)), isAdmin, pm);
-
-        //disable accessibility in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.AccessibilitySettingsActivity.class.getName()),
-                !getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
-
         setTileEnabled(new ComponentName(packageName,
                 Settings.Lte4GEnableActivity.class.getName()),
                 getResources().getBoolean(R.bool.config_4gsettings_enabled), isAdmin, pm);
@@ -1206,21 +1172,10 @@ public class SettingsActivity extends SettingsDrawerActivity
                 pm.hasSystemFeature(PackageManager.FEATURE_NFC)
                         && pm.hasSystemFeature(PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)
                         && adapter != null && adapter.isEnabled(), isAdmin, pm);
-        //PrintSettingsActivity disable in RJIL
+
         setTileEnabled(new ComponentName(packageName,
                 Settings.PrintSettingsActivity.class.getName()),
-                (!getResources().getBoolean(R.bool.config_settings_rjil_layout))
-                &&pm.hasSystemFeature(PackageManager.FEATURE_PRINTING), isAdmin, pm);
-
-        //deviceinfo disable in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.DeviceInfoSettingsActivity.class.getName()),
-                !getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
-
-        //other settings visible in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.OtherDeviceFunctionsSettingsActivity.class.getName()),
-                getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
+                pm.hasSystemFeature(PackageManager.FEATURE_PRINTING), isAdmin, pm);
 				
 		//SystemUPdate visible in RJIL
         setTileEnabled(new ComponentName(packageName,
