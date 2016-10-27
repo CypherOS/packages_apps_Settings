@@ -45,7 +45,6 @@ import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.format.Formatter.BytesResult;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -91,8 +90,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     private static final String EXTRA_VOLUME_SIZE = "volume_size";
 
     private static final String AUTHORITY_MEDIA = "com.android.providers.media.documents";
-    private static final String STORAGE_CLEANUP_PACKAGE = "com.qti.storagecleaner";
-    private static final String STORAGE_CLENUP_CLASS = "com.qti.storagecleaner.CleanerActivity";
 
     private static final int[] ITEMS_NO_SHOW_SHARED = new int[] {
             R.string.storage_detail_apps,
@@ -424,7 +421,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         // Only offer to migrate when not current storage
         final VolumeInfo privateVol = getActivity().getPackageManager()
                 .getPrimaryStorageCurrentVolume();
-
         migrate.setVisible((privateVol != null)
                 && (privateVol.getType() == VolumeInfo.TYPE_PRIVATE)
                 && !Objects.equals(mVolume, privateVol));
@@ -463,16 +459,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void startStorageCleanupActivity() {
-        try {
-            Intent i = new Intent();
-            i.setClassName(STORAGE_CLEANUP_PACKAGE, STORAGE_CLENUP_CLASS);
-            startActivity(i);
-        } catch (ActivityNotFoundException e) {
-            Log.e(TAG, "Can't start storage cleanup activity");
-        }
     }
 
     @Override

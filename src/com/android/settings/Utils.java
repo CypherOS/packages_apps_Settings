@@ -58,7 +58,6 @@ import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
-import android.os.PersistableBundle;
 import android.preference.PreferenceFrameLayout;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.ContactsContract.Contacts;
@@ -71,7 +70,6 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
-import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -1200,7 +1198,7 @@ public final class Utils extends com.android.settingslib.Utils {
         return false;
     }
 
-    /**
+	/**
      * Trigger client initiated action (send intent) on system update
      */
     public static void ciActionOnSysUpdate(Context context, PersistableBundle b) {
