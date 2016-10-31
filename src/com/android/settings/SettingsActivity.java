@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -40,6 +41,7 @@ import android.os.UserManager;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
+import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -1171,11 +1173,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                 Settings.PrintSettingsActivity.class.getName()),
                 pm.hasSystemFeature(PackageManager.FEATURE_PRINTING), isAdmin, pm);
-				
-		//SystemUPdate visible in RJIL
-        setTileEnabled(new ComponentName(packageName,
-                        Settings.SystemUpdateActivity.class.getName()),
-                getResources().getBoolean(R.bool.config_settings_rjil_layout), isAdmin, pm);
 
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                     DevelopmentSettings.PREF_SHOW, android.os.Build.TYPE.equals("eng"))

@@ -54,6 +54,7 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.INetworkManagementService;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -1199,6 +1200,7 @@ public final class Utils extends com.android.settingslib.Utils {
                     " with extra " + extra + ", " + extraVal);
             context.getApplicationContext().sendBroadcast(intent);
         }
+	}
 
     public static boolean isPackageDirectBootAware(Context context, String packageName) {
         try {

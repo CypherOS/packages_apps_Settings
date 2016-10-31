@@ -180,20 +180,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             removePreference(KEY_NIGHT_DISPLAY);
         }
 
-        if (isLiftToWakeAvailable(activity)) {
-            mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
-            mLiftToWakePreference.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(KEY_LIFT_TO_WAKE);
-        }
-
-        if (isDozeAvailable(activity)) {
-            mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
-            mDozePreference.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(KEY_DOZE);
-        }
-
         mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
         if (!isDozeAvailable(activity)) {
             getPreferenceScreen().removePreference(mDozeFragement);
