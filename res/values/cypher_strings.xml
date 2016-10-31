@@ -143,6 +143,9 @@
 	<!-- Lockscreen Settings -->
 	<string name="lockscreen_settings_title">Lockscreen</string>
 	<string name="lockscreen_settings_title_summary">An extensive amount of configurable options to ehnace the durability of your lockscreen</string>
+	<!-- Lockscreen charging current indicator  -->
+    <string name="lockscreen_charging_current_title">Charging info</string>
+    <string name="lockscreen_charging_current_summary">Displays the maximum current and voltage on lockscreen</string>
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
