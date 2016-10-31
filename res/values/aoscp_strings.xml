@@ -330,4 +330,8 @@
    <string name="usb_data_auto_unlock_summary">Allow unlocked data access to your phone\'s storage through USB (MTP, PTP)</string>
    <string name="usb_data_auto_unlock_warning_summary">Your device will establish unprotected connections, everytime you connect it to a PC. Secured lockscreens disable this option automatically.\n\nThis is still an experimental feature, use with caution.</string>
  
+   <!-- Lockscreen charging current indicator  -->
+   <string name="lockscreen_charging_current_title">Charging info</string>
+   <string name="lockscreen_charging_current_summary">Displays the maximum current and voltage on lockscreen</string>
+ 
 </resources>
