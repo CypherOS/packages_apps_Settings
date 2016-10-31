@@ -72,6 +72,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
+import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;

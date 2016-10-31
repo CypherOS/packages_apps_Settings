@@ -36,6 +36,7 @@ import android.content.res.Configuration;
 import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v14.preference.PreferenceFragment;

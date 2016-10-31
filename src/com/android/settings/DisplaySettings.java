@@ -479,7 +479,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == mDozePreference) {
+        if (preference == mDozeFragement) {
             MetricsLogger.action(getActivity(), MetricsEvent.ACTION_AMBIENT_DISPLAY);
         }
         return super.onPreferenceTreeClick(preference);
