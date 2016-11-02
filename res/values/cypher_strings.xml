@@ -53,6 +53,7 @@
 	
 	<!-- Addition settings -->
 	<string name="addition_settings_title">Additions</string>
+	<string name="addition_settings_greeting">Welcome to your additions settings. Additions are a direct extension to Android, providing various features and customization options, that aren\'t available on stock.\n\nOptions are placed in their appropriate section so that they can be easily found.</string>
 	<!-- TODO: Summary loaders -->
 	
 	<!-- Addition settings -->

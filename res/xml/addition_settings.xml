@@ -15,6 +15,12 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/addition_settings_title">
 		
+		<Preference
+                android:key="addition_settings_greeting"
+                android:summary="@string/addition_settings_greeting"
+                android:persistent="false"
+                android:selectable="false" />
+		
 		<!-- Statusbar settings -->
 		<PreferenceScreen
                 android:key="statusbar_settings"
