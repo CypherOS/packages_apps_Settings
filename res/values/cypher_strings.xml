@@ -33,6 +33,9 @@
     <string name="vendor_version_default">Unknown</string>
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software information</string>
+	<!-- Bug Report -->
+	<string name="bugreport_preference_title">Bug Report</string>
+	<string name="bugreport_preference_title_summary">If you\'re experiencing issues within CypherOS feel free to take a bug report and send it to us</string>
 	<!-- Build notes -->
 	<string name="buildnotes_settings_title">Release notes</string>
 	<string name="buildnotes_settings_title_summary">Check out the latest changes in CypherOS to know what\'s the what on your current release</string>

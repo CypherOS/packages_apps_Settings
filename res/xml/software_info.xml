@@ -21,6 +21,11 @@
 				android:summary="@string/buildnotes_settings_title_summary"
                 android:fragment="com.android.settings.cypher.deviceinfo.BuildNotes" />
 				
+		<com.android.settings.BugreportPreference
+                android:key="bugreport"
+                android:title="@string/bugreport_preference_title"
+                android:dialogTitle="@bugreport_preference_title_summary" />
+				
 	<PreferenceCategory
         android:key="social"
         android:title="@string/social_category_title">

@@ -18,11 +18,6 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/development_settings_title">
 
-    <com.android.settings.BugreportPreference
-            android:key="bugreport"
-            android:title="@*android:string/bugreport_title"
-            android:dialogTitle="@*android:string/bugreport_title" />
-
     <PreferenceScreen
             android:key="local_backup_password"
             android:title="@string/local_backup_password_title"
