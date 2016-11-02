@@ -131,7 +131,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String LOCAL_BACKUP_PASSWORD = "local_backup_password";
     private static final String HARDWARE_UI_PROPERTY = "persist.sys.ui.hw";
     private static final String MSAA_PROPERTY = "debug.egl.force_msaa";
-    private static final String BUGREPORT = "bugreport";
     private static final String BUGREPORT_IN_POWER_KEY = "bugreport_in_power";
     private static final String OPENGL_TRACES_PROPERTY = "debug.egl.trace";
     private static final String TUNER_UI_KEY = "tuner_ui";
@@ -257,7 +256,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mAdbOverNetwork;
     private Preference mClearAdbKeys;
     private SwitchPreference mEnableTerminal;
-    private Preference mBugreport;
     private SwitchPreference mBugreportInPower;
     private RestrictedSwitchPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
@@ -401,7 +399,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mEnableTerminal = null;
         }
 
-        mBugreport = findPreference(BUGREPORT);
         mBugreportInPower = findAndInitSwitchPref(BUGREPORT_IN_POWER_KEY);
         mKeepScreenOn = (RestrictedSwitchPreference) findAndInitSwitchPref(KEEP_SCREEN_ON);
         mBtHciSnoopLog = findAndInitSwitchPref(BT_HCI_SNOOP_LOG);
@@ -1175,7 +1172,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     private void updateBugreportOptions() {
-        mBugreport.setEnabled(true);
         mBugreportInPower.setEnabled(true);
         setBugreportStorageProviderStatus();
     }

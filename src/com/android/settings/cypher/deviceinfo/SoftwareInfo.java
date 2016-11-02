@@ -65,6 +65,22 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
         return MetricsEvent.ADDITIONS;
     }
 	
+	@Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mWebsiteUrl) {
+            launchUrl("http://cypheros.co");
+        } else if (preference == mGoogleUrl) {
+            launchUrl("https://plus.google.com/communities/111402352496339801246");
+        }
+        return super.onPreferenceTreeClick(preference);
+    }
+
+    private void launchUrl(String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
+        getActivity().startActivity(intent);
+    }
+	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
                 @Override
