@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.cypher;
 
 import android.app.LoaderManager;
 import android.content.ContentResolver;
