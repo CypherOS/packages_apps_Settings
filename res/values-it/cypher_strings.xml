@@ -33,12 +33,16 @@
   <string name="vendor_version_default">Sconosciuto</string>
     <!-- Software information-->
 	<string name="software_info_settings_title">Informazioni Software</string>
+	
+	<!-- Bug Report -->
+ 	<string name="bugreport_preference_title">Segnalazione errori</string>
+ 	<string name="bugreport_preference_title_summary">Se si verificano problemi all\'interno del CypherOS non esitate a prendere e inviarci le segnazioni di errori</string>
 	<!-- Build notes -->
 	<string name="buildnotes_settings_title">Note di rilascio</string>
 	<string name="buildnotes_settings_title_summary">Scopri le ultime modifiche di CypherOS e sapere cosa è cambiato sul vostro rilascio corrente</string>
 	<string name="buildnotes_settings_error">Impossibile caricare le note di rilascio</string>
 	<!-- Social category -->
-  <string name="social_category_title">Sociale</string>
+        <string name="social_category_title">Sociale</string>
 	<string name="website_preference_title">On-The-Web</string>
 	<string name="website_preference_title_summary">Dai uno sguardo al nostro sito web per le ultime informazioni di rilascio e aggiornamento</string>
 	<string name="google_preference_title">CypherPlus</string>
@@ -383,7 +387,7 @@
     <string name="qs_rows_portrait_title">Righe in verticale</string>
     <string name="qs_rows_landscape_title">Righe in orizzontale</string>
     <string name="qs_columns_title">Colonne</string>
-	<string name="sysui_qqs_count_title">Conteggio scelta rapida</string>
+	<string name="sysui_qqs_count_title">Numero di scelte rapide</string>
 	
 	<!-- Force expand notifications -->
     <string name="notification_force_expand_title">Forza l\'espansione delle notifiche</string>
