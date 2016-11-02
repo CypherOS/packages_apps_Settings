@@ -24,7 +24,8 @@
 		<com.android.settings.BugreportPreference
                 android:key="bugreport"
                 android:title="@string/bugreport_preference_title"
-                android:dialogTitle="@bugreport_preference_title_summary" />
+                android:dialogTitle="@string/bugreport_preference_title"
+                android:summary="@string/bugreport_preference_title_summary" />
 				
 	<PreferenceCategory
         android:key="social"
