@@ -226,8 +226,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
 
-    private static final String DEVELOPMENT_TOOLS = "development_tools";
-
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
 
@@ -328,7 +326,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private ListPreference mRootAccess;
     private Object mSelectedRootValue;
-    private PreferenceScreen mDevelopmentTools;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -551,9 +548,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             mAllPrefs.add(mRootAccess);
             mAllPrefs.add(mRootAppops);
         }
-
-        mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
-        mAllPrefs.add(mDevelopmentTools);
     }
 
     private ListPreference addListPreference(String prefKey) {
