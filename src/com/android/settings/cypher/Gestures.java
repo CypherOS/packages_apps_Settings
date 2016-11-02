@@ -16,6 +16,7 @@
 
 package com.android.settings.cypher;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.ComponentName;
@@ -32,6 +33,7 @@ import android.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v7.widget.RecyclerView;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
@@ -46,6 +48,7 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import com.android.settings.GesturePreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -62,7 +65,6 @@ public class Gestures extends SettingsPreferenceFragment implements
 	
 	private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
 	private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
-	private static final String TAG = "GestureSettings";
     private static final String PREF_KEY_DOUBLE_TAP_POWER = "gesture_double_tap_power";
     private static final String PREF_KEY_DOUBLE_TWIST = "gesture_double_twist";
     private static final String PREF_KEY_SWIPE_DOWN_FINGERPRINT = "gesture_swipe_down_fingerprint";
@@ -170,14 +172,14 @@ public class Gestures extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getContentResolver(), WAKE_GESTURE_ENABLED, value ? 1 : 0);
         }
 		if (PREF_KEY_DOUBLE_TAP_POWER.equals(key)) {
-            Secure.putInt(getContentResolver(),
-                    Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, value ? 0 : 1);
+			boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, value ? 0 : 1);
         } else if (PREF_KEY_SWIPE_DOWN_FINGERPRINT.equals(key)) {
-            Secure.putInt(getContentResolver(),
-                    Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, value ? 1 : 0);
+			boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), SYSTEM_NAVIGATION_KEYS_ENABLED, value ? 1 : 0);
         } else if (PREF_KEY_DOUBLE_TWIST.equals(key)) {
-            Secure.putInt(getContentResolver(),
-                    Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, value ? 1 : 0);
+			boolean value = (Boolean) objValue;
+            Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, value ? 1 : 0);
         }
         return true;
     }
