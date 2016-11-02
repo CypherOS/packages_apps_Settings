@@ -7157,12 +7157,6 @@
     <!-- Description of setting that controls gesture to open camera [CHAR LIMIT=NONE] -->
     <string name="camera_gesture_desc">Open the camera app by twisting your wrist twice</string>
 
-    <!-- Title of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=40] -->
-    <string name="camera_double_tap_power_gesture_title">Double-snap</string>
-
-    <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
-    <string name="camera_double_tap_power_gesture_desc">Double press the power button to launch the camera</string>
-
     <!-- Title of setting that controls screen zoom (e.g. how large interface elements appear). [CHAR LIMIT=40] -->
     <string name="screen_zoom_title">Display size</string>
     <!-- Short summary for Magnification gesture. Lets the user know that this makes items on screen larger or smaller. Appears in the accessibility portion of Setup Wizard. [CHAR LIMIT=NONE] -->
@@ -7761,7 +7755,7 @@
     <string name="gesture_preference_summary">Quick gestures to control your phone</string>
 
     <!-- Title text for double tap power for camera [CHAR LIMIT=60]-->
-    <string name="double_tap_power_for_camera_title">Jump to Camera</string>
+    <string name="double_tap_power_for_camera_title">Double-snap</string>
 
     <!-- Summary text for double tap power for camera [CHAR LIMIT=160]-->
     <string name="double_tap_power_for_camera_summary">To quickly open camera, just double-tap the power button. Works from any screen</string>
