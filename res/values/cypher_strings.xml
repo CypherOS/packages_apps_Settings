@@ -279,10 +279,6 @@
     <string name="quick_pulldown_right">Right</string>
     <string name="quick_pulldown_always">Always</string>
 	
-	<!-- Color tuner options -->
-    <string name="display_color_title">Screen color &amp; appearance</string>
-    <string name="display_color_summary">Screen color controls and night mode</string>
-	
 	<!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navbar tuner</string>
     <string name="navbar_tuner_summary">Customize buttons and layout</string>
