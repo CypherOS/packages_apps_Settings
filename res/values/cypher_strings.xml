@@ -15,6 +15,10 @@
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
+	<string name="reset_color_message">Colors will be reset to the defaults. Continue?</string>
+	<string name="reset_color_android">Android</string>
+	<string name="reset_color_aoscp">AOSCP</string>
+	<string name="reset_color_confirmation">The default colors have been restored</string>
     <string name="attention">Attention</string>
     <string name="enabled">Enabled</string>
     <string name="default_string">Default</string>

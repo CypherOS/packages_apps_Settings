@@ -37,8 +37,4 @@
 
     </PreferenceCategory>
 
-    <Preference
-        android:key="ticker_restore_defaults"
-        android:title="@string/ticker_restore_defaults_title" />
-
 </PreferenceScreen>
