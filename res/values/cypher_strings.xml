@@ -390,5 +390,9 @@
 	<!-- Notification count -->
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+	
+	<!-- Notification Settings -->
+	<string name="notification_settings_title">Notifications</string>
+	<string name="notification_settings_title_summary">More customization options to further your notification experience the way you want it</string>
  
 </resources>

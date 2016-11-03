@@ -23,6 +23,7 @@ import com.android.settings.cypher.deviceinfo.SoftwareInfo;
 import com.android.settings.cypher.fragments.StatusbarSettings;
 import com.android.settings.cypher.fragments.QuickSettings;
 import com.android.settings.cypher.fragments.SystemSettings;
+import com.android.settings.cypher.fragments.NotificationExtSettings;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
@@ -197,6 +198,13 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         SystemSettings.class.getName(),
                         R.drawable.ic_settings_system_settings));
+						
+		sResMap.put(NotificationExtSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(NotificationExtSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        NotificationExtSettings.class.getName(),
+                        R.drawable.ic_settings_notificationext));
 
         sResMap.put(SoundSettings.class.getName(),
                 new SearchIndexableResource(
