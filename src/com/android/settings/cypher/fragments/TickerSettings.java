@@ -25,7 +25,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
-import android.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen; 
 import android.support.v14.preference.SwitchPreference;
@@ -101,22 +101,21 @@ public class TickerSettings extends SettingsPreferenceFragment implements
                     (ColorPickerPreference) findPreference(TEXT_COLOR);
             intColor = Settings.System.getInt(mResolver,
                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
-                    WHITE); 
-            mTextColor.setNewPreviewColor(intColor);
+                    0xffffffff); 
             hexColor = String.format("#%08x", (0xffffffff & intColor));
             mTextColor.setSummary(hexColor);
-            mTextColor.setNewPreviewColor(WHITE, WHITE);
+			mTextColor.setNewPreviewColor(intColor);
             mTextColor.setOnPreferenceChangeListener(this);
 
             mIconColor =
                     (ColorPickerPreference) findPreference(ICON_COLOR);
             intColor = Settings.System.getInt(mResolver,
                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                    WHITE); 
+                    0xffffffff); 
             mIconColor.setNewPreviewColor(intColor);
             hexColor = String.format("#%08x", (0xffffffff & intColor));
             mIconColor.setSummary(hexColor);
-            mIconColor.setNewPreviewColor(WHITE, WHITE);
+            mIconColor.setNewPreviewColor(intColor);
             mIconColor.setOnPreferenceChangeListener(this);
         } else {
             removePreference(CAT_COLORS);
