@@ -52,16 +52,37 @@ public class NotificationExtSettings extends SettingsPreferenceFragment implemen
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "NotificationExtSettings";
 	
+	private static final String KEY_HEADS_UP_SETTINGS = "heads_up_settings";
+	
+	private PreferenceScreen mHeadsUp;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.notification_settings_ext);
+		PreferenceScreen prefScreen = getPreferenceScreen();
+		
+		mHeadsUp = (PreferenceScreen) findPreference(KEY_HEADS_UP_SETTINGS);
 		
 	}
+	
+	private boolean getUserHeadsUpState() {
+        return Settings.System.getInt(getContentResolver(),
+               Settings.System.HEADS_UP_USER_ENABLED,
+               Settings.System.HEADS_UP_USER_ON) != 0;
+    }
 	
 	@Override
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+
+        mHeadsUp.setSummary(getUserHeadsUpState()
+                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
