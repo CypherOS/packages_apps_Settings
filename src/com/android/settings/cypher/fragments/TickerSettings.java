@@ -25,14 +25,16 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceScreen;
+import android.support.v7.preference.PreferenceScreen 
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
-import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -41,7 +43,7 @@ import com.android.settings.utils.Utils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class StatusBarTickerSettings extends SettingsPreferenceFragment implements
+public class TickerSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String SHOW_TICKER =
@@ -75,9 +77,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
         PreferenceScreen prefs = getPreferenceScreen();
         if (prefs != null) {
             prefs.removeAll();
-			
-			Snackbar.make(getView(), R.string.reset_color_confirmation,
-                        Snackbar.LENGTH_LONG).show();
         }
 
         addPreferencesFromResource(R.xml.ticker_settings);
@@ -106,7 +105,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mTextColor.setNewPreviewColor(intColor);
             hexColor = String.format("#%08x", (0xffffffff & intColor));
             mTextColor.setSummary(hexColor);
-            mTextColor.setResetColors(WHITE, VRTOXIN_BLUE);
+            mTextColor.setNewPreviewColor(WHITE, WHITE);
             mTextColor.setOnPreferenceChangeListener(this);
 
             mIconColor =
@@ -117,7 +116,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mIconColor.setNewPreviewColor(intColor);
             hexColor = String.format("#%08x", (0xffffffff & intColor));
             mIconColor.setSummary(hexColor);
-            mIconColor.setResetColors(WHITE, WHITE);
+            mIconColor.setNewPreviewColor(WHITE, WHITE);
             mIconColor.setOnPreferenceChangeListener(this);
         } else {
             removePreference(CAT_COLORS);

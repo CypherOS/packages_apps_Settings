@@ -98,7 +98,7 @@ public class BaseSystemSettingSwitchBar implements SwitchBar.OnSwitchChangeListe
     }
 
     private void setSwitchState() {
-        boolean enabled = Settings.Settings.getInt(mContext.getContentResolver(),
+        boolean enabled = Settings.System.getInt(mContext.getContentResolver(),
                 mSettingKey, mDefaultState) == 1;
         mStateMachineEvent = true;
         setSwitchBarChecked(enabled);
@@ -113,7 +113,7 @@ public class BaseSystemSettingSwitchBar implements SwitchBar.OnSwitchChangeListe
         }
 
         // Handle a switch change
-        Settings.Settings.putInt(mContext.getContentResolver(),
+        Settings.System.putInt(mContext.getContentResolver(),
                 mSettingKey, isChecked ? 1 : 0);
 
         if (mCallback != null) {
@@ -128,7 +128,7 @@ public class BaseSystemSettingSwitchBar implements SwitchBar.OnSwitchChangeListe
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(Settings.Settings.getUriFor(
+            resolver.registerContentObserver(Settings.System.getUriFor(
                     mSettingKey), false, this);
             update();
         }

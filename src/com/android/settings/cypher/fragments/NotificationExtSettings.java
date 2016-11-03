@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
+import android.support.v7.preference.PreferenceScreen
 import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
@@ -48,8 +48,7 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationExtSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+public class NotificationExtSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "NotificationExtSettings";
 	
 	private static final String KEY_HEADS_UP_SETTINGS = "heads_up_settings";
