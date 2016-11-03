@@ -111,7 +111,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         mClockDateStyle = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_STYLE);
 
         int clockStyle = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK, 1);
+                Settings.System.STATUS_BAR_CLOCK_STYLE, 0);
         mStatusBarClock.setValue(String.valueOf(clockStyle));
         mStatusBarClock.setSummary(mStatusBarClock.getEntry());
         mStatusBarClock.setOnPreferenceChangeListener(this);
@@ -167,7 +167,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             int clockStyle = Integer.parseInt((String) newValue);
             int index = mStatusBarClock.findIndexOfValue((String) newValue);
             Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_CLOCK, clockStyle);
+                    resolver, Settings.System.STATUS_BAR_CLOCK_STYLE, clockStyle);
             mStatusBarClock.setSummary(mStatusBarClock.getEntries()[index]);
 			if (clockStyle == 0) {
                 mClockDateDisplay.setEnabled(false);
