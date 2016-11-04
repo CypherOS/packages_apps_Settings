@@ -13,8 +13,12 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
 	 <!-- General strings -->
-  <string name="ok">OK</string>
   <string name="reset">Ripristina</string>
+  <string name="reset_yes">Si</string>
+  <string name="reset_no">No</string>
+  <string name="ok">OK</string>
+  <string name="reset_color_message">I colori saranno ripristinati alle impostazioni predefinite. Vuoi continuare?</string>
+  <string name="reset_color_confirmation">I colori predefiniti sono stati ripristinati</string>
   <string name="attention">Attenzione</string>
   <string name="enabled">Abilitato</string>
   <string name="default_string">Predefinito</string>
@@ -407,13 +411,13 @@
 	<string name="notification_settings_title">Notifiche</string>
 	<string name="notification_settings_title_summary">Maggiori opzioni di personalizzazione per migliorare la vostra esperienza sulle notifiche nel modo in cui si desidera</string>
 	<!-- Heads up settings -->
-    <string name="headsup_settings_title">Heads up</string>
-    <string name="summary_heads_up_enabled">Le notifiche Heads up sono abilitate</string>
-    <string name="summary_heads_up_disabled">Le notifiche Heads up sono disabilitate</string>
-    <string name="heads_up_disabled_notice">Consenti alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, abilitare le notifiche Heads up</string>
+    <string name="headsup_settings_title">Notifiche Fluttuanti</string>
+    <string name="summary_heads_up_enabled">Le notifiche fluttuanti sono abilitate</string>
+    <string name="summary_heads_up_disabled">Le notifiche fluttuanti sono disabilitate</string>
+    <string name="heads_up_disabled_notice">Consenti alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, abilitare le notifiche fluttuanti</string>
 	<!-- Heads up timeout -->
-    <string name="heads_up_time_out_title">Time out</string>
-  <string name="heads_up_time_out_summary">Le notifiche verranno mostrate per <xliff:g id="number">%d</xliff:g> secondi</string>
+    <string name="heads_up_time_out_title">Tempo di visualizzazione</string>
+  <string name="heads_up_time_out_summary">Le notifiche saranno mostrate per <xliff:g id="number">%d</xliff:g> secondi</string>
   <string name="heads_up_time_out_2sec">2 secondi</string>
   <string name="heads_up_time_out_4sec">4 secondi</string>
   <string name="heads_up_time_out_5sec">5 secondi</string>
@@ -421,10 +425,10 @@
   <string name="heads_up_time_out_8sec">8 secondi</string>
   <string name="heads_up_time_out_10sec">10 secondi</string>
 	<!-- Heads up snooze -->
-    <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary_one_minute">Scorri verso l\'alto sulle notifiche per posticipare tale applicazione per 1 minuto</string>
-    <string name="heads_up_snooze_summary">Scorri verso l\'alto sulle notifiche per posticipare tale applicazione per <xliff:g id="number">%d</xliff:g> minuti</string>
-    <string name="heads_up_snooze_disabled_summary">Snooze timer è disattivato</string>
+    <string name="heads_up_snooze_title">Posticipa il tempo</string>
+    <string name="heads_up_snooze_summary_one_minute">Scorri verso l\'alto sulle notifiche per posticipare l\'applicazione per 1 minuto</string>
+    <string name="heads_up_snooze_summary">Scorri verso l\'alto sulle notifiche per posticipare l\'applicazione per <xliff:g id="number">%d</xliff:g> minuti</string>
+    <string name="heads_up_snooze_disabled_summary">Il posticipo del tempo è disattivato</string>
     <string name="heads_up_snooze_1min">1 minuto</string>
     <string name="heads_up_snooze_3min">3 minuti</string>
     <string name="heads_up_snooze_5min">5 minuti</string>
@@ -435,8 +439,10 @@
 	<!-- Status Bar Ticker -->
     <string name="ticker_title">Ticker</string>
     <string name="ticker_title_summary">Utilizza il vecchio sistema di notifica kitkat e qui di seguito per le notifiche semplici</string>
+    <string name="ticker_settings_disabled_notice">Consenti alle notifiche di mostrarsi sulla barra di stato invece che in una finestra pop-up, attiva le notifiche Ticker</string>
     <string name="ticker_restore_defaults_title">Ripristina i valori predefiniti</string>
     <string name="text_title">Testo</string>
     <string name="icon_title">Icona</string>
     <string name="colors_title">Colori</string>
+
 </resources>
