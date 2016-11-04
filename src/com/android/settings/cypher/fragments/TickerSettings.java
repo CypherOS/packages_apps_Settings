@@ -50,8 +50,9 @@ import com.android.settings.preference.BaseSystemSettingSwitchBar;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class TickerSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+public class TickerSettings extends SettingsPreferenceFragment 
+        implements BaseSystemSettingSwitchBar.SwitchBarChangeCallback,
+                Preference.OnPreferenceChangeListener {
 
     private static final String SHOW_TICKER =
             "status_bar_show_ticker";
