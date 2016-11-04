@@ -48,12 +48,6 @@
                 android:key="pure_carrier_label_settings"
                 android:title="@string/carrier_label_settings_title"
                 android:summary="@string/carrier_label_settings_summary" />
-			
-		<com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="status_bar_notif_count"
-            android:title="@string/status_bar_notif_count_title"
-            android:summary="@string/status_bar_notif_count_summary"
-            android:defaultValue="false" />
 		
     <PreferenceCategory android:key="statusbar_clock_category"
             android:title="@string/status_bar_clock_title">
