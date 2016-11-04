@@ -37,5 +37,14 @@
             android:title="@string/ticker_title"
 			android:summary="@string/ticker_title_summary"
             android:fragment="com.android.settings.cypher.fragments.TickerSettings" />
+			
+	<PreferenceCategory android:key="nleds"
+        android:title="@string/led_category">
+		
+	    <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+	</PreferenceCategory>
 
 </PreferenceScreen>

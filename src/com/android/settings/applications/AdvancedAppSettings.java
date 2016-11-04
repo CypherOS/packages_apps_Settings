@@ -49,10 +49,6 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HIGH_POWER_APPS = "high_power_apps";
     private static final String KEY_SYSTEM_ALERT_WINDOW = "system_alert_window";
     private static final String KEY_WRITE_SETTINGS_APPS = "write_settings_apps";
-	
-	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
-	
-	private static final String CATEGORY_NLEDS = "nleds";
 
     private Session mSession;
     private Preference mAppPermsPreference;
@@ -72,21 +68,6 @@ public class AdvancedAppSettings extends SettingsPreferenceFragment implements
 
         Preference permissions = getPreferenceScreen().findPreference(KEY_APP_PERM);
         permissions.setIntent(new Intent(Intent.ACTION_MANAGE_PERMISSIONS));
-		
-		final PreferenceCategory nleds = (PreferenceCategory) findPreference(CATEGORY_NLEDS);
-
-        mNotifLedFrag = findPreference(KEY_NOTIFICATION_LIGHT);
-        //Remove notification led settings if device doesnt support it
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            nleds.removePreference(findPreference(KEY_NOTIFICATION_LIGHT));
-        }
-		
-		//Remove led category if device doesnt support notification or battery
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            prefScreen.removePreference(findPreference(CATEGORY_NLEDS));
-        }
 
         ApplicationsState applicationsState = ApplicationsState.getInstance(
                 getActivity().getApplication());

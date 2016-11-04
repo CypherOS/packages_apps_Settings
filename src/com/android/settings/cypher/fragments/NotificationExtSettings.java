@@ -52,6 +52,9 @@ public class NotificationExtSettings extends SettingsPreferenceFragment implemen
     private static final String TAG = "NotificationExtSettings";
 	
 	private static final String KEY_HEADS_UP_SETTINGS = "heads_up_settings";
+	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
+	
+	private static final String CATEGORY_NLEDS = "nleds";
 	
 	private PreferenceScreen mHeadsUp;
 	
@@ -62,6 +65,21 @@ public class NotificationExtSettings extends SettingsPreferenceFragment implemen
 		PreferenceScreen prefScreen = getPreferenceScreen();
 		
 		mHeadsUp = (PreferenceScreen) findPreference(KEY_HEADS_UP_SETTINGS);
+		
+		final PreferenceCategory nleds = (PreferenceCategory) findPreference(CATEGORY_NLEDS);
+
+        mNotifLedFrag = findPreference(KEY_NOTIFICATION_LIGHT);
+        //Remove notification led settings if device doesnt support it
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            nleds.removePreference(findPreference(KEY_NOTIFICATION_LIGHT));
+        }
+		
+		//Remove led category if device doesnt support notification or battery
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            prefScreen.removePreference(findPreference(CATEGORY_NLEDS));
+        }
 		
 	}
 	
