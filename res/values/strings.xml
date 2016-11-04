@@ -7749,10 +7749,10 @@
     <string name="deletion_helper_preference_title">Free up space now</string>
 
     <!-- Preference title for gesture settings [CHAR LIMIT=25]-->
-    <string name="gesture_preference_title">Gestures</string>
+    <string name="gesture_preference_title">Moves</string>
 
     <!-- Preference summary for gesture settings [CHAR LIMIT=NONE]-->
-    <string name="gesture_preference_summary">Quick gestures to control your phone</string>
+    <string name="gesture_preference_summary">Quick and handy gestures to launch specfic modules or enhance navigation usability</string>
 
     <!-- Title text for double tap power for camera [CHAR LIMIT=60]-->
     <string name="double_tap_power_for_camera_title">Double-snap</string>
