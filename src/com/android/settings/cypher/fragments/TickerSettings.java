@@ -114,7 +114,6 @@ public class TickerSettings extends SettingsPreferenceFragment implements
         mIconColor.setSummary(hexColor);
         mIconColor.setNewPreviewColor(intColor);
         mIconColor.setOnPreferenceChangeListener(this);
-        }
         setHasOptionsMenu(true);
     }
 	

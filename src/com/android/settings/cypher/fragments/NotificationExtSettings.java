@@ -68,7 +68,7 @@ public class NotificationExtSettings extends SettingsPreferenceFragment implemen
 		
 		final PreferenceCategory nleds = (PreferenceCategory) findPreference(CATEGORY_NLEDS);
 
-        mNotifLedFrag = findPreference(KEY_NOTIFICATION_LIGHT);
+        Preference mNotifLedFrag = findPreference(KEY_NOTIFICATION_LIGHT);
         //Remove notification led settings if device doesnt support it
         if (!getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveNotificationLed)) {
