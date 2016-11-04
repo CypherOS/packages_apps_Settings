@@ -93,31 +93,28 @@ public class TickerSettings extends SettingsPreferenceFragment implements
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(CAT_COLORS);
 
-        if (showTicker) {
-            mTextColor =
-                    (ColorPickerPreference) findPreference(TEXT_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
-                    0xffffffff); 
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mTextColor.setSummary(hexColor);
-			mTextColor.setNewPreviewColor(intColor);
-            mTextColor.setOnPreferenceChangeListener(this);
+        
+        mTextColor =
+                (ColorPickerPreference) findPreference(TEXT_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
+                0xffffffff); 
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mTextColor.setSummary(hexColor);
+        mTextColor.setNewPreviewColor(intColor);
+        mTextColor.setOnPreferenceChangeListener(this);
 
-            mIconColor =
-                    (ColorPickerPreference) findPreference(ICON_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                    0xffffffff); 
-            mIconColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mIconColor.setSummary(hexColor);
-            mIconColor.setNewPreviewColor(intColor);
-            mIconColor.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(CAT_COLORS);
+        mIconColor =
+                (ColorPickerPreference) findPreference(ICON_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
+                0xffffffff); 
+        mIconColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mIconColor.setSummary(hexColor);
+        mIconColor.setNewPreviewColor(intColor);
+        mIconColor.setOnPreferenceChangeListener(this);
         }
-
         setHasOptionsMenu(true);
     }
 	
@@ -128,8 +125,8 @@ public class TickerSettings extends SettingsPreferenceFragment implements
         mPrefsTickContainer = (ViewGroup) v.findViewById(R.id.prefstick_container);
         mDisabledTickText = v.findViewById(R.id.disabledtick_text);
 
-        View prefs = super.onCreateView(inflater, mPrefsTickContainer, savedInstanceState);
-        mPrefsTickContainer.addView(prefs);
+        View pref = super.onCreateView(inflater, mPrefsTickContainer, savedInstanceState);
+        mPrefsTickContainer.addView(pref);
 
         return v;
     }
@@ -193,15 +190,7 @@ public class TickerSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String hex;
         int intHex;
-
-        if (preference == mShowTicker) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(mResolver,
-                    Settings.System.STATUS_BAR_SHOW_TICKER,
-                    value ? 1 : 0);
-            refreshSettings();
-            return true;
-        } else if (preference == mTextColor) {
+        if (preference == mTextColor) {
             hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             intHex = ColorPickerPreference.convertToColorInt(hex);
@@ -250,17 +239,17 @@ public class TickerSettings extends SettingsPreferenceFragment implements
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
                     .setMessage(R.string.reset_color_message)
-                    .setNegativeButton(R.string.reset_no, null)
+                    .setNegativeButton(R.string.reset_no, null,
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
-                                    WHITE);
+                                    0xffffffff);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                                    WHITE);
+                                    0xffffffff);
                             getOwner().refreshSettings();
                         }
                     })
@@ -271,10 +260,10 @@ public class TickerSettings extends SettingsPreferenceFragment implements
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
-                                    WHITE);
+                                    0xffffffff);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                                    WHITE);
+                                    0xffffffff);
                             getOwner().refreshSettings();
                         }
                     })

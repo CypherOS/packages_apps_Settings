@@ -45,7 +45,6 @@ import android.util.Log;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -138,39 +137,6 @@ public class Gestures extends SettingsPreferenceFragment implements
     protected int getMetricsCategory() {
         return MetricsEvent.GESTURES;
     }
-	
-	private static class SummaryProvider implements SummaryLoader.SummaryProvider {
-        private final Context mContext;
-        private final SummaryLoader mLoader;
-
-        private SummaryProvider(Context context, SummaryLoader loader) {
-            mContext = context;
-            mLoader = loader;
-        }
-
-        @Override
-        public void setListening(boolean listening) {
-            if (listening) {
-                updateSummary();
-            }
-        }
-
-        private void updateSummary() {
-            boolean camgest = Settings.Secure.getInt(mContext.getContentResolver(),
-                    CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 1) == 0;
-            mLoader.setSummary(this, mContext.getString(camgest ? R.string.camera_double_tap_power_gesture_on
-                    : R.string.camera_double_tap_power_gesture_off));
-        }
-    }
-
-    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
-            = new SummaryLoader.SummaryProviderFactory() {
-        @Override
-        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
-                                                                   SummaryLoader summaryLoader) {
-            return new SummaryProvider(activity, summaryLoader);
-        }
-    };
 	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
