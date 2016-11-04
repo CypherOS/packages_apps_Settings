@@ -15,25 +15,19 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/ticker_title">
 
-    <SwitchPreference
-            android:key="status_bar_show_ticker"
-            android:title="@string/ticker_title"
-            android:summary="@string/ticker_title_summary"
-            android:defaultValue="false" />
+    <PreferenceCategory
+        android:key="ticker_colors"
+        android:title="@string/colors_title">
 
-        <PreferenceCategory
-            android:key="ticker_colors"
-            android:title="@string/colors_title">
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_ticker_text_color"
+            android:title="@string/text_title"
+            android:defaultValue="0xffffab00" />
 
-            <net.margaritov.preference.colorpicker.ColorPickerPreference
-                android:key="status_bar_ticker_text_color"
-                android:title="@string/text_title"
-                android:defaultValue="0xffffab00" />
-
-            <net.margaritov.preference.colorpicker.ColorPickerPreference
-                android:key="status_bar_ticker_icon_color"
-                android:title="@string/icon_title"
-                android:defaultValue="0xffffffff" />
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_ticker_icon_color"
+            android:title="@string/icon_title"
+            android:defaultValue="0xffffffff" />
 
     </PreferenceCategory>
 

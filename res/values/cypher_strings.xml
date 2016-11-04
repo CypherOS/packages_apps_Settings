@@ -13,11 +13,11 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- General strings -->
-    <string name="ok">OK</string>
     <string name="reset">Reset</string>
-	<string name="reset_color_message">Colors will be reset to the defaults. Continue?</string>
-	<string name="reset_color_android">Android</string>
-	<string name="reset_color_aoscp">AOSCP</string>
+	<string name="reset_yes">Yes</string>
+	<string name="reset_no">No</string>
+	<string name="ok">Ok</string>
+	<string name="reset_color_message">Colors will be reset to the defaults. Would you like to continue?</string>
 	<string name="reset_color_confirmation">The default colors have been restored</string>
     <string name="attention">Attention</string>
     <string name="enabled">Enabled</string>
@@ -433,6 +433,7 @@
 	<!-- Status Bar Ticker -->
     <string name="ticker_title">Ticker</string>
     <string name="ticker_title_summary">Utilize the old notification system from kitkat and below for simple notifications</string>
+	<string name="ticker_settings_disabled_notice">To allow your notifications to show on the statusbar instead of in a pop-up windows, enable Ticker notifications</string>
     <string name="ticker_restore_defaults_title">Restore defaults</string>
     <string name="text_title">Text</string>
     <string name="icon_title">Icon</string>

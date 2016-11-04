@@ -22,7 +22,9 @@ import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
@@ -30,9 +32,12 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen; 
 import android.support.v14.preference.SwitchPreference;
 import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -40,6 +45,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.utils.Utils;
+
+import com.android.settings.preference.BaseSystemSettingSwitchBar;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -55,15 +62,16 @@ public class TickerSettings extends SettingsPreferenceFragment implements
     private static final String ICON_COLOR =
             "status_bar_ticker_icon_color";
 
-    private static final int WHITE                  = 0xffffffff;
-    private static final int VRTOXIN_BLUE           = 0xff1976D2;
-
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
 
-    private SwitchPreference mShowTicker;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
+	
+	private BaseSystemSettingSwitchBar mEnabledSwitch;
+	
+	private ViewGroup mPrefsTickContainer;
+    private View mDisabledTickText;
 
     private ContentResolver mResolver;
 
@@ -74,24 +82,13 @@ public class TickerSettings extends SettingsPreferenceFragment implements
     }
 
     public void refreshSettings() {
-        PreferenceScreen prefs = getPreferenceScreen();
-        if (prefs != null) {
-            prefs.removeAll();
-        }
+        PreferenceScreen pref = getPreferenceScreen();
 
         addPreferencesFromResource(R.xml.ticker_settings);
         mResolver = getActivity().getContentResolver();
 
         int intColor;
         String hexColor;
-
-        boolean showTicker = Settings.System.getInt(mResolver,
-                Settings.System.STATUS_BAR_SHOW_TICKER, 0) == 1;
-
-        mShowTicker =
-                (SwitchPreference) findPreference(SHOW_TICKER);
-        mShowTicker.setChecked(showTicker);
-        mShowTicker.setOnPreferenceChangeListener(this);
 
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(CAT_COLORS);
@@ -122,6 +119,57 @@ public class TickerSettings extends SettingsPreferenceFragment implements
         }
 
         setHasOptionsMenu(true);
+    }
+	
+	@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.ticker_fragment, container, false);
+        mPrefsTickContainer = (ViewGroup) v.findViewById(R.id.prefstick_container);
+        mDisabledTickText = v.findViewById(R.id.disabledtick_text);
+
+        View prefs = super.onCreateView(inflater, mPrefsTickContainer, savedInstanceState);
+        mPrefsTickContainer.addView(prefs);
+
+        return v;
+    }
+	
+	@Override
+    public void onStart() {
+        super.onStart();
+        final SettingsActivity activity = (SettingsActivity) getActivity();
+        mEnabledSwitch = new BaseSystemSettingSwitchBar(activity, activity.getSwitchBar(),
+                Settings.System.STATUS_BAR_SHOW_TICKER, true, this);
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+
+        final SettingsActivity activity = (SettingsActivity) getActivity();
+        if (mEnabledSwitch != null) {
+            mEnabledSwitch.resume(activity);
+        }
+
+        if (!Utils.isTablet(getActivity())) {
+            mPrefsTickContainer.setPadding(0, 0, 0, 0);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mEnabledSwitch != null) {
+            mEnabledSwitch.pause();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mEnabledSwitch != null) {
+            mEnabledSwitch.teardownSwitchBar();
+        }
     }
 
     @Override
@@ -202,8 +250,7 @@ public class TickerSettings extends SettingsPreferenceFragment implements
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
                     .setMessage(R.string.reset_color_message)
-                    .setNegativeButton(R.string.cancel, null)
-                    .setNeutralButton(R.string.reset_color_android,
+                    .setNegativeButton(R.string.reset_no, null)
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -217,7 +264,7 @@ public class TickerSettings extends SettingsPreferenceFragment implements
                             getOwner().refreshSettings();
                         }
                     })
-                    .setPositiveButton(R.string.reset_color_aoscp,
+                    .setPositiveButton(R.string.reset_yes,
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -245,5 +292,28 @@ public class TickerSettings extends SettingsPreferenceFragment implements
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
+    }
+	
+	private boolean getUserTickerState() {
+        return Settings.System.getIntForUser(getContentResolver(),
+               Settings.System.STATUS_BAR_SHOW_TICKER,
+               UserHandle.USER_CURRENT) != 0;
+    }
+
+    private void setUserTickerState(int val) {
+        Settings.System.putIntForUser(getContentResolver(),
+                 Settings.System.STATUS_BAR_SHOW_TICKER,
+                 val, UserHandle.USER_CURRENT);
+    }
+
+    private void updateEnabledState() {
+        mPrefsTickContainer.setVisibility(getUserTickerState() ? View.VISIBLE : View.GONE);
+        mDisabledTickText.setVisibility(getUserTickerState() ? View.GONE : View.VISIBLE);
+    }
+
+    @Override
+    public void onEnablerChanged(boolean isEnabled) {
+        setUserTickerState(getUserTickerState() ? 1 : 0);
+        updateEnabledState();
     }
 }
