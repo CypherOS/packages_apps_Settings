@@ -31,11 +31,11 @@
                 android:key="tap_to_wake"
                 android:title="@string/tap_to_wake"
                 android:summary="@string/tap_to_wake_summary" />
-				
-		<PreferenceScreen
-		        android:key="moves_gestures"
-				android:title="@string/gesture_preference_title"
-				android:summary="@string/gesture_preference_summary"
-				android:fragment="com.android.settings.cypher.Moves"
+
+	<PreferenceScreen
+	        android:key="moves_gestures"
+		android:title="@string/gesture_preference_title"
+		android:summary="@string/gesture_preference_summary"
+		android:fragment="com.android.settings.cypher.Moves" />
 
 </PreferenceScreen>
