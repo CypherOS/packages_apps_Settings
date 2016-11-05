@@ -83,6 +83,10 @@
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gesti</string>
+	<string name="device_category_title">Dispositivo</string>
+	<string name="motion_gestures_title">Gesti di movimento</string>
+        <string name="motion_gestures_title_summary">Servizio di controllo dei dispositivi, come ad esempio Ambient Display, con azioni di movimento rilevate</string>
+	
 	<!-- Double-snap summary loaders -->
 	<string name="camera_double_tap_power_gesture_on">Doppio scatto è attualmente attivato</string>
 	<string name="camera_double_tap_power_gesture_off">Doppio scatto è attualmente disattivato</string>
@@ -162,7 +166,7 @@
   <string name="summary_doze_enabled">Abilitato</string>
   <string name="summary_doze_disabled">Disabilitato</string>
   <string name="doze_overwrite_value_title">Sovrascrittura predefinita</string>
-  <string name="doze_overwrite_value_summary">Consente di forzatura dei valori predefiniti con la configurazione utente</string>
+  <string name="doze_overwrite_value_summary">Consente una forzatura dei valori predefiniti con la configurazione utente</string>
   <string name="doze_pulse_title">Impostazioni configurabili dall\'utente</string>
   <string name="doze_pulse_duration_in_title">Dissolvenza in entrata</string>
   <string name="doze_pulse_duration_in_summary"></string>
@@ -240,7 +244,7 @@
   <string name="clock_date_style_uppercase">Maiuscolo</string>
   <string name="clock_date_format_custom">Formato Java personalizzato</string>
   <string name="clock_date_format">Formato data</string>
-  <string name="clock_date_string_edittext_title">Deve essere in formato data ad esempio. MM/dd/yy</string>
+  <string name="clock_date_string_edittext_title">Deve essere in formato data ad esempio. mm/dd/yy</string>
   <string name="clock_date_string_edittext_summary">Inserire una stringa</string>
 
     <!-- Status bar quick qs pulldown -->
@@ -364,7 +368,7 @@
     <string name="advanced">Avanzate</string>
     <string name="notification_light_use_custom">Usa valori personalizzati</string>
     <string name="notification_light_default_value">Predefinito</string>
-    <string name="notification_light_no_apps_summary">Per aggiungere al controllo app, attivare \'%1$s\' e premere \'\u002b\' sulla barra dei menù</string>
+    <string name="notification_light_no_apps_summary">Per aggiungere al controllo le app, attivare \'%1$s\' e premere \'\u002b\' sulla barra dei menù</string>
     <string name="allow_lights_title">Luci in modalità non disturbare</string>
     <string name="notification_light_screen_on">Luci con schermo acceso</string>
 	
@@ -444,5 +448,5 @@
     <string name="text_title">Testo</string>
     <string name="icon_title">Icona</string>
     <string name="colors_title">Colori</string>
-
+	
 </resources>
