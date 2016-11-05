@@ -78,6 +78,7 @@ import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.cypher.Additions;
 import com.android.settings.cypher.Gestures;
+import com.android.settings.cypher.fragments.HeadsUpSettings;
 import com.android.settings.dashboard.DashboardSummary;
 import com.android.settings.dashboard.DashboardContainerFragment;
 import com.android.settings.dashboard.SearchResultsSummary;
@@ -379,6 +380,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             AmbientSettings.class.getName(),
             MasterClear.class.getName(),
             NightDisplaySettings.class.getName(),
+			HeadsUpSettings.class.getName(),
     };
 
 
