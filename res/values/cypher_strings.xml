@@ -83,6 +83,7 @@
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
+	<string name="device_category_title">Device</string>
 	<!-- Double-snap summary loaders -->
 	<string name="camera_double_tap_power_gesture_on">Double-snap is ON</string>
 	<string name="camera_double_tap_power_gesture_off">Double-snap is OFF</string>
