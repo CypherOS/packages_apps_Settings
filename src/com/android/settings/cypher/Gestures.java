@@ -64,7 +64,13 @@ public class Gestures extends SettingsPreferenceFragment implements
 	
 	private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
 	private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
-			
+	private static final String KEY_CM_ACTIONS = "cm_actions";
+	private static final String KEY_ONEPLUS_DOZE = "oneplus_doze";
+
+    private static final String CATEGORY_DEVICE = "device_category";
+	
+	private Preference mCmActionsFragment;
+	private Preference mOnePlusDozeFragment;
 	private SwitchPreference mTapToWakePreference;
 	private SwitchPreference mLiftToWakePreference;
 	
@@ -75,6 +81,22 @@ public class Gestures extends SettingsPreferenceFragment implements
 		
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
+		
+		final PreferenceCategory device = (PreferenceCategory) findPreference(CATEGORY_DEVICE);
+
+        mCmActionsFragment = findPreference(KEY_CM_ACTIONS);
+        //Remove CMActions if device doesnt support it
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_isCmActionsSupported)) {
+            device.removePreference(findPreference(KEY_CM_ACTIONS));
+        }
+		
+		mOnePlusDozeFragment = findPreference(KEY_ONEPLUS_DOZE);
+        //Remove OnePlusDoze if device doesnt support it
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_isOnePlusDozeSupported)) {
+            device.removePreference(findPreference(KEY_ONEPLUS_DOZE));
+        }
 		
 		if (isTapToWakeAvailable(getResources())) {
             mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
