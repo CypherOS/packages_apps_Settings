@@ -290,5 +290,10 @@
 	<!-- Three-fingers-swipe to screenshot -->
   	<string name="three_finger_gesture">Swipe to screenshot</string>
   	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
+	
+	<!-- Optional screenshot type -->
+    <string name="screenshot_type_title">Screenshot type</string>
+    <string name="screenshot_type_fullscreen">Normal</string>
+    <string name="screenshot_type_partial">Partial</string>
  
 </resources>

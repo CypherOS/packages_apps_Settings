@@ -14,6 +14,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/system_settings_title">
+		
+		<!-- Screenshot type -->
+		<ListPreference
+                android:entries="@array/screenshot_type_entries"
+                android:entryValues="@array/screenshot_type_values"
+                android:key="screenshot_type"
+                android:title="@string/screenshot_type_title" />
 
 		<!-- PowerMenu settings -->
 		<PreferenceScreen
