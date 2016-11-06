@@ -100,6 +100,13 @@
                 <intent android:action="android.intent.action.VIEW"
                         android:data="https://source.android.com/security/bulletin/" />
         </PreferenceScreen>
+		
+		<!-- CypherOS Release ID -->
+        <Preference android:key="aoscp_release_id"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:title="@string/aoscp_release_id"
+                android:summary="@string/aoscp_release_id_default" />
 
         <!-- Device FCC equipment id -->
         <Preference android:key="fcc_equipment_id"
