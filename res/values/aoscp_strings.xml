@@ -188,4 +188,9 @@
     <string name="security_settings_fingerprint_sensor_location_left">left side</string>
     <string name="security_settings_fingerprint_sensor_location_right">right side</string>
 
+    <!-- Optional screenshot type -->
+    <string name="screenshot_type_title">Screenshot mode</string>
+    <string name="screenshot_type_fullscreen">Normal</string>
+    <string name="screenshot_type_partial">Partial</string>
+
 </resources>
