@@ -239,20 +239,7 @@ public class TickerSettings extends SettingsPreferenceFragment
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
                     .setMessage(R.string.reset_color_message)
-                    .setNegativeButton(R.string.reset_no,
-                            new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_SHOW_TICKER, 0);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
-                                    0xffffffff);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                                    0xffffffff);
-                            getOwner().refreshSettings();
-                        }
-                    })
+                    .setNegativeButton(R.string.reset_no, null)
                     .setPositiveButton(R.string.reset_yes,
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
