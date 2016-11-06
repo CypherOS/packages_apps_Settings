@@ -42,6 +42,10 @@ import java.util.List;
 
 public class SystemSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "SystemSettings";
+	
+	private static final String SCREENSHOT_TYPE = "screenshot_type";
+
+    private ListPreference mScreenshotType;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,27 @@ public class SystemSettings extends SettingsPreferenceFragment implements Indexa
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
+		mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
+        int mScreenshotTypeValue = Settings.System.getInt(resolver,
+                Settings.System.SCREENSHOT_TYPE, 0);
+        mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
+        mScreenshotType.setSummary(mScreenshotType.getEntry());
+        mScreenshotType.setOnPreferenceChangeListener(this);
+    }
+	
+	@Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if  (preference == mScreenshotType) {
+            int mScreenshotTypeValue = Integer.parseInt(((String) newValue).toString());
+            mScreenshotType.setSummary(
+                    mScreenshotType.getEntries()[mScreenshotTypeValue]);
+            Settings.System.putInt(resolver,
+                    Settings.System.SCREENSHOT_TYPE, mScreenshotTypeValue);
+            mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
+            return true;
+        }
+        return false;
     }
 
     @Override
