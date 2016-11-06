@@ -87,14 +87,14 @@ public class Gestures extends SettingsPreferenceFragment implements
         mCmActionsFragment = findPreference(KEY_CM_ACTIONS);
         //Remove CMActions if device doesnt support it
         if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_isCmActionsSupported)) {
+                R.bool.config_isCmActionsSupported)) {
             device.removePreference(findPreference(KEY_CM_ACTIONS));
         }
 		
 		mOnePlusDozeFragment = findPreference(KEY_ONEPLUS_DOZE);
         //Remove OnePlusDoze if device doesnt support it
         if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_isOnePlusDozeSupported)) {
+                R.bool.config_isOnePlusDozeSupported)) {
             device.removePreference(findPreference(KEY_ONEPLUS_DOZE));
         }
 		
