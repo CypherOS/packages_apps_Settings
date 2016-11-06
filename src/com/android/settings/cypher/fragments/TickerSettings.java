@@ -277,7 +277,7 @@ public class TickerSettings extends SettingsPreferenceFragment
     }
 
     private void setUserTickerState(int val) {
-        Settings.System.putInt(getContentResolver(),
+        Settings.System.putIntForUser(getContentResolver(),
                  Settings.System.STATUS_BAR_SHOW_TICKER,
                  val, UserHandle.USER_CURRENT);
     }
