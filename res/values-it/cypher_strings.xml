@@ -28,7 +28,11 @@
     <!-- About phone screen, CypherOS version -->
   <string name="aoscp_version_title">Versione CypherOS</string>
   <string name="aoscp_version_default">Sconosciuto</string>
-	<string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+  <string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+     <!-- About phone screen, CypherOS Release ID -->
+     <string name="aoscp_release_id">Rilascio ID</string>
+     <string name="aoscp_release_id_default">Non specificato</string>
+	
 	<!-- About phone screen, CypherOS API -->
 	<string name="aoscp_api_level">Versione CypherOS</string>
   <string name="aoscp_api_level_default">Sconosciuto</string>
@@ -448,5 +452,19 @@
     <string name="text_title">Testo</string>
     <string name="icon_title">Icona</string>
     <string name="colors_title">Colori</string>
+	
+	<!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Desktop esteso</string>
+    <string name="expanded_hide_nothing">Non nascondere nulla</string>
+    <string name="expanded_hide_status">Nascondi la barra di stato</string>
+    <string name="expanded_hide_navigation">Nascondi la barra di navigazione</string>
+    <string name="expanded_hide_both">Nascondi entrambi</string>
+    <string name="expanded_nothing_to_show">Per aggiungere una configurazione personalizzata per le app dello stato esteso, imposta "Abilitato per tutti" nella posizione spento</string>
+    <string name="expanded_desktop_state">Stato espansione</string>
+    <string name="expanded_enabled_for_all">Abilitato per tutti</string>
+    <string name="expanded_user_configurable">Configurabile dall\'utente</string>
+    <string name="expanded_desktop_style">Stile desktop esteso</string>
+    <string name="expanded_desktop_style_description">Scegli uno stile di desktop esteso predefinito</string>
+    <string name="expanded_desktop_title">Opzioni desktop esteso</string>
 	
 </resources>
