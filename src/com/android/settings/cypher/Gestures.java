@@ -32,7 +32,7 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;

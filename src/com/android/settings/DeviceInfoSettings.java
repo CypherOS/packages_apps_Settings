@@ -150,7 +150,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
         setValueSummary(KEY_AOSCP_API_LEVEL, "ro.aoscp.api");
 		findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
-		findPreference(KEY_AOSCP_RELEASE_ID.setSummary(Build.VERSION.AOSCPID);
+		findPreference(KEY_AOSCP_RELEASE_ID).setSummary(Build.VERSION.AOSCPID);
         findPreference(KEY_AOSCP_RELEASE_ID).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {

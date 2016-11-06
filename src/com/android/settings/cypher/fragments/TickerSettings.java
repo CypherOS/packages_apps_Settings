@@ -239,7 +239,7 @@ public class TickerSettings extends SettingsPreferenceFragment
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
                     .setMessage(R.string.reset_color_message)
-                    .setNegativeButton(R.string.reset_no, null,
+                    .setNegativeButton(R.string.reset_no,
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -284,13 +284,13 @@ public class TickerSettings extends SettingsPreferenceFragment
     }
 	
 	private boolean getUserTickerState() {
-        return Settings.System.getIntForUser(getContentResolver(),
+        return Settings.System.getInt(getContentResolver(),
                Settings.System.STATUS_BAR_SHOW_TICKER,
                UserHandle.USER_CURRENT) != 0;
     }
 
     private void setUserTickerState(int val) {
-        Settings.System.putIntForUser(getContentResolver(),
+        Settings.System.putInt(getContentResolver(),
                  Settings.System.STATUS_BAR_SHOW_TICKER,
                  val, UserHandle.USER_CURRENT);
     }
