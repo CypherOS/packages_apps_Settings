@@ -36,6 +36,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
@@ -56,7 +57,8 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SystemSettings extends SettingsPreferenceFragment implements Indexable {
+public class SystemSettings extends SettingsPreferenceFragment implements 
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "SystemSettings";
 	
 	private static final String SCREENSHOT_TYPE = "screenshot_type";
