@@ -51,6 +51,11 @@ import java.util.List;
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
+    private void toastUp(String s) {
+        Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
+        toast.getView().setBackgroundDrawable(null);
+        toast.show();
+    }
 
     private static final String LOG_TAG = "DeviceInfoSettings";
 
