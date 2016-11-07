@@ -232,12 +232,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         mDebuggingFeaturesDisallowedBySystem = RestrictedLockUtils.hasBaseUserRestriction(
                 getActivity(), UserManager.DISALLOW_DEBUGGING_FEATURES, UserHandle.myUserId());
     }
-	
-	private void toastUp(String s) {
-        Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
-        toast.getView().setBackgroundDrawable(null);
-        toast.show();
-    }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
@@ -329,9 +323,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
-                toastUp("\uD83D\uDD95");
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.putExtra("is_cm", true);
+                intent.setClassName("android",
+                        com.android.internal.app.PlatLogoActivity.class.getName());
+                try {
+                    startActivity(intent);
                 } catch (Exception e) {
-                    Log.e(LOG_TAG, "Couldn't fuck the user " + intent.toString());
+                    Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
             }
         }
