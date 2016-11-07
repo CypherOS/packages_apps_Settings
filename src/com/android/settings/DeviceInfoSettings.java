@@ -51,6 +51,11 @@ import java.util.List;
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
+    private void toastUp(String s) {
+        Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
+        toast.getView().setBackgroundDrawable(null);
+        toast.show();
+    }
 
     private static final String LOG_TAG = "DeviceInfoSettings";
 
@@ -323,14 +328,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.putExtra("is_cm", true);
-                intent.setClassName("android",
-                        com.android.internal.app.PlatLogoActivity.class.getName());
-                try {
-                    startActivity(intent);
+                toastUp("\uD83D\uDD95");
                 } catch (Exception e) {
-                    Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
+                    Log.e(LOG_TAG, "Couldn't fuck the user " + intent.toString());
                 }
             }
         }
