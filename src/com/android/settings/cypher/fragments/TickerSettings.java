@@ -272,14 +272,12 @@ public class TickerSettings extends SettingsPreferenceFragment
 	
 	private boolean getUserTickerState() {
         return Settings.System.getInt(getContentResolver(),
-               Settings.System.STATUS_BAR_SHOW_TICKER,
-               UserHandle.USER_CURRENT) != 0;
+               Settings.System.STATUS_BAR_SHOW_TICKER, 0);
     }
 
-    private void setUserTickerState(int val) {
-        Settings.System.putIntForUser(getContentResolver(),
-                 Settings.System.STATUS_BAR_SHOW_TICKER,
-                 val, UserHandle.USER_CURRENT);
+    private void setUserTickerState() {
+        return Settings.System.putInt(getContentResolver(),
+               Settings.System.STATUS_BAR_SHOW_TICKER, 1);
     }
 
     private void updateEnabledState() {
