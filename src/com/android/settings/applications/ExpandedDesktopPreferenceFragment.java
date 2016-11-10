@@ -110,6 +110,8 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
         }
         mAllPackagesAdapter = new AllPackagesAdapter(getActivity());
 
+        mAllPackagesAdapter.notifyDataSetChanged();
+
         setHasOptionsMenu(true);
     }
 
@@ -261,7 +263,7 @@ public class ExpandedDesktopPreferenceFragment extends SettingsPreferenceFragmen
 
     @Override
     public void onRebuildComplete(ArrayList<ApplicationsState.AppEntry> entries) {
-        rebuild();
+        handleAppEntries(entries);
     }
 
     @Override
