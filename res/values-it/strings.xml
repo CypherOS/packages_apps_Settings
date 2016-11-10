@@ -3208,4 +3208,36 @@
     <string name="oem_unlock_enable_disabled_summary_connectivity_or_locked" msgid="5884723935668892613">"Connettiti a Internet o contatta il tuo operatore"</string>
     <string name="oem_unlock_enable_disabled_summary_sim_locked_device" msgid="4149387448213399630">"Non disponibile sui dispositivi bloccati dall\'operatore"</string>
     <string name="automatic_storage_manager_freed_bytes" msgid="7517560170441007788">"<xliff:g id="SIZE">%1$s</xliff:g> disponibili in totale\n\nUltima esecuzione: <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    
+    <!-- Wifi extension requirement -->
+    <string name="wifi_set_priority_settings_title">Impostazioni di priorità AP</string>
+    <string name="wifi_set_priority_settings_summary">Fare clic per impostare la priorità di ogni punto di accesso</string>
+    <string name="cellular_to_wlan_title">Cellulare->WLAN</string>
+    <string name="wifi_auto_connect_type_title">Tipo di connessione automatica</string>
+    <string name="wifi_auto_connect_type_summary">Specificare il tipo di connessione di rete</string>
+    <string name="wifi_menu_disconnect">Scollegare dalla rete</string>
+    <string name="cellular_to_wlan_hint_title">Cellulare->WLAN suggerimento</string>
+    <string name="cellular_to_wlan_hint_summary">Consenti il suggerimento quando scegli manualmente o chiedi sempre in Cellulare-> WLAN</string>
+    <string name="cellular_to_wlan_hint_toast">Cellulare->WLAN la connessione può essere soggetta</string>
+    <string name="wlan_to_cellular_hint_title">WLAN->Cellulare suggerimento</string>
+    <string name="notify_connect">Richiesta CMCC WLAN</string>
+    <string name="notify_connect_summary">Avvisa quando ha l\'accesso alla CMCC WLAN</string>
+    <string name="wifi_setting_connect_type_error">C\'era un problema di impostazione nel tipo di connessione.</string>
+    <string name="app_ops_permiss_name">Accesso di rete app</string>
+
+    <!-- Roaming Data Settings -->
+    <string name="label_global_roaming_settings">Impostazioni di roaming</string>
+    <string name="set_data_time_range">Mostra l\'intervallo di tempo</string>
+
+    <string name="select_sim_card">Selezionare SIM card</string>
+
+    <string name="mbn_version">Versione MBN</string>
+    <!-- show security alert for open type end -->
+    <string name="voice_over_lte">Voce oltre LTE</string>
+
+    <string name="tethering_help_dialog_title">Aiuto</string>
+    <string name="tethering_help_dialog_text"><b>USB tethering</b> \n È possibile collegare il dispositivo Android al computer con un cavo USB, per condividere la connessione Internet del dispositivo con il computer. \n\n1.USB tethering funziona con Windows Vista, Windows 7, Windows 8, Windows 8.1 e Linux. \n\n2.Se il dispositivo è dotato di una scheda SD o memoria USB, non si possono montare sul computer quando collegato alla USB tethering. \n\n <b>Hotspot WiFi portatile</b> \n È possibile trasformare il vostro dispositivo Android in un hotspot Wi-Fi portatile, per condividere la connessione Internet del dispositivo Android con uno o più computer o altri dispositivi. \n\n1.Quando il dispositivo è in funzione come un hotspot WiFi, non è possibile utilizzare le applicazioni del dispositivo per accedere a Internet tramite la connessione Wi-Fi (ma naturalmente si rimane connessi a Internet tramite la rete dati mobile). \n\n2.È possibile configurare l\'hotspot con le impostazioni di hotspot Wi-Fi.</string>
+
+    <string name="lte_data_and_voice_calling_enabled">I dati LTE e il servizio Voice Calling (IMS/VoLTE) abilitati</string>
+    <string name="lte_data_service_enabled">Servizio dati LTE abilitato </string>
 </resources>
