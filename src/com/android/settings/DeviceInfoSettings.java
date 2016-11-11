@@ -56,7 +56,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     private static final String KEY_MANUAL = "manual";
     private static final String KEY_REGULATORY_INFO = "regulatory_info";
-	private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
+    private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
     private static final String PROPERTY_SELINUX_STATUS = "ro.build.selinux";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
@@ -66,7 +66,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
-	private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
+    private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
@@ -76,10 +76,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_AOSCP_VERSION = "aoscp_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_AOSCP_API_LEVEL = "aoscp_api_level";
-	private static final String KEY_AOSCP_RELEASE_ID = "aoscp_release_id";
+    private static final String KEY_AOSCP_RELEASE_ID = "aoscp_release_id";
     private static final String KEY_QGP_VERSION = "qgp_version";
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
-	private static final String KEY_VENDOR_VERSION = "vendor_version";
+    private static final String KEY_VENDOR_VERSION = "vendor_version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -148,7 +148,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
-        findPreference(KEY_AOSCP_API_LEVEL).setSummary(Build.VERSION_CODES.API);
+        findPreference(KEY_AOSCP_API_LEVEL).setSummary(Build.VERSION.API);
 		findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
 		findPreference(KEY_AOSCP_RELEASE_ID).setSummary(Build.VERSION.AOSCPID);
         findPreference(KEY_AOSCP_RELEASE_ID).setEnabled(true);
@@ -233,8 +233,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 getActivity(), UserManager.DISALLOW_DEBUGGING_FEATURES, UserHandle.myUserId());
     }
 	
-	private void toastUp(String s) {
-        Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
+    private void toastUp(String s) {
+        Toast toast = Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT);
         toast.getView().setBackgroundDrawable(null);
         toast.show();
     }
@@ -328,11 +328,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         } else if (preference.getKey().equals(KEY_AOSCP_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
+
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
                 toastUp("\uD83D\uDD95");
-                } catch (Exception e) {
-                    Log.e(LOG_TAG, "Couldn't fuck the user " + intent.toString());
-                }
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "Couldn't fuck the user " + intent.toString());
             }
         }
         return super.onPreferenceTreeClick(preference);
