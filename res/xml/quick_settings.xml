@@ -36,7 +36,7 @@
     <PreferenceCategory android:key="layout_category"
             android:title="@string/qs_layout_category_title">
 			
-		<ListPreference
+		<!--<ListPreference
             android:key="qs_rows_portrait"
             android:title="@string/qs_rows_portrait_title"
             android:entries="@array/qs_rows_portrait_entries"
@@ -52,7 +52,7 @@
             android:key="qs_columns"
             android:title="@string/qs_columns_title"
             android:entries="@array/qs_columns_entries"
-            android:entryValues="@array/qs_columns_values" />
+            android:entryValues="@array/qs_columns_values" />-->
 			
 		<ListPreference
             android:key="sysui_qqs_count_key"
