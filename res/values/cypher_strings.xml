@@ -171,23 +171,23 @@
    <string name="bluetooth_accept_all_files">Accept all file types</string>
    
    <!-- Doze pulse options -->
-    <string name="summary_doze_enabled">Enabled</string>
-    <string name="summary_doze_disabled">Disabled</string>
-    <string name="doze_overwrite_value_title">Overwrite defaults</string>
-    <string name="doze_overwrite_value_summary">Allow override of default values with user config</string>
-    <string name="doze_pulse_title">User configurable settings</string>
+    <string name="summary_doze_enabled">Ambient display is ON</string>
+    <string name="summary_doze_disabled">Ambient display is OFF</string>
+    <string name="doze_overwrite_value_title">Advanced settings</string>
+    <string name="doze_overwrite_value_summary">Customize the functionality of Ambient Display</string>
+    <string name="doze_pulse_title">Advanced</string>
     <string name="doze_pulse_duration_in_title">Fade in</string>
     <string name="doze_pulse_duration_in_summary"></string>
     <string name="doze_pulse_duration_visible_title">Visible duration</string>
     <string name="doze_pulse_duration_visible_summary"></string>
     <string name="doze_pulse_duration_out_title">Fade out</string>
     <string name="doze_pulse_duration_out_summary"></string>
-    <string name="doze_trigger_pickup_title">Pick up sensor trigger</string>
-    <string name="doze_trigger_pickup_summary_on">Pulse will be triggered by pick up sensor</string>
-    <string name="doze_trigger_pickup_summary_off">Pick up sensor will not be utilized as a trigger</string>
-    <string name="doze_trigger_notification_title">Notification trigger</string>
-    <string name="doze_trigger_notification_summary_on">Pulse will be triggered by notifications</string>
-    <string name="doze_trigger_notification_summary_off">Notifications will not be utilized as a trigger</string>
+    <string name="doze_trigger_pickup_title">Pick up</string>
+    <string name="doze_trigger_pickup_summary_on">Ambient display will be triggered when picking up your device</string>
+    <string name="doze_trigger_pickup_summary_off">Picking up your device will not trigger ambient display</string>
+    <string name="doze_trigger_notification_title">Notification wake</string>
+    <string name="doze_trigger_notification_summary_on">Ambient display will be triggered by notifications</string>
+    <string name="doze_trigger_notification_summary_off">Inbound notifications won't trigger ambient display</string>
     <string name="doze_brightness_level_title">Brightness level</string>
     <string name="onehundred_ms">100 ms</string>
     <string name="twofifty_ms">250 ms</string>
@@ -467,7 +467,7 @@
 	
 	<!-- Optional screenshot type -->
     <string name="screenshot_type_title">Screenshot type</string>
-    <string name="screenshot_type_fullscreen">Take fullscreen screenshots</string>
-    <string name="screenshot_type_partial">Drag selection on the area you want to take as a screenshot</string>
+    <string name="screenshot_type_fullscreen">Fullscreen</string>
+    <string name="screenshot_type_partial">Partial</string>
  
 </resources>
