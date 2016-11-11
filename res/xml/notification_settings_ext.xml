@@ -44,6 +44,7 @@
 	    <PreferenceScreen
                 android:key="notification_light"
                 android:title="@string/notification_light_title"
+				android:summary="@string/notification_light_title_summary"
                 android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 	</PreferenceCategory>
 
