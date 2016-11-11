@@ -36,9 +36,10 @@
                 android:fragment="com.android.settings.deviceinfo.Status">
         </PreferenceScreen>
 		
-		<!-- Software information -->
+		<!-- Software info -->
         <PreferenceScreen android:key="software_info"
                 android:title="@string/software_info_settings_title"
+				android:summary="@string/software_info_settings_title_summary"
                 android:fragment="com.android.settings.cypher.deviceinfo.SoftwareInfo" />
 
         <!-- Manual -->
