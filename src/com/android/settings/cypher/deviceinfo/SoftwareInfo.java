@@ -46,6 +46,8 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
 	
 	Preference mWebsiteUrl;
     Preference mGoogleUrl;
+	Preference mGithubUrl;
+	Preference mGerritUrl;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
 		
 		mWebsiteUrl = findPreference("on_the_web");
         mGoogleUrl = findPreference("cypher_plus");
+		mGithubUrl = findPreference("github_source");
+		mGerritUrl = findPreference("gerrit_review");
 		
 	}
 	
@@ -71,6 +75,10 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
             launchUrl("http://cypheros.co");
         } else if (preference == mGoogleUrl) {
             launchUrl("https://plus.google.com/communities/111402352496339801246");
+		} else if (preference == mGithubUrl) {
+            launchUrl("https://github.com/CypherOS");
+		} else if (preference == mGerritUrl) {
+            launchUrl("http://gerrit.cypheros.co/");
         }
         return super.onPreferenceTreeClick(preference);
     }
