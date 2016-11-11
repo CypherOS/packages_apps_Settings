@@ -148,9 +148,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
-        findPreference(KEY_AOSCP_API_LEVEL).setSummary(Build.VERSION.API);
-		findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
-		findPreference(KEY_AOSCP_RELEASE_ID).setSummary(Build.VERSION.AOSCPID);
+        findPreference(KEY_AOSCP_API_LEVEL).setSummary(Build.API);
+	findPreference(KEY_AOSCP_API_LEVEL).setEnabled(true);
+	findPreference(KEY_AOSCP_RELEASE_ID).setSummary(Build.VERSION.AOSCPID);
         findPreference(KEY_AOSCP_RELEASE_ID).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
@@ -331,8 +331,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
                 toastUp("\uD83D\uDD95");
-            } catch (Exception e) {
-                Log.e(LOG_TAG, "Couldn't fuck the user " + intent.toString());
+            } else {
+                Log.e(LOG_TAG, "Couldn't fuck the user =(");
             }
         }
         return super.onPreferenceTreeClick(preference);

@@ -272,7 +272,7 @@ public class TickerSettings extends SettingsPreferenceFragment
 
     private boolean getUserTickerState() {
         return Settings.System.getInt(getContentResolver(),
-               Settings.System.STATUS_BAR_SHOW_TICKER, 0);
+               Settings.System.STATUS_BAR_SHOW_TICKER, 0) == 1;
     }
 
     private void setUserTickerState(int state) {
