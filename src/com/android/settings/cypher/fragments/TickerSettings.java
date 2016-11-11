@@ -69,9 +69,9 @@ public class TickerSettings extends SettingsPreferenceFragment
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
 	
-	private BaseSystemSettingSwitchBar mEnabledSwitch;
+    private BaseSystemSettingSwitchBar mEnabledSwitch;
 	
-	private ViewGroup mPrefsTickContainer;
+    private ViewGroup mPrefsTickContainer;
     private View mDisabledTickText;
 
     private ContentResolver mResolver;
@@ -269,15 +269,15 @@ public class TickerSettings extends SettingsPreferenceFragment
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
     }
-	
-	private boolean getUserTickerState() {
+
+    private boolean getUserTickerState() {
         return Settings.System.getInt(getContentResolver(),
                Settings.System.STATUS_BAR_SHOW_TICKER, 0);
     }
 
-    private void setUserTickerState() {
-        return Settings.System.putInt(getContentResolver(),
-               Settings.System.STATUS_BAR_SHOW_TICKER, 1);
+    private void setUserTickerState(int state) {
+        Settings.System.putInt(getContentResolver(),
+               Settings.System.STATUS_BAR_SHOW_TICKER, state);
     }
 
     private void updateEnabledState() {
