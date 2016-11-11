@@ -362,7 +362,8 @@
     <string name="battery_light_medium_color_title">Charging</string>
     <string name="battery_light_full_color_title">Charged (90%)</string>
     <string name="battery_light_really_full_color_title">Charged (100%)</string>
-    <string name="notification_light_title">Notification light</string>
+    <string name="notification_light_title">Notification LED</string>
+	<string name="notification_light_title_summary">Various LED options for inbound notifications and alerts</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="advanced">Advanced</string>
