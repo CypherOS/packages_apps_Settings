@@ -184,7 +184,7 @@
   <string name="doze_trigger_pickup_summary_off">Il sensore gesto di sollevamento non sarà utilizzato come un meccanismo di attivazione</string>
   <string name="doze_trigger_notification_title">Attivazione notifica</string>
   <string name="doze_trigger_notification_summary_on">Doze pulse sarà attivato dalle notifiche</string>
-  <string name="doze_trigger_notification_summary_off">Le notifiche non saranno utilizzate come attivazione</string>
+  <string name="doze_trigger_notification_summary_off">Le notifiche in entrata non attiveranno Ambient display</string>
   <string name="doze_brightness_level_title">Livello di luminosità</string>
   <string name="onehundred_ms">100 ms</string>
   <string name="twofifty_ms">250 ms</string>
