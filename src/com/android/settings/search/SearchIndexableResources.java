@@ -20,6 +20,7 @@ import android.provider.SearchIndexableResource;
 import com.android.settings.cypher.Additions;
 import com.android.settings.cypher.Gestures;
 import com.android.settings.cypher.deviceinfo.SoftwareInfo;
+import com.android.settings.cypher.fragments.BatterySettings;
 import com.android.settings.cypher.fragments.StatusbarSettings;
 import com.android.settings.cypher.fragments.QuickSettings;
 import com.android.settings.cypher.fragments.SystemSettings;
@@ -184,6 +185,13 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         StatusbarSettings.class.getName(),
                         R.drawable.ic_settings_statusbar));
+						
+		sResMap.put(BatterySettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(BatterySettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        BatterySettings.class.getName(),
+                        R.drawable.ic_settings_battery));
 						
 		sResMap.put(QuickSettings.class.getName(),
                 new SearchIndexableResource(
