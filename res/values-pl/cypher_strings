@@ -79,8 +79,8 @@
     <!-- Power menu customization -->
     <string name="power_menu_reboot_title">Restart</string>
     <string name="power_menu_screenshot_title">Zrzut ekranu</string>
-	<string name="power_menu_screenrecord_title">Nagrywanie ekranu</string>
-	<string name="power_menu_torch_title">Latarka</string>
+    <string name="power_menu_screenrecord_title">Nagrywanie ekranu</string>
+    <string name="power_menu_torch_title">Latarka</string>
     <string name="power_menu_airplane_title">Tryb samolotowy</string>
     <string name="power_menu_users_title">Zmień użytkownika</string>
     <string name="power_menu_search_title">Wyszukiwanie</string>
@@ -168,10 +168,10 @@
    <string name="less_notification_sounds_2m">2 minuty</string>
    <string name="less_notification_sounds_5m">5 minuty</string>
    
-   <!-- Bluetooth accept all files -->
+      <!-- Bluetooth accept all files -->
    <string name="bluetooth_accept_all_files">Akceptuj wszystkie pliki</string>
    
-   <!-- Doze pulse options -->
+      <!-- Doze pulse options -->
     <string name="summary_doze_enabled">Ambient display włączony</string>
     <string name="summary_doze_disabled">Ambient display wyłączony</string>
     <string name="doze_overwrite_value_title">Ustawienia zaawansowane</string>
@@ -227,8 +227,8 @@
     <string name="volume_steps_5">5</string>
 	
 	<!-- Statusbar Settings -->
-	<string name="statusbar_settings_title">Pasek stanu</string>
-	<string name="statusbar_settings_title_summary">Zmień wygląd i zachowanie paska stanu</string>
+    <string name="statusbar_settings_title">Pasek stanu</string>
+    <string name="statusbar_settings_title_summary">Zmień wygląd i zachowanie paska stanu</string>
     <!-- Status bar - Clock -->
     <string name="status_bar_clock_title">Zegar &amp; data</string>
     <string name="status_bar_clock_style_title">Umiejscowienie</string>
@@ -262,7 +262,7 @@
 	
 	<!-- Network traffic -->
     <string name="network_traffic_title">Ruch sieciowy</string>
-	<string name="network_traffic_title_summary">Monitoruj prędkość przychodzących i wychodzących połączeń sieciowych na pasku statusu</string>
+    <string name="network_traffic_title_summary">Monitoruj prędkość przychodzących i wychodzących połączeń sieciowych na pasku statusu</string>
     <string name="show_network_traffic_state">Wskaźnik ruchu na pasku statusu</string>
     <string name="show_network_traffic_unit">Wyświetlane jednostki</string>
     <string name="show_network_traffic_frequency">Częstotliwość odświeżania</string>
@@ -279,7 +279,7 @@
     <string name="network_traffic_autohide">Autoukrywanie</string>
     <string name="network_traffic_autohide_summary">Ukryj wskaźnik ruchu przy braku aktywności sieciowej</string>
     <string name="network_traffic_autohide_threshold">Granica nieaktywności</string>
-	<string name="network_traffic_hidearrow">Ukryj strzałki</string>
+    <string name="network_traffic_hidearrow">Ukryj strzałki</string>
     <string name="network_traffic_hidearrow_summary">Ukryj strzałki wskaźnika ruchu sieciowego</string>
 	
 	<!-- Smart pulldown-->
@@ -364,15 +364,15 @@
     <string name="battery_light_full_color_title">Naładowane (90%)</string>
     <string name="battery_light_really_full_color_title">Naładowane (100%)</string>
     <string name="notification_light_title">Powiadomienia LED</string>
-	<string name="notification_light_title_summary">Różne opcje diody dla powiadomień</string>
+    <string name="notification_light_title_summary">Różne opcje diody dla powiadomień</string>
     <string name="notification_light_general_title">Ogólne</string>
     <string name="notification_light_applist_title">Aplikacje</string>
     <string name="advanced">Zaawansowane</string>
     <string name="notification_light_use_custom">Użyj własnych wartości</string>
     <string name="notification_light_default_value">Domyślne</string>
     <string name="notification_light_no_apps_summary">Aby dodać profil aplikacji aktywuj\'%1$s\' i naciśnij \'\u002b\' w pasku menu</string>
-	<string name="allow_lights_title">Dioda w trybie nie przeszkadzać</string>
-	<string name="notification_light_screen_on">Dioda przy włączonym ekranie</string>
+    <string name="allow_lights_title">Dioda w trybie nie przeszkadzać</string>
+    <string name="notification_light_screen_on">Dioda przy włączonym ekranie</string>
 	
 	<!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Nazwa dostawcy</string>
@@ -385,12 +385,12 @@
     <string name="show_carrier_keyguard">Ekran blokady</string>
     <string name="show_carrier_statusbar">Pasek statusu</string>
     <string name="show_carrier_enabled">Ekran blokady &amp; pasek statusu</string>
-	<string name="status_bar_carrier_color">Kolor</string>
+    <string name="status_bar_carrier_color">Kolor</string>
     <string name="status_bar_carrier_size">Rozmiar tekstu</string>
 	
 	<!-- Quick Settings -->
-	<string name="quick_settings_title">Szybkie ustawienia</string>
-	<string name="quick_settings_title_summary">Ustaw zachowanie i wygląd panelu szybkich ustawień</string>
+    <string name="quick_settings_title">Szybkie ustawienia</string>
+    <string name="quick_settings_title_summary">Ustaw zachowanie i wygląd panelu szybkich ustawień</string>
 	<!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Dane po tapnięciu</string>
     <string name="qs_advanced_data_summary">Włącz/wyłącz dane mobilne za pomocą jednego tapnięcia</string>
@@ -405,7 +405,7 @@
     <string name="qs_rows_portrait_title">Tryb portretu rzędy</string>
     <string name="qs_rows_landscape_title">Tryb krajobrazu rzędy</string>
     <string name="qs_columns_title">Kolumny</string>
-	<string name="sysui_qqs_count_title">Ilość skrótów</string>
+    <string name="sysui_qqs_count_title">Ilość skrótów</string>
 	
 	<!-- Force expand notifications -->
     <string name="notification_force_expand_title">Wymuś rozwinięte powiadomienia</string>
@@ -416,8 +416,8 @@
     <string name="status_bar_notif_count_summary">Pokaż liczbę oczekujących powiadomień</string>
 	
 	<!-- Notification Settings -->
-	<string name="notification_settings_title">Powiadomienia</string>
-	<string name="notification_settings_title_summary">Więcej ustawień powiadomień</string>
+    <string name="notification_settings_title">Powiadomienia</string>
+    <string name="notification_settings_title_summary">Więcej ustawień powiadomień</string>
 	<!-- Heads up settings -->
     <string name="headsup_settings_title">Heads up</string>
     <string name="summary_heads_up_enabled">Powiadomienia wyskakujące włączone</string>
@@ -447,7 +447,7 @@
 	<!-- Status Bar Ticker -->
     <string name="ticker_title">Ticker</string>
     <string name="ticker_title_summary">Użyj starego stylu powiadomień z KitKata</string>
-	<string name="ticker_settings_disabled_notice">Aby zezwolić powiadomieniom na pojawianie się na pasku statusu uruchum Ticker</string>
+    <string name="ticker_settings_disabled_notice">Aby zezwolić powiadomieniom na pojawianie się na pasku statusu uruchum Ticker</string>
     <string name="ticker_restore_defaults_title">Przywróć domyślne</string>
     <string name="text_title">Tekst</string>
     <string name="icon_title">Ikona</string>
@@ -471,5 +471,29 @@
     <string name="screenshot_type_title">Tryb zrzutu ekranu</string>
     <string name="screenshot_type_fullscreen">Pełny ekran</string>
     <string name="screenshot_type_partial">Częściowy</string>
- 
+  
+        <!-- Battery styles -->
+    <string name="battery_title">Wskaźnik naładowania baterii</string>
+    <string name="status_bar_battery_title">Ikona baterii</string>
+    <string name="status_bar_battery_summary">Ustaw wygląd wskaźnika naładowania baterii na pasku statusu.</string>
+    <string name="battery_style_title">Styl</string>
+    <string name="battery_percent_title">Pokaż procent</string>
+    <string name="battery_percent_none">Nigdy</string>
+    <string name="battery_percent_always">Zawsze</string>
+    <string name="battery_percent_expanded">Rozszerzone</string>
+    <string name="statusbar_percent_inside_title">Procent nad ikoną</string>
+    <string name="statusbar_percent_inside_summary">Pokazuj procent naładowania zawsze nad ikoną</string>
+    <string name="statusbar_charging_image_title">Wskaźnik ładowania</string>
+    <string name="statusbar_category_charging_title">Ładowanie</string>
+    <string name="statusbar_charging_image_summary">Ikonka pioruna podczas ładowania. Ukrywa procent nad ikoną</string>
+    <string name="statusbar_battery_charging_color_title">Kolor</string>
+    <string name="statusbar_battery_charging_color_enable_title">Kolor podczas ładowania</string>
+    <string name="statusbar_battery_charging_color_enable_summary"></string>
+    <string name="battery_enable_title">Pokaż wskaźnik baterii</string>
+  
+         <!-- Battery styles -->
+    <string name="battery_style_text">Tekst</string>
+    <string name="battery_style_default">Tryb portretu</string>
+    <string name="battery_style_meter_horizontal">Tryb krajobrazu</string>
+    <string name="battery_style_circle">Okrąg</string>
 </resources>
