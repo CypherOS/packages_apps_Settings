@@ -468,7 +468,32 @@
 	
   <!-- Optional screenshot type -->
   <string name="screenshot_type_title">Tipo di Screenshot</string>
-  <string name="screenshot_type_fullscreen">Cattura le immagini a schermo intero</string>
-  <string name="screenshot_type_partial">Trascina e seleziona la zona dove si desidera catturare uno screenshot</string>
+  <string name="screenshot_type_fullscreen">Schermo intero</string>
+  <string name="screenshot_type_partial">Parziale</string>
+  
+  <!-- Battery styles -->
+    <string name="battery_title">Visualizzazioni della batteria</string>
+    <string name="status_bar_battery_title">Icone della batteria</string>
+    <string name="status_bar_battery_summary">Imposta lo stile e lo stato del display della barra batteria</string>
+    <string name="battery_style_title">Stile</string>
+    <string name="battery_percent_title">Mostra la percentuale</string>
+    <string name="battery_percent_none">Mai</string>
+    <string name="battery_percent_always">Sempre</string>
+    <string name="battery_percent_expanded">Espansa</string>
+    <string name="statusbar_percent_inside_title">Percentuale sovrapposta overlay</string>
+    <string name="statusbar_percent_inside_summary">Visualizzare la percentuale sull\'immagine della batteria</string>
+    <string name="statusbar_charging_image_title">Indicatore di carica</string>
+    <string name="statusbar_category_charging_title">Ricarica</string>
+    <string name="statusbar_charging_image_summary">Indicatore del fulmine sul display durante la ricarica. Nascondi la percentuale di sovrapposizione</string>
+    <string name="statusbar_battery_charging_color_title">Colore</string>
+    <string name="statusbar_battery_charging_color_enable_title">Colore durante la carica</string>
+    <string name="statusbar_battery_charging_color_enable_summary"></string>
+    <string name="battery_enable_title">Mostra la batteria</string>
+  
+    <!-- Battery styles -->
+    <string name="battery_style_text">Testo</string>
+    <string name="battery_style_default">Verticale</string>
+    <string name="battery_style_meter_horizontal">Orizzontale</string>
+    <string name="battery_style_circle">Cerchio</string>
 	
 </resources>
