@@ -52,5 +52,13 @@
 				android:summary="@string/notification_settings_title_summary"
                 android:fragment="com.android.settings.cypher.fragments.NotificationExtSettings"
                 android:icon="@drawable/ic_settings_notificationext" />
+				
+		<!-- Button settings -->
+		<PreferenceScreen
+                android:key="button_settings"
+                android:title="@string/button_settings_title"
+				android:summary="@string/button_settings_title_summary"
+                android:fragment="com.android.settings.cypher.fragments.ButtonSettings"
+                android:icon="@drawable/ic_settings_buttons" />
 
 </PreferenceScreen>
