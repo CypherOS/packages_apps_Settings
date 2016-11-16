@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cypher;
+package com.android.settings.cypher.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
