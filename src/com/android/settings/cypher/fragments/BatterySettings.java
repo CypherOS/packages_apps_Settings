@@ -45,6 +45,12 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
 	
     private static final String STATUSBAR_BATTERY_PERCENT = "statusbar_battery_percent";
     private static final String STATUSBAR_BATTERY_PERCENT_INSIDE = "statusbar_battery_percent_inside";
+	
+	private static final String KEY_BATTERY_LIGHT = "battery_light";
+
+    private static final String CATEGORY_BLEDS = "bleds";
+	
+	private Preference mBattLedFrag;
 
     private ListPreference mBatteryPercent;
     private SwitchPreference mPercentInside;
@@ -62,6 +68,21 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ContentResolver resolver = getActivity().getContentResolver();
+		
+		final PreferenceCategory bleds = (PreferenceCategory) findPreference(CATEGORY_BLEDS);
+
+        mBattLedFrag = findPreference(KEY_BATTERY_LIGHT);
+        //Remove battery led settings if device doesnt support it
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+            bleds.removePreference(findPreference(KEY_BATTERY_LIGHT));
+        }
+
+        //Remove led category if device doesnt support notification or battery
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+            prefScreen.removePreference(findPreference(CATEGORY_BLEDS));
+        }
 		
 		mBatteryStyleValue = Settings.System.getInt(resolver,
                 Settings.System.STATUSBAR_BATTERY_STYLE, 0);
