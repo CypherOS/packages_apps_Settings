@@ -24,7 +24,7 @@
 	<declare-styleable name="IntervalSeekBar">
         <attr name="minI" format="float" />
         <attr name="maxI" format="float" />
-        <attr name="defaultValuePure" format="float" />
+        <attr name="defaultValueI" format="float" />
         <attr name="digits" format="integer" />
     </declare-styleable>
 </resources>
