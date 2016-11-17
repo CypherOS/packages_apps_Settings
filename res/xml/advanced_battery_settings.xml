@@ -31,5 +31,17 @@
             android:title="@string/statusbar_percent_inside_title"
             android:summary="@string/statusbar_percent_inside_summary"
             android:defaultValue="false"/>
+			
+	<PreferenceCategory
+        android:key="bleds"
+        android:title="@string/led_category" >
+
+        <PreferenceScreen
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+			android:summary="@string/battery_light_title_summary"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

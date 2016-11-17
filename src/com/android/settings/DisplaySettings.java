@@ -98,12 +98,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
-	
-    private static final String KEY_BATTERY_LIGHT = "battery_light";
-
-    private static final String CATEGORY_BLEDS = "bleds";
-
-    private Preference mBattLedFrag;
 
     private Preference mFontSizePref;
 	private PreferenceScreen mDisplayRotationPreference;
@@ -138,21 +132,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         PreferenceCategory displayPrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_DISPLAY);
-				
-		final PreferenceCategory bleds = (PreferenceCategory) findPreference(CATEGORY_BLEDS);
-
-        mBattLedFrag = findPreference(KEY_BATTERY_LIGHT);
-        //Remove battery led settings if device doesnt support it
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-            bleds.removePreference(findPreference(KEY_BATTERY_LIGHT));
-        }
-
-        //Remove led category if device doesnt support notification or battery
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-            prefScreen.removePreference(findPreference(CATEGORY_BLEDS));
-        }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null

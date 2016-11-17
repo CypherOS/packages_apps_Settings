@@ -131,16 +131,5 @@
                 android:title="@string/display_vr_pref_title" />
 
     </PreferenceCategory>
-	
-	<PreferenceCategory
-        android:key="bleds"
-        android:title="@string/led_category" >
-
-        <PreferenceScreen
-            android:key="battery_light"
-            android:title="@string/battery_light_title"
-            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

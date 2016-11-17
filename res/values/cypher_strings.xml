@@ -375,7 +375,8 @@
     <string name="pulse_speed_normal">Normal</string>
     <string name="pulse_speed_slow">Slow</string>
     <string name="pulse_speed_very_slow">Very slow</string>
-    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_title">Battery LED</string>
+	<string name="battery_light_title_summary">Configure your device\'s LED when the battery is low or charging</string>
     <string name="battery_low_pulse_title">Pulse if battery low</string>
     <string name="battery_light_list_title">Colors</string>
     <string name="battery_light_low_color_title">Battery low</string>
