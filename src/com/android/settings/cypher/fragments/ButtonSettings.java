@@ -18,11 +18,16 @@ package com.android.settings.cypher.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
+import android.support.v14.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 
@@ -33,19 +38,22 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.settings.R;
+import com.android.settings.SeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements 
-        Preference.OnPreferenceChangeListener {
+        OnPreferenceChangeListener {
 			
     private static final String TAG = "ButtonSettings";
 	
+	private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
 	private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
     private ListPreference mVolumeKeyCursorControl;
+	private SwitchPreference mEnableNavigationBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +61,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.button_settings);
 		final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+		
+		final Resources res = getActivity().getResources();
+
+        // Navigation bar switch
+        mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
+        mEnableNavigationBar.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW, 1) == 1);
+        mEnableNavigationBar.setOnPreferenceChangeListener(this);
 
         int cursorControlAction = Settings.System.getInt(resolver,
                 Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
@@ -87,7 +103,17 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             handleActionListChange(mVolumeKeyCursorControl, newValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);
             return true;
+		} else if (preference == mEnableNavigationBar) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_SHOW,
+                    ((Boolean) newValue) ? 1 : 0);
+            return true;
         }
         return false;
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
     }
 }
