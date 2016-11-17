@@ -118,6 +118,9 @@
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+	<!-- Navigation bar -->
+    <string name="enable_navigation_bar_title">Navigation bar</string>
+    <string name="enable_navigation_bar_title_notice">This option is for devices with hardware keys only. This generates the stock android softkeys for navigating the OS. Device\'s without hardware must not use this, as it will rid navigating functionality.</string>
 	
 	<!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
