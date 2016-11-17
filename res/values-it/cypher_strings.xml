@@ -41,7 +41,6 @@
   <string name="vendor_version_default">Sconosciuto</string>
     <!-- Software information-->
   <string name="software_info_settings_title">Informazioni Software</string>
-	
   <!-- Bug Report -->
   <string name="bugreport_preference_title">Segnalazione errori</string>
   <string name="bugreport_preference_title_summary">Se si verificano problemi all\'interno del CypherOS non esitate a prendere e inviarci le segnazioni di errori</string>
@@ -55,6 +54,12 @@
   <string name="website_preference_title_summary">Dai uno sguardo al nostro sito web per le ultime informazioni di rilascio e aggiornamento</string>
   <string name="google_preference_title">CypherPlus</string>
   <string name="google_preference_title_summary">Resta in contatto con gli utenti e gli sviluppatori di CypherOS sulla comunità Google Plus</string>
+  <!-- Source category -->
+  <string name="source_category_title">Fonte</string>
+  <string name="github_preference_title">Github</string>
+  <string name="github_preference_title_summary">Per ottenere le informazioni più recenti su cosa è migliorato in CypherOS, date un\'occhiata sul nostro Github</string>
+  <string name="gerrit_preference_title">Gerrit</string>
+  <string name="gerrit_preference_title_summary">Tenete traccia della nostra revisione del codice su Gerrit per presentare, verificare e testare le modifiche in sospeso di CypherOS</string>
   <!-- Phone info shortcut -->
   <string name="device_info_title">Informazioni telefono</string>
   <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
@@ -496,4 +501,50 @@
     <string name="battery_style_meter_horizontal">Orizzontale</string>
     <string name="battery_style_circle">Cerchio</string>
 	
+    <!-- LiveDisplay -->
+    <string name="live_display_title">Live display</string>
+    <string name="live_display_summary">Ottimizza il tuo schermo in base all\'ora del giorno e delle condizioni ambientali per migliorare la leggibilità e ridurre l\'affaticamento degli occhi</string>
+    <string name="live_display_mode">Modalità display</string>
+    <string name="live_display_color_temperature_title">Colore della temperatura</string>
+    <string name="live_display_color_temperature_summary">Giorno: <xliff:g id="day_temperature">%1$d</xliff:g>K  Notte: <xliff:g id="night_temperature">%2$d</xliff:g>K</string>
+    <string name="live_display_color_temperature_label"><xliff:g id="degrees">%1$d</xliff:g>K</string>
+    <string name="live_display_day">Giorno</string>
+    <string name="live_display_night">Notte</string>
+    <string name="live_display_outdoor_mode_title">Modalità automatica all\'aperto</string>
+    <string name="live_display_outdoor_mode_summary">Aumenta la luminosità e la saturazione automaticamente sotto la luce del sole</string>
+    <string name="live_display_low_power_title">Riduci il consumo energetico</string>
+    <string name="live_display_low_power_summary">Regolare la visualizzazione per il consumo energetico più basso senza degradazione</string>
+    <string name="live_display_enhance_color_title">Migliora i colori</string>
+    <string name="live_display_enhance_color_summary">Migliora la vitalità del colore dei toni della pelle, paesaggi e altre immagini</string>
+    <string name="live_display_color_profile_title">Profilo colore</string>
+    <string name="live_display_color_profile_standard_title">Normale</string>
+    <string name="live_display_color_profile_standard_summary">Colori accurati e bianchi luminosi</string>
+    <string name="live_display_color_profile_natural_title">Naturale</string>
+    <string name="live_display_color_profile_natural_summary">Colori realistici e toni della pelle</string>
+    <string name="live_display_color_profile_dynamic_title">Dinamico</string>
+    <string name="live_display_color_profile_dynamic_summary">Colori avanzati e bianchi luminosi</string>
+    <string name="live_display_color_profile_cinema_title">Cinema</string>
+    <string name="live_display_color_profile_cinema_summary">Riproduzione del colore perfetti per i video</string>
+    <string name="live_display_color_profile_astronomy_title">Astronomico</string>
+    <string name="live_display_color_profile_astronomy_summary">Profondo rosso per preservare la visione notturna</string>
+    <string name="live_display_color_profile_photography_title">Fotografico</string>
+    <string name="live_display_color_profile_photography_summary">Perfetta riproduzione del colore per le foto</string>
+    <string name="live_display_color_profile_basic_title">Base</string>
+    <string name="live_display_color_profile_basic_summary">Utilizza il display non calibrato</string>
+    <string name="live_display_color_profile_adaptive_title">Adattativo</string>
+    <string name="live_display_color_profile_adaptive_summary">I colori si adattano alle condizioni ambientali</string>
+    <string name="color_calibration_title">Calibrazione del colore</string>
+    <string name="color_calibration_summary">Calibrare i colori sullo schermo</string>
+    <string name="color_red_title">Rosso</string>
+    <string name="color_green_title">Verde</string>
+    <string name="color_blue_title">Blu</string>
+    
+    <!-- LiveDisplay : Picture Adjustment -->
+    <string name="picture_adjustment_title">Regolazione immagine</string>
+    <string name="picture_adjustment_summary">Regola la tonalità, la saturazione, l'intensità, e il contrasto</string>
+    <string name="adj_hue_title">Tinta</string>
+    <string name="adj_saturation_title">Saturazione</string>
+    <string name="adj_intensity_title">Intensità</string>
+    <string name="adj_contrast_title">Contrasto</string>
+ 
 </resources>
