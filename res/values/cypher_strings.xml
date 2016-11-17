@@ -421,6 +421,9 @@
 	<!-- WiFi easy toggle -->
     <string name="qs_wifi_easy_toggle_title">WiFi on tap</string>
     <string name="qs_wifi_easy_toggle_summary">Enable or disable wifi with one tap</string>
+	<!-- Quick Settings brightness icon -->
+    <string name="brightness_icon_title">Brightness icon</string>
+    <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
 	<!-- Quick settings tiles columns and rows config -->
     <string name="qs_rows_portrait_title">Portrait rows</string>
     <string name="qs_rows_landscape_title">Landscape rows</string>
