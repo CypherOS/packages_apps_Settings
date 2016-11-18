@@ -88,7 +88,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_ALARM_RINGTONE = "alarm_ringtone";
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_ZEN_MODE = "zen_mode";
-    private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
 	private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
     private static final String KEY_LOCK_SCREEN_PROFILE_NOTIFICATIONS =
             "lock_screen_notifications_profile";
@@ -140,7 +139,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private int mProfileChallengeUserId;
 
     private PackageManager mPm;
-    private UserManager mUserManager;
     private RingtonePreference mRequestPreference;
 
     @Override
@@ -153,7 +151,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         super.onCreate(savedInstanceState);
         mContext = getActivity();
         mPm = getPackageManager();
-        mUserManager = UserManager.get(getContext());
         mVoiceCapable = Utils.isVoiceCapable(mContext);
 		mProfileChallengeUserId = Utils.getManagedProfileId(
                 UserManager.get(mContext), UserHandle.myUserId());
@@ -199,24 +196,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             removePreference(KEY_RING_VOLUME);
         }
 
-        // Enable link to CMAS app settings depending on the value in config.xml.
-        boolean isCellBroadcastAppLinkEnabled = this.getResources().getBoolean(
-                com.android.internal.R.bool.config_cellBroadcastAppLinks);
-        try {
-            if (isCellBroadcastAppLinkEnabled) {
-                if (mPm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
-                        == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
-                    isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
-                }
-            }
-        } catch (IllegalArgumentException ignored) {
-            isCellBroadcastAppLinkEnabled = false;  // CMAS app not installed
-        }
-        if (!mUserManager.isAdminUser() || !isCellBroadcastAppLinkEnabled ||
-                RestrictedLockUtils.hasBaseUserRestriction(mContext,
-                        UserManager.DISALLOW_CONFIG_CELL_BROADCASTS, UserHandle.myUserId())) {
-            removePreference(KEY_CELL_BROADCAST_SETTINGS);
-        }
         initRingtones();
         initVibrateWhenRinging();
         updateRingerMode();
@@ -260,12 +239,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             if (pref instanceof RestrictedPreference && !hasBaseRestriction) {
                 ((RestrictedPreference) pref).setDisabledByAdmin(admin);
             }
-        }
-        RestrictedPreference broadcastSettingsPref = (RestrictedPreference) findPreference(
-                KEY_CELL_BROADCAST_SETTINGS);
-        if (broadcastSettingsPref != null) {
-            broadcastSettingsPref.checkRestrictionAndSetDisabled(
-                    UserManager.DISALLOW_CONFIG_CELL_BROADCASTS);
         }
     }
 
@@ -476,20 +449,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             mRequestPreference = (RingtonePreference) preference;
             mRequestPreference.onPrepareRingtonePickerIntent(mRequestPreference.getIntent());
             startActivityForResult(preference.getIntent(), REQUEST_CODE);
-            return true;
-        } else if (preference == findPreference(KEY_CELL_BROADCAST_SETTINGS)) {
-            final Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setComponent(new ComponentName(
-                 "com.android.cellbroadcastreceiver",
-                 "com.android.cellbroadcastreceiver.CellBroadcastSettings"));
-
-            if (mContext.getPackageManager()
-                        .queryIntentActivities(intent, 0).isEmpty())  {
-                Log.d(TAG, "Activity com.android.cellbroadcastreceiver" +
-                                ".CellBroadcastSettings does not exist");
-                return false;
-            }
-            startActivity(intent);
             return true;
         }
 
@@ -905,26 +864,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 rt.add(KEY_RING_VOLUME);
                 rt.add(KEY_PHONE_RINGTONE);
                 rt.add(KEY_VIBRATE_WHEN_RINGING);
-            }
-
-            final PackageManager pm = context.getPackageManager();
-            final UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
-
-            // Enable link to CMAS app settings depending on the value in config.xml.
-            boolean isCellBroadcastAppLinkEnabled = context.getResources().getBoolean(
-                    com.android.internal.R.bool.config_cellBroadcastAppLinks);
-            try {
-                if (isCellBroadcastAppLinkEnabled) {
-                    if (pm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
-                            == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
-                        isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
-                    }
-                }
-            } catch (IllegalArgumentException ignored) {
-                isCellBroadcastAppLinkEnabled = false;  // CMAS app not installed
-            }
-            if (!um.isAdminUser() || !isCellBroadcastAppLinkEnabled) {
-                rt.add(KEY_CELL_BROADCAST_SETTINGS);
             }
 
             return rt;
