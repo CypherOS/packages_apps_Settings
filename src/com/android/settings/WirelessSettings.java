@@ -22,6 +22,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -74,10 +75,13 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     private static final String KEY_MANAGE_MOBILE_PLAN = "manage_mobile_plan";
     private static final String KEY_WFC_SETTINGS = "wifi_calling_settings";
     private static final String KEY_NETWORK_RESET = "network_reset";
+    private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
+    private Context mContext;
+  
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
     private NfcEnabler mNfcEnabler;
@@ -112,6 +116,20 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             return true;
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
+        } else if (preference == findPreference(KEY_CELL_BROADCAST_SETTINGS)) {
+            final Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setComponent(new ComponentName(
+                 "com.android.cellbroadcastreceiver",
+                 "com.android.cellbroadcastreceiver.CellBroadcastSettings"));
+
+            if (mContext.getPackageManager()
+                        .queryIntentActivities(intent, 0).isEmpty())  {
+                Log.d(TAG, "Activity com.android.cellbroadcastreceiver" +
+                                ".CellBroadcastSettings does not exist");
+                return false;
+            }
+            startActivity(intent);
+            return true;
         }
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preference);
@@ -220,6 +238,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
             mManageMobilePlanMessage = savedInstanceState.getString(SAVED_MANAGE_MOBILE_PLAN_MSG);
         }
         log("onCreate: mManageMobilePlanMessage=" + mManageMobilePlanMessage);
+      
+        mContext = getActivity();
 
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         mTm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -346,6 +366,25 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                 UserManager.DISALLOW_NETWORK_RESET, UserHandle.myUserId())) {
             removePreference(KEY_NETWORK_RESET);
         }
+
+        // Enable link to CMAS app settings depending on the value in config.xml.
+        boolean isCellBroadcastAppLinkEnabled = this.getResources().getBoolean(
+                com.android.internal.R.bool.config_cellBroadcastAppLinks);
+        try {
+            if (isCellBroadcastAppLinkEnabled) {
+                if (mPm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
+                        == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+                    isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
+                }
+            }
+        } catch (IllegalArgumentException ignored) {
+            isCellBroadcastAppLinkEnabled = false;  // CMAS app not installed
+        }
+        if (!mUm.isAdminUser() || !isCellBroadcastAppLinkEnabled ||
+                RestrictedLockUtils.hasBaseUserRestriction(mContext,
+                        UserManager.DISALLOW_CONFIG_CELL_BROADCASTS, UserHandle.myUserId())) {
+            removePreference(KEY_CELL_BROADCAST_SETTINGS);
+        }
     }
 
     @Override
@@ -367,6 +406,12 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                     context, ImsManager.getWfcMode(context)));
         } else {
             removePreference(KEY_WFC_SETTINGS);
+        }
+        RestrictedPreference broadcastSettingsPref = (RestrictedPreference) findPreference(
+                KEY_CELL_BROADCAST_SETTINGS);
+        if (broadcastSettingsPref != null) {
+            broadcastSettingsPref.checkRestrictionAndSetDisabled(
+                    UserManager.DISALLOW_CONFIG_CELL_BROADCASTS);
         }
     }
 
@@ -489,6 +534,23 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                 if (RestrictedLockUtils.hasBaseUserRestriction(context,
                         UserManager.DISALLOW_NETWORK_RESET, UserHandle.myUserId())) {
                     result.add(KEY_NETWORK_RESET);
+                }
+              
+                // Enable link to CMAS app settings depending on the value in config.xml.
+                boolean isCellBroadcastAppLinkEnabled = context.getResources().getBoolean(
+                        com.android.internal.R.bool.config_cellBroadcastAppLinks);
+                try {
+                    if (isCellBroadcastAppLinkEnabled) {
+                        if (pm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
+                                == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+                            isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
+                        }
+                    }
+                } catch (IllegalArgumentException ignored) {
+                    isCellBroadcastAppLinkEnabled = false;  // CMAS app not installed
+                }
+                if (!um.isAdminUser() || !isCellBroadcastAppLinkEnabled) {
+                    result.add(KEY_CELL_BROADCAST_SETTINGS);
                 }
 
                 return result;
