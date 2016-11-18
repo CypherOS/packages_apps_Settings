@@ -169,12 +169,18 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final long volumeTotalBytes = getTotalSize(vol);
                 final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
+				boolean isInternal = VolumeInfo.ID_PRIVATE_INTERNAL.equals(vol.getId());
+                long size = isInternal ? sTotalInternalStorage : vol.getPath().getTotalSpace();
                 mInternalCategory.addPreference(
-                        new StorageVolumePreference(context, vol, color, volumeTotalBytes));
+                        new StorageVolumePreference(context, vol, color, size));
                 if (vol.isMountedReadable()) {
                     final File path = vol.getPath();
-                    privateUsedBytes += (volumeTotalBytes - path.getFreeSpace());
-                    privateTotalBytes += volumeTotalBytes;
+                    privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
+                    if (isInternal && sTotalInternalStorage > 0) {
+                        privateTotalBytes += sTotalInternalStorage;
+                    } else {
+                        privateTotalBytes += path.getTotalSpace();
+                    }
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
                 mExternalCategory.addPreference(
@@ -517,7 +523,11 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                 if (info.getType() != VolumeInfo.TYPE_PRIVATE || path == null) {
                     continue;
                 }
-                privateTotalBytes += getTotalSize(info);
+                if (VolumeInfo.ID_PRIVATE_INTERNAL.equals(info.getId()) && sTotalInternalStorage > 0) {
+                    privateTotalBytes += sTotalInternalStorage;
+                } else {
+                    privateTotalBytes += path.getTotalSpace();
+                }
                 privateFreeBytes += path.getFreeSpace();
             }
             long privateUsedBytes = privateTotalBytes - privateFreeBytes;
