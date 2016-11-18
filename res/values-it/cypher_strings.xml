@@ -24,7 +24,6 @@
   <string name="default_string">Predefinito</string>
   <string name="add">Aggiungi</string>
   <string name="choose_app">Seleziona app</string>
-	
   <!-- About phone screen, CypherOS version -->
   <string name="aoscp_version_title">Versione CypherOS</string>
   <string name="aoscp_version_default">Sconosciuto</string>
@@ -32,15 +31,15 @@
   <!-- About phone screen, CypherOS Release ID -->
   <string name="aoscp_release_id">Rilascio ID</string>
   <string name="aoscp_release_id_default">Non specificato</string>
-	
   <!-- About phone screen, CypherOS API -->
   <string name="aoscp_api_level">Versione CypherOS</string>
   <string name="aoscp_api_level_default">Sconosciuto</string>
   <!-- Vendor version -->
   <string name="vendor_version">Versione fornitore</string>
   <string name="vendor_version_default">Sconosciuto</string>
-    <!-- Software information-->
+   <!-- Software information-->
   <string name="software_info_settings_title">Informazioni Software</string>
+  <string name="software_info_settings_title_summary">Visualizza lo stato degli aggiornamenti e le informazioni utili</string>
   <!-- Bug Report -->
   <string name="bugreport_preference_title">Segnalazione errori</string>
   <string name="bugreport_preference_title_summary">Se si verificano problemi all\'interno del CypherOS non esitate a prendere e inviarci le segnazioni di errori</string>
@@ -90,16 +89,36 @@
   <string name="power_menu_bug_report_title">Segnalazione errori</string>
   <string name="power_menu_sound_title">Pannello suoni</string>
   <string name="power_menu_bug_report_disabled">La segnalazione errori è disattivata nelle impostazioni di sviluppo</string>
-	
   <!-- Gesture Settings -->
   <string name="gesture_settings_title">Gesti</string>
   <string name="device_category_title">Dispositivo</string>
   <string name="motion_gestures_title">Gesti di movimento</string>
   <string name="motion_gestures_title_summary">Servizio di controllo dei dispositivi, come ad esempio Ambient Display, con azioni di movimento rilevate</string>
-	
   <!-- Double-snap summary loaders -->
   <string name="camera_double_tap_power_gesture_on">Doppio scatto è attualmente attivato</string>
   <string name="camera_double_tap_power_gesture_off">Doppio scatto è attualmente disattivato</string>
+	
+	<!-- Advanced Battery settings -->
+	<string name="advanced_battery_settings_title">Avanzate</string>
+	<string name="advanced_battery_settings_title_summary">Altre opzioni disponibili per migliorare la vostra esperienza sul consumo di energia</string>
+	
+	<!-- Button settings -->
+	<string name="button_settings_title">Pulsanti</string>
+	<string name="button_settings_title_summary">Ottieni il massimo dai tuoi tasti hardware, con varie azioni personalizzate</string>
+	<!-- Volume button wake -->
+    <string name="volbtn_wake_device_title">Risveglio pulsante volume</string>
+    <string name="button_wake_summary">Non puoi risvegliare il dispositivo se si sta ascoltando la musica e i controlli sono attivi</string>
+	<!-- Volume button track change -->
+    <string name="volbtn_music_controls_title">Controllo della musica</string>
+    <string name="volbtn_music_controls_summary">Con schermo spento, premendo a lungo i tasti del volume cambierà le tracce</string>
+	<!-- Volume key cursor control -->
+    <string name="volbtn_cursor_control_title">Controllo cursore con tasto volume</string>
+    <string name="volbtn_cursor_control_off">Disabilitato</string>
+    <string name="volbtn_cursor_control_on">Volume su/giù sposta il cursore a sinistra/destra</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume su/giù sposta il cursore a destra/sinistra</string>
+	<!-- Navigation bar -->
+    <string name="enable_navigation_bar_title">Barra di navigazione</string>
+    <string name="enable_navigation_bar_title_notice">Questa opzione è per i dispositivi con solo tasti hardware. Questo fa si che i tasti hardware consentono lo spostamento all\'interno del sistema operativo. I dispositivi senza tasti hardware non deveno utilizzare questo, liberandosi delle funzionalità di navigazione.</string>
 	
   <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Suoni di regolazione del volume</string>
@@ -109,7 +128,6 @@
   <string name="enable_adb_summary_custom">Attiva l\'interfaccia di Android Debug Bridge (ADB)</string>
   <string name="adb_notify">Notifica ADB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando è attivato il debug di android</string>
-	
   <string name="adb_over_network">ADB in rete</string>
   <string name="adb_over_network_summary">Abilita il debug TCP/IP tramite l\'interfaccia di rete (Wi\u2011Fi, reti USB). Questa impostazione viene reimpostata al riavvio</string>
   <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
@@ -143,6 +161,7 @@
   <!-- USB data automatic unlock -->
   <string name="usb_data_auto_unlock_title">Sblocca i dati USB</string>
   <string name="usb_data_auto_unlock_summary">Consenti l\'accesso ai dati di sblocco per la memoria del telefono tramite USB (MTP, PTP)</string>
+
   <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che ci si connette ad un PC. La schermata di blocco protetta disattiva questa opzione automaticamente.\n\nQuesto è ancora una funzione sperimentale, utilizzalo con cautela.</string>
  
   <!-- Sound settings -->
@@ -243,7 +262,6 @@
   <string name="status_bar_am_pm_normal">Normale</string>
   <string name="status_bar_am_pm_small">Piccolo</string>
   <string name="status_bar_am_pm_hidden">Nascosto</string>
-	
   <!-- Statusbar - Date -->
   <string name="clock_date_display">Data</string>
   <string name="clock_date_display_summary">Mostra la data personalizzata prima dell\'orologio</string>
@@ -315,7 +333,7 @@
   <string name="show_battery_percentage">Visualizza percentuale della batteria</string>
   <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
 	
-    <!-- statusbar icon blacklist -->
+  <!-- statusbar icon blacklist -->
   <string name="status_bar_icon_blacklist_title">Icone della barra di stato</string>
   <string name="status_bar_icon_blacklist_summary">Configura quali icone dovranno essere mostrate sulla barra di stato</string>
 	
@@ -360,14 +378,16 @@
   <string name="pulse_speed_normal">Normale</string>
   <string name="pulse_speed_slow">Lento</string>
   <string name="pulse_speed_very_slow">Molto lento</string>
-  <string name="battery_light_title">Luce batteria</string>
+  <string name="battery_light_title">LED della batteria</string>
+  <string name="battery_light_title_summary">Configura il LED del dispositivo quando la batteria è scarica o carica</string>
   <string name="battery_low_pulse_title">Impulso se batteria bassa</string>
   <string name="battery_light_list_title">Colori</string>
   <string name="battery_light_low_color_title">Batteria scarica</string>
   <string name="battery_light_medium_color_title">Ricarica</string>
   <string name="battery_light_full_color_title">Carico al (90%)</string>
   <string name="battery_light_really_full_color_title">Carico al (100%)</string>
-  <string name="notification_light_title">Luce di notifica</string>
+  <string name="notification_light_title">LED di notifica</string>
+  <string name="notification_light_title_summary">Varie opzioni di LED per avvisi e notifiche di chiamate in entrata</string>
   <string name="notification_light_general_title">Generale</string>
   <string name="notification_light_applist_title">Applicazioni</string>
   <string name="advanced">Avanzate</string>
@@ -404,6 +424,9 @@
   <!-- WiFi easy toggle -->
   <string name="qs_wifi_easy_toggle_title">WiFi al tocco</string>
   <string name="qs_wifi_easy_toggle_summary">Attiva o disattiva il wiFi con un solo tocco</string>
+  <!-- Quick Settings brightness icon -->
+  <string name="brightness_icon_title">Icona luminosità</string>
+  <string name="brightness_icon_summary">Visualizza un\'icona alla sinistra del cursore della luminosità  per la regolazione automatica</string>
   <!-- Quick settings tiles columns and rows config -->
   <string name="qs_rows_portrait_title">Righe in verticale</string>
   <string name="qs_rows_landscape_title">Righe in orizzontale</string>
@@ -426,7 +449,6 @@
   <string name="summary_heads_up_enabled">Le notifiche fluttuanti sono abilitate</string>
   <string name="summary_heads_up_disabled">Le notifiche fluttuanti sono disabilitate</string>
   <string name="heads_up_disabled_notice">Consenti alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, abilitare le notifiche fluttuanti</string>
-	
   <!-- Heads up timeout -->
   <string name="heads_up_time_out_title">Tempo di visualizzazione</string>
   <string name="heads_up_time_out_summary">Le notifiche saranno mostrate per <xliff:g id="number">%d</xliff:g> secondi</string>
@@ -478,13 +500,10 @@
   
   <!-- Battery styles -->
     <string name="battery_title">Visualizzazioni della batteria</string>
-    <string name="status_bar_battery_title">Icone della batteria</string>
-    <string name="status_bar_battery_summary">Imposta lo stile e lo stato del display della barra batteria</string>
-    <string name="battery_style_title">Stile</string>
+    <string name="status_bar_battery_title">Icone della batteria</string> 
     <string name="battery_percent_title">Mostra la percentuale</string>
     <string name="battery_percent_none">Mai</string>
     <string name="battery_percent_always">Sempre</string>
-    <string name="battery_percent_expanded">Espansa</string>
     <string name="statusbar_percent_inside_title">Percentuale sovrapposta overlay</string>
     <string name="statusbar_percent_inside_summary">Visualizzare la percentuale sull\'immagine della batteria</string>
     <string name="statusbar_charging_image_title">Indicatore di carica</string>
@@ -493,9 +512,6 @@
     <string name="statusbar_battery_charging_color_title">Colore</string>
     <string name="statusbar_battery_charging_color_enable_title">Colore durante la carica</string>
     <string name="statusbar_battery_charging_color_enable_summary"></string>
-    <string name="battery_enable_title">Mostra la batteria</string>
-  
-    <!-- Battery styles -->
     <string name="battery_style_text">Testo</string>
     <string name="battery_style_default">Verticale</string>
     <string name="battery_style_meter_horizontal">Orizzontale</string>
