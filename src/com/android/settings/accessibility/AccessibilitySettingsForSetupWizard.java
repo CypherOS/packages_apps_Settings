@@ -117,7 +117,8 @@ public class AccessibilitySettingsForSetupWizard extends SettingsPreferenceFragm
         // Find a screen reader.
         AccessibilityServiceInfo info = findFirstServiceWithSpokenFeedback();
         if (info == null) {
-            getPreferenceScreen().removePreference(mScreenReaderPreference);
+            mScreenReaderPreference.setEnabled(false);
+            return;
         } else {
             mScreenReaderPreference.setEnabled(true);
 
