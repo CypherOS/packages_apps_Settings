@@ -24,6 +24,12 @@
   <string name="default_string">Predefinito</string>
   <string name="add">Aggiungi</string>
   <string name="choose_app">Seleziona app</string>
+  <!-- Feature reset -->
+  <string name="reset_all_settings">Ripristina tutto</string>
+  <string name="reset_selected_settings">Ripristino selezionato</string>
+  <string name="reset_settings_title">Funzioni di ripristino</string>
+  <string name="reset_settings_summary">Ripristina tutte le funzioni di CypherOS</string>
+  <string name="keywords_settings_reset">Ripristino</string>
   <!-- About phone screen, CypherOS version -->
   <string name="aoscp_version_title">Versione CypherOS</string>
   <string name="aoscp_version_default">Sconosciuto</string>
@@ -98,27 +104,27 @@
   <string name="camera_double_tap_power_gesture_on">Doppio scatto è attualmente attivato</string>
   <string name="camera_double_tap_power_gesture_off">Doppio scatto è attualmente disattivato</string>
 	
-	<!-- Advanced Battery settings -->
-	<string name="advanced_battery_settings_title">Avanzate</string>
-	<string name="advanced_battery_settings_title_summary">Altre opzioni disponibili per migliorare la vostra esperienza sul consumo di energia</string>
-	
-	<!-- Button settings -->
-	<string name="button_settings_title">Pulsanti</string>
-	<string name="button_settings_title_summary">Ottieni il massimo dai tuoi tasti hardware, con varie azioni personalizzate</string>
-	<!-- Volume button wake -->
-    <string name="volbtn_wake_device_title">Risveglio pulsante volume</string>
-    <string name="button_wake_summary">Non puoi risvegliare il dispositivo se si sta ascoltando la musica e i controlli sono attivi</string>
-	<!-- Volume button track change -->
-    <string name="volbtn_music_controls_title">Controllo della musica</string>
-    <string name="volbtn_music_controls_summary">Con schermo spento, premendo a lungo i tasti del volume cambierà le tracce</string>
-	<!-- Volume key cursor control -->
-    <string name="volbtn_cursor_control_title">Controllo cursore con tasto volume</string>
-    <string name="volbtn_cursor_control_off">Disabilitato</string>
-    <string name="volbtn_cursor_control_on">Volume su/giù sposta il cursore a sinistra/destra</string>
-    <string name="volbtn_cursor_control_on_reverse">Volume su/giù sposta il cursore a destra/sinistra</string>
-	<!-- Navigation bar -->
-    <string name="enable_navigation_bar_title">Barra di navigazione</string>
-    <string name="enable_navigation_bar_title_notice">Questa opzione è per i dispositivi con solo tasti hardware. Questo fa si che i tasti hardware consentono lo spostamento all\'interno del sistema operativo. I dispositivi senza tasti hardware non deveno utilizzare questo, liberandosi delle funzionalità di navigazione.</string>
+  <!-- Advanced Battery settings -->
+  <string name="advanced_battery_settings_title">Avanzate</string>
+  <string name="advanced_battery_settings_title_summary">Altre opzioni disponibili per migliorare la vostra esperienza sul consumo di energia</string>
+  
+  <!-- Button settings -->
+  <string name="button_settings_title">Pulsanti</string>
+  <string name="button_settings_title_summary">Ottieni il massimo dai tuoi tasti hardware, con varie azioni personalizzate</string>
+  <!-- Volume button wake -->
+  <string name="volbtn_wake_device_title">Risveglio con pulsante volume</string>
+  <string name="button_wake_summary">Non puoi risvegliare il dispositivo se si sta ascoltando la musica e i controlli sono attivi</string>
+  <!-- Volume button track change -->
+  <string name="volbtn_music_controls_title">Controllo della musica</string>
+  <string name="volbtn_music_controls_summary">Con schermo spento, premendo a lungo i tasti del volume cambierà le tracce</string>
+  <!-- Volume key cursor control -->
+  <string name="volbtn_cursor_control_title">Controllo cursore con tasto volume</string>
+  <string name="volbtn_cursor_control_off">Disabilitato</string>
+  <string name="volbtn_cursor_control_on">Volume su/giù sposta il cursore a sinistra/destra</string>
+  <string name="volbtn_cursor_control_on_reverse">Volume su/giù sposta il cursore a destra/sinistra</string>
+  <!-- Navigation bar -->
+  <string name="enable_navigation_bar_title">Barra di navigazione</string>
+  <string name="enable_navigation_bar_title_notice">Questa opzione è per i dispositivi con solo tasti hardware. Questo fa si che i tasti hardware consentono lo spostamento all\'interno del sistema operativo. I dispositivi senza tasti hardware non deveno utilizzare questo, liberandosi delle funzionalità di navigazione.</string>
 	
   <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Suoni di regolazione del volume</string>
@@ -133,7 +139,7 @@
   <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
 
   <!-- Category title for Charging sounds -->
-  <string name="power_notifications_category_title">Suoni di ricarica</string>
+  <string name="power_notifications_category_title">Suono di ricarica</string>
   <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
   <string name="power_notifications_enable_title">Abilita</string>
   <string name="power_notifications_enable_summary">Riproduci un suono quando si collega o scollega il caricabatterie</string>
@@ -161,7 +167,6 @@
   <!-- USB data automatic unlock -->
   <string name="usb_data_auto_unlock_title">Sblocca i dati USB</string>
   <string name="usb_data_auto_unlock_summary">Consenti l\'accesso ai dati di sblocco per la memoria del telefono tramite USB (MTP, PTP)</string>
-
   <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che ci si connette ad un PC. La schermata di blocco protetta disattiva questa opzione automaticamente.\n\nQuesto è ancora una funzione sperimentale, utilizzalo con cautela.</string>
  
   <!-- Sound settings -->
@@ -314,11 +319,11 @@
 
   <!-- Quick pull down-->
   <string name="quick_pulldown_title">Discesa rapida</string>
-  <string name="quick_pulldown_summary">Il bordo %1$s della barra di stato tira giù le impostazioni rapide</string>
+  <string name="quick_pulldown_summary">Il bordo di %1$s della barra di stato tira giù le impostazioni rapide</string>
   <string name="quick_pulldown_summary_always">Mostra sempre le impostazioni rapide sulla barra di stato a tendina</string>
-  <string name="quick_pulldown_off">Spento</string>
-  <string name="quick_pulldown_left">Sinistro</string>
-  <string name="quick_pulldown_right">Destro</string>
+  <string name="quick_pulldown_off">Spenta</string>
+  <string name="quick_pulldown_left">Sinistra</string>
+  <string name="quick_pulldown_right">Destra</string>
   <string name="quick_pulldown_always">Sempre</string>
 
   <!-- Navbar tuner -->
@@ -338,7 +343,7 @@
   <string name="status_bar_icon_blacklist_summary">Configura quali icone dovranno essere mostrate sulla barra di stato</string>
 	
   <!-- double tap statusbar to sleep -->
-  <string name="double_tap_to_sleep_title">Tocco per sospendere</string>
+  <string name="double_tap_to_sleep_title">Doppio tocco per sospendere</string>
   <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
  
   <!-- Color Picker -->
