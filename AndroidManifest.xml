@@ -1831,8 +1831,6 @@
             android:taskAffinity="com.android.wizard"
             android:theme="@style/SetupWizardTheme.Light" />
 
-        <activity android:name="ChooseLockPatternSize" android:exported="false"/>
-
         <activity android:name="ChooseLockPattern"
             android:exported="false"
             android:theme="@style/SetupWizardTheme.Light" />

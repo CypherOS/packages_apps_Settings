@@ -724,11 +724,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private void unifyLocks() {
         int profileQuality =
                 mLockPatternUtils.getKeyguardStoredPasswordQuality(mProfileChallengeUserId);
-        final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
         if (profileQuality == DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
             mLockPatternUtils.saveLockPattern(
-                    LockPatternUtils.stringToPattern(mCurrentProfilePassword,
-                        lockPatternUtils.getLockPatternSize(MY_USER_ID)),
+                    LockPatternUtils.stringToPattern(mCurrentProfilePassword),
                     mCurrentDevicePassword, MY_USER_ID);
         } else {
             mLockPatternUtils.saveLockPassword(
