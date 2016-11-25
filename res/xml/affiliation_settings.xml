@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 CypherOS
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:title="@string/team_and_maintainers_title">
+		
+	<PreferenceCategory android:key="developers_category"
+	        android:title="@string/developers_category_title">
+		
+          <Preference
+            android:key="developers_chris"
+            android:title="@string/developers_chris_title"
+            android:summary="@string/developers_chris_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+			
+	  <Preference
+            android:key="developers_aaron"
+            android:title="@string/developers_aaron_title"
+            android:summary="@string/developers_aaron_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="community_category"
+	        android:title="@string/community_category_title">
+		
+          <Preference
+            android:key="community_mani"
+            android:title="@string/community_mani_title"
+            android:summary="@string/community_mani_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+			
+	</PreferenceCategory>
+	
+    <PreferenceCategory
+        android:key="maintainer_category"
+        android:title="@string/maintainer_category_title">
+	
+          <Preference
+            android:key="maintainer_ken"
+            android:title="@string/ken_adams_preference_title"
+            android:summary="@string/ken_adams_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+	
+          <Preference
+            android:key="maintainer_isaiah"
+            android:title="@string/isaiah_pez_preference_title"
+            android:summary="@string/isaiah_pez_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+	
+          <Preference
+            android:key="maintainer_rahul"
+            android:title="@string/rahul_s_nair_preference_title"
+            android:summary="@string/rahul_s_nair_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+	
+          <Preference
+            android:key="maintainer_jonathan"
+            android:title="@string/jonathan_bruno_preference_title"
+            android:summary="@string/jonathan_bruno_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+	
+          <Preference
+            android:key="maintainer_filipe"
+            android:title="@string/filipe_carreto_preference_title"
+            android:summary="@string/filipe_carreto_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+          
+          <Preference
+            android:key="maintainer_abhishek"
+            android:title="@string/abhishek_kaushik_preference_title"
+            android:summary="@string/abhishek_kaushik_preference_title_summary"
+            android:icon="@drawable/ic_settings_plus" />
+         
+    </PreferenceCategory>
+
+</PreferenceScreen>
