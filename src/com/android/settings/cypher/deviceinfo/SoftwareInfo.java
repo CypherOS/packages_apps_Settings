@@ -48,7 +48,14 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
     Preference mGoogleUrl;
 	Preference mGithubUrl;
 	Preference mGerritUrl;
-	
+	Preference mGoogleUrl1;
+	Preference mGoogleUrl2;
+	Preference mGoogleUrl3;
+	Preference mGoogleUrl4;
+	Preference mGoogleUrl5;
+	Preference mGoogleUrl6;
+	Preference mGoogleUrl7;
+			
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +68,13 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
         mGoogleUrl = findPreference("cypher_plus");
 		mGithubUrl = findPreference("github_source");
 		mGerritUrl = findPreference("gerrit_review");
+		mGoogleUrl1 = findPreference("mani_kumar_plus");
+		mGoogleUrl2 = findPreference("chris_crump_plus");
+		mGoogleUrl3 = findPreference("ken_adams_plus");
+		mGoogleUrl4 = findPreference("isaiah_pez_plus");
+		mGoogleUrl5 = findPreference("rahul_s_nair_plus");
+		mGoogleUrl6 = findPreference("jonathan_bruno_plus");
+		mGoogleUrl7 = findPreference("filipe_carreto_plus");
 		
 	}
 	
@@ -79,6 +93,20 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
             launchUrl("https://github.com/CypherOS");
 		} else if (preference == mGerritUrl) {
             launchUrl("http://gerrit.cypheros.co/");
+		} else if (preference == mGoogleUrl1) {
+            launchUrl("https://plus.google.com/u/0/103704565326077746082");
+		} else if (preference == mGoogleUrl2) {
+            launchUrl("https://plus.google.com/u/0/109812248604746035480");
+		} else if (preference == mGoogleUrl3) {
+            launchUrl("https://plus.google.com/u/0/107972764100526423734");
+		} else if (preference == mGoogleUrl4) {
+            launchUrl("https://plus.google.com/u/0/+IsaiahPEz");
+		} else if (preference == mGoogleUrl5) {
+            launchUrl("https://plus.google.com/u/0/+RahulSNair30");
+		} else if (preference == mGoogleUrl6) {
+            launchUrl("https://plus.google.com/u/0/+jonathanbruno21");
+		} else if (preference == mGoogleUrl7) {
+            launchUrl("https://plus.google.com/u/0/+FilipeCarreto");			
         }
         return super.onPreferenceTreeClick(preference);
     }

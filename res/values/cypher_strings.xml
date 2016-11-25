@@ -67,6 +67,24 @@
 	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
 	<string name="gerrit_preference_title">Gerrit</string>
 	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
+	<!-- Maintainer category -->
+	<string name="maintainer_category_title">Oficial Maintainer</string>
+	<string name="mani_kumar_preference_title">Mani Kumar</string>
+	<string name="mani_kumar_preference_title_summary">Nexus 6P | Angler - LG G4 | H815</string>
+	<string name="chris_crump_preference_title">Chris Crump</string>
+	<string name="chris_crump_preference_title_summary">Nexus 5x | Bullhead - Moto E | Surnia - Moto E | Otus</string>
+	<string name="ken_adams_preference_title">Ken Adams</string>
+	<string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
+	<string name="aaron_nixon_preference_title">Aaron Nixon</string>
+	<string name="aaron_nixon_preference_title_summary">LG G4 | H811</string>
+	<string name="isaiah_pez_preference_title">Isaiah Pez</string>
+	<string name="isaiah_pez_preference_title_summary">LG G3 | LS990</string>
+	<string name="rahul_s_nair_preference_title">Rahul S Nair</string>
+	<string name="rahul_s_nair_preference_title_summary">Moto G4 Plus | Athene</string>
+	<string name="jonathan_bruno_preference_title">Jonathan Bruno</string>
+	<string name="jonathan_bruno_preference_title_summary">Moto G | Osprey</string>
+	<string name="filipe_carreto_preference_title">Filipe Carreto</string>
+	<string name="filipe_carreto_preference_title_summary">OnePlus 3</string>
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
