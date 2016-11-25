@@ -15,19 +15,19 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/software_info_settings_title">
 		
-		<!-- Build notes -->
+	<!-- Build notes -->
         <PreferenceScreen android:key="build_notes"
                 android:title="@string/buildnotes_settings_title"
-				android:summary="@string/buildnotes_settings_title_summary"
+		android:summary="@string/buildnotes_settings_title_summary"
                 android:fragment="com.android.settings.cypher.deviceinfo.BuildNotes" />
 				
-		<com.android.settings.BugreportPreference
+	<com.android.settings.BugreportPreference
                 android:key="bugreport"
                 android:title="@string/bugreport_preference_title"
                 android:dialogTitle="@string/bugreport_preference_title"
                 android:summary="@string/bugreport_preference_title_summary" />
 				
-	<PreferenceCategory
+    <PreferenceCategory
         android:key="social"
         android:title="@string/social_category_title">
   
@@ -44,10 +44,24 @@
             android:title="@string/google_preference_title"
             android:summary="@string/google_preference_title_summary"
             android:icon="@drawable/ic_settings_cypherplus" />
+			
+	<!-- Team members & Maintainers Quick info -->
+	<Preference
+            android:key="team_and_maintainers_info"
+            android:summary="@string/team_and_maintainers_info_summary"
+            android:persistent="false"
+            android:selectable="false" />
+				
+	<!-- Team members & Maintainers -->
+	<PreferenceScreen
+            android:key="team_and_maintainers"
+            android:title="@string/team_and_maintainers_title"
+	    android:summary="@string/team_and_maintainers_title_summary"
+            android:fragment="com.android.settings.cypher.deviceinfo.Affiliation" />
 
     </PreferenceCategory>
 	
-	<PreferenceCategory
+    <PreferenceCategory
         android:key="source"
         android:title="@string/source_category_title">
   
