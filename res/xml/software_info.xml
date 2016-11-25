@@ -64,6 +64,66 @@
             android:title="@string/gerrit_preference_title"
             android:summary="@string/gerrit_preference_title_summary"
             android:icon="@drawable/ic_settings_gerrit" />
+    </PreferenceCategory>
+		
+	<PreferenceCategory
+        android:key="maintainer"
+        android:title="@string/maintainer_category_title">
+  
+        <!-- CypherOS device maintainer -->
+        <Preference
+            android:key="mani_kumar_plus"
+            android:title="@string/mani_kumar_preference_title"
+            android:summary="@string/mani_kumar_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
 
+        <Preference
+            android:key="chris_crump_plus"
+            android:title="@string/chris_crump_preference_title"
+            android:summary="@string/chris_crump_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="ken_adams_plus"
+            android:title="@string/ken_adams_preference_title"
+            android:summary="@string/ken_adams_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="aaron_nixon_plus"
+            android:title="@string/aaron_nixon_preference_title"
+            android:summary="@string/aaron_nixon_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="isaiah_pez_plus"
+            android:title="@string/isaiah_pez_preference_title"
+            android:summary="@string/isaiah_pez_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="rahul_s_nair_plus"
+            android:title="@string/rahul_s_nair_preference_title"
+            android:summary="@string/rahul_s_nair_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="jonathan_bruno_plus"
+            android:title="@string/jonathan_bruno_preference_title"
+            android:summary="@string/jonathan_bruno_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+	
+          <Preference
+            android:key="filipe_carreto_plus"
+            android:title="@string/filipe_carreto_preference_title"
+            android:summary="@string/filipe_carreto_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+          
+          <Preference
+            android:key="abhishek_kaushik_plus"
+            android:title="@string/abhishek_kaushik_preference_title"
+            android:summary="@string/abhishek_kaushik_preference_title_summary"
+            android:icon="@drawable/ic_settings_cypherplus" />
+         
     </PreferenceCategory>
 </PreferenceScreen>
