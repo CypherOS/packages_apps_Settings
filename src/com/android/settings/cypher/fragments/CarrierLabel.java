@@ -72,6 +72,7 @@ public class CarrierLabel extends SettingsPreferenceFragment
         mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
+        mCustomCarrierLabel = (PreferenceScreen) prefSet.findPreference(CUSTOM_CARRIER_LABEL);
 		
 		mStatusBarCarrierSize = (CustomSeekBarPreference) prefSet.findPreference(STATUS_BAR_CARRIER_FONT_SIZE);
         mStatusBarCarrierSize.setValue(Settings.System.getInt(resolver,
@@ -85,13 +86,6 @@ public class CarrierLabel extends SettingsPreferenceFragment
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCarrierColorPicker.setSummary(hexColor);
         mCarrierColorPicker.setNewPreviewColor(intColor);
-
-        mCustomCarrierLabel = (PreferenceScreen) findPreference(CUSTOM_CARRIER_LABEL);
-        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
-            prefSet.removePreference(mCustomCarrierLabel);
-        } else {
-            updateCustomLabelTextSummary();
-        }
     }
 
     @Override
