@@ -25,9 +25,6 @@
     <string name="add">Add</string>
     <string name="choose_app">Escolher app</string>
 
-    <!-- About phone screen, AOSCP device maintainer name -->
-    <string name="device_maintainer">Mantenedor do Dispositivo</string>
-    <string name="device_maintainers">Mantenedores do Dispositivo</string>
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">Versão CypherOS</string>
     <string name="aoscp_version_default">Desconhecido</string>
@@ -382,12 +379,12 @@
 	<string name="notification_light_screen_on">Luzes com tela ligada</string>
 	
 	<!-- Custom carrier label and position -->
-    <string name="carrier_label_settings_title">Carrier Label</string>
-    <string name="carrier_label_settings_summary">Personalizar o carrier label</string>
-    <string name="custom_carrier_label_title">carrier label personalizada</string>
-    <string name="custom_carrier_label_explain">Insira uma nova label. Deixe em branco para reverter para a label stock.</string>
-    <string name="custom_carrier_label_notset">Custom label currently not set</string>
-    <string name="show_carrier_title">Carrier label</string>
+    <string name="carrier_label_settings_title">Rótulo da operadora</string>
+    <string name="carrier_label_settings_summary">Personalizar o rótulo da operadora</string>
+    <string name="custom_carrier_label_title">Rótulo da operadora personalizado</string>
+    <string name="custom_carrier_label_explain">Insira um novo rótulo. Deixe em branco para reverter para o rótulo original.</string>
+    <string name="custom_carrier_label_notset">Rótulo personalizado atualmente não definido</string>
+    <string name="show_carrier_title">Rótulo da operadora</string>
     <string name="show_carrier_disabled">Desativado</string>
     <string name="show_carrier_keyguard">Bloqueio de tela</string>
     <string name="show_carrier_statusbar">Barra de status</string>
@@ -579,5 +576,8 @@
     <string name="reset_settings_title">Redefinição de recursos</string>
     <string name="reset_settings_summary">Redefinir todas funções da CypherOS</string>
     <string name="keywords_settings_reset">Redefinir</string>
+
+	<!-- Maintainer category -->
+    <string name="maintainer_category_title">Mantenedores oficiais</string>
 
 </resources>
