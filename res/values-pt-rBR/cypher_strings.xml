@@ -577,7 +577,32 @@
     <string name="reset_settings_summary">Redefinir todas funções da CypherOS</string>
     <string name="keywords_settings_reset">Redefinir</string>
 
-	<!-- Maintainer category -->
-    <string name="maintainer_category_title">Mantenedores oficiais</string>
+	<!-- Team members & Maintainers -->
+        <string name="team_and_maintainers_info_summary">CypherOS foi desenvolvida desde o início por uma equipe talentosa de desenvolvedores. Ela agora está disponível para vários dispositivos graças ao trabalha duro dos mantenedores da comunidade. Abaixo você encontrará uma lista completa dos que fazem CypherOS melhor todos os dias.</string>
+	<string name="team_and_maintainers_title">O time</string>
+	<string name="team_and_maintainers_title_summary">Uma lista dinâmica de membros da equipe e mantenedores de dispositivos ativos para CypherOS</string>
+	<!-- Team members -->
+	<string name="developers_category_title">Desenvolvedores</string>
+	<string name="developers_chris_title">Chris Crump | Fundador &amp; Desenvolvedor Líder</string>
+	<string name="developers_chris_title_summary">O fundador da CypherOS, o homem que iniciou tudo e, com a ajuda de seus incríveis membros da equipe, trouxe isso para onde está hoje</string>
+	<string name="developers_aaron_title">Aaron Nixon | Desenvolvedor Co-Lider</string>
+	<string name="developers_aaron_title_summary">O segundo chefe na cadeira! Ele mantém servidores e também é um fator enorme de CypherOS e leva a alcançar a simplicidade</string>
+	<string name="community_category_title">Comunidade</string>
+	<string name="community_mani_title">Mani Kumar | Gerente &amp; Relações Comunitárias</string>
+	<string name="community_mani_title_summary">Sem ele, não teríamos o impulso e a direção apropriada para avançar na comunidade e apresentar a CypherOS a usuários de todo o mundo</string>
+	<!-- Maintainers -->
+	<string name="maintainer_category_title">Mantenedores oficiais</string>
+	<string name="ken_adams_preference_title">Ken Adams</string>
+	<string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
+	<string name="isaiah_pez_preference_title">Isaiah Pez</string>
+	<string name="isaiah_pez_preference_title_summary">LG G3 | LS990</string>
+	<string name="rahul_s_nair_preference_title">Rahul S Nair</string>
+	<string name="rahul_s_nair_preference_title_summary">Moto G4 Plus | Athene</string>
+	<string name="jonathan_bruno_preference_title">Jonathan Bruno</string>
+	<string name="jonathan_bruno_preference_title_summary">Moto G | Osprey</string>
+	<string name="filipe_carreto_preference_title">Filipe Carreto</string>
+	<string name="filipe_carreto_preference_title_summary">OnePlus 3</string>
+	<string name="abhishek_kaushik_preference_title">Abhishek Kaushik</string>
+	<string name="abhishek_kaushik_preference_title_summary">Xiaomi Redmi Note 3 | Kenzo</string>
 
 </resources>
