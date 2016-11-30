@@ -64,7 +64,7 @@
 	<!-- Source category -->
     <string name="source_category_title">Kaynak</string>
 	<string name="github_preference_title">Github</string>
-	<string name="github_preference_title_summary">CypherOS\'ta nelerin geliştirildiğine ilişkin en son bilgileri almak için, Github'umuza göz atın</string>
+	<string name="github_preference_title_summary">CypherOS\'ta nelerin geliştirildiğine ilişkin en son bilgileri almak için, Github\'umuza göz atın</string>
 	<string name="gerrit_preference_title">Gerrit</string>
 	<string name="gerrit_preference_title_summary">CypherOS\'ta bekleyen değişiklikleri önermek, doğrulamak ve test etmek için Gerrit Kodu İncelememizi takip edin</string>
 	<!-- Phone info shortcut -->
