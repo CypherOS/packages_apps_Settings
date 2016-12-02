@@ -136,8 +136,73 @@
   <string name="advanced_battery_settings_title_summary">Altre opzioni disponibili per migliorare la vostra esperienza sul consumo di energia</string>
   
   <!-- Button settings -->
-  <string name="button_settings_title">Pulsanti</string>
-  <string name="button_settings_title_summary">Ottieni il massimo dai tuoi tasti hardware, con varie azioni personalizzate</string>
+  <string name="button_pref_title">Pulsanti</string>
+  <string name="hardware_keys_power_key_title">Pulsante alimentazione</string>
+  <string name="hardware_keys_home_key_title">Pulsante home</string>
+  <string name="hardware_keys_back_key_title">Pulsante indietro</string>
+  <string name="hardware_keys_menu_key_title">Pulsante menù</string>
+  <string name="hardware_keys_assist_key_title">Pulsante ricerca</string>
+  <string name="hardware_keys_appswitch_key_title">Pulsante recenti</string>
+  <string name="hardware_keys_camera_key_title">Pulsante fotocamera</string>
+  <string name="hardware_keys_volume_keys_title">Pulsante volume</string>
+  <string name="hardware_keys_short_press_title">Azione pressione breve</string>
+  <string name="hardware_keys_long_press_title">Azione pressione prolungata</string>
+  <string name="hardware_keys_double_tap_title">Azione doppio tocco</string>
+  <string name="hardware_keys_action_nothing">Nessuna azione</string>
+  <string name="hardware_keys_action_menu">Apri/Chiudi menù</string>
+  <string name="hardware_keys_action_app_switch">Selettore applicazioni recenti</string>
+  <string name="hardware_keys_action_search">Assistente ricerca</string>
+  <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
+  <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
+  <string name="hardware_keys_action_launch_camera">Avvia Fotocamera</string>
+  <string name="hardware_keys_action_sleep">Spegni schermo</string>
+  <string name="hardware_keys_action_last_app">Ultima applicazione</string>
+  <string name="camera_sleep_on_release_title">Sguardo allo schermo</string>
+  <string name="camera_sleep_on_release_summary">Una pressione a metà manterrà lo schermo acceso finché il bottone resterà premuto</string>
+  <string name="camera_launch_title">Avvia Fotocamera</string>
+  <string name="camera_launch_summary">Una pressione prolungata e rilascio avvierà la fotocamera</string>
+  <string name="volbtn_music_controls_title">Controllo di riproduzione</string>
+  <string name="volbtn_music_controls_summary">Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia</string>
+  <string name="volbtn_cursor_control_title">Controllo cursore con tasti</string>
+  <string name="volbtn_cursor_control_off">Disattivato</string>
+  <string name="volbtn_cursor_control_on">I pulsanti Volume su/giù spostano il cursore nel testo a sinistra/destra</string>
+  <string name="volbtn_cursor_control_on_reverse">I tasti Volume su/giù spostano il cursore nel testo a destra/sinistra</string>
+  <string name="power_end_call_title">Termina chiamata</string>
+  <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
+  <string name="swap_volume_buttons_title">Riorienta</string>
+  <string name="swap_volume_buttons_summary">Scambia i tasti volume quando lo schermo viene ruotato</string>
+  <string name="button_wake_title">Risveglio dispositivo</string>
+  <string name="home_answer_call_title">Rispondi chiamata</string>
+  <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
+
+  <!-- Key backlight -->
+  <string name="button_backlight_title">Retroilluminazione</string>
+  <string name="button_backlight_enabled">Illumina pulsanti</string>
+  <string name="keyboard_backlight_enabled">Illumina tastiera</string>
+  <string name="button_backlight_seekbar_title">Luminosità pulsanti</string>
+  <string name="keyboard_backlight_seekbar_title">Luminosità tastiera</string>
+  <string name="backlight_timeout_title">Tempo di illuminazione</string>
+  <string name="backlight_timeout_unlimited">Non spegnere</string>
+  <string name="backlight_summary_disabled">Disattivato</string>
+  <string name="backlight_summary_enabled_with_timeout">Attiva per <xliff:g id="timeout">%s</xliff:g></string>
+  <string name="backlight_summary_enabled">Attivo</string>
+
+  <!-- Buttons - Enable navbar -->
+  <string name="enable_navigation_bar_title">Barra di navigazione</string>
+  <string name="enable_navigation_bar_title_notice">Questa opzione è per i soli dispositivi dotati di tasti hardware. Questo genera i tasti funzione stock di android per poter navigare all'\interno del sistema operativo. I dispositivi che non sono dotati dei tasti hardware non devono utilizzare questo, altrimenti si libereranno delle funzionalità di navigazione.</string>
+
+  <!-- Navigation Bar -->
+  <string name="navigation_bar_category">Barra di navigazione</string>
+  <string name="navigation_bar_title">Pulsanti e schermata</string>
+  <string name="navigation_bar_left_title">Modalità mancino</string>
+  <string name="navigation_bar_left_summary">Posiziona la barra di navigazione sul lato sinistro dello schermo in modalità orizzontale</string>
+  <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
+  <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti sinistro e destro del cursore durante la digitazione. Nasconde il selettore di input.</string>
+  <string name="navigation_bar_recents_title">Azione pressione prolungata recenti</string>
+  <string name="volume_keys_control_ring_stream_title">Controllo volume suoneria</string>
+  <string name="volume_keys_control_ring_stream_summary_on">I tasti volume regolano la suoneria</string>
+  <string name="volume_keys_control_ring_stream_summary_off">I tasti volume regolano le applicazioni multimediali</string>
+
   <!-- Volume button wake -->
   <string name="volbtn_wake_device_title">Risveglio con pulsante volume</string>
   <string name="button_wake_summary">Non puoi risvegliare il dispositivo se si sta ascoltando la musica e i controlli sono attivi</string>
@@ -536,8 +601,8 @@
     <string name="battery_percent_title">Mostra la percentuale</string>
     <string name="battery_percent_none">Mai</string>
     <string name="battery_percent_always">Sempre</string>
-    <string name="statusbar_percent_inside_title">Percentuale sovrapposta overlay</string>
-    <string name="statusbar_percent_inside_summary">Visualizzare la percentuale sull\'immagine della batteria</string>
+    <string name="statusbar_percent_inside_title">Percentuale sovrapposta</string>
+    <string name="statusbar_percent_inside_summary">Visualizza la percentuale dentro l'icona della batteria</string>
     <string name="statusbar_charging_image_title">Indicatore di carica</string>
     <string name="statusbar_category_charging_title">Ricarica</string>
     <string name="statusbar_charging_image_summary">Indicatore del fulmine sul display durante la ricarica. Nascondi la percentuale di sovrapposizione</string>
