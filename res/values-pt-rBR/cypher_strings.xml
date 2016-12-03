@@ -14,11 +14,11 @@
 
     <!-- General strings -->
     <string name="reset">Reiniciar</string>
-	<string name="reset_yes">Sim</string>
-	<string name="reset_no">Não</string>
-	<string name="ok">Ok</string>
-	<string name="reset_color_message">As cores serão redefinidas para os padrões. Você gostaria de continuar?</string>
-	<string name="reset_color_confirmation">As cores padrão foram restauradas</string>
+    <string name="reset_yes">Sim</string>
+    <string name="reset_no">Não</string>
+    <string name="ok">Ok</string>
+    <string name="reset_color_message">As cores serão redefinidas para os padrões. Você gostaria de continuar?</string>
+    <string name="reset_color_confirmation">As cores padrão foram restauradas</string>
     <string name="attention">Atenção</string>
     <string name="enabled">Ativado</string>
     <string name="default_string">Padrão</string>
@@ -28,59 +28,59 @@
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">Versão CypherOS</string>
     <string name="aoscp_version_default">Desconhecido</string>
-	<string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
-	<!-- About phone screen, CypherOS Release ID -->
-	<string name="aoscp_release_id">ID da versão</string>
+    <string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+    <!-- About phone screen, CypherOS Release ID -->
+    <string name="aoscp_release_id">ID da versão</string>
     <string name="aoscp_release_id_default">não especificado</string>
-	<!-- About phone screen, CypherOS API -->
-	<string name="aoscp_api_level">API</string>
+    <!-- About phone screen, CypherOS API -->
+    <string name="aoscp_api_level">API</string>
     <string name="aoscp_api_level_default">Desconhecido</string>
-	<!-- Vendor version -->
+    <!-- Vendor version -->
     <string name="vendor_version">Versão do fornecedor</string>
     <string name="vendor_version_default">Desconhecido</string>
-	<!-- Software information-->
-	<string name="software_info_settings_title">Informações do software</string>
-	<string name="software_info_settings_title_summary">Veja as atualizações de status e informações úteis</string>
-	<!-- Bug Report -->
-	<string name="bugreport_preference_title">Relatório de Erro</string>
-	<string name="bugreport_preference_title_summary">Se você estiver enfrentando problemas na CypherOS, sinta-se à vontade para receber um relatório de bug e enviá-lo para nós</string>
-	<!-- Build notes -->
-	<string name="buildnotes_settings_title">Relatório de mudanças</string>
-	<string name="buildnotes_settings_title_summary">Confira as últimas mudanças na CypherOS para saber o que foi alterado na sua versão atual</string>
-	<string name="buildnotes_settings_error">Não é possível carregar o Relatório de mudanças</string>
-	<!-- Social category -->
+    <!-- Software information-->
+    <string name="software_info_settings_title">Informações do software</string>
+    <string name="software_info_settings_title_summary">Veja as atualizações de status e informações úteis</string>
+    <!-- Bug Report -->
+    <string name="bugreport_preference_title">Relatório de Erro</string>
+    <string name="bugreport_preference_title_summary">Se você estiver enfrentando problemas na CypherOS, sinta-se à vontade para receber um relatório de bug e enviá-lo para nós</string>
+    <!-- Build notes -->
+    <string name="buildnotes_settings_title">Relatório de mudanças</string>
+    <string name="buildnotes_settings_title_summary">Confira as últimas mudanças na CypherOS para saber o que foi alterado na sua versão atual</string>
+    <string name="buildnotes_settings_error">Não é possível carregar o Relatório de mudanças</string>
+    <!-- Social category -->
     <string name="social_category_title">Social</string>
-	<string name="website_preference_title">On-The-Web</string>
-	<string name="website_preference_title_summary">Dê um pulo no nosso site para obter as últimas compilações e informações de atualizações</string>
-	<string name="google_preference_title">CypherPlus</string>
-	<string name="google_preference_title_summary">Mantenha contato com outros usuários e desenvolvedores CypherOS na comunidade do Google+</string>
-	<!-- Source category -->
+    <string name="website_preference_title">On-The-Web</string>
+    <string name="website_preference_title_summary">Dê um pulo no nosso site para obter as últimas compilações e informações de atualizações</string>
+    <string name="google_preference_title">CypherPlus</string>
+    <string name="google_preference_title_summary">Mantenha contato com outros usuários e desenvolvedores CypherOS na comunidade do Google+</string>
+    <!-- Source category -->
     <string name="source_category_title">Source</string>
-	<string name="github_preference_title">Github</string>
-	<string name="github_preference_title_summary">Para obter as informações mais recentes sobre o que foi melhorado na CypherOS, dê uma olhada no nosso Github</string>
-	<string name="gerrit_preference_title">Gerrit</string>
-	<string name="gerrit_preference_title_summary">Acompanhe nosso Gerrit Code Review, para enviar verificar e testar alterações pendentes no CypherOS</string>
-	<!-- Phone info shortcut -->
+    <string name="github_preference_title">Github</string>
+    <string name="github_preference_title_summary">Para obter as informações mais recentes sobre o que foi melhorado na CypherOS, dê uma olhada no nosso Github</string>
+    <string name="gerrit_preference_title">Gerrit</string>
+    <string name="gerrit_preference_title_summary">Acompanhe nosso Gerrit Code Review, para enviar verificar e testar alterações pendentes no CypherOS</string>
+    <!-- Phone info shortcut -->
     <string name="device_info_title">Informações do telefone</string>
-	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
+    <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
     <string name="local_backup_password_title">Senha de backup da área de trabalho</string>
 	
-	<!-- Addition settings -->
-	<string name="addition_settings_title">Additions</string>
-	<string name="addition_settings_greeting">Bem-vindo às suas configurações de adições. As adições são uma extensão direta para o Android, oferecendo vários recursos e opções de personalização, que não estão disponíveis na stock.\n\nOpções são colocadas na seção apropriada para que possam ser facilmente encontradas.</string>
-	<!-- TODO: Summary loaders -->
+    <!-- Addition settings -->
+    <string name="addition_settings_title">Additions</string>
+    <string name="addition_settings_greeting">Bem-vindo às suas configurações de adições. As adições são uma extensão direta para o Android, oferecendo vários recursos e opções de personalização, que não estão disponíveis na stock.\n\nOpções são colocadas na seção apropriada para que possam ser facilmente encontradas.</string>
+    <!-- TODO: Summary loaders -->
 	
-	<!-- Addition settings -->
-	<string name="system_settings_title">Sistema</string>
-	<string name="system_settings_title_summary">Re-configure os recursos específicos do sistema para simplificar sua experiência</string>
-	<!-- Power Menu fragment -->
+    <!-- Addition settings -->
+    <string name="system_settings_title">Sistema</string>
+    <string name="system_settings_title_summary">Re-configure os recursos específicos do sistema para simplificar sua experiência</string>
+    <!-- Power Menu fragment -->
     <string name="powermenu_settings_title">PowerMenu</string>
-	<string name="powermenu_settings_title_summary">Alterar o que mostra no seu menu de energia nativo com uma matriz de opções</string>
+    <string name="powermenu_settings_title_summary">Alterar o que mostra no seu menu de energia nativo com uma matriz de opções</string>
     <!-- Power menu customization -->
     <string name="power_menu_reboot_title">Reiniciar</string>
     <string name="power_menu_screenshot_title">Captura de tela</string>
-	<string name="power_menu_screenrecord_title">Gravador de tela</string>
-	<string name="power_menu_torch_title">Lanterna</string>
+    <string name="power_menu_screenrecord_title">Gravador de tela</string>
+    <string name="power_menu_torch_title">Lanterna</string>
     <string name="power_menu_airplane_title">Modo avião</string>
     <string name="power_menu_users_title">Alternador de usuário</string>
     <string name="power_menu_search_title">Pesquisa</string>
@@ -91,32 +91,32 @@
     <string name="power_menu_sound_title">Painel de som</string>
     <string name="power_menu_bug_report_disabled">O relatório de erros está desabilitado nas opções de desenvolvedor</string>
 	
-	<!-- Gesture Settings -->
-	<string name="gesture_settings_title">Gestos</string>
-	<string name="device_category_title">Dispositivo</string>
-	<string name="motion_gestures_title">Gestos de movimento</string>
-	<string name="motion_gestures_title_summary">Controle os serviços do dispositivo, como a Tela ambiente, com ações ativadas por movimento</string>
-        <string name="gesture_preference_title">Movimentos</string>
-        <string name="gesture_preference_summary">Gestos rápidos e úteis para lançar módulos específicos ou melhorar a usabilidade da navegação</string>
+    <!-- Gesture Settings -->
+    <string name="gesture_settings_title">Gestos</string>
+    <string name="device_category_title">Dispositivo</string>
+    <string name="motion_gestures_title">Gestos de movimento</string>
+    <string name="motion_gestures_title_summary">Controle os serviços do dispositivo, como a Tela ambiente, com ações ativadas por movimento</string>
+    <string name="gesture_preference_title">Movimentos</string>
+    <string name="gesture_preference_summary">Gestos rápidos e úteis para lançar módulos específicos ou melhorar a usabilidade da navegação</string>
 
-	<!-- Double-snap summary loaders -->
-	<string name="camera_double_tap_power_gesture_on">Double-snap está ligado</string>
-	<string name="camera_double_tap_power_gesture_off">Double-snap está desligado</string>
+    <!-- Double-snap summary loaders -->
+    <string name="camera_double_tap_power_gesture_on">Double-snap está ligado</string>
+    <string name="camera_double_tap_power_gesture_off">Double-snap está desligado</string>
 	
-	<!-- Volume settings - Volume adjustment sound -->
+    <!-- Volume settings - Volume adjustment sound -->
     <string name="volume_adjust_sounds_title">Sons de ajuste de volume</string>
 	
-	<!-- ADB debugging notifications -->
+    <!-- ADB debugging notifications -->
     <string name="enable_adb_custom">Depuração do Android</string>
     <string name="enable_adb_summary_custom">Ative a interface Debug Bridge do Android (adb)</string>
     <string name="adb_notify">Notificação do ADB</string>
     <string name="adb_notify_summary">Exibe uma notificação quando a depuração do android está ativada</string>
 	
-	<string name="adb_over_network">ADB na rede</string>
+    <string name="adb_over_network">ADB na rede</string>
     <string name="adb_over_network_summary">Ative a depuração de TCP/IP através de interfaces de rede (Wi\u2011Fi, redes USB). Esta configuração é redefinida na reinicialização</string>
     <string name="adb_over_network_warning">AVISO: Quando o ADB sobre a rede está habilitado, seu telefone está aberto para invasões em todas as redes conectadas!\n\nApenas use esse recurso quando estiver conectado em redes confiáveis.\n\nDeseja realmente Para ativar esta função?</string>
 
-	<!-- Category title for Charging sounds -->
+    <!-- Category title for Charging sounds -->
     <string name="power_notifications_category_title">Sons de carregamento</string>
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
     <string name="power_notifications_enable_title">Ativar</string>
@@ -128,7 +128,7 @@
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silencioso</string>
 	
-	<!-- Display : Rotation -->
+    <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotação</string>
     <string name="display_rotation_disabled">Desativado</string>
     <string name="display_rotation_unit">graus</string>
@@ -138,43 +138,43 @@
     <string name="display_rotation_180_title">180 graus</string>
     <string name="display_rotation_270_title">270 graus</string>
 	
-	<!-- Advanced storage settings -->
-   <string name="storage_advanced_titlebar">Armazenamento Avançado</string>
-   <string name="storage_menu_advanced">Avançado</string>
+    <!-- Advanced storage settings -->
+    <string name="storage_advanced_titlebar">Armazenamento Avançado</string>
+    <string name="storage_menu_advanced">Avançado</string>
 
-   <!-- USB data automatic unlock -->
-   <string name="usb_data_auto_unlock_title">Desbloquear dados USB</string>
-   <string name="usb_data_auto_unlock_summary">Permita acesso de dados desbloqueado ao armazenamento do seu telefone através de USB (MTP, PTP)</string>
-   <string name="usb_data_auto_unlock_warning_summary">Seu dispositivo estabelecerá conexões desprotegida, toda vez que você conectá-lo a um PC. Telas de bloqueio Seguro desativar esta opção automaticamente.\n\nEste é ainda um recurso experimental, use com cautela.</string>
+    <!-- USB data automatic unlock -->
+    <string name="usb_data_auto_unlock_title">Desbloquear dados USB</string>
+    <string name="usb_data_auto_unlock_summary">Permita acesso de dados desbloqueado ao armazenamento do seu telefone através de USB (MTP, PTP)</string>
+    <string name="usb_data_auto_unlock_warning_summary">Seu dispositivo estabelecerá conexões desprotegida, toda vez que você conectá-lo a um PC. Telas de bloqueio Seguro desativar esta opção automaticamente.\n\nEste é ainda um recurso experimental, use com cautela.</string>
  
-   <!-- Sound settings -->
-   <string name="advanced_sound_title">Avançado</string>
-   <string name="sound_title">Som</string>
+    <!-- Sound settings -->
+    <string name="advanced_sound_title">Avançado</string>
+    <string name="sound_title">Som</string>
 
-   <!-- Safe headset volume restore checkbox -->
-   <string name="safe_headset_volume_title">Volume do fone de ouvido seguro</string>
-   <string name="safe_headset_volume_summary">Evitar níveis altos de volume quando o fone de ouvido é conectado pela primeira vez</string>
-   <string name="safe_headset_volume_warning_dialog_text">Ouvir em volume alto por longos períodos pode danificar sua audição. Desabilite-o com cuidado.</string>
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">Volume do fone de ouvido seguro</string>
+    <string name="safe_headset_volume_summary">Evitar níveis altos de volume quando o fone de ouvido é conectado pela primeira vez</string>
+    <string name="safe_headset_volume_warning_dialog_text">Ouvir em volume alto por longos períodos pode danificar sua audição. Desabilite-o com cuidado.</string>
 
-   <!-- Less Notification sounds -->
-   <string name="notifications_category_title">Notificações</string>
-   <string name="less_notification_sounds_title">Sons de notificação menos frequentes</string>
-   <string name="less_notification_sounds_summary">Limite os sons de notificação de cada aplicativo para reproduzir apenas uma vez por período de tempo definido</string>
-   <string name="less_notification_sounds_default">Comportamento Padrão</string>
-   <string name="less_notification_sounds_3s">3 segundos</string>
-   <string name="less_notification_sounds_5s">5 segundos</string>
-   <string name="less_notification_sounds_10s">10 segundos</string>
-   <string name="less_notification_sounds_15s">15 segundos</string>
-   <string name="less_notification_sounds_30s">30 segundos</string>
-   <string name="less_notification_sounds_45s">45 segundos</string>
-   <string name="less_notification_sounds_1m">1 minuto</string>
-   <string name="less_notification_sounds_2m">2 minutos</string>
-   <string name="less_notification_sounds_5m">5 minutos</string>
+    <!-- Less Notification sounds -->
+    <string name="notifications_category_title">Notificações</string>
+    <string name="less_notification_sounds_title">Sons de notificação menos frequentes</string>
+    <string name="less_notification_sounds_summary">Limite os sons de notificação de cada aplicativo para reproduzir apenas uma vez por período de tempo definido</string>
+    <string name="less_notification_sounds_default">Comportamento Padrão</string>
+    <string name="less_notification_sounds_3s">3 segundos</string>
+    <string name="less_notification_sounds_5s">5 segundos</string>
+    <string name="less_notification_sounds_10s">10 segundos</string>
+    <string name="less_notification_sounds_15s">15 segundos</string>
+    <string name="less_notification_sounds_30s">30 segundos</string>
+    <string name="less_notification_sounds_45s">45 segundos</string>
+    <string name="less_notification_sounds_1m">1 minuto</string>
+    <string name="less_notification_sounds_2m">2 minutos</string>
+    <string name="less_notification_sounds_5m">5 minutos</string>
    
-   <!-- Bluetooth accept all files -->
-   <string name="bluetooth_accept_all_files">Aceite todos os tipos de arquivo</string>
+    <!-- Bluetooth accept all files -->
+    <string name="bluetooth_accept_all_files">Aceite todos os tipos de arquivo</string>
    
-   <!-- Doze pulse options -->
+    <!-- Doze pulse options -->
     <string name="summary_doze_enabled">Tela ambiente está ligado</string>
     <string name="summary_doze_disabled">Tela ambiente está desligado</string>
     <string name="doze_overwrite_value_title">Configurações avançadas</string>
@@ -207,12 +207,12 @@
     <string name="fourhalf_second">4.5 s</string>
     <string name="five_second">5 s</string>
 	
-	<!-- Camera sound switch -->
+    <!-- Camera sound switch -->
     <string name="camera_sounds_title">Som de disparo da câmera</string>
     <string name="camera_sounds_summary">Ative o som de disparo da câmera do sistema</string>
     <string name="camera_sound_warning_dialog_text">Desativar o som de disparo da câmera é ilegal em algumas áreas! Verifique a lei aplicável no seu país</string>
 	
-	<!-- Volume Steps -->
+    <!-- Volume Steps -->
     <string name="volume_steps_title">Etapas de volume</string>
     <string name="volume_steps_alarm_title">Etapas de volume: Alarme</string>
     <string name="volume_steps_dtmf_title">Etapas de volume: DTMF</string>
@@ -229,9 +229,9 @@
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
 	
-	<!-- Statusbar Settings -->
-	<string name="statusbar_settings_title">Barra de status</string>
-	<string name="statusbar_settings_title_summary">Altere a aparência da barra de status com uma matriz de personalizações</string>
+    <!-- Statusbar Settings -->
+    <string name="statusbar_settings_title">Barra de status</string>
+    <string name="statusbar_settings_title_summary">Altere a aparência da barra de status com uma matriz de personalizações</string>
     <!-- Status bar - Clock -->
     <string name="status_bar_clock_title">Relógio &amp; data</string>
     <string name="status_bar_clock_style_title">Posição</string>
@@ -244,8 +244,8 @@
     <string name="status_bar_am_pm_normal">Normal</string>
     <string name="status_bar_am_pm_small">Pequeno</string>
     <string name="status_bar_am_pm_hidden">Oculto</string>
-	<!-- Statusbar - Date -->
-	<string name="clock_date_display">Data</string>
+    <!-- Statusbar - Date -->
+    <string name="clock_date_display">Data</string>
     <string name="clock_date_display_summary">Exibe a data personalizada antes do relógio</string>
     <string name="clock_date_display_none">Não mostrar</string>
     <string name="clock_date_display_small">Tamanho da fonte pequeno</string>
@@ -259,13 +259,13 @@
     <string name="clock_date_string_edittext_title">Deve estar em Data formato ex. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Digite o conjunto</string>
 	
-	<!-- Status bar quick qs pulldown -->
+    <!-- Status bar quick qs pulldown -->
     <string name="status_bar_quick_qs_pulldown_title">Puxar para baixo rápido</string>
     <string name="status_bar_quick_qs_pulldown_summary">Arraste para baixo a borda direita da barra de status para revelar configurações rápidas</string>
 	
-	<!-- Network traffic -->
+    <!-- Network traffic -->
     <string name="network_traffic_title">Tráfego de rede</string>
-	<string name="network_traffic_title_summary">Monitore seus dados de entrada e saída e a velocidades do wifi na barra de status</string>
+    <string name="network_traffic_title_summary">Monitore seus dados de entrada e saída e a velocidades do wifi na barra de status</string>
     <string name="show_network_traffic_state">Barra de status monitor de tráfego</string>
     <string name="show_network_traffic_unit">Unidade de exibição</string>
     <string name="show_network_traffic_frequency">Intervalo de atualização</string>
@@ -285,7 +285,7 @@
 	<string name="network_traffic_hidearrow">Ocultar as setas</string>
     <string name="network_traffic_hidearrow_summary">Esconda as setas no indicador de tráfego</string>
 	
-	<!-- Smart pulldown-->
+    <!-- Smart pulldown-->
     <string name="smart_pulldown_title">Puxar para baixo inteligente</string>
     <string name="smart_pulldown_summary">Abrir configurações rápidas quando houver %1$s notificações</string>
     <string name="smart_pulldown_none_summary">Abrir configurações rápidas quando não há notificações</string>
@@ -294,7 +294,7 @@
     <string name="smart_pulldown_dismissable">Não descartável</string>
     <string name="smart_pulldown_ongoing">Não está em curso</string>
 	
-	<!-- Quick pull down-->
+    <!-- Quick pull down-->
     <string name="quick_pulldown_title">Puxar para baixo rápido</string>
     <string name="quick_pulldown_summary">%1$s Borda da barra de status puxa para baixo Configurações rápidas</string>
     <string name="quick_pulldown_summary_always">Mostrar sempre as Configurações rápidas na barra de status suspensa</string>
@@ -303,26 +303,26 @@
     <string name="quick_pulldown_right">Direita</string>
     <string name="quick_pulldown_always">Sempre</string>
 	
-	<!-- Navbar tuner -->
+    <!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navbar tuner</string>
     <string name="navbar_tuner_summary">Personalizar botões e layout</string>
-	<!-- Multiwindow navbar gesture -->
+    <!-- Multiwindow navbar gesture -->
     <string name="nav_gesture_title">Ativar multi janela com gesto de deslizar para cima</string>
     <string name="nav_gesture_summary">Gesto para entrar na multi janela ao deslizar para cima a partir do botão</string>
 	
-	<!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
+    <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
     <string name="show_battery_percentage">Mostrar porcentagem de bateria</string>
     <string name="show_battery_percentage_summary">Mostrar porcentagem de bateria quando não carregar</string>
 	
-	<!-- statusbar icon blacklist -->
+    <!-- statusbar icon blacklist -->
     <string name="status_bar_icon_blacklist_title">Ícones da barra de status</string>
     <string name="status_bar_icon_blacklist_summary">Configurar quais ícones são mostrados na barra de status</string>
 	
-	<!-- double tap statusbar to sleep -->
+    <!-- double tap statusbar to sleep -->
     <string name="double_tap_to_sleep_title">Toque para dormir</string>
     <string name="double_tap_to_sleep_summary">Toque duas vezes na barra de status para colocar o dispositivo em modo de suspensão</string>
 	
-	<!-- Color Picker -->
+    <!-- Color Picker -->
     <string name="dialog_color_picker">Selecionador de cores</string>
     <string name="press_color_to_apply">Pressione a cor abaixo para aplicar</string>
     <string name="arrow_right">→</string>
@@ -332,15 +332,15 @@
     <string name="set">Definir</string>
     <string name="color_default">Padrão</string>
 	
-	<!-- Brightness control -->
+    <!-- Brightness control -->
     <string name="status_bar_toggle_brightness">Controle de brilho</string>
     <string name="status_bar_toggle_brightness_summary">Ajustar o brilho deslizando através da barra de status</string>
 	
-	<!-- Wake when connected/disconnected -->
+    <!-- Wake when connected/disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Ativar plugue</string>
     <string name="wake_when_plugged_or_unplugged_summary">Ligue a tela ao conectar ou desconectar o carregador</string>
 	
-	<!-- Notification/Battery lights -->
+    <!-- Notification/Battery lights -->
     <string name="led_category">Luzes</string>
     <string name="edit_light_settings">Editar configurações de luz</string>
     <string name="pulse_speed_title">Comprimento e velocidade de pulso</string>
@@ -368,17 +368,17 @@
     <string name="battery_light_full_color_title">Carregado (90%)</string>
     <string name="battery_light_really_full_color_title">Carregado (100%)</string>
     <string name="notification_light_title">LED de Notificação</string>
-	<string name="notification_light_title_summary">Várias opções de LED para notificações e alertas de entrada</string>
+    <string name="notification_light_title_summary">Várias opções de LED para notificações e alertas de entrada</string>
     <string name="notification_light_general_title">Geral</string>
     <string name="notification_light_applist_title">Aplicativos</string>
     <string name="advanced">Avançado</string>
     <string name="notification_light_use_custom">Usar valores personalizados</string>
     <string name="notification_light_default_value">Padrão</string>
     <string name="notification_light_no_apps_summary">Para adicionar o controle por aplicativo, ative \'%1$s\' e pressione \'\u002b\' na barra de menus</string>
-	<string name="allow_lights_title">Luzes no modo não perturbe</string>
-	<string name="notification_light_screen_on">Luzes com tela ligada</string>
+    <string name="allow_lights_title">Luzes no modo não perturbe</string>
+    <string name="notification_light_screen_on">Luzes com tela ligada</string>
 	
-	<!-- Custom carrier label and position -->
+    <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Rótulo da operadora</string>
     <string name="carrier_label_settings_summary">Personalizar o rótulo da operadora</string>
     <string name="custom_carrier_label_title">Rótulo da operadora personalizado</string>
@@ -389,45 +389,45 @@
     <string name="show_carrier_keyguard">Bloqueio de tela</string>
     <string name="show_carrier_statusbar">Barra de status</string>
     <string name="show_carrier_enabled">Bloqueio de tela &amp; Barra de status</string>
-	<string name="status_bar_carrier_color">Cor</string>
+    <string name="status_bar_carrier_color">Cor</string>
     <string name="status_bar_carrier_size">Tamanho do texto</string>
 	
-	<!-- Quick Settings -->
-	<string name="quick_settings_title">Configurações rápidas</string>
-	<string name="quick_settings_title_summary">Ajuste a lógica eo layout do painel de configurações rápidas</string>
-	<!-- Advanced data tile -->
+    <!-- Quick Settings -->
+    <string name="quick_settings_title">Configurações rápidas</string>
+    <string name="quick_settings_title_summary">Ajuste a lógica eo layout do painel de configurações rápidas</string>
+    <!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Dados em um toque</string>
     <string name="qs_advanced_data_summary">Ative ou desative os dados de celluar com um toque</string>
-	<string name="qs_layout_category_title">Layout</string>
-	<!-- BT easy toggle -->
+    <string name="qs_layout_category_title">Layout</string>
+    <!-- BT easy toggle -->
     <string name="qs_bt_easy_toggle_title">Bluetooth em um toque</string>
     <string name="qs_bt_easy_toggle_summary">Ative ou desative o bluetooth com um toque</string>
-	<!-- WiFi easy toggle -->
+    <!-- WiFi easy toggle -->
     <string name="qs_wifi_easy_toggle_title">WiFi em um toque</string>
     <string name="qs_wifi_easy_toggle_summary">Ative ou desative o wifi com um toque</string>
-	<!-- Quick settings tiles columns and rows config -->
+    <!-- Quick settings tiles columns and rows config -->
     <string name="qs_rows_portrait_title">Linhas de retrato</string>
     <string name="qs_rows_landscape_title">Linhas de paisagem</string>
     <string name="qs_columns_title">Colunas</string>
-	<string name="sysui_qqs_count_title">Contagem de atalhos</string>
+    <string name="sysui_qqs_count_title">Contagem de atalhos</string>
 	
-	<!-- Force expand notifications -->
+    <!-- Force expand notifications -->
     <string name="notification_force_expand_title">Forçar notificações expandidas</string>
     <string name="notification_force_expand_summary">Expandir notificações automaticamente em aplicativos que o suportam</string>
 	
-	<!-- Notification count -->
+    <!-- Notification count -->
     <string name="status_bar_notif_count_title">Mostrar contagem de notificação</string>
     <string name="status_bar_notif_count_summary">Exibe o número de notificações pendentes</string>
 	
-	<!-- Notification Settings -->
-	<string name="notification_settings_title">Notificações</string>
-	<string name="notification_settings_title_summary">Mais opções de personalização para aumentar a sua experiência de notificação da forma que você quiser</string>
-	<!-- Heads up settings -->
+    <!-- Notification Settings -->
+    <string name="notification_settings_title">Notificações</string>
+    <string name="notification_settings_title_summary">Mais opções de personalização para aumentar a sua experiência de notificação da forma que você quiser</string>
+    <!-- Heads up settings -->
     <string name="headsup_settings_title">Notificações flutuante</string>
     <string name="summary_heads_up_enabled">As Notificações flutuante estão ativadas</string>
     <string name="summary_heads_up_disabled">As Notificações flutuante estão desativadas</string>
     <string name="heads_up_disabled_notice">Para permitir que os aplicativos exibam notificações interativas em uma janela pop-up no seu ecrã, ative a opção Notificações flutuante</string>
-	<!-- Heads up timeout -->
+    <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">Tempo de espera</string>
     <string name="heads_up_time_out_summary">Espreitar notificações será exibido para <xliff:g id="number">%d</xliff:g> segundos</string>
     <string name="heads_up_time_out_2sec">2 segundos</string>
@@ -436,7 +436,7 @@
     <string name="heads_up_time_out_6sec">6 segundos</string>
     <string name="heads_up_time_out_8sec">8 segundos</string>
     <string name="heads_up_time_out_10sec">10 segundos</string>	
-	<!-- Heads up snooze -->
+    <!-- Heads up snooze -->
     <string name="heads_up_snooze_title">Temporizador de soneca</string>
     <string name="heads_up_snooze_summary_one_minute">Deslize o dedo para cima em notificações para atrasar a aplicação por 1 minuto</string>
     <string name="heads_up_snooze_summary">Deslize o dedo para cima em notificações para atrasar a aplicação <xliff:g id="number">%d</xliff:g> minutos</string>
@@ -448,16 +448,16 @@
     <string name="heads_up_snooze_15min">15 minutos</string>
     <string name="heads_up_snooze_20min">20 minutos</string>
 	
-	<!-- Status Bar Ticker -->
+    <!-- Status Bar Ticker -->
     <string name="ticker_title">Ticker</string>
     <string name="ticker_title_summary">Utilize o antigo sistema de notificação do kitkat para notificações simples</string>
-	<string name="ticker_settings_disabled_notice">Para permitir que as notificações sejam exibidas na barra de status em vez de em janelas pop-up, ative as notificações de Ticker</string>
+    <string name="ticker_settings_disabled_notice">Para permitir que as notificações sejam exibidas na barra de status em vez de em janelas pop-up, ative as notificações de Ticker</string>
     <string name="ticker_restore_defaults_title">Restaurar padrões</string>
     <string name="text_title">Texto</string>
     <string name="icon_title">Ícone</string>
     <string name="colors_title">Cores</string>
 	
-	<!-- Expanded desktop -->
+    <!-- Expanded desktop -->
     <string name="power_menu_expanded_desktop">Área de trabalho expandida</string>
     <string name="expanded_hide_nothing">Ocultar nada</string>
     <string name="expanded_hide_status">Ocultar barra de status</string>
@@ -471,16 +471,16 @@
     <string name="expanded_desktop_style_description">Escolha um padrão de estilo para área de trabalho</string>
     <string name="expanded_desktop_title">Opções expandidas da área de trabalho</string>
 	
-	<!-- Optional screenshot type -->
+    <!-- Optional screenshot type -->
     <string name="screenshot_type_title">Tipo de captura de tela</string>
     <string name="screenshot_type_fullscreen">Tela cheia</string>
     <string name="screenshot_type_partial">Parcial</string>
 
-	<!-- Addition settings -->
+    <!-- Addition settings -->
     <string name="advanced_battery_settings_title">Opções avançado para bateria</string>
     <string name="advanced_battery_settings_title_summary">Mais opções disponíveis para editar ícone de bateria</string>
 
-	<!-- Battery styles -->
+    <!-- Battery styles -->
     <string name="battery_title">Exibições de bateria</string>
     <string name="status_bar_battery_title">Ícones da bateria</string>
     <string name="battery_percent_title">Porcentagem ao lado do ícone</string>
@@ -495,28 +495,17 @@
     <string name="statusbar_battery_charging_color_enable_title">Colorir durante o carregamento</string>
     <string name="statusbar_battery_charging_color_enable_summary"></string>
 
-	<!-- Battery styles -->
+    <!-- Battery styles -->
     <string name="battery_style_text">Texto</string>
     <string name="battery_style_default">Retrato</string>
     <string name="battery_style_meter_horizontal">Paisagem</string>
     <string name="battery_style_circle">Círculo</string>
 
-	<!-- Button settings -->
+    <!-- Button settings -->
     <string name="button_settings_title">Botões</string>
     <string name="button_settings_title_summary">Tire o máximo proveito de suas chaves de hardware, com várias ações personalizadas</string>
-	<!-- Volume button wake -->
-    <string name="volbtn_wake_device_title">Ativar com botão de volume</string>
-    <string name="button_wake_summary">Não pode ativar o dispositivo se o controle de música estiver ativo ea música estiver sendo reproduzida</string>
-	<!-- Volume button track change -->
-    <string name="volbtn_music_controls_title">Controle de música</string>
-    <string name="volbtn_music_controls_summary">Com a tela desligada, pressionar longamente as teclas de volume buscará faixas</string>
-	<!-- Volume key cursor control -->
-    <string name="volbtn_cursor_control_title">Controle de cursor de tecla de volume</string>
-    <string name="volbtn_cursor_control_off">Desativado</string>
-    <string name="volbtn_cursor_control_on">Volume para cima/para baixo move o cursor para a esquerda/direita</string>
-    <string name="volbtn_cursor_control_on_reverse">Volume para cima/para baixo move o cursor para a direita/esquerda</string>
 
-	<!-- LiveDisplay -->
+    <!-- LiveDisplay -->
     <string name="live_display_title">Live display</string>
     <string name="live_display_summary">Otimiza sua tela com base na hora do dia e condições do ambiente para melhorar a legibilidade e reduzir o cansaço visual</string>
     <string name="live_display_mode">Modo da tela</string>
@@ -554,7 +543,7 @@
     <string name="color_green_title">Verde</string>
     <string name="color_blue_title">Azul</string>
 
-	<!-- LiveDisplay : Picture Adjustment -->
+    <!-- LiveDisplay : Picture Adjustment -->
     <string name="picture_adjustment_title">Ajuste da imagem</string>
     <string name="picture_adjustment_summary">Ajustar o matiz, saturação, contraste e intensidade</string>
     <string name="adj_hue_title">Matiz</string>
@@ -562,47 +551,117 @@
     <string name="adj_intensity_title">Intensidade</string>
     <string name="adj_contrast_title">Contraste</string>
 
-	<!-- Quick Settings brightness icon -->
+    <!-- Quick Settings brightness icon -->
     <string name="brightness_icon_title">Ícone de brilho</string>
     <string name="brightness_icon_summary">Mostre um ícone de brilho à esquerda do controle deslizante de brilho na QS para ajustar o brilho automático</string>
 
-	<!-- Navigation bar -->
+    <!-- Navigation bar -->
     <string name="enable_navigation_bar_title">Barra de navegação</string>
     <string name="enable_navigation_bar_title_notice">Esta opção destina-se apenas a dispositivos com chaves de hardware. Isso gera as softkeys stock android para navegar no sistema operacional. Dispositivo sem hardware não deve usar isso.</string>
 
-	<!-- Feature reset -->
+    <!-- Feature reset -->
     <string name="reset_all_settings">REDEFINIR TUDO</string>
     <string name="reset_selected_settings">REDEFINIR SELECIONADO</string>
     <string name="reset_settings_title">Redefinição de recursos</string>
     <string name="reset_settings_summary">Redefinir todas funções da CypherOS</string>
     <string name="keywords_settings_reset">Redefinir</string>
 
-	<!-- Team members & Maintainers -->
-        <string name="team_and_maintainers_info_summary">CypherOS foi desenvolvida desde o início por uma equipe talentosa de desenvolvedores. Ela agora está disponível para vários dispositivos graças ao trabalha duro dos mantenedores da comunidade. Abaixo você encontrará uma lista completa dos que fazem CypherOS melhor todos os dias.</string>
-	<string name="team_and_maintainers_title">O time</string>
-	<string name="team_and_maintainers_title_summary">Uma lista dinâmica de membros da equipe e mantenedores de dispositivos ativos para CypherOS</string>
-	<!-- Team members -->
-	<string name="developers_category_title">Desenvolvedores</string>
-	<string name="developers_chris_title">Chris Crump | Fundador &amp; Desenvolvedor Líder</string>
-	<string name="developers_chris_title_summary">O fundador da CypherOS, o homem que iniciou tudo e, com a ajuda de seus incríveis membros da equipe, trouxe isso para onde está hoje</string>
-	<string name="developers_aaron_title">Aaron Nixon | Desenvolvedor Co-Lider</string>
-	<string name="developers_aaron_title_summary">O segundo chefe na cadeira! Ele mantém servidores e também é um fator enorme de CypherOS e leva a alcançar a simplicidade</string>
-	<string name="community_category_title">Comunidade</string>
-	<string name="community_mani_title">Mani Kumar | Gerente &amp; Relações Comunitárias</string>
-	<string name="community_mani_title_summary">Sem ele, não teríamos o impulso e a direção apropriada para avançar na comunidade e apresentar a CypherOS a usuários de todo o mundo</string>
-	<!-- Maintainers -->
-	<string name="maintainer_category_title">Mantenedores oficiais</string>
-	<string name="ken_adams_preference_title">Ken Adams</string>
-	<string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
-	<string name="isaiah_pez_preference_title">Isaiah Pez</string>
-	<string name="isaiah_pez_preference_title_summary">LG G3 | LS990</string>
-	<string name="rahul_s_nair_preference_title">Rahul S Nair</string>
-	<string name="rahul_s_nair_preference_title_summary">Moto G4 Plus | Athene</string>
-	<string name="jonathan_bruno_preference_title">Jonathan Bruno</string>
-	<string name="jonathan_bruno_preference_title_summary">Moto G | Osprey</string>
-	<string name="filipe_carreto_preference_title">Filipe Carreto</string>
-	<string name="filipe_carreto_preference_title_summary">OnePlus 3</string>
-	<string name="abhishek_kaushik_preference_title">Abhishek Kaushik</string>
-	<string name="abhishek_kaushik_preference_title_summary">Xiaomi Redmi Note 3 | Kenzo</string>
+    <!-- Team members & Maintainers -->
+    <string name="team_members_and_maintainers_title">Membros da equipe &amp; Mantenedores</string>
+    <string name="team_and_maintainers_info_summary">CypherOS foi desenvolvida desde o início por uma equipe talentosa de desenvolvedores. Ela agora está disponível para vários dispositivos graças ao trabalha duro dos mantenedores da comunidade. Abaixo você encontrará uma lista completa dos que fazem CypherOS melhor todos os dias.</string>
+    <string name="team_and_maintainers_title">O time</string>
+    <string name="team_and_maintainers_title_summary">Uma lista dinâmica de membros da equipe e mantenedores de dispositivos ativos para CypherOS</string>
+    <!-- Team members -->
+    <string name="developers_category_title">Desenvolvedores</string>
+    <string name="developers_chris_title">Chris Crump | Fundador &amp; Desenvolvedor Líder</string>
+    <string name="developers_chris_title_summary">O fundador da CypherOS, o homem que iniciou tudo e, com a ajuda de seus incríveis membros da equipe, trouxe isso para onde está hoje</string>
+    <string name="developers_aaron_title">Aaron Nixon | Desenvolvedor Co-Lider</string>
+    <string name="developers_aaron_title_summary">O segundo chefe na cadeira! Ele mantém servidores e também é um fator enorme de CypherOS e leva a alcançar a simplicidade</string>
+    <string name="community_category_title">Comunidade</string>
+    <string name="community_mani_title">Mani Kumar | Gerente &amp; Relações Comunitárias</string>
+    <string name="community_mani_title_summary">Sem ele, não teríamos o impulso e a direção apropriada para avançar na comunidade e apresentar a CypherOS a usuários de todo o mundo</string>
+    <!-- Maintainers -->
+    <string name="maintainer_category_title">Mantenedores oficiais</string>
+    <string name="ken_adams_preference_title">Ken Adams</string>
+    <string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
+    <string name="isaiah_pez_preference_title">Isaiah Pez</string>
+    <string name="isaiah_pez_preference_title_summary">LG G3 | LS990</string>
+    <string name="rahul_s_nair_preference_title">Rahul S Nair</string>
+    <string name="rahul_s_nair_preference_title_summary">Moto G4 Plus | Athene</string>
+    <string name="jonathan_bruno_preference_title">Jonathan Bruno</string>
+    <string name="jonathan_bruno_preference_title_summary">Moto G | Osprey</string>
+    <string name="filipe_carreto_preference_title">Filipe Carreto</string>
+    <string name="filipe_carreto_preference_title_summary">OnePlus 3</string>
+    <string name="abhishek_kaushik_preference_title">Abhishek Kaushik</string>
+    <string name="abhishek_kaushik_preference_title_summary">Xiaomi Redmi Note 3 | Kenzo</string>
+
+    <!-- Button settings -->
+    <string name="button_pref_title">Botões</string>
+    <string name="hardware_keys_power_key_title">Botão liga/desliga</string>
+    <string name="hardware_keys_home_key_title">Botão início</string>
+    <string name="hardware_keys_back_key_title">Botão voltar</string>
+    <string name="hardware_keys_menu_key_title">Botão menu</string>
+    <string name="hardware_keys_assist_key_title">Botão buscar</string>
+    <string name="hardware_keys_appswitch_key_title">Botão recentes</string>
+    <string name="hardware_keys_camera_key_title">Botão da câmera</string>
+    <string name="hardware_keys_volume_keys_title">Botões de volume</string>
+    <string name="hardware_keys_short_press_title">Ação de toque rápido</string>
+    <string name="hardware_keys_long_press_title">Ação de toque longo</string>
+    <string name="hardware_keys_double_tap_title">Ação de toque duplo</string>
+    <string name="hardware_keys_action_nothing">Nenhuma ação</string>
+    <string name="hardware_keys_action_menu">Abrir/fechar menu</string>
+    <string name="hardware_keys_action_app_switch">Alternador de aplicativos recentes</string>
+    <string name="hardware_keys_action_search">Assistente de busca</string>
+    <string name="hardware_keys_action_voice_search">Busca por voz</string>
+    <string name="hardware_keys_action_in_app_search">Busca dentro do aplicativo</string>
+    <string name="hardware_keys_action_launch_camera">Abrir câmera</string>
+    <string name="hardware_keys_action_sleep">Desligar a tela</string>
+    <string name="hardware_keys_action_last_app">Último aplicativo</string>
+    <string name="camera_sleep_on_release_title">Espiar a tela</string>
+    <string name="camera_sleep_on_release_summary">Toque parcial irá manter a tela ligada somente enquanto o botão for segurado</string>
+    <string name="camera_launch_title">Abrir câmera</string>
+    <string name="camera_launch_summary">Pressione, segure e solte para abrir a câmera</string>
+    <string name="volbtn_music_controls_title">Controle de reprodução</string>
+    <string name="volbtn_music_controls_summary">Quando a tela estiver desligada, mantenha pressionado o botão de volume para buscar músicas</string>
+    <string name="volbtn_cursor_control_title">Controle de cursor do teclado</string>
+    <string name="volbtn_cursor_control_off">Desativado</string>
+    <string name="volbtn_cursor_control_on">Volume para cima/baixo move o cursor para esquerda/direita</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume para cima/baixo move cursor para direita/esquerda</string>
+    <string name="power_end_call_title">Desligar</string>
+    <string name="power_end_call_summary">Pressionar o botão de energia desliga a chamada</string>
+    <string name="swap_volume_buttons_title">Reorientar</string>
+    <string name="swap_volume_buttons_summary">Inverter botões de volume quando a tela estiver invertida</string>
+    <string name="button_wake_title">Acordar o dispositivo</string>
+    <string name="home_answer_call_title">Atende</string>
+    <string name="home_answer_call_summary">Pressionar o botão início atende a chamada</string>
+
+    <!-- Key backlight -->
+    <string name="button_backlight_title">Luz de fundo</string>
+    <string name="button_backlight_enabled">Iluminar botões</string>
+    <string name="keyboard_backlight_enabled">Iluminar teclado</string>
+    <string name="button_backlight_seekbar_title">Brilho dos botões</string>
+    <string name="keyboard_backlight_seekbar_title">Brilho do teclado</string>
+    <string name="backlight_timeout_title">Duração do brilho</string>
+    <string name="backlight_timeout_unlimited">Não desligar</string>
+    <string name="backlight_summary_disabled">Desativado</string>
+    <string name="backlight_summary_enabled_with_timeout">Ativado por <xliff:g xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2" id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Ativado</string>
+
+    <!-- Buttons - Enable navbar -->
+    <string name="enable_navigation_bar_title">Barra de navegação</string>
+    <string name="enable_navigation_bar_title_notice">Esta opção destina-se apenas a dispositivos com chaves de hardware. Isso gera as softkeys stock android para navegar no sistema operacional. Dispositivos sem hardware não devem usar isso, pois ele livrará a funcionalidade de navegação.</string>
+
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_category">Barra de navegação</string>
+    <string name="navigation_bar_title">Botões e layout</string>
+    <string name="navigation_bar_left_title">Modo canhoto</string>
+    <string name="navigation_bar_left_summary">Posicionar a barra de navegação do lado esquerdo da tela em modo paisagem</string>
+    <string name="navigation_bar_arrow_keys_title">Mostrar teclas de seta enquanto digita</string>
+    <string name="navigation_bar_arrow_keys_summary">Exibir botões esquerda e direita do cursor durante a digitação. Substitui o seletor de IME.</string>
+    <string name="navigation_bar_recents_title">Ação de pressionar e segurar aplicativos recentes</string>
+
+    <string name="volume_keys_control_ring_stream_title">Controle de volume do toque</string>
+    <string name="volume_keys_control_ring_stream_summary_on">Botões de volume controlam o volume do toque</string>
+    <string name="volume_keys_control_ring_stream_summary_off">Teclas de volume controlam o volume da mídia</string>
 
 </resources>
