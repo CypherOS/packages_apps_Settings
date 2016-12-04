@@ -56,17 +56,45 @@
 	<string name="buildnotes_settings_title_summary">Check out the latest changes in CypherOS to know what\'s the what on your current release</string>
 	<string name="buildnotes_settings_error">Unable to load Release Notes</string>
 	<!-- Social category -->
-    <string name="social_category_title">Social</string>
+        <string name="social_category_title">Social</string>
 	<string name="website_preference_title">On-The-Web</string>
 	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
 	<string name="google_preference_title">CypherPlus</string>
 	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
 	<!-- Source category -->
-    <string name="source_category_title">Source</string>
+        <string name="source_category_title">Source</string>
 	<string name="github_preference_title">Github</string>
 	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
 	<string name="gerrit_preference_title">Gerrit</string>
 	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
+	<!-- Team members & Maintainers -->
+        <string name="team_members_and_maintainers_title">Team members &amp; Maintainers</string>
+        <string name="team_and_maintainers_info_summary">CypherOS was developed from the ground up by a talented team of developers. It is now available for multiple devices thanks to hardworking maintainers from the community. Below you will find a full list of those who make CypherOS better everyday.</string>
+	<string name="team_and_maintainers_title">The team</string>
+	<string name="team_and_maintainers_title_summary">A dynamic roster of team members and active device maintainers for CypherOS</string>
+	<!-- Team members -->
+	<string name="developers_category_title">Developers</string>
+	<string name="developers_chris_title">Chris Crump | Founder &amp; Lead Developer</string>
+	<string name="developers_chris_title_summary">The founder of CypherOS, the man that started it all and, with the help of his amazing team members, brought this to where it is today</string>
+	<string name="developers_aaron_title">Aaron Nixon | Co-Lead Developer</string>
+	<string name="developers_aaron_title_summary">The second boss in the chair! He maintains servers and also is a huge factor of CypherOS and it\'s take on achieving simplicity</string>
+	<string name="community_category_title">Community</string>
+	<string name="community_mani_title">Mani Kumar | Manager &amp; Community Relations</string>
+	<string name="community_mani_title_summary">Without him, we would\'nt have the push and proper direction to move forward in the community and present CypherOS to users around the globe</string>
+	<!-- Maintainers -->
+	<string name="maintainer_category_title">Official Maintainers</string>
+	<string name="ken_adams_preference_title">Ken Adams</string>
+	<string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
+	<string name="isaiah_pez_preference_title">Isaiah Pez</string>
+	<string name="isaiah_pez_preference_title_summary">LG G3 | LS990</string>
+	<string name="rahul_s_nair_preference_title">Rahul S Nair</string>
+	<string name="rahul_s_nair_preference_title_summary">Moto G4 Plus | Athene</string>
+	<string name="jonathan_bruno_preference_title">Jonathan Bruno</string>
+	<string name="jonathan_bruno_preference_title_summary">Moto G | Osprey</string>
+	<string name="filipe_carreto_preference_title">Filipe Carreto</string>
+	<string name="filipe_carreto_preference_title_summary">OnePlus 3</string>
+	<string name="abhishek_kaushik_preference_title">Abhishek Kaushik</string>
+	<string name="abhishek_kaushik_preference_title_summary">Xiaomi Redmi Note 3 | Kenzo</string>
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
