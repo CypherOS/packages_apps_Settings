@@ -45,8 +45,10 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
 			
     private static final String TAG = "BatterySettings";
 	
-    private static final String STATUSBAR_BATTERY_PERCENT = "statusbar_battery_percent";
-    private static final String STATUSBAR_BATTERY_PERCENT_INSIDE = "statusbar_battery_percent_inside";
+	private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
+    private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
+	
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 	
 	private static final String KEY_BATTERY_LIGHT = "battery_light";
 
@@ -54,11 +56,7 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
 	
 	private Preference mBattLedFrag;
 
-    private ListPreference mBatteryPercent;
-    private SwitchPreference mPercentInside;
-    private int mShowPercent;
-    private int mBatteryStyleValue;
-    private int mShowBattery = 1;
+    private ListPreference mStatusBarBatteryShowPercent;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,22 +86,16 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
             prefScreen.removePreference(findPreference(CATEGORY_BLEDS));
         }
 		
-		mBatteryStyleValue = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_STYLE, 0);
-				
-		mShowBattery = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_ENABLE, 1);
+		// Status bar battery percent
+        mStatusBarBatteryShowPercent =
+                (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
 
-        mBatteryPercent = (ListPreference) findPreference(STATUSBAR_BATTERY_PERCENT);
-        mShowPercent = Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_BATTERY_PERCENT, 2);
-
-        mBatteryPercent.setValue(Integer.toString(mShowPercent));
-        mBatteryPercent.setSummary(mBatteryPercent.getEntry());
-        mBatteryPercent.setOnPreferenceChangeListener(this);
-
-        mPercentInside = (SwitchPreference) findPreference(STATUSBAR_BATTERY_PERCENT_INSIDE);
-        updateEnablement();
+        int batteryShowPercent = Settings.Secure.getInt(resolver,
+                Settings.Secure.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
+        mStatusBarBatteryShowPercent.setValue(String.valueOf(batteryShowPercent));
+        mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
+        enableStatusBarBatteryDependents(batteryStyle);
+        mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -113,22 +105,25 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
 	
      public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mBatteryPercent) {
-            mShowPercent = Integer.valueOf((String) newValue);
-            int index = mBatteryPercent.findIndexOfValue((String) newValue);
-            mBatteryPercent.setSummary(
-                    mBatteryPercent.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_PERCENT, mShowPercent);
-            updateEnablement();
+        if (preference == mStatusBarBatteryShowPercent) {
+            int batteryShowPercent = Integer.valueOf((String) objValue);
+            int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) objValue);
+            Settings.Secure.putInt(
+                    resolver, Settings.Secure.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
+            mStatusBarBatteryShowPercent.setSummary(
+                    mStatusBarBatteryShowPercent.getEntries()[index]);
             return true;
         }
         return false;
     }
 
-     private void updateEnablement() {
-        mPercentInside.setEnabled(mShowBattery != 0 && mBatteryStyleValue < 3 && mShowPercent != 0);
-        mBatteryPercent.setEnabled(mShowBattery != 0 && mBatteryStyleValue != 3);
+    private void enableStatusBarBatteryDependents(int batteryIconStyle) {
+        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
+                batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+        }
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER = new BaseSearchIndexProvider() {
