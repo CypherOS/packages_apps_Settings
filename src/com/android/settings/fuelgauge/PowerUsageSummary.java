@@ -76,6 +76,7 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 5;
     private static final int SUBMENU_BATTERY_CIRCLE         = Menu.FIRST + 6;
     private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 7;
+    private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 8;
 
     private BatteryHistoryPreference mHistPref;
     private PreferenceGroup mAppListGroup;
@@ -137,8 +138,8 @@ public class PowerUsageSummary extends PowerUsageBase {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		int selectedIcon = Settings.System.getInt(getActivity().getContentResolver(),
-                                    Settings.System.STATUSBAR_BATTERY_STYLE, 0);	
+		int selectedIcon = Settings.Secure.getInt(getActivity().getContentResolver(),
+                                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);	
         if (DEBUG) {
             menu.add(0, MENU_STATS_TYPE, 0, R.string.menu_stats_total)
                     .setIcon(com.android.internal.R.drawable.ic_menu_info_details)
@@ -147,14 +148,16 @@ public class PowerUsageSummary extends PowerUsageBase {
 		
 		SubMenu batteryStyle = menu.addSubMenu(1, MENU_BATTERY_STYLE, 1, R.string.battery_title);
 
-        batteryStyle.add(1, SUBMENU_BATTERY_PORTRAIT, 1, R.string.battery_style_default)
+        batteryStyle.add(1, SUBMENU_BATTERY_PORTRAIT, 1, R.string.status_bar_battery_style_icon_portrait)
                     .setChecked(selectedIcon == 0);
-        batteryStyle.add(1, SUBMENU_BATTERY_LANDSCAPE, 2, R.string.battery_style_meter_horizontal)
-                    .setChecked(selectedIcon == 1);
-        batteryStyle.add(1, SUBMENU_BATTERY_CIRCLE, 3, R.string.battery_style_circle)
+		batteryStyle.add(1, SUBMENU_BATTERY_LANDSCAPE, 2, R.string.status_bar_battery_style_icon_landscape)
+                    .setChecked(selectedIcon == 5);
+		batteryStyle.add(1, SUBMENU_BATTERY_CIRCLE, 3, R.string.status_bar_battery_style_circle)
                     .setChecked(selectedIcon == 2);
-        batteryStyle.add(1, SUBMENU_BATTERY_TEXT, 4, R.string.battery_style_text)
-                    .setChecked(selectedIcon == 3);
+		batteryStyle.add(1, SUBMENU_BATTERY_TEXT, 4, R.string.status_bar_battery_style_text)
+                    .setChecked(selectedIcon == 6);
+		batteryStyle.add(1, SUBMENU_BATTERY_HIDDEN, 5, R.string.status_bar_battery_style_hidden)
+                    .setChecked(selectedIcon == 4);
         batteryStyle.setGroupCheckable(1, true, true);
 
         MenuItem batteryIcon = batteryStyle.getItem();
@@ -191,23 +194,28 @@ public class PowerUsageSummary extends PowerUsageBase {
                 return true;
 			case SUBMENU_BATTERY_PORTRAIT:
                 item.setChecked(true);
-                Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_STYLE, 0);
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
                 return true;
-            case SUBMENU_BATTERY_LANDSCAPE:
+			case SUBMENU_BATTERY_LANDSCAPE:
                 item.setChecked(true);
-                Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_STYLE, 1);
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 5);
                 return true;
-            case SUBMENU_BATTERY_CIRCLE:
+		    case SUBMENU_BATTERY_CIRCLE:
                 item.setChecked(true);
-                Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_STYLE, 2);
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 2);
                 return true;
-            case SUBMENU_BATTERY_TEXT:
+			case SUBMENU_BATTERY_TEXT:
                 item.setChecked(true);
-                Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_STYLE, 3);
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 6);
+                return true;
+			case SUBMENU_BATTERY_HIDDEN:
+                item.setChecked(true);
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.STATUS_BAR_BATTERY_STYLE, 4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
