@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2012-2016 The CyanogenMod Project
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
+
           http://www.apache.org/licenses/LICENSE-2.0
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +31,7 @@
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Rootzugriff</string>
     <string name="root_access_warning_title">Rootzugriff erlauben?</string>
-    <string name="root_access_warning_message">Apps den Zugriff auf Root zu erlauben ist sehr gefährlich!</string>
+    <string name="root_access_warning_message">Apps den Zugriff auf Root zu erlauben kann sehr gefährlich sein!</string>
     <string name="root_access_none">Deaktiviert</string>
     <string name="root_access_apps">Nur Apps</string>
     <string name="root_access_adb">Nur ADB</string>
@@ -56,171 +59,171 @@
     <string name="app_ops_categories_su">Superuser</string>
 
     <!-- User display names for app ops codes - extension of AOSP -->
-    <string name="app_ops_summaries_coarse_location">coarse location</string>
-    <string name="app_ops_summaries_fine_location">fine location</string>
-    <string name="app_ops_summaries_gps">GPS</string>
-    <string name="app_ops_summaries_vibrate">vibrate</string>
-    <string name="app_ops_summaries_read_contacts">read contacts</string>
-    <string name="app_ops_summaries_modify_contacts">modify contacts</string>
-    <string name="app_ops_summaries_read_call_log">read call log</string>
-    <string name="app_ops_summaries_modify_call_log">modify call log</string>
-    <string name="app_ops_summaries_read_calendar">read calendar</string>
-    <string name="app_ops_summaries_modify_calendar">modify calendar</string>
-    <string name="app_ops_summaries_wifi_scan">Wi-Fi scan</string>
-    <string name="app_ops_summaries_notification">notification/toast</string>
-    <string name="app_ops_summaries_cell_scan">cell scan</string>
-    <string name="app_ops_summaries_call_phone">call phone</string>
-    <string name="app_ops_summaries_read_sms">read SMS</string>
-    <string name="app_ops_summaries_write_sms">write SMS</string>
-    <string name="app_ops_summaries_receive_sms">receive SMS</string>
-    <string name="app_ops_summaries_receive_emergency_sms">receive emergency SMS</string>
-    <string name="app_ops_summaries_receive_mms">receive MMS</string>
-    <string name="app_ops_summaries_receive_wap_push">receive WAP push</string>
-    <string name="app_ops_summaries_send_sms">send SMS</string>
-    <string name="app_ops_summaries_read_icc_sms">read ICC SMS</string>
-    <string name="app_ops_summaries_write_icc_sms">write ICC SMS</string>
-    <string name="app_ops_summaries_modify_settings">modify settings</string>
-    <string name="app_ops_summaries_draw_on_top">draw on top</string>
-    <string name="app_ops_summaries_access_notifications">access notifications</string>
-    <string name="app_ops_summaries_camera">camera</string>
-    <string name="app_ops_summaries_record_audio">record audio</string>
-    <string name="app_ops_summaries_play_audio">play audio</string>
-    <string name="app_ops_summaries_read_clipboard">read clipboard</string>
-    <string name="app_ops_summaries_modify_clipboard">modify clipboard</string>
-    <string name="app_ops_summaries_media_buttons">media buttons</string>
-    <string name="app_ops_summaries_audio_focus">audio focus</string>
-    <string name="app_ops_summaries_master_volume">master volume</string>
-    <string name="app_ops_summaries_voice_volume">voice volume</string>
-    <string name="app_ops_summaries_ring_volume">ring volume</string>
-    <string name="app_ops_summaries_media_volume">media volume</string>
-    <string name="app_ops_summaries_alarm_volume">alarm volume</string>
-    <string name="app_ops_summaries_notification_volume">notification volume</string>
-    <string name="app_ops_summaries_bluetooth_volume">bluetooth volume</string>
-    <string name="app_ops_summaries_keep_awake">keep awake</string>
-    <string name="app_ops_summaries_monitor_location">monitor location</string>
-    <string name="app_ops_summaries_monitor_high_power_location">monitor high power location</string>
-    <string name="app_ops_summaries_get_usage_stats">get usage stats</string>
-    <string name="app_ops_summaries_mute_unmute_microphone">mute/unmute microphone</string>
-    <string name="app_ops_summaries_toast_window">display toasts</string>
-    <string name="app_ops_summaries_project_media">project media</string>
-    <string name="app_ops_summaries_activate_vpn">activate VPN</string>
-    <string name="app_ops_summaries_write_wallpaper">write wallpaper</string>
-    <string name="app_ops_summaries_assist_structure">assist structure</string>
-    <string name="app_ops_summaries_assist_screenshot">assist screenshot</string>
-    <string name="app_ops_summaries_read_phone_state">read phone state</string>
-    <string name="app_ops_summaries_add_voicemail">add voicemail</string>
-    <string name="app_ops_summaries_use_sip">use SIP</string>
-    <string name="app_ops_summaries_make_call">make call</string>
-    <string name="app_ops_summaries_use_fingerprint">use fingerprint</string>
-    <string name="app_ops_summaries_use_body_sensors">use body sensors</string>
-    <string name="app_ops_summaries_read_cell_broadcasts">read cell broadcasts</string>
-    <string name="app_ops_summaries_mock_location">mock location</string>
-    <string name="app_ops_summaries_read_external_storage">read external storage</string>
-    <string name="app_ops_summaries_write_external_storage">write to external storage</string>
-    <string name="app_ops_summaries_turn_screen_on">turn screen on</string>
-    <string name="app_ops_summaries_get_accounts">get accounts</string>
-    <string name="app_ops_summaries_run_in_background">run in background</string>
-    <string name="app_ops_summaries_toggle_wifi">toggle Wi-Fi</string>
-    <string name="app_ops_summaries_toggle_bluetooth">toggle bluetooth</string>
-    <string name="app_ops_summaries_start_at_boot">start at boot</string>
-    <string name="app_ops_summaries_toggle_nfc">toggle NFC</string>
-    <string name="app_ops_summaries_toggle_mobile_data">toggle mobile data</string>
-    <string name="app_ops_summaries_superuser">root access</string>
+  <string name="app_ops_summaries_coarse_location">Ungefährer Standort</string>
+  <string name="app_ops_summaries_fine_location">Genauer Standort</string>
+  <string name="app_ops_summaries_gps">GPS</string>
+  <string name="app_ops_summaries_vibrate">vibrieren</string>
+  <string name="app_ops_summaries_read_contacts">Kontakte lesen</string>
+  <string name="app_ops_summaries_modify_contacts">Kontakte ändern</string>
+  <string name="app_ops_summaries_read_call_log">Anrufprotokoll lesen</string>
+  <string name="app_ops_summaries_modify_call_log">Anrufprotokoll ändern</string>
+  <string name="app_ops_summaries_read_calendar">Kalender lesen</string>
+  <string name="app_ops_summaries_modify_calendar">Kalender ändern</string>
+  <string name="app_ops_summaries_wifi_scan">WLAN-Scan</string>
+  <string name="app_ops_summaries_notification">Benachrichtigung</string>
+  <string name="app_ops_summaries_cell_scan">Mobilfunknetz-Scan</string>
+  <string name="app_ops_summaries_call_phone">Telefonieren</string>
+  <string name="app_ops_summaries_read_sms">SMS lesen</string>
+  <string name="app_ops_summaries_write_sms">SMS schreiben</string>
+  <string name="app_ops_summaries_receive_sms">SMS empfangen</string>
+  <string name="app_ops_summaries_receive_emergency_sms">Notfall-SMS empfangen</string>
+  <string name="app_ops_summaries_receive_mms">MMS empfangen</string>
+  <string name="app_ops_summaries_receive_wap_push">WAP-Push-Nachricht empfangen</string>
+  <string name="app_ops_summaries_send_sms">SMS senden</string>
+  <string name="app_ops_summaries_read_icc_sms">ICC-SMS lesen</string>
+  <string name="app_ops_summaries_write_icc_sms">ICC-SMS schreiben</string>
+  <string name="app_ops_summaries_modify_settings">Einstellungen ändern</string>
+  <string name="app_ops_summaries_draw_on_top">An oberste Position ziehen</string>
+  <string name="app_ops_summaries_access_notifications">Auf Benachrichtigungen zugreifen</string>
+  <string name="app_ops_summaries_camera">Kamera</string>
+  <string name="app_ops_summaries_record_audio">Audio aufzeichnen</string>
+  <string name="app_ops_summaries_play_audio">Audio wiedergeben</string>
+  <string name="app_ops_summaries_read_clipboard">Zwischenablage lesen</string>
+  <string name="app_ops_summaries_modify_clipboard">Zwischenablage ändern</string>
+  <string name="app_ops_summaries_media_buttons">Medienschaltflächen</string>
+  <string name="app_ops_summaries_audio_focus">Audiofokus</string>
+  <string name="app_ops_summaries_master_volume">Gesamtlautstärke</string>
+  <string name="app_ops_summaries_voice_volume">Sprachlautstärke</string>
+  <string name="app_ops_summaries_ring_volume">Klingeltonlautstärke</string>
+  <string name="app_ops_summaries_media_volume">Medienlautstärke</string>
+  <string name="app_ops_summaries_alarm_volume">Weckerlautstärke</string>
+  <string name="app_ops_summaries_notification_volume">Benachrichtigungslautstärke</string>
+  <string name="app_ops_summaries_bluetooth_volume">Bluetooth-Lautstärke</string>
+  <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
+  <string name="app_ops_summaries_monitor_location">Standort beobachten</string>
+  <string name="app_ops_summaries_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
+  <string name="app_ops_summaries_get_usage_stats">Nutzungsstatistiken abrufen</string>
+  <string name="app_ops_summaries_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
+  <string name="app_ops_summaries_toast_window">Pop-ups anzeigen</string>
+  <string name="app_ops_summaries_project_media">Medien projizieren</string>
+  <string name="app_ops_summaries_activate_vpn">VPN aktivieren</string>
+  <string name="app_ops_summaries_write_wallpaper">Hintergrund schreiben</string>
+  <string name="app_ops_summaries_assist_structure">Strukturassistent</string>
+  <string name="app_ops_summaries_assist_screenshot">Screenshotassistent</string>
+  <string name="app_ops_summaries_read_phone_state">Telefonstatus lesen</string>
+  <string name="app_ops_summaries_add_voicemail">Sprachnachricht hinzuzufügen</string>
+  <string name="app_ops_summaries_use_sip">SIP verwenden</string>
+  <string name="app_ops_summaries_make_call">Anrufe tätigen</string>
+  <string name="app_ops_summaries_use_fingerprint">Fingerabdruck verwenden</string>
+  <string name="app_ops_summaries_use_body_sensors">Körpersensoren verwenden</string>
+  <string name="app_ops_summaries_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
+  <string name="app_ops_summaries_mock_location">Standorte simulieren</string>
+  <string name="app_ops_summaries_read_external_storage">Externen Speicher lesen</string>
+  <string name="app_ops_summaries_write_external_storage">auf externen Speicher schreiben</string>
+  <string name="app_ops_summaries_turn_screen_on">Bildschirm einschalten</string>
+  <string name="app_ops_summaries_get_accounts">Konten abrufen</string>
+  <string name="app_ops_labels_run_in_background">Im Hintergrund laufen</string>
+  <string name="app_ops_summaries_toggle_wifi">WLAN ein-/ausschalten</string>
+  <string name="app_ops_summaries_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
+  <string name="app_ops_summaries_start_at_boot">Beim Booten starten</string>
+  <string name="app_ops_summaries_toggle_nfc">NFC ein-/ausschalten</string>
+  <string name="app_ops_summaries_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
+  <string name="app_ops_summaries_superuser">Root-Zugriff</string>
 
     <!-- User display names for app ops codes - extension of AOSP -->
-    <string name="app_ops_labels_coarse_location">Coarse location</string>
-    <string name="app_ops_labels_fine_location">Fine location</string>
-    <string name="app_ops_labels_gps">GPS</string>
-    <string name="app_ops_labels_vibrate">Vibrate</string>
-    <string name="app_ops_labels_read_contacts">Read contacts</string>
-    <string name="app_ops_labels_modify_contacts">Modify contacts</string>
-    <string name="app_ops_labels_read_call_log">Read call log</string>
-    <string name="app_ops_labels_modify_call_log">Modify call log</string>
-    <string name="app_ops_labels_read_calendar">Read calendar</string>
-    <string name="app_ops_labels_modify_calendar">Modify calendar</string>
-    <string name="app_ops_labels_wifi_scan">Wi-Fi scan</string>
-    <string name="app_ops_labels_notification">Notification/Toast</string>
-    <string name="app_ops_labels_cell_scan">Cell scan</string>
-    <string name="app_ops_labels_call_phone">Call phone</string>
-    <string name="app_ops_labels_read_sms">Read SMS</string>
-    <string name="app_ops_labels_write_sms">Write SMS</string>
-    <string name="app_ops_labels_receive_sms">Receive SMS</string>
-    <string name="app_ops_labels_receive_emergency_sms">Receive emergency SMS</string>
-    <string name="app_ops_labels_receive_mms">Receive MMS</string>
-    <string name="app_ops_labels_receive_wap_push">Receive WAP push</string>
-    <string name="app_ops_labels_send_sms">Send SMS</string>
-    <string name="app_ops_labels_read_icc_sms">Read ICC SMS</string>
-    <string name="app_ops_labels_write_icc_sms">Write ICC SMS</string>
-    <string name="app_ops_labels_modify_settings">Modify settings</string>
-    <string name="app_ops_labels_draw_on_top">Draw on top</string>
-    <string name="app_ops_labels_access_notifications">Access notifications</string>
-    <string name="app_ops_labels_camera">Camera</string>
-    <string name="app_ops_labels_record_audio">Record audio</string>
-    <string name="app_ops_labels_play_audio">Play audio</string>
-    <string name="app_ops_labels_read_clipboard">Read clipboard</string>
-    <string name="app_ops_labels_modify_clipboard">Modify clipboard</string>
-    <string name="app_ops_labels_media_buttons">Media buttons</string>
-    <string name="app_ops_labels_audio_focus">Audio focus</string>
-    <string name="app_ops_labels_master_volume">Master volume</string>
-    <string name="app_ops_labels_voice_volume">Voice volume</string>
-    <string name="app_ops_labels_ring_volume">Ring volume</string>
-    <string name="app_ops_labels_media_volume">Media volume</string>
-    <string name="app_ops_labels_alarm_volume">Alarm volume</string>
-    <string name="app_ops_labels_notification_volume">Notification volume</string>
-    <string name="app_ops_labels_bluetooth_volume">Bluetooth volume</string>
-    <string name="app_ops_labels_keep_awake">Keep awake</string>
-    <string name="app_ops_labels_monitor_location">Monitor location</string>
-    <string name="app_ops_labels_monitor_high_power_location">Monitor high power location</string>
-    <string name="app_ops_labels_get_usage_stats">Get usage stats</string>
-    <string name="app_ops_labels_mute_unmute_microphone">Mute/unmute microphone</string>
-    <string name="app_ops_labels_toast_window">Display toasts</string>
-    <string name="app_ops_labels_project_media">Project media</string>
-    <string name="app_ops_labels_activate_vpn">Activate VPN</string>
-    <string name="app_ops_labels_write_wallpaper">Write wallpaper</string>
-    <string name="app_ops_labels_assist_structure">Assist structure</string>
-    <string name="app_ops_labels_assist_screenshot">Assist screenshot</string>
-    <string name="app_ops_labels_read_phone_state">Read phone state</string>
-    <string name="app_ops_labels_add_voicemail">Add voicemail</string>
-    <string name="app_ops_labels_use_sip">Use SIP</string>
-    <string name="app_ops_labels_make_call">Make call</string>
-    <string name="app_ops_labels_use_fingerprint">Use fingerprint</string>
-    <string name="app_ops_labels_use_body_sensors">Use body sensors</string>
-    <string name="app_ops_labels_read_cell_broadcasts">Read cell broadcasts</string>
-    <string name="app_ops_labels_mock_location">Mock location</string>
-    <string name="app_ops_labels_read_external_storage">Read external storage</string>
-    <string name="app_ops_labels_write_external_storage">Write to external storage</string>
-    <string name="app_ops_labels_turn_screen_on">Turn screen on</string>
-    <string name="app_ops_labels_get_accounts">Get accounts</string>
-    <string name="app_ops_labels_run_in_background">Run in background</string>
-    <string name="app_ops_labels_toggle_wifi">Toggle Wi-Fi</string>
-    <string name="app_ops_labels_toggle_bluetooth">Toggle bluetooth</string>
-    <string name="app_ops_labels_start_at_boot">Start at boot</string>
-    <string name="app_ops_labels_toggle_nfc">Toggle NFC</string>
-    <string name="app_ops_labels_toggle_mobile_data">Toggle mobile data</string>
-    <string name="app_ops_labels_superuser">Root access</string>
+  <string name="app_ops_summaries_coarse_location">Ungefährer Standort</string>
+  <string name="app_ops_summaries_fine_location">Genauer Standort</string>
+  <string name="app_ops_summaries_gps">GPS</string>
+  <string name="app_ops_summaries_vibrate">vibrieren</string>
+  <string name="app_ops_summaries_read_contacts">Kontakte lesen</string>
+  <string name="app_ops_summaries_modify_contacts">Kontakte ändern</string>
+  <string name="app_ops_summaries_read_call_log">Anrufprotokoll lesen</string>
+  <string name="app_ops_summaries_modify_call_log">Anrufprotokoll ändern</string>
+  <string name="app_ops_summaries_read_calendar">Kalender lesen</string>
+  <string name="app_ops_summaries_modify_calendar">Kalender ändern</string>
+  <string name="app_ops_summaries_wifi_scan">WLAN-Scan</string>
+  <string name="app_ops_summaries_notification">Benachrichtigung</string>
+  <string name="app_ops_summaries_cell_scan">Mobilfunknetz-Scan</string>
+  <string name="app_ops_summaries_call_phone">Telefonieren</string>
+  <string name="app_ops_summaries_read_sms">SMS lesen</string>
+  <string name="app_ops_summaries_write_sms">SMS schreiben</string>
+  <string name="app_ops_summaries_receive_sms">SMS empfangen</string>
+  <string name="app_ops_summaries_receive_emergency_sms">Notfall-SMS empfangen</string>
+  <string name="app_ops_summaries_receive_mms">MMS empfangen</string>
+  <string name="app_ops_summaries_receive_wap_push">WAP-Push-Nachricht empfangen</string>
+  <string name="app_ops_summaries_send_sms">SMS senden</string>
+  <string name="app_ops_summaries_read_icc_sms">ICC-SMS lesen</string>
+  <string name="app_ops_summaries_write_icc_sms">ICC-SMS schreiben</string>
+  <string name="app_ops_summaries_modify_settings">Einstellungen ändern</string>
+  <string name="app_ops_summaries_draw_on_top">An oberste Position ziehen</string>
+  <string name="app_ops_summaries_access_notifications">Auf Benachrichtigungen zugreifen</string>
+  <string name="app_ops_summaries_camera">Kamera</string>
+  <string name="app_ops_summaries_record_audio">Audio aufzeichnen</string>
+  <string name="app_ops_summaries_play_audio">Audio wiedergeben</string>
+  <string name="app_ops_summaries_read_clipboard">Zwischenablage lesen</string>
+  <string name="app_ops_summaries_modify_clipboard">Zwischenablage ändern</string>
+  <string name="app_ops_summaries_media_buttons">Medienschaltflächen</string>
+  <string name="app_ops_summaries_audio_focus">Audiofokus</string>
+  <string name="app_ops_summaries_master_volume">Gesamtlautstärke</string>
+  <string name="app_ops_summaries_voice_volume">Sprachlautstärke</string>
+  <string name="app_ops_summaries_ring_volume">Klingeltonlautstärke</string>
+  <string name="app_ops_summaries_media_volume">Medienlautstärke</string>
+  <string name="app_ops_summaries_alarm_volume">Weckerlautstärke</string>
+  <string name="app_ops_summaries_notification_volume">Benachrichtigungslautstärke</string>
+  <string name="app_ops_summaries_bluetooth_volume">Bluetooth-Lautstärke</string>
+  <string name="app_ops_summaries_keep_awake">aktiv lassen</string>
+  <string name="app_ops_summaries_monitor_location">Standort beobachten</string>
+  <string name="app_ops_summaries_monitor_high_power_location">Standort mit hohem Stromverbrauch beobachten</string>
+  <string name="app_ops_summaries_get_usage_stats">Nutzungsstatistiken abrufen</string>
+  <string name="app_ops_summaries_mute_unmute_microphone">Mikrofon ein-/ausschalten</string>
+  <string name="app_ops_summaries_toast_window">Pop-ups anzeigen</string>
+  <string name="app_ops_summaries_project_media">Medien projizieren</string>
+  <string name="app_ops_summaries_activate_vpn">VPN aktivieren</string>
+  <string name="app_ops_summaries_write_wallpaper">Hintergrund schreiben</string>
+  <string name="app_ops_summaries_assist_structure">Strukturassistent</string>
+  <string name="app_ops_summaries_assist_screenshot">Screenshotassistent</string>
+  <string name="app_ops_summaries_read_phone_state">Telefonstatus lesen</string>
+  <string name="app_ops_summaries_add_voicemail">Sprachnachricht hinzuzufügen</string>
+  <string name="app_ops_summaries_use_sip">SIP verwenden</string>
+  <string name="app_ops_summaries_make_call">Anrufe tätigen</string>
+  <string name="app_ops_summaries_use_fingerprint">Fingerabdruck verwenden</string>
+  <string name="app_ops_summaries_use_body_sensors">Körpersensoren verwenden</string>
+  <string name="app_ops_summaries_read_cell_broadcasts">Notfall-Broadcasts lesen</string>
+  <string name="app_ops_summaries_mock_location">Standorte simulieren</string>
+  <string name="app_ops_summaries_read_external_storage">Externen Speicher lesen</string>
+  <string name="app_ops_summaries_write_external_storage">auf externen Speicher schreiben</string>
+  <string name="app_ops_summaries_turn_screen_on">Bildschirm einschalten</string>
+  <string name="app_ops_summaries_get_accounts">Konten abrufen</string>
+  <string name="app_ops_labels_run_in_background">Im Hintergrund laufen</string>
+  <string name="app_ops_summaries_toggle_wifi">WLAN ein-/ausschalten</string>
+  <string name="app_ops_summaries_toggle_bluetooth">Bluetooth ein-/ausschalten</string>
+  <string name="app_ops_summaries_start_at_boot">Beim Booten starten</string>
+  <string name="app_ops_summaries_toggle_nfc">NFC ein-/ausschalten</string>
+  <string name="app_ops_summaries_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
+  <string name="app_ops_summaries_superuser">Root-Zugriff</string>
 
     <!-- App ops permissions -->
-    <string name="app_ops_permissions_allowed">Allowed</string>
-    <string name="app_ops_permissions_ignored">Ignored</string>
-    <string name="app_ops_permissions_always_ask">Always ask</string>
+    <string name="app_ops_permissions_allowed">Erlaubt</string>
+    <string name="app_ops_permissions_ignored">Ignorieren</string>
+    <string name="app_ops_permissions_always_ask">Immer nachfragen</string>
 
     <!-- App ops detail -->
-    <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (used <xliff:g id="count">%2$s</xliff:g>)</string>
-    <string name="app_ops_allowed_count">Allowed <xliff:g id="count" example="2 times">%s</xliff:g></string>
-    <string name="app_ops_ignored_count">Denied <xliff:g id="count" example="2 times">%s</xliff:g></string>
-    <string name="app_ops_both_count">Allowed <xliff:g id="count">%1$s</xliff:g>, denied <xliff:g id="count">%2$s</xliff:g></string>
+  <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (<xliff:g id="count">%2$s</xliff:g> verwendet)</string>
+  <string name="app_ops_allowed_count"><xliff:g id="count" example="2 times">%s</xliff:g> erlaubt</string>
+  <string name="app_ops_ignored_count"><xliff:g id="count" example="2 times">%s</xliff:g> verweigert</string>
+  <string name="app_ops_both_count"><xliff:g id="count">%1$s</xliff:g> erlaubt, <xliff:g id="count">%2$s</xliff:g> verweigert</string>
 
     <!-- App ops menu options -->
-    <string name="app_ops_show_user_apps">Show user apps</string>
-    <string name="app_ops_show_system_apps">Show built-in apps</string>
-    <string name="app_ops_reset_counters">Reset allow/deny counters</string>
-    <string name="app_ops_reset_confirm_title">Confirm counters reset</string>
-    <string name="app_ops_reset_confirm_mesg">Are you sure you wish to reset counters?</string>
+  <string name="app_ops_show_user_apps">Benutzer-Apps anzeigen</string>
+  <string name="app_ops_show_system_apps">System-Apps anzeigen</string>
+  <string name="app_ops_reset_counters">Erlaubt/Verweigert-Zähler zurücksetzen</string>
+  <string name="app_ops_reset_confirm_title">Zurücksetzen der Zähler bestätigen</string>
+  <string name="app_ops_reset_confirm_mesg">Wollen Sie die Zähler wirklich zurücksetzen?</string>
 
     <string name="ok">OK</string>
 
     <!-- Volume settings - Volume adjustment sound -->
-    <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
+    <string name="volume_adjust_sounds_title">Ton bei Lautstärkeänderung</string>
 
     <!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3">3x3</string>
@@ -229,76 +232,81 @@
     <string name="lock_pattern_size_6">6x6</string>
 
     <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
-    <string name="lockpattern_settings_enable_error_path_title">Zeige falsches Muster Fehler</string>
+    <string name="lockpattern_settings_enable_error_path_title">Sperrmuster-Fehler anzeigen</string>
     <!-- Whether the dots will be drawn when using the lockscreen pattern -->
-    <string name="lockpattern_settings_enable_dots_title">Zeige Musterpunkte</string>
+    <string name="lockpattern_settings_enable_dots_title">Sperrmuster-Punkte anzeigen</string>
 
     <!-- Lock screen vibrate settings -->
-    <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
-    <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking</string>
+    <string name="lockscreen_vibrate_enabled_title">Vibrieren</string>
+    <string name="lockscreen_vibrate_enabled_head">Gerät vibriert, wenn es entsperrt wird</string>
 
     <!-- Lights settings -->
-    <string name="lights_label">Lights</string>
+    <string name="lights_label">LED</string>
 
     <!-- Memory -->
-    <string name="memory_startup_apps_title">Apps started on boot</string>
+    <string name="memory_startup_apps_title">Beim Booten gestartete Apps</string>
 
     <!-- PIN scramble -->
-    <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
-    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
+    <string name="unlock_scramble_pin_layout_title">Zufällige Anordnung</string>
+    <string name="unlock_scramble_pin_layout_summary">Bei jedem Entsperrversuch die Ziffernanordnung zufällig neu wählen</string>
 
     <!-- lock screen visualizer -->
-    <string name="lockscreen_visualizer_title">Display music visualizer</string>
-
-    <!-- Protected apps lockpattern reset button -->
-    <string name="lockpattern_reset_button">Reset pattern</string>
-    <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
-
-    <!-- Protected Apps -->
-    <string name="menu_hidden_apps_delete">Reset</string>
-    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
-    <string name="protected_apps">Protected apps</string>
-    <string name="protected_apps_summary">Manage which apps are hidden behind a secure lock</string>
-    <string name="saving_protected_components">Saving component state\u2026</string>
-    <string name="launch_app">Launch app</string>
-
-    <string name="pa_login_username_hint">Username (email)</string>
-    <string name="pa_login_password_hint">Password</string>
-    <string name="pa_login_submit_button">Sign in</string>
-    <string name="pa_login_checking_password">Checking account\u2026</string>
-    <string name="pa_login_incorrect_login">Login was incorrect</string>
-    <string name="pa_pattern_or_fingerprint_header">Must draw pattern or use fingerprint to unlock</string>
+    <string name="lockscreen_visualizer_title">Musikvisualisierung anzeigen</string>
 
     <!-- title for lock screen weather preference -->
-    <string name="lockscreen_weather_enabled_title">Show weather</string>
+    <string name="lockscreen_weather_enabled_title">Zeige Wetter</string>
 	
 	<!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
-    <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
+    <string name="notification_importance_very_low">Verbiete Unterbrechung auf ganzem Bildschirm, Heads-Up Benachrichtigungen, Töne oder Vibrieren und Verstecke vom Sperrbildschirm.</string>
 
 	<!-- Allow vibration in zen mode -->
     <string name="zen_mode_vibration">Vibration</string>
-    <string name="zen_mode_vibration_never">Don\'t vibrate</string>
-    <string name="zen_mode_vibration_calls_only">Only vibrate for calls</string>
-    <string name="zen_mode_vibration_calls_and_notifications">Vibrate for calls and notifications</string>
+    <string name="zen_mode_vibration_never">Nicht vibrieren</string>
+    <string name="zen_mode_vibration_calls_only">Nur bei Anrufen vibrieren</string>
+    <string name="zen_mode_vibration_calls_and_notifications">Bei Anrufen und Benachrichtigungen vibrieren</string>
 	
 	<!-- Notification sound timeout -->
-    <string name="app_notification_sound_timeout_title">Minimum time between notification sounds</string>
-    <string name="app_notification_sound_timeout_summary_template">Allow sounds or vibration no more than once every <xliff:g id="duration">%1$s</xliff:g></string>
-    <string name="app_notification_sound_timeout_value_none">No restriction</string>
-    <string name="app_notification_sound_timeout_value_10_seconds">10 seconds</string>
-    <string name="app_notification_sound_timeout_value_30_seconds">30 seconds</string>
-    <string name="app_notification_sound_timeout_value_1_minute">1 minute</string>
-    <string name="app_notification_sound_timeout_value_5_minutes">5 minutes</string>
-    <string name="app_notification_sound_timeout_value_15_minutes">10 minutes</string>
-    <string name="app_notification_sound_timeout_value_30_minutes">30 minutes</string>
+  <string name="app_notification_sound_timeout_title">Minimale Zeit zwischen Benachrichtigungstönen</string>
+  <string name="app_notification_sound_timeout_summary_template">Töne und Vibrationen nur alle <xliff:g id="duration">%1$s</xliff:g> zulassen</string>
+  <string name="app_notification_sound_timeout_value_none">Keine Beschränkung</string>
+  <string name="app_notification_sound_timeout_value_10_seconds">10 Sekunden</string>
+  <string name="app_notification_sound_timeout_value_30_seconds">30 Sekunden</string>
+  <string name="app_notification_sound_timeout_value_1_minute">1 Minute</string>
+  <string name="app_notification_sound_timeout_value_5_minutes">5 Minuten</string>
+  <string name="app_notification_sound_timeout_value_15_minutes">10 Minuten</string>
+  <string name="app_notification_sound_timeout_value_30_minutes">30 Minuten</string>
 	
 	<!-- MSIM SIM status -->
-    <string name="sim_card_status_title">SIM %d status</string>
-    <string name="sim_card_lock_settings_title">SIM %d lock settings</string>
-    <string name="sim_card_summary_empty">SIM not inserted</string>
-	<string name="sim_mobile_network_settings_category_title">Mobile network settings</string>
-    <string name="sim_mobile_network_settings_title">SIM %d settings</string>
+     <string name="sim_card_status_title">SIM %d-Status</string>
+     <string name="sim_card_lock_settings_title">SIM %d-Sperreinstellungen</string>
+     <string name="sim_card_summary_empty">SIM-Karte nicht eingelegt</string>
+     <string name="sim_mobile_network_settings_category_title">Mobilfunknetz-Einstellungen</string>
+     <string name="sim_mobile_network_settings_title">SIM %d-Einstellungen</string>
 
     <!-- Notification importance -->
-    <string name="tuner_full_importance_settings">Power notification controls</string>
+    <string name="tuner_full_importance_settings">Benachrichtigungen priorisieren</string>
+	
+    <!-- CM Legal -->
+    <string name="cmlicense_title">CyanogenMod Lizenz</string>
+
+    <!-- Format string for fingerprint location message -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Suchen Sie den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Geräts.</string>
+
+    <!-- Fingerprint sensor locations -->
+  <string name="security_settings_fingerprint_sensor_location_back">Front</string>
+  <string name="security_settings_fingerprint_sensor_location_front">Rückseite</string>
+  <string name="security_settings_fingerprint_sensor_location_left">linken Seite</string>
+  <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
+
+    <!-- Tethering & portable hotspot other category -->
+    <string name="tethering_other_category_text">Andere</string>
+    <!-- Wi-Fi tethering inactivity timeout -->
+    <string name="hotstpot_inactivity_timeout_text">WLAN-Hotspot-Zeitabschaltung</string>
+  <string name="hotstpot_inactivity_timeout_never">Nie</string>
+  <string name="hotstpot_inactivity_timeout_1_minute">1 Minute</string>
+  <string name="hotstpot_inactivity_timeout_5_minutes">5 Minuten</string>
+  <string name="hotstpot_inactivity_timeout_10_minutes">10 Minuten</string>
+  <string name="hotstpot_inactivity_timeout_never_summary_text">Mobiler WLAN-Hotspot wird niemals abgeschaltet</string>
+  <string name="hotstpot_inactivity_timeout_summary_text">Mobiler WLAN-Hotspot wird nach <xliff:g id="timeout">%1$s</xliff:g> abgeschaltet</string>
+
 </resources>
