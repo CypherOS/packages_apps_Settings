@@ -53,7 +53,7 @@
 	<string name="bugreport_preference_title_summary">Wenn bei Dir irgendwelche Bugs auftreten, kannst du uns gerne deinen Fehlerbericht senden!</string>
 	<!-- Build notes -->
 	<string name="buildnotes_settings_title">Release Informationen</string>
-	<string name="buildnotes_settings_title_summary">Gucke Dir die neuesten Änderungen an CypherOS im Detail an!</string>
+	<string name="buildnotes_settings_title_summary">Gucke Dir die neuesten Änderungen von CypherOS im Detail an!</string>
 	<string name="buildnotes_settings_error">Laden von Release Informationen nicht möglich</string>
 	<!-- Social category -->
     <string name="social_category_title">Social</string>
@@ -92,7 +92,7 @@
     <string name="power_menu_users_title">Benutzerwechsel</string>
     <string name="power_menu_search_title">Suche</string>
     <string name="power_menu_voice_title">Sprachsuche</string>
-    <string name="power_menu_settings_title">Einstellungs Verknüpfung</string>
+    <string name="power_menu_settings_title">Einstellungsverknüpfung</string>
     <string name="power_menu_lockdown_title">Jetzt sperren</string>
     <string name="power_menu_bug_report_title">Fehlermeldungen</string>
 	<string name="power_menu_sound_title">Gerätebenachrichtigungen</string>
@@ -127,7 +127,7 @@
     <string name="volbtn_cursor_control_on_reverse">Für Lautstärke hoch/runter, drücke Rechts/Links</string>
 	
 	<!-- Volume settings - Volume adjustment sound -->
-    <string name="volume_adjust_sounds_title">Lautstärkereglungsgeräusche</string>
+    <string name="volume_adjust_sounds_title">Lautstärkereglungstöne</string>
 	
 	<!-- ADB debugging notifications -->
     <string name="enable_adb_custom">Android Debugging</string>
@@ -136,8 +136,8 @@
     <string name="adb_notify_summary">Schalte Benachrichtigung bei Debugging an</string>
 	
 	<string name="adb_over_network">ADB übers Netzwerk</string>
-    <string name="adb_over_network_summary">Aktiviere TCP/IP Debugging Netwerk Oberflächen (Wi\u2011Fi, USB networks). Diese setzt sich beim Reboot zurück</string>
-    <string name="adb_over_network_warning">WARNUNG: Wenn ADB übers Netzwerk aktiviert ist, ist es nicht sicher vor Angriffen aus dem Netzwerk!\n\nBenutze dieses Feature nur in vertrauenwürdigen Netzwerken.\n\nWillst du diese Funktion wirklich aktivieren?</string>
+    <string name="adb_over_network_summary">Aktiviere TCP/IP Debugging Netwerk Oberflächen (Wi\u2011Fi, USB networks). Diese setzten sich beim Reboot zurück</string>
+    <string name="adb_over_network_warning">WARNUNG: Wenn ADB übers Netzwerk aktiviert ist, bist Du nicht sicher vor Angriffen aus dem Netzwerk!\n\nBenutze dieses Feature nur in vertrauenswürdigen Netzwerken.\n\nWillst du diese Funktion wirklich aktivieren?</string>
 
 	<!-- Category title for Charging sounds -->
     <string name="power_notifications_category_title">Ladeton</string>
@@ -176,7 +176,7 @@
 
    <!-- Safe headset volume restore checkbox -->
    <string name="safe_headset_volume_title">Sichere Headset-Lautstärke</string>
-   <string name="safe_headset_volume_summary">Verhindere hohe Lautstärke, wenn Headset verbindet wird</string>
+   <string name="safe_headset_volume_summary">Verhindere hohe Lautstärke, wenn Headset verbunden wurde</string>
    <string name="safe_headset_volume_warning_dialog_text">Wenn du lange auf zu hoher Lautstärke Musik hörst, schädigt das dein Hörvermögen!</string>
 
    <!-- Less Notification sounds -->
@@ -233,7 +233,7 @@
 	<!-- Camera sound switch -->
     <string name="camera_sounds_title">Kameraauslösegeräusch</string>
     <string name="camera_sounds_summary">Aktiviere Kameraauslösegeräusch</string>
-    <string name="camera_sound_warning_dialog_text">Das deaktivieren des Kameraauslösegeräusches ist an manchen Plätzen illegal!</string>
+    <string name="camera_sound_warning_dialog_text">Das Deaktivieren des Kameraauslösegeräusches ist an manchen Plätzen illegal!</string>
 	
 	<!-- Volume Steps -->
     <string name="volume_steps_title">Lautstärkeschritte</string>
@@ -279,7 +279,7 @@
     <string name="clock_date_style_uppercase">Großbuchstaben</string>
     <string name="clock_date_format_custom">Eigenes Java-Format</string>
     <string name="clock_date_format">Datumsformat</string>
-    <string name="clock_date_string_edittext_title">Muss im Datumsformat z.B. MM/dd/yy sein</string>
+    <string name="clock_date_string_edittext_title">Muss im Datumsformat sein. z.B. MM/dd/yy</string>
     <string name="clock_date_string_edittext_summary">Gib String ein</string>
 	
 	<!-- Status bar quick qs pulldown -->
@@ -346,7 +346,7 @@
     <string name="double_tap_to_sleep_summary">Bei doppeltem Tippen auf die Statusleiste schaltet sich der Bildschirm aus</string>
 	
 	<!-- Color Picker -->
-    <string name="dialog_color_picker">Farbenauswahl</string>
+    <string name="dialog_color_picker">Farbauswahl</string>
     <string name="press_color_to_apply">Drücke auf die Farbe zum Aktivieren</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
@@ -390,7 +390,7 @@
     <string name="battery_light_medium_color_title">Lädt</string>
     <string name="battery_light_full_color_title">Geladen (90%)</string>
     <string name="battery_light_really_full_color_title">Geladen (100%)</string>
-    <string name="notification_light_title">Benachrichtigungs LED</string>
+    <string name="notification_light_title">Benachrichtigungs-LED</string>
 	<string name="notification_light_title_summary"> </string>
     <string name="notification_light_general_title">Generell</string>
     <string name="notification_light_applist_title">Apps</string>
@@ -405,7 +405,7 @@
     <string name="carrier_label_settings_title">Mobilfunkanbieter Label</string>
     <string name="carrier_label_settings_summary"> </string>
     <string name="custom_carrier_label_title">Eigenes Label für Mobilfunkanbieter</string>
-    <string name="custom_carrier_label_explain">Bitte füge ein eigenes Label hinzu. Lasse frei, um Stock Label zu bekommen.</string>
+    <string name="custom_carrier_label_explain">Bitte füge ein eigenes Label hinzu. Lasse frei, um das Standardlabel zu bekommen.</string>
     <string name="custom_carrier_label_notset">Eigenes Label nicht gesetzt</string>
     <string name="show_carrier_title">Mobilfunkanbieter Label</string>
     <string name="show_carrier_disabled">Deaktiviert</string>
