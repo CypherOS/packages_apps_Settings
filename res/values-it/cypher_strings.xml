@@ -189,7 +189,7 @@
 
   <!-- Buttons - Enable navbar -->
   <string name="enable_navigation_bar_title">Barra di navigazione</string>
-  <string name="enable_navigation_bar_title_notice">Questa opzione è per i soli dispositivi dotati di tasti hardware. Questo genera i tasti funzione stock di android per poter navigare all'\interno del sistema operativo. I dispositivi che non sono dotati dei tasti hardware non devono utilizzare questo, altrimenti si libereranno delle funzionalità di navigazione.</string>
+  <string name="enable_navigation_bar_title_notice">Questa opzione è per i soli dispositivi dotati di tasti hardware. Questo genera i tasti funzione stock di android per poter navigare all\'interno del sistema operativo. I dispositivi che non sono dotati dei tasti hardware non devono utilizzare questo, altrimenti si libereranno delle funzionalità di navigazione.</string>
 
   <!-- Navigation Bar -->
   <string name="navigation_bar_category">Barra di navigazione</string>
