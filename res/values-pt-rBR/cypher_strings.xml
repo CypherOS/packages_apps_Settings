@@ -483,23 +483,22 @@
     <!-- Battery styles -->
     <string name="battery_title">Exibições de bateria</string>
     <string name="status_bar_battery_title">Ícones da bateria</string>
-    <string name="battery_percent_title">Porcentagem ao lado do ícone</string>
-    <string name="battery_percent_none">Nunca</string>
-    <string name="battery_percent_always">Sempre</string>
-    <string name="statusbar_percent_inside_title">Porcentagem dentro do ícone</string>
-    <string name="statusbar_percent_inside_summary">Exibe a porcentagem dentro do ícone da bateria</string>
+    <!-- Battery percentage options -->
+    <string name="status_bar_battery_percentage_title">Porcentagem da bateria</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro do ícone</string>
+    <string name="status_bar_battery_percentage_text_next">Ao lado do ícone</string>
     <string name="statusbar_charging_image_title">Indicador de carregamento</string>
-    <string name="statusbar_category_charging_title">Carregando</string>
+    <string name="statusbar_category_charging_title">Carregamento</string>
     <string name="statusbar_charging_image_summary">Exibição do indicador de ceta durante o carregamento. Oculta porcentagem de sobreposição</string>
     <string name="statusbar_battery_charging_color_title">Cor</string>
     <string name="statusbar_battery_charging_color_enable_title">Colorir durante o carregamento</string>
     <string name="statusbar_battery_charging_color_enable_summary"></string>
-
-    <!-- Battery styles -->
-    <string name="battery_style_text">Texto</string>
-    <string name="battery_style_default">Retrato</string>
-    <string name="battery_style_meter_horizontal">Paisagem</string>
-    <string name="battery_style_circle">Círculo</string>
+    <string name="status_bar_battery_style_icon_portrait">Ícone retrato</string>
+    <string name="status_bar_battery_style_icon_landscape">Ícone paisagem</string>
+    <string name="status_bar_battery_style_circle">Círculo</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
 
     <!-- Button settings -->
     <string name="button_settings_title">Botões</string>
