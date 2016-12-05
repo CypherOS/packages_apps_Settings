@@ -602,7 +602,7 @@
     <string name="battery_percent_none">Mai</string>
     <string name="battery_percent_always">Sempre</string>
     <string name="statusbar_percent_inside_title">Percentuale sovrapposta</string>
-    <string name="statusbar_percent_inside_summary">Visualizza la percentuale dentro l'icona della batteria</string>
+    <string name="statusbar_percent_inside_summary">Visualizza la percentuale dentro l\'icona della batteria</string>
     <string name="statusbar_charging_image_title">Indicatore di carica</string>
     <string name="statusbar_category_charging_title">Ricarica</string>
     <string name="statusbar_charging_image_summary">Indicatore del fulmine sul display durante la ricarica. Nascondi la percentuale di sovrapposizione</string>
