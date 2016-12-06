@@ -41,12 +41,12 @@
 				android:summary="@string/live_display_summary"
                 android:fragment="com.android.settings.cyanogenmod.livedisplay.LiveDisplay" />-->
 
-        <com.android.settings.display.NightDisplayPreference
+        <!--<com.android.settings.display.NightDisplayPreference
                 android:key="night_display"
                 android:title="@string/night_display_title"
                 android:fragment="com.android.settings.display.NightDisplaySettings"
                 android:widgetLayout="@null"
-                settings:keywords="@string/keywords_display_night_display" />
+                settings:keywords="@string/keywords_display_night_display" />-->
 
         <com.android.settings.TimeoutListPreference
                 android:key="screen_timeout"
