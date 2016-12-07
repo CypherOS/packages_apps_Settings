@@ -83,4 +83,35 @@
 
     <bool name="config_regional_usb_tethering_quick_start_enable">false</bool>
     <bool name="config_regional_hotspot_tether_help_enable">false</bool>
+
+    <!-- Fully-qualified class name for the implementation of the FeatureFactory to be instantiated. -->
+    <string name="config_featureFactory" translatable="false">com.android.settings.overlay.FeatureFactoryImpl</string>
+
+    <!-- Package name and fully-qualified class name for the wallpaper picker activity. -->
+    <string name="config_wallpaper_picker_package" translatable="false">com.android.settings</string>
+    <string name="config_wallpaper_picker_class" translatable="false">com.android.settings.Settings$WallpaperSettingsActivity</string>
+
+    <!-- Backup settings to launch -->
+    <string name="config_backup_settings_intent" translatable="false"></string>
+
+    <!-- Double twist sensor name and vendor used by gesture setting -->
+    <string name="gesture_double_twist_sensor_name" translatable="false"></string>
+    <string name="gesture_double_twist_sensor_vendor" translatable="false"></string>
+
+    <!-- When true enable gesture setting. -->
+    <bool name="config_gesture_settings_enabled">false</bool>
+
+    <!-- Display ro.product.name above Device model -->
+    <bool name="config_displayDeviceName">false</bool>
+
+    <!-- Defines the location of the fingerprint sensor on the device
+         0 = back
+         1 = front
+         2 = left side
+         3 = right side
+    -->
+    <integer name="config_fingerprintSensorLocation">0</integer>
+
+    <!-- If the Storage Manager settings are enabled. -->
+    <bool name="config_storage_manager_settings_enabled">false</bool>
 </resources>

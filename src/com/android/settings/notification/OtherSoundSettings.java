@@ -281,9 +281,12 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
         mCameraSounds.setChecked(SystemProperties.getBoolean(PROP_CAMERA_SOUND, true));
         mCameraSounds.setOnPreferenceChangeListener(this);
 
-        mBootSounds = (SwitchPreference) findPreference(KEY_BOOT_SOUNDS);
-        mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
-
+        if (mContext.getResources().getBoolean(R.bool.has_boot_sounds)) {
+            mBootSounds = (SwitchPreference) findPreference(KEY_BOOT_SOUNDS);
+            mBootSounds.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
+        } else {
+            removePreference(KEY_BOOT_SOUNDS);
+        }
         final CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
         if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
             removePreference(CMSettings.Secure.VIBRATOR_INTENSITY);
