@@ -125,17 +125,6 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         }
     };
 
-    private static boolean getEditableWfcMode(Context context) {
-        CarrierConfigManager configManager = (CarrierConfigManager)
-                context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        if (configManager != null) {
-            PersistableBundle b = configManager.getConfig();
-            if (b != null) {
-                return b.getBoolean(CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL);
-            }
-        }
-    };
-
     private final OnPreferenceClickListener mUpdateAddressListener =
             new OnPreferenceClickListener() {
                 /*
