@@ -387,7 +387,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             NightDisplaySettings.class.getName(),
 			HeadsUpSettings.class.getName(),
 			TickerSettings.class.getName(),
-			ExpandedDesktopPreferenceFragment.class.getName()
+			ExpandedDesktopPreferenceFragment.class.getName(),
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName()
     };
