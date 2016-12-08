@@ -72,7 +72,7 @@
                 android:key="device_model"
                 android:enabled="false"
                 android:shouldDisableView="false"
-                android:title="@string/model_number"
+                android:title="@string/device_model_name"
                 android:summary="@string/device_info_default"
                 android:selectable="false"
                 settings:allowDividerAbove="true"

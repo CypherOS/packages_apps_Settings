@@ -36,6 +36,7 @@
     <string name="aoscp_version_title">CypherOS version</string>
     <string name="aoscp_version_default">Unknown</string>
 	<string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+	<string name="device_model_name">Model name</string>
 	<!-- About phone screen, CypherOS Release ID -->
 	<string name="aoscp_release_id">Release ID</string>
     <string name="aoscp_release_id_default">Unspecified</string>
