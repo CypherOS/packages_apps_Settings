@@ -64,7 +64,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
-import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
@@ -85,7 +84,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
-    private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_NIGHT_DISPLAY = "night_display";
@@ -105,7 +103,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private TimeoutListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
     private Preference mScreenSaverPreference;
-    private PreferenceScreen mDozeFragement;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
 	private ContentObserver mAccelerometerRotationObserver =
@@ -158,12 +155,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (!NightDisplayController.isAvailable(activity)) {
             removePreference(KEY_NIGHT_DISPLAY);
         }
-
-        mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-        if (!isDozeAvailable(activity)) {
-            getPreferenceScreen().removePreference(mDozeFragement);
-            mDozeFragement = null;
-	    }
 
         mCameraGesturePreference = (SwitchPreference) findPreference(KEY_CAMERA_GESTURE);
         if (mCameraGesturePreference != null) {
@@ -247,15 +238,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean allowAllRotations(Context context) {
         return Resources.getSystem().getBoolean(
                 com.android.internal.R.bool.config_allowAllRotations);
-    }
-
-    private static boolean isDozeAvailable(Context context) {
-        String name = Build.IS_DEBUGGABLE ? SystemProperties.get("debug.doze.component") : null;
-        if (TextUtils.isEmpty(name)) {
-            name = context.getResources().getString(
-                    com.android.internal.R.string.config_dozeComponent);
-        }
-        return !TextUtils.isEmpty(name);
     }
 
     private static boolean isAutomaticBrightnessAvailable(Resources res) {
@@ -348,13 +330,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateState();
-		
-		boolean dozeEnabled = Settings.Secure.getInt(
-                getContentResolver(), Settings.Secure.DOZE_ENABLED, 1) != 0;
-        if (mDozeFragement != null) {
-            mDozeFragement.setSummary(dozeEnabled
-                    ? R.string.summary_doze_enabled : R.string.summary_doze_disabled);
-        }
 		
 		getContentResolver().registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
@@ -457,14 +432,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == mDozeFragement) {
-            MetricsLogger.action(getActivity(), MetricsEvent.ACTION_AMBIENT_DISPLAY);
-        }
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
     protected int getHelpResource() {
         return R.string.help_uri_display;
     }
@@ -543,9 +510,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!NightDisplayController.isAvailable(context)) {
                         result.add(KEY_NIGHT_DISPLAY);
-                    }
-                    if (!isDozeAvailable(context)) {
-                        result.add(KEY_DOZE_FRAGMENT);
                     }
                     if (!RotationPolicy.isRotationLockToggleVisible(context)) {
                         result.add(KEY_AUTO_ROTATE);
