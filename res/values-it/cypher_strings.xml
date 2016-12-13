@@ -11,29 +11,33 @@
      limitations under the License.
 -->
   <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
   
   <!-- General strings -->
   <string name="reset">Ripristina</string>
   <string name="reset_yes">Si</string>
   <string name="reset_no">No</string>
   <string name="ok">OK</string>
-  <string name="reset_color_message">I colori saranno ripristinati alle impostazioni predefinite. Vuoi continuare?</string>
+  <string name="reset_color_message">I colori verranno ripristinati ai valori predefiniti. Vuoi continuare?</string>
   <string name="reset_color_confirmation">I colori predefiniti sono stati ripristinati</string>
   <string name="attention">Attenzione</string>
   <string name="enabled">Abilitato</string>
   <string name="default_string">Predefinito</string>
   <string name="add">Aggiungi</string>
   <string name="choose_app">Seleziona app</string>
+
   <!-- Feature reset -->
   <string name="reset_all_settings">Ripristina tutto</string>
   <string name="reset_selected_settings">Ripristino selezionato</string>
   <string name="reset_settings_title">Funzioni di ripristino</string>
   <string name="reset_settings_summary">Ripristina tutte le funzioni di CypherOS</string>
   <string name="keywords_settings_reset">Ripristino</string>
+
   <!-- About phone screen, CypherOS version -->
   <string name="aoscp_version_title">Versione CypherOS</string>
   <string name="aoscp_version_default">Sconosciuto</string>
   <string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+
   <!-- About phone screen, CypherOS Release ID -->
   <string name="aoscp_release_id">Rilascio ID</string>
   <string name="aoscp_release_id_default">Non specificato</string>
@@ -67,18 +71,22 @@
   <string name="gerrit_preference_title_summary">Tenete traccia della nostra revisione del codice su Gerrit per presentare, verificare e testare le modifiche in sospeso di CypherOS</string>
   <!-- Team members & Maintainers -->
   <string name="team_members_and_maintainers_title">Membri del Team &amp; Manutentori</string>
+
   <string name="team_and_maintainers_info_summary">CypherOS è stato sviluppato da zero da un team di sviluppatori di talento. E\' ora disponibile per più dispositivi grazie ai manutentori laboriosi della comunità. Qui di seguito troverete un elenco completo di coloro che fanno del loro migliore su CypherOS ogni giorno.</string>
   <string name="team_and_maintainers_title">Il team</string>
   <string name="team_and_maintainers_title_summary">Un elenco dinamico dei membri del team e dei manutentori di dispositivi attivi per CypherOS</string>
   <!-- Team members -->
   <string name="developers_category_title">Sviluppatori</string>
   <string name="developers_chris_title">Chris Crump | Fondatore &amp; Manutentore/Sviluppatore</string>
+
   <string name="developers_chris_title_summary">Il fondatore del CypherOS, l\'uomo che ha iniziato tutto e, con l\'aiuto dei suoi sorprendenti membri del team, ha portato questo dove oggi è</string>
   <string name="developers_aaron_title">Aaron Nixon | Manutentore/Sviluppatore</string>
+
   <string name="developers_aaron_title_summary">Il secondo boss sulla sedia! Egli sostiene i server ed è anche un grande elemento di CypherOS per poter raggiungingere la semplicità</string>
   <string name="community_category_title">Comunità</string>
   <string name="community_mani_title">Mani Kumar | Manager &amp; Relazioni con la Comunità</string>
   <string name="community_mani_title_summary">Senza di lui, non avremmo la spinta e la direzione corretta per portare avanti la comunità e presentare CypherOS a tutti gli utenti del mondo</string>
+  
   <!-- Maintainer category -->
   <string name="maintainer_category_title">Manutentori Ufficili</string>
   <string name="ken_adams_preference_title">Ken Adams</string>
@@ -97,11 +105,14 @@
   <string name="device_info_title">Informazioni telefono</string>
   <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
   <string name="local_backup_password_title">Password di backup desktop</string>
+
   <!-- Addition settings -->
   <string name="addition_settings_title">Impostazioni aggiuntive</string>
+
   <string name="addition_settings_greeting">Benvenuti nelle impostazioni aggiuntive. Le impostazioni aggiuntive sono una diretta estensione ad Android, fornendo varie caratteristiche e opzioni di personalizzazione, che non sono disponibili nella rom base.\n\nLe opzioni sono collocati nelle sezioni più appropriate in modo che possano essere facilmente raggiungibili.</string>
   <!-- TODO: Summary loaders -->
-	  <!-- Addition settings -->
+
+  <!-- Addition settings -->
   <string name="system_settings_title">Sistema</string>
   <string name="system_settings_title_summary">Riconfigurare le funzionalità specifiche del sistema per semplificare la tua esperienza</string>
   <!-- Power Menu fragment -->
@@ -121,6 +132,7 @@
   <string name="power_menu_bug_report_title">Segnalazione errori</string>
   <string name="power_menu_sound_title">Pannello suoni</string>
   <string name="power_menu_bug_report_disabled">La segnalazione errori è disattivata nelle impostazioni di sviluppo</string>
+
   <!-- Gesture Settings -->
   <string name="gesture_settings_title">Gesti</string>
   <string name="device_category_title">Dispositivo</string>
@@ -129,9 +141,11 @@
   <!-- Double-snap summary loaders -->
   <string name="camera_double_tap_power_gesture_on">Doppio scatto è attualmente attivato</string>
   <string name="camera_double_tap_power_gesture_off">Doppio scatto è attualmente disattivato</string>
+
 	  <!-- Advanced Battery settings -->
   <string name="advanced_battery_settings_title">Avanzate</string>
   <string name="advanced_battery_settings_title_summary">Altre opzioni disponibili per migliorare la vostra esperienza sul consumo di energia</string>
+
   <!-- Button settings -->
   <string name="button_settings_title">Pulsanti</string>
   <string name="button_settings_title_summary">Ottieni il massimo dai vostri pulsanti hardware, con varie azioni personalizzate</string>
@@ -174,6 +188,7 @@
   <string name="button_wake_title">Risveglio dispositivo</string>
   <string name="home_answer_call_title">Rispondi chiamata</string>
   <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
+
   <!-- Key backlight -->
   <string name="button_backlight_title">Retroilluminazione</string>
   <string name="button_backlight_enabled">Illumina pulsanti</string>
@@ -183,11 +198,13 @@
   <string name="backlight_timeout_title">Tempo di illuminazione</string>
   <string name="backlight_timeout_unlimited">Non spegnere</string>
   <string name="backlight_summary_disabled">Disattivato</string>
-  <string name="backlight_summary_enabled_with_timeout">Attiva per <xliff:g id="timeout">%s</xliff:g></string>
-  <string name="backlight_summary_enabled">Attivo</string>
+  <string name="backlight_summary_enabled_with_timeout">Abilitato per <xliff:g id="timeout">%s</xliff:g></string>
+  <string name="backlight_summary_enabled">Abilitato</string>
+
   <!-- Buttons - Enable navbar -->
   <string name="enable_navigation_bar_title">Barra di navigazione</string>
   <string name="enable_navigation_bar_title_notice">Questa opzione è per i soli dispositivi dotati di tasti hardware. Questo genera i tasti funzione stock di android per poter navigare all\'interno del sistema operativo. I dispositivi che non sono dotati dei tasti hardware non devono utilizzare questo, altrimenti si libereranno delle funzionalità di navigazione.</string>
+    
   <!-- Navigation Bar -->
   <string name="navigation_bar_category">Barra di navigazione</string>
   <string name="navigation_bar_title">Pulsanti e schermata</string>
@@ -196,18 +213,23 @@
   <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
   <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti sinistro e destro del cursore durante la digitazione. Nasconde il selettore di input.</string>
   <string name="navigation_bar_recents_title">Azione pressione prolungata recenti</string>
+
   <string name="volume_keys_control_ring_stream_title">Controllo volume suoneria</string>
   <string name="volume_keys_control_ring_stream_summary_on">I tasti volume regolano la suoneria</string>
   <string name="volume_keys_control_ring_stream_summary_off">I tasti volume regolano le applicazioni multimediali</string>
+
   <!-- Volume settings - Volume adjustment sound -->
   <string name="volume_adjust_sounds_title">Suoni di regolazione del volume</string>
+
   <!-- ADB debugging notifications -->
   <string name="enable_adb_custom">Android debugging</string>
   <string name="enable_adb_summary_custom">Attiva l\'interfaccia di Android Debug Bridge (ADB)</string>
   <string name="adb_notify">Notifica ADB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando è attivato il debug di android</string>
+
   <string name="adb_over_network">ADB in rete</string>
   <string name="adb_over_network_summary">Abilita il debug TCP/IP tramite l\'interfaccia di rete (Wi\u2011Fi, reti USB). Questa impostazione viene reimpostata al riavvio</string>
+
   <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
   <!-- Category title for Charging sounds -->
   <string name="power_notifications_category_title">Suono di ricarica</string>
@@ -220,6 +242,7 @@
   <string name="power_notifications_ringtone_title">Suono di notifica</string>
   <!-- Sound settings, charging sounds label for ringtone == none -->
   <string name="power_notifications_ringtone_silent">Silenzioso</string>
+
 	  <!-- Display : Rotation -->
   <string name="display_rotation_title">Rotazione</string>
   <string name="display_rotation_disabled">Disabilitata</string>
@@ -229,20 +252,25 @@
   <string name="display_rotation_90_title">90 gradi</string>
   <string name="display_rotation_180_title">180 gradi</string>
   <string name="display_rotation_270_title">270 gradi</string>
+
     <!-- Advanced storage settings -->
   <string name="storage_advanced_titlebar">Archiviazione avanzata</string>
   <string name="storage_menu_advanced">Avanzate</string>
+
   <!-- USB data automatic unlock -->
   <string name="usb_data_auto_unlock_title">Sblocca i dati USB</string>
   <string name="usb_data_auto_unlock_summary">Consenti l\'accesso ai dati di sblocco per la memoria del telefono tramite USB (MTP, PTP)</string>
   <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che ci si connette ad un PC. La schermata di blocco protetta disattiva questa opzione automaticamente.\n\nQuesto è ancora una funzione sperimentale, utilizzalo con cautela.</string>
+   
    <!-- Sound settings -->
   <string name="advanced_sound_title">Avanzate</string>
   <string name="sound_title">Suono</string>
+
   <!-- Safe headset volume restore checkbox -->
-  <string name="safe_headset_volume_title">Volume cuffie sicuro</string>
+  <string name="safe_headset_volume_title">Sicurezza volume cuffie</string>
   <string name="safe_headset_volume_summary">Previene un livello elevato del volume quando gli auricolari vengono collegati</string>
   <string name="safe_headset_volume_warning_dialog_text">Ascoltare audio con un volume troppo elevato per lunghi periodi di tempo può danneggiare l\'udito. Disabilitalo con attenzione.</string>
+
   <!-- Less Notification sounds -->
   <string name="notifications_category_title">Notifiche</string>
   <string name="less_notification_sounds_title">Suoni di notifica meno frequenti</string>
@@ -257,44 +285,15 @@
   <string name="less_notification_sounds_1m">1 minuto</string>
   <string name="less_notification_sounds_2m">2 minuti</string>
   <string name="less_notification_sounds_5m">5 minuti</string>
+   
   <!-- Bluetooth accept all files -->
   <string name="bluetooth_accept_all_files">Accetta tutti i tipi di file</string>
-  <!-- Doze pulse options -->
-  <string name="summary_doze_enabled">Abilitato</string>
-  <string name="summary_doze_disabled">Disabilitato</string>
-  <string name="doze_overwrite_value_title">Sovrascrittura predefinita</string>
-  <string name="doze_overwrite_value_summary">Consente una forzatura dei valori predefiniti con la configurazione utente</string>
-  <string name="doze_pulse_title">Impostazioni configurabili dall\'utente</string>
-  <string name="doze_pulse_duration_in_title">Dissolvenza in entrata</string>
-  <string name="doze_pulse_duration_in_summary"></string>
-  <string name="doze_pulse_duration_visible_title">Durata visibile</string>
-  <string name="doze_pulse_duration_visible_summary"></string>
-  <string name="doze_pulse_duration_out_title">Dissolvenza in uscita</string>
-  <string name="doze_pulse_duration_out_summary"></string>
-  <string name="doze_trigger_pickup_title">Attivazione gesto di sollevamento</string>
-  <string name="doze_trigger_pickup_summary_on">Doze pulse sarà attivato dagli eventi del sensore dal gesto di sollevamento</string>
-  <string name="doze_trigger_pickup_summary_off">Il sensore gesto di sollevamento non sarà utilizzato come un meccanismo di attivazione</string>
-  <string name="doze_trigger_notification_title">Attivazione notifica</string>
-  <string name="doze_trigger_notification_summary_on">Doze pulse sarà attivato dalle notifiche</string>
-  <string name="doze_trigger_notification_summary_off">Le notifiche in entrata non attiveranno Ambient display</string>
-  <string name="doze_brightness_level_title">Livello di luminosità</string>
-  <string name="onehundred_ms">100 ms</string>
-  <string name="twofifty_ms">250 ms</string>
-  <string name="fivehundred_ms_default">500 ms (predefinito)</string>
-  <string name="sevenfifty_ms">750 ms</string>
-  <string name="one_second">1 s</string>
-  <string name="onehalf_second">1.5 s</string>
-  <string name="two_second">2 s</string>
-  <string name="twohalf_second">2.5 s</string>
-  <string name="three_second_default">3 s (predefinito)</string>
-  <string name="threehalf_second">3.5 s</string>
-  <string name="four_second">4 s</string>
-  <string name="fourhalf_second">4.5 s</string>
-  <string name="five_second">5 s</string>
+	
   <!-- Camera sound switch -->
   <string name="camera_sounds_title">Suono otturatore fotocamera</string>
   <string name="camera_sounds_summary">Abilita il suono dell\'otturatore della fotocamera di sistema</string>
   <string name="camera_sound_warning_dialog_text">Disattivare il suono dell\'otturatore della fotocamera è illegale in alcune zone!Si prega di controllare la legge applicabile nel vostro paese</string>
+
   <!-- Volume Steps -->
   <string name="volume_steps_title">Livelli volume</string>
   <string name="volume_steps_alarm_title">Livello volume: Sveglia</string>
@@ -311,6 +310,7 @@
   <string name="volume_steps_15">15</string>
   <string name="volume_steps_7">7</string>
   <string name="volume_steps_5">5</string>
+
   <!-- Statusbar Settings -->
   <string name="statusbar_settings_title">Barra di stato</string>
   <string name="statusbar_settings_title_summary">Cambia l\'aspetto grafico della tua barra di stato con una serie di personalizzazioni</string>
@@ -340,9 +340,11 @@
   <string name="clock_date_format">Formato data</string>
   <string name="clock_date_string_edittext_title">Deve essere in formato data ad esempio. mm/dd/yy</string>
   <string name="clock_date_string_edittext_summary">Inserire una stringa</string>
+
   <!-- Status bar quick qs pulldown -->
   <string name="status_bar_quick_qs_pulldown_title">Discesa rapida</string>
   <string name="status_bar_quick_qs_pulldown_summary">Lato destro della barra di stato tira giù le impostazioni rapide</string>
+
   <!-- Network traffic -->
   <string name="network_traffic_title">Traffico di rete</string>
   <string name="network_traffic_title_summary">Monitora la velocità di trasferimento dati e wifi in entrata e in uscita dalla barra di stato</string>
@@ -364,6 +366,7 @@
   <string name="network_traffic_autohide_threshold">Soglia di inattività</string>
   <string name="network_traffic_hidearrow">Nascondi frecce</string>
   <string name="network_traffic_hidearrow_summary">Nascondi le frecce degli indicatori di traffico</string>
+
   <!--Smart PullDown-->
   <string name="smart_pulldown_title">Discesa intelligente</string>
   <string name="smart_pulldown_summary">Apri le impostazioni rapide quando ci sono %1$s notifiche presenti</string>
@@ -372,6 +375,7 @@
   <string name="smart_pulldown_none">Nessuna notifica</string>
   <string name="smart_pulldown_dismissable">Nessuna rimovibile</string>
   <string name="smart_pulldown_ongoing">Nessuna in corso</string>
+
   <!-- Quick pull down-->
   <string name="quick_pulldown_title">Discesa rapida</string>
   <string name="quick_pulldown_summary">Il bordo di %1$s della barra di stato tira giù le impostazioni rapide</string>
@@ -380,21 +384,26 @@
   <string name="quick_pulldown_left">Sinistra</string>
   <string name="quick_pulldown_right">Destra</string>
   <string name="quick_pulldown_always">Sempre</string>
+
   <!-- Navbar tuner -->
   <string name="navbar_tuner_title">Sintonizzatore barra di navigazione</string>
   <string name="navbar_tuner_summary">Personalizza i pulsanti e la disposizione</string>
   <!-- Multiwindow navbar gesture -->
   <string name="nav_gesture_title">Abilita finestre multiple con gesto</string>
   <string name="nav_gesture_summary">Fai un gesto di entrata nella finestra dello scherm scorrendo verso l\'alto dal pulsante recenti</string>
+
   <!-- Preference to show/hide embedded battery percentage [CHAR LIMIT=50] -->
   <string name="show_battery_percentage">Visualizza percentuale della batteria</string>
   <string name="show_battery_percentage_summary">Visualizza la percentuale della batteria quando non in carica</string>
+
   <!-- statusbar icon blacklist -->
   <string name="status_bar_icon_blacklist_title">Icone della barra di stato</string>
   <string name="status_bar_icon_blacklist_summary">Configura quali icone dovranno essere mostrate sulla barra di stato</string>
+
   <!-- double tap statusbar to sleep -->
   <string name="double_tap_to_sleep_title">Doppio tocco per sospendere</string>
   <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per sospendere il dispositivo</string>
+
   <!-- Color Picker -->
   <string name="dialog_color_picker">Selettore del colore</string>
   <string name="press_color_to_apply">Premi sul colore qui sotto per applicarlo</string>
@@ -404,12 +413,15 @@
   <string name="hex_hint">#ff000000</string>
   <string name="set">Imposta</string>
   <string name="color_default">Predefinito</string>
+
   <!-- Brightness control -->
   <string name="status_bar_toggle_brightness">Controllo della luminosità</string>
   <string name="status_bar_toggle_brightness_summary">Regola la luminosità scorrendo sopra la barra di stato</string>
+
   <!-- Wake when connected/disconnected -->
   <string name="wake_when_plugged_or_unplugged_title">Risveglio al collegamento</string>
   <string name="wake_when_plugged_or_unplugged_summary">Accendi lo schermo quando si collega o scollega il caricabatterie</string>
+
   <!-- Notification/Battery lights -->
   <string name="led_category">Controlli Led</string>
   <string name="edit_light_settings">Modifica impostazioni luce</string>
@@ -447,6 +459,7 @@
   <string name="notification_light_no_apps_summary">Per aggiungere al controllo le app, attivare \'%1$s\' e premere \'\u002b\' sulla barra dei menù</string>
   <string name="allow_lights_title">Luci in modalità non disturbare</string>
   <string name="notification_light_screen_on">Luci con schermo acceso</string>
+
   <!-- Custom carrier label and position -->
   <string name="carrier_label_settings_title">Etichetta Operatore</string>
   <string name="carrier_label_settings_summary">Personalizza l\'etichetta operatore</string>
@@ -460,9 +473,10 @@
   <string name="show_carrier_enabled">Blocco schermo &amp; Barra di stato</string>
   <string name="status_bar_carrier_color">Colore</string>
   <string name="status_bar_carrier_size">Dimensione testo</string>
+
   <!-- Quick Settings -->
   <string name="quick_settings_title">Impostazioni rapide</string>
-  <string name="quick_settings_title_summary">Regola la logica e la disposizione del pannello delle impostazioni rapide</string>
+  <string name="quick_settings_title_summary">Regola e disposini il contenuto del pannello delle impostazioni rapide</string>
   <!-- Advanced data tile -->
   <string name="qs_advanced_data_title">Dati al tocco</string>
   <string name="qs_advanced_data_summary">Attiva o disattiva i dati del cellulare con un solo tocco</string>
@@ -481,12 +495,15 @@
   <string name="qs_rows_landscape_title">Righe in orizzontale</string>
   <string name="qs_columns_title">Colonne</string>
   <string name="sysui_qqs_count_title">Numero di scelte rapide</string>
+
   <!-- Force expand notifications -->
   <string name="notification_force_expand_title">Espansione notifiche forzate</string>
   <string name="notification_force_expand_summary">Espandi automaticemente le notifiche sulle applicazioni che lo supportano</string>
+
   <!-- Notification count -->
   <string name="status_bar_notif_count_title">Numero di notifica</string>
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
+
   <!-- Notification Settings -->
   <string name="notification_settings_title">Notifiche</string>
   <string name="notification_settings_title_summary">Maggiori opzioni di personalizzazione per migliorare la vostra esperienza sulle notifiche nel modo in cui si desidera</string>
@@ -495,6 +512,7 @@
   <string name="summary_heads_up_enabled">Le notifiche fluttuanti sono abilitate</string>
   <string name="summary_heads_up_disabled">Le notifiche fluttuanti sono disabilitate</string>
   <string name="heads_up_disabled_notice">Consenti alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, abilitare le notifiche fluttuanti</string>
+  
   <!-- Heads up timeout -->
   <string name="heads_up_time_out_title">Tempo di visualizzazione</string>
   <string name="heads_up_time_out_summary">Le notifiche saranno mostrate per <xliff:g id="number">%d</xliff:g> secondi</string>
@@ -515,6 +533,7 @@
   <string name="heads_up_snooze_10min">10 minuti</string>
   <string name="heads_up_snooze_15min">15 minuti</string>
   <string name="heads_up_snooze_20min">20 minuti</string>
+
   <!-- Status Bar Ticker -->
   <string name="ticker_title">Ticker</string>
   <string name="ticker_title_summary">Utilizza il vecchio sistema di notifica kitkat e qui di seguito per le notifiche semplici</string>
@@ -523,6 +542,7 @@
   <string name="text_title">Testo</string>
   <string name="icon_title">Icona</string>
   <string name="colors_title">Colori</string>
+
   <!-- Expanded desktop -->
   <string name="power_menu_expanded_desktop">Desktop esteso</string>
   <string name="expanded_hide_nothing">Non nascondere nulla</string>
@@ -536,13 +556,16 @@
   <string name="expanded_desktop_style">Stile desktop esteso</string>
   <string name="expanded_desktop_style_description">Scegli uno stile di desktop esteso predefinito</string>
   <string name="expanded_desktop_title">Opzioni desktop esteso</string>
+
   <!-- Optional screenshot type -->
   <string name="screenshot_type_title">Tipo di Screenshot</string>
   <string name="screenshot_type_fullscreen">Schermo intero</string>
   <string name="screenshot_type_partial">Parziale</string>
+
   <!-- Battery styles -->
   <string name="battery_title">Visualizzazioni della batteria</string>
   <string name="status_bar_battery_title">Icone della batteria</string> 
+  <!-- Battery percentage options -->
   <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
   <string name="status_bar_battery_percentage_default">Nascosta</string>
   <string name="status_bar_battery_percentage_text_inside">Incorporato</string>
@@ -555,10 +578,12 @@
   <string name="statusbar_battery_charging_color_enable_summary"></string>
   <string name="status_bar_battery_style_icon_portrait">Verticale</string>
   <string name="status_bar_battery_style_icon_landscape">Orizzontale</string>
+  <string name="status_bar_battery_style_aoscp">Logo</string>
   <string name="status_bar_battery_style_solid">Solida</string>
   <string name="status_bar_battery_style_circle">Cerchio</string>
   <string name="status_bar_battery_style_text">Testo</string>
   <string name="status_bar_battery_style_hidden">Nascosta</string>
+
   <!-- LiveDisplay -->
   <string name="live_display_title">Live display</string>
   <string name="live_display_summary">Ottimizza il tuo schermo in base all\'ora del giorno e delle condizioni ambientali per migliorare la leggibilità e ridurre l\'affaticamento degli occhi</string>
@@ -596,6 +621,7 @@
   <string name="color_red_title">Rosso</string>
   <string name="color_green_title">Verde</string>
   <string name="color_blue_title">Blu</string>
+  
   <!-- LiveDisplay : Picture Adjustment -->
   <string name="picture_adjustment_title">Regolazione immagine</string>
   <string name="picture_adjustment_summary">Regola la tonalità, la saturazione, l\'intensità, e il contrasto</string>
