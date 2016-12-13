@@ -40,21 +40,9 @@
             android:title="@string/unlock_scramble_pin_layout_title"
             android:summary="@string/unlock_scramble_pin_layout_summary" />
 
-        <PreferenceScreen
-            android:title="@string/lockscreen_targets_message" >
-            <intent
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
-        </PreferenceScreen>
-
         <cyanogenmod.preference.CMSecureSettingSwitchPreference
             android:key="lockscreen_visualizer"
             android:title="@string/lockscreen_visualizer_title"
             android:defaultValue="true"/>
-
-        <cyanogenmod.preference.CMSecureSettingSwitchPreference
-            android:key="lock_screen_weather_enabled"
-            android:title="@string/lockscreen_weather_enabled_title"
-            android:defaultValue="false"/>
 
 </PreferenceScreen>

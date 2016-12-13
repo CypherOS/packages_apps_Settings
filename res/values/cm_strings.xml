@@ -256,7 +256,7 @@
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
 
     <!-- lock screen visualizer -->
-    <string name="lockscreen_visualizer_title">Display music visualizer</string>
+    <string name="lockscreen_visualizer_title">Music visualizer</string>
 
     <!-- title for lock screen weather preference -->
     <string name="lockscreen_weather_enabled_title">Show weather</string>
