@@ -45,6 +45,8 @@ import android.util.Log;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.preference.SystemSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -62,6 +64,7 @@ public class Gestures extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "Gestures";
 	
+	private static final String KEY_TAP_TO_SLEEP = "tap_to_sleep";
 	private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
 	private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
 	private static final String KEY_MOTION_GESTURES = "motion_gestures";
@@ -72,6 +75,8 @@ public class Gestures extends SettingsPreferenceFragment implements
 	
 	private SwitchPreference mTapToWakePreference;
 	private SwitchPreference mLiftToWakePreference;
+	
+	private SystemSettingSwitchPreference mTapToSleepPreference;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,6 +96,10 @@ public class Gestures extends SettingsPreferenceFragment implements
             // Remove for secondary users
             removePreference(KEY_MOTION_GESTURES);
         }
+		
+		mTapToSleepPreference
+                    = (SystemSettingSwitchPreference) findPreference(KEY_TAP_TO_SLEEP);
+        mTapToSleepPreference.setOnPreferenceChangeListener(this);
 		
 		if (isTapToWakeAvailable(getResources())) {
             mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
@@ -153,6 +162,39 @@ public class Gestures extends SettingsPreferenceFragment implements
     protected int getMetricsCategory() {
         return MetricsEvent.GESTURES;
     }
+	
+    private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+        private final Context mContext;
+        private final SummaryLoader mLoader;
+
+        private SummaryProvider(Context context, SummaryLoader loader) {
+            mContext = context;
+            mLoader = loader;
+        }
+
+        @Override
+        public void setListening(boolean listening) {
+            if (listening) {
+                updateSummary();
+            }
+        }
+          
+        private void updateSummary() {
+	boolean taptosleep = Settings.System.getInt(mContext.getContentResolver(),
+                    DOUBLE_TAP_SLEEP_GESTURE, 1) == 0;
+            mLoader.setSummary(this, mContext.getString(taptosleep ? R.string.double_tap_to_sleep_title_on
+                    : R.string.double_tap_to_sleep_off));
+        }
+    }
+
+    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+            = new SummaryLoader.SummaryProviderFactory() {
+        @Override
+        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
+                                                                   SummaryLoader summaryLoader) {
+            return new SummaryProvider(activity, summaryLoader);
+        }
+    };
 	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
