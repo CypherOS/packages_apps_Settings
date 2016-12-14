@@ -64,13 +64,12 @@ public class Gestures extends SettingsPreferenceFragment implements
 	
 	private static final String KEY_TAP_TO_WAKE = "tap_to_wake";
 	private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
-	private static final String KEY_CM_ACTIONS = "cm_actions";
-	private static final String KEY_ONEPLUS_DOZE = "oneplus_doze";
+	private static final String KEY_MOTION_GESTURES = "motion_gestures";
 
     private static final String CATEGORY_DEVICE = "device_category";
 	
-	private Preference mCmActionsFragment;
-	private Preference mOnePlusDozeFragment;
+	private UserManager mUm;
+	
 	private SwitchPreference mTapToWakePreference;
 	private SwitchPreference mLiftToWakePreference;
 	
@@ -84,18 +83,13 @@ public class Gestures extends SettingsPreferenceFragment implements
 		
 		final PreferenceCategory device = (PreferenceCategory) findPreference(CATEGORY_DEVICE);
 
-        mCmActionsFragment = findPreference(KEY_CM_ACTIONS);
-        //Remove CMActions if device doesnt support it
-        if (!getResources().getBoolean(
-                R.bool.config_isCmActionsSupported)) {
-            device.removePreference(findPreference(KEY_CM_ACTIONS));
-        }
-		
-		mOnePlusDozeFragment = findPreference(KEY_ONEPLUS_DOZE);
-        //Remove OnePlusDoze if device doesnt support it
-        if (!getResources().getBoolean(
-                R.bool.config_isOnePlusDozeSupported)) {
-            device.removePreference(findPreference(KEY_ONEPLUS_DOZE));
+		if (mUm.isAdminUser()) {
+            Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                    KEY_MOTION_GESTURES,
+                    Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+        } else {
+            // Remove for secondary users
+            removePreference(KEY_MOTION_GESTURES);
         }
 		
 		if (isTapToWakeAvailable(getResources())) {
@@ -183,6 +177,11 @@ public class Gestures extends SettingsPreferenceFragment implements
                     }
 					if (!isLiftToWakeAvailable(context)) {
                         result.add(KEY_LIFT_TO_WAKE);
+                    }
+					final UserManager um = UserManager.get(context);
+                    // TODO: needs to be fixed for non-owner user b/22760654
+                    if (!um.isAdminUser()) {
+                        keys.add(KEY_MOTION_GESTURES);
                     }
                     return result;
                 }
