@@ -35,6 +35,8 @@ import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.aoscp.utils.smartdialogs.SmartDialog:
+
 public class SoundSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SoundSettings";
@@ -109,30 +111,31 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         SoundSettings getOwner() {
             return (SoundSettings) getTargetFragment();
         }
-
-        @Override
+		
+		@Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             int id = getArguments().getInt("id");
             switch (id) {
                 case DLG_SAFE_HEADSET_VOLUME:
-                    return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.attention)
-                    .setMessage(R.string.safe_headset_volume_warning_dialog_text)
-                    .setPositiveButton(R.string.dlg_ok,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
+                    return new SmartDialog.Builder(getActivity())
+                    .setTitle("Attention")
+                    .setContent("This is a test")
+                    .setPositiveText("OK")
+					.setNegativeText("CANCEL")
+                    .onPositive(new SmartDialog.ButtonCallback() {
+                        @Override
+                        public void onClick(SmartDialog dialog) {
                             Settings.System.putInt(getOwner().getContentResolver(),
                                     Settings.System.SAFE_HEADSET_VOLUME, 0);
-
                         }
                     })
-                    .setNegativeButton(R.string.dlg_cancel,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
+                    .onNegative(new SmartDialog.ButtonCallback() {
+                        @Override
+                        public void onClick(SmartDialog dialog) {
+                            dismiss();
                         }
                     })
-                    .create();
+					.show();
             }
             throw new IllegalArgumentException("unknown id " + id);
         }
