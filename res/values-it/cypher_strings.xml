@@ -12,8 +12,7 @@
 -->
   <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  
-  <!-- General strings -->
+ <!-- General strings -->
   <string name="reset">Ripristina</string>
   <string name="reset_yes">Si</string>
   <string name="reset_no">No</string>
@@ -37,9 +36,9 @@
   <string name="aoscp_version_title">Versione CypherOS</string>
   <string name="aoscp_version_default">Sconosciuto</string>
   <string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
-
+  <string name="device_model_name">Nome del modello</string> 
   <!-- About phone screen, CypherOS Release ID -->
-  <string name="aoscp_release_id">Rilascio ID</string>
+  <string name="aoscp_release_id">ID di rilascio</string>
   <string name="aoscp_release_id_default">Non specificato</string>
   <!-- About phone screen, CypherOS API -->
   <string name="aoscp_api_level">Versione CypherOS</string>
@@ -71,24 +70,20 @@
   <string name="gerrit_preference_title_summary">Tenete traccia della nostra revisione del codice su Gerrit per presentare, verificare e testare le modifiche in sospeso di CypherOS</string>
   <!-- Team members & Maintainers -->
   <string name="team_members_and_maintainers_title">Membri del Team &amp; Manutentori</string>
-
   <string name="team_and_maintainers_info_summary">CypherOS è stato sviluppato da zero da un team di sviluppatori di talento. E\' ora disponibile per più dispositivi grazie ai manutentori laboriosi della comunità. Qui di seguito troverete un elenco completo di coloro che fanno del loro migliore su CypherOS ogni giorno.</string>
   <string name="team_and_maintainers_title">Il team</string>
   <string name="team_and_maintainers_title_summary">Un elenco dinamico dei membri del team e dei manutentori di dispositivi attivi per CypherOS</string>
   <!-- Team members -->
   <string name="developers_category_title">Sviluppatori</string>
   <string name="developers_chris_title">Chris Crump | Fondatore &amp; Manutentore/Sviluppatore</string>
-
   <string name="developers_chris_title_summary">Il fondatore del CypherOS, l\'uomo che ha iniziato tutto e, con l\'aiuto dei suoi sorprendenti membri del team, ha portato questo dove oggi è</string>
   <string name="developers_aaron_title">Aaron Nixon | Manutentore/Sviluppatore</string>
-
   <string name="developers_aaron_title_summary">Il secondo boss sulla sedia! Egli sostiene i server ed è anche un grande elemento di CypherOS per poter raggiungingere la semplicità</string>
   <string name="community_category_title">Comunità</string>
   <string name="community_mani_title">Mani Kumar | Manager &amp; Relazioni con la Comunità</string>
   <string name="community_mani_title_summary">Senza di lui, non avremmo la spinta e la direzione corretta per portare avanti la comunità e presentare CypherOS a tutti gli utenti del mondo</string>
-  
-  <!-- Maintainer category -->
-  <string name="maintainer_category_title">Manutentori Ufficili</string>
+    <!-- Maintainer category -->
+  <string name="maintainer_category_title">Manutentori Ufficiali</string>
   <string name="ken_adams_preference_title">Ken Adams</string>
   <string name="ken_adams_preference_title_summary">Nexus 6 | Shamu</string>
   <string name="isaiah_pez_preference_title">Isaiah Pez</string>
@@ -108,7 +103,6 @@
 
   <!-- Addition settings -->
   <string name="addition_settings_title">Impostazioni aggiuntive</string>
-
   <string name="addition_settings_greeting">Benvenuti nelle impostazioni aggiuntive. Le impostazioni aggiuntive sono una diretta estensione ad Android, fornendo varie caratteristiche e opzioni di personalizzazione, che non sono disponibili nella rom base.\n\nLe opzioni sono collocati nelle sezioni più appropriate in modo che possano essere facilmente raggiungibili.</string>
   <!-- TODO: Summary loaders -->
 
@@ -213,7 +207,6 @@
   <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
   <string name="navigation_bar_arrow_keys_summary">Visualizza i pulsanti sinistro e destro del cursore durante la digitazione. Nasconde il selettore di input.</string>
   <string name="navigation_bar_recents_title">Azione pressione prolungata recenti</string>
-
   <string name="volume_keys_control_ring_stream_title">Controllo volume suoneria</string>
   <string name="volume_keys_control_ring_stream_summary_on">I tasti volume regolano la suoneria</string>
   <string name="volume_keys_control_ring_stream_summary_off">I tasti volume regolano le applicazioni multimediali</string>
@@ -226,10 +219,8 @@
   <string name="enable_adb_summary_custom">Attiva l\'interfaccia di Android Debug Bridge (ADB)</string>
   <string name="adb_notify">Notifica ADB</string>
   <string name="adb_notify_summary">Visualizza una notifica quando è attivato il debug di android</string>
-
   <string name="adb_over_network">ADB in rete</string>
   <string name="adb_over_network_summary">Abilita il debug TCP/IP tramite l\'interfaccia di rete (Wi\u2011Fi, reti USB). Questa impostazione viene reimpostata al riavvio</string>
-
   <string name="adb_over_network_warning">ATTENZIONE: Quando ADB è abilitato sulla rete, il telefono è aperto alle intrusioni su tutte le reti collegate!\n\nUtilizza questa funzione solo quando si è connessi su reti conosciute.\n\nVuoi davvero attivare questa funzione?</string>
   <!-- Category title for Charging sounds -->
   <string name="power_notifications_category_title">Suono di ricarica</string>
@@ -293,7 +284,11 @@
   <string name="camera_sounds_title">Suono otturatore fotocamera</string>
   <string name="camera_sounds_summary">Abilita il suono dell\'otturatore della fotocamera di sistema</string>
   <string name="camera_sound_warning_dialog_text">Disattivare il suono dell\'otturatore della fotocamera è illegale in alcune zone!Si prega di controllare la legge applicabile nel vostro paese</string>
-
+  
+  <!-- Screenshot sound -->
+  <string name="screenshot_sound_title">Suono Screenshot</string>
+  <string name="screenshot_sound_summary">Riproduce un effetto sonoro quando si cattura uno screenshot</string>
+	
   <!-- Volume Steps -->
   <string name="volume_steps_title">Livelli volume</string>
   <string name="volume_steps_alarm_title">Livello volume: Sveglia</string>
@@ -424,7 +419,7 @@
 
   <!-- Notification/Battery lights -->
   <string name="led_category">Controlli Led</string>
-  <string name="edit_light_settings">Modifica impostazioni luce</string>
+  <string name="edit_light_settings">Modifica le impostazioni di luce</string>
   <string name="pulse_speed_title">Velocità e lunghezza di impulso</string>
   <string name="default_time">Normale</string>
   <string name="custom_time">Personalizzato</string>
@@ -443,7 +438,7 @@
   <string name="pulse_speed_very_slow">Molto lento</string>
   <string name="battery_light_title">LED della batteria</string>
   <string name="battery_light_title_summary">Configura il LED del dispositivo quando la batteria è scarica o carica</string>
-  <string name="battery_low_pulse_title">Impulso se batteria bassa</string>
+  <string name="battery_low_pulse_title">Impulso a batteria scarica</string>
   <string name="battery_light_list_title">Colori</string>
   <string name="battery_light_low_color_title">Batteria scarica</string>
   <string name="battery_light_medium_color_title">Ricarica</string>
@@ -467,7 +462,7 @@
   <string name="custom_carrier_label_explain">Si prega di inserire una nuova etichetta. Lasciare vuoto per tornare a quella predefinita.</string>
   <string name="custom_carrier_label_notset">Etichetta operatore personalizzata attualmente non impostata</string>
   <string name="show_carrier_title">Etichetta operatore</string>
-  <string name="show_carrier_disabled">Disabilitato</string>
+  <string name="show_carrier_disabled">Disabilitata</string>
   <string name="show_carrier_keyguard">Blocco schermo</string>
   <string name="show_carrier_statusbar">Barra di stato</string>
   <string name="show_carrier_enabled">Blocco schermo &amp; Barra di stato</string>
@@ -476,7 +471,7 @@
 
   <!-- Quick Settings -->
   <string name="quick_settings_title">Impostazioni rapide</string>
-  <string name="quick_settings_title_summary">Regola e disposini il contenuto del pannello delle impostazioni rapide</string>
+  <string name="quick_settings_title_summary">Regola e disponi il contenuto del pannello delle impostazioni rapide</string>
   <!-- Advanced data tile -->
   <string name="qs_advanced_data_title">Dati al tocco</string>
   <string name="qs_advanced_data_summary">Attiva o disattiva i dati del cellulare con un solo tocco</string>
@@ -512,7 +507,6 @@
   <string name="summary_heads_up_enabled">Le notifiche fluttuanti sono abilitate</string>
   <string name="summary_heads_up_disabled">Le notifiche fluttuanti sono disabilitate</string>
   <string name="heads_up_disabled_notice">Consenti alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, abilitare le notifiche fluttuanti</string>
-  
   <!-- Heads up timeout -->
   <string name="heads_up_time_out_title">Tempo di visualizzazione</string>
   <string name="heads_up_time_out_summary">Le notifiche saranno mostrate per <xliff:g id="number">%d</xliff:g> secondi</string>
@@ -546,8 +540,8 @@
   <!-- Expanded desktop -->
   <string name="power_menu_expanded_desktop">Desktop esteso</string>
   <string name="expanded_hide_nothing">Non nascondere nulla</string>
-  <string name="expanded_hide_status">Nascondi la barra di stato</string>
-  <string name="expanded_hide_navigation">Nascondi la barra di navigazione</string>
+  <string name="expanded_hide_status">Barra di stato nascosta</string>
+  <string name="expanded_hide_navigation">Barra di navigazione nascosta</string>
   <string name="expanded_hide_both">Nascondi entrambi</string>
   <string name="expanded_nothing_to_show">Per aggiungere una configurazione personalizzata per le app dello stato esteso, imposta "Abilitato per tutti" nella posizione spento</string>
   <string name="expanded_desktop_state">Stato espansione</string>
@@ -563,16 +557,16 @@
   <string name="screenshot_type_partial">Parziale</string>
 
   <!-- Battery styles -->
-  <string name="battery_title">Visualizzazioni della batteria</string>
+  <string name="battery_title">Visualizzazione della batteria</string>
   <string name="status_bar_battery_title">Icone della batteria</string> 
   <!-- Battery percentage options -->
   <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
   <string name="status_bar_battery_percentage_default">Nascosta</string>
-  <string name="status_bar_battery_percentage_text_inside">Incorporato</string>
+  <string name="status_bar_battery_percentage_text_inside">Incorporata</string>
   <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
-  <string name="statusbar_charging_image_title">Charging indicator</string>
+  <string name="statusbar_charging_image_title">Indicatore di carica</string>
   <string name="statusbar_category_charging_title">Ricarica</string>
-  <string name="statusbar_charging_image_summary">Indicatore del fulmine sul display durante la ricarica. Nascondi la percentuale di sovrapposizione</string>
+  <string name="statusbar_charging_image_summary">Indicatore del fulmine sul display durante la ricarica. Nasconde la percentuale sovrapposta</string>
   <string name="statusbar_battery_charging_color_title">Colore</string>
   <string name="statusbar_battery_charging_color_enable_title">Colore durante la carica</string>
   <string name="statusbar_battery_charging_color_enable_summary"></string>
@@ -617,7 +611,7 @@
   <string name="live_display_color_profile_adaptive_title">Adattativo</string>
   <string name="live_display_color_profile_adaptive_summary">I colori si adattano alle condizioni ambientali</string>
   <string name="color_calibration_title">Calibrazione del colore</string>
-  <string name="color_calibration_summary">Calibrare i colori sullo schermo</string>
+  <string name="color_calibration_summary">Calibra i colori sullo schermo</string>
   <string name="color_red_title">Rosso</string>
   <string name="color_green_title">Verde</string>
   <string name="color_blue_title">Blu</string>
@@ -629,4 +623,13 @@
   <string name="adj_saturation_title">Saturazione</string>
   <string name="adj_intensity_title">Intensità</string>
   <string name="adj_contrast_title">Contrasto</string>
+  
+  <!-- Dynamic System Navbar -->
+  <string name="nav_bar_dynamic_title">Navigazione dinamica</string>
+  <string name="nav_bar_dynamic_summary">Consenti alla barra di navigazione di cambiare il colore di base con quello primario delle applicazioni</string>
+ 
+  <!-- Three-fingers-swipe to screenshot -->
+  <string name="three_finger_gesture">Scorri per screenshot</string>
+  <string name="three_finger_gesture_summary">Prendi rapidamente uno screenshot facendo scorrere tre dita sullo schermo</string>
+ 
 </resources>
