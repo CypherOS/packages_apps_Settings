@@ -18,6 +18,12 @@
         android:title="@string/gestures_settings_title"
         settings:keywords="@string/keywords_gestures">
 		
+		<com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="three_finger_gesture"
+            android:title="@string/three_finger_gesture"
+            android:summary="@string/three_finger_gesture_summary"
+            android:defaultValue="false" />
+		
 		<SwitchPreference
             android:key="tap_to_wake"
             android:title="@string/tap_to_wake"

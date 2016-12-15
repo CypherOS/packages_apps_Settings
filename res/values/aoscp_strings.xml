@@ -126,5 +126,9 @@
 	
 	<!-- Screenshot shutter sound -->
     <string name="screenshot_shutter_sound_title">Screenshot shutter sound</string>
-   
+
+	<!-- Three-fingers-swipe to screenshot -->
+  	<string name="three_finger_gesture">Swipe to screenshot</string>
+  	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
+
 </resources>
