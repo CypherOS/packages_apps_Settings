@@ -666,4 +666,16 @@
     <string name="volume_keys_control_ring_stream_summary_on">Botões de volume controlam o volume do toque</string>
     <string name="volume_keys_control_ring_stream_summary_off">Teclas de volume controlam o volume da mídia</string>
 
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Deslize para a captura de tela</string>
+    <string name="three_finger_gesture_summary">Execute rapidamente uma captura de tela ao passar três dedos na tela</string>
+	
+    <!-- Dynamic System Navbar -->
+    <string name="nav_bar_dynamic_title">Navegação dinâmica</string>
+    <string name="nav_bar_dynamic_summary">Permitir que a barra de navegação altere a cor com base na cor primária dos aplicativos</string>
+
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Som ao capturar tela</string>
+    <string name="screenshot_sound_summary">Reproduz efeito de som quando a captura de tela é tirada</string>
+
 </resources>
