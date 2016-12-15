@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -29,6 +30,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.telephony.CarrierConfigManager;
@@ -43,6 +45,8 @@ import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.RestrictedLockUtils;
+
+import com.aoscp.utils.smartdialogs.SmartDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,6 +89,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
+    SmartDialog mDevHitInform;
     Toast mDevHitToast;
 
     private UserManager mUm;
@@ -222,7 +227,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         mDevHitCountdown = getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
                         android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
-        mDevHitToast = null;
+        mDevHitInform = null;
         mFunDisallowedAdmin = RestrictedLockUtils.checkIfRestrictionEnforced(
                 getActivity(), UserManager.DISALLOW_FUN, UserHandle.myUserId());
         mFunDisallowedBySystem = RestrictedLockUtils.hasBaseUserRestriction(
@@ -287,12 +292,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
                             Context.MODE_PRIVATE).edit().putBoolean(
                                     DevelopmentSettings.PREF_SHOW, true).apply();
-                    if (mDevHitToast != null) {
-                        mDevHitToast.cancel();
+                    if (mDevHitInform != null) {
+                        mDevHitInform.cancel();
                     }
-                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on_cm,
-                            Toast.LENGTH_LONG);
-                    mDevHitToast.show();
+					new SmartDialog.Builder(getActivity())
+								.setTitle(getString(R.string.show_dev_on_cm))
+                                .setContent(getString(R.string.show_dev_on_cm))
+								.setPositiveText(getString(R.string.ok))
+								.setCancelable(false)
+								.onPositive(new SmartDialog.ButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull SmartDialog dialog) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
                     // This is good time to index the Developer Options
                     Index.getInstance(
                             getActivity().getApplicationContext()).updateFromClassNameResource(
@@ -300,8 +313,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
                 } else if (mDevHitCountdown > 0
                         && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
-                    if (mDevHitToast != null) {
-                        mDevHitToast.cancel();
+                    if (mDevHitInform != null) {
+                        mDevHitInform.cancel();
                     }
                     mDevHitToast = Toast.makeText(getActivity(), getResources().getQuantityString(
                             R.plurals.show_dev_countdown_cm, mDevHitCountdown, mDevHitCountdown),
@@ -309,12 +322,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     mDevHitToast.show();
                 }
             } else if (mDevHitCountdown < 0) {
-                if (mDevHitToast != null) {
-                    mDevHitToast.cancel();
+                if (mDevHitInform != null) {
+                    mDevHitInform.cancel();
                 }
-                mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already_cm,
-                        Toast.LENGTH_LONG);
-                mDevHitToast.show();
+				new SmartDialog.Builder(getActivity())
+								.setTitle(getString(R.string.show_dev_already_cm))
+                                .setContent(getString(R.string.show_dev_already_cm))
+								.setPositiveText(getString(R.string.ok))
+								.setCancelable(false)
+								.onPositive(new SmartDialog.ButtonCallback() {
+                                    @Override
+                                    public void onClick(@NonNull SmartDialog dialog) {
+                                        dialog.dismiss();
+                                    }
+                                }).show();
             }
         } else if (preference.getKey().equals(KEY_SECURITY_PATCH)) {
             if (getPackageManager().queryIntentActivities(preference.getIntent(), 0).isEmpty()) {
