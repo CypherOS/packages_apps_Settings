@@ -14,19 +14,32 @@
 
     <!-- General strings -->
     <string name="reset">Reset</string>
-	<string name="reset_yes">Yes</string>
-	<string name="reset_no">No</string>
-	<string name="ok">Ok</string>
-	<string name="reset_color_message">Colors will be reset to the defaults. Would you like to continue?</string>
-	<string name="reset_color_confirmation">The default colors have been restored</string>
+    <string name="reset_yes">Yes</string>
+    <string name="reset_no">No</string>
+    <string name="ok">Ok</string>
+    <string name="reset_color_message">Colors will be reset to the defaults. Would you like to continue?</string>
+    <string name="reset_color_confirmation">The default colors have been restored</string>
     <string name="attention">Attention</string>
     <string name="enabled">Enabled</string>
     <string name="default_string">Default</string>
     <string name="add">Add</string>
     <string name="choose_app">Choose app</string>
+  
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+    <plurals name="show_dev_countdown_aoscp">
+        <item quantity="one">You are <xliff:g id="step_count">%1$d</xliff:g> step away from enabling development settings.</item>
+        <item quantity="other">You are <xliff:g id="step_count">%1$d</xliff:g> steps away from enabling development settings.</item>
+    </plurals>
+    
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
+    <string name="show_dev_on_aoscp">Congrats!</string>
+    <string name="show_dev_on_aoscp_msg">You\'re not a developer, but you now have access to a wide variety of developer tools. Check it out.</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_aoscp">Hey there!</string>
+    <string name="show_dev_already_aoscp_msg">Developer settings are already enabled. It appears at the botom of your settings menu. You can disable it anytime.</string>
 	
-	<!-- Feature reset -->
-	<string name="reset_all_settings">RESET ALL</string>
+    <!-- Feature reset -->
+    <string name="reset_all_settings">RESET ALL</string>
     <string name="reset_selected_settings">RESET SELECTED</string>
     <string name="reset_settings_title">Feature reset</string>
     <string name="reset_settings_summary">Reset all CypherOS features</string>
