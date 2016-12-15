@@ -19,12 +19,6 @@
         android:key="enable_nav_bar"
         android:title="@string/enable_navigation_bar_title"
         android:defaultValue="false" />
-		
-	<Preference
-            android:key="nav_bar_notice"
-            android:summary="@string/enable_navigation_bar_title_notice"
-            android:persistent="false"
-            android:selectable="false" />
 
     <com.android.settings.cyanogenmod.ButtonBacklightBrightness
         android:key="button_backlight"
