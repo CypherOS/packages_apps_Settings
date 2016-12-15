@@ -197,8 +197,7 @@
 
     <!-- Buttons - Enable navbar -->
     <string name="enable_navigation_bar_title">Navigation bar</string>
-    <string name="enable_navigation_bar_title_notice">This option is for devices with hardware keys only. This generates the stock android softkeys for navigating the OS. Device\'s without hardware must not use this, as it will rid navigating functionality.</string>
-
+  
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigation bar</string>
     <string name="navigation_bar_title">Buttons and layout</string>
