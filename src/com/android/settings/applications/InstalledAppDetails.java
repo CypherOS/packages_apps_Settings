@@ -507,8 +507,8 @@ public class InstalledAppDetails extends AppInfoBase
     private void setAppLabelAndIcon(PackageInfo pkgInfo) {
         final View appSnippet = mHeader.findViewById(R.id.app_snippet);
         mState.ensureIcon(mAppEntry);
-        setupAppSnippet(appSnippet, mAppEntry.label, mAppEntry.icon, pkgInfo.packageName,
-                pkgInfo != null ? pkgInfo.versionName : null);
+        setupAppSnippet(appSnippet, mAppEntry.label, mAppEntry.icon,
+                pkgInfo != null ? pkgInfo.versionName : null, pkgInfo.packageName);
     }
 
     private boolean signaturesMatch(String pkg1, String pkg2) {
@@ -998,11 +998,10 @@ public class InstalledAppDetails extends AppInfoBase
         }
     }
 
-    public static void setupAppSnippet(View appSnippet, CharSequence label, Drawable icon, CharSequence packageName,
-            CharSequence versionName) {
-        ViewGroup parent = (ViewGroup) appSnippet.findViewById(android.R.id.widget_frame);
-        LayoutInflater inflater = LayoutInflater.from(appSnippet.getContext());
-        inflater.inflate(R.layout.app_version_and_package, parent);
+    public static void setupAppSnippet(View appSnippet, CharSequence label, Drawable icon,
+            CharSequence versionName, String packageName) {
+        LayoutInflater.from(appSnippet.getContext()).inflate(R.layout.widget_text_views,
+                (ViewGroup) appSnippet.findViewById(android.R.id.widget_frame));
 
         ImageView iconView = (ImageView) appSnippet.findViewById(android.R.id.icon);
         iconView.setImageDrawable(icon);
@@ -1024,32 +1023,22 @@ public class InstalledAppDetails extends AppInfoBase
         // Set application name.
         TextView labelView = (TextView) appSnippet.findViewById(android.R.id.title);
         labelView.setText(label);
-        // Set application package name.
-        TextView packageNameView = (TextView) appSnippet.findViewById(R.id.pkgname);        
-        if (!TextUtils.isEmpty(packageName)) {
-            packageNameView.setSelected(true);
-            packageNameView.setVisibility(View.VISIBLE);
-            packageNameView.setText(packageName);
-        } else {
-            packageNameView.setVisibility(View.INVISIBLE);
-        }
         // Version number of application
         TextView appVersion = (TextView) appSnippet.findViewById(R.id.widget_text1);
-		TextView appPackage = (TextView) appSnippet.findViewById(R.id.widget_text2);
 
         if (packageName != null) {
-            appPackage.setVisibility(View.VISIBLE);
+            TextView appPackage = (TextView) appSnippet.findViewById(R.id.widget_text2);
             appPackage.setText(packageName);
-        } else {
-            appPackage.setVisibility(View.GONE);
+            appPackage.setSelected(true);
         }
 
         if (!TextUtils.isEmpty(versionName)) {
+            appVersion.setSelected(true);
             appVersion.setVisibility(View.VISIBLE);
             appVersion.setText(appSnippet.getContext().getString(R.string.version_text,
                     String.valueOf(versionName)));
         } else {
-            appVersion.setVisibility(View.GONE);
+            appVersion.setVisibility(View.INVISIBLE);
         }
     }
 
