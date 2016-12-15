@@ -30,6 +30,12 @@
                 settings:keywords="@string/keywords_display_auto_brightness"
                 android:summary="@string/auto_brightness_summary" />
 				
+		<com.android.settings.preference.GlobalSettingSwitchPreference
+                android:key="wake_when_plugged_or_unplugged"
+                android:title="@string/wake_when_plugged_or_unplugged_title"
+                android:summary="@string/wake_when_plugged_or_unplugged_summary"
+                android:defaultValue="false" />
+				
 		<!--<PreferenceScreen
                 android:key="livedisplay"
                 android:title="@string/live_display_title"
@@ -78,19 +84,6 @@
                 android:key="display_rotation"
                 android:fragment="com.android.settings.cypher.fragments.DisplayRotation"
                 android:title="@string/display_rotation_title" />
-
-        <!-- Disable on CypherOS
-        <DropDownPreference
-                android:key="auto_rotate"
-                android:summary="%s"
-                android:title="@string/display_auto_rotate_title" />
-        -->
-		
-		<com.android.settings.preference.GlobalSettingSwitchPreference
-                android:key="wake_when_plugged_or_unplugged"
-                android:title="@string/wake_when_plugged_or_unplugged_title"
-                android:summary="@string/wake_when_plugged_or_unplugged_summary"
-                android:defaultValue="false" />
 				
 		<PreferenceScreen
                 android:key="brightness"
