@@ -631,5 +631,9 @@
 	<!-- Three-fingers-swipe to screenshot -->
  	<string name="three_finger_gesture">Swipe to screenshot</string>
  	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
+	
+	<!-- Dynamic System Navbar -->
+	<string name="nav_bar_dynamic_title">Dynamic navigation</string>
+    <string name="nav_bar_dynamic_summary">Allow the navigation bar to change color based on an applications primary accent</string>
  
 </resources>
