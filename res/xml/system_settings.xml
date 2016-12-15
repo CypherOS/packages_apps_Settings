@@ -15,12 +15,6 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/system_settings_title">
 		
-		<com.android.settings.preference.SystemSettingSwitchPreference
-                android:key="nav_bar_dynamic"
-                android:title="@string/nav_bar_dynamic_title"
-                android:summary="@string/nav_bar_dynamic_summary"
-                android:defaultValue="false" />
-		
 		<!-- Screenshot type -->
 		<ListPreference
                 android:entries="@array/screenshot_type_entries"
