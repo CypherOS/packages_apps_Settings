@@ -24,7 +24,20 @@
   <string name="default_string">Predefinito</string>
   <string name="add">Aggiungi</string>
   <string name="choose_app">Seleziona app</string>
-
+    
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+    <plurals name="show_dev_countdown_aoscp">
+        <item quantity="one">Ora sei ad <xliff:g id="step_count">%1$d</xliff:g> passo dall\'attivare le impostazioni di sviluppo.</item>
+        <item quantity="other">Ora sei ad <xliff:g id="step_count">%1$d</xliff:g> passi dall\'attivare le impostazioni di sviluppo.</item>
+    </plurals>
+    
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
+    <string name="show_dev_on_aoscp">Congratulazioni!</string>
+    <string name="show_dev_on_aoscp_msg">Non sei uno sviluppatore, ma è ora possibile accedere a una vasta gamma di strumenti di sviluppo. Controlla.</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_aoscp">Ehilà!</string>
+    <string name="show_dev_already_aoscp_msg">Le impostazioni da sviluppatore sono già abilitate. Questi appaiono nella parte inferiore del menù delle impostazioni. È possibile disattivarli in qualsiasi momento.</string>
+	
   <!-- Feature reset -->
   <string name="reset_all_settings">Ripristina tutto</string>
   <string name="reset_selected_settings">Ripristino selezionato</string>
