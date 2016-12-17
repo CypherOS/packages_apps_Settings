@@ -678,4 +678,17 @@
     <string name="screenshot_sound_title">Som ao capturar tela</string>
     <string name="screenshot_sound_summary">Reproduz efeito de som quando a captura de tela é tirada</string>
 
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+    <plurals name="show_dev_countdown_aoscp">
+        <item quantity="one">Você está <xliff:g id="step_count">%1$d</xliff:g> Passo de permitir configurações de desenvolvimento.</item>
+        <item quantity="other">Você está <xliff:g id="step_count">%1$d</xliff:g> Passos de permitir configurações de desenvolvimento.</item>
+    </plurals>
+    
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
+    <string name="show_dev_on_aoscp">Parabéns!</string>
+    <string name="show_dev_on_aoscp_msg">Você não é um desenvolvedor, mas agora você tem acesso a uma ampla variedade de ferramentas de desenvolvedor. Confira.</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_aoscp">Olá!</string>
+    <string name="show_dev_already_aoscp_msg">As configurações do desenvolvedor já estão ativadas. Ele aparece na parte inferior do menu de configurações. Você pode desativá-lo a qualquer momento.</string>
+  
 </resources>
