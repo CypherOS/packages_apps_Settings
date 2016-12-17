@@ -23,7 +23,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     jsr305 \
     settings-logtags \
     org.cyanogenmod.platform.internal \
-    smartdialogs
+    aoscp-framework
 
 LOCAL_MODULE_TAGS := optional
 
@@ -35,7 +35,7 @@ LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \
     frameworks/support/v7/recyclerview/res \
-    external/aoscp/smartdialogs/res
+    external/aoscp-framework/res
 
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
