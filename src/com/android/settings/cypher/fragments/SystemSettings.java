@@ -54,7 +54,11 @@ import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class SystemSettings extends SettingsPreferenceFragment implements 
@@ -62,8 +66,13 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "SystemSettings";
 	
 	private static final String SCREENSHOT_TYPE = "screenshot_type";
+	private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+
+    private static final String SCROLLINGCACHE_DEFAULT = "2";
 
     private ListPreference mScreenshotType;
+	private ListPreference mScrollingCachePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,6 +88,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
         mScreenshotType.setSummary(mScreenshotType.getEntry());
         mScreenshotType.setOnPreferenceChangeListener(this);
+		
+		mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
+        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+        mScrollingCachePref.setOnPreferenceChangeListener(this);
     }
 	
 	@Override
@@ -91,6 +105,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                     Settings.System.SCREENSHOT_TYPE, mScreenshotTypeValue);
             mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
+            return true;
+		} else if (preference == mScrollingCachePref) {
+            if (newValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String) newValue);
+            }
             return true;
         }
         return false;
