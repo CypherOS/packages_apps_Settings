@@ -24,6 +24,13 @@
     <string name="default_string">Default</string>
     <string name="add">Add</string>
     <string name="choose_app">Choose app</string>
+	
+	<!-- Smart Dialog Generic -->
+ 	<string name="sd_ok">Okay</string>
+ 	<string name="sd_cancel">Cancel</string>
+ 	<string name="sd_sure">Sure</string>
+ 	<string name="sd_thanks">Thanks</string>
+ 	<string name="sd_no_thanks">No Thanks</string>
   
     <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
     <plurals name="show_dev_countdown_aoscp">

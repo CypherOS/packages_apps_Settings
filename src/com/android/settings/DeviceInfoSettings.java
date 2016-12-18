@@ -299,7 +299,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 					new SmartDialog.Builder(getActivity())
 								.setTitle(getString(R.string.show_dev_on_aoscp))
                                 .setContent(getString(R.string.show_dev_on_aoscp_msg))
-								.setPositiveText(getString(android.R.string.sd_ok))
+								.setPositiveText(getString(R.string.sd_ok))
 								.setCancelable(false)
 								.onPositive(new SmartDialog.ButtonCallback() {
                                     @Override
@@ -329,7 +329,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 				new SmartDialog.Builder(getActivity())
 								.setTitle(getString(R.string.show_dev_already_aoscp))
                                 .setContent(getString(R.string.show_dev_already_aoscp_msg))
-								.setPositiveText(getString(android.R.string.sd_ok))
+								.setPositiveText(getString(R.string.sd_ok))
 								.setCancelable(false)
 								.onPositive(new SmartDialog.ButtonCallback() {
                                     @Override
