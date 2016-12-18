@@ -140,6 +140,10 @@
     <string name="power_menu_sound_title">Sound panel</string>
     <string name="power_menu_bug_report_disabled">Bug reporting is disabled in development settings</string>
 	
+	<!-- Lockscreen Settings -->
+	<string name="lockscreen_settings_title">Lockscreen</string>
+	<string name="lockscreen_settings_title_summary">An extensive amount of configurable options to ehnace the durability of your lockscreen</string>
+	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestures</string>
 	<string name="device_category_title">Device</string>
