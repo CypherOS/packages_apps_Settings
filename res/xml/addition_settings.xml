@@ -60,5 +60,13 @@
 				android:summary="@string/button_settings_title_summary"
                 android:fragment="com.android.settings.cypher.fragments.ButtonSettings"
                 android:icon="@drawable/ic_settings_buttons" />
+				
+		<!-- Lockscreen settings -->
+		<PreferenceScreen
+                android:key="lockscreen_settings"
+                android:title="@string/lockscreen_settings_title"
+				android:summary="@string/lockscreen_settings_title_summary"
+                android:fragment="com.android.settings.cypher.fragments.LockscreenSettings"
+                android:icon="@drawable/ic_settings_lockscreen" />
 
 </PreferenceScreen>

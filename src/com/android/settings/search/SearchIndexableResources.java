@@ -21,6 +21,7 @@ import com.android.settings.cypher.Additions;
 import com.android.settings.cypher.Gestures;
 import com.android.settings.cypher.deviceinfo.SoftwareInfo;
 import com.android.settings.cypher.fragments.BatterySettings;
+import com.android.settings.cypher.fragments.LockscreenSettings;
 import com.android.settings.cypher.fragments.StatusbarSettings;
 import com.android.settings.cypher.fragments.QuickSettings;
 import com.android.settings.cypher.fragments.SystemSettings;
@@ -206,6 +207,13 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         SystemSettings.class.getName(),
                         R.drawable.ic_settings_system_settings));
+		
+		sResMap.put(LockscreenSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(LockscreenSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        LockscreenSettings.class.getName(),
+                        R.drawable.ic_settings_lockscreen));
 						
 		sResMap.put(NotificationExtSettings.class.getName(),
                 new SearchIndexableResource(
