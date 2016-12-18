@@ -691,4 +691,22 @@
     <string name="show_dev_already_aoscp">Olá!</string>
     <string name="show_dev_already_aoscp_msg">As configurações do desenvolvedor já estão ativadas. Ele aparece na parte inferior do menu de configurações. Você pode desativá-lo a qualquer momento.</string>
   
+    <!-- Lockscreen Settings -->
+    <string name="lockscreen_settings_title">Tela de bloqueio</string>
+    <string name="lockscreen_settings_title_summary">Uma extensa quantidade de opções configuráveis para aumentar a durabilidade da sua tela de bloqueio</string>
+    <!-- Lockscreen charging current indicator  -->
+    <string name="lockscreen_charging_current_title">Informações de carregamento</string>
+    <string name="lockscreen_charging_current_summary">Exibe a corrente e a voltagem máximas na tela de bloqueio</string>
+    <!-- Lockscreen tap-to sleep -->
+    <string name="double_tap_sleep_anywhere_title">Toque em qualquer lugar para dormir</string>
+    <string name="double_tap_sleep_anywhere_summary">Toque duas vezes em qualquer lugar na tela de bloqueio para colocar o dispositivo para dormir</string>
+  
+    <!-- Option to enable/disable scrolling cache -->
+    <string name="pref_scrollingcache_title">Cache de rolagem</string>
+    <string name="pref_scrollingcache_summary">O cache de rolagem pode melhorar o desempenho de rolagem ao custo da memória</string>
+    <string name="pref_scrollingcache_force_enable">Ativar a força</string>
+    <string name="pref_scrollingcache_default_enable">Ativar padrão</string>
+    <string name="pref_scrollingcache_default_disable">Desativar padrão</string>
+    <string name="pref_scrollingcache_force_disable">Desativar a força</string>
+  
 </resources>
