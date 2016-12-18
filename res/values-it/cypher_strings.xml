@@ -661,6 +661,6 @@
   <string name="pref_scrollingcache_force_enable">Forza abilitazione</string>
   <string name="pref_scrollingcache_default_enable">Abilitato come predefinito</string>
   <string name="pref_scrollingcache_default_disable">Disabilitato come predefinito</string>
-  <string name="pref_scrollingcache_force_disable">Forza disabilitazione</string
+  <string name="pref_scrollingcache_force_disable">Forza disabilitazione</string>
  
 </resources>
