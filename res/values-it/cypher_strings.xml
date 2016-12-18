@@ -140,6 +140,16 @@
   <string name="power_menu_sound_title">Pannello suoni</string>
   <string name="power_menu_bug_report_disabled">La segnalazione errori è disattivata nelle impostazioni di sviluppo</string>
 
+  <!-- Lockscreen Settings -->
+  <string name="lockscreen_settings_title">Schermata di blocco</string>
+  <string name="lockscreen_settings_title_summary">Una vasta quantità di opzioni configurabili per aumentare la durata della vostra schermata di blocco</string>
+  <!-- Lockscreen charging current indicator  -->
+  <string name="lockscreen_charging_current_title">Informazioni di ricarica</string>
+  <string name="lockscreen_charging_current_summary">Mostra un\'indicatore di livello massimo della carica corrente sulla schermata di blocco</string>
+  <!-- Lockscreen tap-to sleep -->
+  <string name="double_tap_sleep_anywhere_title">Doppio tocco per sospendere</string>
+  <string name="double_tap_sleep_anywhere_summary">Doppio tocco sulla schermata di blocco per sospendere il dispositivo</string>
+	
   <!-- Gesture Settings -->
   <string name="gesture_settings_title">Gesti</string>
   <string name="device_category_title">Dispositivo</string>
@@ -644,5 +654,13 @@
   <!-- Three-fingers-swipe to screenshot -->
   <string name="three_finger_gesture">Scorri per screenshot</string>
   <string name="three_finger_gesture_summary">Prendi rapidamente uno screenshot facendo scorrere tre dita sullo schermo</string>
+    
+  <!-- Option to enable/disable scrolling cache -->
+  <string name="pref_scrollingcache_title">Scrolling cache</string>
+  <string name="pref_scrollingcache_summary">Lo scrolling cache può migliorare le prestazioni dello scorrimento a discapito della memoria</string>
+  <string name="pref_scrollingcache_force_enable">Forza abilitazione</string>
+  <string name="pref_scrollingcache_default_enable">Abilitato come predefinito</string>
+  <string name="pref_scrollingcache_default_disable">Disabilitato come predefinito</string>
+  <string name="pref_scrollingcache_force_disable">Forza disabilitazione</string
  
 </resources>
