@@ -133,11 +133,6 @@
         <attr name="allowDividerBelow" format="boolean" />
     </declare-styleable>
 
-    <!-- Value to pass to callback when restore button is pressed -->
-    <declare-styleable name="ColorPreference">
-        <attr name="defaultColorValue" format="integer" />
-    </declare-styleable>
-
     <!-- Base attributes available to CustomSeekBarPreference. -->
     <declare-styleable name="CustomSeekBarPreference">
         <attr name="interval" format="integer" />
