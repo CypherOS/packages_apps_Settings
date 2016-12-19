@@ -667,6 +667,6 @@
     <string name="pref_scrollingcache_force_enable">Enable(Force)</string>
     <string name="pref_scrollingcache_default_enable">Enable</string>
     <string name="pref_scrollingcache_default_disable">Disable</string>
-    <string name="pref_scrollingcache_force_disable">Disable(Force)</string>C
+    <string name="pref_scrollingcache_force_disable">Disable(Force)</string>
  
 </resources>
