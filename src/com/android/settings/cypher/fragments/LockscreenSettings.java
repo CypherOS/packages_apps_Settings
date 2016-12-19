@@ -58,7 +58,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LockscreenSettings extends SettingsPreferenceFragment implements 
-        Preference.OnPreferenceChangeListener, Indexable {
+        Indexable {
     private static final String TAG = "LockscreenSettings";
 
     @Override
