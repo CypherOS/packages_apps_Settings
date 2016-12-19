@@ -657,6 +657,11 @@
     <string name="adj_intensity_title">Intensity</string>
     <string name="adj_contrast_title">Contrast</string>
 	
+	<!-- Superuser indicator on status bar -->
+    <string name="su_indicator">SU indicator</string>
+    <string name="su_indicator_summary_on">Superuser indicator is visible when a session is active</string>
+    <string name="su_indicator_summary_off">Superuser indicator is not visible for active sessions</string>
+	
 	<!-- Three-fingers-swipe to screenshot -->
  	<string name="three_finger_gesture">Swipe to screenshot</string>
  	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
