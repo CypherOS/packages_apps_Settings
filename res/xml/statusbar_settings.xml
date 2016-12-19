@@ -30,6 +30,12 @@
             android:persistent="false" />
 			
 		<PreferenceScreen
+            android:fragment="com.android.settings.cypher.fragments.CarrierLabel"
+            android:key="carrier_label_settings"
+            android:title="@string/carrier_label_settings_title"
+            android:summary="@string/carrier_label_settings_summary" />
+			
+		<PreferenceScreen
             android:key="nettraffrag" 
             android:title="@string/network_traffic_title"
             android:summary="@string/network_traffic_title_summary"
@@ -42,12 +48,6 @@
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.TunerActivity" />
         </PreferenceScreen>
-		
-		<PreferenceScreen
-                android:fragment="com.android.settings.cypher.fragments.CarrierLabel"
-                android:key="pure_carrier_label_settings"
-                android:title="@string/carrier_label_settings_title"
-                android:summary="@string/carrier_label_settings_summary" />
 		
     <PreferenceCategory android:key="statusbar_clock_category"
             android:title="@string/status_bar_clock_title">

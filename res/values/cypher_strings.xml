@@ -488,8 +488,8 @@
 	<string name="notification_light_screen_on">Lights with screen on</string>
 	
 	<!-- Custom carrier label and position -->
-    <string name="carrier_label_settings_title">Carrier Label</string>
-    <string name="carrier_label_settings_summary">Customize the carrier label</string>
+    <string name="carrier_label_settings_title">Carrier label</string>
+    <string name="carrier_label_settings_summary">Set your own network label in replace of the default carrier identifier</string>
     <string name="custom_carrier_label_title">Custom carrier label</string>
     <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
     <string name="custom_carrier_label_notset">Custom label currently not set</string>
@@ -497,7 +497,7 @@
     <string name="show_carrier_disabled">Disabled</string>
     <string name="show_carrier_keyguard">Lockscreen</string>
     <string name="show_carrier_statusbar">Statusbar</string>
-    <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+    <string name="show_carrier_enabled">Both</string>
 	<string name="status_bar_carrier_color">Color</string>
     <string name="status_bar_carrier_size">Text size</string>
 	
@@ -627,7 +627,7 @@
     <string name="live_display_enhance_color_summary">Improve color vibrance of flesh tones, scenery, and other images</string>
     <string name="live_display_color_profile_title">Color profile</string>
     <string name="live_display_color_profile_standard_title">Standard</string>
-   <string name="live_display_color_profile_standard_summary">Accurate colors and bright whites</string>
+    <string name="live_display_color_profile_standard_summary">Accurate colors and bright whites</string>
     <string name="live_display_color_profile_natural_title">Natural</string>
     <string name="live_display_color_profile_natural_summary">Realistic colors and flesh tones</string>
     <string name="live_display_color_profile_dynamic_title">Dynamic</string>
@@ -664,9 +664,9 @@
 	<!-- Option to enable/disable scrolling cache -->
     <string name="pref_scrollingcache_title">Scrolling cache</string>
     <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
-    <string name="pref_scrollingcache_force_enable">Force enable</string>
-    <string name="pref_scrollingcache_default_enable">Default enable</string>
-    <string name="pref_scrollingcache_default_disable">Default disable</string>
-    <string name="pref_scrollingcache_force_disable">Force disable</string>
+    <string name="pref_scrollingcache_force_enable">Enable(Force)</string>
+    <string name="pref_scrollingcache_default_enable">Enable</string>
+    <string name="pref_scrollingcache_default_disable">Disable</string>
+    <string name="pref_scrollingcache_force_disable">Disable(Force)</string>C
  
 </resources>
