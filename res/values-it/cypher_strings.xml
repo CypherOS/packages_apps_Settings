@@ -662,5 +662,10 @@
   <string name="pref_scrollingcache_default_enable">Abilitato come predefinito</string>
   <string name="pref_scrollingcache_default_disable">Disabilitato come predefinito</string>
   <string name="pref_scrollingcache_force_disable">Forza disabilitazione</string>
+    
+  <!-- Superuser indicator on status bar -->
+  <string name="su_indicator">Indicatore Superuser</string>
+  <string name="su_indicator_summary_on">L\'indicatore Superuser è visibile quando una sessione è attiva</string>
+  <string name="su_indicator_summary_off">L\'indicatore Superuser non è visibile per le sessioni attive</string>
  
 </resources>
