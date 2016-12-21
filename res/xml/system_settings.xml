@@ -15,6 +15,13 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/system_settings_title">
 		
+		<com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="show_su_indicator"
+                android:title="@string/su_indicator"
+                android:summaryOn="@string/su_indicator_summary_on"
+                android:summaryOff="@string/su_indicator_summary_off"
+                android:defaultValue="false" />
+		
 		<!-- Screenshot type -->
 		<ListPreference
                 android:entries="@array/screenshot_type_entries"

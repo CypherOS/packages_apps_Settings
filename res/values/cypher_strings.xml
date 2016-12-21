@@ -657,6 +657,11 @@
     <string name="adj_intensity_title">Intensity</string>
     <string name="adj_contrast_title">Contrast</string>
 	
+	<!-- Superuser indicator on status bar -->
+    <string name="su_indicator">SU indicator</string>
+    <string name="su_indicator_summary_on">Superuser indicator is visible when a session is active</string>
+    <string name="su_indicator_summary_off">Superuser indicator is not visible for active sessions</string>
+	
 	<!-- Three-fingers-swipe to screenshot -->
  	<string name="three_finger_gesture">Swipe to screenshot</string>
  	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
@@ -668,5 +673,10 @@
     <string name="pref_scrollingcache_default_enable">Enable</string>
     <string name="pref_scrollingcache_default_disable">Disable</string>
     <string name="pref_scrollingcache_force_disable">Disable(Force)</string>
+	
+	<!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Link ring and notification volume</string>
+    <string name="notification_volume_option_title">Notification volume</string>
+    <string name="ring_notification_volume_option_title">Ring and notification volume</string>
  
 </resources>
