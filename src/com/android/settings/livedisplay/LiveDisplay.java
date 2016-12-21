@@ -13,7 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.cyanogenmod.livedisplay;
+package com.android.settings.livedisplay;
+
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_CABC;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_COLOR_ADJUSTMENT;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_COLOR_ENHANCEMENT;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_DISPLAY_MODES;
+import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_PICTURE_ADJUSTMENT;
+import static cyanogenmod.hardware.LiveDisplayManager.MODE_OFF;
+import static cyanogenmod.hardware.LiveDisplayManager.MODE_OUTDOOR;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -36,6 +44,9 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,16 +57,8 @@ import cyanogenmod.hardware.LiveDisplayConfig;
 import cyanogenmod.hardware.LiveDisplayManager;
 import cyanogenmod.providers.CMSettings;
 
-import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_CABC;
-import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_COLOR_ADJUSTMENT;
-import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_COLOR_ENHANCEMENT;
-import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_DISPLAY_MODES;
-import static cyanogenmod.hardware.LiveDisplayManager.FEATURE_PICTURE_ADJUSTMENT;
-import static cyanogenmod.hardware.LiveDisplayManager.MODE_OFF;
-import static cyanogenmod.hardware.LiveDisplayManager.MODE_OUTDOOR;
-
 public class LiveDisplay extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "LiveDisplay";
 
@@ -336,11 +339,11 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
         }
         return true;
     }
-          
+
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.DISPLAY;
-    }
+	}
 
     private final class SettingsObserver extends ContentObserver {
         private final Uri DISPLAY_TEMPERATURE_DAY_URI =
@@ -372,26 +375,33 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
             updateTemperatureSummary();
         }
     }
+	
 
-    /*
+	/*
      * Disabled until search query is implemented
      *
+     */
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
+
         @Override
         public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
                 boolean enabled) {
             ArrayList<SearchIndexableResource> result =
                     new ArrayList<SearchIndexableResource>();
+
             SearchIndexableResource sir = new SearchIndexableResource(context);
             sir.xmlResId = R.xml.livedisplay;
             result.add(sir);
+
             return result;
         }
+
         @Override
         public List<String> getNonIndexableKeys(Context context) {
             final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
             final LiveDisplayConfig config = LiveDisplayManager.getInstance(context).getConfig();
+
             ArrayList<String> result = new ArrayList<String>();
             if (!hardware.isSupported(FEATURE_DISPLAY_MODES)) {
                 result.add(KEY_LIVE_DISPLAY_COLOR_PROFILE);
@@ -414,5 +424,4 @@ public class LiveDisplay extends SettingsPreferenceFragment implements
             return result;
         }
     };
-    */
 }

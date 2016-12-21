@@ -2541,6 +2541,32 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />
         </activity>
+		
+		<!-- LiveDisplay settings -->
+        <activity android:name="Settings$LiveDisplayActivity"
+                android:label="@string/live_display_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.LIVEDISPLAY_SETTINGS" />
+                <action android:name="com.android.settings.LIVEDISPLAY_SETTINGS" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.livedisplay.LiveDisplay" />
+        </activity>
+
+        <activity-alias android:name=".livedisplay.LiveDisplay"
+                android:taskAffinity="com.android.settings"
+                android:label="@string/live_display_title"
+                android:targetActivity="Settings$LiveDisplayActivity"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:exported="true">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.livedisplay.LiveDisplay" />
+        </activity-alias>
 
         <activity android:name="Settings$DataUsageSummaryActivity"
                 android:label="@string/data_usage_summary_title"

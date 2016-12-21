@@ -170,5 +170,6 @@ public class Settings extends SettingsActivity {
 	// Extended Sub-Classes
 	public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
 	public static class HeadsUpSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class LiveDisplayActivity extends SettingsActivity { /* empty */ }
 	public static class TickerSettingsActivity extends SettingsActivity { /* empty */ }
 }

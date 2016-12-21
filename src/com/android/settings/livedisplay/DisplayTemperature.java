@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-package com.android.settings.cyanogenmod.livedisplay;
+package com.android.settings.livedisplay;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.settings.cyanogenmod.preference.CustomDialogPreference;
 import com.android.settings.R;
+
 import org.cyanogenmod.internal.util.MathUtils;
 
 import cyanogenmod.hardware.LiveDisplayConfig;
@@ -37,7 +40,7 @@ import cyanogenmod.hardware.LiveDisplayManager;
 /**
  * Preference for selection of color temperature range for LiveDisplay
  */
-public class DisplayTemperature extends CustomDialogPreference<AlertDialog> {
+public class DisplayTemperature extends DialogPreference {
     private static final String TAG = "DisplayTemperature";
 
     private final Context mContext;
@@ -63,9 +66,7 @@ public class DisplayTemperature extends CustomDialogPreference<AlertDialog> {
     }
 
     @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder, DialogInterface.OnClickListener listener) {
-        super.onPrepareDialogBuilder(builder, listener);
-
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         builder.setNeutralButton(R.string.reset,
                 new DialogInterface.OnClickListener() {
             @Override
@@ -93,18 +94,22 @@ public class DisplayTemperature extends CustomDialogPreference<AlertDialog> {
         mNightTemperature.setTemperature(mOriginalNightTemperature);
     }
 
-
     @Override
-    protected boolean onDismissDialog(AlertDialog dialog, int which) {
+    protected void showDialog(Bundle state) {
+        super.showDialog(state);
+
         // Can't use onPrepareDialogBuilder for this as we want the dialog
         // to be kept open on click
-        if (which == DialogInterface.BUTTON_NEUTRAL) {
-            mDayTemperature.setTemperature(mConfig.getDefaultDayTemperature());
-            mNightTemperature.setTemperature(mConfig.getDefaultNightTemperature());
-            updateTemperature(true);
-            return false;
-        }
-        return true;
+        AlertDialog d = (AlertDialog) getDialog();
+        Button defaultsButton = d.getButton(DialogInterface.BUTTON_NEUTRAL);
+        defaultsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDayTemperature.setTemperature(mConfig.getDefaultDayTemperature());
+                mNightTemperature.setTemperature(mConfig.getDefaultNightTemperature());
+                updateTemperature(true);
+            }
+        });
     }
 
     @Override
