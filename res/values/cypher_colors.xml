@@ -36,4 +36,7 @@
     <color name="icon_tint_color">@*android:color/material_pixel_blue_bright</color>
     <color name="white">#FFF</color>
 	<color name="navbar_edit_icon_color">#607d8b</color>
+	
+	<!-- External Icon Tint -->
+    <color name="external_tile_icon_tint_color">?android:attr/colorAccent</color>
 </resources>
