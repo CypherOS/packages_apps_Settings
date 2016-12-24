@@ -25,6 +25,26 @@
     <string name="add">Hinzufügen</string>
     <string name="choose_app">Wähle die App aus</string>
 	
+	<!-- Smart Dialog Generic -->
+ 	<string name="sd_ok">Okay</string>
+ 	<string name="sd_cancel">Abbrechen</string>
+ 	<string name="sd_sure">Sicher</string>
+ 	<string name="sd_thanks">Danke</string>
+ 	<string name="sd_no_thanks">Nein Danke</string>
+  
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+    <plurals name="show_dev_countdown_aoscp">
+        <item quantity="one">Du bist <xliff:g id="step_count">%1$d</xliff:g> Schritt davon entfernt, die Entwickleroptionen zu aktivieren.</item>
+        <item quantity="other">Du bist <xliff:g id="step_count">%1$d</xliff:g> Schritte davon entfernt, die Entwickleroptionen zu aktivieren.</item>
+    </plurals>
+    
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
+    <string name="show_dev_on_aoscp">Glückwunsch!</string>
+    <string name="show_dev_on_aoscp_msg">Du bist zwar kein Entwickler, hast jetzt aber Zugang zu den Entwickleroptionen!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_aoscp">Hey!</string>
+    <string name="show_dev_already_aoscp_msg">Entwickleroptionen sind bereits aktiviert.</string>
+	
 	<!-- Feature reset -->
 	<string name="reset_all_settings">SETZE ALLES ZURÜCK</string>
     <string name="reset_selected_settings">ZURÜCKSETZUNG AUSGEWÄHLT</string>
@@ -33,12 +53,12 @@
     <string name="keywords_settings_reset">Zurücksetzen</string>
 
 	    <!-- About phone screen, CypherOS version -->
-    <string name="aoscp_version_title">CypherOS Version</string>
+    <string name="aoscp_version_title">CypherOS-Version</string>
     <string name="aoscp_version_default">Unbekannt</string>
 	<string name="cypher_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
-	<string name="device_model_name">Model name</string>	
+	<string name="device_model_name">Gerät</string>	
         <!-- About phone screen, CypherOS Release ID -->
-	<string name="aoscp_release_id">Release ID</string>
+	<string name="aoscp_release_id">Veröffentlichungs-ID</string>
          <string name="aoscp_release_id_default">Unspezifisch</string>
 	<!-- About phone screen, CypherOS API -->
 	<string name="aoscp_api_level">API</string>
@@ -47,29 +67,29 @@
     <string name="vendor_version">Vendor Version</string>
     <string name="vendor_version_default">Unbekannt</string>
 	<!-- Software information-->
-	<string name="software_info_settings_title">Software Info</string>
+	<string name="software_info_settings_title">Software-Infos</string>
 	<string name="software_info_settings_title_summary">Zeige Status und hilfreiche Informationen</string>
 	<!-- Bug Report -->
 	<string name="bugreport_preference_title">Fehlermeldungen</string>
 	<string name="bugreport_preference_title_summary">Wenn bei Dir irgendwelche Bugs auftreten, kannst du uns gerne deinen Fehlerbericht senden!</string>
 	<!-- Build notes -->
-	<string name="buildnotes_settings_title">Release Informationen</string>
+	<string name="buildnotes_settings_title">Veröffentlichungs-Infos</string>
 	<string name="buildnotes_settings_title_summary">Gucke Dir die neuesten Änderungen von CypherOS im Detail an!</string>
 	<string name="buildnotes_settings_error">Laden von Release Informationen nicht möglich</string>
 	<!-- Social category -->
-    <string name="social_category_title">Social</string>
+    <string name="social_category_title">Sozial</string>
 	<string name="website_preference_title">Im Internet</string>
 	<string name="website_preference_title_summary">Schaue Dir unsere Website mit den neuesten Änderungen etc. an!</string>
 	<string name="google_preference_title">CypherPlus</string>
 	<string name="google_preference_title_summary">Besuche uns in unserer Google+ Community!</string>
 	<!-- Source category -->
-    <string name="source_category_title">Source</string>
+    <string name="source_category_title">Quelle</string>
 	<string name="github_preference_title">Github</string>
 	<string name="github_preference_title_summary">Wenn du die neuesten Änderungen mitbekommen willst, schaue bei unserer Githubseite vorbei!</string>
 	<string name="gerrit_preference_title">Gerrit</string>
 <string name="gerrit_preference_title_summary">Schau auch bei unserer Gerritseite vorbei, um selbst aktiv bei der Entwicklung von CypherOS helfen zu können!</string>
 	<!-- Team members & Maintainers -->
-        <string name="team_members_and_maintainers_title">Team members &amp; Maintainers</string>
+        <string name="team_members_and_maintainers_title">Team &amp; Unterstützer</string>
         <string name="team_and_maintainers_info_summary">CypherOS wurde von Anfang an von einem talentiertem Team entwickelt. Dank des Teams, ist es jetzt für viele Geräte verfügbar. Unten könnt Ihr euch eine Liste der Mitwirkenden ansehen.</string>
 	<string name="team_and_maintainers_title">Das Team</string>
 	<string name="team_and_maintainers_title_summary"> </string>
@@ -97,7 +117,7 @@
 	<string name="abhishek_kaushik_preference_title">Abhishek Kaushik</string>
 	<string name="abhishek_kaushik_preference_title_summary">Xiaomi Redmi Note 3 | Kenzo</string>
 	<!-- Phone info shortcut -->
-    <string name="device_info_title">Telefon Info</string>
+    <string name="device_info_title">Telefon-Info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
     <string name="local_backup_password_title">Desktop Backup Passwort</string>
 	
@@ -126,6 +146,16 @@
     <string name="power_menu_bug_report_title">Fehlermeldungen</string>
 	<string name="power_menu_sound_title">Gerätebenachrichtigungen</string>
     <string name="power_menu_bug_report_disabled">Das Senden von Fehlermeldungen ist in den Entwickleroptionen deaktiviert</string>	
+	
+     <!-- Lockscreen Settings -->
+	<string name="lockscreen_settings_title">Sperrbildschirm</string>
+	<string name="lockscreen_settings_title_summary"></string>
+	<!-- Lockscreen charging current indicator  -->
+    <string name="lockscreen_charging_current_title">Info zum Laden des Geräts</string>
+    <string name="lockscreen_charging_current_summary">Zeigt an, ob das Gerät geladen wird und welche Spannung genutzt wird</string>
+	<!-- Lockscreen tap-to sleep -->
+    <string name="double_tap_sleep_anywhere_title">Doppelt Tippen zum Ausschalten</string>
+    <string name="double_tap_sleep_anywhere_summary">Bildschirm wird ausgeschaltet, wenn auf dem Sperrbildschirm doppelt getippt wird</string>
 	
 	<!-- Gesture Settings -->
 	<string name="gesture_settings_title">Gestensteuerung</string>
@@ -197,7 +227,6 @@
 
     <!-- Buttons - Enable navbar -->
     <string name="enable_navigation_bar_title">Navigationsleiste</string>
-    <string name="enable_navigation_bar_title_notice">Diese Option aktiviert eine virtuelle Navigationsleiste und ist nur für Geräte mit physischen Tasten geeignet.</string>
 
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigationsleiste</string>
@@ -282,44 +311,15 @@
    
    <!-- Bluetooth accept all files -->
    <string name="bluetooth_accept_all_files">Akzeptiere alle Dateitypen</string>
-   
-   <!-- Doze pulse options -->
-    <string name="summary_doze_enabled">Inaktivitätsdisplay ist an</string>
-    <string name="summary_doze_disabled">Inaktivitätsdisplay ist aus</string>
-    <string name="doze_overwrite_value_title">Erweiterte Einstellungen</string>
-    <string name="doze_overwrite_value_summary">Ändere das Verhalten vom Inaktivitätsdisplay</string>
-    <string name="doze_pulse_title">Erweitert</string>
-    <string name="doze_pulse_duration_in_title">Anschaltanimation</string>
-    <string name="doze_pulse_duration_in_summary"> </string>
-    <string name="doze_pulse_duration_visible_title">Dauer des Inaktivitätsdisplays</string>
-    <string name="doze_pulse_duration_visible_summary"> </string>
-    <string name="doze_pulse_duration_out_title">Ausschaltanimation</string>
-    <string name="doze_pulse_duration_out_summary"> </string>
-    <string name="doze_trigger_pickup_title">Aufnehmen</string>
-    <string name="doze_trigger_pickup_summary_on">Benachrichtigungen kurz einblenden, wenn das Gerät aufgenommen wird</string>
-    <string name="doze_trigger_pickup_summary_off">Benachrichtigungen nicht einblenden, wenn das Gerät aufgenommen wird</string>
-    <string name="doze_trigger_notification_title">Benachrichtigungen</string>
-    <string name="doze_trigger_notification_summary_on">Inaktivitätsdisplay wird angeschaltet, wenn Benachrichtigungen reinkommen</string>
-    <string name="doze_trigger_notification_summary_off">Inaktivitätsdisplay wird nicht angeschaltet, wenn Benachrichtigungen reinkommen</string>
-    <string name="doze_brightness_level_title">Helligkeit</string>
-    <string name="onehundred_ms">100 ms</string>
-    <string name="twofifty_ms">250 ms</string>
-    <string name="fivehundred_ms_default">500 ms (Standard)</string>
-    <string name="sevenfifty_ms">750 ms</string>
-    <string name="one_second">1 s</string>
-    <string name="onehalf_second">1.5 s</string>
-    <string name="two_second">2 s</string>
-    <string name="twohalf_second">2.5 s</string>
-    <string name="three_second_default">3 s (Standard)</string>
-    <string name="threehalf_second">3.5 s</string>
-    <string name="four_second">4 s</string>
-    <string name="fourhalf_second">4.5 s</string>
-    <string name="five_second">5 s</string>
 	
 	<!-- Camera sound switch -->
     <string name="camera_sounds_title">Kameraauslösegeräusch</string>
     <string name="camera_sounds_summary">Aktiviere Kameraauslösegeräusch</string>
     <string name="camera_sound_warning_dialog_text">Das Deaktivieren des Kameraauslösegeräusches ist an manchen Plätzen illegal!</string>
+	
+	  <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Ton bei Screenshotaufnahme</string>
+    <string name="screenshot_sound_summary"></string>
 	
 	<!-- Volume Steps -->
     <string name="volume_steps_title">Lautstärkeschritte</string>
@@ -604,6 +604,7 @@
     <string name="statusbar_battery_charging_color_enable_summary"> </string>
     <string name="status_bar_battery_style_icon_portrait">Hochformat</string>
     <string name="status_bar_battery_style_icon_landscape">Querformat</string>
+    <string name="status_bar_battery_style_aoscp">Kreis CypherOS</string>	
 	<string name="status_bar_battery_style_solid">Kreis PA</string>
     <string name="status_bar_battery_style_circle">Kreis CM</string>
     <string name="status_bar_battery_style_text">Text</string>
@@ -660,5 +661,22 @@
     <string name="su_indicator">Superusersymbol</string>
     <string name="su_indicator_summary_on">Superusersymbol wird angezeigt, wenn Superuser benutzt wird</string>
     <string name="su_indicator_summary_off">Aktivieren, um Superusersymbol sichtbar zu machen, wenn Superuser benutzt wird</string>
+	
+	<!-- Three-fingers-swipe to screenshot -->
+ 	<string name="three_finger_gesture">Wischen um Screenshot aufzunehmen</string>
+ 	<string name="three_finger_gesture_summary">Screenshot aufnehmen, wenn mit 3 Fingern über den Bildschirm gewischt wird</string>
+	
+	<!-- Option to enable/disable scrolling cache -->
+    <string name="pref_scrollingcache_title">Scrolling Cache</string>
+    <string name="pref_scrollingcache_summary">Scrolling Cache verbessert die Performance beim Scrollen auf Kosten vom Arbeitsspeicher</string>
+    <string name="pref_scrollingcache_force_enable">Aktiviert(Force)</string>
+    <string name="pref_scrollingcache_default_enable">Aktiviert</string>
+    <string name="pref_scrollingcache_default_disable">Deaktiviert</string>
+    <string name="pref_scrollingcache_force_disable">Deaktiviert(Force)</string>
+	
+	<!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Verknüpfe Klingel- und Benachrichtigungslautstärke</string>
+    <string name="notification_volume_option_title">Benachrichtigungslautstärke</string>
+    <string name="ring_notification_volume_option_title">Klingel- und Benachrichtigungslautstärke</string>
  
 </resources>
