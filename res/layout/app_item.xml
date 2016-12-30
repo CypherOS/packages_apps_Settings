@@ -61,12 +61,12 @@
         android:duplicateParentState="true" />
 
     <Switch
-            android:id="@android:id/switch_widget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:visibility="gone"/>
+        android:id="@android:id/switch_widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@null"
+        android:visibility="gone"/>
 
     <FrameLayout
         android:id="@android:id/widget_frame"
@@ -76,6 +76,19 @@
         android:layout_below="@android:id/title"
         android:layout_alignParentEnd="true"
         android:layout_gravity="fill_horizontal|top"
+        android:duplicateParentState="true" />
+
+    <TextView
+        android:id="@+id/pkgname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@android:id/icon"
+        android:layout_below="@android:id/widget_frame"                
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"
+        android:textColor="?android:attr/textColorSecondary"
+        android:visibility="gone"
         android:duplicateParentState="true" />
 
 </RelativeLayout>
