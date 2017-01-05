@@ -80,6 +80,9 @@
 	<!-- WiFi easy toggle -->
     <string name="qs_wifi_easy_toggle_title">WiFi on tap</string>
     <string name="qs_wifi_easy_toggle_summary">Enable or disable wifi with one tap</string>
+	<!-- Battery Saver easy toggle -->
+    <string name="qs_battery_easy_toggle_title">Battery on tap</string>
+    <string name="qs_battery_easy_toggle_summary">Enable or disable battery saver with one tap</string>
 	
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
