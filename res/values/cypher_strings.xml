@@ -682,5 +682,9 @@
 	<!-- Battery Saver easy toggle -->
     <string name="qs_battery_easy_toggle_title">Battery on tap</string>
     <string name="qs_battery_easy_toggle_summary">Enable or disable battery saver with one tap</string>
+	
+	<!-- Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Requires a config change(display size, navbar position, reboot) themes may overwrite</string>
  
 </resources>
