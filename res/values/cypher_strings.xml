@@ -678,5 +678,9 @@
     <string name="link_volume_option_title">Link ring and notification volume</string>
     <string name="notification_volume_option_title">Notification volume</string>
     <string name="ring_notification_volume_option_title">Ring and notification volume</string>
+	
+	<!-- Battery Saver easy toggle -->
+    <string name="qs_battery_easy_toggle_title">Battery on tap</string>
+    <string name="qs_battery_easy_toggle_summary">Enable or disable battery saver with one tap</string>
  
 </resources>
