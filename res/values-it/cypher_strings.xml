@@ -673,4 +673,11 @@
   <string name="notification_volume_option_title">Volume notifica</string>
   <string name="ring_notification_volume_option_title">Volume suoneria e notifica</string>
  
+  <!-- Battery Saver easy toggle -->
+  <string name="qs_battery_easy_toggle_title">Batteria al tocco</string>
+  <string name="qs_battery_easy_toggle_summary">Attiva o disattiva il risparmio batteria con un solo tocco</string>
+
+  <!-- Navbar Animation -->
+  <string name="pixel_navbar_anim_title">Animazione barra di navigazione</string>
+  <string name="pixel_navbar_anim_summary">Richiede un cambiamento di configurazione (dimensione dell\'immagine, posizione della barra di navigazione, riavvio) i temi possono sovrascrivere</string>
 </resources>
