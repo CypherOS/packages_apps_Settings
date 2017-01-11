@@ -17,4 +17,5 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
+	<string name="srgb_summary">Enable sRGB display calibration</string>
 </resources>
