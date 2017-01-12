@@ -25,6 +25,7 @@ import android.app.AppGlobals;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.IActivityManager;
+import android.app.KeyguardManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -49,8 +50,6 @@ import android.net.LinkProperties;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.INetworkManagementService;
 import android.os.Looper;
@@ -94,6 +93,7 @@ import android.widget.TabWidget;
 import com.android.internal.app.UnlaunchableAppActivity;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.UserIcons;
+import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 
@@ -519,7 +519,7 @@ public final class Utils extends com.android.settingslib.Utils {
         if (resultTo == null) {
             context.startActivity(intent);
         } else {
-            resultTo.startActivityForResult(intent, resultRequestCode);
+            resultTo.getActivity().startActivityForResult(intent, resultRequestCode);
         }
     }
 
@@ -773,9 +773,13 @@ public final class Utils extends com.android.settingslib.Utils {
      * devices allow users to flash other OSes to them.
      */
     static void setOemUnlockEnabled(Context context, boolean enabled) {
-        PersistentDataBlockManager manager =(PersistentDataBlockManager)
-                context.getSystemService(Context.PERSISTENT_DATA_BLOCK_SERVICE);
-        manager.setOemUnlockEnabled(enabled);
+        try {
+            PersistentDataBlockManager manager = (PersistentDataBlockManager)
+                    context.getSystemService(Context.PERSISTENT_DATA_BLOCK_SERVICE);
+            manager.setOemUnlockEnabled(enabled);
+        } catch (SecurityException e) {
+            Log.e(TAG, "Fail to set oem unlock.", e);
+        }
     }
 
     /**
@@ -1150,6 +1154,30 @@ public final class Utils extends com.android.settingslib.Utils {
         return false;
     }
 
+    public static boolean unlockWorkProfileIfNecessary(Context context, int userId) {
+        try {
+            if (!ActivityManagerNative.getDefault().isUserRunning(userId,
+                    ActivityManager.FLAG_AND_LOCKED)) {
+                return false;
+            }
+        } catch (RemoteException e) {
+            return false;
+        }
+        if (!(new LockPatternUtils(context)).isSecure(userId)) {
+            return false;
+        }
+        final KeyguardManager km = (KeyguardManager) context.getSystemService(
+                Context.KEYGUARD_SERVICE);
+        final Intent unlockIntent = km.createConfirmDeviceCredentialIntent(null, null, userId);
+        if (unlockIntent != null) {
+            context.startActivity(unlockIntent);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public static CharSequence getApplicationLabel(Context context, String packageName) {
         try {
             final ApplicationInfo appInfo = context.getPackageManager().getApplicationInfo(
@@ -1168,26 +1196,6 @@ public final class Utils extends com.android.settingslib.Utils {
             return context.getPackageManager().getApplicationInfo(packageName, 0).enabled;
         } catch (NameNotFoundException e) {
             // Thrown by PackageManager.getApplicationInfo if the package does not exist
-        }
-        return false;
-    }
-
-    /**
-     * check whether NetworkSetting apk exist in system, if yes, return true, else
-     * return false.
-     */
-    public static boolean isNetworkSettingsApkAvailable(Context context) {
-        // check whether the target handler exist in system
-        Intent intent = new Intent("org.codeaurora.settings.NETWORK_OPERATOR_SETTINGS_ASYNC");
-        PackageManager pm = context.getPackageManager();
-        List<ResolveInfo> list = pm.queryIntentActivities(intent, 0);
-        for (ResolveInfo resolveInfo : list){
-            // check is it installed in system.img, exclude the application
-            // installed by user
-            if ((resolveInfo.activityInfo.applicationInfo.flags &
-                    ApplicationInfo.FLAG_SYSTEM) != 0) {
-                return true;
-            }
         }
         return false;
     }
@@ -1213,5 +1221,14 @@ public final class Utils extends com.android.settingslib.Utils {
             context.getApplicationContext().sendBroadcast(intent);
         }
     }
-}
 
+    public static boolean isPackageDirectBootAware(Context context, String packageName) {
+        try {
+            final ApplicationInfo ai = context.getPackageManager().getApplicationInfo(
+                    packageName, 0);
+            return ai.isDirectBootAware() || ai.isPartiallyDirectBootAware();
+        } catch (NameNotFoundException ignored) {
+        }
+        return false;
+    }
+}
