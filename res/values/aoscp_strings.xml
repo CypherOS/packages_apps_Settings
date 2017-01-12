@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 CypherOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About phone screen, CypherOS version -->
+    <string name="aoscp_version_title">CypherOS version</string>
+    <string name="aoscp_version_default">Unspecified</string>
+ 	<!-- About phone screen, CypherOS API -->
+ 	<string name="aoscp_api_title">API</string>
+    <string name="aoscp_api_default">Unspecified</string>
+	<!-- About phone screen, CypherOS Release ID -->
+	<string name="aoscp_release_id">Release ID</string>
+    <string name="aoscp_release_id_default">Unspecified</string>
+	<!-- Dashboard, CypherOS version summary -->
+	<string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+
+</resources>

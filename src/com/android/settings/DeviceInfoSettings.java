@@ -72,7 +72,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MBN_VERSION = "mbn_version";
-    private static final String PROPERTY_MBN_VERSION = "persist.mbn.version";
+	private static final String PROPERTY_MBN_VERSION = "persist.mbn.version";
+	private static final String KEY_AOSCP_VERSION = "aoscp_version";
+    private static final String KEY_AOSCP_API = "aoscp_api";
+    private static final String KEY_AOSCP_RELEASE_ID = "aoscp_release_id";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -125,6 +128,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_MBN_VERSION, PROPERTY_MBN_VERSION);
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_MBN_VERSION,
                 PROPERTY_MBN_VERSION);
+		findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
+        findPreference(KEY_AOSCP_VERSION).setEnabled(true);
+        findPreference(KEY_AOSCP_API).setSummary(Build.API);
+	    findPreference(KEY_AOSCP_API).setEnabled(true);
+	    findPreference(KEY_AOSCP_RELEASE_ID).setSummary(Build.AOSCPID);
+        findPreference(KEY_AOSCP_RELEASE_ID).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -405,8 +414,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, mContext.getString(R.string.about_summary,
-                        Build.VERSION.RELEASE));
+                mSummaryLoader.setSummary(this, mContext.getString(R.string.aoscp_version_summary,
+                        Build.VERSION.AOSCP));
             }
         }
     }
