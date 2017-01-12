@@ -330,23 +330,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
         mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam);
 
-        mEnhancedWFCSettingsEnabled = getActivity().getResources().getBoolean(
-                    R.bool.wifi_call_enhanced_setting);
-        if (mEnhancedWFCSettingsEnabled) {
-            mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_ENHANCED_SETTINGS);
-            removePreference(KEY_WFC_SETTINGS);
-        } else {
-            mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
-            removePreference(KEY_WFC_ENHANCED_SETTINGS);
-        }
-
-        if (mEnhancedWFCSettingsEnabled) {
-            //bind WFC service
-            final Intent intentWfc = new Intent();
-            intentWfc.setAction("com.qualcomm.qti.wfcservice.IWFCService");
-            intentWfc.setPackage("com.qualcomm.qti.wfcservice");
-            activity.bindService(intentWfc, mConnection, Context.BIND_AUTO_CREATE);
-        }
+        mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
 
         String toggleable = Settings.Global.getString(activity.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
@@ -404,8 +388,6 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                         UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS, UserHandle.myUserId())) {
             removePreference(KEY_MOBILE_NETWORK_SETTINGS);
             removePreference(KEY_MANAGE_MOBILE_PLAN);
-        } else {
-            mIsNetworkSettingsAvailable = Utils.isNetworkSettingsApkAvailable(getActivity());
         }
         // Remove Mobile Network Settings and Manage Mobile Plan
         // if config_show_mobile_plan sets false.

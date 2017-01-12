@@ -428,8 +428,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         migrate.setVisible((privateVol != null)
                 && (privateVol.getType() == VolumeInfo.TYPE_PRIVATE)
                 && !Objects.equals(mVolume, privateVol));
-
-        cleanUp.setVisible(getResources().getBoolean(R.bool.enable_storage_cleanup));
     }
 
     @Override
