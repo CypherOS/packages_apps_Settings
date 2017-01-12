@@ -80,6 +80,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
+	private static final String KEY_AOSCP_VERSION = "aoscp_version";
+    private static final String KEY_AOSCP_API = "aoscp_api";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -144,6 +146,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         if(TextUtils.isEmpty(mMbnVersion)){
             getPreferenceScreen().removePreference(findPreference(KEY_MBN_VERSION));
         }
+		findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
+        findPreference(KEY_AOSCP_VERSION).setEnabled(true);
+        findPreference(KEY_AOSCP_API).setSummary(Build.API);
+	    findPreference(KEY_AOSCP_API).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -480,8 +486,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, mContext.getString(R.string.about_summary,
-                        Build.VERSION.RELEASE));
+                mSummaryLoader.setSummary(this, mContext.getString(R.string.aoscp_version_summary,
+                        Build.VERSION.AOSCP));
             }
         }
     }

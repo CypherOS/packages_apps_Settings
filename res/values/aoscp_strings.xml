@@ -15,6 +15,19 @@
    limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About phone screen, CypherOS version -->
+    <string name="aoscp_version_title">CypherOS version</string>
+    <string name="aoscp_version_default">Unspecified</string>
+ 	<!-- About phone screen, CypherOS API -->
+ 	<string name="aoscp_api_title">API</string>
+    <string name="aoscp_api_default">Unspecified</string>
+	<!-- About phone screen, CypherOS Release ID -->
+	<string name="aoscp_release_id">Release ID</string>
+    <string name="aoscp_release_id_default">Unspecified</string>
+	<!-- Dashboard, CypherOS version summary -->
+	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
 	<string name="srgb_summary">Enable sRGB display calibration</string>
