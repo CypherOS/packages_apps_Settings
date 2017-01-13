@@ -45,6 +45,7 @@ import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.format.Formatter.BytesResult;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;

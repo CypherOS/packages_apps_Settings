@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.media.AudioManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -292,9 +294,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             launchNotificationSoundPicker(REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE,
                     Global.getString(getContentResolver(),
                             Global.POWER_NOTIFICATIONS_RINGTONE));
-        } else {
-            // If we didn't handle it, let preferences handle it.
-            return super.onPreferenceTreeClick(preference);
         } else if (mBootSounds != null && preference == mBootSounds) {
             SystemProperties.set(PROPERTY_BOOT_SOUNDS, mBootSounds.isChecked() ? "1" : "0");
             return false;

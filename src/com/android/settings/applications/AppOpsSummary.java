@@ -34,7 +34,7 @@ import com.android.settings.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List
+import java.util.List;
 
 public class AppOpsSummary extends InstrumentedFragment {
     // layout inflater object used to inflate views

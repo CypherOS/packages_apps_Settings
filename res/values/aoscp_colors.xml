@@ -27,4 +27,9 @@
     <color name="condition_card_second_button_text_color">@*android:color/primary_text_material_dark</color>
     <!-- Storage Summary Title -->
     <color name="storage_summary_title_color">#ff607d8b</color>
+	
+	<color name="theme_accent">@android:color/white</color>
+    <color name="action_picker_fab_background">@color/theme_accent</color>
+    <color name="icon_tint_color">@*android:color/material_pixel_blue_bright</color>
+    <color name="white">#FFF</color>
 </resources>

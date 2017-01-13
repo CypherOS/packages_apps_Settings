@@ -150,7 +150,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             return true;
         }
-        return false
+        return false;
     }
 
     @Override

@@ -24,9 +24,6 @@
 -keep class com.android.settings.display.NightDisplaySettings
 -keep class com.android.settings.preference.*
 
--keep class com.android.settings.cyanogenmod.*Settings
->>>>>>> 5959eed... Add back a helper pref that holds a system setting
-
 # Keep click responders
 -keepclassmembers class com.android.settings.inputmethod.UserDictionaryAddWordActivity {
   *** onClick*(...);

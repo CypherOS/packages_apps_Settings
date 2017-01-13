@@ -285,9 +285,5 @@ public class PrivacySettings extends SettingsPreferenceFragment implements Index
                 UserManager.DISALLOW_FACTORY_RESET, UserHandle.myUserId())) {
             nonVisibleKeys.add(FACTORY_RESET);
         }
-        if (RestrictedLockUtils.hasBaseUserRestriction(context,
-                UserManager.DISALLOW_NETWORK_RESET, UserHandle.myUserId())) {
-            nonVisibleKeys.add(NETWORK_RESET);
-        }
     }
 }

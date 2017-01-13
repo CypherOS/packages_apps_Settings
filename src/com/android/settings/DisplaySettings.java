@@ -57,7 +57,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreference;
-import com.android.settings.cypher.fragments.DisplayRotation;
+import com.android.settings.aoscp.fragments.DisplayRotation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -184,53 +184,55 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (RotationPolicy.isRotationLockToggleVisible(activity)) {
-                mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
-            } else {
-                removePreference(KEY_DISPLAY_ROTATION);
-            }
-        }
-
-        if (isVrDisplayModeAvailable(activity)) {
-            DropDownPreference vrDisplayPref =
-                    (DropDownPreference) findPreference(KEY_VR_DISPLAY_PREF);
-            vrDisplayPref.setEntries(new CharSequence[] {
-                    activity.getString(R.string.display_vr_pref_low_persistence),
-                    activity.getString(R.string.display_vr_pref_off),
-            });
-            vrDisplayPref.setEntryValues(new CharSequence[] { "0", "1" });
-
-            final Context c = activity;
-            int currentUser = ActivityManager.getCurrentUser();
-            int current = Settings.Secure.getIntForUser(c.getContentResolver(),
-                            Settings.Secure.VR_DISPLAY_MODE,
-                            /*default*/Settings.Secure.VR_DISPLAY_MODE_LOW_PERSISTENCE,
-                            currentUser);
-            vrDisplayPref.setValueIndex(current);
-            vrDisplayPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    int i = Integer.parseInt((String) newValue);
-                    int u = ActivityManager.getCurrentUser();
-                    if (!Settings.Secure.putIntForUser(c.getContentResolver(),
-                            Settings.Secure.VR_DISPLAY_MODE,
-                            i, u)) {
-                        Log.e(TAG, "Could not change setting for " +
-                                Settings.Secure.VR_DISPLAY_MODE);
-                    }
-                    return true;
-                }
-            });
+            mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
         } else {
-            removePreference(KEY_VR_DISPLAY_PREF);
+            removePreference(KEY_DISPLAY_ROTATION);
         }
 
-        mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
-        if (mNightModePreference != null) {
-            final UiModeManager uiManager = (UiModeManager) getSystemService(
-                    Context.UI_MODE_SERVICE);
-            final int currentNightMode = uiManager.getNightMode();
-            mNightModePreference.setValue(String.valueOf(currentNightMode));
-            mNightModePreference.setOnPreferenceChangeListener(this);
+        DropDownPreference vrDisplayPref =
+                    (DropDownPreference) findPreference(KEY_VR_DISPLAY_PREF);
+            if (vrDisplayPref != null) {
+                if (isVrDisplayModeAvailable(activity)) {
+                    vrDisplayPref.setEntries(new CharSequence[] {
+                            activity.getString(R.string.display_vr_pref_low_persistence),
+                            activity.getString(R.string.display_vr_pref_off),
+                       });
+                    vrDisplayPref.setEntryValues(new CharSequence[] { "0", "1" });
+
+                    final Context c = activity;
+                    int currentUser = ActivityManager.getCurrentUser();
+                    int current = Settings.Secure.getIntForUser(c.getContentResolver(),
+                                    Settings.Secure.VR_DISPLAY_MODE,
+                                    /*default*/Settings.Secure.VR_DISPLAY_MODE_LOW_PERSISTENCE,
+                                    currentUser);
+                    vrDisplayPref.setValueIndex(current);
+                    vrDisplayPref.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object newValue) {
+                            int i = Integer.parseInt((String) newValue);
+                            int u = ActivityManager.getCurrentUser();
+                            if (!Settings.Secure.putIntForUser(c.getContentResolver(),
+                                    Settings.Secure.VR_DISPLAY_MODE,
+                                    i, u)) {
+                                Log.e(TAG, "Could not change setting for " +
+                                        Settings.Secure.VR_DISPLAY_MODE);
+                            }
+                            return true;
+                        }
+                       });
+                }
+                else {
+                    removePreference(KEY_VR_DISPLAY_PREF);
+                }
+            }
+
+            mNightModePreference = (ListPreference) findPreference(KEY_NIGHT_MODE);
+            if (mNightModePreference != null) {
+               final UiModeManager uiManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
+               final int currentNightMode = uiManager.getNightMode();
+               mNightModePreference.setValue(String.valueOf(currentNightMode));
+               mNightModePreference.setOnPreferenceChangeListener(this);
+            }
         }
     }
 
