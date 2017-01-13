@@ -32,6 +32,7 @@
 	<string name="advanced_battery_settings_title_summary">More available options to improve your power usage experience</string>
 	
 	<!-- Battery style options -->
+	<string name="battery_title">Battery views</string>
     <string name="status_bar_battery_percentage_title">Battery percentage</string>
     <string name="status_bar_battery_percentage_default">Hidden</string>
     <string name="status_bar_battery_percentage_text_inside">Embedded</string>

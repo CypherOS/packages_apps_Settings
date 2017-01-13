@@ -34,7 +34,6 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.preference.SystemSettingSwitchPreference;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class BatterySettings extends SettingsPreferenceFragment implements OnPre
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.ADDITIONS;
+        return MetricsEvent.FUELGAUGE_POWER_USAGE_SUMMARY;
     }
 	
      public boolean onPreferenceChange(Preference preference, Object objValue) {
