@@ -30,6 +30,10 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+	<!-- Addition settings -->
+ 	<string name="addition_settings_title">Additions</string>
+	<string name="addition_settings_title_summary">A simple place for all of your favorite features</string>
+	
 	<string name="notification_category_title">Notifications</string>
 	
 	<!-- Phone info shortcut -->

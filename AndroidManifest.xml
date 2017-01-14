@@ -107,6 +107,27 @@
                 android:value="true" />
         </activity>
 
+		<!-- Keep compatibility with old shortcuts. -->
+        <activity android:name="Settings$AdditionsActivity"
+                android:label="@string/addition_settings_title"
+                android:icon="@drawable/ic_settings_additions"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <intent-filter android:priority="7">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                       android:value="com.android.settings.category.device" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.aoscp.Additions" />
+			<meta-data android:name="com.android.settings.summary"
+                       android:resource="@string/addition_settings_title_summary" />
+        </activity>
+
         <!-- Alias for launcher activity only, as this belongs to each profile. -->
         <activity-alias android:name="Settings"
                 android:taskAffinity="com.android.settings"
