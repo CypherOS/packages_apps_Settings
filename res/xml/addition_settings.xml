@@ -17,9 +17,22 @@
         android:title="@string/addition_settings_title">
 		
 		<Preference
-              android:key="addition_settings_greeting"
-              android:summary="@string/addition_settings_greeting"
-              android:persistent="false"
-              android:selectable="false" />
+                android:key="addition_settings_greeting"
+                android:summary="@string/addition_settings_greeting"
+                android:persistent="false"
+                android:selectable="false" />
+				
+	<PreferenceCategory android:key="utils_category"
+	            android:title="@string/utils_category_title">
+				
+		<!-- System settings -->
+		<PreferenceScreen
+                android:key="system_settings"
+                android:title="@string/system_settings_title"
+				android:summary="@string/system_settings_title_summary"
+                android:fragment="com.android.settings.aoscp.fragments.SystemSettings"
+                android:icon="@drawable/ic_settings_system_settings" />
+				
+	</PreferenceCategory>
 
 </PreferenceScreen>

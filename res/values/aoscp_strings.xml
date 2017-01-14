@@ -34,6 +34,9 @@
  	<string name="addition_settings_title">Additions</string>
 	<string name="addition_settings_title_summary">A simple place for all of your favorite features</string>
 	<string name="addition_settings_greeting">Welcome to your additions settings. Additions are a direct extension to Android, providing various features and customization options, that aren\'t available on stock.\n\nOptions are placed in their appropriate section so that they can be easily found.</string>
+	<!-- System settings -->
+ 	<string name="system_settings_title">System</string>
+ 	<string name="system_settings_title_summary">Tune up the core system to improve your android experience</string>
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
 	<!-- Social category -->
