@@ -67,7 +67,7 @@
         <item>900000</item>
         <item>1800000</item>
     </string-array>
-	
+
 	<!-- Wi-Fi tethering inactivity shut off -->
     <string-array name="hotstpot_inactivity_timeout_entries" translatable="false">
         <item>@string/hotstpot_inactivity_timeout_never</item>
