@@ -52,6 +52,9 @@
     <string name="power_menu_bug_report_title">Bug report</string>
     <string name="power_menu_sound_title">Sound panel</string>
     <string name="power_menu_bug_report_disabled">Bug reporting is disabled in development settings</string>
+	<!-- Quick Settings -->
+	<string name="quick_settings_title">Quick settings</string>
+	<string name="quick_settings_title_summary">Adjust the layout of the quick settings panel for experience improvements</string>
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
 	<!-- Social category -->

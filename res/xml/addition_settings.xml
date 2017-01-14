@@ -38,13 +38,21 @@
 	<PreferenceCategory android:key="resource_category"
 	            android:title="@string/resource_category_title">
 				
-				<!-- Statusbar settings -->
+		<!-- Statusbar settings -->
 		<PreferenceScreen
                 android:key="statusbar_settings"
                 android:title="@string/statusbar_settings_title"
  				android:summary="@string/statusbar_settings_title_summary"
                 android:fragment="com.android.settings.aoscp.fragments.StatusbarSettings"
                 android:icon="@drawable/ic_settings_statusbar" />
+				
+		<!-- Quick settings -->
+		<PreferenceScreen
+                android:key="quick_settings"
+                android:title="@string/quick_settings_title"
+				android:summary="@string/quick_settings_title_summary"
+                android:fragment="com.android.settings.aoscp.fragments.QuickSettings"
+                android:icon="@drawable/ic_settings_quick_settings" />
 				
 	</PreferenceCategory>
 
