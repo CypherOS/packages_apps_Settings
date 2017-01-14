@@ -168,7 +168,7 @@ abstract public class NotificationSettingsBase extends SettingsPreferenceFragmen
             setVisible(mSilent, false);
             mImportance.setDisabledByAdmin(mSuspendedAppsAdmin);
             mImportance.setMinimumProgress(
-                    isSystemApp ? Ranking.IMPORTANCE_MIN : Ranking.IMPORTANCE_NONE);
+                    notBlockable ? Ranking.IMPORTANCE_MIN : Ranking.IMPORTANCE_NONE);
             mImportance.setMax(importanceToLevel(Ranking.IMPORTANCE_MAX));
             mImportance.setImportance(importance);
             mImportance.setAutoOn(importance == Ranking.IMPORTANCE_UNSPECIFIED);

@@ -173,12 +173,8 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                         new StorageVolumePreference(context, vol, color, volumeTotalBytes));
                 if (vol.isMountedReadable()) {
                     final File path = vol.getPath();
-                    privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
-                    if (isInternal && sTotalInternalStorage > 0) {
-                        privateTotalBytes += sTotalInternalStorage;
-                    } else {
-                        privateTotalBytes += path.getTotalSpace();
-                    }
+                    privateUsedBytes += (volumeTotalBytes - path.getFreeSpace());
+                    privateTotalBytes += volumeTotalBytes;
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
                 mExternalCategory.addPreference(
@@ -235,7 +231,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             // Only showing primary internal storage, so just shortcut
             final Bundle args = new Bundle();
             args.putString(VolumeInfo.EXTRA_VOLUME_ID, VolumeInfo.ID_PRIVATE_INTERNAL);
-            PrivateVolumeSettings.setVolumeSize(args, sTotalInternalStorage);
+            PrivateVolumeSettings.setVolumeSize(args, getTotalSize(vol));
             Intent intent = Utils.onBuildStartFragmentIntent(getActivity(),
                     PrivateVolumeSettings.class.getName(), args, null, R.string.apps_storage, null,
                     false);

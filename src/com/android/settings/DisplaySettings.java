@@ -233,7 +233,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                mNightModePreference.setValue(String.valueOf(currentNightMode));
                mNightModePreference.setOnPreferenceChangeListener(this);
             }
-        }
     }
 
     private static boolean allowAllRotations(Context context) {
