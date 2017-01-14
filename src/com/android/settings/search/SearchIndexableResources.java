@@ -18,6 +18,7 @@ package com.android.settings.search;
 
 import android.provider.SearchIndexableResource;
 import com.android.settings.aoscp.Additions;
+import com.android.settings.aoscp.deviceinfo.SoftwareInfo;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
@@ -159,6 +160,13 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         Additions.class.getName(),
                         R.drawable.ic_settings_additions));
+						
+		sResMap.put(SoftwareInfo.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(SoftwareInfo.class.getName()),
+                        NO_DATA_RES_ID,
+                        SoftwareInfo.class.getName(),
+                        R.drawable.ic_settings_about));
 
         sResMap.put(SoundSettings.class.getName(),
                 new SearchIndexableResource(

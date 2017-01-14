@@ -33,6 +33,21 @@
 	<!-- Addition settings -->
  	<string name="addition_settings_title">Additions</string>
 	<string name="addition_settings_title_summary">A simple place for all of your favorite features</string>
+	<string name="addition_settings_greeting">Welcome to your additions settings. Additions are a direct extension to Android, providing various features and customization options, that aren\'t available on stock.\n\nOptions are placed in their appropriate section so that they can be easily found.</string>
+	<!-- Software information-->
+	<string name="software_info_settings_title">Software info</string>
+	<!-- Social category -->
+    <string name="social_category_title">Social</string>
+	<string name="website_preference_title">On-The-Web</string>
+	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
+	<string name="google_preference_title">CypherPlus</string>
+	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
+	<!-- Source category -->
+    <string name="source_category_title">Source</string>
+	<string name="github_preference_title">Github</string>
+	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
+	<string name="gerrit_preference_title">Gerrit</string>
+	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
 	
 	<string name="notification_category_title">Notifications</string>
 	
