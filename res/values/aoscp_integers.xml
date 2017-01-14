@@ -10,19 +10,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-	
-	<declare-styleable name="IntervalSeekBar">
-        <attr name="minI" format="float" />
-        <attr name="maxI" format="float" />
-        <attr name="defaultValuePure" format="float" />
-        <attr name="digits" format="integer" />
-    </declare-styleable>
-	
-	<declare-styleable name="SeekBarPreference">
-        <attr name="interval" format="integer" />
-        <attr name="minimum" format="integer" />
-        <attr name="unitsLeft" format="string|reference" />
-        <attr name="unitsRight" format="string|reference" />
-    </declare-styleable>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Overlays for NetworkTraffic to use -->
+    <integer name="maskUp">0x00000001</integer>
+    <integer name="maskDown">0x00000002</integer>
+    <integer name="maskUnit">0x00000004</integer>
+    <integer name="maskPeriod">0xFFFF0000</integer>
 </resources>

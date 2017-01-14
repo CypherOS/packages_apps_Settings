@@ -34,5 +34,18 @@
                 android:icon="@drawable/ic_settings_system_settings" />
 				
 	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="resource_category"
+	            android:title="@string/resource_category_title">
+				
+				<!-- Statusbar settings -->
+		<PreferenceScreen
+                android:key="statusbar_settings"
+                android:title="@string/statusbar_settings_title"
+ 				android:summary="@string/statusbar_settings_title_summary"
+                android:fragment="com.android.settings.aoscp.fragments.StatusbarSettings"
+                android:icon="@drawable/ic_settings_statusbar" />
+				
+	</PreferenceCategory>
 
 </PreferenceScreen>
