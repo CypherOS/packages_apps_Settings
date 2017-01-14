@@ -55,6 +55,9 @@
 	<!-- Quick Settings -->
 	<string name="quick_settings_title">Quick settings</string>
 	<string name="quick_settings_title_summary">Adjust the layout of the quick settings panel for experience improvements</string>
+	<!-- qs brightness slider -->
+    <string name="qs_brightness_slider_title">Brightness slider</string>
+    <string name="qs_brightness_slider_summary">Show brightness slider on quick settings panel</string>
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
 	<!-- Social category -->
@@ -164,6 +167,9 @@
 	<string name="statusbar_settings_title">Statusbar</string>
 	<string name="statusbar_settings_title_summary">Utilize a small subset of resources to increase the productivity of your statusbar</string>
 	<string name="resource_category_title">Resource</string>
+	<!-- statusbar icon blacklist -->
+    <string name="status_bar_icon_blacklist_title">Icons</string>
+    <string name="status_bar_icon_blacklist_summary">Add or remove icons from the statusbar</string>
     <!-- Status bar - Clock -->
 	<string name="status_bar_clock_seconds_title">Show seconds</string>
     <string name="status_bar_clock_title">Clock &amp; date</string>

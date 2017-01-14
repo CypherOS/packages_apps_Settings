@@ -35,6 +35,14 @@
             android:title="@string/network_traffic_title"
             android:summary="@string/network_traffic_title_summary"
 			android:fragment="com.android.settings.aoscp.fragments.NetworkTraffic" />
+			
+		<PreferenceScreen
+                android:title="@string/status_bar_icon_blacklist_title"
+                android:summary="@string/status_bar_icon_blacklist_summary" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.TunerActivity" />
+        </PreferenceScreen>
 		
     <PreferenceCategory android:key="statusbar_clock_category"
             android:title="@string/status_bar_clock_title">
