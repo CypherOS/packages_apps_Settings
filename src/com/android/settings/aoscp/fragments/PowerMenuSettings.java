@@ -260,8 +260,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     private void getUserConfig() {
         mLocalUserConfig.clear();
         String[] defaultActions;
-        String savedActions = Settings.Global.getStringForUser(mContext.getContentResolver(),
-            Settings.Global.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        String savedActions = Settings.Secure.getStringForUser(mContext.getContentResolver(),
+            Settings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
 
         if (savedActions == null) {
             defaultActions = mContext.getResources().getStringArray(
@@ -296,8 +296,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             }
         }
 
-        Settings.Global.putStringForUser(getContentResolver(),
-            Settings.Global.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
+        Settings.Secure.putStringForUser(getContentResolver(),
+            Settings.Secure.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
         updatePowerMenuDialog();
     }
 
