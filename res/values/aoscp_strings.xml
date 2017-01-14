@@ -30,6 +30,8 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+	<string name="notification_category_title">Notifications</string>
+	
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
@@ -52,10 +54,7 @@
     <string name="status_bar_battery_style_circle">Circle</string>
     <string name="status_bar_battery_style_text">Text</string>
     <string name="status_bar_battery_style_hidden">Hidden</string>
-	
-	<!-- Memory -->
-    <string name="memory_startup_apps_title">Apps started on boot</string>
-	
+
 	<!-- Category title for Charging sounds -->
     <string name="power_notifications_category_title">Charging sounds</string>
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
@@ -90,15 +89,6 @@
 	<!-- Wake when connected/disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
     <string name="wake_when_plugged_or_unplugged_summary">Turn on screen when connecting or disconnecting charger</string>
-	
-	<!-- Names of categories of app ops tabs - extension of AOSP -->
-    <string name="app_ops_categories_location">Location</string>
-    <string name="app_ops_categories_personal">Personal</string>
-    <string name="app_ops_categories_messaging">Messaging</string>
-    <string name="app_ops_categories_media">Media</string>
-    <string name="app_ops_categories_device">Device</string>
-    <string name="app_ops_categories_bootup">Bootup</string>
-    <string name="app_ops_categories_su">Superuser</string>
 	
 	<!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
     <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>

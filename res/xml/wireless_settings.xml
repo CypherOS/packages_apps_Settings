@@ -54,19 +54,6 @@
         settings:useAdminDisabledSummary="true" />
 
     <com.android.settingslib.RestrictedPreference
-        android:key="mobile_network_settings"
-        android:title="@string/network_settings_title"
-        settings:keywords="@string/keywords_more_mobile_networks"
-        settings:userRestriction="no_config_mobile_networks"
-        settings:useAdminDisabledSummary="true"
-        android:dependency="toggle_airplane">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.phone"
-            android:targetClass="com.android.phone.MobileNetworkSettings" />
-    </com.android.settingslib.RestrictedPreference>
-
-    <com.android.settingslib.RestrictedPreference
         android:key="manage_mobile_plan"
         android:title="@string/manage_mobile_plan_title"
         android:persistent="false"
