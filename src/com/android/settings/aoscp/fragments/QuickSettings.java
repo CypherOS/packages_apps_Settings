@@ -40,8 +40,7 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuickSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+public class QuickSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "QuickSettings";
 	
 	@Override

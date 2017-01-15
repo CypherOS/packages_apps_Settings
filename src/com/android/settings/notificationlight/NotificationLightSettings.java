@@ -46,7 +46,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.utils.PackageListAdapter;
 import com.android.settings.utils.PackageListAdapter.PackageItem;
-import com.android.settings.preferences.SystemSettingSwitchPreference;
+import com.android.settings.preference.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.HashMap;

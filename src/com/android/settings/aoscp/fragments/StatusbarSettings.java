@@ -55,14 +55,13 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "StatusbarSettings";
 
-    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
-    private static final String STATUS_BAR_CLOCK_AM_PM_STYLE = "status_bar_am_pm";
-    private static final String STATUS_BAR_CLOCK_DATE_DISPLAY = "clock_date_display";
-    private static final String STATUS_BAR_CLOCK_DATE_STYLE = "clock_date_style";
-    private static final String STATUS_BAR_CLOCK_DATE_FORMAT = "clock_date_format";
+    private static final String STATUSBAR_CLOCK_STYLE = "status_bar_clock";
+    private static final String STATUSBAR_CLOCK_AM_PM_STYLE = "status_bar_am_pm";
+    private static final String STATUSBAR_CLOCK_DATE_DISPLAY = "clock_date_display";
+    private static final String STATUSBAR_CLOCK_DATE_STYLE = "clock_date_style";
+    private static final String STATUSBAR_CLOCK_DATE_FORMAT = "clock_date_format";
 	private static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
-    private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -91,26 +90,19 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
 		
-		mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
-        mSmartPulldown.setOnPreferenceChangeListener(this);
-        int smartPulldown = Settings.System.getInt(resolver,
-                Settings.System.QS_SMART_PULLDOWN, 0);
-        mSmartPulldown.setValue(String.valueOf(smartPulldown));
-        updateSmartPulldownSummary(smartPulldown);
-		
 		mStatusBarClockSeconds = (SwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
         mStatusBarClockSeconds.setChecked((Settings.System.getInt(
                 getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK_SECONDS, 0) == 1));
         mStatusBarClockSeconds.setOnPreferenceChangeListener(this);
 
-        mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
-        mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_CLOCK_AM_PM_STYLE);
-		mClockDateDisplay = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_DISPLAY);
-        mClockDateStyle = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_STYLE);
+        mStatusBarClock = (ListPreference) findPreference(STATUSBAR_CLOCK_STYLE);
+        mStatusBarAmPm = (ListPreference) findPreference(STATUSBAR_CLOCK_AM_PM_STYLE);
+		mClockDateDisplay = (ListPreference) findPreference(STATUSBAR_CLOCK_DATE_DISPLAY);
+        mClockDateStyle = (ListPreference) findPreference(STATUSBAR_CLOCK_DATE_STYLE);
 
         int clockStyle = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK_STYLE, 0);
+                Settings.System.STATUSBAR_CLOCK_STYLE, 0);
         mStatusBarClock.setValue(String.valueOf(clockStyle));
         mStatusBarClock.setSummary(mStatusBarClock.getEntry());
         mStatusBarClock.setOnPreferenceChangeListener(this);
@@ -120,25 +112,25 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
         } else {
             int statusBarAmPm = Settings.System.getInt(resolver,
-                    Settings.System.STATUS_BAR_CLOCK_AM_PM_STYLE, 2);
+                    Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, 2);
             mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntry());
             mStatusBarAmPm.setOnPreferenceChangeListener(this);
         }
 		
         int clockDateDisplay = Settings.System.getInt(resolver,
-                    Settings.System.STATUS_BAR_CLOCK_DATE_DISPLAY, 0);
+                    Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, 0);
         mClockDateDisplay.setValue(String.valueOf(clockDateDisplay));
         mClockDateDisplay.setSummary(mClockDateDisplay.getEntry());
         mClockDateDisplay.setOnPreferenceChangeListener(this);
 
         int clockDateStyle = Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK_DATE_STYLE, 0);
+                Settings.System.STATUSBAR_CLOCK_DATE_STYLE, 0);
         mClockDateStyle.setValue(String.valueOf(clockDateStyle));
         mClockDateStyle.setSummary(mClockDateStyle.getEntry());
         mClockDateStyle.setOnPreferenceChangeListener(this);
 
-        mClockDateFormat = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_FORMAT);
+        mClockDateFormat = (ListPreference) findPreference(STATUSBAR_CLOCK_DATE_FORMAT);
         mClockDateFormat.setOnPreferenceChangeListener(this);
         if (mClockDateFormat.getValue() == null) {
             mClockDateFormat.setValue("EEE");
@@ -166,7 +158,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             int clockStyle = Integer.parseInt((String) newValue);
             int index = mStatusBarClock.findIndexOfValue((String) newValue);
             Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_CLOCK_STYLE, clockStyle);
+                    resolver, Settings.System.STATUSBAR_CLOCK_STYLE, clockStyle);
             mStatusBarClock.setSummary(mStatusBarClock.getEntries()[index]);
 			if (clockStyle == 0) {
                 mClockDateDisplay.setEnabled(false);
@@ -180,11 +172,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
             return true;
-	    } else if (preference == mSmartPulldown) {
-            int smartPulldown = Integer.valueOf((String) newValue);
-            Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
-            updateSmartPulldownSummary(smartPulldown);
-            return true;
 		} else if (preference == mStatusBarClockSeconds) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK_SECONDS,
@@ -194,14 +181,14 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             int statusBarAmPm = Integer.valueOf((String) newValue);
             int index = mStatusBarAmPm.findIndexOfValue((String) newValue);
             Settings.System.putInt(
-                    resolver, Settings.System.STATUS_BAR_CLOCK_AM_PM_STYLE, statusBarAmPm);
+                    resolver, Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, statusBarAmPm);
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[index]);
             return true;
 		} else if (preference == mClockDateDisplay) {
             int clockDateDisplay = Integer.valueOf((String) newValue);
             int index = mClockDateDisplay.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_CLOCK_DATE_DISPLAY, clockDateDisplay);
+                    Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, clockDateDisplay);
             mClockDateDisplay.setSummary(mClockDateDisplay.getEntries()[index]);
             if (clockDateDisplay == 0) {
                 mClockDateStyle.setEnabled(false);
@@ -215,7 +202,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             int clockDateStyle = Integer.valueOf((String) newValue);
             int index = mClockDateStyle.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_CLOCK_DATE_STYLE, clockDateStyle);
+                    Settings.System.STATUSBAR_CLOCK_DATE_STYLE, clockDateStyle);
             mClockDateStyle.setSummary(mClockDateStyle.getEntries()[index]);
             parseClockDateFormats();
             return true;
@@ -230,7 +217,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                 final EditText input = new EditText(getActivity());
                 String oldText = Settings.System.getString(
                     getActivity().getContentResolver(),
-                    Settings.System.STATUS_BAR_CLOCK_DATE_FORMAT);
+                    Settings.System.STATUSBAR_CLOCK_DATE_FORMAT);
                 if (oldText != null) {
                     input.setText(oldText);
                 }
@@ -243,7 +230,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
                             return;
                         }
                         Settings.System.putString(getActivity().getContentResolver(),
-                            Settings.System.STATUS_BAR_CLOCK_DATE_FORMAT, value);
+                            Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, value);
 
                         return;
                     }
@@ -260,7 +247,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             } else {
                 if ((String) newValue != null) {
                     Settings.System.putString(getActivity().getContentResolver(),
-                        Settings.System.STATUS_BAR_CLOCK_DATE_FORMAT, (String) newValue);
+                        Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
             }
             return true;
@@ -277,7 +264,7 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
 
         int lastEntry = dateEntries.length - 1;
         int dateFormat = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUS_BAR_CLOCK_DATE_STYLE, 0);
+                .getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_STYLE, 0);
         for (int i = 0; i < dateEntries.length; i++) {
             if (i == lastEntry) {
                 parsedDateEntries[i] = dateEntries[i];
@@ -314,22 +301,6 @@ public class StatusbarSettings extends SettingsPreferenceFragment implements
             mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
         }
 	}
-	
-	private void updateSmartPulldownSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            // Smart pulldown deactivated
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_off));
-        } else if (value == 3) {
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_none_summary));
-        } else {
-            String type = res.getString(value == 1
-                    ? R.string.smart_pulldown_dismissable
-                    : R.string.smart_pulldown_ongoing);
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
-        }
-    }
 	
 	@Override
     protected int getMetricsCategory() {

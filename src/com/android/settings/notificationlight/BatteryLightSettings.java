@@ -32,7 +32,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.preferences.SystemSettingSwitchPreference;
+import com.android.settings.preference.SystemSettingSwitchPreference;
 
 public class BatteryLightSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {

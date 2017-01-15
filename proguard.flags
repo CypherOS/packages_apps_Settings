@@ -4,7 +4,7 @@
 -keep class com.android.settings.*Settings
 -keep class com.android.settings.wifi.*Settings
 -keep class com.android.settings.deviceinfo.*
--keep class com.android.settings.aoscp.*
+-keep class com.android.settings.aoscp.**
 -keep class com.android.settings.bluetooth.*
 -keep class com.android.settings.datausage.*
 -keep class com.android.settings.applications.*
