@@ -47,6 +47,7 @@
 		<!-- Software information -->
         <PreferenceScreen android:key="software_info"
                 android:title="@string/software_info_settings_title"
+				android:summary="@string/software_info_settings_title_summary"
                 android:fragment="com.android.settings.aoscp.deviceinfo.SoftwareInfo" />
 
         <!-- Feedback on the device -->

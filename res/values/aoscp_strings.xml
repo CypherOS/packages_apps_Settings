@@ -69,6 +69,7 @@
     <string name="qs_brightness_slider_summary">Show brightness slider on quick settings panel</string>
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
+	<string name="software_info_settings_title_summary">View information about the software</string>
 	<!-- Social category -->
     <string name="social_category_title">Social</string>
 	<string name="website_preference_title">On-The-Web</string>

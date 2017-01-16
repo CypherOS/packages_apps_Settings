@@ -86,7 +86,6 @@
 	
 	<!-- PowerMenu entries -->
     <string-array name="power_menu_actions_array" translatable="false">
-        <item>power</item>
         <item>reboot</item>
         <item>screenshot</item>
         <item>airplane</item>
@@ -95,6 +94,7 @@
         <item>lockdown</item>
         <item>assist</item>
         <item>voiceassist</item>
+		<item>bugreport</item>
         <item>silent</item>
     </string-array>
 	
@@ -118,9 +118,9 @@
     </string-array>
 
     <string-array name="status_bar_am_pm_entries" translatable="false">
-        <item>@string/status_bar_am_pm_normal</item>
-        <item>@string/status_bar_am_pm_small</item>
         <item>@string/status_bar_am_pm_hidden</item>
+		<item>@string/status_bar_am_pm_small</item>
+        <item>@string/status_bar_am_pm_normal</item>
     </string-array>
 
     <string-array name="status_bar_am_pm_values" translatable="false">
