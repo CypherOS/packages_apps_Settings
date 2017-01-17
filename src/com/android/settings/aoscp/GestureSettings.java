@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.preference;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -57,7 +58,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 
-    private List<GesturePreference> mPreferences;
+    private GesturePreference mPreferences;
 
     private AmbientDisplayConfiguration mAmbientConfig;
 
