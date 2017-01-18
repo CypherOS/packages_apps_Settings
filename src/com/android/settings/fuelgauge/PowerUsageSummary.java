@@ -68,17 +68,17 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final String KEY_BATTERY_HISTORY = "battery_history";
 
     private static final int MENU_STATS_TYPE = Menu.FIRST;
-    private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 1;
-    private static final int MENU_HELP = Menu.FIRST + 2;
+    private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 3;
+    private static final int MENU_HELP = Menu.FIRST + 4;
 
-    private static final int MENU_BATTERY_STYLE             = Menu.FIRST + 3;
-    private static final int SUBMENU_BATTERY_PORTRAIT       = Menu.FIRST + 4;
-    private static final int SUBMENU_BATTERY_AOSCP          = Menu.FIRST + 5;
-    private static final int SUBMENU_BATTERY_SOLID          = Menu.FIRST + 6;
-    private static final int SUBMENU_BATTERY_CIRCLE         = Menu.FIRST + 7;
-    private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 8;
-    private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 9;
-    private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 10;
+    private static final int MENU_BATTERY_STYLE             = Menu.FIRST + 5;
+    private static final int SUBMENU_BATTERY_PORTRAIT       = Menu.FIRST + 6;
+    private static final int SUBMENU_BATTERY_AOSCP          = Menu.FIRST + 7;
+    private static final int SUBMENU_BATTERY_SOLID          = Menu.FIRST + 8;
+    private static final int SUBMENU_BATTERY_CIRCLE         = Menu.FIRST + 9;
+    private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 10;
+    private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 11;
+    private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 12;
 
     private BatteryHistoryPreference mHistPref;
     private PreferenceGroup mAppListGroup;
