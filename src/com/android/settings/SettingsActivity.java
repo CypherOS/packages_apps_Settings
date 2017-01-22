@@ -107,7 +107,6 @@ import com.android.settings.location.LocationSettings;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.notification.AppNotificationSettings;
-import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.NotificationAccessSettings;
 import com.android.settings.notification.NotificationStation;
 import com.android.settings.notification.OtherSoundSettings;
@@ -345,7 +344,6 @@ public class SettingsActivity extends SettingsDrawerActivity
             PhysicalKeyboardFragment.class.getName(),
             ZenModeSettings.class.getName(),
             SoundSettings.class.getName(),
-            ConfigureNotificationSettings.class.getName(),
             ChooseLockPassword.ChooseLockPasswordFragment.class.getName(),
             ChooseLockPattern.ChooseLockPatternFragment.class.getName(),
             InstalledAppDetails.class.getName(),
