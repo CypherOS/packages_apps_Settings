@@ -71,7 +71,6 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.fuelgauge.HighPowerDetail;
 import com.android.settings.fuelgauge.PowerWhitelistBackend;
 import com.android.settings.notification.AppNotificationSettings;
-import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.NotificationBackend;
 import com.android.settings.notification.NotificationBackend.AppRow;
 import com.android.settingslib.HelpUtils;
@@ -580,17 +579,6 @@ public class ManageApplications extends InstrumentedFragment
                 break;
             case R.id.reset_app_preferences:
                 mResetAppsHelper.buildResetDialog();
-                return true;
-            case R.id.advanced:
-                if (mListType == LIST_TYPE_NOTIFICATION) {
-                    ((SettingsActivity) getActivity()).startPreferencePanel(
-                            ConfigureNotificationSettings.class.getName(), null,
-                            R.string.configure_notification_settings, null, this, ADVANCED_SETTINGS);
-                } else {
-                    ((SettingsActivity) getActivity()).startPreferencePanel(
-                            AdvancedAppSettings.class.getName(), null, R.string.configure_apps,
-                            null, this, ADVANCED_SETTINGS);
-                }
                 return true;
             default:
                 // Handle the home button

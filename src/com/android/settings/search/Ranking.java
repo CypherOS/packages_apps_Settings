@@ -42,7 +42,6 @@ import com.android.settings.gestures.GestureSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
-import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.OtherSoundSettings;
 import com.android.settings.notification.SoundSettings;
 import com.android.settings.notification.ZenModeAutomationSettings;
@@ -127,7 +126,6 @@ public final class Ranking {
         sRankMap.put(SoundSettings.class.getName(), RANK_SOUND);
 
         // Notifications
-        sRankMap.put(ConfigureNotificationSettings.class.getName(), RANK_NOTIFICATIONS);
         sRankMap.put(OtherSoundSettings.class.getName(), RANK_NOTIFICATIONS);
         sRankMap.put(ZenModeSettings.class.getName(), RANK_NOTIFICATIONS);
         sRankMap.put(ZenModePrioritySettings.class.getName(), RANK_NOTIFICATIONS);
