@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2016 The Android Open Source Project
+     Copyright (C) 2017 CypherOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,6 +19,17 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/gesture_preference_title"
     settings:keywords="@string/keywords_gesture">
+	
+	<SwitchPreference
+        android:key="tap_to_wake"
+        android:title="@string/tap_to_wake"
+        android:summary="@string/tap_to_wake_summary" />
+		
+	<Preference
+        android:key="gestures_split"
+        android:summary="@string/gesture_preference_title_split"
+        android:persistent="false"
+        android:selectable="false" />
 
     <com.android.settings.aoscp.GesturePreference
         android:key="gesture_swipe_down_fingerprint"

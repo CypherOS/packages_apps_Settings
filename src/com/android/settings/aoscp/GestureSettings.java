@@ -54,12 +54,15 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_DOUBLE_TWIST = "gesture_double_twist";
     private static final String PREF_KEY_PICK_UP = "gesture_pick_up";
     private static final String PREF_KEY_SWIPE_DOWN_FINGERPRINT = "gesture_swipe_down_fingerprint";
+	private static final String PREF_KEY_TAP_TO_WAKE = "tap_to_wake";
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 
     private List<GesturePreference> mPreferences;
 
     private AmbientDisplayConfiguration mAmbientConfig;
+	
+	private SwitchPreference mTapToWakePreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,6 +100,14 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             addPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT, isSystemUINavigationEnabled(context));
         } else {
             removePreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
+        }
+		
+		// Tap to wake
+		if (isTapToWakeAvailable(getResources())) {
+            mTapToWakePreference = (SwitchPreference) findPreference(PREF_KEY_TAP_TO_WAKE);
+            mTapToWakePreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(PREF_KEY_TAP_TO_WAKE);
         }
 
         // Double twist for camera mode
@@ -166,6 +177,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         } else if (PREF_KEY_SWIPE_DOWN_FINGERPRINT.equals(key)) {
             Secure.putInt(getContentResolver(),
                     Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, enabled ? 1 : 0);
+		} else if (preference == mTapToWakePreference) {
+            Secure.putInt(getContentResolver(), 
+			        Secure.DOUBLE_TAP_TO_WAKE, enabled ? 1 : 0);
         } else if (PREF_KEY_DOUBLE_TWIST.equals(key)) {
             Secure.putInt(getContentResolver(),
                     Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, enabled ? 1 : 0);
@@ -192,6 +206,10 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         return context.getResources().getBoolean(
                 com.android.internal.R.bool.config_supportSystemNavigationKeys);
     }
+	
+	private static boolean isTapToWakeAvailable(Resources res) {
+        return res.getBoolean(com.android.internal.R.bool.config_supportDoubleTapWake);
+    }
 
     private static boolean isSystemUINavigationEnabled(Context context) {
         return Secure.getInt(context.getContentResolver(), Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, 0)
@@ -217,6 +235,15 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             }
         }
         return false;
+    }
+	
+	private void updateState() {
+
+        // Update tap to wake if it is available.
+        if (mTapToWakePreference != null) {
+            int value = Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
+            mTapToWakePreference.setChecked(value != 0);
+        }
     }
 
     private void addPreference(String key, boolean enabled) {
@@ -258,6 +285,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                 if (!isSystemUINavigationAvailable(context)) {
                     result.add(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
                 }
+				if (!isTapToWakeAvailable(context.getResources())) {
+                    result.add(PREF_KEY_TAP_TO_WAKE);
+                    }
                 if (!isDoubleTwistAvailable(context)) {
                     result.add(PREF_KEY_DOUBLE_TWIST);
                 }
