@@ -152,7 +152,7 @@
 
         <activity android:name=".Settings$DeviceSettings"
             android:label="@string/header_category_device">
-            <intent-filter android:priority="3">
+            <intent-filter android:priority="2">
                 <action android:name="com.android.settings.category.device" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -1919,6 +1919,28 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.deviceinfo.ImeiInformation" />
         </activity>
+		
+		<!-- activity for gesture settings -->
+        <activity android:name="Settings$GestureSettingsActivity"
+                  android:label="@string/gesture_preference_title"
+                  android:icon="@drawable/ic_settings_gestures"
+				  android:taskAffinity="com.android.settings"
+                  android:enabled="@bool/config_gesture_settings_enabled"
+				  android:parentActivityName="Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <intent-filter android:priority="5">
+                <action android:name="com.android.settings.action.SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                       android:value="com.android.settings.category.device" />
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.gestures.GestureSettings" />
+            <meta-data android:name="com.android.settings.summary"
+                       android:resource="@string/gesture_preference_summary" />
+        </activity>
 
         <activity android:name="Settings$StorageSettingsActivity"
                 android:label="@string/storage_settings_title"
@@ -1935,7 +1957,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
             </intent-filter>
-            <intent-filter android:priority="5">
+            <intent-filter android:priority="4">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
@@ -2360,7 +2382,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
-            <intent-filter android:priority="4">
+            <intent-filter android:priority="3">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
@@ -2619,7 +2641,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:priority="2">
+            <intent-filter android:priority="1">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
             <meta-data android:name="com.android.settings.category"
@@ -3066,26 +3088,6 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
-        </activity>
-
-        <!-- activity for gesture settings -->
-        <activity android:name="Settings$GestureSettingsActivity"
-                  android:label="@string/gesture_preference_title"
-                  android:icon="@drawable/ic_settings_gestures"
-                  android:enabled="@bool/config_gesture_settings_enabled">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.android.settings.action.SETTINGS" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                       android:value="com.android.settings.category.device" />
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.android.settings.gestures.GestureSettings" />
-            <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/gesture_preference_summary" />
         </activity>
 
         <activity android:name="BackupSettingsActivity"

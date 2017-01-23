@@ -94,7 +94,7 @@ import com.android.settings.display.NightDisplaySettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageDetail;
 import com.android.settings.fuelgauge.PowerUsageSummary;
-import com.android.settings.gestures.GestureSettings;
+import com.android.settings.aoscp.GestureSettings;
 import com.android.settings.inputmethod.AvailableVirtualKeyboardFragment;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;

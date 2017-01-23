@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp;
 
 import android.content.ContentResolver;
 import android.content.Context;

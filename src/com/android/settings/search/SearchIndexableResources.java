@@ -45,7 +45,7 @@ import com.android.settings.deviceinfo.StorageSettings;
 import com.android.settings.display.ScreenZoomSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
-import com.android.settings.gestures.GestureSettings;
+import com.android.settings.aoscp.GestureSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
