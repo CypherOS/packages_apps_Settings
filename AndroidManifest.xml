@@ -1937,9 +1937,7 @@
             <meta-data android:name="com.android.settings.category"
                        android:value="com.android.settings.category.device" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.android.settings.aoscp.GestureSettings" />
-            <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/gesture_preference_summary" />
+                       android:value="com.android.settings.gestures.GestureSettings" />
         </activity>
 
         <activity android:name="Settings$StorageSettingsActivity"
