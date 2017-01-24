@@ -69,13 +69,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
                 R.array.power_menu_actions_array);
         mAllActions = PowerMenuConstants.getAllActions();
 
-        for (String action : mAllActions) {
-            // Remove preferences not present in the overlay
-            if (!isActionAllowed(action)) {
-                getPreferenceScreen().removePreference(findPreference(action));
-                continue;
-            }
-
             if (action.equals(GLOBAL_ACTION_KEY_RESTART)) {
                 mRebootPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_RESTART);
             } else if (action.equals(GLOBAL_ACTION_KEY_SCREENSHOT)) {
