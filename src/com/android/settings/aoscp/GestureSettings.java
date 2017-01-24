@@ -241,7 +241,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 
         // Update tap to wake if it is available.
         if (mTapToWakePreference != null) {
-            int value = Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
+            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
             mTapToWakePreference.setChecked(value != 0);
         }
     }
