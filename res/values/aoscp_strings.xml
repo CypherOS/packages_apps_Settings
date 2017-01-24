@@ -283,9 +283,12 @@
     <string name="smart_pulldown_dismissable">No dismissable</string>
     <string name="smart_pulldown_ongoing">No ongoing</string>
 	
-	<!-- double tap statusbar to sleep -->
+	<!-- Tap to Sleep -->
     <string name="double_tap_to_sleep_title">Tap to sleep</string>
     <string name="double_tap_to_sleep_summary">Double tap on the status bar to put the device to sleep</string>
+	<!-- Tap to Sleep Summary loaders -->
+	<string name="double_tap_to_sleep_on">Tap to sleep is ON</string>
+	<string name="double_tap_to_sleep_off">Tap to sleep is OFF</string>
 	
 	<!-- Three-fingers-swipe to screenshot -->
   	<string name="three_finger_gesture">Swipe to screenshot</string>

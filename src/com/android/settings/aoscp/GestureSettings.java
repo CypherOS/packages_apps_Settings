@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -43,6 +44,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.provider.Settings.System.DOUBLE_TAP_SLEEP_GESTURE;
 import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
 
 /**
@@ -262,6 +264,39 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         preference.setOnPreferenceChangeListener(this);
         mPreferences.add(preference);
     }
+	
+	private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+        private final Context mContext;
+        private final SummaryLoader mLoader;
+
+        private SummaryProvider(Context context, SummaryLoader loader) {
+            mContext = context;
+            mLoader = loader;
+        }
+
+        @Override
+        public void setListening(boolean listening) {
+            if (listening) {
+                updateSummary();
+            }
+        }
+
+        private void updateSummary() {
+            boolean tap = Settings.System.getInt(mContext.getContentResolver(),
+                    DOUBLE_TAP_SLEEP_GESTURE, 1) == 0;
+            mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_on
+                    : R.string.double_tap_to_sleep_off));
+        }
+    }
+
+    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+            = new SummaryLoader.SummaryProviderFactory() {
+        @Override
+        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
+                                                                   SummaryLoader summaryLoader) {
+            return new SummaryProvider(activity, summaryLoader);
+        }
+    };
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
         new BaseSearchIndexProvider() {
