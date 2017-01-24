@@ -167,7 +167,7 @@ public class PowerUsageSummary extends PowerUsageBase {
         batteryStyle.setGroupCheckable(1, true, true);
 
         MenuItem batteryIcon = batteryStyle.getItem();
-        batteryIcon.setIcon(R.drawable.ic_menu_battery)
+        batteryIcon.setIcon(R.drawable.ic_menu_brush)
                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         menu.add(0, MENU_HIGH_POWER_APPS, 0, R.string.high_power_apps);
