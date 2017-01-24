@@ -580,6 +580,12 @@ public class ManageApplications extends InstrumentedFragment
             case R.id.reset_app_preferences:
                 mResetAppsHelper.buildResetDialog();
                 return true;
+			case R.id.advanced:
+                if ((SettingsActivity) getActivity()).startPreferencePanel(
+                        AdvancedAppSettings.class.getName(), null, R.string.configure_apps,
+                        null, this, ADVANCED_SETTINGS);
+                }
+                return true;
             default:
                 // Handle the home button
                 return false;
