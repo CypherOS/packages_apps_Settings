@@ -24,6 +24,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
@@ -43,6 +44,10 @@ import java.util.List;
 public class QuickSettings extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "QuickSettings";
 	
+	private static final String PREF_SYSUI_QQS_COUNT = "sysui_qqs_count_key";
+	
+	private ListPreference mSysuiQqsCount;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements Indexab
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
+		mSysuiQqsCount = (ListPreference) findPreference(PREF_SYSUI_QQS_COUNT);
+        int SysuiQqsCount = Settings.Secure.getInt(resolver,
+               Settings.Secure.QQS_COUNT, 5);
+        mSysuiQqsCount.setValue(Integer.toString(SysuiQqsCount));
+        mSysuiQqsCount.setSummary(mSysuiQqsCount.getEntry());
+        mSysuiQqsCount.setOnPreferenceChangeListener(this);
+		
 		
 	}
 	
@@ -58,6 +70,21 @@ public class QuickSettings extends SettingsPreferenceFragment implements Indexab
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
     }
+	
+	@Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            ContentResolver resolver = getActivity().getContentResolver();
+            if (preference == mSysuiQqsCount) {
+                String SysuiQqsCount = (String) newValue;
+                int SysuiQqsCountValue = Integer.parseInt(SysuiQqsCount);
+                Settings.Secure.putInt(resolver,
+                        Settings.Secure.QQS_COUNT, SysuiQqsCountValue);
+                int SysuiQqsCountIndex = mSysuiQqsCount.findIndexOfValue(SysuiQqsCount);
+                mSysuiQqsCount.setSummary(mSysuiQqsCount.getEntries()[SysuiQqsCountIndex]);
+            return true;
+            }
+            return false;
+        }
 	
 	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
