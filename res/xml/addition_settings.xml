@@ -16,14 +16,10 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/addition_settings_title">
 		
-		<Preference
-                android:key="addition_settings_greeting"
+		<com.android.settings.fuelgauge.WallOfTextPreference
                 android:summary="@string/addition_settings_greeting"
-                android:persistent="false"
-                android:selectable="false" />
-				
-	<PreferenceCategory android:key="utils_category"
-	            android:title="@string/utils_category_title">
+                android:selectable="false"
+                settings:allowDividerBelow="true" />
 				
 		<!-- System settings -->
 		<PreferenceScreen
@@ -32,8 +28,6 @@
 				android:summary="@string/system_settings_title_summary"
                 android:fragment="com.android.settings.aoscp.fragments.SystemSettings"
                 android:icon="@drawable/ic_settings_system_settings" />
-				
-	</PreferenceCategory>
 	
 	<PreferenceCategory android:key="resource_category"
 	            android:title="@string/resource_category_title">
