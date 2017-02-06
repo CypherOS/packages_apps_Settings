@@ -239,8 +239,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     }
 
     private void updatePreferences() {
-        boolean bugreport = Settings.Secure.getInt(getContentResolver(),
-            Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0;
+        boolean bugreport = Settings.Global.getInt(getContentResolver(),
+            Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0;
 
         if (mBugReportPref != null) {
             mBugReportPref.setEnabled(bugreport);
@@ -255,8 +255,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     private void getUserConfig() {
         mLocalUserConfig.clear();
         String[] defaultActions;
-        String savedActions = Settings.Secure.getStringForUser(mContext.getContentResolver(),
-            Settings.Secure.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
+        String savedActions = Settings.Global.getStringForUser(mContext.getContentResolver(),
+            Settings.Global.POWER_MENU_ACTIONS, UserHandle.USER_CURRENT);
 
         if (savedActions == null) {
             defaultActions = mContext.getResources().getStringArray(
@@ -291,8 +291,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             }
         }
 
-        Settings.Secure.putStringForUser(getContentResolver(),
-            Settings.Secure.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
+        Settings.Global.putStringForUser(getContentResolver(),
+            Settings.Global.POWER_MENU_ACTIONS, s.toString(), UserHandle.USER_CURRENT);
         updatePowerMenuDialog();
     }
 
