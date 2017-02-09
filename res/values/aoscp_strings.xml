@@ -396,5 +396,9 @@
    <!-- One handed mode -->
    <string name="one_handed_mode_title">One-handed mode</string>
    <string name="one_handed_mode_summary">Swiping on the navigation bar will allow you to access one handed  mode</string>
+   
+   <!-- Navbar Animation -->
+   <string name="pixel_navbar_anim_title">Home button animation</string>
+   <string name="pixel_navbar_anim_summary">When the home button is pressed a brief animation will be played</string>
  
 </resources>
