@@ -392,5 +392,9 @@
    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
    <string name="network_traffic_hidearrow">Hide arrows</string>
    <string name="network_traffic_hidearrow_summary">Hide the arrows in the traffic indicator</string>
+   
+   <!-- One handed mode -->
+   <string name="one_handed_mode_title">One-handed mode</string>
+   <string name="one_handed_mode_summary">Swiping on the navigation bar will allow you to access one handed  mode</string>
  
 </resources>

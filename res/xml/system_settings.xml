@@ -36,5 +36,11 @@
                 android:title="@string/powermenu_settings_title"
 				android:summary="@string/powermenu_settings_title_summary"
                 android:fragment="com.android.settings.aoscp.fragments.PowerMenuSettings" />
+				
+		<com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="one_handed_mode_ui"
+                android:title="@string/one_handed_mode_title"
+                android:summary="@string/one_handed_mode_summary"
+                android:defaultValue="false" />
 		
 </PreferenceScreen>
