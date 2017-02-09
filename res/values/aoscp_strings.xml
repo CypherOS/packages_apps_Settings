@@ -348,5 +348,14 @@
     <string name="heads_up_snooze_10min">10 minutes</string>
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
+   
+   <!-- Advanced night mode brightness -->
+   <string name="night_brightness_category">Brightness</string>
+   <string name="night_brightness_value_title">Night Light brightness</string>
+   <string name="night_brightness_text">When Night Light is enabled automatically set the desired brightness. The default brightness is set to low brightness</string>
+   <string name="night_bright_disabled">Disabled</string>
+   <string name="night_bright_min">Minimum brightness</string>
+   <string name="night_bright_low">Low brightness</string>
+   <string name="night_bright_medium">Medium brightness</string>
  
 </resources>
