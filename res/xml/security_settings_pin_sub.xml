@@ -46,6 +46,11 @@
                 android:title="@string/double_tap_sleep_anywhere_title"
                 android:summary="@string/double_tap_sleep_anywhere_summary"
                 android:defaultValue="false" />
+				
+		<com.android.settings.preference.SystemSettingSwitchPreference
+                android:key="lockscreen_scramble_pin_layout"
+                android:title="@string/unlock_scramble_pin_layout_title"
+                android:summary="@string/unlock_scramble_pin_layout_summary" />
 
 
 </PreferenceScreen>
