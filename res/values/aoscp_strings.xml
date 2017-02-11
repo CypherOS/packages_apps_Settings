@@ -481,5 +481,9 @@
     <string name="volume_keys_control_ring_stream_title">Control ringtone volume</string>
     <string name="volume_keys_control_ring_stream_summary_on">Volume keys control ringtone volume</string>
     <string name="volume_keys_control_ring_stream_summary_off">Volume keys control media volume</string>
+	
+	<!-- PIN scramble -->
+    <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
+    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
  
 </resources>
