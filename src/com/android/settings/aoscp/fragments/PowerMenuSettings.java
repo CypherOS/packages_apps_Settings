@@ -42,7 +42,6 @@ import java.util.List;
 
 public class PowerMenuSettings extends SettingsPreferenceFragment {
 
-    private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
     private SwitchPreference mAirplanePref;
     private SwitchPreference mUsersPref;
@@ -71,9 +70,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
       
         for (String action : mAllActions) {
 
-            if (action.equals(GLOBAL_ACTION_KEY_RESTART)) {
-                mRebootPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_RESTART);
-            } else if (action.equals(GLOBAL_ACTION_KEY_SCREENSHOT)) {
+            if (action.equals(GLOBAL_ACTION_KEY_SCREENSHOT)) {
                 mScreenshotPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_SCREENSHOT);
             } else if (action.equals(GLOBAL_ACTION_KEY_AIRPLANE)) {
                 mAirplanePref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_AIRPLANE);
@@ -105,10 +102,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     @Override
     public void onStart() {
         super.onStart();
-
-        if (mRebootPref != null) {
-            mRebootPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_RESTART));
-        }
 
         if (mScreenshotPref != null) {
             mScreenshotPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SCREENSHOT));
@@ -168,11 +161,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     public boolean onPreferenceTreeClick(Preference preference) {
         boolean value;
 
-        if (preference == mRebootPref) {
-            value = mRebootPref.isChecked();
-            updateUserConfig(value, GLOBAL_ACTION_KEY_RESTART);
-
-        } else if (preference == mScreenshotPref) {
+        if (preference == mScreenshotPref) {
             value = mScreenshotPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_SCREENSHOT);
 
