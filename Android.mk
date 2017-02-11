@@ -20,7 +20,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-appcompat \
     android-support-v14-preference \
     jsr305 \
-    settings-logtags
+    settings-logtags \
+	aoscp-framework
 
 LOCAL_MODULE_TAGS := optional
 
@@ -32,7 +33,8 @@ LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     frameworks/support/v7/preference/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \
-    frameworks/support/v7/recyclerview/res
+    frameworks/support/v7/recyclerview/res \
+	external/aoscp-framework/res
 
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform
