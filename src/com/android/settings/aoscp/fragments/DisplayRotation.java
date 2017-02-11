@@ -98,6 +98,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         mRotation90Pref.setOnPreferenceChangeListener(this);
         mRotation180Pref.setOnPreferenceChangeListener(this);
         mRotation270Pref.setOnPreferenceChangeListener(this);
+		mLockScreenRotationPref.setOnPreferenceChangeListener(this);
 	}
 
     @Override
