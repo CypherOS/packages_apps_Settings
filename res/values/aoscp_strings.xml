@@ -412,9 +412,11 @@
    <string name="night_bright_medium">Medium brightness</string>
    
    <!-- Button settings -->
-	<string name="button_settings_title">Buttons</string>
-	<string name="button_settings_title_summary">Get the most out of your hardware keys with various custom button actions</string>
-	<!-- Button settings -->
+   <string name="hardware_category_title">Hardware</string>
+   <string name="button_settings_title">Buttons</string>
+   <string name="button_settings_title_summary">Get the most out of your hardware keys with various custom button actions</string>
+   
+   <!-- Button settings -->
     <string name="button_pref_title">Buttons</string>
     <string name="hardware_keys_power_key_title">Power button</string>
     <string name="hardware_keys_home_key_title">Home button</string>
