@@ -79,7 +79,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_APPSWITCH = "app_switch_key";
     private static final String CATEGORY_VOLUME = "volume_keys";
     private static final String CATEGORY_BACKLIGHT = "key_backlight";
-    private static final String CATEGORY_NAVBAR = "navigation_bar_category";
 	
 	// Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -115,8 +114,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeMusicControls;
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mPowerEndCall;
-
-    private PreferenceCategory mNavigationPreferencesCat;
 
     private Handler mHandler;
 	
@@ -174,8 +171,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Force Navigation bar related options
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
 
-        mNavigationPreferencesCat = (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
-
         final HardwareManager hardware = HardwareManager.getInstance(getActivity());
 
         // Only visible on devices that does not have a navigation bar already,
@@ -193,7 +188,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
-                mNavigationPreferencesCat.setEnabled(mEnableNavigationBar.isChecked());
                 updateDisableNavkeysCategories(mEnableNavigationBar.isChecked());
             }
         } else {
@@ -328,12 +322,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
-
-            if (!hasNavBar && (needsNavigationBar ||
-                    !hardware.isSupported(HardwareManager.FEATURE_KEY_DISABLE))) {
-                    // Hide navigation bar category
-                    prefScreen.removePreference(mNavigationPreferencesCat);
-            }
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
         }
@@ -509,7 +497,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mEnableNavigationBar) {
             mEnableNavigationBar.setEnabled(false);
-            mNavigationPreferencesCat.setEnabled(false);
             writeDisableNavkeysOption(getActivity(), mEnableNavigationBar.isChecked());
             updateDisableNavkeysOption();
             updateDisableNavkeysCategories(true);
@@ -517,7 +504,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 @Override
                 public void run() {
                     mEnableNavigationBar.setEnabled(true);
-                    mNavigationPreferencesCat.setEnabled(mEnableNavigationBar.isChecked());
                     updateDisableNavkeysCategories(mEnableNavigationBar.isChecked());
                 }
             }, 1000);
