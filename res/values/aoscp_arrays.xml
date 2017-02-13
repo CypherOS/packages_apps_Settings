@@ -228,7 +228,7 @@
 	
 	<!-- Smart pulldown -->
     <string-array name="smart_pulldown_entries" translatable="false">
-        <item>@string/smart_pulldown_off</item>
+        <item>@string/smart_pulldown_off_dialog</item>
         <item>@string/smart_pulldown_dismissable</item>
         <item>@string/smart_pulldown_ongoing</item>
         <item>@string/smart_pulldown_none</item>

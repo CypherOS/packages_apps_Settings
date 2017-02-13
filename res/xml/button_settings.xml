@@ -26,7 +26,7 @@
         android:persistent="false"
         android:selectable="false" />
 
-    <com.android.settings.aoscp.preference.ButtonBacklightBrightness
+    <com.android.settings.aoscp.fragments.ButtonBacklightBrightness
         android:key="button_backlight"
         android:title="@string/button_backlight_title"
         android:dialogTitle="@string/button_backlight_title"
