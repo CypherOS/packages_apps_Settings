@@ -365,8 +365,8 @@
    <string name="carrier_label_settings_title">Network name</string>
    <string name="carrier_label_settings_summary">Create your own network name in replace of your default carrier network</string>
    <string name="custom_carrier_label_title">Custom name</string>
-   <string name="custom_carrier_label_explain">Please enter a new name. Leave it blank to revert to stock network name.</string>
-   <string name="custom_carrier_label_notset">Custom network name is currentlt not set</string>
+   <string name="custom_carrier_label_notset">Custom network name is currently not set</string>
+   <string name="carrierlabel_edit_text_hint">E.g., Fi Network</string>
    <string name="show_carrier_title">Network name</string>
    <string name="show_carrier_disabled">Disabled</string>
    <string name="show_carrier_keyguard">Lockscreen</string>
