@@ -38,12 +38,12 @@ import com.android.settings.SettingsPreferenceFragment;
 public class CarrierLabel extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
-    private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
-    private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+    private static final String KEY_CARRIER_SHOW =  "status_bar_show_carrier";
+	private static final String KEY_CARRIER_INPUT = "custom_carrier_label";
 
-    private PreferenceScreen mCustomCarrierLabel;
+    private PreferenceScreen mCustomInput;
     private ListPreference mShowCarrierLabel;
-    private String mCustomCarrierLabelText;
+    private String mCustomInputText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,13 +54,40 @@ public class CarrierLabel extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
-        mShowCarrierLabel = (ListPreference) findPreference(SHOW_CARRIER_LABEL);
+        mShowCarrierLabel = (ListPreference) findPreference(KEY_CARRIER_SHOW);
         int showCarrierLabel = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_SHOW_CARRIER, 1);
         mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
-		mCustomCarrierLabel = (PreferenceScreen) prefSet.findPreference(CUSTOM_CARRIER_LABEL);
+		
+		createDynamicPreference();
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+        createDynamicPreference();
+		updateInputSummary();
+    }
+
+    private void createDynamicPreference() {
+        mCustomInput = (EditTextPreference) findPreference(KEY_CARRIER_INPUT);
+			
+        if (mShowCarrierLabel != Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SHOW_CARRIER, 0) {
+            mCustomInput.setEnabled(false);
+        } else {
+			if (mCustomInput.setEnabled(true)) {
+                mCustomInput.setOnPreferenceClickListener(
+                      new OnPreferenceClickListener() {
+                          @Override
+                          public boolean onPreferenceClick(Preference preference) {
+                              CarrierLabelDialog.show(CarrierLabel.this);
+                              return true;
+                          }
+                      });
+            }
+        }
     }
 
     @Override
@@ -68,14 +95,14 @@ public class CarrierLabel extends SettingsPreferenceFragment
         return MetricsEvent.ADDITIONS;
     }
 
-    private void updateCustomLabelTextSummary() {
-        mCustomCarrierLabelText = Settings.System.getString(
-            getContentResolver(), Settings.System.CUSTOM_CARRIER_LABEL);
+    private void updateInputSummary() {
+        mCustomInputText = Settings.System.getString(
+            getContentResolver(), Settings.System.KEY_CARRIER_INPUT);
 
-        if (TextUtils.isEmpty(mCustomCarrierLabelText)) {
-            mCustomCarrierLabel.setSummary(R.string.custom_carrier_label_notset);
+        if (TextUtils.isEmpty(mCustomInputText)) {
+            mCustomInput.setSummary(R.string.custom_carrier_label_notset);
         } else {
-            mCustomCarrierLabel.setSummary(mCustomCarrierLabelText);
+            mCustomInput.setSummary(mCustomInputText);
         }
     }
 
@@ -90,35 +117,5 @@ public class CarrierLabel extends SettingsPreferenceFragment
             return true;
          }
          return false;
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        ContentResolver resolver = getActivity().getContentResolver();
-        if (preference.getKey().equals(CUSTOM_CARRIER_LABEL)) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-            alert.setTitle(R.string.custom_carrier_label_title);
-            alert.setMessage(R.string.custom_carrier_label_explain);
-
-            // Set an EditText view to get user input
-            final EditText input = new EditText(getActivity());
-            input.setText(TextUtils.isEmpty(mCustomCarrierLabelText) ? "" : mCustomCarrierLabelText);
-            input.setSelection(input.getText().length());
-            alert.setView(input);
-            alert.setPositiveButton(getString(android.R.string.ok),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            String value = ((Spannable) input.getText()).toString().trim();
-                            Settings.System.putString(resolver, Settings.System.CUSTOM_CARRIER_LABEL, value);
-                            updateCustomLabelTextSummary();
-                            Intent i = new Intent();
-                            i.setAction(Intent.ACTION_CUSTOM_CARRIER_LABEL_CHANGED);
-                            getActivity().sendBroadcast(i);
-                }
-            });
-            alert.setNegativeButton(getString(android.R.string.cancel), null);
-            alert.show();
-        }
-        return super.onPreferenceTreeClick(preference);
     }
 }
