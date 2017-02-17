@@ -386,6 +386,8 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 		  menu.add(Menu.NONE, MENU_ADVANCED, Menu.NONE, R.string.storage_menu_advanced)
   		      .setIcon(R.drawable.ic_menu_connection)
  			  .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+			  
+		  inflater.inflate(R.menu.storage_volume, menu);
 		
           super.onCreateOptionsMenu(menu, inflater);
       }
