@@ -42,6 +42,7 @@ import android.view.accessibility.AccessibilityManager;
 
 import com.android.internal.content.PackageMonitor;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.DialogCreatable;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -595,6 +596,38 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 0 /* default */, UserHandle.USER_CURRENT) == 1;
         mToggleMasterMonoPreference.setChecked(masterMono);
     }
+	
+	private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+        private final Context mContext;
+        private final SummaryLoader mLoader;
+
+        private SummaryProvider(Context context, SummaryLoader loader) {
+            mContext = context;
+            mLoader = loader;
+        }
+
+        @Override
+        public void setListening(boolean listening) {
+            if (listening) {
+                updateSummary();
+            }
+        }
+		
+        private void updateSummary() {
+            if (mServicesCategory.getPreferenceCount() == 0) {
+                mLoader.setSummary(this, mContext.getString(R.string.accessibility_no_services_installed));
+			}
+        }
+    }
+
+    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+            = new SummaryLoader.SummaryProviderFactory() {
+        @Override
+        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
+                                                                   SummaryLoader summaryLoader) {
+            return new SummaryProvider(activity, summaryLoader);
+        }
+    };
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
