@@ -140,6 +140,8 @@
 	<!-- ADB debugging notifications -->
     <string name="enable_adb_custom">Android debugging</string>
     <string name="enable_adb_summary_custom">Enable the Android Debug Bridge (adb) interface</string>
+	<string name="enable_adb_on_custom">Android debugging is ON</string>
+	<string name="enable_adb_off_custom">Android debugging is OFF</string>
     <string name="adb_notify">ADB notification</string>
     <string name="adb_notify_summary">Display a notification when android debugging is enabled</string>
 	<string name="adb_over_network">ADB over network</string>
