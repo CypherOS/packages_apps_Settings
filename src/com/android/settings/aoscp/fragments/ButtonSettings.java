@@ -66,6 +66,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 	private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
+	private static final String NAVIGATION_BAR_NOTICE = "nav_bar_notice";
     private static final String KEY_POWER_END_CALL = "power_end_call";
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
     private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
@@ -114,6 +115,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeMusicControls;
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mPowerEndCall;
+	
+	private Preference mNavigationBarNotice;
 
     private Handler mHandler;
 	
@@ -170,6 +173,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         // Force Navigation bar related options
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
+		
+        mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);
 
         final HardwareManager hardware = HardwareManager.getInstance(getActivity());
 
@@ -185,6 +190,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
             if (needsNavigationBar) {
                 prefScreen.removePreference(mEnableNavigationBar);
+				prefScreen.removePreference(mNavigationBarNotice);
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
@@ -192,6 +198,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             }
         } else {
             prefScreen.removePreference(mEnableNavigationBar);
+			prefScreen.removePreference(mNavigationBarNotice);
         }
 
         if (hasPowerKey) {
