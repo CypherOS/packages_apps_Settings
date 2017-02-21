@@ -64,14 +64,6 @@
                 android:summary="@string/screen_timeout_summary"
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
-				
-		<PreferenceScreen
-               android:title="@string/navbar_tuner_title"
-               android:summary="@string/navbar_tuner_summary" >
-            <intent android:action="android.intent.action.MAIN"
-               android:targetPackage="com.android.systemui"
-               android:targetClass="com.android.systemui.tuner.NavbarActivity" />
-        </PreferenceScreen>
 
         <SwitchPreference
                 android:key="camera_gesture"

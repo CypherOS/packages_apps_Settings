@@ -31,6 +31,14 @@
         android:title="@string/button_backlight_title"
         android:dialogTitle="@string/button_backlight_title"
         android:persistent="false" />
+		
+	<PreferenceScreen
+            android:title="@string/navbar_tuner_title"
+            android:summary="@string/navbar_tuner_summary">
+         <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            ndroid:targetClass="com.android.systemui.tuner.NavbarActivity" />
+    </PreferenceScreen>
 
     <PreferenceCategory
         android:key="power_key"

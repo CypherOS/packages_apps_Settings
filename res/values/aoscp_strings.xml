@@ -240,7 +240,7 @@
     <string name="quick_pulldown_always">Always</string>
 	
 	<!-- Navbar tuner -->
-    <string name="navbar_tuner_title">Navbar tuner</string>
+    <string name="navbar_tuner_title">Navigation tuner</string>
     <string name="navbar_tuner_summary">Rearrange and extend the layout of buttons of the navigation bar</string>
 	
 	<!-- Notification/Battery lights -->
