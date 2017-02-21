@@ -16,38 +16,37 @@
 
 package com.android.settings.aoscp.fragments;
 
-import android.content.Context;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
-import android.provider.Settings;
 
 import com.android.internal.view.RotationPolicy;
-import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 public class DisplayRotation extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "DisplayRotation";
 
     private static final String KEY_ACCELEROMETER = "accelerometer";
-	private static final String LOCKSCREEN_ROTATION = "lockscreen_rotation";
+    private static final String LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String ROTATION_0_PREF = "display_rotation_0";
     private static final String ROTATION_90_PREF = "display_rotation_90";
     private static final String ROTATION_180_PREF = "display_rotation_180";
     private static final String ROTATION_270_PREF = "display_rotation_270";
 
     private SwitchPreference mAccelerometer;
-	private SwitchPreference mLockScreenRotationPref;
-    private SwitchPreference mRotation0Pref;
-    private SwitchPreference mRotation90Pref;
-    private SwitchPreference mRotation180Pref;
-    private SwitchPreference mRotation270Pref;
+    private SwitchPreference mLockScreenRotationPref;
+    private CheckBoxPreference mRotation0Pref;
+    private CheckBoxPreference mRotation90Pref;
+    private CheckBoxPreference mRotation180Pref;
+    private CheckBoxPreference mRotation270Pref;
 
     public static final int ROTATION_0_MODE = 1;
     public static final int ROTATION_90_MODE = 2;
@@ -57,33 +56,31 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     private ContentObserver mAccelerometerRotationObserver = new ContentObserver(new Handler()) {
         @Override
         public void onChange(boolean selfChange) {
-            updateAccelerometerRotationCheckbox();
+            updateAccelerometerRotationSwitch();
         }
     };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.display_rotation);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
         mAccelerometer = (SwitchPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
-		mAccelerometer.setOnPreferenceChangeListener(this);
 
-		mLockScreenRotationPref = (SwitchPreference) prefSet.findPreference(LOCKSCREEN_ROTATION);
-        mRotation0Pref = (SwitchPreference) prefSet.findPreference(ROTATION_0_PREF);
-        mRotation90Pref = (SwitchPreference) prefSet.findPreference(ROTATION_90_PREF);
-        mRotation180Pref = (SwitchPreference) prefSet.findPreference(ROTATION_180_PREF);
-        mRotation270Pref = (SwitchPreference) prefSet.findPreference(ROTATION_270_PREF);
+        mLockScreenRotationPref = (SwitchPreference) prefSet.findPreference(LOCKSCREEN_ROTATION);
+        mRotation0Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_0_PREF);
+        mRotation90Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_90_PREF);
+        mRotation180Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_180_PREF);
+        mRotation270Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_270_PREF);
 
         int mode = Settings.System.getInt(getContentResolver(),
                         Settings.System.ACCELEROMETER_ROTATION_ANGLES,
                         ROTATION_0_MODE|ROTATION_90_MODE|ROTATION_270_MODE);
-						
-		boolean configEnableLockRotation = getResources().
+
+        boolean configEnableLockRotation = getResources().
                         getBoolean(com.android.internal.R.bool.config_enableLockScreenRotation);
         Boolean lockScreenRotationEnabled = Settings.System.getInt(getContentResolver(),
                         Settings.System.LOCKSCREEN_ROTATION, configEnableLockRotation ? 1 : 0) != 0;
@@ -92,14 +89,13 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         mRotation90Pref.setChecked((mode & ROTATION_90_MODE) != 0);
         mRotation180Pref.setChecked((mode & ROTATION_180_MODE) != 0);
         mRotation270Pref.setChecked((mode & ROTATION_270_MODE) != 0);
-		mLockScreenRotationPref.setChecked(lockScreenRotationEnabled);
-	
-	    mRotation0Pref.setOnPreferenceChangeListener(this);
-        mRotation90Pref.setOnPreferenceChangeListener(this);
-        mRotation180Pref.setOnPreferenceChangeListener(this);
-        mRotation270Pref.setOnPreferenceChangeListener(this);
-		mLockScreenRotationPref.setOnPreferenceChangeListener(this);
-	}
+        mLockScreenRotationPref.setChecked(lockScreenRotationEnabled);
+    }
+
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsEvent.ADDITIONS;
+    }
 
     @Override
     public void onResume() {
@@ -119,59 +115,50 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
     }
 
     private void updateState() {
-        updateAccelerometerRotationCheckbox();
+        updateAccelerometerRotationSwitch();
     }
 
-    private void updateAccelerometerRotationCheckbox() {
+    private void updateAccelerometerRotationSwitch() {
         mAccelerometer.setChecked(!RotationPolicy.isRotationLocked(getActivity()));
+        mAccelerometer.setEnabled(RotationPolicy.isRotationLockToggleVisible(getActivity()));
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-		boolean value;
-		
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return false;
+    }
+
+    public boolean onPreferenceTreeClick(Preference preference) {
+        boolean value;
+
         if (preference == mAccelerometer) {
-            RotationPolicy.setRotationLockForAccessibility(getActivity(),
-                !((Boolean) objValue));
+            RotationPolicy.setRotationLock(getActivity(), !mAccelerometer.isChecked());
+            return true;
         } else if (preference == mRotation0Pref ||
                 preference == mRotation90Pref ||
                 preference == mRotation180Pref ||
                 preference == mRotation270Pref) {
             int mode = 0;
-            if (preference == mRotation0Pref && ((Boolean) objValue)
-                    || preference != mRotation0Pref && mRotation0Pref.isChecked()) {
+            if (mRotation0Pref.isChecked())
                 mode |= ROTATION_0_MODE;
-            }
-            if (preference == mRotation90Pref && ((Boolean) objValue)
-                    || preference != mRotation90Pref && mRotation90Pref.isChecked()) {
+            if (mRotation90Pref.isChecked())
                 mode |= ROTATION_90_MODE;
-            }
-            if (preference == mRotation180Pref && ((Boolean) objValue)
-                    || preference != mRotation180Pref && mRotation180Pref.isChecked()) {
+            if (mRotation180Pref.isChecked())
                 mode |= ROTATION_180_MODE;
-            }
-            if (preference == mRotation270Pref && ((Boolean) objValue)
-                    || preference != mRotation270Pref && mRotation270Pref.isChecked()) {
+            if (mRotation270Pref.isChecked())
                 mode |= ROTATION_270_MODE;
-		    }
             if (mode == 0) {
                 mode |= ROTATION_0_MODE;
                 mRotation0Pref.setChecked(true);
             }
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+            Settings.System.putInt(getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATION_ANGLES, mode);
             return true;
-		} else if (preference == mLockScreenRotationPref) {
+        } else if (preference == mLockScreenRotationPref) {
             value = mLockScreenRotationPref.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_ROTATION, value ? 1 : 0);
             return true;
         }
-        return false;
-    }
-
-    @Override
-    protected int getMetricsCategory() {
-        return InstrumentedFragment.ROTATION;
+        return super.onPreferenceTreeClick(preference);
     }
 }
