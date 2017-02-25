@@ -145,6 +145,7 @@
 
    <!--Display : Rotation -->
    <string name="display_rotation_title">Rotazione</string>
+   <string name="display_lockscreen_rotation_title">Ruota schermata di blocco</string>
    <string name="display_rotation_disabled">Disabilitata</string>
    <string name="display_rotation_unit">Gradi</string>
    <string name="display_rotation_category_title">Modalità rotazione</string>
@@ -223,21 +224,21 @@
    <string name="clock_date_string_edittext_summary">Inserire una stringa</string>
 
    <!--Status bar quick qs pulldown -->
-   <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
-   <string name="status_bar_quick_qs_pulldown_summary">Drag down the right edge of the statusbar to reveal quick settings</string>
+   <string name="status_bar_quick_qs_pulldown_title">Discesa rapida</string>
+   <string name="status_bar_quick_qs_pulldown_summary">Il bordo destro della barra di stato tira giù le impostazioni rapide</string>
 
    <!--Quick pull down-->
-   <string name="quick_pulldown_title">Quick pulldown</string>
-   <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
-   <string name="quick_pulldown_summary_always">Always show Quick Settings on status bar pulldown</string>
+   <string name="quick_pulldown_title">Discesa rapida</string>
+   <string name="quick_pulldown_summary">Il bordo %1$s della barra di stato tira giù le impostazioni rapide</string>
+   <string name="quick_pulldown_summary_always">Mostra sempre le impostazioni rapide sulla barra di stato</string>
    <string name="quick_pulldown_off">Off</string>
-   <string name="quick_pulldown_left">Left</string>
-   <string name="quick_pulldown_right">Right</string>
-   <string name="quick_pulldown_always">Always</string>
+   <string name="quick_pulldown_left">Sinistra</string>
+   <string name="quick_pulldown_right">Destra</string>
+   <string name="quick_pulldown_always">Sempre</string>
 
    <!--Navbar tuner -->
-   <string name="status_bar_quick_qs_pulldown_title">Discesa rapida</string>
-   <string name="status_bar_quick_qs_pulldown_summary">Lato destro della barra di stato tira giù le impostazioni rapide</string>
+   <string name="navbar_tuner_title">Sintonizzatore di navigazione</string>
+   <string name="navbar_tuner_summary">Riorganizza ed estendi la disposizione dei pulsanti della barra di navigazione</string>
 
    <!--Notification/Battery lights -->
    <string name="edit_light_settings">Modifica le impostazioni di luce</string>
@@ -289,7 +290,8 @@
    <string name="smart_pulldown_none_summary">Apri le impostazioni rapide quando non ci sono notifiche presenti</string>
    <string name="smart_pulldown_dismissable_summary">Apri le impostazioni rapide quando ci sono notifiche rimovibili</string>
    <string name="smart_pulldown_ongoing_summary">Apri le impostazioni rapide quando non ci sono notifiche in corso</string>
-   <string name="smart_pulldown_off">Spenta</string>
+   <string name="smart_pulldown_off">La discesa intelligente è attualmente disabilitata e sono in uso le funzionalità stock</string>
+   <string name="smart_pulldown_off_dialog">Spenta</string>
    <string name="smart_pulldown_none">Nessuna notifica</string>
    <string name="smart_pulldown_dismissable">Nessuna rimovibile</string>
    <string name="smart_pulldown_ongoing">Nessuna in corso</string>
@@ -390,5 +392,98 @@
    <string name="network_traffic_autohide_threshold">Soglia di inattività</string>
    <string name="network_traffic_hidearrow">Nascondi frecce</string>
    <string name="network_traffic_hidearrow_summary">Nascondi le frecce degli indicatori di traffico</string>
+  
+   <string name="one_handed_mode_title">Modalità una mano</string>
+   <string name="one_handed_mode_summary">Consente di attivare la modalità una mano strisciando sulla barra di navigazione</string>
+   
+   <!-- Navbar Animation -->
+   <string name="pixel_navbar_anim_title">Animazione pulsante Home</string>
+   <string name="pixel_navbar_anim_summary">Quando viene premuto il tasto home si attiverà una breve animazione</string>
+ 
+  <!-- Advanced night mode brightness -->
+   <string name="night_brightness_category">Luminosità</string>
+   <string name="night_brightness_value_title">Luminosità della luce di notte</string>
+   <string name="night_brightness_text">Quando la luce notturna è attivata automaticamente viene imposta la luminosità desiderata. La luminosità predefinita è impostata sulla bassa luminosità</string>
+   <string name="night_bright_disabled">Disabilitato</string>
+   <string name="night_bright_min">Luminosità minima</string>
+   <string name="night_bright_low">Luminosità bassa</string>
+   <string name="night_bright_medium">Luminosità media</string>
+   
+   <!-- Button settings -->
+   <string name="hardware_category_title">Hardware</string>
+   <string name="button_settings_title">Pulsanti</string>
+   <string name="button_settings_title_summary">Ottieni il massimo dai vostri tasti hardware con varie azioni sui pulsanti personalizzati</string>
+   
+   <!-- Button settings -->
+    <string name="button_pref_title">Buttons</string>
+    <string name="hardware_keys_power_key_title">Pulsante alimentazione</string>
+    <string name="hardware_keys_home_key_title">Pulsante home</string>
+    <string name="hardware_keys_back_key_title">Back</string>
+    <string name="hardware_keys_menu_key_title">Pulsante menù</string>
+    <string name="hardware_keys_assist_key_title">Pulsante cerca</string>
+    <string name="hardware_keys_appswitch_key_title">Recenti</string>
+    <string name="hardware_keys_camera_key_title">Camera</string>
+    <string name="hardware_keys_volume_keys_title">Volume</string>
+    <string name="hardware_keys_short_press_title">Azione pressione breve</string>
+    <string name="hardware_keys_long_press_title">Azione pressione lunga</string>
+    <string name="hardware_keys_double_tap_title">Azione doppio tocco</string>
+    <string name="hardware_keys_action_nothing">Nessuna azione</string>
+    <string name="hardware_keys_action_menu">Apri/Chiudi menù</string>
+    <string name="hardware_keys_action_app_switch">Selettore app recenti</string>
+    <string name="hardware_keys_action_search">Assistente di ricerca</string>
+    <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
+    <string name="hardware_keys_action_in_app_search">Ricerca in app</string>
+    <string name="hardware_keys_action_launch_camera">Avvia fotocamera</string>
+    <string name="hardware_keys_action_sleep">Spegni lo schermo</string>
+    <string name="hardware_keys_action_last_app">Ultima app utilizzata</string>
+    <string name="camera_sleep_on_release_title">Sguardo allo schermo</string>
+    <string name="camera_sleep_on_release_summary">Una pressione a metà manterrà lo schermo acceso finchè il pulsante resterà premuto</string>
+    <string name="camera_launch_title">Avvia Fotocamera</string>
+    <string name="camera_launch_summary">Una pressione prolungata e rilascio avvierà la fotocamera</string>
+    <string name="volbtn_music_controls_title">Controllo di riproduzione</string>
+    <string name="volbtn_music_controls_summary">Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia</string>
+    <string name="volbtn_cursor_control_title">Controllo cursore con tasti</string>
+    <string name="volbtn_cursor_control_off">Disattivato</string>
+    <string name="volbtn_cursor_control_on">I pulsanti Volume su/giù spostano il cursore nel testo a sinistra/destra</string>
+    <string name="volbtn_cursor_control_on_reverse">I tasti Volume su/giù spostano il cursore nel testo a destra/sinistra</string>
+    <string name="power_end_call_title">Termina chiamata</string>
+    <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
+    <string name="swap_volume_buttons_title">Riorienta</string>
+    <string name="swap_volume_buttons_summary">Scambia i pulsanti volume quando lo schermo viene ruotato</string>
+    <string name="button_wake_title">Risveglia dispositivo</string>
+    <string name="home_answer_call_title">Rispondi chiamata</string>
+    <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
+
+    <!-- Key backlight -->
+    <string name="button_backlight_title">Retroilluminazione</string>
+    <string name="button_backlight_enabled">Illumina pulsanti</string>
+    <string name="keyboard_backlight_enabled">Illumina tastiera</string>
+    <string name="button_backlight_seekbar_title">Luminosità pulsanti</string>
+    <string name="keyboard_backlight_seekbar_title">Luminosità tastiera</string>
+    <string name="backlight_timeout_title">Tempo di illuminazione</string>
+    <string name="backlight_timeout_unlimited">Non spegnere</string>
+    <string name="backlight_summary_disabled">Disattivato</string>
+    <string name="backlight_summary_enabled_with_timeout">Abilita per <xliff:g id="timeout">%s</xliff:g></string>
+    <string name="backlight_summary_enabled">Abilitata</string>
+
+    <!-- Buttons - Enable navbar -->
+    <string name="disable_navkeys_title">Disabilita i tasti fisici</string>
+    <string name="disable_navkeys_summary">Abilita o disabilita i pulsanti fisici sui dispositivi che li supportano</string>
+   
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_category">Barra di navigazione</string>
+    <string name="navigation_bar_left_title">Modalità mancino</string>
+    <string name="navigation_bar_left_summary">Posiziona la barra di navigazione sul lato sinistro dello schermo in modalità orizzontale</string>
+    <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
+    <string name="navigation_bar_arrow_keys_summary">Mostra i pulsanti sinistro e destro del cursore durante la digitazione. Nasconde il selettore di immissione.</string>
+    <string name="navigation_bar_recents_title">Azione pressione prolungata recenti</string>
+
+    <string name="volume_keys_control_ring_stream_title">Controllo volume suoneria</string>
+    <string name="volume_keys_control_ring_stream_summary_on">I tasti volume regolano la suoneria</string>
+    <string name="volume_keys_control_ring_stream_summary_off">I tasti volume regolano le applicazioni multimediali</string>
+
+    <!-- PIN scramble -->
+    <string name="unlock_scramble_pin_layout_title">Disposizione scramble</string>
+    <string name="unlock_scramble_pin_layout_summary">Disposizione dei PIN scramble quando si sblocca il dispositivo</string>
  
 </resources>
