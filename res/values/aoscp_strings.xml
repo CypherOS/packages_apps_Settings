@@ -40,7 +40,7 @@
 	
 	<!-- Gesture Settings [CHAR LIMIT=25]-->
     <string name="gesture_preference_title">Gestures</string>
-	<string name="gesture_preference_title_split">Below are motion based gestures provided by Google, for common android users. The gestures displayed below are for improved user experience and fluid productivity.</string>
+	<string name="gesture_preference_category">Moves</string>
 	
 	<!-- Addition settings -->
  	<string name="addition_settings_title">Additions</string>
