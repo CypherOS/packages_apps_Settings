@@ -37,45 +37,34 @@
         android:summary="@string/three_finger_gesture_summary"
         android:defaultValue="false" />
 		
-	<Preference
-        android:key="gestures_split"
-        android:summary="@string/gesture_preference_title_split"
-        android:persistent="false"
-        android:selectable="false" />
+	<PreferenceCategory android:key="gestures_split"
+        android:title="@string/gesture_preference_category">
 
-    <com.android.settings.aoscp.GesturePreference
-        android:key="gesture_swipe_down_fingerprint"
-        android:title="@string/fingerprint_swipe_for_notifications_title"
-        android:summary="@string/fingerprint_swipe_for_notifications_summary"
-        settings:animation="@raw/gesture_fingerprint_swipe"
-        settings:preview="@drawable/gesture_fingerprint_swipe"/>
+        <SwitchPreference
+            android:key="gesture_swipe_down_fingerprint"
+            android:title="@string/fingerprint_swipe_for_notifications_title"
+            android:summary="@string/fingerprint_swipe_for_notifications_summary" />
 
-    <com.android.settings.aoscp.GesturePreference
-        android:key="gesture_double_tap_power"
-        android:title="@string/double_tap_power_for_camera_title"
-        android:summary="@string/double_tap_power_for_camera_summary"
-        settings:animation="@raw/gesture_double_tap"
-        settings:preview="@drawable/gesture_double_tap"/>
+        <SwitchPreference
+            android:key="gesture_double_tap_power"
+            android:title="@string/double_tap_power_for_camera_title"
+            android:summary="@string/double_tap_power_for_camera_summary" />
 
-    <com.android.settings.aoscp.GesturePreference
-        android:key="gesture_double_twist"
-        android:title="@string/double_twist_for_camera_mode_title"
-        android:summary="@string/double_twist_for_camera_mode_summary"
-        settings:animation="@raw/gesture_twist"
-        settings:preview="@drawable/gesture_twist"/>
+        <SwitchPreference
+            android:key="gesture_double_twist"
+            android:title="@string/double_twist_for_camera_mode_title"
+            android:summary="@string/double_twist_for_camera_mode_summary" />
 
-    <com.android.settings.aoscp.GesturePreference
-        android:key="gesture_double_tap_screen"
-        android:title="@string/ambient_display_title"
-        android:summary="@string/ambient_display_summary"
-        settings:animation="@raw/gesture_ambient_tap"
-        settings:preview="@drawable/gesture_ambient_tap"/>
+        <SwitchPreference
+            android:key="gesture_double_tap_screen"
+            android:title="@string/ambient_display_title"
+            android:summary="@string/ambient_display_summary" />
 
-    <com.android.settings.aoscp.GesturePreference
-        android:key="gesture_pick_up"
-        android:title="@string/ambient_display_pickup_title"
-        android:summary="@string/ambient_display_pickup_summary"
-        settings:animation="@raw/gesture_ambient_lift"
-        settings:preview="@drawable/gesture_ambient_lift"/>
+        <SwitchPreference
+            android:key="gesture_pick_up"
+            android:title="@string/ambient_display_pickup_title"
+            android:summary="@string/ambient_display_pickup_summary" />
+		
+	</PreferenceCategory>
 
 </PreferenceScreen>
