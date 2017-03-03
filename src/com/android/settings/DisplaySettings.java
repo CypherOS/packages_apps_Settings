@@ -65,6 +65,7 @@ import java.util.List;
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
+import static android.provider.Settings.System.PROXIMITY_ON_WAKE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL;
@@ -85,6 +86,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
     private static final String KEY_DOZE = "doze";
+    private static final String KEY_WAKEUP_PROTECTION = "wakeup_protection";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_NIGHT_DISPLAY = "night_display";
@@ -106,6 +108,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mScreenSaverPreference;
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
+	private SwitchPreference mWakeupProtectionPreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
 	
@@ -164,6 +167,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mDozePreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_DOZE);
+        }
+		
+		// Wakeup protection
+        if (isWakeUpProtectionAvailable(getResources())) {
+            mWakeupProtectionPreference = (SwitchPreference) findPreference(KEY_WAKEUP_PROTECTION);
+            mWakeupProtectionPreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_WAKEUP_PROTECTION);
         }
 
         if (isCameraGestureAvailable(getResources())) {
@@ -242,6 +253,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     com.android.internal.R.string.config_dozeComponent);
         }
         return !TextUtils.isEmpty(name);
+    }
+	
+	private static boolean isWakeUpProtectionAvailable(Resources res) {
+        return res.getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake);
     }
 
     private static boolean isAutomaticBrightnessAvailable(Resources res) {
@@ -379,6 +395,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mLiftToWakePreference.setChecked(value != 0);
         }
 
+		// Update wakeup protection if it is available.
+        if (mWakeupProtectionPreference != null) {
+            int value = Settings.System.getInt(getContentResolver(), PROXIMITY_ON_WAKE, 1);
+            mWakeupProtectionPreference.setChecked(value != 0);
+        }
+		
         // Update doze if it is available.
         if (mDozePreference != null) {
             int value = Settings.Secure.getInt(getContentResolver(), DOZE_ENABLED, 1);
@@ -427,6 +449,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean auto = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(), SCREEN_BRIGHTNESS_MODE,
                     auto ? SCREEN_BRIGHTNESS_MODE_AUTOMATIC : SCREEN_BRIGHTNESS_MODE_MANUAL);
+        }
+		if (preference == mWakeupProtectionPreference) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(), PROXIMITY_ON_WAKE, value ? 1 : 0);
         }
         if (preference == mLiftToWakePreference) {
             boolean value = (Boolean) objValue;
@@ -547,6 +573,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
+                    }
+					if (!isWakeUpProtectionAvailable(context)) {
+                        result.add(KEY_WAKEUP_PROTECTION);
                     }
                     if (!RotationPolicy.isRotationLockToggleVisible(context)) {
                         result.add(KEY_AUTO_ROTATE);
