@@ -42,6 +42,10 @@
     <string name="gesture_preference_title">Gestures</string>
 	<string name="gesture_preference_category">Moves</string>
 	
+	<!-- Proximity wake -->
+    <string name="wakeup_protection_title">Wakeup protection</string>
+    <string name="wakeup_protection_title_summary">Check the proximity sensor prior to waking the device to prevent accidental wakeup</string>
+	
 	<!-- Addition settings -->
  	<string name="addition_settings_title">Additions</string>
 	<string name="addition_settings_title_summary">A simple place for all of your favorite features</string>

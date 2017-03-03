@@ -83,6 +83,12 @@
                 android:key="doze"
                 android:title="@string/doze_title"
                 android:summary="@string/doze_summary" />
+				
+		<!-- Wakeup protection -->
+        <SwitchPreference
+                android:key="wakeup_protection"
+                android:title="@string/wakeup_protection_title"
+                android:summary="@string/wakeup_protection_title_summary" />
 
         <PreferenceScreen
                 android:key="font_size"
