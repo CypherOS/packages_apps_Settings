@@ -51,6 +51,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "SystemSettings";
 	
 	private static final String SCREENSHOT_TYPE = "screenshot_type";
+	private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
 	private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
 
@@ -58,6 +59,8 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mScreenshotType;
 	private ListPreference mScrollingCachePref;
+	private SwitchPreference mEnableNavigationBar;
+	private SwitchPreference mNavbarAnimation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,12 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 		
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
+		
+	mEnableNavigationBar = (SwitchPreference) findPreference(Settings.System.DEV_FORCE_SHOW_NAVBAR);
+        mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
+	if (mEnableNavigationBar != 0) {
+	    mNavbarAnimation.setEnabled(false);
+        }
 		
 		mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
         int mScreenshotTypeValue = Settings.System.getInt(resolver,
