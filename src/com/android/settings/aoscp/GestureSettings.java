@@ -67,12 +67,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 
     private AmbientDisplayConfiguration mAmbientConfig;
-	
-	private SwitchPreference mAmbientConfigPreference;
-	private SwitchPreference mAmbientDoubleTapPreference;
-	private SwitchPreference mDoubleTapPowerPreference;
-	private SwitchPreference mDoubleTwistPreference;
-	private SwitchPreference mSwipeDownPreference;
+
 	private SwitchPreference mTapToWakePreference;
 
     @Override
@@ -83,8 +78,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 
         // Double tap power for camera
         if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-            mDoubleTapPowerPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TAP_POWER);
-            mDoubleTapPowerPreference.setOnPreferenceChangeListener(this);
+            int cameraDisabled = Secure.getInt(
+                    getContentResolver(), Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
+            addPreference(PREF_KEY_DOUBLE_TAP_POWER, cameraDisabled == 0);
         } else {
             removePreference(PREF_KEY_DOUBLE_TAP_POWER);
         }
@@ -93,23 +89,20 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         mAmbientConfig = new AmbientDisplayConfiguration(context);
         if (mAmbientConfig.pulseOnPickupAvailable()) {
             boolean pickup = mAmbientConfig.pulseOnPickupEnabled(UserHandle.myUserId());
-			mAmbientConfigPreference = (SwitchPreference) findPreference(PREF_KEY_PICK_UP);
-            mAmbientConfigPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_PICK_UP, pickup);
         } else {
             removePreference(PREF_KEY_PICK_UP);
         }
         if (mAmbientConfig.pulseOnDoubleTapAvailable()) {
             boolean doubleTap = mAmbientConfig.pulseOnDoubleTapEnabled(UserHandle.myUserId());
-			mAmbientDoubleTapPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TAP_SCREEN);
-            mAmbientDoubleTapPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_DOUBLE_TAP_SCREEN, doubleTap);
         } else {
             removePreference(PREF_KEY_DOUBLE_TAP_SCREEN);
         }
 
         // Fingerprint slide for notifications
         if (isSystemUINavigationAvailable(context)) {
-			mSwipeDownPreference = (SwitchPreference) findPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
-            mSwipeDownPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT, isSystemUINavigationEnabled(context));
         } else {
             removePreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
         }
@@ -124,8 +117,9 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 
         // Double twist for camera mode
         if (isDoubleTwistAvailable(context)) {
-            mDoubleTwistPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TWIST);
-            mDoubleTwistPreference.setOnPreferenceChangeListener(this);
+            int doubleTwistEnabled = Secure.getInt(
+                    getContentResolver(), Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, 1);
+            addPreference(PREF_KEY_DOUBLE_TWIST, doubleTwistEnabled != 0);
         } else {
             removePreference(PREF_KEY_DOUBLE_TWIST);
         }
@@ -238,6 +232,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_off
                     : R.string.double_tap_to_sleep_on));
         }
+    }
+	
+	private void addPreference(String key, boolean enabled) {
+        SwitchPreference preference = (SwitchPreference) findPreference(key);
+        preference.setChecked(enabled);
+        preference.setOnPreferenceChangeListener(this);
     }
 
     public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
