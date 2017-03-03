@@ -49,8 +49,6 @@ import com.aoscp.hardware.ScreenType;
 
 import java.util.List;
 
-import com.aoscp.hardware.HardwareManager;
-
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "ButtonSettings";
@@ -176,12 +174,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 		
         mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);
 
-        final HardwareManager hardware = HardwareManager.getInstance(getActivity());
-
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
         boolean needsNavigationBar = false;
-        if (hardware.isSupported(HardwareManager.FEATURE_KEY_DISABLE)) {
+        if (isHardwareKeyDisableSupported(getResources())) {
             try {
                 IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
                 needsNavigationBar = wm.needsNavigationBar();
@@ -490,8 +486,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public static void restoreKeyDisabler(Context context) {
-        HardwareManager hardware = HardwareManager.getInstance(context);
-        if (!hardware.isSupported(HardwareManager.FEATURE_KEY_DISABLE)) {
+        if (isHardwareKeyDisableSupported(getResources())) {
             return;
         }
 
@@ -520,6 +515,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         return super.onPreferenceTreeClick(preference);
+    }
+	
+	private static boolean isHardwareKeyDisableSupported(Resources res) {
+        return res.getBoolean(
+                com.android.internal.R.bool.config_supportHardwareKeyDisable);
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {
