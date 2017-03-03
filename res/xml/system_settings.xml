@@ -37,16 +37,21 @@
 				android:summary="@string/powermenu_settings_title_summary"
                 android:fragment="com.android.settings.aoscp.fragments.PowerMenuSettings" />
 				
+	<PreferenceCategory android:key="nav_category"
+	            android:title="@string/system_navigation_category_title">
+				
 		<com.android.settings.preference.SecureSettingSwitchPreference
                 android:key="one_handed_mode_ui"
                 android:title="@string/one_handed_mode_title"
                 android:summary="@string/one_handed_mode_summary"
                 android:defaultValue="false" />
 				
-		<com.android.settings.preference.SecureSettingSwitchPreference
+		<com.android.settings.preference.SystemSettingSwitchPreference
                 android:key="pixel_nav_animation"
                 android:title="@string/pixel_navbar_anim_title"
                 android:summary="@string/pixel_navbar_anim_summary"
                 android:defaultValue="true" />
+				
+	</PreferenceCategory>
 		
 </PreferenceScreen>
