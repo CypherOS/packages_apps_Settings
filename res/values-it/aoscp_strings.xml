@@ -37,7 +37,7 @@
 
    <!--Gesture Settings [CHAR LIMIT=25]-->
    <string name="gesture_preference_title">Gesti</string>
-   <string name="gesture_preference_title_split">Qui di seguito ci sono i gesti di movimento forniti da Google, per gli utenti di Android. I gesti visualizzati di seguito sono per una migliore esperienza d\'uso e una prestazione più fluida.</string>
+   <string name="gesture_preference_category">Movimenti</string>
 
    <!-- Addition settings -->
    <string name="addition_settings_title">Impostazioni aggiuntive</string>
@@ -47,6 +47,7 @@
    <string name="utils_category_title">Utilità</string>
    <string name="system_settings_title">Sistema</string>
    <string name="system_settings_title_summary">Riconfigurare le funzionalità specifiche del sistema per semplificare la tua esperienza</string>
+   <string name="system_navigation_category_title">Navigazione</string>
    <!--Power Menu Settings -->
    <string name="powermenu_settings_title">Menù alimentazione</string>
    <string name="powermenu_settings_title_summary">Cambia quello che viene mostrato sul menù alimentazione nativo con una serie di opzioni</string>
@@ -65,6 +66,7 @@
    <!--Quick Settings -->
    <string name="quick_settings_title">Impostazioni rapide</string>
    <string name="quick_settings_title_summary">Regola e disponi il contenuto del pannello delle impostazioni rapide</string>
+   <string name="qs_tiles_category_title">Tile</string>
    <!--qs brightness slider -->
    <string name="qs_brightness_slider_title">Cursore luminosità</string>
    <string name="qs_brightness_slider_summary">Mostra un cursore di luminosità nel pannello delle impostazioni rapide</string>
