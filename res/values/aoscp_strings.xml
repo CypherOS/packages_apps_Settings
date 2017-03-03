@@ -50,6 +50,7 @@
 	<string name="utils_category_title">Utility</string>
  	<string name="system_settings_title">System</string>
  	<string name="system_settings_title_summary">Tune up the core system to improve your android experience</string>
+	<string name="system_navigation_category_title">Navigation</string>
 	<!-- Power Menu Settings -->
     <string name="powermenu_settings_title">Power menu</string>
 	<string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
@@ -68,6 +69,7 @@
 	<!-- Quick Settings -->
 	<string name="quick_settings_title">Quick settings</string>
 	<string name="quick_settings_title_summary">Adjust the layout of the quick settings panel for experience improvements</string>
+	<string name="qs_tiles_category_title">Tiles</string>
 	<!-- qs brightness slider -->
     <string name="qs_brightness_slider_title">Brightness slider</string>
     <string name="qs_brightness_slider_summary">Show brightness slider on quick settings panel</string>
