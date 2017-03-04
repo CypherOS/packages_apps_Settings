@@ -28,6 +28,8 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -58,6 +60,8 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "GestureSettings";
+	
+	private static final String PREF_KEY_MOVES_CATEGORY = "moves_category";
     private static final String PREF_KEY_DOUBLE_TAP_POWER = "gesture_double_tap_power";
     private static final String PREF_KEY_DOUBLE_TWIST = "gesture_double_twist";
     private static final String PREF_KEY_PICK_UP = "gesture_pick_up";
@@ -67,12 +71,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 
     private AmbientDisplayConfiguration mAmbientConfig;
-	
-	private SwitchPreference mAmbientConfigPreference;
-	private SwitchPreference mAmbientDoubleTapPreference;
-	private SwitchPreference mDoubleTapPowerPreference;
-	private SwitchPreference mDoubleTwistPreference;
-	private SwitchPreference mSwipeDownPreference;
+
 	private SwitchPreference mTapToWakePreference;
 
     @Override
@@ -80,38 +79,39 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gesture_settings);
         Context context = getActivity();
+		
+		final PreferenceCategory moves = (PreferenceCategory) findPreference(PREF_KEY_MOVES_CATEGORY);
 
         // Double tap power for camera
         if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
-            mDoubleTapPowerPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TAP_POWER);
-            mDoubleTapPowerPreference.setOnPreferenceChangeListener(this);
+            int cameraDisabled = Secure.getInt(
+                    getContentResolver(), Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
+            addPreference(PREF_KEY_DOUBLE_TAP_POWER, cameraDisabled == 0);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TAP_POWER);
+            moves.removePreference(findPreference(PREF_KEY_DOUBLE_TAP_POWER));
         }
 
         // Ambient Display
         mAmbientConfig = new AmbientDisplayConfiguration(context);
         if (mAmbientConfig.pulseOnPickupAvailable()) {
             boolean pickup = mAmbientConfig.pulseOnPickupEnabled(UserHandle.myUserId());
-			mAmbientConfigPreference = (SwitchPreference) findPreference(PREF_KEY_PICK_UP);
-            mAmbientConfigPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_PICK_UP, pickup);
         } else {
-            removePreference(PREF_KEY_PICK_UP);
+			moves.removePreference(findPreference(PREF_KEY_PICK_UP));
         }
+		
         if (mAmbientConfig.pulseOnDoubleTapAvailable()) {
             boolean doubleTap = mAmbientConfig.pulseOnDoubleTapEnabled(UserHandle.myUserId());
-			mAmbientDoubleTapPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TAP_SCREEN);
-            mAmbientDoubleTapPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_DOUBLE_TAP_SCREEN, doubleTap);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TAP_SCREEN);
+			moves.removePreference(findPreference(PREF_KEY_DOUBLE_TAP_SCREEN));
         }
 
         // Fingerprint slide for notifications
         if (isSystemUINavigationAvailable(context)) {
-			mSwipeDownPreference = (SwitchPreference) findPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
-            mSwipeDownPreference.setOnPreferenceChangeListener(this);
+			addPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT, isSystemUINavigationEnabled(context));
         } else {
-            removePreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
+			moves.removePreference(findPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT));
         }
 		
 		// Tap to wake
@@ -124,10 +124,11 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 
         // Double twist for camera mode
         if (isDoubleTwistAvailable(context)) {
-            mDoubleTwistPreference = (SwitchPreference) findPreference(PREF_KEY_DOUBLE_TWIST);
-            mDoubleTwistPreference.setOnPreferenceChangeListener(this);
+            int doubleTwistEnabled = Secure.getInt(
+                    getContentResolver(), Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, 1);
+            addPreference(PREF_KEY_DOUBLE_TWIST, doubleTwistEnabled != 0);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TWIST);
+			moves.removePreference(findPreference(PREF_KEY_DOUBLE_TWIST));
         }
 
     }
@@ -238,6 +239,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_off
                     : R.string.double_tap_to_sleep_on));
         }
+    }
+	
+	private void addPreference(String key, boolean enabled) {
+        SwitchPreference preference = (SwitchPreference) findPreference(key);
+        preference.setChecked(enabled);
+        preference.setOnPreferenceChangeListener(this);
     }
 
     public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
