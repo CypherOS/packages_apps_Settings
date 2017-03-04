@@ -37,7 +37,7 @@
         android:summary="@string/three_finger_gesture_summary"
         android:defaultValue="false" />
 		
-	<PreferenceCategory android:key="gestures_split"
+	<PreferenceCategory android:key="moves_category"
         android:title="@string/gesture_preference_category">
 
         <SwitchPreference
