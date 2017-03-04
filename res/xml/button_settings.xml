@@ -178,13 +178,14 @@
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_wake_screen"
             android:title="@string/button_wake_title"
+			android:summary="@string/button_wake_title_summary"
             android:defaultValue="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volbtn_music_controls"
             android:title="@string/volbtn_music_controls_title"
             android:summary="@string/volbtn_music_controls_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_keys_control_ring_stream"

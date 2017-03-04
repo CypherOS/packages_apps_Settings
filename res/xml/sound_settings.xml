@@ -103,9 +103,9 @@
                 android:fragment="com.android.settings.notification.ZenModeSettings" />
 				
 		<PreferenceScreen
-                android:key="notification_light"
-                android:title="@string/notification_light_title"
-                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+                android:key="notification_advanced"
+                android:title="@string/notification_advanced_title"
+                android:fragment="com.android.settings.aoscp.fragments.NotificationsAdvanced" />
 	
 	</PreferenceCategory>
 
