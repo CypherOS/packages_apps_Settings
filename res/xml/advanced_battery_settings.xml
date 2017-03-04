@@ -30,6 +30,7 @@
         <PreferenceScreen
             android:key="battery_light"
             android:title="@string/battery_light_title"
+			android:summary="@string/battery_light_title_summary"
             android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
     </PreferenceCategory>

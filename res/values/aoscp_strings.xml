@@ -94,6 +94,10 @@
     <string name="qs_battery_easy_toggle_title">Battery on tap</string>
     <string name="qs_battery_easy_toggle_summary">Enable or disable battery saver with one tap</string>
 	
+	<!-- Advanced notification settings -->
+ 	<string name="notification_advanced_title">Advanced</string>
+	<string name="category_lights_title">Lights</string>
+	
 	<!-- Software information-->
 	<string name="software_info_settings_title">Software info</string>
 	<string name="software_info_settings_title_summary">View information about the software</string>
@@ -251,7 +255,7 @@
 	
 	<!-- Navbar tuner -->
     <string name="navbar_tuner_title">Navigation tuner</string>
-    <string name="navbar_tuner_summary">Rearrange and extend the layout of buttons of the navigation bar</string>
+    <string name="navbar_tuner_summary">Rearrange the layout of buttons of the navigation bar</string>
 	
 	<!-- Notification/Battery lights -->
     <string name="edit_light_settings">Edit light settings</string>
@@ -273,6 +277,7 @@
     <string name="pulse_speed_very_slow">Very slow</string>
 	<string name="battery_led_category">Lights</string>
     <string name="battery_light_title">Battery light</string>
+	<string name="battery_light_title_summary">Configure pulse actions from your device\'s LED for applications and colors</string>
     <string name="battery_low_pulse_title">Pulse if battery low</string>
     <string name="battery_light_list_title">Colors</string>
     <string name="battery_light_low_color_title">Battery low</string>
@@ -280,6 +285,7 @@
     <string name="battery_light_full_color_title">Fully charged</string>
 	<string name="notif_led_category">Lights</string>
     <string name="notification_light_title">Notification light</string>
+	<string name="notification_light_title_summary">Configure pulse actions from your device\'s LED for charging actions and colors</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="advanced">Advanced</string>
@@ -454,7 +460,7 @@
     <string name="camera_launch_title">Launch camera</string>
     <string name="camera_launch_summary">A longpress and release will launch camera</string>
     <string name="volbtn_music_controls_title">Playback control</string>
-    <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
+    <string name="volbtn_music_controls_summary">Long press the volume keys to switch between tracks</string>
     <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
@@ -464,6 +470,7 @@
     <string name="swap_volume_buttons_title">Reorient</string>
     <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
     <string name="button_wake_title">Wake up device</string>
+	<string name="button_wake_title_summary">Press any volume key to wake the device</string>
     <string name="home_answer_call_title">Answer call</string>
     <string name="home_answer_call_summary">Pressing the home button will answer the current incoming call</string>
 
