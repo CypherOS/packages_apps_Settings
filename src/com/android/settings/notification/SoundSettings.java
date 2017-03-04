@@ -106,12 +106,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     };
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
-	
-	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
-
-    private static final String CATEGORY_NOTIFICATION = "notification_category";
-
-    private Preference mNotifLedFragment;
 
     private final VolumePreferenceCallback mVolumeCallback = new VolumePreferenceCallback();
     private final H mHandler = new H();
@@ -175,15 +169,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         }
 
         addPreferencesFromResource(R.xml.sound_settings);
-		
-		final PreferenceCategory leds = (PreferenceCategory) findPreference(CATEGORY_NOTIFICATION);
-
-        mNotifLedFragment = findPreference(KEY_NOTIFICATION_LIGHT);
-        //remove notification led settings if device doesnt support it
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            leds.removePreference(findPreference(KEY_NOTIFICATION_LIGHT));
-        }
 
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
                 com.android.internal.R.drawable.ic_audio_media_mute);
