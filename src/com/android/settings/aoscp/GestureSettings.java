@@ -71,6 +71,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
 	
+	private static final String PREF_KEY_DOZE_SETTINGS = "doze_settings";
 	private static final String PREF_KEY_OPO_DOZE_SETTINGS = "opo_doze_settings";
 
     private AmbientDisplayConfiguration mAmbientConfig;
@@ -140,6 +141,10 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 		
 		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
                 PREF_KEY_OPO_DOZE_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+				
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                PREF_KEY_DOZE_SETTINGS,
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
     }

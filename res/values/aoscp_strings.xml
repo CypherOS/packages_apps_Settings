@@ -120,6 +120,10 @@
 	<string name="opo_doze_settings_title">Additional gestures</string>
 	<string name="opo_doze_settings_title_summary">Various gesures available and supported by your device</string>
 	
+	<!-- Doze Gesture settings -->
+	<string name="doze_settings_title">Motion gestures</string>
+	<string name="doze_settings_title_summary">Quick actions to utilize system functions with proximity based gestures</string>
+	
 	<!-- OPO Button settings -->
 	<string name="opo_button_settings_title">Additional buttons</string>
 	<string name="opo_button_settings_title_summary">Various button features available and supported by your device</string>
