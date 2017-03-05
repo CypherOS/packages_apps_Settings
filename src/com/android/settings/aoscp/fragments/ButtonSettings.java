@@ -16,6 +16,8 @@
 
 package com.android.settings.aoscp.fragments;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -45,6 +47,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.fragments.ButtonBacklightBrightness;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.utils.Utils;
 import com.aoscp.hardware.ScreenType;
 
@@ -71,6 +74,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
     private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
+	
+	private static final String KEY_OPO_BUTTON_SETTINGS = "opo_button_settings";
 	
 	private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -354,6 +359,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mVolumeWakeScreen.setDisableDependentsState(true);
             }
         }
+		
+		final Activity act = getActivity();
+		
+		PreferenceGroup parentPreference = getPreferenceScreen();
+		
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                KEY_OPO_BUTTON_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
     }
 	
 	@Override

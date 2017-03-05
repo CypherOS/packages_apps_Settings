@@ -120,6 +120,10 @@
 	<string name="opo_doze_settings_title">Additional gestures</string>
 	<string name="opo_doze_settings_title_summary">Various gesures available and supported by your device</string>
 	
+	<!-- OPO Button settings -->
+	<string name="opo_button_settings_title">Additional buttons</string>
+	<string name="opo_button_settings_title_summary">Various button features available and supported by your device</string>
+	
 	<!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
 	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
