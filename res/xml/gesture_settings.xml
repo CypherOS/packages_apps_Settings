@@ -37,6 +37,13 @@
         android:summary="@string/three_finger_gesture_summary"
         android:defaultValue="false" />
 		
+	<!-- OPO Doze settings -->
+    <PreferenceScreen android:key="opo_doze_settings"
+            android:title="@string/opo_doze_settings_title"
+            android:summary="@string/opo_doze_settings_title_summary">
+        <intent android:action="com.android.settings.action.LAUNCH_GESTURE_SETTINGS" />
+    </PreferenceScreen>
+		
 	<PreferenceCategory android:key="moves_category"
         android:title="@string/gesture_preference_category">
 
