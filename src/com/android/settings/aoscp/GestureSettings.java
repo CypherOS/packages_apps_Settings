@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.widget.RecyclerView;
