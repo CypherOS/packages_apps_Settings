@@ -51,18 +51,26 @@
    <!--Power Menu Settings -->
    <string name="powermenu_settings_title">Menù alimentazione</string>
    <string name="powermenu_settings_title_summary">Cambia quello che viene mostrato sul menù alimentazione nativo con una serie di opzioni</string>
+   <string name="power_menu_system">Sistema</string>
+   <string name="power_menu_google">Google</string>
+   <string name="power_menu_device">Dispositivo</string>
    <!-- Power menu customization -->
-   <string name="power_menu_reboot_title">Riavvio</string>
    <string name="power_menu_screenshot_title">Screenshot</string>
+   <string name="power_menu_screenshot_title_summary">Prendi uno screenshot con un solo clic</string>
    <string name="power_menu_airplane_title">Modalità aereo</string>
+   <string name="power_menu_airplane_title_summary">Metti il telefono in modalità aereo</string>
    <string name="power_menu_users_title">Cambia utente</string>
+   <string name="power_menu_users_title_summary">Cambia l\'interruttore dell\'utente di sistema al volo con un solo tocco</string>
    <string name="power_menu_search_title">Ricerca</string>
+   <string name="power_menu_search_title_summary">Avvio veloce del motore di ricerca di Google</string>
    <string name="power_menu_voice_title">Ricerca vocale</string>
+   <string name="power_menu_voice_title_summary">Avvio veloce del motore di ricerca vocale di Google</string>
    <string name="power_menu_settings_title">Impostazioni di scelta rapida</string>
+   <string name="power_menu_settings_title_summary">Apri il menù delle impostazioni del dispositivo con un solo tocco</string>
    <string name="power_menu_lockdown_title">Blocco dispositivo</string>
-   <string name="power_menu_bug_report_title">Segnalazione errori</string>
+   <string name="power_menu_lockdown_title_summary">Blocca rapidamente il dispositivo durante la navigazione dal menù di alimentazione</string>
    <string name="power_menu_sound_title">Pannello suoni</string>
-   <string name="power_menu_bug_report_disabled">La segnalazione errori è disattivata nelle impostazioni di sviluppo</string>
+   <string name="power_menu_sound_title_summary">Cambia la modalità audio da suoneria in modalità silenziosa</string>
    <!--Quick Settings -->
    <string name="quick_settings_title">Impostazioni rapide</string>
    <string name="quick_settings_title_summary">Regola e disponi il contenuto del pannello delle impostazioni rapide</string>
@@ -82,7 +90,9 @@
    <!--Battery Saver easy toggle -->
    <string name="qs_battery_easy_toggle_title">Tile batteria attivo al tocco</string>
    <string name="qs_battery_easy_toggle_summary">Fa in modo che con un solo tocco potrai attivare o disattivare il risparmio energetico senza entrare nelle impostazioni</string>
-
+   <!-- Advanced notification settings -->
+   <string name="notification_advanced_title">Avanzate</string>
+   <string name="category_lights_title">Luci</string>
    <!--Software information-->
    <string name="software_info_settings_title">Informazioni Software</string>
    <string name="software_info_settings_title_summary">Visualizza lo stato degli aggiornamenti e le informazioni utili</string>
@@ -261,14 +271,14 @@
    <string name="pulse_speed_slow">Lento</string>
    <string name="pulse_speed_very_slow">Molto lento</string>
    <string name="battery_light_title">LED della batteria</string>
-   <string name="battery_light_title_summary">Configura il LED del dispositivo quando la batteria è scarica o carica</string>
+   <string name="battery_light_title_summary">Configura le azioni di pulse, il LED del dispositivo per le azioni ed i colori di ricarica</string>
    <string name="battery_low_pulse_title">Impulso a batteria scarica</string>
    <string name="battery_light_list_title">Colori</string>
    <string name="battery_light_low_color_title">Batteria scarica</string>
    <string name="battery_light_medium_color_title">Ricarica</string>
    <string name="battery_light_full_color_title">Carica completa</string>
    <string name="notification_light_title">LED di notifica</string>
-   <string name="notification_light_title_summary">Varie opzioni di LED per avvisi e notifiche di chiamate in entrata</string>
+   <string name="notification_light_title_summary">Configura le azioni di pulse, il LED del dispositivo per le azioni ed i colori di ricarica</string>
    <string name="notification_light_general_title">Generale</string>
    <string name="notification_light_applist_title">Applicazioni</string>
    <string name="advanced">Avanzate</string>
@@ -443,7 +453,7 @@
     <string name="camera_launch_title">Avvia Fotocamera</string>
     <string name="camera_launch_summary">Una pressione prolungata e rilascio avvierà la fotocamera</string>
     <string name="volbtn_music_controls_title">Controllo di riproduzione</string>
-    <string name="volbtn_music_controls_summary">Quando lo schermo è spento la pressione prolungata dei tasti volume cambia traccia</string>
+    <string name="volbtn_music_controls_summary">Pressione prolungata sui tasti del volume per cambiare traccia</string>
     <string name="volbtn_cursor_control_title">Controllo cursore con tasti</string>
     <string name="volbtn_cursor_control_off">Disattivato</string>
     <string name="volbtn_cursor_control_on">I pulsanti Volume su/giù spostano il cursore nel testo a sinistra/destra</string>
@@ -453,6 +463,7 @@
     <string name="swap_volume_buttons_title">Riorienta</string>
     <string name="swap_volume_buttons_summary">Scambia i pulsanti volume quando lo schermo viene ruotato</string>
     <string name="button_wake_title">Risveglia dispositivo</string>
+    <string name="button_wake_title_summary">Premi un tasto del volume per riattivare il dispositivo</string>
     <string name="home_answer_call_title">Rispondi chiamata</string>
     <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
 
