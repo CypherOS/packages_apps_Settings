@@ -44,6 +44,7 @@ import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,8 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 	private static final String PREF_KEY_TAP_TO_WAKE = "tap_to_wake";
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
+	
+	private static final String PREF_KEY_OPO_DOZE_SETTINGS = "opo_doze_settings";
 
     private AmbientDisplayConfiguration mAmbientConfig;
 
@@ -130,6 +133,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         } else {
 			moves.removePreference(findPreference(PREF_KEY_DOUBLE_TWIST));
         }
+		
+		final Activity act = getActivity();
+		
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                PREF_KEY_OPO_DOZE_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
     }
 	
