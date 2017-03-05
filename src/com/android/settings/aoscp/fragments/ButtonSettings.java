@@ -54,6 +54,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String TAG = "ButtonSettings";
 	
 	private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+	private static final String KEY_NAVIGATION_TUNER = "navigation_tuner";
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
@@ -115,6 +116,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mPowerEndCall;
 	
 	private Preference mNavigationBarNotice;
+	private Preference mNavigationTuner;
 
     private Handler mHandler;
 	
@@ -173,6 +175,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
 		
         mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);
+				
+        mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
+	    if (mEnableNavigationBar != null) {
+	        mNavigationTuner.setEnabled(false);
+	    } else {
+		    mNavigationTuner.setEnabled(true);
+        }
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
