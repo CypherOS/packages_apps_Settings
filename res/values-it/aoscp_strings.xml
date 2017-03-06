@@ -110,6 +110,10 @@
    <string name="gerrit_preference_title_summary">Tenete traccia della nostra revisione del codice su Gerrit per presentare, verificare e testare le modifiche in sospeso di CypherOS</string>
 
    <string name="notification_category_title">Notifiche</string>
+   
+   <!-- OPO Gesture settings -->
+   <string name="opo_doze_settings_title">Gesti aggiuntivi</string>
+   <string name="opo_doze_settings_title_summary">Vari gesti disponibili e supportati dal dispositivo</string>
 
    <!--Phone info shortcut -->
    <string name="device_info_title">Informazioni telefono</string>
