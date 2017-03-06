@@ -48,7 +48,7 @@ import com.android.settings.aoscp.fragments.ButtonBacklightBrightness;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.utils.Utils;
+import com.android.settings.utils.LunaUtils;
 import com.aoscp.hardware.ScreenType;
 
 import java.util.List;
@@ -213,7 +213,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (hasPowerKey) {
-            if (!Utils.isVoiceCapable(getActivity())) {
+            if (!LunaUtils.isVoiceCapable(getActivity())) {
                 powerCategory.removePreference(mPowerEndCall);
                 mPowerEndCall = null;
             }
@@ -320,7 +320,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(appSwitchCategory);
         }
 
-        if (Utils.hasVolumeRocker(getActivity())) {
+        if (LunaUtils.hasVolumeRocker(getActivity())) {
             if (!showVolumeWake) {
                 volumeCategory.removePreference(findPreference(Settings.System.VOLUME_WAKE_SCREEN));
             }
