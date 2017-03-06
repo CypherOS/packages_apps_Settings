@@ -32,7 +32,6 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.utils.Utils;
 
 import com.android.internal.util.aoscp.PowerMenuConstants;
 import static com.android.internal.util.aoscp.PowerMenuConstants.*;
