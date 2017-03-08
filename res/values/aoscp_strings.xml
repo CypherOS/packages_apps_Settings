@@ -505,7 +505,22 @@
     <!-- Buttons - Enable navbar -->
     <string name="enable_navigation_bar_title">Navigation bar</string>
     <string name="enable_navigation_bar_title_notice">This option is for devices with hardware keys only. This generates the stock android softkeys for navigating the OS. Device\'s without hardware must not use this, as it will rid navigating functionality.</string>
-
+    <string name="navigation_category_title">Navigation</string>
+	<string name="navbar_dimensions_title">Dimensions</string>
+	<string name="navbar_dimensions_title_summary">Change the height and width of the navigation bar</string>
+    <string name="navigation_bar_height_title">Height</string>
+    <string name="navigation_bar_height_landscape_title">Landscape height</string>
+    <string name="navigation_bar_width_title">Width</string>
+    <string name="navigation_bar_size_36_dp">36 dp</string>
+    <string name="navigation_bar_size_30_dp">30 dp</string>
+    <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_52_dp">52 dp</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp (default)</string>
+    <string name="navigation_bar_size_44_dp">44 dp</string>
+    <string name="navigation_bar_size_40_dp">40 dp</string>
+    <string name="navigation_bar_size_42_dp">42 dp</string>
+    <string name="navigation_bar_size_0_dp">0 dp (off)</string>
+	
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigation bar</string>
     <string name="navigation_bar_left_title">Left-handed mode</string>

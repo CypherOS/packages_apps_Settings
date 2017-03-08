@@ -59,6 +59,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 	
 	private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
 	private static final String KEY_NAVIGATION_TUNER = "navigation_tuner";
+	private static final String KEY_NAVIGATION_DIMEN = "navbar_dimens";
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
@@ -123,6 +124,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 	
 	private Preference mNavigationBarNotice;
 	private Preference mNavigationTuner;
+	private Preference mNavigationDimen;
 
     private Handler mHandler;
 	
@@ -181,6 +183,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
         mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);	
         mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
+		mNavigationDimen = (Preference) findPreference(KEY_NAVIGATION_DIMEN);
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
@@ -196,11 +199,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 prefScreen.removePreference(mEnableNavigationBar);
 				prefScreen.removePreference(mNavigationBarNotice);
 				mNavigationTuner.setEnabled(false);
+				mNavigationDimen.setEnabled(false);
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
                 updateDisableNavkeysCategories(mEnableNavigationBar.isChecked());
 				mNavigationTuner.setEnabled(true);
+				mNavigationDimen.setEnabled(true);
             }
         } else {
             prefScreen.removePreference(mEnableNavigationBar);
