@@ -17,6 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
+		<PreferenceScreen
+            android:key="heads_up_settings"
+            android:title="@string/headsup_settings_title"
+            android:fragment="com.android.settings.aoscp.fragments.HeadsUpSettings" />
+		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="force_expanded_notifications"
             android:title="@string/notification_force_expand_title"
