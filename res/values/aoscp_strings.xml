@@ -565,5 +565,8 @@
     <string name="heads_up_snooze_10min">10 minutes</string>
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
+	
+	<!-- lock screen visualizer -->
+    <string name="lockscreen_visualizer_title">Music visualizer</string>
  
 </resources>
