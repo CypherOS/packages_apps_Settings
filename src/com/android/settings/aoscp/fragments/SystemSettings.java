@@ -31,6 +31,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.provider.Settings.Secure;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -52,6 +53,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 	
     private static final String SCREENSHOT_TYPE = "screenshot_type";
     private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+	private static final String ONE_HANDED_MODE_UI = "one_handed_mode_ui";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
 
@@ -60,6 +62,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private ListPreference mScreenshotType;
     private ListPreference mScrollingCachePref;
     private SwitchPreference mNavbarAnimation;
+	private SwitchPreference mOneHandedMode;
   
     private int mEnableNavigationBar;
 
@@ -76,12 +79,20 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 				
         mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
 		mNavbarAnimation.setChecked((Settings.System.getInt(resolver,
-                Settings.System.PIXEL_NAV_ANIMATION, 0) == 1));
+                Settings.System.PIXEL_NAV_ANIMATION, 1) == 0));
         mNavbarAnimation.setOnPreferenceChangeListener(this);
+		
+		mOneHandedMode = (SwitchPreference) findPreference(ONE_HANDED_MODE_UI);
+		mOneHandedMode.setChecked((Settings.System.getInt(resolver,
+                Settings.Secure.ONE_HAND_MODE, 0) == 1));
+        mOneHandedMode.setOnPreferenceChangeListener(this);
+		
 	    if (mEnableNavigationBar != 0) {
 	        mNavbarAnimation.setEnabled(false);
+			mOneHandedMode.setEnabled(false);
 	    } else {
-		mNavbarAnimation.setEnabled(true);
+		    mNavbarAnimation.setEnabled(true);
+			mOneHandedMode.setEnabled(true);
         }
 		
 	mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
@@ -112,6 +123,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(resolver,
                     Settings.System.PIXEL_NAV_ANIMATION, value ? 1 : 0);
+            return true;
+		} else if (preference == mOneHandedMode) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.Secure.ONE_HAND_MODE, value ? 1 : 0);
             return true;
 		} else if (preference == mScrollingCachePref) {
             if (newValue != null) {

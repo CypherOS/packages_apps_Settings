@@ -179,15 +179,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         // Force Navigation bar related options
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
-		
-        mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);
-				
+        mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);	
         mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
-	    if (mEnableNavigationBar != null) {
-	        mNavigationTuner.setEnabled(false);
-	    } else {
-		    mNavigationTuner.setEnabled(true);
-        }
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
@@ -202,10 +195,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             if (needsNavigationBar) {
                 prefScreen.removePreference(mEnableNavigationBar);
 				prefScreen.removePreference(mNavigationBarNotice);
+				mNavigationTuner.setEnabled(false);
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
                 updateDisableNavkeysCategories(mEnableNavigationBar.isChecked());
+				mNavigationTuner.setEnabled(true);
             }
         } else {
             prefScreen.removePreference(mEnableNavigationBar);
