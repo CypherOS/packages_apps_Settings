@@ -31,14 +31,6 @@
         android:title="@string/button_backlight_title"
         android:dialogTitle="@string/button_backlight_title"
         android:persistent="false" />
-		
-	<PreferenceScreen android:key="navigation_tuner"
-            android:title="@string/navbar_tuner_title"
-            android:summary="@string/navbar_tuner_summary">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.android.systemui"
-            android:targetClass="com.android.systemui.tuner.NavbarActivity" />
-    </PreferenceScreen>
 	
 	<!-- OPO Doze settings -->
     <PreferenceScreen android:key="opo_button_settings"
@@ -46,6 +38,25 @@
             android:summary="@string/opo_button_settings_title_summary">
         <intent android:action="com.android.settings.action.LAUNCH_BUTTON_SETTINGS" />
     </PreferenceScreen>
+	
+	<PreferenceCategory
+        android:key="navigation_key"
+        android:title="@string/navigation_category_title" >
+		
+		<PreferenceScreen android:key="navbar_dimens"
+                android:title="@string/navbar_dimensions_title"
+                android:summary="@string/navbar_dimensions_title_summary"
+                android:fragment="com.android.settings.aoscp.fragments.NavBarDimensSettings" />
+
+        <PreferenceScreen android:key="navigation_tuner"
+                android:title="@string/navbar_tuner_title"
+                android:summary="@string/navbar_tuner_summary">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.NavbarActivity" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="power_key"
