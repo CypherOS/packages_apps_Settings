@@ -35,5 +35,10 @@
                 android:title="@string/double_tap_sleep_anywhere_title"
                 android:summary="@string/double_tap_sleep_anywhere_summary"
                 android:defaultValue="false" />
+				
+		<com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="lockscreen_visualizer"
+                android:title="@string/lockscreen_visualizer_title"
+                android:defaultValue="false"/>
 
 </PreferenceScreen>
