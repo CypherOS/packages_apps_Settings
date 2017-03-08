@@ -85,6 +85,9 @@
 	<!-- qs brightness slider -->
     <string name="qs_brightness_slider_title">Brightness slider</string>
     <string name="qs_brightness_slider_summary">Show brightness slider on quick settings panel</string>
+	<!-- QS brightness icon -->
+	<string name="brightness_icon_title">Brightness icon </string>
+    <string name="brightness_icon_summary">Show a brightness icon to the left of the brighness slider to adjust auto-brightness</string>
 	<!-- Advanced data tile -->
     <string name="qs_advanced_data_title">Data on tap</string>
     <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>	
