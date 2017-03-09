@@ -49,7 +49,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.utils.LunaUtils;
-import com.aoscp.hardware.ScreenType;
+
+import aoscp.hardware.LunaHardwareManager;
 
 import java.util.List;
 
@@ -181,11 +182,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
         mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);	
         mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
+		
+		final LunaHardwareManager hardware = LunaHardwareManager.getInstance(getActivity());
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
         boolean needsNavigationBar = false;
-        if (isHardwareKeyDisableSupported(getResources())) {
+        if (hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
             try {
                 IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
                 needsNavigationBar = wm.needsNavigationBar();
@@ -504,7 +507,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public static void restoreKeyDisabler(Context context) {
-        if (isHardwareKeyDisableSupported(context.getResources())) {
+        LunaHardwareManager hardware = LunaHardwareManager.getInstance(context);
+        if (!hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
             return;
         }
 
@@ -532,11 +536,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         return super.onPreferenceTreeClick(preference);
-    }
-	
-	private static boolean isHardwareKeyDisableSupported(Resources res) {
-        return res.getBoolean(
-                com.android.internal.R.bool.config_supportHardwareKeyDisable);
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {
