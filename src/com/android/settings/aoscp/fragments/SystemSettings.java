@@ -47,6 +47,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static android.provider.Settings.System.PIXEL_NAV_ANIMATION;
 import static android.provider.Settings.Secure.ONE_HANDED_MODE_UI;
 
 public class SystemSettings extends SettingsPreferenceFragment implements
@@ -76,28 +77,28 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
-	mEnableNavigationBar = Settings.System.getInt(resolver,
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, 1);
+	    mEnableNavigationBar = Settings.System.getInt(resolver,
+                    Settings.System.DEV_FORCE_SHOW_NAVBAR, 1);
 				
         mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
-	mNavbarAnimation.setChecked((Settings.System.getInt(resolver,
-                Settings.System.PIXEL_NAV_ANIMATION, 1) == 0));
+	    mNavbarAnimation.setChecked((Settings.System.getInt(resolver,
+                    Settings.System.PIXEL_NAV_ANIMATION, 1) == 1));
         mNavbarAnimation.setOnPreferenceChangeListener(this);
 		
-	mOneHandedMode = (SwitchPreference) findPreference(ONE_HANDED_MODE_UI);
-	mOneHandedMode.setChecked((Settings.System.getInt(resolver,
-                Settings.Secure.ONE_HANDED_MODE_UI, 0) == 1));
+	    mOneHandedMode = (SwitchPreference) findPreference(ONE_HANDED_MODE_UI);
+	    mOneHandedMode.setChecked((Settings.System.getInt(resolver,
+                   Settings.Secure.ONE_HANDED_MODE_UI, 0) == 1));
         mOneHandedMode.setOnPreferenceChangeListener(this);
 		
-	if (mEnableNavigationBar != 0) {
-	    mNavbarAnimation.setEnabled(false);
+	    if (mEnableNavigationBar != 0) {
+	        mNavbarAnimation.setEnabled(false);
             mOneHandedMode.setEnabled(false);
-	} else {
-	    mNavbarAnimation.setEnabled(true);
+	    } else {
+	        mNavbarAnimation.setEnabled(true);
             mOneHandedMode.setEnabled(true);
         }
 		
-	mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
+	    mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
         int mScreenshotTypeValue = Settings.System.getInt(resolver,
                 Settings.System.SCREENSHOT_TYPE, 0);
         mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));

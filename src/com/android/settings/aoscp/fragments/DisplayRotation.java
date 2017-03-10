@@ -83,7 +83,7 @@ public class DisplayRotation extends SettingsPreferenceFragment implements OnPre
         boolean configEnableLockRotation = getResources().
                         getBoolean(com.android.internal.R.bool.config_enableLockScreenRotation);
         Boolean lockScreenRotationEnabled = Settings.System.getInt(getContentResolver(),
-                        Settings.System.LOCKSCREEN_ROTATION, configEnableLockRotation ? 1 : 0) != 0;
+                        Settings.System.LOCKSCREEN_ROTATION, configEnableLockRotation ? 0 : 1) != 0;
 
         mRotation0Pref.setChecked((mode & ROTATION_0_MODE) != 0);
         mRotation90Pref.setChecked((mode & ROTATION_90_MODE) != 0);
