@@ -55,4 +55,10 @@
             android:order="6"
             settings:useAdditionalSummary="true" />
 
+    <SwitchPreference
+            android:key="status_bar_show_ticker"
+            android:title="@string/ticker_title"
+            android:summary="@string/ticker_summary"
+            android:defaultValue="false" />
+
 </PreferenceScreen>
