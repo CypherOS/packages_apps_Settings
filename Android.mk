@@ -21,10 +21,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v14-preference \
     jsr305 \
     settings-logtags
-
-## AOSCP framework
-LOCAL_JAVA_LIBRARIES += \
-        org.aoscp.framework	
 	
 LOCAL_MODULE_TAGS := optional
 
