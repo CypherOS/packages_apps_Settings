@@ -47,6 +47,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static android.provider.Settings.System.PIXEL_NAV_ANIMATION;
 import static android.provider.Settings.Secure.ONE_HANDED_MODE_UI;
 
 public class SystemSettings extends SettingsPreferenceFragment implements
@@ -77,22 +78,22 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         final ContentResolver resolver = activity.getContentResolver();
 		
 	mEnableNavigationBar = Settings.System.getInt(resolver,
-                Settings.System.DEV_FORCE_SHOW_NAVBAR, 1);
+                   Settings.System.DEV_FORCE_SHOW_NAVBAR, 1);
 				
-        mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
-	mNavbarAnimation.setChecked((Settings.System.getInt(resolver,
-                Settings.System.PIXEL_NAV_ANIMATION, 1) == 0));
-        mNavbarAnimation.setOnPreferenceChangeListener(this);
+    mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
+	int nav = Settings.System.getInt(resolver, PIXEL_NAV_ANIMATION, 1);
+	mNavbarAnimation.setChecked(nav != 0);
+    mNavbarAnimation.setOnPreferenceChangeListener(this);
 		
 	mOneHandedMode = (SwitchPreference) findPreference(ONE_HANDED_MODE_UI);
 	mOneHandedMode.setChecked((Settings.System.getInt(resolver,
-                Settings.Secure.ONE_HANDED_MODE_UI, 0) == 1));
-        mOneHandedMode.setOnPreferenceChangeListener(this);
+            Settings.Secure.ONE_HANDED_MODE_UI, 0) == 1));
+    mOneHandedMode.setOnPreferenceChangeListener(this);
 		
 	if (mEnableNavigationBar != 0) {
 	    mNavbarAnimation.setEnabled(false);
             mOneHandedMode.setEnabled(false);
-	} else {
+        } else {
 	    mNavbarAnimation.setEnabled(true);
             mOneHandedMode.setEnabled(true);
         }
@@ -104,7 +105,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mScreenshotType.setSummary(mScreenshotType.getEntry());
         mScreenshotType.setOnPreferenceChangeListener(this);
 		
-		mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
+	mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
         mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
                 SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
         mScrollingCachePref.setOnPreferenceChangeListener(this);
