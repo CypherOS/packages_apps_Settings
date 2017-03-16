@@ -20,6 +20,7 @@
 		<PreferenceScreen
             android:key="heads_up_settings"
             android:title="@string/headsup_settings_title"
+			android:summary="@string/headsup_settings_title_summary"
             android:fragment="com.android.settings.aoscp.fragments.HeadsUpSettings" />
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
