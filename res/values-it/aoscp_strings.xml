@@ -30,7 +30,7 @@
    <string name="vendor_version">Versione fornitore</string>
    <string name="vendor_version_default">Sconosciuto</string>
    <!--About phone screen, CypherOS Release ID -->
-   <string name="aoscp_release_id">ID di rilascio</string>
+   <string name="aoscp_release_id">Etichetta di rilascio</string>
    <string name="aoscp_release_id_default">Non specificato</string>
    <!--Dashboard, CypherOS version summary -->
    <string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
@@ -131,11 +131,11 @@
    <string name="battery_title">Visualizzazione della batteria</string>
    <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
    <string name="status_bar_battery_percentage_default">Nascosta</string>
-   <string name="status_bar_battery_percentage_text_inside">Incorporata</string>
+   <string name="status_bar_battery_percentage_text_inside">Dentro l'\icona</string>
    <string name="status_bar_battery_percentage_text_next">Accanto all\'icona</string>
    <string name="status_bar_battery_style_icon_portrait">Verticale</string>
    <string name="status_bar_battery_style_icon_landscape">Orizzontale</string>
-   <string name="status_bar_battery_style_aoscp">Logo</string>
+   <string name="status_bar_battery_style_aoscp">Luna</string>
    <string name="status_bar_battery_style_solid">Solida</string>
    <string name="status_bar_battery_style_circle">Cerchio</string>
    <string name="status_bar_battery_style_text">Testo</string>
@@ -508,6 +508,7 @@
  
     <!-- Heads up settings -->
     <string name="headsup_settings_title">Heads up</string>
+    <string name="headsup_settings_title_summary">Modifica la funzionalità delle notifiche heads up</string>
     <string name="summary_heads_up_enabled">Heads up è acceso</string>
     <string name="summary_heads_up_disabled">Heads up è spento</string>
     <string name="heads_up_disabled_notice">Consente alle applicazioni di visualizzare le notifiche interattive in una finestra pop-up sullo schermo, notifiche Heads up accese</string>
