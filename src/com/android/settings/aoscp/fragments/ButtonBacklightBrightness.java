@@ -35,11 +35,11 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.settings.aoscp.preference.CustomDialogPreference;
+import com.android.settings.aoscp.preference.DynamicDialogPreference;
 import com.android.settings.aoscp.fragments.ButtonSettings;
 import com.android.settings.R;
 
-public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialog> implements
+public class ButtonBacklightBrightness extends DynamicDialogPreference<AlertDialog> implements
         SeekBar.OnSeekBarChangeListener {
     private static final int DEFAULT_BUTTON_TIMEOUT = 5;
 
