@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,32 +21,34 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.DialogPreference;
 import android.provider.Settings;
-import android.support.v7.preference.PreferenceManager;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.settings.aoscp.preference.CustomDialogPreference;
-import com.android.settings.aoscp.fragments.ButtonSettings;
 import com.android.settings.R;
+import com.android.settings.aoscp.fragments.ButtonSettings;
 
-public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialog> implements
+public class ButtonBacklightBrightness extends DialogPreference implements
         SeekBar.OnSeekBarChangeListener {
     private static final int DEFAULT_BUTTON_TIMEOUT = 5;
 
     public static final String KEY_BUTTON_BACKLIGHT = "pre_navbar_button_backlight";
-
-    private Window mWindow;
 
     private BrightnessControl mButtonBrightness;
     private BrightnessControl mKeyboardBrightness;
@@ -56,6 +59,8 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
     private TextView mTimeoutValue;
 
     private ContentResolver mResolver;
+
+    private int mOriginalTimeout;
 
     public ButtonBacklightBrightness(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -85,39 +90,13 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
     }
 
     @Override
-    protected void onClick(AlertDialog d, int which) {
-        super.onClick(d, which);
-
-        if (getDialog() != null) {
-            mWindow = getDialog().getWindow();
-        }
-        updateBrightnessPreview();
-    }
-
-    @Override
-    protected void onPrepareDialogBuilder(AlertDialog.Builder builder, DialogInterface.OnClickListener listener) {
-        super.onPrepareDialogBuilder(builder, listener);
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
         builder.setNeutralButton(R.string.reset,
                 new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }
         });
-    }
-
-    @Override
-    protected boolean onDismissDialog(AlertDialog dialog, int which) {
-        if (which == DialogInterface.BUTTON_NEUTRAL) {
-            mTimeoutBar.setProgress(DEFAULT_BUTTON_TIMEOUT);
-            if (mButtonBrightness != null) {
-                mButtonBrightness.reset();
-            }
-            if (mKeyboardBrightness != null) {
-                mKeyboardBrightness.reset();
-            }
-            return false;
-        }
-        return true;
     }
 
     @Override
@@ -129,7 +108,8 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
         mTimeoutValue = (TextView) view.findViewById(R.id.timeout_value);
         mTimeoutBar.setMax(30);
         mTimeoutBar.setOnSeekBarChangeListener(this);
-        mTimeoutBar.setProgress(getTimeout());
+        mOriginalTimeout = getTimeout();
+        mTimeoutBar.setProgress(mOriginalTimeout);
         handleTimeoutUpdate(mTimeoutBar.getProgress());
 
         ViewGroup buttonContainer = (ViewGroup) view.findViewById(R.id.button_container);
@@ -153,10 +133,35 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
     }
 
     @Override
+    protected void showDialog(Bundle state) {
+        super.showDialog(state);
+
+        // Can't use onPrepareDialogBuilder for this as we want the dialog
+        // to be kept open on click
+        AlertDialog d = (AlertDialog) getDialog();
+        Button defaultsButton = d.getButton(DialogInterface.BUTTON_NEUTRAL);
+        defaultsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTimeoutBar.setProgress(DEFAULT_BUTTON_TIMEOUT);
+                applyTimeout(DEFAULT_BUTTON_TIMEOUT);
+                if (mButtonBrightness != null) {
+                    mButtonBrightness.reset();
+                }
+                if (mKeyboardBrightness != null) {
+                    mKeyboardBrightness.reset();
+                }
+            }
+        });
+        updateBrightnessPreview();
+    }
+
+    @Override
     protected void onDialogClosed(boolean positiveResult) {
         super.onDialogClosed(positiveResult);
 
         if (!positiveResult) {
+            applyTimeout(mOriginalTimeout);
             return;
         }
 
@@ -275,15 +280,17 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
     }
 
     private void updateBrightnessPreview() {
-        if (mWindow != null) {
-            LayoutParams params = mWindow.getAttributes();
-            if (mActiveControl != null) {
-                params.buttonBrightness = (float) mActiveControl.getBrightness(false) / 255.0f;
-            } else {
-                params.buttonBrightness = -1;
-            }
-            mWindow.setAttributes(params);
+        if (getDialog() == null || getDialog().getWindow() == null) {
+            return;
         }
+        Window window = getDialog().getWindow();
+        LayoutParams params = window.getAttributes();
+        if (mActiveControl != null) {
+            params.buttonBrightness = (float) mActiveControl.getBrightness(false) / 255.0f;
+        } else {
+            params.buttonBrightness = -1;
+        }
+        window.setAttributes(params);
     }
 
     private void updateTimeoutEnabledState() {
@@ -315,7 +322,7 @@ public class ButtonBacklightBrightness extends CustomDialogPreference<AlertDialo
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        // Do nothing here
+        applyTimeout(seekBar.getProgress());
     }
 
     private static class SavedState extends BaseSavedState {
