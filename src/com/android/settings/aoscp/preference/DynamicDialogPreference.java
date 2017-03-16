@@ -26,24 +26,24 @@ import android.support.v7.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class CustomDialogPreference<T extends DialogInterface> extends DialogPreference {
+public class DynamicDialogPreference<T extends DialogInterface> extends DialogPreference {
 
-    private CustomPreferenceDialogFragment mFragment;
+    private DynamicPreferenceDialogFragment mFragment;
 
-    public CustomDialogPreference(Context context, AttributeSet attrs, int defStyleAttr,
+    public DynamicDialogPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public CustomDialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DynamicDialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public CustomDialogPreference(Context context, AttributeSet attrs) {
+    public DynamicDialogPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomDialogPreference(Context context) {
+    public DynamicDialogPreference(Context context) {
         super(context);
     }
 
@@ -76,7 +76,7 @@ public class CustomDialogPreference<T extends DialogInterface> extends DialogPre
         return null;
     }
 
-    private void setFragment(CustomPreferenceDialogFragment fragment) {
+    private void setFragment(DynamicPreferenceDialogFragment fragment) {
         mFragment = fragment;
     }
 
@@ -84,18 +84,18 @@ public class CustomDialogPreference<T extends DialogInterface> extends DialogPre
         return true;
     }
 
-    public static class CustomPreferenceDialogFragment extends PreferenceDialogFragment {
+    public static class DynamicPreferenceDialogFragment extends PreferenceDialogFragment {
 
-        public static CustomPreferenceDialogFragment newInstance(String key) {
-            final CustomPreferenceDialogFragment fragment = new CustomPreferenceDialogFragment();
+        public static DynamicPreferenceDialogFragment newInstance(String key) {
+            final DynamicPreferenceDialogFragment fragment = new DynamicPreferenceDialogFragment();
             final Bundle b = new Bundle(1);
             b.putString(ARG_KEY, key);
             fragment.setArguments(b);
             return fragment;
         }
 
-        private CustomDialogPreference getCustomizablePreference() {
-            return (CustomDialogPreference) getPreference();
+        private DynamicDialogPreference getCustomizablePreference() {
+            return (DynamicDialogPreference) getPreference();
         }
 
         private class OnDismissListener implements View.OnClickListener {
