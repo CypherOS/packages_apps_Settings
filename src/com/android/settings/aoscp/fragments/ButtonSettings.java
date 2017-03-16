@@ -28,6 +28,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
@@ -122,6 +123,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mPowerEndCall;
 	
+	private Preference mButtonBacklight;
 	private Preference mNavigationBarNotice;
 	private Preference mNavigationTuner;
 
@@ -342,10 +344,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             Log.e(TAG, "Error getting navigation bar status");
         }
 
-        final ButtonBacklightBrightness backlight =
-                (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
-        if (!backlight.isButtonSupported() && !backlight.isKeyboardSupported()) {
-            prefScreen.removePreference(backlight);
+		mButtonBacklight = (Preference) findPreference(KEY_BUTTON_BACKLIGHT);
+		if (mButtonBacklight.isButtonSupported() && mButtonBacklight.isKeyboardSupported()) {
+            prefScreen.removePreference(mButtonBacklight);
         }
 		
         mVolumeWakeScreen = (SwitchPreference) findPreference(Settings.System.VOLUME_WAKE_SCREEN);
@@ -478,8 +479,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_ASSIST);
         final PreferenceCategory appSwitchCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
-        final ButtonBacklightBrightness backlight =
-                (ButtonBacklightBrightness) prefScreen.findPreference(KEY_BUTTON_BACKLIGHT);
+        
+		mButtonBacklight = (Preference) findPreference(KEY_BUTTON_BACKLIGHT);
 
         /* Toggle backlight control depending on navbar state, force it to
            off if enabling */
