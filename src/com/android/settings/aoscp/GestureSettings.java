@@ -253,8 +253,8 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         private void updateSummary() {
             boolean tap = Settings.System.getInt(mContext.getContentResolver(),
                     DOUBLE_TAP_SLEEP_GESTURE, 1) == 0;
-            mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_on
-                    : R.string.double_tap_to_sleep_off));
+            mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_off
+                    : R.string.double_tap_to_sleep_on));
         }
     }
 	
