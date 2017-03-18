@@ -131,7 +131,7 @@
    <string name="battery_title">Visualizzazione della batteria</string>
    <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
    <string name="status_bar_battery_percentage_default">Nascosta</string>
-   <string name="status_bar_battery_percentage_text_inside">Dentro l'\icona</string>
+   <string name="status_bar_battery_percentage_text_inside">Dentro l\'icona</string>
    <string name="status_bar_battery_percentage_text_next">Accanto all\'icona</string>
    <string name="status_bar_battery_style_icon_portrait">Verticale</string>
    <string name="status_bar_battery_style_icon_landscape">Orizzontale</string>
