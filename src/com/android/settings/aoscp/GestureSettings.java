@@ -141,11 +141,7 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 		PreferenceGroup parentPreference = getPreferenceScreen();
 		
 		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
-                PREF_KEY_OPO_DOZE_SETTINGS,
-                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
-				
-		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
-                PREF_KEY_DOZE_SETTINGS,
+                PREF_KEY_OPO_DOZE_SETTINGS, PREF_KEY_DOZE_SETTINGS,
                 Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
     }
