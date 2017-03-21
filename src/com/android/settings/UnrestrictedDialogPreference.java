@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.aoscp.preference;
+package com.android.settings;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -26,24 +26,24 @@ import android.support.v7.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class DynamicDialogPreference<T extends DialogInterface> extends DialogPreference {
+public class UnrestrictedDialogPreference<T extends DialogInterface> extends DialogPreference {
 
-    private DynamicPreferenceDialogFragment mFragment;
+    private UnrestrictedPreferenceDialogFragment mFragment;
 
-    public DynamicDialogPreference(Context context, AttributeSet attrs, int defStyleAttr,
+    public UnrestrictedDialogPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public DynamicDialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public UnrestrictedDialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public DynamicDialogPreference(Context context, AttributeSet attrs) {
+    public UnrestrictedDialogPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public DynamicDialogPreference(Context context) {
+    public UnrestrictedDialogPreference(Context context) {
         super(context);
     }
 
@@ -76,7 +76,7 @@ public class DynamicDialogPreference<T extends DialogInterface> extends DialogPr
         return null;
     }
 
-    private void setFragment(DynamicPreferenceDialogFragment fragment) {
+    private void setFragment(UnrestrictedPreferenceDialogFragment fragment) {
         mFragment = fragment;
     }
 
@@ -84,18 +84,18 @@ public class DynamicDialogPreference<T extends DialogInterface> extends DialogPr
         return true;
     }
 
-    public static class DynamicPreferenceDialogFragment extends PreferenceDialogFragment {
+    public static class UnrestrictedPreferenceDialogFragment extends PreferenceDialogFragment {
 
-        public static DynamicPreferenceDialogFragment newInstance(String key) {
-            final DynamicPreferenceDialogFragment fragment = new DynamicPreferenceDialogFragment();
+        public static UnrestrictedPreferenceDialogFragment newInstance(String key) {
+            final UnrestrictedPreferenceDialogFragment fragment = new UnrestrictedPreferenceDialogFragment();
             final Bundle b = new Bundle(1);
             b.putString(ARG_KEY, key);
             fragment.setArguments(b);
             return fragment;
         }
 
-        private DynamicDialogPreference getCustomizablePreference() {
-            return (DynamicDialogPreference) getPreference();
+        private UnrestrictedDialogPreference getCustomizablePreference() {
+            return (UnrestrictedDialogPreference) getPreference();
         }
 
         private class OnDismissListener implements View.OnClickListener {
@@ -109,6 +109,7 @@ public class DynamicDialogPreference<T extends DialogInterface> extends DialogPr
 
             @Override
             public void onClick(View view) {
+                UnrestrictedPreferenceDialogFragment.this.onClick(mDialog, mWhich);
                 if (getCustomizablePreference().onDismissDialog(mDialog, mWhich)) {
                     mDialog.dismiss();
                 }

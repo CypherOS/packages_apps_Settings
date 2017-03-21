@@ -582,6 +582,9 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
         } else if (preference instanceof CustomEditTextPreference) {
             f = CustomEditTextPreference.CustomPreferenceDialogFragment
                     .newInstance(preference.getKey());
+		} else if (preference instanceof UnrestrictedDialogPreference) {
+            f = UnrestrictedDialogPreference.UnrestrictedPreferenceDialogFragment
+                    .newInstance(preference.getKey());
         } else {
             super.onDisplayPreferenceDialog(preference);
             return;
