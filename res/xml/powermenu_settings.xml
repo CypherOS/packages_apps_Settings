@@ -12,50 +12,68 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+	
+	<PreferenceCategory android:key="system_category"
+	        android:title="@string/power_menu_system">
 
-    <SwitchPreference
-        android:key="screenshot"
-        android:title="@string/power_menu_screenshot_title"
-        android:defaultValue="false" />
+		<SwitchPreference
+            android:key="airplane"
+            android:title="@string/power_menu_airplane_title"
+			android:summary="@string/power_menu_airplane_title_summary"
+            android:defaultValue="true" />	
+			
+        <SwitchPreference
+            android:key="screenshot"
+            android:title="@string/power_menu_screenshot_title"
+			android:summary="@string/power_menu_screenshot_title_summary"
+            android:defaultValue="false" />
+			
+		<SwitchPreference
+            android:key="settings"
+            android:title="@string/power_menu_settings_title"
+			android:summary="@string/power_menu_settings_title_summary"
+            android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="airplane"
-        android:title="@string/power_menu_airplane_title"
-        android:defaultValue="true" />
+        <SwitchPreference
+            android:key="users"
+            android:title="@string/power_menu_users_title"
+			android:summary="@string/power_menu_users_title_summary"
+            android:defaultValue="false" />
+			
+	</PreferenceCategory>
 
-    <SwitchPreference
-        android:key="users"
-        android:title="@string/power_menu_users_title"
-        android:defaultValue="false" />
+    <PreferenceCategory android:key="google_category"
+	        android:title="@string/power_menu_google">    
 
-    <SwitchPreference
-        android:key="settings"
-        android:title="@string/power_menu_settings_title"
-        android:defaultValue="false" />
+        <SwitchPreference
+            android:key="assist"
+            android:title="@string/power_menu_search_title"
+			android:summary="@string/power_menu_search_title_summary"
+            android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="lockdown"
-        android:title="@string/power_menu_lockdown_title"
-        android:defaultValue="false" />
+        <SwitchPreference
+            android:key="voiceassist"
+            android:title="@string/power_menu_voice_title"
+			android:summary="@string/power_menu_voice_title_summary"
+            android:defaultValue="false" />
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:key="device_category"
+	        android:title="@string/power_menu_device">
+		
+	    <SwitchPreference
+            android:key="lockdown"
+            android:title="@string/power_menu_lockdown_title"
+			android:summary="@string/power_menu_lockdown_title_summary"
+            android:defaultValue="false" />
 
-    <SwitchPreference
-        android:key="assist"
-        android:title="@string/power_menu_search_title"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="voiceassist"
-        android:title="@string/power_menu_voice_title"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="bugreport"
-        android:title="@string/power_menu_bug_report_title"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="silent"
-        android:title="@string/power_menu_sound_title"
-        android:defaultValue="true" />
+        <SwitchPreference
+            android:key="silent"
+            android:title="@string/power_menu_sound_title"
+			android:summary="@string/power_menu_sound_title_summary"
+            android:defaultValue="true" />
+			
+	</PreferenceCategory>
 
 </PreferenceScreen>

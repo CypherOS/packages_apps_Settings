@@ -16,6 +16,14 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/statusbar_settings_title">
 		
+		<PreferenceScreen
+                android:title="@string/status_bar_icon_blacklist_title"
+                android:summary="@string/status_bar_icon_blacklist_summary" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.TunerActivity" />
+        </PreferenceScreen>
+		
 		<ListPreference
             android:key="quick_pulldown"
             android:title="@string/quick_pulldown_title"
@@ -31,24 +39,10 @@
             android:persistent="false" />
 			
 		<com.android.settings.preference.SystemSettingSwitchPreference
-            android:key="force_expanded_notifications"
-            android:title="@string/notification_force_expand_title"
-            android:summary="@string/notification_force_expand_summary"
-            android:defaultValue="false" />
-			
-		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="status_bar_notif_count"
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
-			
-		<PreferenceScreen
-                android:title="@string/status_bar_icon_blacklist_title"
-                android:summary="@string/status_bar_icon_blacklist_summary" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.tuner.TunerActivity" />
-        </PreferenceScreen>
 		
     <PreferenceCategory android:key="statusbar_clock_category"
             android:title="@string/status_bar_clock_title">

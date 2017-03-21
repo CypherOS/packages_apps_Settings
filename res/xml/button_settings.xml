@@ -32,12 +32,19 @@
         android:dialogTitle="@string/button_backlight_title"
         android:persistent="false" />
 		
-	<PreferenceScreen
+	<PreferenceScreen android:key="navigation_tuner"
             android:title="@string/navbar_tuner_title"
             android:summary="@string/navbar_tuner_summary">
         <intent android:action="android.intent.action.MAIN"
             android:targetPackage="com.android.systemui"
             android:targetClass="com.android.systemui.tuner.NavbarActivity" />
+    </PreferenceScreen>
+	
+	<!-- OPO Doze settings -->
+    <PreferenceScreen android:key="opo_button_settings"
+            android:title="@string/opo_button_settings_title"
+            android:summary="@string/opo_button_settings_title_summary">
+        <intent android:action="com.android.settings.action.LAUNCH_BUTTON_SETTINGS" />
     </PreferenceScreen>
 
     <PreferenceCategory
@@ -178,13 +185,14 @@
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_wake_screen"
             android:title="@string/button_wake_title"
+			android:summary="@string/button_wake_title_summary"
             android:defaultValue="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volbtn_music_controls"
             android:title="@string/volbtn_music_controls_title"
             android:summary="@string/volbtn_music_controls_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_keys_control_ring_stream"

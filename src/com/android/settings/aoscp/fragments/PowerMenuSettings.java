@@ -32,7 +32,6 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.utils.Utils;
 
 import com.android.internal.util.aoscp.PowerMenuConstants;
 import static com.android.internal.util.aoscp.PowerMenuConstants.*;
@@ -49,7 +48,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
     private SwitchPreference mLockdownPref;
     private SwitchPreference mAssistPref;
     private SwitchPreference mVoicePref;
-    private SwitchPreference mBugReportPref;
     private SwitchPreference mSilentPref;
 
     Context mContext;
@@ -84,8 +82,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
                 mAssistPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_ASSIST);
             } else if (action.equals(GLOBAL_ACTION_KEY_VOICEASSIST )) {
                 mVoicePref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_VOICEASSIST );
-            } else if (action.equals(GLOBAL_ACTION_KEY_BUGREPORT)) {
-                mBugReportPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SILENT)) {
                 mSilentPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
             }
@@ -140,21 +136,9 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             mVoicePref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_VOICEASSIST));
         }
 
-        if (mBugReportPref != null) {
-            mBugReportPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_BUGREPORT));
-        }
-
         if (mSilentPref != null) {
             mSilentPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SILENT));
         }
-
-        updatePreferences();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        updatePreferences();
     }
 
     @Override
@@ -189,10 +173,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             value = mVoicePref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_VOICEASSIST);
 
-        } else if (preference == mBugReportPref) {
-            value = mBugReportPref.isChecked();
-            updateUserConfig(value, GLOBAL_ACTION_KEY_BUGREPORT);
-
         } else if (preference == mSilentPref) {
             value = mSilentPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_SILENT);
@@ -225,20 +205,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment {
             }
         }
         saveUserConfig();
-    }
-
-    private void updatePreferences() {
-        boolean bugreport = Settings.Global.getInt(getContentResolver(),
-            Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0;
-
-        if (mBugReportPref != null) {
-            mBugReportPref.setEnabled(bugreport);
-            if (bugreport) {
-                mBugReportPref.setSummary(null);
-            } else {
-                mBugReportPref.setSummary(R.string.power_menu_bug_report_disabled);
-            }
-        }
     }
 
     private void getUserConfig() {

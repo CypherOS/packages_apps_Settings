@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016 The Pure Nexus Project
+ * Copyright (C) 2017 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -40,8 +40,8 @@ import android.view.WindowManager;
 
 import com.android.settings.aoscp.fragments.ButtonSettings;
 
-public final class Utils {
-    private static final String TAG = "SettingsUtils";
+public final class LunaUtils {
+    private static final String TAG = "LunaUtils";
 
     // Device types
     private static final int DEVICE_PHONE = 0;

@@ -16,6 +16,8 @@
 
 package com.android.settings.aoscp.fragments;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -31,6 +33,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.IWindowManager;
@@ -44,18 +47,19 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.fragments.ButtonBacklightBrightness;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.utils.Utils;
-import com.aoscp.hardware.ScreenType;
+import com.android.settings.Utils;
+import com.android.settings.utils.LunaUtils;
+
+import aoscp.hardware.LunaHardwareManager;
 
 import java.util.List;
-
-import com.aoscp.hardware.HardwareManager;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "ButtonSettings";
 	
 	private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
+	private static final String KEY_NAVIGATION_TUNER = "navigation_tuner";
     private static final String KEY_HOME_LONG_PRESS = "hardware_keys_home_long_press";
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
@@ -71,6 +75,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
     private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
+	
+	private static final String KEY_OPO_BUTTON_SETTINGS = "opo_button_settings";
 	
 	private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -117,6 +123,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mPowerEndCall;
 	
 	private Preference mNavigationBarNotice;
+	private Preference mNavigationTuner;
 
     private Handler mHandler;
 	
@@ -173,15 +180,15 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         // Force Navigation bar related options
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
+        mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);	
+        mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
 		
-        mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);
-
-        final HardwareManager hardware = HardwareManager.getInstance(getActivity());
+		final LunaHardwareManager hardware = LunaHardwareManager.getInstance(getActivity());
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
         boolean needsNavigationBar = false;
-        if (hardware.isSupported(HardwareManager.FEATURE_KEY_DISABLE)) {
+        if (hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
             try {
                 IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
                 needsNavigationBar = wm.needsNavigationBar();
@@ -191,10 +198,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             if (needsNavigationBar) {
                 prefScreen.removePreference(mEnableNavigationBar);
 				prefScreen.removePreference(mNavigationBarNotice);
+				mNavigationTuner.setEnabled(false);
             } else {
                 // Remove keys that can be provided by the navbar
                 updateDisableNavkeysOption();
                 updateDisableNavkeysCategories(mEnableNavigationBar.isChecked());
+				mNavigationTuner.setEnabled(true);
             }
         } else {
             prefScreen.removePreference(mEnableNavigationBar);
@@ -202,7 +211,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (hasPowerKey) {
-            if (!Utils.isVoiceCapable(getActivity())) {
+            if (!LunaUtils.isVoiceCapable(getActivity())) {
                 powerCategory.removePreference(mPowerEndCall);
                 mPowerEndCall = null;
             }
@@ -309,7 +318,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(appSwitchCategory);
         }
 
-        if (Utils.hasVolumeRocker(getActivity())) {
+        if (LunaUtils.hasVolumeRocker(getActivity())) {
             if (!showVolumeWake) {
                 volumeCategory.removePreference(findPreference(Settings.System.VOLUME_WAKE_SCREEN));
             }
@@ -348,6 +357,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mVolumeWakeScreen.setDisableDependentsState(true);
             }
         }
+		
+		final Activity act = getActivity();
+		
+		PreferenceGroup parentPreference = getPreferenceScreen();
+		
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                KEY_OPO_BUTTON_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
     }
 	
 	@Override
@@ -490,15 +507,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public static void restoreKeyDisabler(Context context) {
-        HardwareManager hardware = HardwareManager.getInstance(context);
-        if (!hardware.isSupported(HardwareManager.FEATURE_KEY_DISABLE)) {
+        LunaHardwareManager hardware = LunaHardwareManager.getInstance(context);
+        if (!hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
             return;
         }
 
         writeDisableNavkeysOption(context, Settings.System.getInt(context.getContentResolver(),
                 Settings.System.DEV_FORCE_SHOW_NAVBAR, 0) != 0);
     }
-
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {

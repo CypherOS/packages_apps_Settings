@@ -28,6 +28,9 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceGroup;
+import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -42,6 +45,7 @@ import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +62,8 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "GestureSettings";
+	
+	private static final String PREF_KEY_MOVES_CATEGORY = "moves_category";
     private static final String PREF_KEY_DOUBLE_TAP_POWER = "gesture_double_tap_power";
     private static final String PREF_KEY_DOUBLE_TWIST = "gesture_double_twist";
     private static final String PREF_KEY_PICK_UP = "gesture_pick_up";
@@ -65,11 +71,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
 	private static final String PREF_KEY_TAP_TO_WAKE = "tap_to_wake";
     private static final String PREF_KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
     private static final String DEBUG_DOZE_COMPONENT = "debug.doze.component";
-
-    private List<GesturePreference> mPreferences;
+	
+	private static final String PREF_KEY_DOZE_SETTINGS = "doze_settings";
+	private static final String PREF_KEY_OPO_DOZE_SETTINGS = "opo_doze_settings";
 
     private AmbientDisplayConfiguration mAmbientConfig;
-	
+
 	private SwitchPreference mTapToWakePreference;
 
     @Override
@@ -77,7 +84,8 @@ public class GestureSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gesture_settings);
         Context context = getActivity();
-        mPreferences = new ArrayList();
+		
+		final PreferenceCategory moves = (PreferenceCategory) findPreference(PREF_KEY_MOVES_CATEGORY);
 
         // Double tap power for camera
         if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
@@ -85,29 +93,30 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                     getContentResolver(), Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
             addPreference(PREF_KEY_DOUBLE_TAP_POWER, cameraDisabled == 0);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TAP_POWER);
+            moves.removePreference(findPreference(PREF_KEY_DOUBLE_TAP_POWER));
         }
 
         // Ambient Display
         mAmbientConfig = new AmbientDisplayConfiguration(context);
         if (mAmbientConfig.pulseOnPickupAvailable()) {
             boolean pickup = mAmbientConfig.pulseOnPickupEnabled(UserHandle.myUserId());
-            addPreference(PREF_KEY_PICK_UP, pickup);
+			addPreference(PREF_KEY_PICK_UP, pickup);
         } else {
-            removePreference(PREF_KEY_PICK_UP);
+			moves.removePreference(findPreference(PREF_KEY_PICK_UP));
         }
+		
         if (mAmbientConfig.pulseOnDoubleTapAvailable()) {
             boolean doubleTap = mAmbientConfig.pulseOnDoubleTapEnabled(UserHandle.myUserId());
-            addPreference(PREF_KEY_DOUBLE_TAP_SCREEN, doubleTap);
+			addPreference(PREF_KEY_DOUBLE_TAP_SCREEN, doubleTap);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TAP_SCREEN);
+			moves.removePreference(findPreference(PREF_KEY_DOUBLE_TAP_SCREEN));
         }
 
         // Fingerprint slide for notifications
         if (isSystemUINavigationAvailable(context)) {
-            addPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT, isSystemUINavigationEnabled(context));
+			addPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT, isSystemUINavigationEnabled(context));
         } else {
-            removePreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT);
+			moves.removePreference(findPreference(PREF_KEY_SWIPE_DOWN_FINGERPRINT));
         }
 		
 		// Tap to wake
@@ -124,53 +133,23 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                     getContentResolver(), Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, 1);
             addPreference(PREF_KEY_DOUBLE_TWIST, doubleTwistEnabled != 0);
         } else {
-            removePreference(PREF_KEY_DOUBLE_TWIST);
+			moves.removePreference(findPreference(PREF_KEY_DOUBLE_TWIST));
         }
+		
+		final Activity act = getActivity();
+		
+		PreferenceGroup parentPreference = getPreferenceScreen();
+		
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                PREF_KEY_OPO_DOZE_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
+				
+		Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
+                PREF_KEY_DOZE_SETTINGS,
+                Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-        RecyclerView listview = getListView();
-        listview.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    for (GesturePreference pref : mPreferences) {
-                        pref.setScrolling(true);
-                    }
-                } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    for (GesturePreference pref : mPreferences) {
-                        pref.setScrolling(false);
-                    }
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            }
-        });
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        for (GesturePreference preference : mPreferences) {
-            preference.onViewVisible();
-        }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        for (GesturePreference preference : mPreferences) {
-            preference.onViewInvisible();
-        }
-    }
-          
+	
     @Override
     public void onResume() {
         super.onResume();
@@ -199,11 +178,6 @@ public class GestureSettings extends SettingsPreferenceFragment implements
                     Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED, enabled ? 1 : 0);
         }
         return true;
-    }
-
-    @Override
-    protected int getHelpResource() {
-        return R.string.help_url_gestures;
     }
 
     @Override
@@ -259,13 +233,6 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             mTapToWakePreference.setChecked(value != 0);
         }
     }
-
-    private void addPreference(String key, boolean enabled) {
-        GesturePreference preference = (GesturePreference) findPreference(key);
-        preference.setChecked(enabled);
-        preference.setOnPreferenceChangeListener(this);
-        mPreferences.add(preference);
-    }
 	
 	private static class SummaryProvider implements SummaryLoader.SummaryProvider {
         private final Context mContext;
@@ -289,6 +256,12 @@ public class GestureSettings extends SettingsPreferenceFragment implements
             mLoader.setSummary(this, mContext.getString(tap ? R.string.double_tap_to_sleep_off
                     : R.string.double_tap_to_sleep_on));
         }
+    }
+	
+	private void addPreference(String key, boolean enabled) {
+        SwitchPreference preference = (SwitchPreference) findPreference(key);
+        preference.setChecked(enabled);
+        preference.setOnPreferenceChangeListener(this);
     }
 
     public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
