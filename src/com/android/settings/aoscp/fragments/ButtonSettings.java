@@ -50,8 +50,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.utils.LunaUtils;
 
-import aoscp.hardware.LunaHardwareManager;
-
 import java.util.List;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
@@ -188,7 +186,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
         boolean needsNavigationBar = false;
-        if (hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
+        if (isHardwareKeyDisableSupported(getResources())) {
             try {
                 IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
                 needsNavigationBar = wm.needsNavigationBar();
@@ -507,8 +505,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public static void restoreKeyDisabler(Context context) {
-        LunaHardwareManager hardware = LunaHardwareManager.getInstance(context);
-        if (!hardware.isSupported(LunaHardwareManager.FEATURE_KEY_DISABLE)) {
+        if (isHardwareKeyDisableSupported(context.getResources())) {
             return;
         }
 
@@ -536,6 +533,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         return super.onPreferenceTreeClick(preference);
+    }
+	
+	private static boolean isHardwareKeyDisableSupported(Resources res) {
+        return res.getBoolean(
+                com.android.internal.R.bool.config_supportHardwareKeyDisable);
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {
