@@ -46,7 +46,7 @@ public class NotificationsAdvanced extends SettingsPreferenceFragment {
 	
 	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
 
-    private static final String CATEGORY_NOTIFICATION = "notification_category";
+    private static final String CATEGORY_NOTIFICATION = "lights_category";
 
     private Preference mNotifLedFragment;
 	
