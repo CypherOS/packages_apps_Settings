@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
 import android.os.UserHandle;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.provider.Settings;
@@ -45,6 +46,7 @@ import com.android.settings.Settings.HighPowerApplicationsActivity;
 import com.android.settings.SettingsActivity;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.BatteryInfo;
 
 import java.util.ArrayList;
@@ -68,17 +70,21 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final String KEY_BATTERY_HISTORY = "battery_history";
 
     private static final int MENU_STATS_TYPE = Menu.FIRST;
-    private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 2;
-    private static final int MENU_HELP = Menu.FIRST + 3;
+	private static final int MENU_STATS_RESET = Menu.FIRST + 1;
+    private static final int MENU_BATTERY_SAVER = Menu.FIRST + 2;
+    private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 3;
+    @VisibleForTesting
+    static final int MENU_ADDITIONAL_BATTERY_INFO = Menu.FIRST + 4;
+    private static final int MENU_HELP = Menu.FIRST + 5;
 
-    private static final int MENU_BATTERY_STYLE             = Menu.FIRST + 4;
-    private static final int SUBMENU_BATTERY_PORTRAIT       = Menu.FIRST + 5;
-    private static final int SUBMENU_BATTERY_AOSCP          = Menu.FIRST + 6;
-    private static final int SUBMENU_BATTERY_SOLID          = Menu.FIRST + 7;
-    private static final int SUBMENU_BATTERY_CIRCLE         = Menu.FIRST + 8;
-    private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 9;
-    private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 10;
-    private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 11;
+    private static final int MENU_BATTERY_STYLE             = Menu.FIRST + 6;
+    private static final int SUBMENU_BATTERY_PORTRAIT       = Menu.FIRST + 7;
+    private static final int SUBMENU_BATTERY_AOSCP          = Menu.FIRST + 8;
+    private static final int SUBMENU_BATTERY_SOLID          = Menu.FIRST + 9;
+    private static final int SUBMENU_BATTERY_CIRCLE         = Menu.FIRST + 10;
+    private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 11;
+    private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 12;
+    private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 13;
 
     private BatteryHistoryPreference mHistPref;
     private PreferenceGroup mAppListGroup;
@@ -171,6 +177,14 @@ public class PowerUsageSummary extends PowerUsageBase {
                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         menu.add(0, MENU_HIGH_POWER_APPS, 0, R.string.high_power_apps);
+
+        PowerUsageFeatureProvider powerUsageFeatureProvider =
+                FeatureFactory.getFactory(getContext()).getPowerUsageFeatureProvider(getContext());
+        if (powerUsageFeatureProvider != null &&
+                powerUsageFeatureProvider.isAdditionalBatteryInfoEnabled()) {
+            menu.add(0, MENU_ADDITIONAL_BATTERY_INFO,
+                    0, R.string.additional_battery_info);
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -197,6 +211,11 @@ public class PowerUsageSummary extends PowerUsageBase {
                         HighPowerApplicationsActivity.class.getName());
                 sa.startPreferencePanel(ManageApplications.class.getName(), args,
                         R.string.high_power_apps, null, null, 0);
+                return true;
+			case MENU_ADDITIONAL_BATTERY_INFO:
+                startActivity(FeatureFactory.getFactory(getContext())
+                        .getPowerUsageFeatureProvider(getContext())
+                        .getAdditionalBatteryInfoIntent());
                 return true;
 			case SUBMENU_BATTERY_PORTRAIT:
                 item.setChecked(true);

@@ -53,6 +53,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.deviceinfo.PrivateStorageInfo;
+import com.android.settingslib.deviceinfo.StorageManagerVolumeProvider;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
 
 import java.io.File;
@@ -167,8 +169,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
 
         for (VolumeInfo vol : volumes) {
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
-                final long volumeTotalBytes = getTotalSize(vol);
-                final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
+                final long volumeTotalBytes = PrivateStorageInfo.getTotalSize(vol,
+                        sTotalInternalStorage);
+                final int color = colorPrivate[privateCount++ % colorPrivate.length];
                 mInternalCategory.addPreference(
                         new StorageVolumePreference(context, vol, color, volumeTotalBytes));
                 if (vol.isMountedReadable()) {
@@ -276,7 +279,8 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final Bundle args = new Bundle();
                 args.putString(VolumeInfo.EXTRA_VOLUME_ID, vol.getId());
-                PrivateVolumeSettings.setVolumeSize(args, getTotalSize(vol));
+                PrivateVolumeSettings.setVolumeSize(args, PrivateStorageInfo.getTotalSize(vol,
+                        sTotalInternalStorage));
                 startFragment(this, PrivateVolumeSettings.class.getCanonicalName(),
                         -1, 0, args);
                 return true;
@@ -506,6 +510,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         private void updateSummary() {
             // TODO: Register listener.
             final StorageManager storageManager = mContext.getSystemService(StorageManager.class);
+			PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(
+                    new StorageManagerVolumeProvider(storageManager));
+            long privateUsedBytes = info.totalBytes - info.freeBytes;
             if (sTotalInternalStorage <= 0) {
                 sTotalInternalStorage = storageManager.getPrimaryStorageSize();
             }
@@ -527,30 +534,10 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
             long privateUsedBytes = privateTotalBytes - privateFreeBytes;
             mLoader.setSummary(this, mContext.getString(R.string.storage_summary,
                     Formatter.formatFileSize(mContext, privateUsedBytes),
-                    Formatter.formatFileSize(mContext, privateTotalBytes)));
+                    Formatter.formatFileSize(mContext, info.totalBytes)));
         }
     }
 
-    private static long getTotalSize(VolumeInfo info) {
-        // Device could have more than one primary storage, which could be located in the
-        // internal flash (UUID_PRIVATE_INTERNAL) or in an external disk.
-        // If it's internal, try to get its total size from StorageManager first
-        // (sTotalInternalStorage), since that size is more precise because it accounts for
-        // the system partition.
-        if (info.getType() == VolumeInfo.TYPE_PRIVATE
-                && Objects.equals(info.getFsUuid(), StorageManager.UUID_PRIVATE_INTERNAL)
-                && sTotalInternalStorage > 0) {
-            return sTotalInternalStorage;
-        } else {
-            final File path = info.getPath();
-            if (path == null) {
-                // Should not happen, caller should have checked.
-                Log.e(TAG, "info's path is null on getTotalSize(): " + info);
-                return 0;
-            }
-            return path.getTotalSpace();
-        }
-    }
 
     public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
             = new SummaryLoader.SummaryProviderFactory() {
