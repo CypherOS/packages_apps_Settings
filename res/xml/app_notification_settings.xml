@@ -61,4 +61,11 @@
             android:summary="@string/ticker_summary"
             android:defaultValue="false" />
 
+    <SwitchPreference
+            android:key="status_bar_track_ticker"
+            android:title="@string/track_ticker_title"
+            android:summary="@string/track_ticker_summary"
+            android:dependency="status_bar_show_ticker"
+            android:defaultValue="true" />
+
 </PreferenceScreen>
