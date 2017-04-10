@@ -24,6 +24,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -75,16 +76,22 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
     private static final String TAG_VOLUME_UNMOUNTED = "volume_unmounted";
     private static final String TAG_DISK_INIT = "disk_init";
 
-    static final int COLOR_PUBLIC = Color.parseColor("#ff9e9e9e");
-    static final int COLOR_WARNING = Color.parseColor("#fff4511e");
-
-    static final int[] COLOR_PRIVATE = new int[] {
-            Color.parseColor("#ff26a69a"),
-            Color.parseColor("#ffab47bc"),
-            Color.parseColor("#fff2a600"),
-            Color.parseColor("#ffec407a"),
-            Color.parseColor("#ffc0ca33"),
-    };
+	static int getColorPublic(Resources resources) {
+        return resources.getColor(R.color.storage_public);
+    }
+    static int getColorWarning(Resources resources) {
+        return resources.getColor(R.color.storage_warning);
+    }
+    
+    static int[] getColorPrivate(Resources resources) {
+        return new int[] {
+                resources.getColor(R.color.storage_private_1),
+                resources.getColor(R.color.storage_private_2),
+                resources.getColor(R.color.storage_private_3),
+                resources.getColor(R.color.storage_private_4),
+                resources.getColor(R.color.storage_private_5),
+        };
+    }
 
     private StorageManager mStorageManager;
 
@@ -167,6 +174,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         final List<VolumeInfo> volumes = mStorageManager.getVolumes();
         Collections.sort(volumes, VolumeInfo.getDescriptionComparator());
 
+		int[] colorPrivate = getColorPrivate(getResources());
         for (VolumeInfo vol : volumes) {
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
                 final long volumeTotalBytes = PrivateStorageInfo.getTotalSize(vol,
@@ -181,7 +189,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
                 mExternalCategory.addPreference(
-                        new StorageVolumePreference(context, vol, COLOR_PUBLIC, 0));
+                        new StorageVolumePreference(context, vol, getColorPublic(getResources()), 0));
             }
         }
 
@@ -193,7 +201,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                 // TODO: add actual storage type to record
                 final Drawable icon = context.getDrawable(R.drawable.ic_sim_sd);
                 icon.mutate();
-                icon.setTint(COLOR_PUBLIC);
+                icon.setTint(getColorPublic(getResources()));
 
                 final Preference pref = new Preference(context);
                 pref.setKey(rec.getFsUuid());
@@ -510,28 +518,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         private void updateSummary() {
             // TODO: Register listener.
             final StorageManager storageManager = mContext.getSystemService(StorageManager.class);
-			PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(
+            PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(
                     new StorageManagerVolumeProvider(storageManager));
             long privateUsedBytes = info.totalBytes - info.freeBytes;
-            if (sTotalInternalStorage <= 0) {
-                sTotalInternalStorage = storageManager.getPrimaryStorageSize();
-            }
-            final List<VolumeInfo> volumes = storageManager.getVolumes();
-            long privateFreeBytes = 0;
-            long privateTotalBytes = 0;
-            for (VolumeInfo info : volumes) {
-                final File path = info.getPath();
-                if (info.getType() != VolumeInfo.TYPE_PRIVATE || path == null) {
-                    continue;
-                }
-                if (VolumeInfo.ID_PRIVATE_INTERNAL.equals(info.getId()) && sTotalInternalStorage > 0) {
-                    privateTotalBytes += sTotalInternalStorage;
-                } else {
-                    privateTotalBytes += path.getTotalSpace();
-                }
-                privateFreeBytes += path.getFreeSpace();
-            }
-            long privateUsedBytes = privateTotalBytes - privateFreeBytes;
             mLoader.setSummary(this, mContext.getString(R.string.storage_summary,
                     Formatter.formatFileSize(mContext, privateUsedBytes),
                     Formatter.formatFileSize(mContext, info.totalBytes)));

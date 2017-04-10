@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.storage.StorageManager;
@@ -89,7 +90,7 @@ public class StorageVolumePreference extends Preference {
             }
 
             if (freeBytes < mStorageManager.getStorageLowBytes(path)) {
-                mColor = StorageSettings.COLOR_WARNING;
+                mColor = StorageSettings.getColorWarning(context.getResources());
                 icon = context.getDrawable(R.drawable.ic_warning_24dp);
             }
 
