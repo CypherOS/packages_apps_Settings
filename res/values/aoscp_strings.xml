@@ -38,6 +38,9 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+	<!-- Support Greeting -->
+    <string name="support_welcome_title">Welcome to your support manager</string>
+	
 	<!-- Gesture Settings [CHAR LIMIT=25]-->
     <string name="gesture_preference_title">Gestures</string>
 	<string name="gesture_preference_category">Moves</string>
