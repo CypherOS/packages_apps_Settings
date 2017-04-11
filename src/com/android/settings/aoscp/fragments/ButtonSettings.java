@@ -180,8 +180,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar = (SwitchPreference) findPreference(ENABLE_NAVIGATION_BAR);
         mNavigationBarNotice = (Preference) findPreference(NAVIGATION_BAR_NOTICE);	
         mNavigationTuner = (Preference) findPreference(KEY_NAVIGATION_TUNER);
-		
-		final LunaHardwareManager hardware = LunaHardwareManager.getInstance(getActivity());
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
