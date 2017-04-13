@@ -34,17 +34,23 @@
                 android:key="owner_info_settings"
                 android:title="@string/owner_info_settings_title"
                 android:summary="@string/owner_info_settings_summary"/>
-				
-		<com.android.settings.preference.SystemSettingSwitchPreference
+
+	<com.android.settings.preference.SystemSettingSwitchPreference
                 android:key="lockscreen_scramble_pin_layout"
                 android:title="@string/unlock_scramble_pin_layout_title"
                 android:summary="@string/unlock_scramble_pin_layout_summary"
-				android:defaultValue="false" />
+		android:defaultValue="false" />
 
-		<com.android.settings.preference.SystemSettingSwitchPreference
+	<com.android.settings.preference.SystemSettingSwitchPreference
                 android:key="double_tap_sleep_anywhere"
                 android:title="@string/double_tap_sleep_anywhere_title"
                 android:summary="@string/double_tap_sleep_anywhere_summary"
                 android:defaultValue="false" />
+
+        <com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="lockscreen_hide_status_bar"
+                android:title="@string/lockscreen_hide_status_bar_title"
+                android:summary="@string/lockscreen_hide_status_bar_summary"
+		android:defaultValue="false" />
 
 </PreferenceScreen>
