@@ -18,6 +18,7 @@ package com.android.settings.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -30,7 +31,8 @@ import android.content.res.Resources.NotFoundException;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
-import android.net.ConnectivityManager;
+import android.net.ConnectivityManager
+import android.net.Uri;
 import android.os.UserManager;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -213,5 +215,11 @@ public final class LunaUtils {
             // Ignore
         }
         return false;
+    }
+	
+	private void launchUrl(String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
+        getActivity().startActivity(intent);
     }
 }
