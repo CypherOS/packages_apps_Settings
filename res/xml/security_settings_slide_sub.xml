@@ -39,6 +39,11 @@
 		<com.android.settings.preference.SecureSettingSwitchPreference
                 android:key="lockscreen_visualizer"
                 android:title="@string/lockscreen_visualizer_title"
-                android:defaultValue="false"/>
+                android:defaultValue="false" />
+				
+		<com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="lockscreen_hide_status_bar"
+                android:title="@string/lockscreen_hide_status_bar_title"
+                android:summary="@string/lockscreen_hide_status_bar_summary" />
 
 </PreferenceScreen>
