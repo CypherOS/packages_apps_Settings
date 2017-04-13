@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.R;
+import com.android.settings.aoscp.support.SupportManagerCallback;
 import com.android.settings.dashboard.SuggestionFeatureProvider;
 import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 
@@ -64,6 +65,8 @@ public abstract class FeatureFactory {
     public abstract SuggestionFeatureProvider getSuggestionFeatureProvider();
 
     public abstract SupportFeatureProvider getSupportFeatureProvider(Context context);
+	
+	public abstract SupportManagerCallback getSupportManagerCallback(Context context);
 
     public abstract PowerUsageFeatureProvider getPowerUsageFeatureProvider(Context context);
 
