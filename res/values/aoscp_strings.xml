@@ -547,6 +547,6 @@
     <string name="lockscreen_visualizer_title">Music visualizer</string>
 	
 	<!-- Notification importance -->
-    <string name="tuner_full_importance_settings">Power notification controls</string>
+    <string name="power_notification_title">Power notification controls</string>
  
 </resources>

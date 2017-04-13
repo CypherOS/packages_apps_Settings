@@ -40,6 +40,13 @@
         android:key="notification_settings"
         android:title="@string/notifications_label"
         android:selectable="true" />
+	
+	<PreferenceScreen
+            android:title="@string/power_notification_title">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.PowerNotificationControlsActivity" />
+    </PreferenceScreen>
 
     <Preference
         android:key="preferred_settings"
