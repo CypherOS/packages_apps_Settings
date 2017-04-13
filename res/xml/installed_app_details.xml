@@ -40,6 +40,13 @@
         android:key="notification_settings"
         android:title="@string/notifications_label"
         android:selectable="true" />
+	
+	<!-- Importance -->
+    <PreferenceScreen
+        android:key="power_notification_controls"
+        android:title="@string/tuner_full_importance_settings">
+        <intent android:action="com.android.settings.action.POWER_NOTIF_CONTROLS" />
+    </PreferenceScreen>
 
     <Preference
         android:key="preferred_settings"
