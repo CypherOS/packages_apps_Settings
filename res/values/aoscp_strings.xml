@@ -319,4 +319,8 @@
     <string name="brightness_icon_title">Auto brightness</string>
     <string name="brightness_icon_summary">Change brightness modes directly from the quick settings panel</string>
 
+	<!-- Hide Statusbar on Lockscreen -->
+	<string name="lockscreen_hide_status_bar_title">Immersive lockscreen</string>
+    <string name="lockscreen_hide_status_bar_summary">Hides the statusbar on the lockscreen, touch the view to show the statusbar</string>
+ 
 </resources>

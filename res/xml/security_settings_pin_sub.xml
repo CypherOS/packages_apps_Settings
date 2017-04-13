@@ -47,4 +47,10 @@
                 android:summary="@string/double_tap_sleep_anywhere_summary"
                 android:defaultValue="false" />
 
+        <com.android.settings.preference.SecureSettingSwitchPreference
+                android:key="lockscreen_hide_status_bar"
+                android:title="@string/lockscreen_hide_status_bar_title"
+                android:summary="@string/lockscreen_hide_status_bar_summary"
+				android:defaultValue="false" />
+
 </PreferenceScreen>
