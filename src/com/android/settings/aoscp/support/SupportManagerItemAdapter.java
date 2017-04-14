@@ -37,6 +37,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto;
@@ -60,6 +61,7 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
     private static final int TYPE_SUPPORT_TILE_SPACER = R.layout.support_tile_spacer;
 
     private final Activity mActivity;
+	private final EscalationClickListener mEscalationClickListener;
     private final SpinnerItemSelectListener mSpinnerItemSelectListener;
 	private final SupportManagerCallback mSupportManagerCallback;
     private final View.OnClickListener mItemClickListener;
@@ -70,6 +72,7 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
         mActivity = activity;
 		mSupportManagerCallback = supportManagerCallback;
         mItemClickListener = itemClickListener;
+		mEscalationClickListener = new EscalationClickListener();
         mSpinnerItemSelectListener = new SpinnerItemSelectListener();
         mSupportData = new ArrayList<>();
         refreshData();
@@ -201,6 +204,7 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
             holder.text1View.setVisibility(View.GONE);
         } else {
             holder.text1View.setText(data.text1);
+			holder.text1View.setOnClickListener(mEscalationClickListener);
             holder.text1View.setEnabled(data.enabled1);
             holder.text1View.setVisibility(View.VISIBLE);
         }
@@ -208,6 +212,7 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
             holder.text2View.setVisibility(View.GONE);
         } else {
             holder.text2View.setText(data.text2);
+			holder.text2View.setOnClickListener(mEscalationClickListener);
             holder.text2View.setEnabled(data.enabled2);
             holder.text2View.setVisibility(View.VISIBLE);
         }
@@ -235,6 +240,35 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
             holder.tileSummaryView.setText(data.tileSummary);
         }
         holder.itemView.setOnClickListener(mItemClickListener);
+    }
+	
+	/**
+     * Show Bug Report chooser
+     */
+    private void startBugReportCaseChooser(final @SupportManagerCallback.SupportType int type) {
+		final Context context = getActivity();
+		if (mSupportManagerCallback.shouldShowBugreportDialog(mActivity)) {
+            Toast toast = Toast.makeText(getActivity(),
+                    R.string.support_escalation_by_report_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+		}
+    }
+	
+	/**
+     * Click handler for starting escalation options.
+     */
+    private final class EscalationClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(final View v) {
+            switch (v.getId()) {
+                case android.R.id.text1:
+                    MetricsLogger.action(mActivity,
+                            MetricsProto.MetricsEvent.ACTION_SUPPORT_PHONE);
+                    startBugReportCaseChooser(REPORT);
+                    break;
+			}
+        }
     }
 	
     private final class SpinnerItemSelectListener implements AdapterView.OnItemSelectedListener {
