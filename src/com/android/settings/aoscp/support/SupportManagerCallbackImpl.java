@@ -17,8 +17,18 @@
 package com.android.settings.aoscp.support;
 
 import android.content.Context;
+import android.content.Intent;
 
 public class SupportManagerCallbackImpl implements SupportManagerCallback {
+	
+	static final String SOFTWARE_WEBLINKS_ACTION = "com.android.settings.SHOW_SOFTWARE_WEBLINKS";
+    static final String SOFTWARE_WEBLINKS_PACKAGE = "com.android.settings";
+	
+	@Override
+	public Intent getWeblinksIntent() {
+        Intent intent = new Intent(SOFTWARE_WEBLINKS_ACTION);
+        return intent.setPackage(SOFTWARE_WEBLINKS_PACKAGE);
+    }
 
     @Override
     public boolean isSupportTypeEnabled(Context context, @SupportType int type) {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.aoscp.deviceinfo;
+package com.android.settings.aoscp.support.web;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -27,18 +27,14 @@ import android.support.v7.preference.Preference;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settings.search.Indexable;
-import android.provider.SearchIndexableResource;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoftwareInfo extends SettingsPreferenceFragment implements
-        Indexable {
-    private static final String TAG = "SoftwareInfo";
+public class Weblinks extends SettingsPreferenceFragment {
+    private static final String TAG = "Weblinks";
 	
 	Preference mWebsiteUrl;
     Preference mGoogleUrl;
@@ -48,7 +44,7 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.software_info);
+		addPreferencesFromResource(R.xml.software_weblinks);
 		
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
@@ -84,26 +80,4 @@ public class SoftwareInfo extends SettingsPreferenceFragment implements
         Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);
         getActivity().startActivity(intent);
     }
-	
-	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider() {
-                @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
-                        boolean enabled) {
-                    ArrayList<SearchIndexableResource> result =
-                            new ArrayList<SearchIndexableResource>();
-
-                    SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.software_info;
-                    result.add(sir);
-
-                    return result;
-                }
-
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    ArrayList<String> result = new ArrayList<String>();
-                    return result;
-                }
-            };
 }
