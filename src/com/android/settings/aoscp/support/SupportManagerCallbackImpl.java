@@ -32,12 +32,17 @@ public class SupportManagerCallbackImpl implements SupportManagerCallback {
 
     @Override
     public boolean isSupportTypeEnabled(Context context, @SupportType int type) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isOperatingNow(@SupportType int type) {
-        return false;
+        return true;
+    }
+	
+	@Override
+    public boolean shouldShowBugreportDialog(Context context) {
+        return true;
     }
 
 }

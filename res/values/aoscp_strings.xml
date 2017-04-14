@@ -43,6 +43,7 @@
 	<string name="support_welcome_title_summary">You can check out tips &amp; tricks, locate new features and more</string>
 	<!-- Support Report Button -->
 	<string name="support_escalation_by_report">Report</string>
+	<string name="support_escalation_by_report_error">Bug reporting is unavailable at this time</string>
 	<!-- Support Help Item -->
 	<string name="support_help_locate">Help &amp; tips</string>
 	
