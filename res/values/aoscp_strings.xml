@@ -114,8 +114,7 @@
 	<string name="category_lights_title">Lights</string>
 	
 	<!-- Software information-->
-	<string name="software_info_settings_title">Software info</string>
-	<string name="software_info_settings_title_summary">View information about the software</string>
+	<string name="weblinks_settings_title">Weblinks</string>
 	<!-- Social category -->
     <string name="social_category_title">Social</string>
 	<string name="website_preference_title">On-The-Web</string>

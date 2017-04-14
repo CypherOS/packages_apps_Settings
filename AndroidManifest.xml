@@ -693,6 +693,18 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+		
+        <activity android:name="Settings$WeblinksActivity"
+                android:label="@string/weblinks_settings_title"
+                android:icon="@drawable/ic_settings_ontheweb"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="com.android.settings.SHOW_SOFTWARE_WEBLINKS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.aoscp.support.web.Weblinks" />
+        </activity>
 
         <activity android:name="Settings$ManageAssistActivity"
                 android:label="@string/assist_and_voice_input_title"

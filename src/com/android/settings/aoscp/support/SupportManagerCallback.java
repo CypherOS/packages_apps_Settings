@@ -19,6 +19,7 @@ package com.android.settings.aoscp.support;
 import android.app.Activity;
 import android.annotation.IntDef;
 import android.content.Context;
+import android.content.Intent;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -33,6 +34,11 @@ public interface SupportManagerCallback {
     @interface SupportType {
         int REPORT = 1;
     }
+	
+	/**
+     * Returns a intent that will open weblinks.
+     */
+    Intent getWeblinksIntent();
 	
 	/**
      * Whether or not a support type is enabled.
