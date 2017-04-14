@@ -29,10 +29,11 @@ import java.lang.annotation.RetentionPolicy;
  */
 public interface SupportManagerCallback {
 	
-	@IntDef({SupportType.REPORT})
+	@IntDef({SupportType.EMAIL, SupportType.REPORT})
     @Retention(RetentionPolicy.SOURCE)
     @interface SupportType {
-        int REPORT = 1;
+		int EMAIL = 1;
+        int REPORT = 2;
     }
 	
 	/**
@@ -51,7 +52,12 @@ public interface SupportManagerCallback {
     boolean isOperatingNow(@SupportType int type);
 	
 	/**
-     * Whether or not a disclaimer dialog should be displayed.
+     * Whether or not a bug report action should be displayed.
      */
-    boolean shouldShowBugreportDialog(Context context);
+    boolean shouldShowBugreportAction(Context context);
+	
+	/**
+     * Whether or not a email action should be displayed.
+     */
+    boolean shouldShowEmailAction(Context context);
 }

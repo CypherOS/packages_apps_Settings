@@ -49,6 +49,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.android.settings.aoscp.support.SupportManagerCallback.SupportType.EMAIL;
 import static com.android.settings.aoscp.support.SupportManagerCallback.SupportType.REPORT;
 
 /**
@@ -159,11 +160,18 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
     }
 
     private void addOnlineEscalationCards() {
+		final boolean hasEmailOperation =
+                mSupportManagerCallback.isSupportTypeEnabled(mActivity, EMAIL);
 		final boolean hasReportOperation =
                 mSupportManagerCallback.isSupportTypeEnabled(mActivity, REPORT);
         final EscalationData.Builder builder = new EscalationData.Builder(mActivity);
-		if (!hasReportOperation) {
-            // Support is available. Todo: Add non-availability case later
+		if (!hasEmailOperation && !hasReportOperation) {
+            // Support is unavailable
+            builder.setTileTitle(R.string.support_welcome_title)
+                   .setTileSummary(R.string.support_welcome_title_summary_unavailable);
+		} else if (mSupportManagerCallback.isOperatingNow(EMAIL)
+                || mSupportManagerCallback.isOperatingNow(REPORT)) {
+            // Support is available for EMAIL and REPORT actions
             builder.setTileTitle(R.string.support_welcome_title)
                    .setTileSummary(R.string.support_welcome_title_summary);
 		} else {
@@ -171,9 +179,13 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
             builder.setTileTitle(R.string.support_welcome_title)
                    .setTileSummary(R.string.support_welcome_title_summary);
 	    }
+		if (hasEmailOperation) {
+            builder.setText1(R.string.support_escalation_by_email)
+                   .setEnabled1(mSupportManagerCallback.isOperatingNow(EMAIL));
+        }
 		if (hasReportOperation) {
             builder.setText1(R.string.support_escalation_by_report)
-                   .setEnabled1(mSupportManagerCallback.isOperatingNow(REPORT));
+                   .setEnabled2(mSupportManagerCallback.isOperatingNow(REPORT));
         }
         mSupportData.add(0 /* index */, builder.build());
     }
@@ -246,7 +258,16 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
      * Show Bug Report chooser
      */
     private void startBugReportCaseChooser(final @SupportManagerCallback.SupportType int type) {
-		if (mSupportManagerCallback.shouldShowBugreportDialog(mActivity)) {
+		if (mSupportManagerCallback.shouldShowBugreportAction(mActivity)) {
+            return;
+		}
+    }
+	
+	/**
+     * Launch email action client
+     */
+    private void startEmailActionClient(final @SupportManagerCallback.SupportType int type) {
+		if (mSupportManagerCallback.shouldShowEmailAction(mActivity)) {
             return;
 		}
     }
@@ -258,7 +279,12 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
         @Override
         public void onClick(final View v) {
             switch (v.getId()) {
-                case android.R.id.text1:
+				case android.R.id.text1:
+                    MetricsLogger.action(mActivity,
+                            MetricsProto.MetricsEvent.ACTION_SUPPORT_PHONE);
+                    startEmailActionClient(EMAIL);
+                    break;
+                case android.R.id.text2:
                     MetricsLogger.action(mActivity,
                             MetricsProto.MetricsEvent.ACTION_SUPPORT_PHONE);
                     startBugReportCaseChooser(REPORT);
