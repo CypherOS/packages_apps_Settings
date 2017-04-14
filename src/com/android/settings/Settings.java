@@ -167,4 +167,5 @@ public class Settings extends SettingsActivity {
 	
 	// CypherOS Additional Activities
 	public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class WeblinksActivity extends SettingsActivity { /* empty */ }
 }

@@ -18,7 +18,6 @@ package com.android.settings.search;
 
 import android.provider.SearchIndexableResource;
 import com.android.settings.aoscp.Additions;
-import com.android.settings.aoscp.deviceinfo.SoftwareInfo;
 import com.android.settings.aoscp.fragments.QuickSettings;
 import com.android.settings.aoscp.fragments.StatusbarSettings;
 import com.android.settings.aoscp.fragments.SystemSettings;
@@ -155,13 +154,6 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         Additions.class.getName(),
                         R.drawable.ic_settings_additions));
-						
-		sResMap.put(SoftwareInfo.class.getName(),
-                new SearchIndexableResource(
-                        Ranking.getRankForClassName(SoftwareInfo.class.getName()),
-                        NO_DATA_RES_ID,
-                        SoftwareInfo.class.getName(),
-                        R.drawable.ic_settings_about));
 						
 		sResMap.put(StatusbarSettings.class.getName(),
                 new SearchIndexableResource(

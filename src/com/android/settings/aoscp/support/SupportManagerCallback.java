@@ -35,6 +35,11 @@ public interface SupportManagerCallback {
     }
 	
 	/**
+     * Returns a intent that will open weblinks.
+     */
+    Intent getWeblinksIntent();
+	
+	/**
      * Whether or not a support type is enabled.
      */
     boolean isSupportTypeEnabled(Context context, @SupportType int type);

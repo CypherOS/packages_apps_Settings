@@ -40,6 +40,7 @@ import android.widget.TextView;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto;
+import com.android.settings.aoscp.support.web.Weblinks;
 import com.android.settings.aoscp.support.SupportManagerCallback;
 import com.android.settings.R;
 
@@ -181,6 +182,13 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
                 .setIcon(R.drawable.ic_help_24dp)
                 .setTileTitle(R.string.support_help_locate)
 				.startActivity(intent)
+                .setMetricsEvent(MetricsProto.MetricsEvent.ACTION_SUPPORT_HELP_AND_FEEDBACK)
+                .build());
+		Intent weblinks = mSupportManagerCallback.getWeblinksIntent(mActivity);
+		mSupportData.add(new SupportData.Builder(mActivity, TYPE_SUPPORT_TILE)
+                .setIcon(R.drawable.ic_settings_ontheweb)
+                .setTileTitle(R.string.weblinks_settings_title)
+                .setIntent(weblinks)
                 .setMetricsEvent(MetricsProto.MetricsEvent.ACTION_SUPPORT_HELP_AND_FEEDBACK)
                 .build());
     }
