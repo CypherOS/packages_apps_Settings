@@ -41,7 +41,12 @@ public class SupportManagerCallbackImpl implements SupportManagerCallback {
     }
 	
 	@Override
-    public boolean shouldShowBugreportDialog(Context context) {
+    public boolean shouldShowBugreportAction(Context context) {
+        return true;
+    }
+	
+	@Override
+    public boolean shouldShowEmailAction(Context context) {
         return true;
     }
 
