@@ -49,4 +49,9 @@ public interface SupportManagerCallback {
      * Whether or not a support type is operating now.
      */
     boolean isOperatingNow(@SupportType int type);
+	
+	/**
+     * Whether or not a disclaimer dialog should be displayed.
+     */
+    boolean shouldShowBugreportDialog(Context context);
 }
