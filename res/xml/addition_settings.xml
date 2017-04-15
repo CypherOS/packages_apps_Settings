@@ -49,18 +49,5 @@
                 android:icon="@drawable/ic_settings_quick_settings" />
 				
 	</PreferenceCategory>
-	
-	<PreferenceCategory android:key="hardware_category"
-	            android:title="@string/hardware_category_title">
-				
-		<!-- Button settings -->
-		<PreferenceScreen
-                android:key="button_settings"
-                android:title="@string/button_settings_title"
- 				android:summary="@string/button_settings_title_summary"
-                android:fragment="com.android.settings.aoscp.fragments.ButtonSettings"
-                android:icon="@drawable/ic_settings_buttons" />
-				
-	</PreferenceCategory>
 
 </PreferenceScreen>
