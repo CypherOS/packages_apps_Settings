@@ -41,11 +41,30 @@
 	<!-- Support Greeting -->
     <string name="support_welcome_title">Support for you, on the go</string>
 	<string name="support_welcome_title_summary">You can check out tips &amp; tricks, locate new features and more</string>
+	<string name="support_welcome_title_summary_unavailable">Support is currently unavailable, please check with your software maintainer</string>
 	<!-- Support Report Button -->
 	<string name="support_escalation_by_report">Report</string>
 	<string name="support_escalation_by_report_error">Bug reporting is unavailable at this time</string>
+	<!-- Support Email Button -->
+	<string name="support_escalation_by_email">Email</string>
+	<string name="support_escalation_by_email_error">Email support is unavailable at this time</string>
 	<!-- Support Help Item -->
 	<string name="support_help_locate">Help &amp; tips</string>
+	<!-- Support Weblinks Item -->
+	<string name="weblinks_settings_title">Weblinks</string>
+	<!-- Social category -->
+    <string name="social_category_title">Social</string>
+	<string name="website_preference_title">On-The-Web</string>
+	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
+	<string name="google_preference_title">CypherPlus</string>
+	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
+	<!-- Source category -->
+    <string name="source_category_title">Source</string>
+	<string name="github_preference_title">Github</string>
+	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
+	<string name="gerrit_preference_title">Gerrit</string>
+	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
+	
 	
 	<!-- Gesture Settings [CHAR LIMIT=25]-->
     <string name="gesture_preference_title">Gestures</string>
@@ -113,21 +132,6 @@
 	<!-- Advanced notification settings -->
  	<string name="notification_advanced_title">Advanced</string>
 	<string name="category_lights_title">Lights</string>
-	
-	<!-- Software information-->
-	<string name="weblinks_settings_title">Weblinks</string>
-	<!-- Social category -->
-    <string name="social_category_title">Social</string>
-	<string name="website_preference_title">On-The-Web</string>
-	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
-	<string name="google_preference_title">CypherPlus</string>
-	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
-	<!-- Source category -->
-    <string name="source_category_title">Source</string>
-	<string name="github_preference_title">Github</string>
-	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
-	<string name="gerrit_preference_title">Gerrit</string>
-	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
 	
 	<string name="notification_category_title">Notifications</string>
 	
