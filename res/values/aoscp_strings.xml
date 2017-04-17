@@ -245,7 +245,7 @@
     <string name="status_bar_icon_blacklist_summary">Add or remove icons from the statusbar</string>
     <!-- Status bar - Clock -->
 	<string name="status_bar_clock_seconds_title">Show seconds</string>
-    <string name="status_bar_clock_title">Clock &amp; date</string>
+    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_clock_style_title">Position</string>
     <string name="status_bar_clock_style_right">Right</string>
     <string name="status_bar_clock_style_left">Left</string>
