@@ -55,6 +55,7 @@ import android.widget.EditText;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.Settings.StorageUseActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -91,6 +92,8 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     private static final String EXTRA_VOLUME_SIZE = "volume_size";
 
     private static final String AUTHORITY_MEDIA = "com.android.providers.media.documents";
+	
+	private static final int MENU_USB_CONNECTION = Menu.FIRST;
 
     private static final int[] ITEMS_NO_SHOW_SHARED = new int[] {
             R.string.storage_detail_apps,
@@ -385,7 +388,11 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+		
+		menu.add(0, MENU_USB_CONNECTION, 0, R.string.menu_usb_connection)
+                .setIcon(ic_menu_connection)
+                .setAlphabeticShortcut('u');
+		
         inflater.inflate(R.menu.storage_volume, menu);
 		super.onCreateOptionsMenu(menu, inflater);
     }
@@ -399,7 +406,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         final MenuItem unmount = menu.findItem(R.id.storage_unmount);
         final MenuItem format = menu.findItem(R.id.storage_format);
         final MenuItem migrate = menu.findItem(R.id.storage_migrate);
-        final MenuItem manage = menu.findItem(R.id.storage_free);
 
         // Actions live in menu for non-internal private volumes; they're shown
         // as preference items for public volumes.
@@ -408,14 +414,11 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
             mount.setVisible(false);
             unmount.setVisible(false);
             format.setVisible(false);
-            manage.setVisible(getResources().getBoolean(
-                    R.bool.config_storage_manager_settings_enabled));
         } else {
             rename.setVisible(mVolume.getType() == VolumeInfo.TYPE_PRIVATE);
             mount.setVisible(mVolume.getState() == VolumeInfo.STATE_UNMOUNTED);
             unmount.setVisible(mVolume.isMountedReadable());
             format.setVisible(true);
-            manage.setVisible(false);
         }
 
         format.setTitle(R.string.storage_menu_format_public);
@@ -431,8 +434,14 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final Context context = getActivity();
+		final SettingsActivity activity = (SettingsActivity) getActivity();
         final Bundle args = new Bundle();
         switch (item.getItemId()) {
+			case MENU_USB_CONNECTION:
+                activity.startPreferencePanel(
+                            UsbConnection.class.getName(), null,
+                            R.string.menu_usb_connection, null, null, 0);
+                return true;
             case R.id.storage_rename:
                 RenameFragment.show(this, mVolume);
                 return true;
@@ -453,11 +462,6 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
                 final Intent intent = new Intent(context, StorageWizardMigrateConfirm.class);
                 intent.putExtra(VolumeInfo.EXTRA_VOLUME_ID, mVolume.getId());
                 startActivity(intent);
-                return true;
-            case R.id.storage_free:
-                final Intent deletion_helper_intent =
-                        new Intent(StorageManager.ACTION_MANAGE_STORAGE);
-                startActivity(deletion_helper_intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
