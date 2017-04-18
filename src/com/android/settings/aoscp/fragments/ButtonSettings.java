@@ -186,9 +186,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             prefScreen.removePreference(mMenuCategory);
             prefScreen.removePreference(mAssistCategory);
             prefScreen.removePreference(mAppSwitchCategory);
-			prefScreen.removePreference(mNavigationBar);
-			prefScreen.removePreference(mDisableHwKeys);
-			prefScreen.removePreference(mButtonBrightness);
+			removePreference(mNavigationBar);
+			removePreference(mDisableHwKeys);
+			removePreference(mButtonBrightness);
         } else {
             mHomeLongPressAction = (ListPreference) prefScreen.findPreference(
                     KEY_HOME_LONG_PRESS);
