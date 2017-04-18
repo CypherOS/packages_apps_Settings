@@ -511,12 +511,15 @@
     <string name="button_settings_title">Buttons</string>
     <string name="button_settings_title_summary">Get the most out of your hardware keys with various custom button actions</string>
 	<!-- Hardware keys -->
-	<string name="navigation_bar_show_title" >Navigation bar</string>
-	<string name="hardware_keys_disable_title" >Disable hardware keys</string>
-    <string name="button_keys_home_title" >Home</string>
-    <string name="button_keys_menu_title" >Menu</string>
-    <string name="button_keys_assist_title" >Search</string>
-    <string name="button_keys_appSwitch_title" >App switch</string>
+	<string name="navigation_bar_show_title">Navigation bar</string>
+	<string name="hardware_keys_disable_title">Hardware keys</string>
+	<string name="hardware_keys_disable_title_summary">Disable the devices hardware keys in favor of software navigation keys</string>
+    <string name="button_keys_home_title">Home</string>
+	<string name="button_keys_back_title">Back</string>
+    <string name="button_keys_menu_title">Menu</string>
+    <string name="button_keys_assist_title">Search</string>
+    <string name="button_keys_appSwitch_title">App switch</string>
+	<string name="button_keys_volume_title">Volume</string>
     <string name="keys_home_long_press_title">Home key (Long press)</string>
     <string name="keys_home_double_tap_title">Home key (Double tap)</string>
     <string name="keys_menu_press_title">Menu key</string>
@@ -539,13 +542,26 @@
     <string name="keys_action_long">Long press</string>
     <string name="keys_action_double">Double tap</string>
     <string name="button_other_title">Other</string>
+	<string name="button_wake_title">Wake up device</string>
     <string name="keys_action_app_switch_card">AOSP (Stack)</string>
     <string name="keys_action_app_switch_grid">AOSP (Grid)</string>
 	<!-- Button Backlight Settings -->
 	<string name="button_backlight_title">Button backlight</string>
+	<string name="button_backlight_title_summary">Reduce or increase backlight brightness as well as manage it\'s timeout</string>
     <string name="button_timeout_title">Timeout</string>
     <string name="button_timeout_summary">Disabled on value 0</string>
     <string name="button_manual_brightness">Brightness level</string>
     <string name="unit_sec">sec</string>
+	
+	<!-- Volume Key Music Control -->
+	<string name="volbtn_music_controls_title">Playback control</string>
+    <string name="volbtn_music_controls_summary">Long press the volume keys to switch between tracks</string>
+	
+	<!-- Volume key cursor control -->
+	<string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+	<string name="volbtn_cursor_control_title_summary">%1$s is ENABLED</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
  
 </resources>
