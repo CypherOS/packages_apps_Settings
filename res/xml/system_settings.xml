@@ -46,6 +46,11 @@
                 android:summary="@string/one_handed_mode_summary"
 				android:defaultValue="false"/>
 				
+		<SwitchPreference
+                android:key="pixel_nav_animation"
+                android:title="@string/pixel_navbar_anim_title"
+                android:summary="@string/pixel_navbar_anim_summary" />
+				
 	</PreferenceCategory>
 		
 </PreferenceScreen>
