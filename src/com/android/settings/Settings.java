@@ -95,6 +95,7 @@ public class Settings extends SettingsActivity {
     public static class DataUsageSummaryActivity extends SettingsActivity { /* empty */ }
     public static class RoamingSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AdvancedWifiSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class UsbConnectionSettingsActivity extends SettingsActivity { /* empty */ }
     public static class SavedAccessPointsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class TextToSpeechSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AndroidBeamSettingsActivity extends SettingsActivity { /* empty */ }
