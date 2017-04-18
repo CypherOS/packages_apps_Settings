@@ -38,6 +38,14 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+    <!-- USB Connection -->
+    <string name="menu_usb_connection">USB Connection</string>
+    <!-- USB Connection Options -->
+    <string name="usb_connection_title">Manual connection</string>
+    <string name="usb_connection_title_summary">Allow transfer protocol connection\'s to your phone\'s storage through USB (MTP, PTP)</string>
+    <string name="usb_data_auto_unlock_warning_summary">Your device will establish unprotected connections, everytime you connect it to a PC. Secured lockscreens disable this option automatically.\n\nThis is still an experimental feature, use with caution.</string>
+   
+	
 	<!-- Support Greeting -->
     <string name="support_welcome_title">Support for you, on the go</string>
 	<string name="support_welcome_title_summary">You can check out tips &amp; tricks, locate new features and more</string>
