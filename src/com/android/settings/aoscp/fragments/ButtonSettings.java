@@ -20,7 +20,9 @@
 package com.android.settings.aoscp.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.content.Context;
 import android.media.AudioSystem;
@@ -36,8 +38,12 @@ import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.view.Display;
+import android.view.DisplayInfo;
+import android.view.IWindowManager;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.WindowManagerGlobal;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -52,10 +58,13 @@ import com.android.settings.Utils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.util.aoscp.AoscpUtils;
 
+import org.aoscp.framework.internal.utils.DeviceUtils;
+
 public class ButtonSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 	
 	// Button Categories
     private static final String CATEGORY_HOME = "home_key";
+	private static final String CATEGORY_BACK = "back_key";
     private static final String CATEGORY_MENU = "menu_key";
     private static final String CATEGORY_ASSIST = "assist_key";
     private static final String CATEGORY_APPSWITCH = "app_switch_key";
@@ -74,6 +83,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_ASSIST_LONG_PRESS = "assist_long_press";
     private static final String KEY_APP_SWITCH_PRESS = "app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "app_switch_long_press";
+	
+	// General Features
+	private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
+	private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+	private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
 	// Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -99,6 +113,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 	private Map<String, Integer> mKeyPrefs = new HashMap<String, Integer>();
 	
     private PreferenceCategory mHomeCategory;
+	private PreferenceCategory mBackCategory;
     private PreferenceCategory mMenuCategory;
     private PreferenceCategory mAppSwitchCategory;
     private PreferenceCategory mAssistCategory;
@@ -111,6 +126,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+	
+	private ListPreference mVolumeKeyCursorControl;
+	private SwitchPreference mVolumeMusicControls;
+	private SwitchPreference mVolumeWakeScreen;
+	private SwitchPreference mSwapVolumeButtons;
 	
 	
 	private SwitchPreference mNavigationBar;
@@ -143,15 +163,22 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 
         mHomeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_HOME);
+		mBackCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACK);
         mMenuCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_MENU);
         mAssistCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_ASSIST);
         mAppSwitchCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
+				
+		mNavigationBar = (SwitchPreference) prefScreen.findPreference(KEY_SHOW_NAVIGATION);
+        mDisableHwKeys = (SwitchPreference) prefScreen.findPreference(KEY_HW_KEYS_DISABLE);
+		mButtonBrightness = (Preference) prefScreen.findPreference(KEY_BUTTON_BRIGHTNESS);
 
         if (deviceHwKeys == 0) {
             prefScreen.removePreference(mHomeCategory);
+			prefScreen.removePreference(mBackCategory);
             prefScreen.removePreference(mMenuCategory);
             prefScreen.removePreference(mAssistCategory);
             prefScreen.removePreference(mAppSwitchCategory);
@@ -175,10 +202,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
                     KEY_APP_SWITCH_PRESS);
             mAppSwitchLongPressAction = (ListPreference) prefScreen.findPreference(
                     KEY_APP_SWITCH_LONG_PRESS);
-			mNavigationBar = (SwitchPreference) prefScreen.findPreference(
-                   KEY_SHOW_NAVIGATION);
-            mDisableHwKeys = (SwitchPreference) prefScreen.findPreference(
-                    KEY_HW_KEYS_DISABLE);
 
             if (hasHomeKey) {
 
@@ -290,13 +313,32 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             } else {
                 prefScreen.removePreference(mAppSwitchCategory);
             }
-
-            if (isButtonBrightnessSupported(getResources())) {
-                mButtonBrightness = (Preference) findPreference(KEY_BUTTON_BRIGHTNESS);
-            } else {
-                removePreference(KEY_BUTTON_BRIGHTNESS);
+			
+			mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
+			mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
+            int cursorControlAction = Settings.System.getInt(resolver,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+            mVolumeKeyCursorControl.setValue(String.valueOf(cursorControlAction));
+            updateCursorActionSummary(cursorControlAction);
+			
+			mVolumeWakeScreen = (SwitchPreference) findPreference(Settings.System.VOLUME_WAKE_SCREEN);
+			mVolumeMusicControls = (SwitchPreference) findPreference(KEY_VOLUME_MUSIC_CONTROLS);
+			
+			if (mVolumeWakeScreen != null) {
+                if (mVolumeMusicControls != null) {
+                    mVolumeMusicControls.setDependency(Settings.System.VOLUME_WAKE_SCREEN);
+                    mVolumeWakeScreen.setDisableDependentsState(true);
+                }
             }
-
+			
+			int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+            mSwapVolumeButtons = (SwitchPreference)
+                    prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+            if (mSwapVolumeButtons != null) {
+                mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+            }
+            
             boolean showNavBarDefault = AoscpUtils.deviceSupportNavigationBar(getActivity());
             boolean showNavBar = Settings.System.getInt(resolver,
                         Settings.System.NAVIGATION_BAR_SHOW, showNavBarDefault ? 1:0) == 1;
@@ -309,7 +351,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 			updateDisableHWKeyEnablement(hardwareKeysDisable);
         }
     }
-
+	
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mNavigationBar) {
@@ -329,11 +371,28 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
                     Settings.System.HARDWARE_KEYS_DISABLE, checked ? 1:0);
             updateDisableHWKeyEnablement(checked);
             return true;
+		} else if (preference == mSwapVolumeButtons) {
+            int value = mSwapVolumeButtons.isChecked()
+                    ? (DeviceUtils.isTablet(getActivity()) ? 2 : 1) : 0;
+            if (value == 2) {
+                Display defaultDisplay = getActivity().getWindowManager().getDefaultDisplay();
+
+                DisplayInfo displayInfo = new DisplayInfo();
+                defaultDisplay.getDisplayInfo(displayInfo);
+
+                // Not all tablets are landscape
+                if (displayInfo.getNaturalWidth() < displayInfo.getNaturalHeight()) {
+                    value = 1;
+                }
+            }
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
         }
         return super.onPreferenceTreeClick(preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mHomeLongPressAction) {
             int value = Integer.valueOf((String) newValue);
             int index = mHomeLongPressAction.findIndexOfValue((String) newValue);
@@ -406,17 +465,40 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
                     Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, value);
             mKeyPrefs.put(Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, value);
             return true;
+		} else if (preference == mVolumeKeyCursorControl) {
+            int cursorAction = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.VOLUME_KEY_CURSOR_CONTROL,
+                    cursorAction);
+            updateCursorActionSummary(cursorAction);
+            return true;
         }
         return false;
     }
 	
-	private static boolean isButtonBrightnessSupported(Resources res) {
-        return res.getBoolean(com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
-    }
+	private void updateCursorActionSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // quick pulldown deactivated
+            mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_off));
+        } else if (value == 1) {
+            // quick pulldown always
+            mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_on));
+		} else if (value == 2) {
+            // quick pulldown always
+            mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_on_reverse));
+        } else {
+            String direction = res.getString(value == 1
+                    ? R.string.volbtn_cursor_control_on
+                    : R.string.volbtn_cursor_control_on_reverse);
+            mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_title_summary, direction));
+        }
+	}
 
     private void updateDisableHWKeyEnablement(boolean hardwareKeysDisable) {
         mButtonBrightness.setEnabled(!hardwareKeysDisable);
         mHomeCategory.setEnabled(!hardwareKeysDisable);
+		mBackCategory.setEnabled(!hardwareKeysDisable);
         mMenuCategory.setEnabled(!hardwareKeysDisable);
         mAppSwitchCategory.setEnabled(!hardwareKeysDisable);
         mAssistCategory.setEnabled(!hardwareKeysDisable);
