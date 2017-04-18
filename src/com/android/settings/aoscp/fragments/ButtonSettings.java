@@ -74,6 +74,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_ASSIST_LONG_PRESS = "assist_long_press";
     private static final String KEY_APP_SWITCH_PRESS = "app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "app_switch_long_press";
+	
+	// General Features
+	private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
 	// Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -111,6 +114,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+	
+	private ListPreference mVolumeKeyCursorControl;
 	
 	
 	private SwitchPreference mNavigationBar;
@@ -296,6 +301,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             } else {
                 removePreference(KEY_BUTTON_BRIGHTNESS);
             }
+			
+			mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
+            int cursorControlAction = Settings.System.getInt(resolver,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+            mVolumeKeyCursorControl.setValue(String.valueOf(cursorControlAction));
+            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+            mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
 
             boolean showNavBarDefault = AoscpUtils.deviceSupportNavigationBar(getActivity());
             boolean showNavBar = Settings.System.getInt(resolver,
@@ -309,7 +321,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 			updateDisableHWKeyEnablement(hardwareKeysDisable);
         }
     }
-
+	
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mNavigationBar) {
@@ -334,6 +346,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mHomeLongPressAction) {
             int value = Integer.valueOf((String) newValue);
             int index = mHomeLongPressAction.findIndexOfValue((String) newValue);
@@ -405,6 +418,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             Settings.System.putInt(getContentResolver(),
                     Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, value);
             mKeyPrefs.put(Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, value);
+            return true;
+		} else if (preference == mVolumeKeyCursorControl) {
+			int cursorAction = Integer.parseInt((String) newValue);
+            int index = mVolumeKeyCursorControl.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, Settings.System.VOLUME_KEY_CURSOR_CONTROL, cursorAction);
+            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntries()[index]);
             return true;
         }
         return false;
