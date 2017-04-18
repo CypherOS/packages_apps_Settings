@@ -117,10 +117,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
      */
     public static final String PREF_SHOW = "show";
 
-    private static final String ENABLE_ADB = "enable_adb";
-    private static final String ADB_NOTIFY = "adb_notify";
-    private static final String ADB_TCPIP = "adb_over_network";
-    private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String ENABLE_TERMINAL = "enable_terminal";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
     private static final String BT_HCI_SNOOP_LOG = "bt_hci_snoop_log";
@@ -157,12 +153,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String SHOW_HW_LAYERS_UPDATES_KEY = "show_hw_layers_udpates";
     private static final String DEBUG_HW_OVERDRAW_KEY = "debug_hw_overdraw";
     private static final String DEBUG_LAYOUT_KEY = "debug_layout";
+	private static final String DEBUG_DEBUGGING_CATEGORY_KEY = "debug_debugging_category";
     private static final String FORCE_RTL_LAYOUT_KEY = "force_rtl_layout_all_locales";
     private static final String WINDOW_ANIMATION_SCALE_KEY = "window_animation_scale";
     private static final String TRANSITION_ANIMATION_SCALE_KEY = "transition_animation_scale";
     private static final String ANIMATOR_DURATION_SCALE_KEY = "animator_duration_scale";
     private static final String OVERLAY_DISPLAY_DEVICES_KEY = "overlay_display_devices";
-    private static final String DEBUG_DEBUGGING_CATEGORY_KEY = "debug_debugging_category";
     private static final String SELECT_LOGD_SIZE_KEY = "select_logd_size";
     private static final String SELECT_LOGD_SIZE_PROPERTY = "persist.logd.size";
     private static final String SELECT_LOGD_TAG_PROPERTY = "persist.log.tag";
@@ -190,7 +186,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String WIFI_VERBOSE_LOGGING_KEY = "wifi_verbose_logging";
     private static final String WIFI_AGGRESSIVE_HANDOVER_KEY = "wifi_aggressive_handover";
     private static final String WIFI_ALLOW_SCAN_WITH_TRAFFIC_KEY = "wifi_allow_scan_with_traffic";
-    private static final String USB_CONFIGURATION_KEY = "select_usb_configuration";
     private static final String MOBILE_DATA_ALWAYS_ON = "mobile_data_always_on";
     private static final String KEY_COLOR_MODE = "color_mode";
     private static final String FORCE_RESIZABLE_KEY = "force_resizable_activities";
@@ -245,10 +240,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private boolean mHaveDebugSettings;
     private boolean mDontPokeProperties;
 
-    private SwitchPreference mEnableAdb;
-    private SwitchPreference mAdbNotify;
-    private SwitchPreference mAdbOverNetwork;
-    private Preference mClearAdbKeys;
     private SwitchPreference mEnableTerminal;
     private RestrictedSwitchPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
@@ -287,7 +278,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ListPreference mDebugHwOverdraw;
     private ListPreference mLogdSize;
     private ListPreference mLogpersist;
-    private ListPreference mUsbConfiguration;
     private ListPreference mTrackFrameTime;
     private ListPreference mShowNonRectClip;
     private AnimationScalePreference mWindowAnimationScale;
@@ -322,9 +312,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     // To track whether a confirmation dialog was clicked.
     private boolean mDialogClicked;
     private Dialog mEnableDialog;
-    private Dialog mAdbDialog;
-    private Dialog mAdbTcpDialog;
-    private Dialog mAdbKeysDialog;
     private boolean mUnavailable;
 
     private boolean mLogpersistCleared;
@@ -368,18 +355,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
         addPreferencesFromResource(R.xml.development_prefs);
 
-        final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
+		final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
-        mEnableAdb = findAndInitSwitchPref(ENABLE_ADB);
-        mAdbNotify = findAndInitSwitchPref(ADB_NOTIFY);
-        mAdbOverNetwork = findAndInitSwitchPref(ADB_TCPIP);
-        mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
-        if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
-            if (debugDebuggingCategory != null) {
-                debugDebuggingCategory.removePreference(mClearAdbKeys);
-            }
-        }
-        mAllPrefs.add(mClearAdbKeys);
         mEnableTerminal = findAndInitSwitchPref(ENABLE_TERMINAL);
         if (!isPackageInstalled(getActivity(), TERMINAL_APP_PACKAGE)) {
             debugDebuggingCategory.removePreference(mEnableTerminal);
@@ -400,8 +377,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mAllPrefs.add(mPassword);
 
         if (!mUm.isAdminUser()) {
-            disableForUser(mEnableAdb);
-            disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
         }
@@ -453,7 +428,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
             mLogpersist = null;
         }
-        mUsbConfiguration = addListPreference(USB_CONFIGURATION_KEY);
         mWebViewProvider = addListPreference(WEBVIEW_PROVIDER_KEY);
         mWebViewMultiprocess = findAndInitSwitchPref(WEBVIEW_MULTIPROCESS_KEY);
         mBluetoothDisableAbsVolume = findAndInitSwitchPref(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_KEY);
@@ -655,17 +629,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(UsbManager.ACTION_USB_STATE);
-        if (getActivity().registerReceiver(mUsbReceiver, filter) == null) {
-            updateUsbConfigurationValues();
-        }
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
 
@@ -674,7 +637,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
         mSwitchBar.removeOnSwitchChangeListener(this);
         mSwitchBar.hide();
-        getActivity().unregisterReceiver(mUsbReceiver);
     }
 
     void updateSwitchPreference(SwitchPreference switchPreference, boolean value) {
@@ -686,11 +648,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         final Context context = getActivity();
         final ContentResolver cr = context.getContentResolver();
         mHaveDebugSettings = false;
-        updateSwitchPreference(mEnableAdb, Settings.Global.getInt(cr,
-                Settings.Global.ADB_ENABLED, 0) != 0);
-        updateSwitchPreference(mAdbNotify, Settings.Secure.getInt(cr,
-                Settings.Secure.ADB_NOTIFY, 1) != 0);
-        updateAdbOverNetwork();
         if (mEnableTerminal != null) {
             updateSwitchPreference(mEnableTerminal,
                     context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
@@ -747,34 +704,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             updateColorTemperature();
         }
         updateBluetoothDisableAbsVolumeOptions();
-    }
-
-    private void updateAdbOverNetwork() {
-        int port = Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Secure.ADB_PORT, 0);
-        boolean enabled = port > 0;
-
-        updateSwitchPreference(mAdbOverNetwork, enabled);
-
-        WifiInfo wifiInfo = null;
-
-        if (enabled) {
-            IWifiManager wifiManager = IWifiManager.Stub.asInterface(
-                    ServiceManager.getService(Context.WIFI_SERVICE));
-            try {
-                wifiInfo = wifiManager.getConnectionInfo();
-            } catch (RemoteException e) {
-                Log.e(TAG, "wifiManager, getConnectionInfo()", e);
-            }
-        }
-
-        if (wifiInfo != null) {
-            String hostAddress = NetworkUtils.intToInetAddress(
-                    wifiInfo.getIpAddress()).getHostAddress();
-            mAdbOverNetwork.setSummary(hostAddress + ":" + String.valueOf(port));
-        } else {
-            mAdbOverNetwork.setSummary(R.string.adb_over_network_summary);
-        }
     }
 
     private void resetDangerousOptions() {
@@ -1721,35 +1650,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateLogpersistValues();
     }
 
-    private void updateUsbConfigurationValues() {
-        if (mUsbConfiguration != null) {
-            UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
-
-            String[] values = getResources().getStringArray(R.array.usb_configuration_values);
-            String[] titles = getResources().getStringArray(R.array.usb_configuration_titles);
-            int index = 0;
-            for (int i = 0; i < titles.length; i++) {
-                if (manager.isFunctionEnabled(values[i])) {
-                    index = i;
-                    break;
-                }
-            }
-            mUsbConfiguration.setValue(values[index]);
-            mUsbConfiguration.setSummary(titles[index]);
-            mUsbConfiguration.setOnPreferenceChangeListener(this);
-        }
-    }
-
-    private void writeUsbConfigurationOption(Object newValue) {
-        UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
-        String function = newValue.toString();
-        if (function.equals("none")) {
-            manager.setCurrentFunction(function, false);
-        } else {
-            manager.setCurrentFunction(function, true);
-        }
-    }
-
     private void writeImmediatelyDestroyActivitiesOptions() {
         try {
             ActivityManagerNative.getDefault().setAlwaysFinish(
@@ -1958,54 +1858,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return false;
         }
 
-        if (preference == mEnableAdb) {
-            if (mEnableAdb.isChecked()) {
-                mDialogClicked = false;
-                if (mAdbDialog != null) {
-                    dismissDialogs();
-                }
-                mAdbDialog = new AlertDialog.Builder(getActivity()).setMessage(
-                        getActivity().getResources().getString(R.string.adb_warning_message))
-                        .setTitle(R.string.adb_warning_title)
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, this)
-                        .show();
-                mAdbDialog.setOnDismissListener(this);
-            } else {
-                Settings.Global.putInt(getActivity().getContentResolver(),
-                        Settings.Global.ADB_ENABLED, 0);
-                mVerifyAppsOverUsb.setEnabled(false);
-                mVerifyAppsOverUsb.setChecked(false);
-            }
-        } else if (preference == mAdbNotify) {
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.ADB_NOTIFY,
-                    mAdbNotify.isChecked() ? 1 : 0);
-        } else if (preference == mAdbOverNetwork) {
-            if (mAdbOverNetwork.isChecked()) {
-                if (mAdbTcpDialog != null) {
-                    dismissDialogs();
-                }
-                mAdbTcpDialog = new AlertDialog.Builder(getActivity()).setMessage(
-                        getResources().getString(R.string.adb_over_network_warning))
-                        .setTitle(R.string.adb_over_network)
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, this)
-                        .show();
-                mAdbTcpDialog.setOnDismissListener(this);
-            } else {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, -1);
-                updateAdbOverNetwork();
-            }
-        } else if (preference == mClearAdbKeys) {
-            if (mAdbKeysDialog != null) dismissDialogs();
-            mAdbKeysDialog = new AlertDialog.Builder(getActivity())
-                        .setMessage(R.string.adb_keys_warning_message)
-                        .setPositiveButton(android.R.string.ok, this)
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show();
-        } else if (preference == mEnableTerminal) {
+        if (preference == mEnableTerminal) {
             final PackageManager pm = getActivity().getPackageManager();
             pm.setApplicationEnabledSetting(TERMINAL_APP_PACKAGE,
                     mEnableTerminal.isChecked() ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
@@ -2152,9 +2005,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mLogpersist) {
             writeLogpersistOption(newValue, false);
             return true;
-        } else if (preference == mUsbConfiguration) {
-            writeUsbConfigurationOption(newValue);
-            return true;
         } else if (preference == mWindowAnimationScale) {
             writeAnimationScaleOption(0, mWindowAnimationScale, newValue);
             return true;
@@ -2187,18 +2037,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     private void dismissDialogs() {
-        if (mAdbDialog != null) {
-            mAdbDialog.dismiss();
-            mAdbDialog = null;
-        }
-        if (mAdbTcpDialog != null) {
-            mAdbTcpDialog.dismiss();
-            mAdbTcpDialog = null;
-        }
-        if (mAdbKeysDialog != null) {
-            mAdbKeysDialog.dismiss();
-            mAdbKeysDialog = null;
-        }
         if (mEnableDialog != null) {
             mEnableDialog.dismiss();
             mEnableDialog = null;
@@ -2210,30 +2048,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     }
 
     public void onClick(DialogInterface dialog, int which) {
-        if (dialog == mAdbDialog) {
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                mDialogClicked = true;
-                Settings.Global.putInt(getActivity().getContentResolver(),
-                        Settings.Global.ADB_ENABLED, 1);
-                mVerifyAppsOverUsb.setEnabled(true);
-                updateVerifyAppsOverUsbOptions();
-            }
-        } else if (dialog == mAdbTcpDialog) {
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                Settings.Secure.putInt(getActivity().getContentResolver(),
-                        Settings.Secure.ADB_PORT, 5555);
-            }
-        } else if (dialog == mAdbKeysDialog) {
-            if (which == DialogInterface.BUTTON_POSITIVE) {
-                try {
-                    IBinder b = ServiceManager.getService(Context.USB_SERVICE);
-                    IUsbManager service = IUsbManager.Stub.asInterface(b);
-                    service.clearUsbDebuggingKeys();
-                } catch (RemoteException e) {
-                    Log.e(TAG, "Unable to clear adb keys", e);
-                }
-            }
-        } else if (dialog == mEnableDialog) {
+        if (dialog == mEnableDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 mDialogClicked = true;
                 Settings.Global.putInt(getActivity().getContentResolver(),
@@ -2259,15 +2074,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     public void onDismiss(DialogInterface dialog) {
         // Assuming that onClick gets called first
-        if (dialog == mAdbDialog) {
-            if (!mDialogClicked) {
-                mEnableAdb.setChecked(false);
-            }
-            mAdbDialog = null;
-        } else if (dialog == mAdbTcpDialog) {
-            updateAdbOverNetwork();
-            mAdbTcpDialog = null;
-        } else if (dialog == mEnableDialog) {
+        if (dialog == mEnableDialog) {
             if (!mDialogClicked) {
                 mSwitchBar.setChecked(false);
             }
@@ -2289,13 +2096,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             (new SystemPropPoker()).execute();
         }
     }
-
-    private BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            updateUsbConfigurationValues();
-        }
-    };
 
     public static class SystemPropPoker extends AsyncTask<Void, Void, Void> {
         @Override
