@@ -67,6 +67,7 @@ import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.aoscp.Additions;
 import com.android.settings.aoscp.support.web.Weblinks;
+import com.android.settings.aoscp.usb.UsbConnection;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.DrawOverlayDetails;
 import com.android.settings.applications.ExpandedDesktopPreferenceFragment;
@@ -288,6 +289,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             WirelessSettings.class.getName(),
             WifiSettings.class.getName(),
             AdvancedWifiSettings.class.getName(),
+			UsbConnection.class.getName(),
             SavedAccessPointsWifiSettings.class.getName(),
             BluetoothSettings.class.getName(),
             SimSettings.class.getName(),
