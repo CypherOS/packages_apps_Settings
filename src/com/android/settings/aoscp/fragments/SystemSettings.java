@@ -46,11 +46,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import static android.provider.Settings.System.PIXEL_NAV_ANIMATION;
+
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "SystemSettings";
 	
     private static final String SCREENSHOT_TYPE = "screenshot_type";
+    private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
     private static final String ONE_HANDED_MODE_UI = "one_handed_mode_ui";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
@@ -59,6 +62,8 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
     private ListPreference mScreenshotType;
     private ListPreference mScrollingCachePref;
+    private SwitchPreference mNavbarAnimation;
+    private SwitchPreference mEnableNavigationBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,17 +73,32 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
-	mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
-        int mScreenshotTypeValue = Settings.System.getInt(resolver,
-                Settings.System.SCREENSHOT_TYPE, 0);
-        mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
-        mScreenshotType.setSummary(mScreenshotType.getEntry());
-        mScreenshotType.setOnPreferenceChangeListener(this);
+	    mEnableNavigationBar = (SwitchPreference) findPreference(Settings.System.NAVIGATION_BAR_SHOW);
+				
+        mNavbarAnimation = (SwitchPreference) findPreference(PIXEL_NAV_ANIMATION);
+	    int nav = Settings.System.getInt(resolver, PIXEL_NAV_ANIMATION, 1);
+	    mNavbarAnimation.setChecked(nav != 0);
+        mNavbarAnimation.setOnPreferenceChangeListener(this);
+	
+	    if (mEnableNavigationBar != null) {
+            if (mNavbarAnimation != null) {
+                mNavbarAnimation.setDependency(Settings.System.NAVIGATION_BAR_SHOW);
+                mEnableNavigationBar.setDisableDependentsState(true);
+            }
+        }
 		
-	mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
+	    mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
+            int mScreenshotTypeValue = Settings.System.getInt(resolver,
+                    Settings.System.SCREENSHOT_TYPE, 0);
+            mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
+            mScreenshotType.setSummary(mScreenshotType.getEntry());
+            mScreenshotType.setOnPreferenceChangeListener(this);
+		
+	    mScrollingCachePref = (ListPreference) findPreference(SCROLLINGCACHE_PREF);
         mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
-                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+                    SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
         mScrollingCachePref.setOnPreferenceChangeListener(this);
+	
     }
 	
     @Override
@@ -91,6 +111,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                     Settings.System.SCREENSHOT_TYPE, mScreenshotTypeValue);
             mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
+            return true;
+		} else if (preference == mNavbarAnimation) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.PIXEL_NAV_ANIMATION, value ? 1 : 0);
             return true;
 		} else if (preference == mScrollingCachePref) {
             if (newValue != null) {
