@@ -539,6 +539,7 @@
     <string name="keys_action_long">Long press</string>
     <string name="keys_action_double">Double tap</string>
     <string name="button_other_title">Other</string>
+	<string name="button_wake_title">Wake up device</string>
     <string name="keys_action_app_switch_card">AOSP (Stack)</string>
     <string name="keys_action_app_switch_grid">AOSP (Grid)</string>
 	<!-- Button Backlight Settings -->
@@ -547,5 +548,12 @@
     <string name="button_timeout_summary">Disabled on value 0</string>
     <string name="button_manual_brightness">Brightness level</string>
     <string name="unit_sec">sec</string>
+	
+	<!-- Volume key cursor control -->
+	<string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+	<string name="volbtn_cursor_control_title_summary">%1$s is ENABLED</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
  
 </resources>

@@ -32,9 +32,49 @@
             android:fragment="com.android.settings.aoscp.fragments.ButtonBrightnessSettings" 
 			android:dependency="hardware_keys" />
 			
+		<PreferenceScreen android:key="navigation_tuner"
+            android:title="@string/navbar_tuner_title"
+            android:summary="@string/navbar_tuner_summary">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.systemui"
+            android:targetClass="com.android.systemui.tuner.NavbarActivity" />
+        </PreferenceScreen>
+		
+	    <!-- OPO Doze settings -->
+       <PreferenceScreen android:key="opo_button_settings"
+            android:title="@string/opo_button_settings_title"
+            android:summary="@string/opo_button_settings_title_summary">
+        <intent android:action="com.android.settings.action.LAUNCH_BUTTON_SETTINGS" />
+        </PreferenceScreen>
+			
+		<com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_wake_screen"
+            android:title="@string/button_wake_title"
+ 			android:summary="@string/button_wake_title_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:defaultValue="false" />
+			
+	    <ListPreference
+            android:key="volume_key_cursor_control"
+            android:dialogTitle="@string/volbtn_cursor_control_title"
+            android:title="@string/volbtn_cursor_control_title"
+            android:entries="@array/volbtn_cursor_control_entries"
+            android:entryValues="@array/volbtn_cursor_control_values"
+            android:persistent="false" />
+			
     <PreferenceCategory
         android:key="home_key"
         android:title="@string/button_keys_home_title">
+		
+		<com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="home_wake_screen"
+            android:title="@string/button_wake_title"
+            android:defaultValue="true" />
 
         <ListPreference
             android:key="home_long_press"
