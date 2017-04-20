@@ -91,7 +91,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 	private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
 	private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 	private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
-	private static final String KEY_OPO_BUTTON_SETTINGS = "opo_button_settings";
 
 	// Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -350,14 +349,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             boolean hardwareKeysDisable = Settings.System.getInt(resolver,
                         Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
             mDisableHwKeys.setChecked(hardwareKeysDisable);
-			
-			final Activity act = getActivity();
-		
-		    PreferenceGroup parentPreference = getPreferenceScreen();
-		
-		    Utils.updatePreferenceToSpecificActivityOrRemove(act, parentPreference,
-                    KEY_OPO_BUTTON_SETTINGS,
-                    Utils.UPDATE_PREFERENCE_FLAG_SET_TITLE_TO_MATCHING_ACTIVITY);
 			
 			updateDisableHWKeyEnablement(hardwareKeysDisable);
         }
