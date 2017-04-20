@@ -66,8 +66,11 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.aoscp.Additions;
+import com.android.settings.aoscp.support.web.Weblinks;
+import com.android.settings.aoscp.usb.UsbConnection;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.DrawOverlayDetails;
+import com.android.settings.applications.ExpandedDesktopPreferenceFragment;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ManageAssist;
@@ -130,7 +133,6 @@ import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.wifi.AdvancedWifiSettings;
-import com.android.settings.deviceinfo.AdvancedStorageSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiAPITest;
 import com.android.settings.wifi.WifiInfo;
@@ -287,7 +289,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             WirelessSettings.class.getName(),
             WifiSettings.class.getName(),
             AdvancedWifiSettings.class.getName(),
-            AdvancedStorageSettings.class.getName(),
+			UsbConnection.class.getName(),
             SavedAccessPointsWifiSettings.class.getName(),
             BluetoothSettings.class.getName(),
             SimSettings.class.getName(),
@@ -380,7 +382,9 @@ public class SettingsActivity extends SettingsDrawerActivity
             MasterClear.class.getName(),
             NightDisplaySettings.class.getName(),
             ManageDomainUrls.class.getName(),
-            AutomaticStorageManagerSettings.class.getName()
+            AutomaticStorageManagerSettings.class.getName(),
+            ExpandedDesktopPreferenceFragment.class.getName(),
+			Weblinks.class.getName()
     };
 
 
@@ -1246,7 +1250,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             }
         }
         setTileEnabled(new ComponentName(packageName,
-                BackupSettingsActivity.class.getName()), hasBackupActivity, isAdmin, pm);
+                BackupSettingsActivity.class.getName()), hasBackupActivity,
+                isAdmin || Utils.isCarrierDemoUser(this), pm);
 
     }
 

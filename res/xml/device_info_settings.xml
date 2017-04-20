@@ -43,12 +43,6 @@
                 android:summary="@string/device_status_summary"
                 android:fragment="com.android.settings.deviceinfo.Status">
         </PreferenceScreen>
-		
-		<!-- Software information -->
-        <PreferenceScreen android:key="software_info"
-                android:title="@string/software_info_settings_title"
-				android:summary="@string/software_info_settings_title_summary"
-                android:fragment="com.android.settings.aoscp.deviceinfo.SoftwareInfo" />
 
         <!-- Feedback on the device -->
         <PreferenceScreen android:key="device_feedback"
@@ -73,6 +67,14 @@
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
 				
+		<!-- Security patch level -->
+        <PreferenceScreen android:key="security_patch"
+                android:title="@string/security_patch"
+                android:summary="@string/device_info_default">
+                <intent android:action="android.intent.action.VIEW"
+                        android:data="https://source.android.com/security/bulletin/" />
+        </PreferenceScreen>
+				
 		<!-- CypherOS firmware version -->
         <Preference android:key="aoscp_version"
                 android:enabled="false"
@@ -86,21 +88,6 @@
                 android:shouldDisableView="false"
                 android:title="@string/aoscp_api_title"
                 android:summary="@string/aoscp_api_default" />
-
-        <!-- Security patch level -->
-        <PreferenceScreen android:key="security_patch"
-                android:title="@string/security_patch"
-                android:summary="@string/device_info_default">
-                <intent android:action="android.intent.action.VIEW"
-                        android:data="https://source.android.com/security/bulletin/" />
-        </PreferenceScreen>
-		
-		<!-- CypherOS Release ID -->
-        <Preference android:key="aoscp_release_id"
-                android:enabled="false"
-                android:shouldDisableView="false"
-                android:title="@string/aoscp_release_id"
-                android:summary="@string/aoscp_release_id_default" />
 
         <!-- Device FCC equipment id -->
         <com.android.settings.DividerPreference
@@ -129,6 +116,13 @@
                 android:summary="@string/device_info_default"
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
+				
+		<!-- CypherOS Release ID -->
+        <Preference android:key="aoscp_release_id"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:title="@string/aoscp_release_id"
+                android:summary="@string/aoscp_release_id_default" />
 
         <!-- Device Kernel version -->
         <com.android.settings.DividerPreference

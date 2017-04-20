@@ -20,7 +20,7 @@
             android:key="airplane"
             android:title="@string/power_menu_airplane_title"
 			android:summary="@string/power_menu_airplane_title_summary"
-            android:defaultValue="true" />	
+            android:defaultValue="false" />	
 			
         <SwitchPreference
             android:key="screenshot"

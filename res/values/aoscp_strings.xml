@@ -38,6 +38,42 @@
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 	
+    <!-- USB Connection -->
+    <string name="menu_usb_connection">USB Connection</string>
+    <!-- USB Connection Options -->
+    <string name="usb_connection_title">Manual connection</string>
+    <string name="usb_connection_title_summary">Allow transfer protocol connection\'s to your phone\'s storage through USB (MTP, PTP)</string>
+    <string name="usb_data_auto_unlock_warning_summary">Your device will establish unprotected connections, everytime you connect it to a PC. Secured lockscreens disable this option automatically.\n\nThis is still an experimental feature, use with caution.</string>
+   
+	
+	<!-- Support Greeting -->
+    <string name="support_welcome_title">Support for you, on the go</string>
+	<string name="support_welcome_title_summary">You can check out tips &amp; tricks, locate new features and more</string>
+	<string name="support_welcome_title_summary_unavailable">Support is currently unavailable, please check with your software maintainer</string>
+	<!-- Support Report Button -->
+	<string name="support_escalation_by_report">Report</string>
+	<string name="support_escalation_by_report_error">Bug reporting is unavailable at this time</string>
+	<!-- Support Email Button -->
+	<string name="support_escalation_by_email">Email</string>
+	<string name="support_escalation_by_email_error">Email support is unavailable at this time</string>
+	<!-- Support Help Item -->
+	<string name="support_help_locate">Help &amp; tips</string>
+	<!-- Support Weblinks Item -->
+	<string name="weblinks_settings_title">Weblinks</string>
+	<!-- Social category -->
+    <string name="social_category_title">Social</string>
+	<string name="website_preference_title">On-The-Web</string>
+	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
+	<string name="google_preference_title">CypherPlus</string>
+	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
+	<!-- Source category -->
+    <string name="source_category_title">Source</string>
+	<string name="github_preference_title">Github</string>
+	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
+	<string name="gerrit_preference_title">Gerrit</string>
+	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
+	
+	
 	<!-- Gesture Settings [CHAR LIMIT=25]-->
     <string name="gesture_preference_title">Gestures</string>
 	<string name="gesture_preference_category">Moves</string>
@@ -104,22 +140,6 @@
 	<!-- Advanced notification settings -->
  	<string name="notification_advanced_title">Advanced</string>
 	<string name="category_lights_title">Lights</string>
-	
-	<!-- Software information-->
-	<string name="software_info_settings_title">Software info</string>
-	<string name="software_info_settings_title_summary">View information about the software</string>
-	<!-- Social category -->
-    <string name="social_category_title">Social</string>
-	<string name="website_preference_title">On-The-Web</string>
-	<string name="website_preference_title_summary">Take a peak at our website for the latest builds and update information</string>
-	<string name="google_preference_title">CypherPlus</string>
-	<string name="google_preference_title_summary">Keep in touch with fellow CypherOS users and developers on the Google Plus community</string>
-	<!-- Source category -->
-    <string name="source_category_title">Source</string>
-	<string name="github_preference_title">Github</string>
-	<string name="github_preference_title_summary">To get the latest information on what\'s improved in CypherOS, take a look at our Github</string>
-	<string name="gerrit_preference_title">Gerrit</string>
-	<string name="gerrit_preference_title_summary">Keep track of our Gerrit Code Review to submit, verify and test pending changes in CypherOS</string>
 	
 	<string name="notification_category_title">Notifications</string>
 	
@@ -233,7 +253,7 @@
     <string name="status_bar_icon_blacklist_summary">Add or remove icons from the statusbar</string>
     <!-- Status bar - Clock -->
 	<string name="status_bar_clock_seconds_title">Show seconds</string>
-    <string name="status_bar_clock_title">Clock &amp; date</string>
+    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_clock_style_title">Position</string>
     <string name="status_bar_clock_style_right">Right</string>
     <string name="status_bar_clock_style_left">Left</string>
@@ -370,15 +390,6 @@
     <string name="volume_steps_15">15</string>
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
-	
-	<!-- Advanced storage settings -->
-   <string name="storage_advanced_titlebar">USB Connection</string>
-   <string name="storage_menu_advanced">Connection</string>
-
-   <!-- USB data automatic unlock -->
-   <string name="usb_data_auto_unlock_title">Manual connection</string>
-   <string name="usb_data_auto_unlock_summary">Allow transfer protocol connection\'s to your phone\'s storage through USB (MTP, PTP)</string>
-   <string name="usb_data_auto_unlock_warning_summary">Your device will establish unprotected connections, everytime you connect it to a PC. Secured lockscreens disable this option automatically.\n\nThis is still an experimental feature, use with caution.</string>
  
    <!-- Lockscreen charging current indicator  -->
    <string name="lockscreen_charging_current_title">Charging info</string>
@@ -446,80 +457,6 @@
    <string name="night_bright_min">Minimum brightness</string>
    <string name="night_bright_low">Low brightness</string>
    <string name="night_bright_medium">Medium brightness</string>
-   
-   <!-- Button settings -->
-   <string name="hardware_category_title">Hardware</string>
-   <string name="button_settings_title">Buttons</string>
-   <string name="button_settings_title_summary">Get the most out of your hardware keys with various custom button actions</string>
-   
-   <!-- Button settings -->
-    <string name="button_pref_title">Buttons</string>
-    <string name="hardware_keys_power_key_title">Power</string>
-    <string name="hardware_keys_home_key_title">Home</string>
-    <string name="hardware_keys_back_key_title">Back</string>
-    <string name="hardware_keys_menu_key_title">Menu</string>
-    <string name="hardware_keys_assist_key_title">Search</string>
-    <string name="hardware_keys_appswitch_key_title">Recents</string>
-    <string name="hardware_keys_camera_key_title">Camera</string>
-    <string name="hardware_keys_volume_keys_title">Volume</string>
-    <string name="hardware_keys_short_press_title">Short press action</string>
-    <string name="hardware_keys_long_press_title">Long press action</string>
-    <string name="hardware_keys_double_tap_title">Double tap action</string>
-    <string name="hardware_keys_action_nothing">No action</string>
-    <string name="hardware_keys_action_menu">Open/close menu</string>
-    <string name="hardware_keys_action_app_switch">Recent apps switcher</string>
-    <string name="hardware_keys_action_search">Search assistant</string>
-    <string name="hardware_keys_action_voice_search">Voice search</string>
-    <string name="hardware_keys_action_in_app_search">In-app search</string>
-    <string name="hardware_keys_action_launch_camera">Launch camera</string>
-    <string name="hardware_keys_action_sleep">Turn screen off</string>
-    <string name="hardware_keys_action_last_app">Last app</string>
-    <string name="camera_sleep_on_release_title">Screen peek</string>
-    <string name="camera_sleep_on_release_summary">A half press will keep the screen on only while the button is held down</string>
-    <string name="camera_launch_title">Launch camera</string>
-    <string name="camera_launch_summary">A longpress and release will launch camera</string>
-    <string name="volbtn_music_controls_title">Playback control</string>
-    <string name="volbtn_music_controls_summary">Long press the volume keys to switch between tracks</string>
-    <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
-    <string name="volbtn_cursor_control_off">Disabled</string>
-    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
-    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
-    <string name="power_end_call_title">End call</string>
-    <string name="power_end_call_summary">Pressing the power button will end the current call</string>
-    <string name="swap_volume_buttons_title">Reorient</string>
-    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
-    <string name="button_wake_title">Wake up device</string>
-	<string name="button_wake_title_summary">Press any volume key to wake the device</string>
-    <string name="home_answer_call_title">Answer call</string>
-    <string name="home_answer_call_summary">Pressing the home button will answer the current incoming call</string>
-
-    <!-- Key backlight -->
-    <string name="button_backlight_title">Backlight</string>
-    <string name="button_backlight_enabled">Illuminate buttons</string>
-    <string name="keyboard_backlight_enabled">Illuminate keyboard</string>
-    <string name="button_backlight_seekbar_title">Button brightness</string>
-    <string name="keyboard_backlight_seekbar_title">Keyboard brightness</string>
-    <string name="backlight_timeout_title">Illumination timeout</string>
-    <string name="backlight_timeout_unlimited">Don\'t turn off</string>
-    <string name="backlight_summary_disabled">Disabled</string>
-    <string name="backlight_summary_enabled_with_timeout">Enabled for <xliff:g id="timeout">%s</xliff:g></string>
-    <string name="backlight_summary_enabled">Enabled</string>
-
-    <!-- Buttons - Enable navbar -->
-    <string name="enable_navigation_bar_title">Navigation bar</string>
-    <string name="enable_navigation_bar_title_notice">This option is for devices with hardware keys only. This generates the stock android softkeys for navigating the OS. Device\'s without hardware must not use this, as it will rid navigating functionality.</string>
-
-    <!-- Navigation Bar -->
-    <string name="navigation_bar_category">Navigation bar</string>
-    <string name="navigation_bar_left_title">Left-handed mode</string>
-    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
-    <string name="navigation_bar_arrow_keys_title">Show arrow keys while typing</string>
-    <string name="navigation_bar_arrow_keys_summary">Display left and right cursor buttons while typing. Overrides IME switcher.</string>
-    <string name="navigation_bar_recents_title">Recents long press action</string>
-
-    <string name="volume_keys_control_ring_stream_title">Control ringtone volume</string>
-    <string name="volume_keys_control_ring_stream_summary_on">Volume keys control ringtone volume</string>
-    <string name="volume_keys_control_ring_stream_summary_off">Volume keys control media volume</string>
 	
 	<!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
@@ -554,5 +491,89 @@
 	
 	<!-- lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Music visualizer</string>
+	
+	<!-- Notification importance -->
+    <string name="tuner_full_importance_settings">Power notification controls</string>
+	
+	<!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Expanded desktop</string>
+	<string name="power_menu_expanded_desktop_summary">Allow an immersive experience, by hiding the statusbar and navigation bar</string>
+    <string name="expanded_hide_nothing">Hide nothing</string>
+    <string name="expanded_hide_status">Hide status bar</string>
+    <string name="expanded_hide_navigation">Hide navigation bar</string>
+    <string name="expanded_hide_both">Hide both</string>
+    <string name="expanded_nothing_to_show">To add a custom per-app configuration for expanded state, set "Enabled for all" to the off position</string>
+    <string name="expanded_desktop_state">Expanded state</string>
+    <string name="expanded_enabled_for_all">Enabled for all</string>
+    <string name="expanded_user_configurable">User configurable</string>
+    <string name="expanded_desktop_style">Expanded desktop style</string>
+    <string name="expanded_desktop_style_description">Choose a default expanded desktop style</string>
+    <string name="expanded_desktop_title">Expanded desktop options</string>
+	
+	<!-- Hide Statusbar on Lockscreen -->
+	<string name="lockscreen_hide_status_bar_title">Statusbar visibility</string>
+    <string name="lockscreen_hide_status_bar_summary">Touch the statusbar to show statusbar items</string>
+	
+	<!-- Button settings -->
+    <string name="hardware_category_title">Hardware</string>
+    <string name="button_settings_title">Buttons</string>
+    <string name="button_settings_title_summary">Get the most out of your hardware keys with various custom button actions</string>
+	<!-- Hardware keys -->
+	<string name="navigation_bar_show_title">Navigation bar</string>
+	<string name="hardware_keys_disable_title">Hardware keys</string>
+	<string name="hardware_keys_disable_title_summary">Disable the devices hardware keys in favor of software navigation keys</string>
+    <string name="button_keys_home_title">Home</string>
+	<string name="button_keys_back_title">Back</string>
+    <string name="button_keys_menu_title">Menu</string>
+    <string name="button_keys_assist_title">Search</string>
+    <string name="button_keys_appSwitch_title">App switch</string>
+	<string name="button_keys_volume_title">Volume</string>
+    <string name="keys_home_long_press_title">Home key (Long press)</string>
+    <string name="keys_home_double_tap_title">Home key (Double tap)</string>
+    <string name="keys_menu_press_title">Menu key</string>
+    <string name="keys_menu_long_press_title">Menu key (Long press)</string>
+    <string name="keys_assist_press_title">Search key</string>
+    <string name="keys_assist_long_press_title">Search key (Long press)</string>
+    <string name="keys_app_switch_press_title">App switch key</string>
+    <string name="keys_app_switch_long_press_title">App switch key (Long press)</string>
+    <string name="keys_action_nothing">No action</string>
+    <string name="keys_action_menu">Open/close menu</string>
+    <string name="keys_action_app_switch">Default recents</string>
+    <string name="keys_action_search">Search assistant</string>
+    <string name="keys_action_voice_search">Voice search</string>
+    <string name="keys_action_in_app_search">In-app search</string>
+    <string name="keys_action_home">Home button</string>
+    <string name="keys_action_back">Back button</string>
+    <string name="keys_action_last_app">Switch to last app</string>
+    <string name="keys_action_kill_app">Kill app</string>
+    <string name="keys_action_normal">Normal press</string>
+    <string name="keys_action_long">Long press</string>
+    <string name="keys_action_double">Double tap</string>
+    <string name="button_other_title">Other</string>
+	<string name="button_wake_title">Wake up device</string>
+    <string name="keys_action_app_switch_card">AOSP (Stack)</string>
+    <string name="keys_action_app_switch_grid">AOSP (Grid)</string>
+	<!-- Button Backlight Settings -->
+	<string name="button_backlight_title">Button backlight</string>
+	<string name="button_backlight_title_summary">Reduce or increase backlight brightness as well as manage it\'s timeout</string>
+    <string name="button_timeout_title">Timeout</string>
+    <string name="button_timeout_summary">Disabled on value 0</string>
+    <string name="button_manual_brightness">Brightness level</string>
+    <string name="unit_sec">sec</string>
+	
+	<!-- Volume Key Music Control -->
+	<string name="volbtn_music_controls_title">Playback control</string>
+    <string name="volbtn_music_controls_summary">Long press the volume keys to switch between tracks</string>
+	
+	<!-- Volume key cursor control -->
+	<string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+	<string name="volbtn_cursor_control_title_summary">%1$s is ENABLED</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+	
+	<!-- Swap volume buttons -->
+	<string name="swap_volume_buttons_title">Reorient</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
  
 </resources>

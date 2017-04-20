@@ -95,7 +95,7 @@ public class Settings extends SettingsActivity {
     public static class DataUsageSummaryActivity extends SettingsActivity { /* empty */ }
     public static class RoamingSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AdvancedWifiSettingsActivity extends SettingsActivity { /* empty */ }
-    public static class AdvancedStorageSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class UsbConnectionSettingsActivity extends SettingsActivity { /* empty */ }
     public static class SavedAccessPointsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class TextToSpeechSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AndroidBeamSettingsActivity extends SettingsActivity { /* empty */ }
@@ -165,4 +165,8 @@ public class Settings extends SettingsActivity {
     public static class DeviceSettings extends SettingsActivity { /* empty */ }
     public static class PersonalSettings extends SettingsActivity { /* empty */ }
     public static class SystemSettings extends SettingsActivity { /* empty */ }
+	
+	// CypherOS Additional Activities
+	public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class WeblinksActivity extends SettingsActivity { /* empty */ }
 }

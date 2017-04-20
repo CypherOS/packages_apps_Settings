@@ -21,6 +21,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.R;
+import com.android.settings.aoscp.support.SupportManagerCallback;
+import com.android.settings.dashboard.SuggestionFeatureProvider;
+import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 
 /**
  * Abstract class for creating feature controllers. Allows OEM implementations to define their own
@@ -59,7 +62,15 @@ public abstract class FeatureFactory {
         return sFactory;
     }
 
+    public abstract SuggestionFeatureProvider getSuggestionFeatureProvider();
+
     public abstract SupportFeatureProvider getSupportFeatureProvider(Context context);
+	
+	public abstract SupportManagerCallback getSupportManagerCallback(Context context);
+
+    public abstract PowerUsageFeatureProvider getPowerUsageFeatureProvider(Context context);
+
+    public abstract SurveyFeatureProvider getSurveyFeatureProvider(Context context);
 
     public static final class FactoryNotFoundException extends RuntimeException {
         public FactoryNotFoundException(Throwable throwable) {

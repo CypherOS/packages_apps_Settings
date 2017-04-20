@@ -38,8 +38,6 @@ import android.view.DisplayInfo;
 import android.view.Surface;
 import android.view.WindowManager;
 
-import com.android.settings.aoscp.fragments.ButtonSettings;
-
 public final class LunaUtils {
     private static final String TAG = "LunaUtils";
 
@@ -64,13 +62,6 @@ public final class LunaUtils {
         ConnectivityManager cm = (ConnectivityManager)context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
         return (cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE) == false);
-    }
-	
-	/* returns whether the device has volume rocker or not. */
-    public static boolean hasVolumeRocker(Context context) {
-        final int deviceKeys = context.getResources().getInteger(
-                com.android.internal.R.integer.config_deviceHardwareKeys);
-        return (deviceKeys & ButtonSettings.KEY_MASK_VOLUME) != 0;
     }
 
     public static boolean hasMultipleUsers(Context context) {

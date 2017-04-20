@@ -17,15 +17,51 @@
 package com.android.settings.overlay;
 
 import android.content.Context;
+import android.support.annotation.Keep;
+import com.android.settings.aoscp.support.SupportManagerCallback;
+import com.android.settings.aoscp.support.SupportManagerCallbackImpl;
+import com.android.settings.dashboard.SuggestionFeatureProvider;
+import com.android.settings.dashboard.SuggestionFeatureProviderImpl;
+import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 
 /**
  * {@link FeatureFactory} implementation for AOSP Settings.
  */
-public final class FeatureFactoryImpl extends FeatureFactory {
+@Keep
+public class FeatureFactoryImpl extends FeatureFactory {
+
+    private SuggestionFeatureProvider mSuggestionFeatureProvider;
+	private SupportManagerCallback mSupportManagerCallback;
 
     @Override
     public SupportFeatureProvider getSupportFeatureProvider(Context context) {
         return null;
+    }
+	
+	@Override
+    public SupportManagerCallback getSupportManagerCallback(Context context) {
+        if (mSupportManagerCallback == null) {
+            mSupportManagerCallback = new SupportManagerCallbackImpl();
+        }
+        return mSupportManagerCallback;
+    }
+
+    @Override
+    public PowerUsageFeatureProvider getPowerUsageFeatureProvider(Context context) {
+        return null;
+    }
+
+    @Override
+    public SurveyFeatureProvider getSurveyFeatureProvider(Context context) {
+        return null;
+    }
+
+    @Override
+    public SuggestionFeatureProvider getSuggestionFeatureProvider() {
+        if (mSuggestionFeatureProvider == null) {
+            mSuggestionFeatureProvider = new SuggestionFeatureProviderImpl();
+        }
+        return mSuggestionFeatureProvider;
     }
 
 }
