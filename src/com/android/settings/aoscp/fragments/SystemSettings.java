@@ -77,12 +77,12 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 	    mNavbarAnimation.setChecked(nav != 0);
         mNavbarAnimation.setOnPreferenceChangeListener(this);
 		
-		int navbar = Settings.System.getInt(resolver, NAVIGATION_BAR_SHOW, 1);
+		/*int navbar = Settings.System.getInt(resolver, NAVIGATION_BAR_SHOW, 1);
 	    if (navbar != 0) {
             mNavbarAnimation.setEnabled(false);
 		} else {
 			mNavbarAnimation.setEnabled(true);
-        }
+        }*/
 		
 	    mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
             int mScreenshotTypeValue = Settings.System.getInt(resolver,
