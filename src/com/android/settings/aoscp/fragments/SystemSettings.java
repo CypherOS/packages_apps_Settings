@@ -55,7 +55,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 	
     private static final String SCREENSHOT_TYPE = "screenshot_type";
     private static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
-    private static final String ONE_HANDED_MODE_UI = "one_handed_mode_ui";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
 
@@ -78,7 +77,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 	    mNavbarAnimation.setChecked(nav != 0);
         mNavbarAnimation.setOnPreferenceChangeListener(this);
 		
-		int navbar = Settings.System.getInt(resolver, NAVIGATION_BAR_SHOW, 0);
+		int navbar = Settings.System.getInt(resolver, NAVIGATION_BAR_SHOW, 1);
 	    if (navbar != 0) {
             mNavbarAnimation.setEnabled(false);
 		} else {
