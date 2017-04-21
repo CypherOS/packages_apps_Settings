@@ -78,14 +78,12 @@ public class BatteryHeaderPreferenceController extends PreferenceController {
     }
 
     public void updateHeaderPreference(BatteryInfo info) {
-        mTimeText.setText(Utils.formatPercentage(info.batteryLevel));
         if (info.remainingLabel == null) {
             mSummary.setText(info.statusLabel);
         } else {
             mSummary.setText(info.remainingLabel);
         }
 
-        mBatteryMeterView.setBatteryLevel(info.batteryLevel);
         mBatteryMeterView.setCharging(!info.discharging);
     }
 }
