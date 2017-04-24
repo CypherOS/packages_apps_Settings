@@ -47,7 +47,7 @@
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="home_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/home_button_wake_title"
             android:defaultValue="true" />
 
         <ListPreference
@@ -74,7 +74,7 @@
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="back_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/back_button_wake_title"
             android:defaultValue="false" />
 
     </PreferenceCategory>
@@ -85,7 +85,7 @@
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="menu_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/menu_button_wake_title"
             android:defaultValue="false" />
 		
         <ListPreference
@@ -112,7 +112,7 @@
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="assist_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/assist_button_wake_title"
             android:defaultValue="false" />
 		
         <ListPreference
@@ -139,7 +139,7 @@
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="app_switch_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/app_switch_button_wake_title"
             android:defaultValue="false" />
 		
         <ListPreference
@@ -166,7 +166,7 @@
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
             android:key="volume_wake_screen"
-            android:title="@string/button_wake_title"
+            android:title="@string/volume_button_wake_title"
             android:defaultValue="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
