@@ -315,42 +315,42 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             } else {
                 prefScreen.removePreference(mAppSwitchCategory);
             }
-			
-			mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
-			mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
-            int cursorControlAction = Settings.System.getInt(resolver,
-                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
-            mVolumeKeyCursorControl.setValue(String.valueOf(cursorControlAction));
-            updateCursorActionSummary(cursorControlAction);
-			
-			mVolumeWakeScreen = (SwitchPreference) findPreference(KEY_VOLUME_WAKE_SCREEN);
-			mVolumeMusicControls = (SwitchPreference) findPreference(KEY_VOLUME_MUSIC_CONTROLS);
-			
-			if (mVolumeWakeScreen != null) {
-                if (mVolumeMusicControls != null) {
-                    mVolumeMusicControls.setDependency(KEY_VOLUME_WAKE_SCREEN);
-                    mVolumeWakeScreen.setDisableDependentsState(true);
-                }
-            }
-			
-			int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
-                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
-            mSwapVolumeButtons = (SwitchPreference)
-                    prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
-            if (mSwapVolumeButtons != null) {
-                mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
-            }
-            
-            boolean showNavBarDefault = AoscpUtils.deviceSupportNavigationBar(getActivity());
-            boolean showNavBar = Settings.System.getInt(resolver,
-                        Settings.System.NAVIGATION_BAR_SHOW, showNavBarDefault ? 1:0) == 1;
-            mNavigationBar.setChecked(showNavBar);
+        }
+		
+		boolean showNavBarDefault = AoscpUtils.deviceSupportNavigationBar(getActivity());
+        boolean showNavBar = Settings.System.getInt(resolver,
+                    Settings.System.NAVIGATION_BAR_SHOW, showNavBarDefault ? 1:0) == 1;
+        mNavigationBar.setChecked(showNavBar);
 
-            boolean hardwareKeysDisable = Settings.System.getInt(resolver,
-                        Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
-            mDisableHwKeys.setChecked(hardwareKeysDisable);
+        boolean hardwareKeysDisable = Settings.System.getInt(resolver,
+                    Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
+        mDisableHwKeys.setChecked(hardwareKeysDisable);
 			
-			updateDisableHWKeyEnablement(hardwareKeysDisable);
+	    updateDisableHWKeyEnablement(hardwareKeysDisable);
+		
+		mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
+	    mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
+        int cursorControlAction = Settings.System.getInt(resolver,
+                Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+        mVolumeKeyCursorControl.setValue(String.valueOf(cursorControlAction));
+        updateCursorActionSummary(cursorControlAction);
+			
+        mVolumeWakeScreen = (SwitchPreference) findPreference(KEY_VOLUME_WAKE_SCREEN);
+	    mVolumeMusicControls = (SwitchPreference) findPreference(KEY_VOLUME_MUSIC_CONTROLS);
+			
+	    if (mVolumeWakeScreen != null) {
+            if (mVolumeMusicControls != null) {
+                mVolumeMusicControls.setDependency(KEY_VOLUME_WAKE_SCREEN);
+                mVolumeWakeScreen.setDisableDependentsState(true);
+            }
+        }
+			
+        int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+        mSwapVolumeButtons = (SwitchPreference)
+                prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        if (mSwapVolumeButtons != null) {
+            mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
         }
     }
 	
