@@ -21,14 +21,21 @@ import android.annotation.LayoutRes;
 import android.annotation.StringRes;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManagerNative;
+import android.app.AlertDialog.Builder;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.RemoteException;
+import android.text.format.DateUtils;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +43,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.CheckedTextView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.support.web.Weblinks;
 import com.android.settings.aoscp.support.SupportManagerCallback;
 import com.android.settings.R;
@@ -56,6 +66,8 @@ import static com.android.settings.aoscp.support.SupportManagerCallback.SupportT
  * Item adapter for support tiles.
  */
 public final class SupportManagerItemAdapter extends RecyclerView.Adapter<SupportManagerItemAdapter.ViewHolder> {
+	
+	private static final String TAG = "SupportManager";
 
     private static final int TYPE_ESCALATION_OPTIONS = R.layout.support_escalation_options;
     private static final int TYPE_SUPPORT_TILE = R.layout.support_manager_tile;
@@ -259,8 +271,73 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
      */
     private void startBugReportCaseChooser(final @SupportManagerCallback.SupportType int type) {
 		if (mSupportManagerCallback.shouldShowBugreportAction(mActivity)) {
-            return;
+            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                        
+						final Context context = getContext();
+						if (mFullTitle.isChecked()) {
+                            Log.v(TAG, "Taking full bugreport right away");
+                            MetricsLogger.action(context, MetricsEvent.ACTION_BUGREPORT_FROM_SETTINGS_FULL);
+                            takeBugreport(ActivityManager.BUGREPORT_OPTION_FULL);
+                        } else {
+                            Log.v(TAG, "Taking interactive bugreport in " + BUGREPORT_DELAY_SECONDS + "s");
+                            MetricsLogger.action(context,
+                                    MetricsEvent.ACTION_BUGREPORT_FROM_SETTINGS_INTERACTIVE);
+                            // Add a little delay before executing, to give the user a chance to close
+                            // the Settings activity before it takes a screenshot.
+                            final String msg = context.getResources()
+                                    .getQuantityString(com.android.internal.R.plurals.bugreport_countdown,
+                                            BUGREPORT_DELAY_SECONDS, BUGREPORT_DELAY_SECONDS);
+                            Log.v(TAG, msg);
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    takeBugreport(ActivityManager.BUGREPORT_OPTION_INTERACTIVE);
+                                }
+                            }, BUGREPORT_DELAY_SECONDS * DateUtils.SECOND_IN_MILLIS);
+                        }
+                    }
+                }
+            };
+			
+			new AlertDialog.Builder(Builder builder)
+					final View dialogView = View.inflate(getContext(), R.layout.bugreport_options_dialog, null);
+                    mInteractiveTitle = (CheckedTextView) dialogView.findViewById(R.id.bugreport_option_interactive_title);
+                    mInteractiveSummary = (TextView) dialogView.findViewById(R.id.bugreport_option_interactive_summary);
+                    mFullTitle = (CheckedTextView) dialogView.findViewById(R.id.bugreport_option_full_title);
+                    mFullSummary = (TextView) dialogView.findViewById(R.id.bugreport_option_full_summary);
+                    final View.OnClickListener l = new View.OnClickListener() {
+					    @Override
+                        public void onClick(View v) {
+                            if (v == mFullTitle || v == mFullSummary) {
+                                mInteractiveTitle.setChecked(false);
+                                mFullTitle.setChecked(true);
+                            }
+                            if (v == mInteractiveTitle || v == mInteractiveSummary) {
+                                mInteractiveTitle.setChecked(true);
+                                mFullTitle.setChecked(false);
+                            }
+                        }
+                    };
+			        mInteractiveTitle.setOnClickListener(l);
+                    mFullTitle.setOnClickListener(l);
+                    mInteractiveSummary.setOnClickListener(l);
+                    mFullSummary.setOnClickListener(l);
+
+                    builder.setPositiveButton(com.android.internal.R.string.report, onClickListener);
+                    builder.setView(dialogView);
 		}
+    }
+	
+	private void takeBugreport(int bugreportType) {
+        try {
+            ActivityManagerNative.getDefault().requestBugReport(bugreportType);
+        } catch (RemoteException e) {
+            Log.e(TAG, "error taking bugreport (bugreportType=" + bugreportType + ")", e);
+        }
     }
 	
 	/**
