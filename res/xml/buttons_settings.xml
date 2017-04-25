@@ -41,6 +41,11 @@
         android:title="@string/hardware_brightness_keys_title"
         android:summary="@string/hardware_brightness_keys_summary"
         android:persistent="false" />
+		
+	<Preference
+        android:key="pie_settings"
+        android:title="@string/pie_settings"
+        android:summary="@string/pie_settings_summary" />
 
     <PreferenceCategory
         android:key="home_key"

@@ -391,7 +391,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             AutomaticStorageManagerSettings.class.getName(),
             ButtonsSettings.class.getName(),
             GesturesSettings.class.getName(),
-	    TuningSettings.class.getName(),
+			PieSettings.class.getName(),
+	        TuningSettings.class.getName()
     };
 
     private static final String[] LIKE_SHORTCUT_INTENT_ACTION_ARRAY = {
