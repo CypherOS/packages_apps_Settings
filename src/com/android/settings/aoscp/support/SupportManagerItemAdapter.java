@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto;
+import com.android.settings.aoscp.support.action.SupportBugReportFragment;
 import com.android.settings.aoscp.support.web.Weblinks;
 import com.android.settings.aoscp.support.SupportManagerCallback;
 import com.android.settings.R;
@@ -259,6 +260,8 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
      */
     private void startBugReportCaseChooser(final @SupportManagerCallback.SupportType int type) {
 		if (mSupportManagerCallback.shouldShowBugreportAction(mActivity)) {
+            DialogFragment fragment = SupportBugReportFragment.newInstance(type);
+            fragment.show(mActivity.getFragmentManager(), SupportBugReportFragment.TAG);
             return;
 		}
     }
