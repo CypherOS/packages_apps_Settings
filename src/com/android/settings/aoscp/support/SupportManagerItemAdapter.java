@@ -270,7 +270,11 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
      * Launch email action client
      */
     private void startEmailActionClient(final @SupportManagerCallback.SupportType int type) {
+		final Activity activity = getActivity();
 		if (mSupportManagerCallback.shouldShowEmailAction(mActivity)) {
+			Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto: cypherosdevs@cypheros.co"));
+            getActivity().startActivity(Intent.createChooser(emailIntent, "Send feedback"));
             return;
 		}
     }
