@@ -259,20 +259,23 @@ public final class SupportManagerItemAdapter extends RecyclerView.Adapter<Suppor
      * Show Bug Report chooser
      */
     private void startBugReportCaseChooser(final @SupportManagerCallback.SupportType int type) {
-		if (mSupportManagerCallback.shouldShowBugreportAction(mActivity)) {
+	if (mSupportManagerCallback.shouldShowBugreportAction(mActivity)) {
             DialogFragment fragment = SupportBugReportFragment.newInstance(type);
             fragment.show(mActivity.getFragmentManager(), SupportBugReportFragment.TAG);
             return;
-		}
+	}
     }
 	
 	/**
      * Launch email action client
      */
     private void startEmailActionClient(final @SupportManagerCallback.SupportType int type) {
-		if (mSupportManagerCallback.shouldShowEmailAction(mActivity)) {
+	if (mSupportManagerCallback.shouldShowEmailAction(mActivity)) {
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+            emailIntent.setData(Uri.parse("mailto: cypherosdevs@cypheros.co"));
+            startActivity(Intent.createChooser(emailIntent, "Send feedback"));
             return;
-		}
+	}
     }
 	
 	/**
