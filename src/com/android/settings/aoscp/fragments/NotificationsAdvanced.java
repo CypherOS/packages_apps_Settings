@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.support.v7.preference.ListPreference;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
@@ -41,13 +42,15 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationsAdvanced extends SettingsPreferenceFragment {
+public class NotificationsAdvanced extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "NotificationsAdvanced";
 	
+	private static final String STATUS_BAR_SHOW_TICKER = "status_bar_show_ticker";
 	private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
 
     private static final String CATEGORY_NOTIFICATION = "lights_category";
 
+	private ListPreference mTickerNotifications;
     private Preference mNotifLedFragment;
 	
 	@Override
@@ -58,7 +61,15 @@ public class NotificationsAdvanced extends SettingsPreferenceFragment {
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
+		mTickerNotifications = (ListPreference) findPreference(STATUS_BAR_SHOW_TICKER);
 		final PreferenceCategory leds = (PreferenceCategory) findPreference(CATEGORY_NOTIFICATION);
+		
+		mTickerNotifications.setOnPreferenceChangeListener(this);
+        int tickerMode = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.STATUS_BAR_SHOW_TICKER,
+                0, UserHandle.USER_CURRENT);
+        mTickerNotifications.setValue(String.valueOf(tickerMode));
+        mTickerNotifications.setSummary(mTickerNotifications.getEntry());
 
         mNotifLedFragment = findPreference(KEY_NOTIFICATION_LIGHT);
         //remove notification led settings if device doesnt support it
@@ -71,5 +82,19 @@ public class NotificationsAdvanced extends SettingsPreferenceFragment {
 	@Override
     protected int getMetricsCategory() {
         return MetricsEvent.ADDITIONS;
+    }
+	
+	@Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference.equals(mTickerNotifications)) {
+            int tickerMode = Integer.parseInt(((String) newValue).toString());
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.STATUS_BAR_SHOW_TICKER, tickerMode,
+                    UserHandle.USER_CURRENT);
+            int index = mTickerNotifications.findIndexOfValue((String) newValue);
+            mTickerNotifications.setSummary(mTickerNotifications.getEntries()[index]);
+            return true;
+        }
+        return false;
     }
 }
