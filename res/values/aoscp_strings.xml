@@ -489,6 +489,13 @@
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
 	
+	<!-- Ticker Settings -->
+    <string name="ticker_settings_title">Ticker notifications</string>
+	<string name="ticker_settings_title_summary">Enable the classic android style notifications in replace of Headsup</string>
+    <string name="ticker_disabled">Disabled</string>
+    <string name="ticker_enabled">Ticker</string>
+    <string name="ticker_media_enabled">Ticker &amp; Music info</string>
+	
 	<!-- lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Music visualizer</string>
 	
