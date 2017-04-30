@@ -136,7 +136,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 	
 	
 	private SwitchPreference mNavigationBar;
-    private SwitchPreference mDisableHwKeys;
+    //private SwitchPreference mDisableHwKeys;
     private Preference mButtonBrightness;
 
     @Override
@@ -175,7 +175,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_APPSWITCH);
 				
 		mNavigationBar = (SwitchPreference) prefScreen.findPreference(KEY_SHOW_NAVIGATION);
-        mDisableHwKeys = (SwitchPreference) prefScreen.findPreference(KEY_HW_KEYS_DISABLE);
+        //mDisableHwKeys = (SwitchPreference) prefScreen.findPreference(KEY_HW_KEYS_DISABLE);
 		mButtonBrightness = (Preference) prefScreen.findPreference(KEY_BUTTON_BRIGHTNESS);
 
         if (deviceHwKeys == 0) {
@@ -185,7 +185,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             prefScreen.removePreference(mAssistCategory);
             prefScreen.removePreference(mAppSwitchCategory);
 			prefScreen.removePreference(mNavigationBar);
-			prefScreen.removePreference(mDisableHwKeys);
+			//prefScreen.removePreference(mDisableHwKeys);
 			prefScreen.removePreference(mButtonBrightness);
         } else {
             mHomeLongPressAction = (ListPreference) prefScreen.findPreference(
@@ -321,12 +321,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         boolean showNavBar = Settings.System.getInt(resolver,
                     Settings.System.NAVIGATION_BAR_SHOW, showNavBarDefault ? 1:0) == 1;
         mNavigationBar.setChecked(showNavBar);
+		updateDisableHWKeyEnablement(showNavBar);
 
-        boolean hardwareKeysDisable = Settings.System.getInt(resolver,
-                    Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
+        /*boolean hardwareKeysDisable = Settings.System.getInt(resolver,
+                    Settings.System.HARDWARE_KEYS_DISABLE, 1) == 1;
         mDisableHwKeys.setChecked(hardwareKeysDisable);
 			
-	    updateDisableHWKeyEnablement(hardwareKeysDisable);
+	    updateDisableHWKeyEnablement(hardwareKeysDisable);*/
 		
 		mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
 	    mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
@@ -360,19 +361,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW, checked ? 1:0);
-            // remove hw button disable if we disable navbar
-            if (!checked) {
-                Settings.System.putInt(getContentResolver(),
-                        Settings.System.HARDWARE_KEYS_DISABLE, 0);
-                mDisableHwKeys.setChecked(false);
-            }
             return true;
-        } else if (preference == mDisableHwKeys) {
+			updateDisableHWKeyEnablement(checked);
+        /*} else if (preference == mDisableHwKeys) {
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HARDWARE_KEYS_DISABLE, checked ? 1:0);
             updateDisableHWKeyEnablement(checked);
-            return true;
+            return true;*/
 		} else if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked()
                     ? (DeviceUtils.isTablet(getActivity()) ? 2 : 1) : 0;
@@ -497,12 +493,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         }
 	}
 
-    private void updateDisableHWKeyEnablement(boolean hardwareKeysDisable) {
-        mButtonBrightness.setEnabled(!hardwareKeysDisable);
-        mHomeCategory.setEnabled(!hardwareKeysDisable);
-		mBackCategory.setEnabled(!hardwareKeysDisable);
-        mMenuCategory.setEnabled(!hardwareKeysDisable);
-        mAppSwitchCategory.setEnabled(!hardwareKeysDisable);
-        mAssistCategory.setEnabled(!hardwareKeysDisable);
+    private void updateDisableHWKeyEnablement(boolean showNavBar) {
+        mButtonBrightness.setEnabled(!showNavBar);
+        mHomeCategory.setEnabled(!showNavBar);
+		mBackCategory.setEnabled(!showNavBar);
+        mMenuCategory.setEnabled(!showNavBar);
+        mAppSwitchCategory.setEnabled(!showNavBar);
+        mAssistCategory.setEnabled(!showNavBar);
     }
 }
