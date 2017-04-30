@@ -61,15 +61,15 @@ public class NotificationsAdvanced extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 		
-		mTickerNotifications = (ListPreference) findPreference(STATUS_BAR_SHOW_TICKER);
 		final PreferenceCategory leds = (PreferenceCategory) findPreference(CATEGORY_NOTIFICATION);
 		
+		mTickerNotifications = (ListPreference) findPreference(STATUS_BAR_SHOW_TICKER);
 		mTickerNotifications.setOnPreferenceChangeListener(this);
         int tickerMode = Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.STATUS_BAR_SHOW_TICKER,
                 0, UserHandle.USER_CURRENT);
         mTickerNotifications.setValue(String.valueOf(tickerMode));
-        mTickerNotifications.setSummary(mTickerNotifications.getEntry());
+		updateTickerModeSummary(tickerMode);
 
         mNotifLedFragment = findPreference(KEY_NOTIFICATION_LIGHT);
         //remove notification led settings if device doesnt support it
@@ -91,10 +91,29 @@ public class NotificationsAdvanced extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_TICKER, tickerMode,
                     UserHandle.USER_CURRENT);
-            int index = mTickerNotifications.findIndexOfValue((String) newValue);
-            mTickerNotifications.setSummary(mTickerNotifications.getEntries()[index]);
+            updateTickerModeSummary(tickerMode);
             return true;
         }
         return false;
     }
+	
+	private void updateTickerModeSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // Ticker Disabled
+            mTickerNotifications.setSummary(res.getString(R.string.ticker_disabled));
+        } else if (value == 1) {
+            // Ticker Enabled
+            mTickerNotifications.setSummary(res.getString(R.string.ticker_enabled));
+		} else if (value == 2) {
+            // Ticker Enabled with music capability
+            mTickerNotifications.setSummary(res.getString(R.string.ticker_media_enabled));
+        } else {
+            String mode = res.getString(value == 1
+                    ? R.string.ticker_enabled
+                    : R.string.ticker_media_enabled);
+            mTickerNotifications.setSummary(res.getString(R.string.ticker_settings_title_summary, mode));
+        }
+	}
 }
