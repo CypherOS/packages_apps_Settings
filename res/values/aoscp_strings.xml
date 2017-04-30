@@ -493,8 +493,8 @@
     <string name="ticker_settings_title">Ticker notifications</string>
 	<string name="ticker_settings_title_summary">Enable the classic android style notifications in replace of Headsup</string>
     <string name="ticker_disabled">Disabled</string>
-    <string name="ticker_enabled">Ticker</string>
-    <string name="ticker_media_enabled">Ticker &amp; Music info</string>
+    <string name="ticker_enabled">Enabled</string>
+    <string name="ticker_media_enabled">Enabled with music info capability</string>
 	
 	<!-- lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Music visualizer</string>
