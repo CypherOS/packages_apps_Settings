@@ -50,6 +50,17 @@
             android:summary="@string/doze_settings_title_summary">
         <intent android:action="org.cyanogenmod.settings.device.DOZE_SETTINGS" />
     </PreferenceScreen>
+
+    <PreferenceCategory android:key="doze_category"
+        android:title="@string/doze_preference_category">
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="double_tap_wake_doze"
+            android:title="@string/double_tap_wake_doze_title"
+            android:summary="@string/double_tap_wake_doze_summary"
+            android:defaultValue="false" />
+		
+	</PreferenceCategory>
 		
 	<PreferenceCategory android:key="moves_category"
         android:title="@string/gesture_preference_category">
