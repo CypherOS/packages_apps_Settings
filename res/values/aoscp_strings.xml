@@ -602,5 +602,9 @@
 	<string name="doze_preference_category">Ambient display</string>
     <string name="double_tap_wake_doze_title">Double-tap on doze</string>
     <string name="double_tap_wake_doze_summary">Wake the device from doze mode by double tapping on the display</string>
+	
+	<!-- Quick Settings on lockscreen -->
+    <string name="lockscreen_qs_disabled_title">Disable quick settings</string>
+    <string name="lockscreen_qs_disabled_summary">Disable shortcuts and expanding quick settings</string>
  
 </resources>
