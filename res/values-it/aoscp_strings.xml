@@ -35,9 +35,47 @@
    <!--Dashboard, CypherOS version summary -->
    <string name="aoscp_version_summary">CypherOS <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
 
+  <!-- USB Connection -->
+    <string name="menu_usb_connection">Connessione USB</string>
+    <!-- USB Connection Options -->
+    <string name="usb_connection_title">Connessione manuale</string>
+    <string name="usb_connection_title_summary">Consenti il collegamento del protocollo di trasferimento alla memoria del telefono tramite USB (MTP, PTP)</string>
+    <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà delle connessioni non protette, ogni volta che si collega ad un PC. Gli schermi con la sicurezza protetta disattivano automaticamente questa opzione.\n\nQuesta è ancora una caratteristica sperimentale, usala con cautela.</string>
+   
+    <!-- Support Greeting -->
+    <string name="support_welcome_title">Supporto per te, in movimentoo</string>
+    <string name="support_welcome_title_summary">Puoi verificare suggerimenti &amp; trucchi, individuare nuove funzionalità e altro ancora</string>
+    <string name="support_welcome_title_summary_unavailable">Il supporto non è attualmente disponibile, si prega di consultare il proprio manutentore software</string>
+    <!-- Support Report Button -->
+    <string name="support_escalation_by_report">Report</string>
+    <string name="support_escalation_by_report_error">In questo momento la segnalazione di bug non è disponibile</string>
+   <!-- Support Email Button -->
+   <string name="support_escalation_by_email">Email</string>
+   <string name="support_escalation_by_email_error">Il supporto di posta elettronica non è disponibile in questo momento</string>
+   <!-- Support Help Item -->
+   <string name="support_help_locate">Aiuto &amp; suggerimenti</string>
+   <!-- Support Weblinks Item -->
+   <string name="weblinks_settings_title">Link internet</string>
+   <!-- Social category -->
+   <string name="social_category_title">Social</string>
+   <string name="website_preference_title">In rete</string>
+   <string name="website_preference_title_summary">Dai uno sguardo al nostro sito web per le ultime informazioni di rilascio e aggiornamenti</string>
+    <string name="google_preference_title">CypherPlus</string>
+   <string name="google_preference_title_summary">Tieniti in contatto con altri utenti e sviluppatori di CypherOS nella community di Google Plus</string>
+   <!-- Source category -->
+   <string name="source_category_title">Source</string>
+   <string name="github_preference_title">Github</string>
+   <string name="github_preference_title_summary">Per ottenere le informazioni più recenti su cosa è migliorato in CypherOS, date un\'occhiata sul nostro Github</string>
+   <string name="gerrit_preference_title">Gerrit</string>
+   <string name="gerrit_preference_title_summary">Tieni traccia della nostra revisione del codice su Gerrit anche per inviare, verificare e testare le modifiche in sospeso di CypherOS</string>
+  
    <!--Gesture Settings [CHAR LIMIT=25]-->
    <string name="gesture_preference_title">Gesti</string>
    <string name="gesture_preference_category">Movimenti</string>
+
+    <!-- Proximity wake -->
+    <string name="wakeup_protection_title">Protezione risveglio</string>
+    <string name="wakeup_protection_title_summary">Controlla il sensore di prossimità prima di risvegliare il dispositivo così da evitare il risvegli accidentali</string>
 
    <!-- Addition settings -->
    <string name="addition_settings_title">Impostazioni aggiuntive</string>
@@ -96,27 +134,20 @@
    <!-- Advanced notification settings -->
    <string name="notification_advanced_title">Avanzate</string>
    <string name="category_lights_title">Luci</string>
-   <!--Software information-->
-   <string name="software_info_settings_title">Informazioni Software</string>
-   <string name="software_info_settings_title_summary">Visualizza lo stato degli aggiornamenti e le informazioni utili</string>
-   <!--Social category -->
-   <string name="social_category_title">Sociale</string>
-   <string name="website_preference_title">In rete</string>
-   <string name="website_preference_title_summary">Dai uno sguardo al nostro sito web per le ultime informazioni di rilascio e aggiornamento</string>
-   <string name="google_preference_title">CypherPlus</string>
-   <string name="google_preference_title_summary">Resta in contatto con gli utenti e gli sviluppatori di CypherOS sulla comunità Google Plus</string>
-   <!--Source category -->
-   <string name="source_category_title">Fonte</string>
-   <string name="github_preference_title">Github</string>
-   <string name="github_preference_title_summary">Per ottenere le informazioni più recenti su cosa è migliorato in CypherOS, date un\'occhiata sul nostro Github</string>
-   <string name="gerrit_preference_title">Gerrit</string>
-   <string name="gerrit_preference_title_summary">Tenete traccia della nostra revisione del codice su Gerrit per presentare, verificare e testare le modifiche in sospeso di CypherOS</string>
-
+  
    <string name="notification_category_title">Notifiche</string>
    
    <!-- OPO Gesture settings -->
    <string name="opo_doze_settings_title">Gesti aggiuntivi</string>
    <string name="opo_doze_settings_title_summary">Vari gesti disponibili e supportati dal dispositivo</string>
+
+   <!-- Doze Gesture settings -->
+   <string name="doze_settings_title">Gesti di movimento</string>
+   <string name="doze_settings_title_summary">Azioni rapide per utilizzare le funzioni del sistema con i gesti basati sulla prossimità</string>
+
+   <!-- OPO Button settings -->
+   <string name="opo_button_settings_title">Pulsanti aggiuntivi</string>
+   <string name="opo_button_settings_title_summary">Varie funzionalità dei pulsanti disponibili se supportati dal tuo dispositivo</string>
 
    <!--Phone info shortcut -->
    <string name="device_info_title">Informazioni telefono</string>
@@ -277,6 +308,7 @@
    <string name="pulse_speed_normal">Normale</string>
    <string name="pulse_speed_slow">Lento</string>
    <string name="pulse_speed_very_slow">Molto lento</string>
+   <string name="battery_led_category">Luci</string>
    <string name="battery_light_title">LED della batteria</string>
    <string name="battery_light_title_summary">Configura le azioni di pulse, il LED del dispositivo per le azioni ed i colori di ricarica</string>
    <string name="battery_low_pulse_title">Impulso a batteria scarica</string>
@@ -284,6 +316,7 @@
    <string name="battery_light_low_color_title">Batteria scarica</string>
    <string name="battery_light_medium_color_title">Ricarica</string>
    <string name="battery_light_full_color_title">Carica completa</string>
+   <string name="notif_led_category">Luci</string>
    <string name="notification_light_title">LED di notifica</string>
    <string name="notification_light_title_summary">Configura le azioni di pulse, il LED del dispositivo per le azioni ed i colori di ricarica</string>
    <string name="notification_light_general_title">Generale</string>
@@ -353,15 +386,6 @@
    <string name="volume_steps_7">7</string>
    <string name="volume_steps_5">5</string>
 
-   <!-- Advanced storage settings -->
-   <string name="storage_advanced_titlebar">Archiviazione avanzata</string>
-   <string name="storage_menu_advanced">Avanzate</string>
-
-   <!-- USB data automatic unlock -->
-   <string name="usb_data_auto_unlock_title">Sblocca i dati USB</string>
-   <string name="usb_data_auto_unlock_summary">Consenti l\'accesso ai dati di sblocco per la memoria del telefono tramite USB (MTP, PTP)</string>
-   <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che ci si connette ad un PC. La schermata di blocco protetta disattiva questa opzione automaticamente.\n\nQuesto è ancora una funzione sperimentale, utilizzalo con cautela.</string>
-   
    <!-- Lockscreen charging current indicator  -->
    <string name="lockscreen_charging_current_title">Informazioni di ricarica</string>
    <string name="lockscreen_charging_current_summary">Mostra un\'indicatore di livello massimo della carica corrente sulla schermata di blocco</string>
@@ -371,8 +395,8 @@
    <string name="double_tap_sleep_anywhere_summary">Doppio tocco sulla schermata di blocco per sospendere il dispositivo</string>
    
    <!-- Option to enable/disable scrolling cache -->
-   <string name="pref_scrollingcache_title">Scrolling cache</string>
-   <string name="pref_scrollingcache_summary">Lo scrolling cache può migliorare le prestazioni dello scorrimento a discapito della memoria</string>
+   <string name="pref_scrollingcache_title">Scorrimento cache</string>
+   <string name="pref_scrollingcache_summary">Lo scorrimento della cache può migliorare le prestazioni dello scorrimento a discapito della memoria</string>
    <string name="pref_scrollingcache_force_enable">Forza abilitazione</string>
    <string name="pref_scrollingcache_default_enable">Abilitato come predefinito</string>
    <string name="pref_scrollingcache_default_disable">Disabilitato come predefinito</string>
@@ -419,7 +443,7 @@
    <string name="pixel_navbar_anim_title">Animazione pulsante Home</string>
    <string name="pixel_navbar_anim_summary">Quando viene premuto il tasto home si attiverà una breve animazione</string>
  
-  <!-- Advanced night mode brightness -->
+   <!-- Advanced night mode brightness -->
    <string name="night_brightness_category">Luminosità</string>
    <string name="night_brightness_value_title">Luminosità della luce di notte</string>
    <string name="night_brightness_text">Quando la luce notturna è attivata automaticamente viene imposta la luminosità desiderata. La luminosità predefinita è impostata sulla bassa luminosità</string>
@@ -428,84 +452,10 @@
    <string name="night_bright_low">Luminosità bassa</string>
    <string name="night_bright_medium">Luminosità media</string>
    
-   <!-- Button settings -->
-   <string name="hardware_category_title">Hardware</string>
-   <string name="button_settings_title">Pulsanti</string>
-   <string name="button_settings_title_summary">Ottieni il massimo dai vostri tasti hardware con varie azioni sui pulsanti personalizzati</string>
-   
-   <!-- Button settings -->
-    <string name="button_pref_title">Buttons</string>
-    <string name="hardware_keys_power_key_title">Pulsante alimentazione</string>
-    <string name="hardware_keys_home_key_title">Pulsante home</string>
-    <string name="hardware_keys_back_key_title">Back</string>
-    <string name="hardware_keys_menu_key_title">Pulsante menù</string>
-    <string name="hardware_keys_assist_key_title">Pulsante cerca</string>
-    <string name="hardware_keys_appswitch_key_title">Recenti</string>
-    <string name="hardware_keys_camera_key_title">Camera</string>
-    <string name="hardware_keys_volume_keys_title">Volume</string>
-    <string name="hardware_keys_short_press_title">Azione pressione breve</string>
-    <string name="hardware_keys_long_press_title">Azione pressione lunga</string>
-    <string name="hardware_keys_double_tap_title">Azione doppio tocco</string>
-    <string name="hardware_keys_action_nothing">Nessuna azione</string>
-    <string name="hardware_keys_action_menu">Apri/Chiudi menù</string>
-    <string name="hardware_keys_action_app_switch">Selettore app recenti</string>
-    <string name="hardware_keys_action_search">Assistente di ricerca</string>
-    <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
-    <string name="hardware_keys_action_in_app_search">Ricerca in app</string>
-    <string name="hardware_keys_action_launch_camera">Avvia fotocamera</string>
-    <string name="hardware_keys_action_sleep">Spegni lo schermo</string>
-    <string name="hardware_keys_action_last_app">Ultima app utilizzata</string>
-    <string name="camera_sleep_on_release_title">Sguardo allo schermo</string>
-    <string name="camera_sleep_on_release_summary">Una pressione a metà manterrà lo schermo acceso finchè il pulsante resterà premuto</string>
-    <string name="camera_launch_title">Avvia Fotocamera</string>
-    <string name="camera_launch_summary">Una pressione prolungata e rilascio avvierà la fotocamera</string>
-    <string name="volbtn_music_controls_title">Controllo di riproduzione</string>
-    <string name="volbtn_music_controls_summary">Pressione prolungata sui tasti del volume per cambiare traccia</string>
-    <string name="volbtn_cursor_control_title">Controllo cursore con tasti</string>
-    <string name="volbtn_cursor_control_off">Disattivato</string>
-    <string name="volbtn_cursor_control_on">I pulsanti Volume su/giù spostano il cursore nel testo a sinistra/destra</string>
-    <string name="volbtn_cursor_control_on_reverse">I tasti Volume su/giù spostano il cursore nel testo a destra/sinistra</string>
-    <string name="power_end_call_title">Termina chiamata</string>
-    <string name="power_end_call_summary">Premendo il pulsante alimentazione si concluderà la chiamata corrente</string>
-    <string name="swap_volume_buttons_title">Riorienta</string>
-    <string name="swap_volume_buttons_summary">Scambia i pulsanti volume quando lo schermo viene ruotato</string>
-    <string name="button_wake_title">Risveglia dispositivo</string>
-    <string name="button_wake_title_summary">Premi un tasto del volume per riattivare il dispositivo</string>
-    <string name="home_answer_call_title">Rispondi chiamata</string>
-    <string name="home_answer_call_summary">Premendo il pulsante Home si risponderà alla chiamata in entrata</string>
-
-    <!-- Key backlight -->
-    <string name="button_backlight_title">Retroilluminazione</string>
-    <string name="button_backlight_enabled">Illumina pulsanti</string>
-    <string name="keyboard_backlight_enabled">Illumina tastiera</string>
-    <string name="button_backlight_seekbar_title">Luminosità pulsanti</string>
-    <string name="keyboard_backlight_seekbar_title">Luminosità tastiera</string>
-    <string name="backlight_timeout_title">Tempo di illuminazione</string>
-    <string name="backlight_timeout_unlimited">Non spegnere</string>
-    <string name="backlight_summary_disabled">Disattivato</string>
-    <string name="backlight_summary_enabled_with_timeout">Abilita per <xliff:g id="timeout">%s</xliff:g></string>
-    <string name="backlight_summary_enabled">Abilitata</string>
-
-    <!-- Buttons - Enable navbar -->
-    <string name="disable_navkeys_title">Disabilita i tasti fisici</string>
-    <string name="disable_navkeys_summary">Abilita o disabilita i pulsanti fisici sui dispositivi che li supportano</string>
-   
-    <!-- Navigation Bar -->
-    <string name="navigation_bar_category">Barra di navigazione</string>
-    <string name="navigation_bar_left_title">Modalità mancino</string>
-    <string name="navigation_bar_left_summary">Posiziona la barra di navigazione sul lato sinistro dello schermo in modalità orizzontale</string>
-    <string name="navigation_bar_arrow_keys_title">Tasti controllo cursore</string>
-    <string name="navigation_bar_arrow_keys_summary">Mostra i pulsanti sinistro e destro del cursore durante la digitazione. Nasconde il selettore di immissione.</string>
-    <string name="navigation_bar_recents_title">Azione pressione prolungata recenti</string>
-
-    <string name="volume_keys_control_ring_stream_title">Controllo volume suoneria</string>
-    <string name="volume_keys_control_ring_stream_summary_on">I tasti volume regolano la suoneria</string>
-    <string name="volume_keys_control_ring_stream_summary_off">I tasti volume regolano le applicazioni multimediali</string>
-
     <!-- PIN scramble -->
-    <string name="unlock_scramble_pin_layout_title">Disposizione scramble</string>
-    <string name="unlock_scramble_pin_layout_summary">Disposizione dei PIN scramble quando si sblocca il dispositivo</string>
- 
+    <string name="unlock_scramble_pin_layout_title">Mescola disposizione</string>
+    <string name="unlock_scramble_pin_layout_summary">Mescola la disposizione del tastierino PIN per lo sblocco del dispositivo</string>
+
     <!-- Heads up settings -->
     <string name="headsup_settings_title">Heads up</string>
     <string name="headsup_settings_title_summary">Modifica la funzionalità delle notifiche heads up</string>
@@ -532,6 +482,112 @@
     <string name="heads_up_snooze_10min">10 minuti</string>
     <string name="heads_up_snooze_15min">15 minuti</string>
     <string name="heads_up_snooze_20min">20 minuti</string>
-    <!-- lock screen visualizer -->
+  
+  <!-- Ticker Settings -->
+    <string name="ticker_settings_title">Notifiche Ticker</string>
+	<string name="ticker_settings_title_summary">Attiva le classiche notifiche in stile android in sostituzione delle notifiche Heads Up</string>
+    <string name="ticker_disabled">Disabilitato</string>
+    <string name="ticker_enabled">Ticker</string>
+    <string name="ticker_media_enabled">Ticker &amp; Informazioni musicali</string>
+	
+	<!-- lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Visualizzatore musicale</string>
+	
+	<!-- Notification importance -->
+    <string name="tuner_full_importance_settings">Controlli di notifica</string>
+	
+	<!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Schermo esteso</string>
+	<string name="power_menu_expanded_desktop_summary">Consenti un\'esperienza immersiva nascondendo la barra di stato e la barra di navigazione</string>
+    <string name="expanded_hide_nothing">Non nascondere nulla</string>
+  <string name="expanded_hide_status">Nascondi la barra di stato</string>
+  <string name="expanded_hide_navigation">Nascondi la barra di navigazione</string>
+  <string name="expanded_hide_both">Nascondi entrambi</string>
+  <string name="expanded_nothing_to_show">Per aggiungere una configurazione personalizzata di schermo esteso per ogni app, disattiva \"Attivo per tutti\"</string>
+  <string name="expanded_desktop_state">Stato schermo esteso</string>
+  <string name="expanded_enabled_for_all">Attivo per tutti</string>
+  <string name="expanded_user_configurable">Configurabile dall\'utente</string>
+  <string name="expanded_desktop_style">Stile schermo esteso</string>
+  <string name="expanded_desktop_style_description">Scegli lo stile predefinito dello schermo esteso</string>
+  <string name="expanded_desktop_title">Impostazioni schermo esteso</string>
+	
+	<!-- Hide Statusbar on Lockscreen -->
+	<string name="lockscreen_hide_status_bar_title">Visibilità della barra di stato</string>
+    <string name="lockscreen_hide_status_bar_summary">Tocca la barra di stato per visualizzare le voci nella barra di stato</string>
+	
+	<!-- Button settings -->
+    <string name="hardware_category_title">Hardware</string>
+    <string name="button_settings_title">Pulsanti</string>
+    <string name="button_settings_title_summary">Ottieni il massimo dai tasti hardware con diverse azioni personalizzate dei pulsanti</string>
+	<!-- Hardware keys -->
+	<string name="navigation_bar_show_title">Barra di navigazione</string>
+	<string name="hardware_keys_disable_title">Tasti Hardware</string>
+	<string name="hardware_keys_disable_title_summary">Disattiva i tasti hardware del dispositivo per attivare o tasti di navigazione software</string>
+    <string name="button_keys_home_title">Home</string>
+	<string name="button_keys_back_title">Indietro</string>
+    <string name="button_keys_menu_title">Menu</string>
+    <string name="button_keys_assist_title">Ricerca</string>
+    <string name="button_keys_appSwitch_title">Selettore app recenti</string>
+	<string name="button_keys_volume_title">Volume</string>
+    <string name="keys_home_long_press_title">Tasto Home (Pressione prolungata)</string>
+    <string name="keys_home_double_tap_title">Tasto Home (Doppio tocco)</string>
+    <string name="keys_menu_press_title">Tasto Menù</string>
+    <string name="keys_menu_long_press_title">Tasto Menù (Pressione prolungata)</string>
+    <string name="keys_assist_press_title">Tasto ricerca</string>
+    <string name="keys_assist_long_press_title">Tasto ricerca (Pressione prolungata)</string>
+    <string name="keys_app_switch_press_title">Interruttore tasto App</string>
+    <string name="keys_app_switch_long_press_title">Interruttore tasto App (Pressione prolungata)</string>
+    <string name="keys_action_nothing">Nessuna azione</string>
+    <string name="keys_action_menu">Apri/chiudi menù</string>
+    <string name="keys_action_app_switch">Recenti predefiniti</string>
+    <string name="keys_action_search">Assistente di ricerca</string>
+    <string name="keys_action_voice_search">Ricerca vocale</string>
+    <string name="keys_action_in_app_search">Ricerca in app</string>
+    <string name="keys_action_home">Tasto Home</string>
+    <string name="keys_action_back">Tasto Indietro</string>
+    <string name="keys_action_last_app">Passa all\'ultima app</string>
+    <string name="keys_action_kill_app">Termina app</string>
+    <string name="keys_action_normal">Pressione normale</string>
+    <string name="keys_action_long">Pressione prolungata</string>
+    <string name="keys_action_double">Doppio tocco</string>
+    <string name="button_other_title">Altro</string>
+	<string name="home_button_wake_title">Risveglio con tasto Home</string>
+	<string name="back_button_wake_title">Risveglio con tasto Indietro</string>
+	<string name="menu_button_wake_title">Risveglio con tasto Manù</string>
+	<string name="assist_button_wake_title">Risveglio con tasto assistente</string>
+	<string name="app_switch_button_wake_title">Risveglio con tasto App</string>
+	<string name="volume_button_wake_title">Risveglia con tasto volume</string>
+    <string name="keys_action_app_switch_card">AOSP (Pila)</string>
+    <string name="keys_action_app_switch_grid">AOSP (Griglia)</string>
+	<!-- Button Backlight Settings -->
+	<string name="button_backlight_title">Retroilluminazione del pulsante</string>
+	<string name="button_backlight_title_summary">Ridurre o aumentare la luminosità della retroilluminazione e gestire il tempo</string>
+    <string name="button_timeout_title">Tempo</string>
+    <string name="button_timeout_summary">Disabilitato con valore 0</string>
+    <string name="button_manual_brightness">Livello luminosità</string>
+    <string name="unit_sec">sec</string>
+	
+	<!-- Volume Key Music Control -->
+	<string name="volbtn_music_controls_title">Controllo della riproduzione</string>
+    <string name="volbtn_music_controls_summary">Premere a lungo i tasti del volume per passare tra le tracce</string>
+	
+	<!-- Volume key cursor control -->
+	<string name="volbtn_cursor_control_title">Controllo cursore tastiera</string>
+	<string name="volbtn_cursor_control_title_summary">%1$s è abilitato</string>
+    <string name="volbtn_cursor_control_off">Disabilitato</string>
+    <string name="volbtn_cursor_control_on">Il volume su/giù sposta il cursore a sinistra/a destra</string>
+    <string name="volbtn_cursor_control_on_reverse">Il volume di su/giù sposta il cursore verso destra/sinistra</string>
+	
+	<!-- Swap volume buttons -->
+	<string name="swap_volume_buttons_title">Riorienta</string>
+    <string name="swap_volume_buttons_summary">Scambia i pulsanti del volume quando si ruota lo schermo</string>
+	
+	<!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Chiamata tramite Wi-Fi. Se il Wi-Fi non è disponibile, utilizzare la rete cellulare.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Chiamata tramite la rete cellulare. Se la rete cellulare non è disponibile, utilizza il Wi-Fi.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
+    <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Chiamata tramite il Wifi. Se la connessione Wifi è persa, la chiamata viene terminata.</string>
+
+
 </resources>
