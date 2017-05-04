@@ -323,7 +323,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         mNavigationBar.setChecked(showNavBar);
 
         boolean hardwareKeysDisable = Settings.System.getInt(resolver,
-                    Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
+                    Settings.System.HARDWARE_KEYS_DISABLE, 1) == 1;
         mDisableHwKeys.setChecked(hardwareKeysDisable);
 			
 	    updateDisableHWKeyEnablement(hardwareKeysDisable);
