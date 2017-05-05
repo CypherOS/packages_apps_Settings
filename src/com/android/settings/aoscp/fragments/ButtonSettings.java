@@ -325,8 +325,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         boolean hardwareKeysDisable = Settings.System.getInt(resolver,
                     Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
         mDisableHwKeys.setChecked(hardwareKeysDisable);
-			
-	    updateDisableHWKeyEnablement(hardwareKeysDisable);
 		
 		mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
 	    mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
@@ -365,7 +363,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HARDWARE_KEYS_DISABLE, checked ? 1:0);
-            updateDisableHWKeyEnablement(checked);
             return true;
 		} else if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked()
@@ -490,13 +487,4 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_title_summary, direction));
         }
 	}
-
-    private void updateDisableHWKeyEnablement(boolean hardwareKeysDisable) {
-        mButtonBrightness.setEnabled(!hardwareKeysDisable);
-        mHomeCategory.setEnabled(!hardwareKeysDisable);
-		mBackCategory.setEnabled(!hardwareKeysDisable);
-        mMenuCategory.setEnabled(!hardwareKeysDisable);
-        mAppSwitchCategory.setEnabled(!hardwareKeysDisable);
-        mAssistCategory.setEnabled(!hardwareKeysDisable);
-    }
 }
