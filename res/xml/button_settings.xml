@@ -40,13 +40,6 @@
             android:targetPackage="com.android.systemui"
             android:targetClass="com.android.systemui.tuner.NavbarActivity" />
         </PreferenceScreen>
-		
-	    <!-- OPO Doze settings -->
-       <PreferenceScreen android:key="opo_button_settings"
-            android:title="@string/opo_button_settings_title"
-            android:summary="@string/opo_button_settings_title_summary">
-        <intent android:action="com.android.settings.action.LAUNCH_BUTTON_SETTINGS" />
-        </PreferenceScreen>
 			
     <PreferenceCategory
         android:key="home_key"
