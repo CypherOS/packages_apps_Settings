@@ -323,7 +323,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
         mNavigationBar.setChecked(showNavBar);
 
         boolean hardwareKeysDisable = Settings.System.getInt(resolver,
-                    Settings.System.HARDWARE_KEYS_DISABLE, 1) == 1;
+                    Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
         mDisableHwKeys.setChecked(hardwareKeysDisable);
 			
 	    updateDisableHWKeyEnablement(hardwareKeysDisable);
@@ -360,12 +360,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW, checked ? 1:0);
-            // remove hw button disable if we disable navbar
-            if (!checked) {
-                Settings.System.putInt(getContentResolver(),
-                        Settings.System.HARDWARE_KEYS_DISABLE, 0);
-                mDisableHwKeys.setChecked(false);
-            }
             return true;
         } else if (preference == mDisableHwKeys) {
             boolean checked = ((SwitchPreference)preference).isChecked();
