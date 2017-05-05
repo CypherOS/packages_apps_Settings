@@ -322,11 +322,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
                     Settings.System.NAVIGATION_BAR_SHOW, showNavBarDefault ? 1:0) == 1;
         mNavigationBar.setChecked(showNavBar);
 
-        boolean hardwareKeysDisable = Settings.System.getInt(resolver,
-                    Settings.System.HARDWARE_KEYS_DISABLE, 0) == 1;
-        mDisableHwKeys.setChecked(hardwareKeysDisable);
-			
-	    updateDisableHWKeyEnablement(hardwareKeysDisable);
+        int hardwareKeysDisable = Settings.System.getInt(resolver,
+                    Settings.System.HARDWARE_KEYS_DISABLE, 1);
+        mDisableHwKeys.setChecked(hardwareKeysDisable != 0);
+		mDisableHwKeys.setOnPreferenceChangeListener(this);
 		
 		mVolumeKeyCursorControl = (ListPreference) findPreference(KEY_VOLUME_KEY_CURSOR_CONTROL);
 	    mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
@@ -361,12 +360,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW, checked ? 1:0);
             return true;
-        } else if (preference == mDisableHwKeys) {
-            boolean checked = ((SwitchPreference)preference).isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.HARDWARE_KEYS_DISABLE, checked ? 1:0);
-            updateDisableHWKeyEnablement(checked);
-            return true;
 		} else if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked()
                     ? (DeviceUtils.isTablet(getActivity()) ? 2 : 1) : 0;
@@ -389,7 +382,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mHomeLongPressAction) {
+		if (preference == mDisableHwKeys) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.HARDWARE_KEYS_DISABLE, value ? 1 : 0);
+            return true;
+        } else if (preference == mHomeLongPressAction) {
             int value = Integer.valueOf((String) newValue);
             int index = mHomeLongPressAction.findIndexOfValue((String) newValue);
             mHomeLongPressAction.setSummary(
@@ -490,13 +488,4 @@ public class ButtonSettings extends SettingsPreferenceFragment implements OnPref
             mVolumeKeyCursorControl.setSummary(res.getString(R.string.volbtn_cursor_control_title_summary, direction));
         }
 	}
-
-    private void updateDisableHWKeyEnablement(boolean hardwareKeysDisable) {
-        mButtonBrightness.setEnabled(!hardwareKeysDisable);
-        mHomeCategory.setEnabled(!hardwareKeysDisable);
-		mBackCategory.setEnabled(!hardwareKeysDisable);
-        mMenuCategory.setEnabled(!hardwareKeysDisable);
-        mAppSwitchCategory.setEnabled(!hardwareKeysDisable);
-        mAssistCategory.setEnabled(!hardwareKeysDisable);
-    }
 }

@@ -24,13 +24,13 @@
             android:key="hardware_keys"
             android:title="@string/hardware_keys_disable_title"
 			android:summary="@string/hardware_keys_disable_title_summary"
-            android:persistent="false"
-            android:dependency="navigation_bar" />
+            android:persistent="false" />
 
         <Preference
             android:key="button_brightness"
             android:title="@string/button_backlight_title"
 			android:summary="@string/button_backlight_title_summary"
+			android:dependency="hardware_keys"
             android:fragment="com.android.settings.aoscp.fragments.ButtonBrightnessSettings" />
 			
 		<PreferenceScreen android:key="navigation_tuner"
@@ -43,6 +43,7 @@
 			
     <PreferenceCategory
         android:key="home_key"
+		android:dependency="hardware_keys"
         android:title="@string/button_keys_home_title">
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
@@ -70,6 +71,7 @@
 	
 	<PreferenceCategory
         android:key="back_key"
+		android:dependency="hardware_keys"
         android:title="@string/button_keys_back_title" >
 
         <com.android.settings.preference.SystemSettingSwitchPreference
@@ -81,6 +83,7 @@
 	
     <PreferenceCategory
         android:key="menu_key"
+		android:dependency="hardware_keys"
         android:title="@string/button_keys_menu_title">
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
@@ -108,6 +111,7 @@
 	
     <PreferenceCategory
         android:key="assist_key"
+		android:dependency="hardware_keys"
         android:title="@string/button_keys_assist_title">
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
@@ -135,6 +139,7 @@
 	
     <PreferenceCategory
         android:key="app_switch_key"
+		android:dependency="hardware_keys"
         android:title="@string/button_keys_appSwitch_title">
 		
 		<com.android.settings.preference.SystemSettingSwitchPreference
