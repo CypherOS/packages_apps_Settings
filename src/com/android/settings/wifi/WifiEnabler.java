@@ -234,8 +234,7 @@ public class WifiEnabler implements SwitchBar.OnSwitchChangeListener  {
         }
 
         // Disable tethering if enabling Wifi
-        if (!mWifiManager.getWifiStaSapConcurrency()) {
-            if (mayDisableTethering(isChecked)) {
+        if (mayDisableTethering(isChecked)) {
                 if (mContext.getResources().getBoolean(
                         R.bool.config_show_dialog_open_wifi_when_tethering_open)) {
                     LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(

@@ -75,11 +75,7 @@ public class HotspotCondition extends Condition {
 
     @Override
     public CharSequence getSummary() {
-        if (mWifiManager.getWifiStaSapConcurrency()) {
-            return mManager.getContext().getString(R.string.condition_hotspot_concurrency_summary, getSsid());
-        } else {
-            return mManager.getContext().getString(R.string.condition_hotspot_summary, getSsid());
-        }
+        return mManager.getContext().getString(R.string.condition_hotspot_summary, getSsid());
     }
 
     @Override
