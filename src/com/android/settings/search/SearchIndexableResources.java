@@ -342,7 +342,7 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(GesturesSettings.class.getName()),
                         R.xml.gestures_settings,
                         GesturesSettings.class.getName(),
-                        R.drawable.ic_settings_offscreen_gestures));
+                        R.drawable.ic_settings_gestures));
     }
 
     private SearchIndexableResources() {
