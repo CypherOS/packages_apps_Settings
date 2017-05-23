@@ -1043,7 +1043,7 @@
         <!-- Gestures settings activity -->
         <activity android:name="Settings$GesturesSettingsActivity"
                 android:label="@string/gestures_settings_title"
-                android:icon="@drawable/ic_settings_offscreen_gestures"
+                android:icon="@drawable/ic_settings_gestures"
                 android:taskAffinity=""
                 android:exported="true">
             <intent-filter android:priority="1">
