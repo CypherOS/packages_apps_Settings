@@ -17,7 +17,42 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/gestures_settings_title"
         settings:keywords="@string/keywords_gestures">
+		
+	<PreferenceCategory
+            android:key="moves_gestures"
+            android:title="@string/moves_gestures_title">
+			
+	    <SwitchPreference
+            android:key="gesture_swipe_down_fingerprint"
+            android:title="@string/fingerprint_swipe_for_notifications_title"
+            android:summary="@string/fingerprint_swipe_for_notifications_summary" />
 
+        <SwitchPreference
+            android:key="gesture_double_tap_power"
+            android:title="@string/double_tap_power_for_camera_title"
+            android:summary="@string/double_tap_power_for_camera_summary" />
+
+        <SwitchPreference
+            android:key="gesture_double_twist"
+            android:title="@string/double_twist_for_camera_mode_title"
+            android:summary="@string/double_twist_for_camera_mode_summary" />
+
+        <SwitchPreference
+            android:key="gesture_double_tap_screen"
+            android:title="@string/ambient_display_title"
+            android:summary="@string/ambient_display_summary" />
+
+        <SwitchPreference
+            android:key="gesture_pick_up"
+            android:title="@string/ambient_display_pickup_title"
+            android:summary="@string/ambient_display_pickup_summary" />
+			
+	</PreferenceCategory>
+		
+    <PreferenceCategory
+            android:key="offscreen_gestures"
+            android:title="@string/offscreen_gestures_title">
+			
         <ListPreference
             android:key="double_tap"
             android:title="@string/gestures_double_tap"
@@ -121,5 +156,7 @@
             android:persistent="false"
             android:entries="@array/gestures_entries"
             android:entryValues="@array/gestures_values" />
+	
+	</PreferenceCategory>
 
 </PreferenceScreen>
