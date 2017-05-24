@@ -22,7 +22,7 @@ import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
-import com.android.settings.GesturesSettings;
+import com.android.settings.aoscp.GesturesSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.ScreenPinningSettings;
@@ -40,7 +40,6 @@ import com.android.settings.deviceinfo.StorageSettings;
 import com.android.settings.display.ScreenZoomSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
-import com.android.settings.gestures.GestureSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
@@ -88,9 +87,8 @@ public final class Ranking {
     public static final int RANK_PRINTING = 21;
     public static final int RANK_DEVELOPEMENT = 22;
     public static final int RANK_DEVICE_INFO = 23;
-    public static final int RANK_GESTURE = 24;
-    public static final int RANK_BUTTONS = 25;
-    public static final int RANK_GESTURES = 26;
+    public static final int RANK_BUTTONS = 24;
+    public static final int RANK_GESTURES = 25;
 
     public static final int RANK_UNDEFINED = -1;
     public static final int RANK_OTHERS = 1024;
@@ -151,9 +149,6 @@ public final class Ranking {
 
         // Users
         sRankMap.put(UserSettings.class.getName(), RANK_USERS);
-
-        // Gestures
-        sRankMap.put(GestureSettings.class.getName(), RANK_GESTURE);
 
         // Location
         sRankMap.put(LocationSettings.class.getName(), RANK_LOCATION);
