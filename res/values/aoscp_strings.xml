@@ -40,6 +40,8 @@
 	<!-- Gestures Settings -->
     <string name="gestures_settings_title">Gestures</string>
 	<string name="gestures_settings_summary">Customize off-screen and system gestures</string>
+	<string name="moves_gestures_title">Moves</string>
+	<string name="offscreen_gestures_title">Offscreen gestures</string>
     <string name="keywords_gestures">screen touchscreen draw swipe finger</string>
 
     <string name="gestures_double_tap">Double-tap</string>

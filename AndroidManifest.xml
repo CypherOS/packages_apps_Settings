@@ -1063,7 +1063,7 @@
             <meta-data android:name="com.android.settings.category"
                        android:value="com.android.settings.category.device" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.GesturesSettings" />
+                android:value="com.android.settings.aoscp.GesturesSettings" />
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/gestures_settings_summary" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
@@ -1076,7 +1076,7 @@
                 android:exported="true"
                 android:targetActivity="Settings$GesturesSettingsActivity">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.GesturesSettings" />
+                android:value="com.android.settings.aoscp.GesturesSettings" />
         </activity-alias>
 
         <!-- Keep compatibility with old shortcuts. -->
@@ -3176,26 +3176,6 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
-        </activity>
-
-        <!-- activity for gesture settings -->
-        <activity android:name="Settings$GestureSettingsActivity"
-                  android:label="@string/gesture_preference_title"
-                  android:icon="@drawable/ic_settings_gestures"
-                  android:enabled="@bool/config_gesture_settings_enabled">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="com.android.settings.action.SETTINGS" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                       android:value="com.android.settings.category.device" />
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.android.settings.gestures.GestureSettings" />
-            <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/gesture_preference_summary" />
         </activity>
       
         <!-- Buttons settings activity -->
