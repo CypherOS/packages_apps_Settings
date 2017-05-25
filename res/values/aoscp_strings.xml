@@ -27,6 +27,10 @@
     <string name="aoscp_release_id_default">Unspecified</string>
 	<!-- Dashboard, CypherOS version summary -->
 	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+	<!-- About phone screen, Build information -->
+    <string name="build_info_title">Build info</string>
+    <!-- About phone screen, Build information values -->
+    <string name="build_info_title_values">Release: %1$s\nTheme Interface: Substratum(OMS7)</string>
 
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
