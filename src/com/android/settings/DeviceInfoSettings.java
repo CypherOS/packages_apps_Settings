@@ -82,6 +82,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
 	private static final String KEY_AOSCP_VERSION = "aoscp_version";
     private static final String KEY_AOSCP_API = "aoscp_api";
+	private static final String KEY_AOSCP_BUILD = "aoscp_build";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -150,6 +151,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
         findPreference(KEY_AOSCP_API).setSummary(Build.API);
 	    findPreference(KEY_AOSCP_API).setEnabled(true);
+		findPreference(KEY_AOSCP_BUILD).setSummary(Build.AOSCPTAG);
+        findPreference(KEY_AOSCP_BUILD).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
