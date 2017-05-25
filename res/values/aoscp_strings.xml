@@ -19,9 +19,6 @@
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">CypherOS version</string>
     <string name="aoscp_version_default">Unspecified</string>
- 	<!-- About phone screen, CypherOS API -->
- 	<string name="aoscp_api_title">API</string>
-    <string name="aoscp_api_default">Unspecified</string>
 	<!-- About phone screen, CypherOS Release ID -->
 	<string name="aoscp_release_id">Release ID</string>
     <string name="aoscp_release_id_default">Unspecified</string>
@@ -30,7 +27,7 @@
 	<!-- About phone screen, Build information -->
     <string name="build_info_title">Build info</string>
     <!-- About phone screen, Build information values -->
-    <string name="build_info_title_values">Release: %1$s\nTheme Interface: Substratum(OMS7)</string>
+    <string name="build_info_title_values">API: %1$s\nRelease: %2$s\nTheme Interface: Substratum (OMS7)</string>
 
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>

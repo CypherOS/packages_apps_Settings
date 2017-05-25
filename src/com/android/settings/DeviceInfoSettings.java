@@ -81,7 +81,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/devicetype";
 	private static final String KEY_AOSCP_VERSION = "aoscp_version";
-    private static final String KEY_AOSCP_API = "aoscp_api";
 	private static final String KEY_AOSCP_BUILD = "aoscp_build";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
@@ -149,10 +148,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
 		findPreference(KEY_AOSCP_VERSION).setSummary(Build.VERSION.AOSCP);
         findPreference(KEY_AOSCP_VERSION).setEnabled(true);
-        findPreference(KEY_AOSCP_API).setSummary(Build.API);
-	    findPreference(KEY_AOSCP_API).setEnabled(true);
 		findPreference(KEY_AOSCP_BUILD).setSummary(String.format(
-                            getResources().getString(R.string.build_info_title_values), Build.AOSCPREL));
+                            getResources().getString(R.string.build_info_title_values), Build.API, Build.AOSCPREL));
         findPreference(KEY_AOSCP_BUILD).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {

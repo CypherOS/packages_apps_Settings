@@ -119,17 +119,6 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true" />
 
-        <!-- CypherOS API Version -->
-        <com.android.settings.DividerPreference 
-		        android:key="aoscp_api"
-                android:enabled="false"
-                android:shouldDisableView="false"
-				android:selectable="false"
-                android:title="@string/aoscp_api_title"
-                android:summary="@string/aoscp_api_default"
-                settings:allowDividerAbove="true"
-                settings:allowDividerBelow="true" />
-
         <!-- Device FCC equipment id -->
         <com.android.settings.DividerPreference
                 android:key="fcc_equipment_id"
