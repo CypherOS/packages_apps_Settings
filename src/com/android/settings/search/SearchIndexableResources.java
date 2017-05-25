@@ -45,7 +45,6 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
-import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.OtherSoundSettings;
 import com.android.settings.notification.SoundSettings;
 import com.android.settings.notification.ZenModePrioritySettings;
@@ -146,19 +145,12 @@ public final class SearchIndexableResources {
                         WallpaperTypeSettings.class.getName(),
                         R.drawable.ic_settings_display));
 
-        sResMap.put(ConfigureNotificationSettings.class.getName(),
-                new SearchIndexableResource(
-                        Ranking.getRankForClassName(ConfigureNotificationSettings.class.getName()),
-                        R.xml.configure_notification_settings,
-                        ConfigureNotificationSettings.class.getName(),
-                        R.drawable.ic_settings_notifications));
-
         sResMap.put(SoundSettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(SoundSettings.class.getName()),
                         NO_DATA_RES_ID,
                         SoundSettings.class.getName(),
-                        R.drawable.ic_settings_sound));
+                        R.drawable.ic_settings_notifications));
 
         sResMap.put(OtherSoundSettings.class.getName(),
                 new SearchIndexableResource(
