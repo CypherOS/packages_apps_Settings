@@ -23,7 +23,6 @@ import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
-import com.android.settings.aoscp.GesturesSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.R;
@@ -42,6 +41,7 @@ import com.android.settings.deviceinfo.StorageSettings;
 import com.android.settings.display.ScreenZoomSettings;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
+import com.android.settings.gestures.GestureSettings;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
@@ -215,6 +215,13 @@ public final class SearchIndexableResources {
                         UserSettings.class.getName(),
                         R.drawable.ic_settings_multiuser));
 
+        sResMap.put(GestureSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(GestureSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        GestureSettings.class.getName(),
+                        R.drawable.ic_settings_gestures));
+
         sResMap.put(LocationSettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(LocationSettings.class.getName()),
@@ -320,13 +327,6 @@ public final class SearchIndexableResources {
                         R.xml.buttons_settings,
                         ButtonsSettings.class.getName(),
                         R.drawable.ic_settings_buttons));
-
-        sResMap.put(GesturesSettings.class.getName(),
-                new SearchIndexableResource(
-                        Ranking.getRankForClassName(GesturesSettings.class.getName()),
-                        R.xml.gestures_settings,
-                        GesturesSettings.class.getName(),
-                        R.drawable.ic_settings_gestures));
     }
 
     private SearchIndexableResources() {
