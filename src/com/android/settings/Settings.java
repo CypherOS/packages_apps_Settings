@@ -91,7 +91,6 @@ public class Settings extends SettingsActivity {
     public static class AccountSyncSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccountSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccountSyncSettingsInAddAccountActivity extends SettingsActivity { /* empty */ }
-    public static class GestureSettingsActivity extends SettingsActivity { /* empty */ }
     public static class CryptKeeperSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DeviceAdminSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DataUsageSummaryActivity extends SettingsActivity { /* empty */ }
@@ -166,6 +165,7 @@ public class Settings extends SettingsActivity {
     public static class PersonalSettings extends SettingsActivity { /* empty */ }
     public static class SystemSettings extends SettingsActivity { /* empty */ }
 
-    // Aospa additions
+    // AOSCP additions
     public static class ButtonsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class GesturesSettingsActivity extends SettingsActivity { /* empty */ }
 }
