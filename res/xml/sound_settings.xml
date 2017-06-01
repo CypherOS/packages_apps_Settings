@@ -49,15 +49,6 @@
                 android:key="vibrate_when_ringing"
                 android:title="@string/vibrate_when_ringing_title" />
 
-
-        <!-- Interruptions -->
-        <com.android.settingslib.RestrictedPreference
-                android:key="zen_mode"
-                android:title="@string/zen_mode_settings_title"
-                settings:useAdminDisabledSummary="true"
-                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-                android:fragment="com.android.settings.notification.ZenModeSettings" />
-
         <!-- Phone ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="ringtone"
