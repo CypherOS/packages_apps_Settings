@@ -130,6 +130,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
         mNavigationBar = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR);
         if (mNavigationBar != null) {
             if (mDeviceHardwareKeys != 0) {
+				mNavigationBar.setChecked(false);
                 mNavigationBar.setOnPreferenceChangeListener(this);
             } else {
                 mNavigationBar = null;
@@ -404,7 +405,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
                 Settings.System.BUTTON_BRIGHTNESS_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
 
         if (mNavigationBar != null) {
-            mNavigationBar.setChecked(navigationBarEnabled);
+			mNavigationBar.setChecked(navigationBarEnabled);
         }
 
         if (mSwapNavigationkeys != null) {
