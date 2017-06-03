@@ -19,56 +19,56 @@
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">CypherOS version</string>
     <string name="aoscp_version_default">Unspecified</string>
-	<!-- About phone screen, CypherOS Release ID -->
-	<string name="aoscp_release_id">Release ID</string>
+    <!-- About phone screen, CypherOS Release ID -->
+    <string name="aoscp_release_id">Release ID</string>
     <string name="aoscp_release_id_default">Unspecified</string>
-	<!-- Dashboard, CypherOS version summary -->
-	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
-	<!-- About phone screen, Build information -->
+    <!-- Dashboard, CypherOS version summary -->
+    <string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+    <!-- About phone screen, Build information -->
     <string name="build_info_title">Build info</string>
     <!-- About phone screen, Build information values -->
     <string name="build_info_title_values">API: %1$s\nRelease: %2$s\nTheme Interface: Substratum (OMS7)</string>
 
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
-	<string name="srgb_summary">Enable sRGB display calibration</string>
+    <string name="srgb_summary">Enable sRGB display calibration</string>
 	
-	<!-- Night Display -->
+    <!-- Night Display -->
     <string name="night_display_warning">Please note that Night Light may increase battery consumption.</string>
     <string name="night_display_hide">Do not show this warning</string>
     <string name="night_display_ok">Ok</string>
 
-	<!-- Power Menu Settings -->
+    <!-- Power Menu Settings -->
     <string name="powermenu_settings_title">Extended power menu</string>
-	<string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
-	<string name="power_menu_system">System</string>
-	<string name="power_menu_google">Google</string>
-	<string name="power_menu_device">Device</string>
+    <string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
+    <string name="power_menu_system">System</string>
+    <string name="power_menu_google">Google</string>
+    <string name="power_menu_device">Device</string>
     <!-- Power menu customization -->
-	<string name="power_menu_reboot_title">Restart</string>
-	<string name="power_menu_reboot_title_summary">Restart your device, including to recovery and bootloader</string>
+    <string name="power_menu_reboot_title">Restart</string>
+    <string name="power_menu_reboot_title_summary">Restart your device, including to recovery and bootloader</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
-	<string name="power_menu_screenshot_title_summary">Take a screenshot with one click</string>
+    <string name="power_menu_screenshot_title_summary">Take a screenshot with one click</string>
     <string name="power_menu_airplane_title">Airplane mode</string>
-	<string name="power_menu_airplane_title_summary">Put your phone in airplane mode</string>
+    <string name="power_menu_airplane_title_summary">Put your phone in airplane mode</string>
     <string name="power_menu_users_title">User switcher</string>
-	<string name="power_menu_users_title_summary">Switch system user\'s on the fly with one tap</string>
+    <string name="power_menu_users_title_summary">Switch system user\'s on the fly with one tap</string>
     <string name="power_menu_search_title">Search</string>
-	<string name="power_menu_search_title_summary">Launch Google\'s quick search engine</string>
+    <string name="power_menu_search_title_summary">Launch Google\'s quick search engine</string>
     <string name="power_menu_voice_title">Voice search</string>
-	<string name="power_menu_voice_title_summary">Launch Google\'s quick voice search engine</string>
+    <string name="power_menu_voice_title_summary">Launch Google\'s quick voice search engine</string>
     <string name="power_menu_settings_title">Settings shortcut</string>
-	<string name="power_menu_settings_title_summary">Open the device\'s settings menu with one tap</string>
+    <string name="power_menu_settings_title_summary">Open the device\'s settings menu with one tap</string>
     <string name="power_menu_lockdown_title">Device lockdown</string>
-	<string name="power_menu_lockdown_title_summary">Quickly lock your device whilst navigating the power menu</string>
+    <string name="power_menu_lockdown_title_summary">Quickly lock your device whilst navigating the power menu</string>
     <string name="power_menu_sound_title">Sound panel</string>
-	<string name="power_menu_sound_title_summary">Change sound modes from ringer to silent</string>
+    <string name="power_menu_sound_title_summary">Change sound modes from ringer to silent</string>
 	
-	<!-- Gestures Settings -->
+    <!-- Gestures Settings -->
     <string name="gestures_settings_title">Gestures</string>
-	<string name="gestures_settings_summary">Customize off-screen and system gestures</string>
-	<string name="moves_gestures_title">Moves</string>
-	<string name="offscreen_gestures_title">Offscreen gestures</string>
+    <string name="gestures_settings_summary">Customize off-screen and system gestures</string>
+    <string name="moves_gestures_title">Moves</string>
+    <string name="offscreen_gestures_title">Offscreen gestures</string>
     <string name="keywords_gestures">screen touchscreen draw swipe finger</string>
 
     <string name="gestures_double_tap">Double-tap</string>
@@ -94,6 +94,7 @@
     <string name="gestures_previous_music">Previous music</string>
     <string name="gestures_open_camera">Open camera</string>
     <string name="gestures_open_dialer">Open dialer</string>
+    <string name="gestures_open_messages">Open messages</string>
 	
 	<!-- Buttons -->
     <string name="buttons_pref_title">Buttons</string>
