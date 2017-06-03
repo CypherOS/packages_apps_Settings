@@ -37,6 +37,32 @@
     <string name="night_display_warning">Please note that Night Light may increase battery consumption.</string>
     <string name="night_display_hide">Do not show this warning</string>
     <string name="night_display_ok">Ok</string>
+
+	<!-- Power Menu Settings -->
+    <string name="powermenu_settings_title">Extended power menu</string>
+	<string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
+	<string name="power_menu_system">System</string>
+	<string name="power_menu_google">Google</string>
+	<string name="power_menu_device">Device</string>
+    <!-- Power menu customization -->
+	<string name="power_menu_reboot_title">Restart</string>
+	<string name="power_menu_reboot_title_summary">Restart your device, including to recovery and bootloader</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+	<string name="power_menu_screenshot_title_summary">Take a screenshot with one click</string>
+    <string name="power_menu_airplane_title">Airplane mode</string>
+	<string name="power_menu_airplane_title_summary">Put your phone in airplane mode</string>
+    <string name="power_menu_users_title">User switcher</string>
+	<string name="power_menu_users_title_summary">Switch system user\'s on the fly with one tap</string>
+    <string name="power_menu_search_title">Search</string>
+	<string name="power_menu_search_title_summary">Launch Google\'s quick search engine</string>
+    <string name="power_menu_voice_title">Voice search</string>
+	<string name="power_menu_voice_title_summary">Launch Google\'s quick voice search engine</string>
+    <string name="power_menu_settings_title">Settings shortcut</string>
+	<string name="power_menu_settings_title_summary">Open the device\'s settings menu with one tap</string>
+    <string name="power_menu_lockdown_title">Device lockdown</string>
+	<string name="power_menu_lockdown_title_summary">Quickly lock your device whilst navigating the power menu</string>
+    <string name="power_menu_sound_title">Sound panel</string>
+	<string name="power_menu_sound_title_summary">Change sound modes from ringer to silent</string>
 	
 	<!-- Gestures Settings -->
     <string name="gestures_settings_title">Gestures</string>

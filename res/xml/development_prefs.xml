@@ -21,6 +21,12 @@
             android:key="bugreport"
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
+			
+	<PreferenceScreen
+            android:key="extended_power_menu"
+            android:title="@string/powermenu_settings_title"
+            android:summary="@string/powermenu_settings_title_summary"
+			android:fragment="com.android.settings.aoscp.fragments.PowerMenuSettings" />
 
     <PreferenceScreen
             android:key="local_backup_password"
