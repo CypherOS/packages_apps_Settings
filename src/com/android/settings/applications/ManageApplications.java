@@ -562,6 +562,7 @@ public class ManageApplications extends InstrumentedFragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+	final SettingsActivity sa = (SettingsActivity) getActivity();
         int menuId = item.getItemId();
         switch (item.getItemId()) {
             case R.id.sort_order_alpha:
@@ -579,6 +580,10 @@ public class ManageApplications extends InstrumentedFragment
                 break;
             case R.id.reset_app_preferences:
                 mResetAppsHelper.buildResetDialog();
+                return true;
+	    case R.id.advanced:
+                sa.startPreferencePanel(AdvancedAppSettings.class.getName(), null, 
+	                R.string.configure_apps, null, this, ADVANCED_SETTINGS);
                 return true;
             default:
                 // Handle the home button
