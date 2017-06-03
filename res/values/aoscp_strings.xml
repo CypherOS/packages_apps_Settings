@@ -156,5 +156,23 @@
 	<!-- Three-fingers-swipe to screenshot -->
   	<string name="three_finger_gesture">Swipe to screenshot</string>
   	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
+	
+    <!-- Advanced battery settings -->
+    <string name="advanced_battery_settings_title">Advanced</string>
+    <string name="advanced_battery_settings_title_summary">More available options to improve your power usage experience</string>
+	
+    <!-- Battery style options -->
+    <string name="battery_title">Battery styles</string>
+    <string name="status_bar_battery_percentage_title">Battery percentage</string>
+    <string name="status_bar_battery_percentage_default">Hidden</string>
+    <string name="status_bar_battery_percentage_text_inside">Embedded</string>
+    <string name="status_bar_battery_percentage_text_next">Side-by</string>
+    <string name="status_bar_battery_style_icon_portrait">Portrait</string>
+    <string name="status_bar_battery_style_icon_landscape">Landscape</string>
+    <string name="status_bar_battery_style_aoscp">Luna</string>
+    <string name="status_bar_battery_style_solid">Solid</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
 
 </resources>
