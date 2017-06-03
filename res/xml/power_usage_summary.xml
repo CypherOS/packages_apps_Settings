@@ -18,6 +18,12 @@
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/power_usage_summary_title"
         settings:keywords="@string/keywords_battery">
+		
+		<PreferenceScreen
+            android:key="advanced_battery_settings"
+            android:title="@string/advanced_battery_settings_title"
+            android:summary="@string/advanced_battery_settings_title_summary"
+            android:fragment="com.android.settings.aoscp.fragments.BatterySettings" />
 
         <com.android.settings.fuelgauge.BatterySaverPreference
             android:title="@string/battery_saver"

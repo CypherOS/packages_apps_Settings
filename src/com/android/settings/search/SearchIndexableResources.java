@@ -33,6 +33,7 @@ import com.android.settings.WallpaperTypeSettings;
 import com.android.settings.WirelessSettings;
 import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accounts.AccountSettings;
+import com.android.settings.aoscp.fragments.BatterySettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.SpecialAccessSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
@@ -327,6 +328,13 @@ public final class SearchIndexableResources {
                         R.xml.gestures_settings,
                         GesturesSettings.class.getName(),
                         R.drawable.ic_settings_gestures));
+	
+		sResMap.put(BatterySettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(BatterySettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        BatterySettings.class.getName(),
+                        R.drawable.ic_settings_battery));
     }
 
     private SearchIndexableResources() {
