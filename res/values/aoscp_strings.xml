@@ -94,6 +94,7 @@
     <string name="gestures_previous_music">Previous music</string>
     <string name="gestures_open_camera">Open camera</string>
     <string name="gestures_open_dialer">Open dialer</string>
+	<string name="gestures_open_dialer">Open messages</string>
 	
 	<!-- Buttons -->
     <string name="buttons_pref_title">Buttons</string>

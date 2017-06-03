@@ -67,6 +67,7 @@
         <item>@string/gestures_previous_music</item>
         <item>@string/gestures_open_camera</item>
         <item>@string/gestures_open_dialer</item>
+		<item>@string/gestures_open_messages</item>
     </string-array>
 
     <string-array name="gestures_values">
@@ -79,6 +80,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+		<item>9</item>
     </string-array>
 	
 	<!-- PowerMenu entries -->
