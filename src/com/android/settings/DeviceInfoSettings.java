@@ -43,6 +43,8 @@ import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.aoscp.SnackShackDialogHelper;
+import com.android.settingslib.aoscp.SnackShackDialogViewCreator;
 import com.android.internal.os.RegionalizationEnvironment;
 import com.android.internal.os.IRegionalizationService;
 
@@ -88,6 +90,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
+	SnackShackDialogHelper mDevHitInfo;
 
     private UserManager mUm;
 
@@ -236,7 +239,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         mDevHitCountdown = getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
                         android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
-        mDevHitToast = null;
+        mDevHitInfo = null;
         mFunDisallowedAdmin = RestrictedLockUtils.checkIfRestrictionEnforced(
                 getActivity(), UserManager.DISALLOW_FUN, UserHandle.myUserId());
         mFunDisallowedBySystem = RestrictedLockUtils.hasBaseUserRestriction(
@@ -297,12 +300,19 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                     getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
                             Context.MODE_PRIVATE).edit().putBoolean(
                                     DevelopmentSettings.PREF_SHOW, true).apply();
-                    if (mDevHitToast != null) {
-                        mDevHitToast.cancel();
-                    }
-                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on,
-                            Toast.LENGTH_LONG);
-                    mDevHitToast.show();
+					final SnackShackDialogViewCreator
+                            mSnackshackViewCreator = new
+                            SnackShackDialogViewCreator(mContext);
+                    mDevHitInfo = SnackShackDialogHelper.prompt(
+                            mSnackshackViewCreator.getSnackshackView(),
+							getContext().getString(R.string.R.string.show_dev_on_aoscp),
+                            getContext().getString(R.string.R.string.show_dev_on_aoscp_msg),
+                            new SnackShackDialogHelper.OnSettingChoiceListener() {
+                                @Override
+                                public void onSettingInfo() {
+                                }
+                            },
+                            null);
                     // This is good time to index the Developer Options
                     Index.getInstance(
                             getActivity().getApplicationContext()).updateFromClassNameResource(
