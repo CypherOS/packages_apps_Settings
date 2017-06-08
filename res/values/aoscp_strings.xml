@@ -19,56 +19,60 @@
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_version_title">CypherOS version</string>
     <string name="aoscp_version_default">Unspecified</string>
-	<!-- About phone screen, CypherOS Release ID -->
-	<string name="aoscp_release_id">Release ID</string>
+    <!-- About phone screen, CypherOS Release ID -->
+    <string name="aoscp_release_id">Release ID</string>
     <string name="aoscp_release_id_default">Unspecified</string>
-	<!-- Dashboard, CypherOS version summary -->
-	<string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
-	<!-- About phone screen, Build information -->
+    <!-- Dashboard, CypherOS version summary -->
+    <string name="aoscp_version_summary">Version <xliff:g id="version" example="3.0">%1$s</xliff:g></string>
+    <!-- About phone screen, Build information -->
     <string name="build_info_title">Build info</string>
     <!-- About phone screen, Build information values -->
     <string name="build_info_title_values">API: %1$s\nRelease: %2$s\nTheme Interface: Substratum (OMS7)</string>
+  
+    <!-- Tuning Settings -->
+    <string name="tuning_settings_title">Tuning</string>
+    <string name="tuning_settings_title_summary">Tune the system with useful options</string>
 
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
-	<string name="srgb_summary">Enable sRGB display calibration</string>
+    <string name="srgb_summary">Enable sRGB display calibration</string>
 	
-	<!-- Night Display -->
+    <!-- Night Display -->
     <string name="night_display_warning">Please note that Night Light may increase battery consumption.</string>
     <string name="night_display_hide">Do not show this warning</string>
     <string name="night_display_ok">Ok</string>
 
-	<!-- Power Menu Settings -->
+    <!-- Power Menu Settings -->
     <string name="powermenu_settings_title">Extended power menu</string>
-	<string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
-	<string name="power_menu_system">System</string>
-	<string name="power_menu_google">Google</string>
-	<string name="power_menu_device">Device</string>
+    <string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
+    <string name="power_menu_system">System</string>
+    <string name="power_menu_google">Google</string>
+    <string name="power_menu_device">Device</string>
     <!-- Power menu customization -->
-	<string name="power_menu_reboot_title">Restart</string>
-	<string name="power_menu_reboot_title_summary">Restart your device, including to recovery and bootloader</string>
+    <string name="power_menu_reboot_title">Restart</string>
+    <string name="power_menu_reboot_title_summary">Restart your device, including to recovery and bootloader</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
-	<string name="power_menu_screenshot_title_summary">Take a screenshot with one click</string>
+    <string name="power_menu_screenshot_title_summary">Take a screenshot with one click</string>
     <string name="power_menu_airplane_title">Airplane mode</string>
-	<string name="power_menu_airplane_title_summary">Put your phone in airplane mode</string>
+    <string name="power_menu_airplane_title_summary">Put your phone in airplane mode</string>
     <string name="power_menu_users_title">User switcher</string>
-	<string name="power_menu_users_title_summary">Switch system user\'s on the fly with one tap</string>
+    <string name="power_menu_users_title_summary">Switch system user\'s on the fly with one tap</string>
     <string name="power_menu_search_title">Search</string>
-	<string name="power_menu_search_title_summary">Launch Google\'s quick search engine</string>
+    <string name="power_menu_search_title_summary">Launch Google\'s quick search engine</string>
     <string name="power_menu_voice_title">Voice search</string>
-	<string name="power_menu_voice_title_summary">Launch Google\'s quick voice search engine</string>
+    <string name="power_menu_voice_title_summary">Launch Google\'s quick voice search engine</string>
     <string name="power_menu_settings_title">Settings shortcut</string>
-	<string name="power_menu_settings_title_summary">Open the device\'s settings menu with one tap</string>
+    <string name="power_menu_settings_title_summary">Open the device\'s settings menu with one tap</string>
     <string name="power_menu_lockdown_title">Device lockdown</string>
-	<string name="power_menu_lockdown_title_summary">Quickly lock your device whilst navigating the power menu</string>
+    <string name="power_menu_lockdown_title_summary">Quickly lock your device whilst navigating the power menu</string>
     <string name="power_menu_sound_title">Sound panel</string>
-	<string name="power_menu_sound_title_summary">Change sound modes from ringer to silent</string>
+    <string name="power_menu_sound_title_summary">Change sound modes from ringer to silent</string>
 	
-	<!-- Gestures Settings -->
+    <!-- Gestures Settings -->
     <string name="gestures_settings_title">Gestures</string>
-	<string name="gestures_settings_summary">Customize off-screen and system gestures</string>
-	<string name="moves_gestures_title">Moves</string>
-	<string name="offscreen_gestures_title">Offscreen gestures</string>
+    <string name="gestures_settings_summary">Customize off-screen and system gestures</string>
+    <string name="moves_gestures_title">Moves</string>
+    <string name="offscreen_gestures_title">Offscreen gestures</string>
     <string name="keywords_gestures">screen touchscreen draw swipe finger</string>
 
     <string name="gestures_double_tap">Double-tap</string>
@@ -95,7 +99,7 @@
     <string name="gestures_open_camera">Open camera</string>
     <string name="gestures_open_dialer">Open dialer</string>
 	
-	<!-- Buttons -->
+    <!-- Buttons -->
     <string name="buttons_pref_title">Buttons</string>
     <string name="buttons_pref_summary">Customize your device keys and buttons</string>
     <string name="enable_navigation_bar_title">Enable software keys</string>
@@ -124,38 +128,38 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
-	<string name="action_screen_off">Turn off screen</string>
+    <string name="action_screen_off">Turn off screen</string>
 	
-	<!-- Phone info shortcut -->
+    <!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
-	<!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
+    <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
     <string name="local_backup_password_title">Desktop backup password</string>
 	
-	<!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
     <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is not available, use cellular network.</string>
     <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
     <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Call over the cellular network. If cellular network is not available, use Wi-Fi.</string>
     <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
     <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is lost, call ended.</string>
 	
-	<string name="reset_all_settings">RESET ALL</string>
+    <string name="reset_all_settings">RESET ALL</string>
     <string name="reset_selected_settings">RESET SELECTED</string>
     <string name="reset_settings_title">Feature reset</string>
     <string name="reset_settings_summary">Reset feature preferences</string>
     <string name="keywords_settings_reset">reset</string>
 
-	<string name="notification_category_title">Notifications</string>
+    <string name="notification_category_title">Notifications</string>
 	
-	<!-- Playback Control -->
-	<string name="volbtn_music_controls_title">Playback control</string>
+    <!-- Playback Control -->
+    <string name="volbtn_music_controls_title">Playback control</string>
     <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
 	
-	<!-- Screenshot shutter sound -->
+    <!-- Screenshot shutter sound -->
     <string name="screenshot_shutter_sound_title">Screenshot shutter sound</string>
 
-	<!-- Three-fingers-swipe to screenshot -->
-  	<string name="three_finger_gesture">Swipe to screenshot</string>
-  	<string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Swipe to screenshot</string>
+    <string name="three_finger_gesture_summary">Quickly take a screenshot by swiping three fingers across the screen</string>
 	
     <!-- Advanced battery settings -->
     <string name="advanced_battery_settings_title">Advanced</string>
@@ -175,7 +179,7 @@
     <string name="status_bar_battery_style_text">Text</string>
     <string name="status_bar_battery_style_hidden">Hidden</string>
 	
-	<!-- Format string for fingerprint location message -->
+    <!-- Format string for fingerprint location message -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Locate the fingerprint sensor on the <xliff:g id="sensor_location">%1$s</xliff:g> of your phone.</string>
 
     <!-- Fingerprint sensor locations -->

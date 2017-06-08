@@ -24,6 +24,7 @@ import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
 import com.android.settings.aoscp.GesturesSettings;
+import com.android.settings.aoscp.TuningSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.R;
@@ -329,12 +330,19 @@ public final class SearchIndexableResources {
                         GesturesSettings.class.getName(),
                         R.drawable.ic_settings_gestures));
 	
-		sResMap.put(BatterySettings.class.getName(),
+	sResMap.put(BatterySettings.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(BatterySettings.class.getName()),
                         NO_DATA_RES_ID,
                         BatterySettings.class.getName(),
                         R.drawable.ic_settings_battery));
+	
+	sResMap.put(TuningSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(TuningSettings.class.getName()),
+                        R.xml.tuning_settings,
+                        TuningSettings.class.getName(),
+                        R.drawable.ic_settings_tuning));
     }
 
     private SearchIndexableResources() {

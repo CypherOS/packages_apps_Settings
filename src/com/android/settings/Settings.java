@@ -168,4 +168,5 @@ public class Settings extends SettingsActivity {
     // AOSCP additions
     public static class ButtonsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class GesturesSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TuningSettingsActivity extends SettingsActivity { /* empty */ }
 }
