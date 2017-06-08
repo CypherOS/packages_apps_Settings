@@ -66,6 +66,7 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.aoscp.GesturesSettings;
+import com.android.settings.aoscp.TuningSettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.DrawOverlayDetails;
 import com.android.settings.applications.InstalledAppDetails;
@@ -279,6 +280,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.DateTimeSettingsActivity.class.getName(),
             Settings.DeviceInfoSettingsActivity.class.getName(),
             Settings.AccessibilitySettingsActivity.class.getName(),
+			Settings.TuningSettingsActivity.class.getName(),
             Settings.PrintSettingsActivity.class.getName(),
             Settings.PaymentSettingsActivity.class.getName(),
             Settings.TimerSwitchSettingsActivity.class.getName(),
@@ -383,7 +385,8 @@ public class SettingsActivity extends SettingsDrawerActivity
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
             ButtonsSettings.class.getName(),
-            GesturesSettings.class.getName()
+            GesturesSettings.class.getName(),
+			TuningSettings.class.getName(),
     };
 
     private static final String[] LIKE_SHORTCUT_INTENT_ACTION_ARRAY = {
