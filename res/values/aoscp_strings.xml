@@ -27,7 +27,7 @@
     <!-- About phone screen, Build information -->
     <string name="build_info_title">Build info</string>
     <!-- About phone screen, Build information values -->
-    <string name="build_info_title_values">API: %1$s\nRelease: %2$s\nTheme Interface: Substratum (OMS7)</string>
+    <string name="build_info_title_values">Codename: %1$s\nRelease: %2$s\nTheme Interface: Substratum (OMS7)</string>
   
     <!-- Tuning Settings -->
     <string name="tuning_settings_title">Tuning</string>
