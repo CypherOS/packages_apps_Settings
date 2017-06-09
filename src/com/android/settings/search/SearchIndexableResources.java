@@ -35,6 +35,7 @@ import com.android.settings.WirelessSettings;
 import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accounts.AccountSettings;
 import com.android.settings.aoscp.fragments.BatterySettings;
+import com.android.settings.aoscp.fragments.OtherDateTimeSettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.SpecialAccessSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
@@ -271,6 +272,13 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(DateTimeSettings.class.getName()),
                         NO_DATA_RES_ID,
                         DateTimeSettings.class.getName(),
+                        R.drawable.ic_settings_date_time));
+
+	sResMap.put(OtherDateTimeSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(OtherDateTimeSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        OtherDateTimeSettings.class.getName(),
                         R.drawable.ic_settings_date_time));
 
         sResMap.put(AccessibilitySettings.class.getName(),

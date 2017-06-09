@@ -54,4 +54,10 @@
         android:title="@string/date_time_24hour"
         />
 
+    <PreferenceScreen
+        android:fragment="com.android.settings.aoscp.fragments.OtherDateTimeSettings"
+        android:key="other_settings"
+        android:title="@string/other_date_time_settings_title"
+        />
+
 </PreferenceScreen>
