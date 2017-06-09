@@ -32,6 +32,9 @@
     <!-- Tuning Settings -->
     <string name="tuning_settings_title">Tuning</string>
     <string name="tuning_settings_title_summary">Tune the system with useful options</string>
+	
+	<!-- DateTimeSettings: Other Settings -->
+    <string name="other_date_time_settings_title">Other settings</string>
 
     <!-- sRGB -->
     <string name="srgb_title">sRGB</string>
