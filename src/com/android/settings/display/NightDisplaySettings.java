@@ -28,12 +28,15 @@ import android.provider.Settings.Secure;
 import android.support.v7.preference.DropDownPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.TwoStatePreference;
+import android.widget.Switch;
 import android.widget.TimePicker;
 
 import com.android.internal.app.NightDisplayController;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.widget.SwitchBar;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -48,7 +51,6 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
     private static final String KEY_NIGHT_DISPLAY_AUTO_MODE = "night_display_auto_mode";
     private static final String KEY_NIGHT_DISPLAY_START_TIME = "night_display_start_time";
     private static final String KEY_NIGHT_DISPLAY_END_TIME = "night_display_end_time";
-    private static final String KEY_NIGHT_DISPLAY_ACTIVATED = "night_display_activated";
 
     private static final String SETTING_WARNING_HIDDEN = "night_display_warning_hidden";
     private static final int WARNING_SHOW = 0;
@@ -63,7 +65,8 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
     private DropDownPreference mAutoModePreference;
     private Preference mStartTimePreference;
     private Preference mEndTimePreference;
-    private TwoStatePreference mActivatedPreference;
+	
+    private NightDisplayEnabler mNightDisplayEnabler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +89,6 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         mAutoModePreference = (DropDownPreference) findPreference(KEY_NIGHT_DISPLAY_AUTO_MODE);
         mStartTimePreference = findPreference(KEY_NIGHT_DISPLAY_START_TIME);
         mEndTimePreference = findPreference(KEY_NIGHT_DISPLAY_END_TIME);
-        mActivatedPreference = (TwoStatePreference) findPreference(KEY_NIGHT_DISPLAY_ACTIVATED);
 
         mAutoModePreference.setEntries(new CharSequence[] {
                 getString(R.string.night_display_auto_mode_never),
@@ -99,21 +101,51 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
                 String.valueOf(NightDisplayController.AUTO_MODE_TWILIGHT)
         });
         mAutoModePreference.setOnPreferenceChangeListener(this);
-        mActivatedPreference.setOnPreferenceChangeListener(this);
+    }
+	
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (mNightDisplayEnabler != null) {
+            mNightDisplayEnabler.teardownSwitchBar();
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        // Listen for changes only while visible.
-        mController.setListener(this);
-
         // Update the current state since it have changed while not visible.
-        onActivated(mController.isActivated());
         onAutoModeChanged(mController.getAutoMode());
         onCustomStartTimeChanged(mController.getCustomStartTime());
         onCustomEndTimeChanged(mController.getCustomEndTime());
+
+	SettingsActivity activity = (SettingsActivity) getActivity();
+        mNightDisplayEnabler = new NightDisplayEnabler(activity.getSwitchBar());
+
+	if (mNightDisplayEnabler != null) {
+            mNightDisplayEnabler.start();
+	    mController.setListener(this);
+        }
+    }
+	
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mNightDisplayEnabler != null) {
+            mNightDisplayEnabler.resume();
+	    mController.setListener(this);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mNightDisplayEnabler != null) {
+            mNightDisplayEnabler.pause();
+	    mController.setListener(null);
+        }
     }
 
     @Override
@@ -165,11 +197,6 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public void onActivated(boolean activated) {
-        mActivatedPreference.setChecked(activated);
-    }
-
-    @Override
     public void onAutoModeChanged(int autoMode) {
         mAutoModePreference.setValue(String.valueOf(autoMode));
 
@@ -207,10 +234,6 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
             int selectedAutoMode = Integer.parseInt((String) newValue);
             displayWarning = selectedAutoMode != NightDisplayController.AUTO_MODE_DISABLED;
             result = mController.setAutoMode(selectedAutoMode);
-        } else if (preference == mActivatedPreference) {
-            boolean activated = (Boolean) newValue;
-            displayWarning = activated;
-            result = mController.setActivated(activated);
         }
 
         if (displayWarning) {
@@ -248,6 +271,64 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         AlertDialog alert = builder.create();
         alert.setCanceledOnTouchOutside(true);
         alert.show();
+    }
+	
+    private class NightDisplayEnabler implements SwitchBar.OnSwitchChangeListener {
+
+        private final Context mContext;
+        private final SwitchBar mSwitchBar;
+        private boolean mListening;
+	private boolean activated;
+	boolean result = false;
+	boolean displayWarning = false;
+
+        public NightDisplayEnabler(SwitchBar switchBar) {
+            mContext = switchBar.getContext();
+            mSwitchBar = switchBar;
+
+            mSwitchBar.show();
+        }
+
+        public void teardownSwitchBar() {
+            pause();
+            mSwitchBar.hide();
+        }
+
+	public void start() {
+            if (!mListening) {
+                mSwitchBar.addOnSwitchChangeListener(this);
+                mListening = true;
+		onActivated(mController.isActivated());
+            }
+        }
+
+        public void resume() {
+            if (!mListening) {
+                mSwitchBar.addOnSwitchChangeListener(this);
+                mListening = true;
+            }
+        }
+
+        public void pause() {
+            if (mListening) {
+                mSwitchBar.removeOnSwitchChangeListener(this);
+                mListening = false;
+            }
+        }
+
+	public void onActivated(boolean activated) {
+            mSwitchBar.setChecked(activated);
+        }
+
+	@Override
+        public void onSwitchChanged(Switch switchView, boolean activated) {
+            result = mController.setActivated(activated);
+	    displayWarning = activated;
+
+	    if (displayWarning) {
+                displayWarning();
+            }
+        }
     }
 
     @Override
