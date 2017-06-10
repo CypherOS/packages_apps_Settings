@@ -98,7 +98,7 @@
     <!-- Battery styles -->
     <string-array name="status_bar_battery_style_entries" translatable="false">
         <item>@string/status_bar_battery_style_icon_portrait</item>
-	<item>@string/status_bar_battery_style_aoscp</item>
+	    <item>@string/status_bar_battery_style_aoscp</item>
       	<item>@string/status_bar_battery_style_solid</item>
     	<item>@string/status_bar_battery_style_circle</item>
     	<item>@string/status_bar_battery_style_hidden</item>
@@ -112,7 +112,7 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-	<item>7</item>
+	    <item>7</item>
         <item>8</item>
     </string-array>
 

@@ -199,8 +199,8 @@
     <string name="battery_title">Battery styles</string>
     <string name="status_bar_battery_percentage_title">Battery percentage</string>
     <string name="status_bar_battery_percentage_default">Hidden</string>
-    <string name="status_bar_battery_percentage_text_inside">Embedded</string>
-    <string name="status_bar_battery_percentage_text_next">Side-by</string>
+    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
+    <string name="status_bar_battery_percentage_text_next">Beside the icon</string>
     <string name="status_bar_battery_style_icon_portrait">Portrait</string>
     <string name="status_bar_battery_style_icon_landscape">Landscape</string>
     <string name="status_bar_battery_style_aoscp">Luna</string>
