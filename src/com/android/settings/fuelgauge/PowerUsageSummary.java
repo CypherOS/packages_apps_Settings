@@ -86,6 +86,10 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final int SUBMENU_BATTERY_HIDDEN         = Menu.FIRST + 10;
     private static final int SUBMENU_BATTERY_LANDSCAPE      = Menu.FIRST + 11;
     private static final int SUBMENU_BATTERY_TEXT           = Menu.FIRST + 12;
+	private static final int MENU_BATTERY_PERCENT           = Menu.FIRST + 13;
+    private static final int SUBMENU_BATTERY_PERCENT_HIDDEN = Menu.FIRST + 14;
+    private static final int SUBMENU_BATTERY_PERCENT_INSIDE = Menu.FIRST + 15;
+    private static final int SUBMENU_BATTERY_PERCENT_NEXT   = Menu.FIRST + 16;
 
     private BatteryHistoryPreference mHistPref;
     private PreferenceGroup mAppListGroup;
@@ -174,6 +178,8 @@ public class PowerUsageSummary extends PowerUsageBase {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		int selectedIcon = Settings.Secure.getInt(getActivity().getContentResolver(),
                                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);	
+		int selectedPercentage = Settings.System.getInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
         if (DEBUG) {
             menu.add(Menu.NONE, MENU_STATS_TYPE, Menu.NONE, R.string.menu_stats_total)
                     .setIcon(com.android.internal.R.drawable.ic_menu_info_details)
@@ -203,6 +209,19 @@ public class PowerUsageSummary extends PowerUsageBase {
                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         menu.add(Menu.NONE, MENU_HIGH_POWER_APPS, Menu.NONE, R.string.high_power_apps);
+		
+		SubMenu batteryPercentMenu = menu.addSubMenu(1, MENU_BATTERY_PERCENT, 1, R.string.battery_percentage_title);
+
+        batteryPercentMenu.add(1, SUBMENU_BATTERY_PERCENT_HIDDEN, 1, R.string.battery_percentage_default)
+                    .setChecked(selectedPercentage == 0);
+        batteryPercentMenu.add(1, SUBMENU_BATTERY_PERCENT_INSIDE, 2, R.string.battery_percentage_text_inside)
+                    .setChecked(selectedPercentage == 1);
+        batteryPercentMenu.add(1, SUBMENU_BATTERY_PERCENT_NEXT, 3, R.string.battery_percentage_text_next)
+                    .setChecked(selectedPercentage == 2);
+        batteryPercentMenu.setGroupCheckable(1, true, true);
+
+        MenuItem batteryPercent = batteryPercentMenu.getItem();
+        batteryPercent.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
         PowerUsageFeatureProvider powerUsageFeatureProvider =
                 FeatureFactory.getFactory(getContext()).getPowerUsageFeatureProvider(getContext());
@@ -276,6 +295,21 @@ public class PowerUsageSummary extends PowerUsageBase {
                 item.setChecked(true);
                 Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, 8);
+                return true;
+		    case SUBMENU_BATTERY_PERCENT_HIDDEN:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
+                return true;
+            case SUBMENU_BATTERY_PERCENT_INSIDE:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 1);
+                return true;
+            case SUBMENU_BATTERY_PERCENT_NEXT:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
