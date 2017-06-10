@@ -45,7 +45,7 @@ import android.widget.ListView;
 import android.widget.Switch;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.internal.util.pa.ColorUtils;
+import com.android.internal.util.aoscp.ColorUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;

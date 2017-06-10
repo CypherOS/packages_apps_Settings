@@ -34,7 +34,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.internal.util.pa.ColorUtils;
+import com.android.internal.util.aoscp.ColorUtils;
 import com.android.settings.R;
 import com.android.settingslib.ColorPickerDialog;
 import com.android.settingslib.ColorPickerDialogAdapter;
