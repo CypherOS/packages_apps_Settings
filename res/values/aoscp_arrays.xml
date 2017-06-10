@@ -143,6 +143,11 @@
         <item>@string/screenshot_type_fullscreen</item>
         <item>@string/screenshot_type_partial</item>
     </string-array>
+	
+    <string-array name="screenshot_type_entry_summaries" translatable="false">
+        <item>@string/screenshot_type_fullscreen_summary</item>
+        <item>@string/screenshot_type_partial_summary</item>
+    </string-array>
 
     <string-array name="screenshot_type_values" translatable="false">
         <item>0</item>

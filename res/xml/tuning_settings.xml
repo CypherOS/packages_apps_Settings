@@ -17,7 +17,7 @@
         android:title="@string/tuning_settings_title">
 	
 	<!-- Screenshot mode -->
-	<ListPreference
+	<com.android.settings.ListWithEntrySummaryPreference
             android:entries="@array/screenshot_type_entries"
             android:entryValues="@array/screenshot_type_values"
             android:key="screenshot_type"
