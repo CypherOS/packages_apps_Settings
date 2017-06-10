@@ -34,6 +34,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import com.android.settings.ListWithEntrySummaryPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
@@ -46,7 +47,7 @@ public class TuningSettings extends SettingsPreferenceFragment implements
 	
     private static final String SCREENSHOT_TYPE = "screenshot_type";
 
-    private ListPreference mScreenshotType;
+    private ListWithEntrySummaryPreference mScreenshotType;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,12 @@ public class TuningSettings extends SettingsPreferenceFragment implements
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
 
-	mScreenshotType = (ListPreference) findPreference(SCREENSHOT_TYPE);
+        mScreenshotType = (ListWithEntrySummaryPreference) findPreference(SCREENSHOT_TYPE);
         int mScreenshotTypeValue = Settings.System.getInt(resolver,
                 Settings.System.SCREENSHOT_TYPE, 0);
         mScreenshotType.setValue(String.valueOf(mScreenshotTypeValue));
         mScreenshotType.setSummary(mScreenshotType.getEntry());
+        mScreenshotType.setEntrySummaries(R.array.screenshot_type_entry_summaries);
         mScreenshotType.setOnPreferenceChangeListener(this);
 	
     }
