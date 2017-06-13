@@ -308,5 +308,9 @@
 	<!-- One handed mode -->
     <string name="one_handed_mode_title">One-handed mode</string>
     <string name="one_handed_mode_summary">Swiping on the navigation bar will allow you to access one handed mode</string>
+	
+	<!-- PIN scramble -->
+    <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
+    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
 
 </resources>
