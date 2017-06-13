@@ -279,5 +279,13 @@
     <string name="led_notification_text">LED light enabled by settings</string>
     <string name="notification_light_no_apps_summary">To add per app control, activate \'%1$s\' and press \'\u002b\' on the menu bar</string>
     <string name="font_sample_text">11:57</string>
+	
+	<!-- Statusbar: Tap to sleep -->
+    <string name="double_tap_to_sleep_title">Tap to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double tap on the statusbar to put the device to sleep</string>
+	
+	<!-- Lockscreen: Tap to sleep -->
+    <string name="double_tap_sleep_anywhere_title">Tap to sleep</string>
+    <string name="double_tap_sleep_anywhere_summary">Double tap on the lockscreen to put the device to sleep</string>
 
 </resources>
