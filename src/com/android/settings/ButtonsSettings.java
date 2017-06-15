@@ -45,6 +45,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.provider.Settings.System.PIXEL_NAV_ANIMATION;
+
 public class ButtonsSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, Indexable {
     private static final String TAG = "SystemSettings";
@@ -60,6 +62,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SWAP_NAVIGATION_KEYS   = "swap_navigation_keys";
     private static final String KEY_SWAP_SLIDER_ORDER      = "swap_slider_order";
     private static final String KEY_BUTTON_BRIGHTNESS      = "button_brightness";
+	private static final String KEY_HOME_BUTTON_ANIMATION      = "home_button_animation";
 
     private static final String KEY_HOME_LONG_PRESS        = "home_key_long_press";
     private static final String KEY_HOME_DOUBLE_TAP        = "home_key_double_tap";
@@ -106,6 +109,7 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mSwapNavigationkeys;
     private SwitchPreference mSwapSliderOrder;
     private SwitchPreference mButtonBrightness;
+	private SwitchPreference mHomeButtonAnimation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -165,6 +169,15 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
                 prefScreen.removePreference(mButtonBrightness);
             }
         }
+		
+		/* Home Button Animation */
+		if (isHomeAnimAvailable(getResources())) {
+			mHomeButtonAnimation = (SwitchPreference) findPreference(KEY_HOME_BUTTON_ANIMATION);
+            mHomeButtonAnimation.setOnPreferenceChangeListener(this);
+		} else {
+			removePreference(KEY_HOME_BUTTON_ANIMATION);
+		}
+			
 
         /* Home Key Long Press */
         int defaultLongPressOnHomeKeyBehavior = res.getInteger(
@@ -350,6 +363,8 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
             return Settings.System.ALERT_SLIDER_ORDER;
         } else if (preference == mButtonBrightness) {
             return Settings.System.BUTTON_BRIGHTNESS_ENABLED;
+		} else if (preference == mHomeButtonAnimation) {
+            return Settings.System.PIXEL_NAV_ANIMATION;
         } else if (preference == mHomeLongPressAction) {
             return Settings.System.KEY_HOME_LONG_PRESS_ACTION;
         } else if (preference == mHomeDoubleTapAction) {
@@ -402,6 +417,9 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
         final boolean buttonBrightnessEnabled = Settings.System.getIntForUser(resolver,
                 Settings.System.BUTTON_BRIGHTNESS_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
+				
+		final boolean buttonAnimationEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.PIXEL_NAV_ANIMATION, 1, UserHandle.USER_CURRENT) != 0;
 
         if (mNavigationBar != null) {
             mNavigationBar.setChecked(navigationBarEnabled);
@@ -420,6 +438,10 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
 
         if (mButtonBrightness != null) {
             mButtonBrightness.setChecked(buttonBrightnessEnabled);
+        }
+		
+		if (mHomeButtonAnimation != null) {
+            mHomeButtonAnimation.setChecked(buttonAnimationEnabled);
         }
 
         final PreferenceScreen prefScreen = getPreferenceScreen();
@@ -487,6 +509,10 @@ public class ButtonsSettings extends SettingsPreferenceFragment implements
         final boolean handled = handleOnPreferenceTreeClick(preference);
         // return super.onPreferenceTreeClick(preferenceScreen, preference);
         return handled;
+    }
+	
+	private static boolean isHomeAnimAvailable(Resources res) {
+        return res.getBoolean(com.android.internal.R.bool.config_allowOpaLayout);
     }
 
     /**
