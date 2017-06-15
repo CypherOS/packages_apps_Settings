@@ -47,6 +47,12 @@
         android:title="@string/pie_settings"
         android:summary="@string/pie_settings_summary" />
 
+    <SwitchPreference
+        android:key="anbi"
+        android:title="@string/anbi_title"
+        android:summary="@string/anbi_summary"
+        android:persistent="false" />
+
     <PreferenceCategory
         android:key="home_key"
         android:title="@string/home_key_title" >
