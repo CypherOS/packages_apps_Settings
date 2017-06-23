@@ -312,5 +312,11 @@
 	<!-- PIN scramble -->
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
+	
+	<!-- Quick Settings -->
+	<string name="quick_settings_title">Quick settings</string>
+	<!-- Quick Settings: Brightness icon -->
+	<string name="brightness_icon_title">Auto brightness</string>
+    <string name="brightness_icon_summary">Change brightness modes directly from the quick settings panel</string>
 
 </resources>
