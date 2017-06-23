@@ -15,19 +15,30 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/tuning_settings_title">
-	
+
 	<!-- Screenshot mode -->
 	<com.android.settings.ListWithEntrySummaryPreference
             android:entries="@array/screenshot_type_entries"
             android:entryValues="@array/screenshot_type_values"
             android:key="screenshot_type"
             android:title="@string/screenshot_type_title" />
-			
+
 	<!-- One-handed mode -->
 	<com.android.settings.preference.SecureSettingSwitchPreference
             android:key="one_handed_mode_ui"
             android:title="@string/one_handed_mode_title"
             android:summary="@string/one_handed_mode_summary"
             android:defaultValue="false" />
+
+	<PreferenceCategory android:key="quick_settings"
+	    android:title="@string/quick_settings_title">
+
+	    <com.android.settings.preference.SystemSettingSwitchPreference
+                    android:key="qs_show_brightness_icon"
+                    android:title="@string/brightness_icon_title"
+                    android:summary="@string/brightness_icon_summary"
+                    android:defaultValue="true" />
+
+	</PreferenceCategory>
 
 </PreferenceScreen>
