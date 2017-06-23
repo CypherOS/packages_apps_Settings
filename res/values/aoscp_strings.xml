@@ -74,7 +74,7 @@
 
     <!-- Power Menu Settings -->
     <string name="powermenu_settings_title">Extended power menu</string>
-    <string name="powermenu_settings_title_summary">Add and, or remove quick options from the power menu</string>
+    <string name="powermenu_settings_title_summary">Add or remove options from the power menu</string>
     <string name="power_menu_system">System</string>
     <string name="power_menu_google">Google</string>
     <string name="power_menu_device">Device</string>
@@ -222,8 +222,8 @@
     <string name="screenshot_type_partial_summary">Take a screenshot of the selected view area to show only your focused screen contents</string>
 	
     <!-- LED notifications -->
-    <string name="battery_light_settings">Battery charging light</string>
-    <string name="leds">LED light</string>
+    <string name="battery_light_settings">Battery light</string>
+    <string name="leds">LED controls</string>
     <string name="notification_light_settings">Notification light</string>
     <string name="reset">Reset</string>
     <string name="batterylight_title">Battery LED settings</string>
