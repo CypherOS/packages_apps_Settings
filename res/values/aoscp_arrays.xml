@@ -27,7 +27,7 @@
         <item>@string/action_launch_camera</item>
         <item>@string/action_last_app</item>
         <item>@string/action_splitscreen</item>
-	    <item>@string/action_screen_off</item>
+	<item>@string/action_screen_off</item>
     </string-array>
 
     <string-array name="action_values" translatable="false">
@@ -40,7 +40,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
-	    <item>9</item>
+	<item>9</item>
     </string-array>
 	
     <!-- WiFi calling mode array -->
@@ -98,10 +98,10 @@
     <!-- Battery styles -->
     <string-array name="status_bar_battery_style_entries" translatable="false">
         <item>@string/status_bar_battery_style_icon_portrait</item>
-	    <item>@string/status_bar_battery_style_aoscp</item>
-      	<item>@string/status_bar_battery_style_solid</item>
-    	<item>@string/status_bar_battery_style_circle</item>
-    	<item>@string/status_bar_battery_style_hidden</item>
+	<item>@string/status_bar_battery_style_aoscp</item>
+        <item>@string/status_bar_battery_style_solid</item>
+        <item>@string/status_bar_battery_style_circle</item>
+        <item>@string/status_bar_battery_style_hidden</item>
         <item>@string/status_bar_battery_style_icon_landscape</item>
         <item>@string/status_bar_battery_style_text</item>
     </string-array>
@@ -112,7 +112,7 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
-	    <item>7</item>
+	<item>7</item>
         <item>8</item>
     </string-array>
 
@@ -340,4 +340,19 @@
         <item>1200000</item>
     </string-array>
 	
+    <!-- Night mode tile brightness value  -->
+    <string-array name="night_brightness_value_entries" translatable="false">
+        <item>@string/night_bright_disabled</item>
+        <item>@string/night_bright_min</item>
+        <item>@string/night_bright_low</item>
+        <item>@string/night_bright_medium</item>
+    </string-array>
+ 
+    <string-array name="night_brightness_value_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>
