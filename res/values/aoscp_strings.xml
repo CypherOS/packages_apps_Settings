@@ -33,6 +33,9 @@
     <string name="tuning_settings_title">Tuning</string>
     <string name="tuning_settings_title_summary">Tune the system with useful options</string>
 	
+	<!-- Other Settings -->
+	<string name="other_settings_title">Other settings</string>
+	
     <!-- DateTimeSettings: Other Settings -->
     <string name="other_date_time_settings_title">Other settings</string>
     <!-- Status bar - Clock -->
@@ -322,5 +325,40 @@
     <!-- Hide Statusbar on Lockscreen -->
     <string name="lockscreen_hide_status_bar_title">Immersive lockscreen</string>
     <string name="lockscreen_hide_status_bar_summary">Hides the statusbar on the lockscreen, touch the view to show the statusbar</string>
+
+	<!-- Heads up settings -->
+    <string name="headsup_settings_title">Heads up notifications</string>
+    <string name="summary_heads_up_enabled">Heads up is ON</string>
+    <string name="summary_heads_up_disabled">Heads up is OFF</string>
+    <string name="heads_up_disabled_notice">To allow applications to display interactive notifications in a pop-up window on your screen, turn on Heads up notifications</string>
+	<!-- Heads up timeout -->
+    <string name="heads_up_time_out_title">Time out</string>
+    <string name="heads_up_time_out_summary">Heads up notifications will show for <xliff:g id="number">%d</xliff:g> seconds</string>
+    <string name="heads_up_time_out_2sec">2 seconds</string>
+    <string name="heads_up_time_out_4sec">4 seconds</string>
+    <string name="heads_up_time_out_5sec">5 seconds</string>
+    <string name="heads_up_time_out_6sec">6 seconds</string>
+    <string name="heads_up_time_out_8sec">8 seconds</string>
+    <string name="heads_up_time_out_10sec">10 seconds</string>
+	<!-- Heads up snooze -->
+    <string name="heads_up_snooze_title">Snooze timer</string>
+    <string name="heads_up_snooze_summary_one_minute">Swiping up on heads up notifications will snooze heads up from that application for 1 minute</string>
+    <string name="heads_up_snooze_summary">Swiping up on heads up notifications will snooze heads up from that application for <xliff:g id="number">%d</xliff:g> minutes</string>
+    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled</string>
+    <string name="heads_up_snooze_1min">1 minute</string>
+    <string name="heads_up_snooze_3min">3 minutes</string>
+    <string name="heads_up_snooze_5min">5 minutes</string>
+    <string name="heads_up_snooze_10min">10 minutes</string>
+    <string name="heads_up_snooze_15min">15 minutes</string>
+    <string name="heads_up_snooze_20min">20 minutes</string>
+   
+   <!-- Advanced night mode brightness -->
+   <string name="night_brightness_category">Brightness</string>
+   <string name="night_brightness_value_title">Night Light brightness</string>
+   <string name="night_brightness_text">When Night Light is enabled automatically set the desired brightness. The default brightness is set to low brightness</string>
+   <string name="night_bright_disabled">Disabled</string>
+   <string name="night_bright_min">Minimum brightness</string>
+   <string name="night_bright_low">Low brightness</string>
+   <string name="night_bright_medium">Medium brightness</string>
  
 </resources>
