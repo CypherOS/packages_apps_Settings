@@ -110,6 +110,13 @@
                        settings:useAdminDisabledSummary="true"
                        settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
                        android:fragment="com.android.settings.notification.ZenModeSettings" />
+					   
+				<!-- Other sounds -->
+                <Preference
+                        android:key="other_notification_settings"
+                        android:title="@string/other_settings_title"
+                        android:persistent="false"
+                        android:fragment="com.android.settings.aoscp.fragments.OtherNotificationSettings" />
  	
     	</PreferenceCategory>
 
