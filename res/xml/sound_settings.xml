@@ -93,24 +93,31 @@
                 android:title="@string/other_sound_settings"
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
-				
-		<PreferenceCategory android:key="notification_category"
-	            android:title="@string/notification_category_title">
-				
-	            <!-- When device is locked -->
+
+	<PreferenceCategory android:key="notification_category"
+	        android:title="@string/notification_category_title">
+
+	        <!-- When device is locked -->
                 <com.android.settings.notification.RestrictedDropDownPreference
                        android:key="lock_screen_notifications"
                        android:title="@string/lock_screen_notifications_title"
                        android:summary="%s" />
- 				 
-        	    <!-- Interruptions -->
+  
+        	<!-- Interruptions -->
                 <com.android.settingslib.RestrictedPreference
                        android:key="zen_mode"
                        android:title="@string/zen_mode_settings_title"
                        settings:useAdminDisabledSummary="true"
                        settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
                        android:fragment="com.android.settings.notification.ZenModeSettings" />
- 	
+   
+		<!-- Other sounds -->
+                <Preference
+                        android:key="other_notification_settings"
+                        android:title="@string/other_settings_title"
+                        android:persistent="false"
+                        android:fragment="com.android.settings.aoscp.fragments.OtherNotificationSettings" />
+ 
     	</PreferenceCategory>
 
 </PreferenceScreen>

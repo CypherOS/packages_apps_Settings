@@ -25,6 +25,7 @@ import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
 import com.android.settings.aoscp.GesturesSettings;
 import com.android.settings.aoscp.TuningSettings;
+import com.android.settings.aoscp.fragments.OtherNotificationSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.R;
@@ -343,6 +344,13 @@ public final class SearchIndexableResources {
                         R.xml.tuning_settings,
                         TuningSettings.class.getName(),
                         R.drawable.ic_settings_tuning));
+
+	sResMap.put(OtherNotificationSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(OtherNotificationSettings.class.getName()),
+                        R.xml.other_notification_settings,
+                        OtherNotificationSettings.class.getName(),
+                        R.drawable.ic_settings_notifications));
     }
 
     private SearchIndexableResources() {
