@@ -162,6 +162,7 @@
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
     <string name="action_screen_off">Turn off screen</string>
+    <string name="action_show_notifications">Show notifications</string>
 	
     <!-- Phone info shortcut -->
     <string name="device_info_title">Phone info</string>
