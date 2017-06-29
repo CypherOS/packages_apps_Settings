@@ -39,11 +39,9 @@
                 android:summary="@string/network_name_displayed_summary"
                 android:persistent="false" />
 
-        <com.android.settings.display.NightDisplayPreference
+        <com.android.settings.aoscp.preference.TwoChoicePreference
                 android:key="night_display"
-                android:title="@string/night_display_title"
-                android:fragment="com.android.settings.display.NightDisplaySettings"
-                android:widgetLayout="@null"
+                android:layout="@layout/preference_two_choice"
                 settings:keywords="@string/keywords_display_night_display" />
 
         <!-- Hide night mode for now
