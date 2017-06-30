@@ -131,12 +131,12 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         onCustomStartTimeChanged(mController.getCustomStartTime());
         onCustomEndTimeChanged(mController.getCustomEndTime());
 
-	SettingsActivity activity = (SettingsActivity) getActivity();
+	    SettingsActivity activity = (SettingsActivity) getActivity();
         mNightDisplayEnabler = new NightDisplayEnabler(activity.getSwitchBar());
 
-	if (mNightDisplayEnabler != null) {
+	    if (mNightDisplayEnabler != null) {
             mNightDisplayEnabler.start();
-	    mController.setListener(this);
+	        mController.setListener(this);
         }
     }
 	
@@ -145,7 +145,7 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         super.onResume();
         if (mNightDisplayEnabler != null) {
             mNightDisplayEnabler.resume();
-	    mController.setListener(this);
+	        mController.setListener(this);
         }
     }
 
@@ -154,7 +154,7 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         super.onPause();
         if (mNightDisplayEnabler != null) {
             mNightDisplayEnabler.pause();
-	    mController.setListener(null);
+	        mController.setListener(null);
         }
     }
 
@@ -295,9 +295,9 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
         private final Context mContext;
         private final SwitchBar mSwitchBar;
         private boolean mListening;
-	private boolean activated;
-	boolean result = false;
-	boolean displayWarning = false;
+	    private boolean activated;
+	    boolean result = false;
+	    boolean displayWarning = false;
 
         public NightDisplayEnabler(SwitchBar switchBar) {
             mContext = switchBar.getContext();
@@ -311,7 +311,7 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
             mSwitchBar.hide();
         }
 
-	public void start() {
+	    public void start() {
             if (!mListening) {
                 mSwitchBar.addOnSwitchChangeListener(this);
                 mListening = true;
@@ -333,16 +333,16 @@ public class NightDisplaySettings extends SettingsPreferenceFragment
             }
         }
 
-	public void onActivated(boolean activated) {
+	    public void onActivated(boolean activated) {
             mSwitchBar.setChecked(activated);
         }
 
-	@Override
+	    @Override
         public void onSwitchChanged(Switch switchView, boolean activated) {
             result = mController.setActivated(activated);
-	    displayWarning = activated;
+	        displayWarning = activated;
 
-	    if (displayWarning) {
+	        if (displayWarning) {
                 displayWarning();
             }
         }
