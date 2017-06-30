@@ -29,6 +29,7 @@ import android.content.Context;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -62,7 +63,9 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.accessibility.ToggleFontSizePreferenceFragment;
+import com.android.settings.aoscp.preference.TwoChoicePreference;
 import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.display.NightDisplaySettings;
 import com.android.settings.display.ScreenZoomPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -84,6 +87,7 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
+        NightDisplayController.Callback,
         Preference.OnPreferenceChangeListener, 
         WarnedPreference.OnPreferenceValueChangeListener,
         WarnedPreference.OnPreferenceClickListener, Indexable {
@@ -132,6 +136,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private TimeoutListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
+	private Preference mNightDisplayPreference;
     private Preference mScreenSaverPreference;
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
@@ -149,6 +154,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private PreferenceCategory mLedsCategory;
     private Preference mChargingLeds;
     private Preference mNotificationLeds;
+	
+	private NightDisplayController mController;
 
     @Override
     protected int getMetricsCategory() {
@@ -160,8 +167,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         final Activity activity = getActivity();
         final ContentResolver resolver = activity.getContentResolver();
-
+		final Context context = getContext();
         addPreferencesFromResource(R.xml.display_settings);
+		
+		mController = new NightDisplayController(context);
 
         mSharedPreferences = getContext().getSharedPreferences(FILE_FONT_WARING,
                 Activity.MODE_PRIVATE);
@@ -220,7 +229,27 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             removePreference(KEY_NETWORK_NAME_DISPLAYED);
         }
 
-        if (!NightDisplayController.isAvailable(activity)) {
+        if (mController.isAvailable(activity)) {
+			mNightDisplayPreference = (TwoChoicePreference) findPreference(KEY_NIGHT_DISPLAY);
+			mNightDisplayPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                public boolean onPreferenceClick(Preference preference) {
+                    startActivity(new Intent(this, NightDisplaySettings.class));
+                    return false;
+                }
+            });
+			
+			mNightDisplayPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    boolean activated = (Boolean) newValue;
+					mController.setActivated(activated);
+					
+					return true;
+                }
+            });
+			mNightDisplayPreference.setTitle(R.string.night_display_title);
+			mNightDisplayPreference.setSummary(R.string.night_display_title);
+		} else {
             removePreference(KEY_NIGHT_DISPLAY);
         }
 
@@ -422,6 +451,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         pref.setSummary(pref.getWarnedPreferenceSummary());
     }
+	
+	@Override
+    public void onStart() {
+        super.onStart();
+		
+	    if (mNightDisplayPreference != null) {
+			onActivated(mController.isActivated());
+	        mController.setListener(this);
+        }
+    }
 
     @Override
     public void onResume() {
@@ -442,8 +481,33 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mScreenTimeoutPreference.removeUnusableTimeouts(maxTimeout, admin);
         }
         updateTimeoutPreferenceDescription(currentTimeout);
+		
+		if (mNightDisplayPreference != null) {
+	        mController.setListener(this);
+        }
 
         disablePreferenceIfManaged(KEY_WALLPAPER, UserManager.DISALLOW_SET_WALLPAPER);
+    }
+	
+	@Override
+    public void onPause() {
+        super.onPause();
+		
+        if (mNightDisplayPreference != null) {
+	        mController.setListener(null);
+        }
+    }
+	
+	@Override
+    public void onStop() {
+        super.onStop();
+
+        // Stop listening for state changes.
+        mController.setListener(null);
+    }
+	
+	public void onActivated(boolean activated) {
+		((TwoChoicePreference) mNightDisplayPreference).setChecked(activated);
     }
 
     @Override
