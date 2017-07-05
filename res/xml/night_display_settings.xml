@@ -19,10 +19,6 @@
         xmlns:settings="http://schemas.android.com/apk/res-auto"
         android:title="@string/night_display_title">
 
-    <com.android.settings.fuelgauge.WallOfTextPreference
-            android:summary="@string/night_display_text"
-            android:selectable="false" />
-
     <PreferenceCategory
             android:title="@string/night_display_category_schedule">
 
