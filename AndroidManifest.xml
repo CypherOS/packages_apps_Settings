@@ -1108,6 +1108,15 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+		
+		<!-- Keep compatibility with old shortcuts. -->
+        <activity-alias android:name="NightDisplaySettings"
+                android:label="@string/night_display_title"
+                android:exported="true"
+                android:targetActivity="Settings$NightDisplaySettingsActivity">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.display.NightDisplaySettings" />
+        </activity-alias>
 
         <activity android:name="Settings$DeviceInfoSettingsActivity"
                 android:theme="@style/Theme.SubSettingsDialogWhenLarge"
