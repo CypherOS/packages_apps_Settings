@@ -30,8 +30,8 @@
             android:summary="@string/one_handed_mode_summary"
             android:defaultValue="false" />
 
-	<PreferenceCategory android:key="quick_settings"
-	    android:title="@string/quick_settings_title">
+        <PreferenceCategory android:key="quick_settings"
+            android:title="@string/quick_settings_title">
 
 	    <com.android.settings.preference.SystemSettingSwitchPreference
                     android:key="qs_show_brightness_icon"
@@ -41,4 +41,16 @@
 
 	</PreferenceCategory>
 
+	<PreferenceCategory android:key="statusbar_settings"
+	    android:title="@string/statusbar_settings_title">
+
+	    <PreferenceScreen
+                android:title="@string/status_bar_icon_blacklist_title"
+                android:summary="@string/status_bar_icon_blacklist_summary" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.TunerActivity" />
+            </PreferenceScreen>
+
+	</PreferenceCategory>
 </PreferenceScreen>
