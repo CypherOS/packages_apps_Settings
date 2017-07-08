@@ -360,5 +360,11 @@
    <string name="night_bright_min">Minimum brightness</string>
    <string name="night_bright_low">Low brightness</string>
    <string name="night_bright_medium">Medium brightness</string>
+   
+   <!-- Tuning: Statusbar -->
+   <string name="statusbar_settings_title">Statusbar</string>
+   <!-- Statusbar Icon Blacklist -->
+   <string name="status_bar_icon_blacklist_title">Show icons</string>
+   <string name="status_bar_icon_blacklist_summary">Choose which icons to show in the statusbar panel</string>
  
 </resources>
