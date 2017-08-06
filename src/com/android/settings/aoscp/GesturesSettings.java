@@ -237,6 +237,7 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
         if (mGesturesEnabler != null) {
             mGesturesEnabler.resume();
         }
+		updateState();
     }
 
     @Override
@@ -261,6 +262,14 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
                         mGesturesSettings.get(gestureKey), gestureDefault);
                 gesturePref.setValue(String.valueOf(gestureBehaviour));
             }
+        }
+    }
+	
+	private void updateState() {
+        // Update tap to wake if it is available.
+        if (mTapToWakePreference != null) {
+            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
+            mTapToWakePreference.setChecked(value != 0);
         }
     }
 
@@ -401,14 +410,6 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
             GesturesSettings.this.enableGestures(isChecked, false);
         }
 
-    }
-	
-	private void updateState() {
-        // Update tap to wake if it is available.
-        if (mTapToWakePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
-            mTapToWakePreference.setChecked(value != 0);
-        }
     }
 
     /**
