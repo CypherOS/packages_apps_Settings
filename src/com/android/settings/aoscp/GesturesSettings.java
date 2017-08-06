@@ -147,19 +147,19 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gestures_settings);
-		
-		Context context = getActivity();
+
+        Context context = getActivity();
 
         mOffScreenGestures = (PreferenceCategory) findPreference(KEY_OFFSCREEN_GESTURES);
         mMovesGestures = (PreferenceCategory) findPreference(KEY_MOVES_GESTURES);
 
-		if (isTapToWakeAvailable(getResources())) {
+        if (isTapToWakeAvailable(getResources())) {
             mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
             mTapToWakePreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_TAP_TO_WAKE);
         }
-		
+
         // Double tap power for camera
         if (isCameraDoubleTapPowerGestureAvailable(getResources())) {
             int cameraDisabled = Settings.Secure.getInt(getContentResolver(),
@@ -237,6 +237,7 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
         if (mGesturesEnabler != null) {
             mGesturesEnabler.resume();
         }
+        updateState();
     }
 
     @Override
@@ -264,10 +265,18 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
         }
     }
 
+    private void updateState() {
+        // Update tap to wake if it is available.
+        if (mTapToWakePreference != null) {
+            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
+            mTapToWakePreference.setChecked(value != 0);
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String key = preference.getKey();
-		if (preference == mTapToWakePreference) {
+        if (preference == mTapToWakePreference) {
             boolean enabled = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, enabled ? 1 : 0);
         }
@@ -307,12 +316,12 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
-	
-	private static boolean isTapToWakeAvailable(Resources res) {
+
+    private static boolean isTapToWakeAvailable(Resources res) {
         return res.getBoolean(com.android.internal.R.bool.config_supportDoubleTapWake);
     }
-	
-	private static boolean isCameraDoubleTapPowerGestureAvailable(Resources res) {
+
+    private static boolean isCameraDoubleTapPowerGestureAvailable(Resources res) {
         return res.getBoolean(
                 com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
     }
@@ -347,8 +356,8 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
-	
-	private void addPreference(String key, boolean enabled) {
+
+    private void addPreference(String key, boolean enabled) {
         SwitchPreference preference = (SwitchPreference) findPreference(key);
         preference.setChecked(enabled);
         preference.setOnPreferenceChangeListener(this);
@@ -383,7 +392,7 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
                 mSwitchBar.addOnSwitchChangeListener(this);
                 mListeningToOnSwitchChange = true;
             }
-			updateState();
+            updateState();
         }
 
         public void pause() {
@@ -401,14 +410,6 @@ public class GesturesSettings extends SettingsPreferenceFragment implements
             GesturesSettings.this.enableGestures(isChecked, false);
         }
 
-    }
-	
-	private void updateState() {
-        // Update tap to wake if it is available.
-        if (mTapToWakePreference != null) {
-            int value = Settings.Secure.getInt(getContentResolver(), DOUBLE_TAP_TO_WAKE, 0);
-            mTapToWakePreference.setChecked(value != 0);
-        }
     }
 
     /**
