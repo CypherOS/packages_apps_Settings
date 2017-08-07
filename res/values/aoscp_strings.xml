@@ -321,6 +321,18 @@
     <!-- Quick Settings: Brightness icon -->
     <string name="brightness_icon_title">Auto brightness</string>
     <string name="brightness_icon_summary">Change brightness modes directly from the quick settings panel</string>
+	<!-- Advanced data tile -->
+    <string name="qs_advanced_data_title">Data on tap</string>
+    <string name="qs_advanced_data_summary">Enable or disable your celluar data with one tap</string>	
+	<!-- BT easy toggle -->
+    <string name="qs_bt_easy_toggle_title">Bluetooth on tap</string>
+    <string name="qs_bt_easy_toggle_summary">Enable or disable bluetooth with one tap</string>
+	<!-- WiFi easy toggle -->
+    <string name="qs_wifi_easy_toggle_title">WiFi on tap</string>
+    <string name="qs_wifi_easy_toggle_summary">Enable or disable wifi with one tap</string>
+	<!-- Battery Saver easy toggle -->
+    <string name="qs_battery_easy_toggle_title">Battery on tap</string>
+    <string name="qs_battery_easy_toggle_summary">Enable or disable battery saver with one tap</string>
 
     <!-- Hide Statusbar on Lockscreen -->
     <string name="lockscreen_hide_status_bar_title">Immersive lockscreen</string>
