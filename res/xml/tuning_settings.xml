@@ -30,13 +30,37 @@
             android:summary="@string/one_handed_mode_summary"
             android:defaultValue="false" />
 
-        <PreferenceCategory android:key="quick_settings"
+    <PreferenceCategory android:key="quick_settings"
             android:title="@string/quick_settings_title">
 
-	    <com.android.settings.preference.SystemSettingSwitchPreference
+	        <com.android.settings.preference.SystemSettingSwitchPreference
                     android:key="qs_show_brightness_icon"
                     android:title="@string/brightness_icon_title"
                     android:summary="@string/brightness_icon_summary"
+                    android:defaultValue="false" />
+
+                <com.android.settings.preference.SecureSettingSwitchPreference
+                    android:key="qs_battery_easy_toggle"
+                    android:title="@string/qs_battery_easy_toggle_title"
+                    android:summary="@string/qs_battery_easy_toggle_summary"
+                    android:defaultValue="false" />
+
+		<com.android.settings.preference.SecureSettingSwitchPreference
+                    android:key="qs_bt_easy_toggle"
+                    android:title="@string/qs_bt_easy_toggle_title"
+                    android:summary="@string/qs_bt_easy_toggle_summary"
+                    android:defaultValue="false" />
+
+		<com.android.settings.preference.SecureSettingSwitchPreference
+                    android:key="qs_data_advanced"
+                    android:title="@string/qs_advanced_data_title"
+                    android:summary="@string/qs_advanced_data_summary"
+                    android:defaultValue="false" />
+
+	        <com.android.settings.preference.SecureSettingSwitchPreference
+                    android:key="qs_wifi_easy_toggle"
+                    android:title="@string/qs_wifi_easy_toggle_title"
+                    android:summary="@string/qs_wifi_easy_toggle_summary"
                     android:defaultValue="false" />
 
 	</PreferenceCategory>
