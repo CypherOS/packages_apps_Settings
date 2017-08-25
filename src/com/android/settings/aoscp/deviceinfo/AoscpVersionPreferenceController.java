@@ -101,7 +101,7 @@ public class AoscpVersionPreferenceController extends PreferenceController
 
             final Intent intent = new Intent(Intent.ACTION_MAIN)
                     .setClassName(
-                            "android", com.android.internal.app.PlatLogoActivity.class.getName());
+                            "aoscp", com.android.internal.app.PlatLogoActivity.class.getName());
             try {
                 mContext.startActivity(intent);
                 return true;
