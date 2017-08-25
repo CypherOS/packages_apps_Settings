@@ -79,6 +79,16 @@
                         android:data="https://source.android.com/security/bulletin/" />
         </Preference>
 
+        <!-- CypherOS firmware version -->
+        <Preference android:key="aoscp_version"
+                android:title="@string/aoscp_version"
+                android:summary="@string/device_info_default" />
+
+        <!-- CypherOS API level -->
+        <Preference android:key="aoscp_api"
+                android:title="@string/aoscp_api"
+                android:summary="@string/device_info_default" />
+
         <!-- Device FCC equipment id -->
         <Preference
                 android:key="fcc_equipment_id"
