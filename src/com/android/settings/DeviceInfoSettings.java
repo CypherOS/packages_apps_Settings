@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.deviceinfo.AoscpApiPreferenceController;
+import com.android.settings.aoscp.deviceinfo.AoscpVersionPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.deviceinfo.AdditionalSystemUpdatePreferenceController;
@@ -131,6 +133,8 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
         controllers.add(new SafetyInfoPreferenceController(context));
+        controllers.add(new AoscpVersionPreferenceController(context, lifecycle));
+        controllers.add(new AoscpApiPreferenceController(context, lifecycle));
         return controllers;
     }
 
