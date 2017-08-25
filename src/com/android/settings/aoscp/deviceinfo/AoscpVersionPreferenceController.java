@@ -101,6 +101,7 @@ public class AoscpVersionPreferenceController extends AbstractPreferenceControll
             }
 
             final Intent intent = new Intent(Intent.ACTION_MAIN)
+                    .putExtra("aoscp", preference.getKey().equals(KEY_AOSCP_VERSION))
                     .setClassName(
                             "android", com.android.internal.app.PlatLogoActivity.class.getName());
             try {
