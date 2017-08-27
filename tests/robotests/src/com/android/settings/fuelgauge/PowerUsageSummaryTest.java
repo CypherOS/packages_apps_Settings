@@ -125,8 +125,6 @@ public class PowerUsageSummaryTest {
     @Mock
     private LayoutPreference mBatteryLayoutPref;
     @Mock
-    private TextView mBatteryPercentText;
-    @Mock
     private TextView mSummary1;
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private BatteryStatsHelper mBatteryHelper;
@@ -137,6 +135,7 @@ public class PowerUsageSummaryTest {
     @Mock
     private PreferenceScreen mPreferenceScreen;
 
+    private TextView mBatteryPercentText;
     private List<BatterySipper> mUsageList;
     private Context mRealContext;
     private TestFragment mFragment;
@@ -160,7 +159,7 @@ public class PowerUsageSummaryTest {
         mLastFullChargePref = new PowerGaugePreference(mRealContext);
         mFragment = spy(new TestFragment(mContext));
         mFragment.initFeatureProvider();
-        mBatteryMeterView = new BatteryMeterView(mRealContext);
+        mBatteryMeterView = spy(new BatteryMeterView(mRealContext));
         mBatteryMeterView.mDrawable = new BatteryMeterView.BatteryMeterDrawable(mRealContext, 0);
         doNothing().when(mFragment).restartBatteryStatsLoader();
 
@@ -183,6 +182,7 @@ public class PowerUsageSummaryTest {
         mCellBatterySipper.drainType = BatterySipper.DrainType.CELL;
         mCellBatterySipper.totalPowerMah = POWER_MAH;
 
+        mBatteryPercentText = new TextView(mRealContext);
         when(mBatteryLayoutPref.findViewById(R.id.summary1)).thenReturn(mSummary1);
         when(mBatteryLayoutPref.findViewById(R.id.battery_percent)).thenReturn(mBatteryPercentText);
         when(mBatteryLayoutPref.findViewById(R.id.battery_header_icon))
@@ -271,6 +271,50 @@ public class PowerUsageSummaryTest {
     public void testOptionsMenu_clickToggleAppsMenu_dataChanged() {
         testToggleAllApps(true);
         testToggleAllApps(false);
+    }
+
+    @Test
+    public void testInitHeaderPreference_initCorrectly() {
+        mFragment.mBatteryLevel = 100;
+
+        mFragment.initHeaderPreference();
+
+        assertThat(mBatteryMeterView.getBatteryLevel()).isEqualTo(100);
+        assertThat(mBatteryPercentText.getText().toString()).isEqualTo("100%");
+    }
+
+    @Test
+    public void testStartBatteryHeaderAnimationIfNecessary_batteryLevelChanged_animationStarted() {
+        final int prevLevel = 100;
+        final int curLevel = 80;
+
+        mFragment.startBatteryHeaderAnimationIfNecessary(mBatteryMeterView, mBatteryPercentText,
+                prevLevel, curLevel);
+
+        assertThat(mBatteryMeterView.getBatteryLevel()).isEqualTo(curLevel);
+        assertThat(mBatteryPercentText.getText().toString()).isEqualTo("80%");
+    }
+
+    @Test
+    public void testOnSaveInstanceState_saveBatteryLevel() {
+        Bundle bundle = new Bundle();
+        mFragment.mBatteryLevel = BATTERY_LEVEL;
+        // mock it to stop crash in getPreferenceScreen
+        doReturn(null).when(mFragment).getPreferenceScreen();
+
+        mFragment.onSaveInstanceState(bundle);
+
+        assertThat(bundle.getInt(PowerUsageSummary.ARG_BATTERY_LEVEL)).isEqualTo(BATTERY_LEVEL);
+    }
+
+    @Test
+    public void testOnActivityCreated_setBatteryLevel() {
+        Bundle bundle = new Bundle();
+        bundle.putInt(PowerUsageSummary.ARG_BATTERY_LEVEL, BATTERY_LEVEL);
+
+        mFragment.onActivityCreated(bundle);
+
+        assertThat(mFragment.mBatteryLevel).isEqualTo(BATTERY_LEVEL);
     }
 
     @Test

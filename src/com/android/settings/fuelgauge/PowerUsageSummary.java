@@ -82,6 +82,10 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final String KEY_SHOW_ALL_APPS = "show_all_apps";
     private static final int MAX_ITEMS_TO_LIST = USE_FAKE_DATA ? 30 : 10;
     private static final int MIN_AVERAGE_POWER_THRESHOLD_MILLI_AMP = 10;
+	private static final int BATTERY_ANIMATION_DURATION_MS_PER_LEVEL = 30;
+
+    @VisibleForTesting
+    static final String ARG_BATTERY_LEVEL = "key_battery_level";
 
     private static final String KEY_SCREEN_USAGE = "screen_usage";
     private static final String KEY_TIME_SINCE_LAST_FULL_CHARGE = "last_full_charge";
@@ -103,6 +107,8 @@ public class PowerUsageSummary extends PowerUsageBase {
             new FooterPreferenceMixin(this, getLifecycle());
 
     @VisibleForTesting
+	int mBatteryLevel;
+    @VisibleForTesting
     boolean mShowAllApps = false;
     @VisibleForTesting
     PowerGaugePreference mScreenUsagePref;
@@ -123,6 +129,8 @@ public class PowerUsageSummary extends PowerUsageBase {
         super.onCreate(icicle);
         setAnimationAllowed(true);
 
+		mBatteryLevel = getContext().getResources().getInteger(
+                com.android.internal.R.integer.config_criticalBatteryWarningLevel) + 1;
         mBatteryLayoutPref = (LayoutPreference) findPreference(KEY_BATTERY_HEADER);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
         mScreenUsagePref = (PowerGaugePreference) findPreference(KEY_SCREEN_USAGE);
@@ -137,8 +145,22 @@ public class PowerUsageSummary extends PowerUsageBase {
     }
 
     @Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            mBatteryLevel = savedInstanceState.getInt(ARG_BATTERY_LEVEL);
+        }
+    }
+
+    @Override
     public int getMetricsCategory() {
         return MetricsEvent.FUELGAUGE_POWER_USAGE_SUMMARY;
+    }
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+		mBatteryHeaderPreferenceController.initHeaderPreference();
     }
 
     @Override
@@ -160,6 +182,7 @@ public class PowerUsageSummary extends PowerUsageBase {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_SHOW_ALL_APPS, mShowAllApps);
+		outState.putInt(ARG_BATTERY_LEVEL, mBatteryLevel);
     }
 
     @Override
@@ -530,7 +553,7 @@ public class PowerUsageSummary extends PowerUsageBase {
 
         BatteryEntry.startRequestQueue();
     }
-
+	
     @VisibleForTesting
     BatterySipper findBatterySipperByType(List<BatterySipper> usageList, DrainType type) {
         for (int i = 0, size = usageList.size(); i < size; i++) {

@@ -17,11 +17,14 @@
 
 package com.android.settings.fuelgauge;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.PreferenceScreen;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -78,14 +81,46 @@ public class BatteryHeaderPreferenceController extends PreferenceController {
     }
 
     public void updateHeaderPreference(BatteryInfo info) {
-        mTimeText.setText(Utils.formatPercentage(info.batteryLevel));
         if (info.remainingLabel == null) {
             mSummary.setText(info.statusLabel);
         } else {
             mSummary.setText(info.remainingLabel);
         }
 
-        mBatteryMeterView.setBatteryLevel(info.batteryLevel);
         mBatteryMeterView.setCharging(!info.discharging);
+		startBatteryHeaderAnimationIfNecessary(batteryView, timeText, mBatteryLevel,
+                info.batteryLevel);
+    }
+	
+	@VisibleForTesting
+    void initHeaderPreference() {
+        final BatteryMeterView batteryView = (BatteryMeterView) mBatteryLayoutPref
+                .findViewById(R.id.battery_header_icon);
+        final TextView timeText = (TextView) mBatteryLayoutPref.findViewById(R.id.battery_percent);
+
+        batteryView.setBatteryLevel(mBatteryLevel);
+        timeText.setText(Utils.formatPercentage(mBatteryLevel));
+    }
+
+    @VisibleForTesting
+    void startBatteryHeaderAnimationIfNecessary(BatteryMeterView batteryView, TextView timeTextView,
+            int prevLevel, int currentLevel) {
+        mBatteryLevel = currentLevel;
+        final int diff = Math.abs(prevLevel - currentLevel);
+        if (diff != 0) {
+            final ValueAnimator animator = ValueAnimator.ofInt(prevLevel, currentLevel);
+            animator.setDuration(BATTERY_ANIMATION_DURATION_MS_PER_LEVEL * diff);
+            animator.setInterpolator(AnimationUtils.loadInterpolator(getContext(),
+                    android.R.interpolator.fast_out_slow_in));
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    final Integer level = (Integer) animation.getAnimatedValue();
+                    batteryView.setBatteryLevel(level);
+                    timeTextView.setText(Utils.formatPercentage(level));
+                }
+            });
+            animator.start();
+        }
     }
 }
