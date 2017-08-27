@@ -17,11 +17,14 @@
 
 package com.android.settings.fuelgauge;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.PreferenceScreen;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.android.settings.R;
@@ -34,6 +37,9 @@ import com.android.settingslib.Utils;
  * Controller that update the battery header view
  */
 public class BatteryHeaderPreferenceController extends PreferenceController {
+	
+	private static final int BATTERY_ANIMATION_DURATION_MS_PER_LEVEL = 30;
+	
     @VisibleForTesting
     static final String KEY_BATTERY_HEADER = "battery_header";
     @VisibleForTesting
@@ -61,7 +67,7 @@ public class BatteryHeaderPreferenceController extends PreferenceController {
 
         Intent batteryBroadcast = mContext.registerReceiver(null,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        final int batteryLevel = Utils.getBatteryLevel(batteryBroadcast);
+        public int batteryLevel = Utils.getBatteryLevel(batteryBroadcast);
 
         mBatteryMeterView.setBatteryLevel(batteryLevel);
         mTimeText.setText(Utils.formatPercentage(batteryLevel));
@@ -78,14 +84,49 @@ public class BatteryHeaderPreferenceController extends PreferenceController {
     }
 
     public void updateHeaderPreference(BatteryInfo info) {
-        mTimeText.setText(Utils.formatPercentage(info.batteryLevel));
+		final BatteryMeterView batteryView = (BatteryMeterView) mBatteryLayoutPref
+                .findViewById(R.id.battery_header_icon);
+        final TextView timeText = (TextView) mBatteryLayoutPref.findViewById(R.id.battery_percent);
         if (info.remainingLabel == null) {
             mSummary.setText(info.statusLabel);
         } else {
             mSummary.setText(info.remainingLabel);
         }
 
-        mBatteryMeterView.setBatteryLevel(info.batteryLevel);
         mBatteryMeterView.setCharging(!info.discharging);
+		startBatteryHeaderAnimationIfNecessary(batteryView, timeText, batteryLevel,
+                info.batteryLevel);
+    }
+	
+	@VisibleForTesting
+    void initHeaderPreference() {
+        final BatteryMeterView batteryView = (BatteryMeterView) mBatteryLayoutPref
+                .findViewById(R.id.battery_header_icon);
+        final TextView timeText = (TextView) mBatteryLayoutPref.findViewById(R.id.battery_percent);
+
+        batteryView.setBatteryLevel(batteryLevel);
+        timeText.setText(Utils.formatPercentage(batteryLevel));
+    }
+
+    @VisibleForTesting
+    void startBatteryHeaderAnimationIfNecessary(BatteryMeterView batteryView, TextView timeTextView,
+            int prevLevel, int currentLevel) {
+        batteryLevel = currentLevel;
+        final int diff = Math.abs(prevLevel - currentLevel);
+        if (diff != 0) {
+            final ValueAnimator animator = ValueAnimator.ofInt(prevLevel, currentLevel);
+            animator.setDuration(BATTERY_ANIMATION_DURATION_MS_PER_LEVEL * diff);
+            animator.setInterpolator(AnimationUtils.loadInterpolator(mContext,
+                    android.R.interpolator.fast_out_slow_in));
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    final Integer level = (Integer) animation.getAnimatedValue();
+                    batteryView.setBatteryLevel(level);
+                    timeTextView.setText(Utils.formatPercentage(level));
+                }
+            });
+            animator.start();
+        }
     }
 }
