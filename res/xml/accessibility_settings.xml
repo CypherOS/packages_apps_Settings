@@ -43,15 +43,6 @@
             android:title="@string/display_category_title">
 
         <Preference
-                android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
-                android:key="font_size_preference_screen"
-                android:title="@string/title_font_size"/>
-
-        <com.android.settings.display.ScreenZoomPreference
-                android:key="screen_zoom"
-                android:title="@string/screen_zoom_title"/>
-
-        <Preference
             android:fragment="com.android.settings.accessibility.MagnificationPreferenceFragment"
             android:key="magnification_preference_screen"
             android:title="@string/accessibility_screen_magnification_title"
@@ -74,11 +65,6 @@
         <SwitchPreference
                 android:key="toggle_power_button_ends_call_preference"
                 android:title="@string/accessibility_power_button_ends_call_prerefence_title"
-                android:persistent="false"/>
-
-        <SwitchPreference
-                android:key="toggle_lock_screen_rotation_preference"
-                android:title="@string/accelerometer_title"
                 android:persistent="false"/>
 
         <ListPreference
