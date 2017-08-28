@@ -22,23 +22,22 @@ import android.provider.Settings;
 import android.support.v7.preference.Preference;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
-import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settings.core.PreferenceController;
 
-public class PickupGesturePreferenceController extends GesturePreferenceController {
+public class PickupGesturePreferenceController extends PreferenceController
+        implements Preference.OnPreferenceChangeListener {
 
-    private static final String PREF_VIDEO_KEY = "gesture_pick_up_video";
-    private final String mPickUpPrefKey;
+	private static final String KEY_PICK_UP = "gesture_pick_up";
 
     private final AmbientDisplayConfiguration mAmbientConfig;
     @UserIdInt
     private final int mUserId;
 
-    public PickupGesturePreferenceController(Context context, Lifecycle lifecycle,
-            AmbientDisplayConfiguration config, @UserIdInt int userId, String key) {
-        super(context, lifecycle);
+    public PickupGesturePreferenceController(Context context, AmbientDisplayConfiguration config, 
+	    @UserIdInt int userId) {
+        super(context);
         mAmbientConfig = config;
         mUserId = userId;
-        mPickUpPrefKey = key;
     }
 
     @Override
@@ -47,18 +46,8 @@ public class PickupGesturePreferenceController extends GesturePreferenceControll
     }
 
     @Override
-    protected String getVideoPrefKey() {
-        return PREF_VIDEO_KEY;
-    }
-
-    @Override
-    protected boolean isSwitchPrefEnabled() {
-        return mAmbientConfig.pulseOnPickupEnabled(mUserId);
-    }
-
-    @Override
     public String getPreferenceKey() {
-        return mPickUpPrefKey;
+        return KEY_PICK_UP;
     }
 
     @Override
