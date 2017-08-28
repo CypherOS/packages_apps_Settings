@@ -40,7 +40,6 @@ import com.android.settings.display.TimeoutPreferenceController;
 import com.android.settings.display.VrDisplayPreferenceController;
 import com.android.settings.display.WallpaperPreferenceController;
 import com.android.settings.gestures.DoubleTapScreenPreferenceController;
-import com.android.settings.gestures.PickupGesturePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -54,7 +53,6 @@ public class DisplaySettings extends DashboardFragment {
 
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
-    private static final String KEY_PICK_UP = "gesture_pick_up_display_summary";
     private static final String KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen_display_summary";
 
     @Override
@@ -94,15 +92,13 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new AutoBrightnessPreferenceController(context, KEY_AUTO_BRIGHTNESS));
         controllers.add(new AutoRotatePreferenceController(context));
         controllers.add(new CameraGesturePreferenceController(context));
-        controllers.add(new DozePreferenceController(context));
+        controllers.add(new DozePreferenceController(context, lifecycle));
         controllers.add(new FontSizePreferenceController(context));
         controllers.add(new LiftToWakePreferenceController(context));
         controllers.add(new NightDisplayPreferenceController(context));
         controllers.add(new NightModePreferenceController(context));
         controllers.add(new ScreenSaverPreferenceController(context));
         AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
-        controllers.add(new PickupGesturePreferenceController(
-                context, lifecycle, ambientDisplayConfig, UserHandle.myUserId(), KEY_PICK_UP));
         controllers.add(new DoubleTapScreenPreferenceController(
                 context, lifecycle, ambientDisplayConfig, UserHandle.myUserId(),
                 KEY_DOUBLE_TAP_SCREEN));

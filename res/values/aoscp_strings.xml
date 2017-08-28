@@ -20,5 +20,12 @@
     <string name="aoscp_version">CypherOS version</string>
     <!-- About phone screen, CypherOS API level -->
     <string name="aoscp_api">API</string>
+	
+	<!-- Display settings: Ambient Display -->
+	<string name="ambient_display_settings_description">To allow better interaction with your device, ambient display let\'s you view notifications on the go with ease. You can check notifications at a glance without unlocking the device.\n\nAmbient display features are device dependent and will not work with ambient display disabled.</string>
+	<!-- Summary of battery saver when on [CHAR LIMIT=NONE] -->
+    <string name="ambient_display_settings_on_summary">On / <xliff:g name="automatic_state" example="Wake for notifications"></xliff:g></string>
+    <!-- Summary of battery saver when off [CHAR LIMIT=NONE] -->
+    <string name="ambient_display_settings_off_summary">Off / <xliff:g name="automatic_state" example="Don\'t Wake for notifications"></xliff:g></string>
  
 </resources>
