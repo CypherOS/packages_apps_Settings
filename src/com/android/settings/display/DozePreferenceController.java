@@ -17,32 +17,43 @@ import android.content.Context;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.provider.Settings;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
+import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settings.core.lifecycle.LifecycleObserver;
 import com.android.settings.overlay.FeatureFactory;
+import com.android.settings.widget.MasterSwitchPreference;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_AMBIENT_DISPLAY;
 
 public class DozePreferenceController extends PreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, LifecycleObserver {
 
     private static final String KEY_DOZE = "doze";
 
+	private MasterSwitchPreference mDozePref;
     private final MetricsFeatureProvider mMetricsFeatureProvider;
 
-    public DozePreferenceController(Context context) {
+    public DozePreferenceController(Context context, Lifecycle lifecycle) {
         super(context);
+		lifecycle.addObserver(this);
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
     }
-
+	
     @Override
     public String getPreferenceKey() {
         return KEY_DOZE;
+    }
+	
+	@Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        mDozePref = (MasterSwitchPreference) screen.findPreference(KEY_DOZE);
     }
 
     @Override
@@ -56,7 +67,7 @@ public class DozePreferenceController extends PreferenceController implements
     @Override
     public void updateState(Preference preference) {
         int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_ENABLED, 1);
-        ((SwitchPreference) preference).setChecked(value != 0);
+        ((MasterSwitchPreference) preference).setChecked(value != 0);
     }
 
     @Override
