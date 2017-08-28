@@ -18,6 +18,7 @@ package com.android.settings;
 
 import android.os.Bundle;
 
+import com.android.settings.aoscp.display.AmbientDisplaySettings;
 import com.android.settings.applications.AppOpsSummary;
 import com.android.settings.enterprise.EnterprisePrivacySettings;
 import com.android.settings.fingerprint.FingerprintEnrollIntroduction;
@@ -177,5 +178,8 @@ public class Settings extends SettingsActivity {
     public static class UserAndAccountDashboardActivity extends SettingsActivity {}
     public static class SystemDashboardActivity extends SettingsActivity {}
     public static class SupportDashboardActivity extends SettingsActivity {}
+	
+	// AOSCP Settings Activities
+	public static class AmbientDisplaySettingsActivity extends SettingsActivity {}
 
 }
