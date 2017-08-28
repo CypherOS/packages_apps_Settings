@@ -33,6 +33,7 @@ import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accessibility.AccessibilityShortcutPreferenceFragment;
 import com.android.settings.accessibility.MagnificationPreferenceFragment;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
+import com.android.settings.aoscp.display.AmbientDisplaySettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.SpecialAccessSettings;
@@ -55,7 +56,6 @@ import com.android.settings.gestures.AssistGestureSettings;
 import com.android.settings.gestures.DoubleTapPowerSettings;
 import com.android.settings.gestures.DoubleTapScreenSettings;
 import com.android.settings.gestures.DoubleTwistGestureSettings;
-import com.android.settings.gestures.PickupGestureSettings;
 import com.android.settings.gestures.SwipeToNotificationSettings;
 import com.android.settings.inputmethod.AvailableVirtualKeyboardFragment;
 import com.android.settings.inputmethod.PhysicalKeyboardFragment;
@@ -113,6 +113,7 @@ public final class SearchIndexableResources {
         addIndex(DataUsageMeteredSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_data_usage);
         addIndex(ScreenZoomSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_display);
         addIndex(DisplaySettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_display);
+		addIndex(AmbientDisplaySettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_display);
         addIndex(WallpaperTypeSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_display);
         addIndex(ConfigureNotificationSettings.class,
                 R.xml.configure_notification_settings, R.drawable.ic_settings_notifications);
@@ -135,7 +136,6 @@ public final class SearchIndexableResources {
                 R.xml.special_access, R.drawable.ic_settings_applications);
         addIndex(UserSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_multiuser);
         addIndex(AssistGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(PickupGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
         addIndex(DoubleTapScreenSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
         addIndex(DoubleTapPowerSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
         addIndex(DoubleTwistGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
