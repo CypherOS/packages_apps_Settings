@@ -20,5 +20,8 @@
     <string name="aoscp_version">CypherOS version</string>
     <!-- About phone screen, CypherOS API level -->
     <string name="aoscp_api">API</string>
+	
+	<!-- Display settings: Ambient Display -->
+	<string name="ambient_display_settings_description">Test</string>
  
 </resources>

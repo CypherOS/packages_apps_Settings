@@ -24,25 +24,34 @@ import android.text.TextUtils;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
+import com.android.settings.widget.MasterSwitchPreference;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_AMBIENT_DISPLAY;
 
 public class DozePreferenceController extends PreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, LifecycleObserver {
 
     private static final String KEY_DOZE = "doze";
 
+	private MasterSwitchPreference mDozePref;
     private final MetricsFeatureProvider mMetricsFeatureProvider;
 
-    public DozePreferenceController(Context context) {
+    public DozePreferenceController(Context context, Lifecycle lifecycle) {
         super(context);
+		lifecycle.addObserver(this)
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
     }
-
+	
     @Override
     public String getPreferenceKey() {
         return KEY_DOZE;
+    }
+	
+	@Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        mDozePref = (MasterSwitchPreference) screen.findPreference(KEY_DOZE);
     }
 
     @Override
