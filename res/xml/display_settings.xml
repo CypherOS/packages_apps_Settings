@@ -70,6 +70,11 @@
         android:fragment="com.android.settings.display.ColorModePreferenceFragment"
         settings:keywords="@string/keywords_color_mode" />
 
+    <SwitchPreference
+        android:key="pocket_judge"
+        android:title="@string/pocket_judge_title"
+        android:summary="@string/pocket_judge_summary" />
+
     <Preference
         android:key="font_size"
         android:title="@string/title_font_size"
