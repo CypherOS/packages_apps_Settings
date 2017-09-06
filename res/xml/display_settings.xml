@@ -61,6 +61,11 @@
         android:key="auto_rotate"
         android:summary="@string/summary_placeholder"
         android:title="@string/display_auto_rotate_title" />
+		
+	<SwitchPreference
+    	android:key="pocket_judge"
+        android:title="@string/pocket_judge_title"
+        android:summary="@string/pocket_judge_summary" />
 
     <Preference
         android:key="font_size"
