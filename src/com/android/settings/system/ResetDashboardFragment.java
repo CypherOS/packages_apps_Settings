@@ -61,6 +61,7 @@ public class ResetDashboardFragment extends DashboardFragment {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new NetworkResetPreferenceController(context));
         controllers.add(new FactoryResetPreferenceController(context));
+        controllers.add(new FeatureResetPreferenceController(context));
         controllers.add(new ResetAppPrefPreferenceController(context, lifecycle));
         return controllers;
     }
