@@ -847,6 +847,9 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.WifiDisplaySettingsActivity.class.getName()),
                 WifiDisplaySettings.isAvailable(this), isAdmin);
+				
+		setTileEnabled(new ComponentName(packageName,
+                        Settings.GestureSettingsActivity.class.getName()), true, isAdmin);
 
         if (UserHandle.MU_ENABLED && !isAdmin) {
 
