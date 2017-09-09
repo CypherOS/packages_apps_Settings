@@ -25,11 +25,6 @@
         android:summary="@string/app_list_preference_none"
         android:fragment="com.android.settings.applications.assist.DefaultAssistPicker"/>
 
-    <Preference
-        android:key="gesture_assist_application"
-        android:title="@string/assist_gesture_title"
-        android:fragment="com.android.settings.gestures.AssistGestureSettings"/>
-
     <SwitchPreference
         android:key="context"
         android:title="@string/assist_access_context_title"

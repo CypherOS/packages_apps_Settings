@@ -17,6 +17,15 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/header_category_system">
+	
+	<!-- Gestures -->
+	<Preference
+        android:key="gesture_settings"
+        android:title="@string/gesture_settings_title"
+		android:summary="@string/gesture_settings_title_summary"
+        android:icon="@drawable/ic_settings_gestures"
+        android:order="250"
+        android:fragment="com.android.settings.aoscp.dashboard.GestureSettings" />
 
     <!-- Backup -->
     <Preference

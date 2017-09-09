@@ -44,6 +44,7 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
+import com.android.settings.aoscp.dashboard.GestureSettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.DrawOverlayDetails;
@@ -79,12 +80,6 @@ import com.android.settings.enterprise.EnterprisePrivacySettings;
 import com.android.settings.fuelgauge.AdvancedPowerUsageDetail;
 import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
-import com.android.settings.gestures.AssistGestureSettings;
-import com.android.settings.gestures.DoubleTapPowerSettings;
-import com.android.settings.gestures.DoubleTapScreenSettings;
-import com.android.settings.gestures.DoubleTwistGestureSettings;
-import com.android.settings.gestures.PickupGestureSettings;
-import com.android.settings.gestures.SwipeToNotificationSettings;
 import com.android.settings.inputmethod.AvailableVirtualKeyboardFragment;
 import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;
 import com.android.settings.inputmethod.PhysicalKeyboardFragment;
@@ -175,12 +170,6 @@ public class SettingsGateway {
             WifiDisplaySettings.class.getName(),
             PowerUsageSummary.class.getName(),
             AccountSyncSettings.class.getName(),
-            AssistGestureSettings.class.getName(),
-            SwipeToNotificationSettings.class.getName(),
-            DoubleTapPowerSettings.class.getName(),
-            DoubleTapScreenSettings.class.getName(),
-            PickupGestureSettings.class.getName(),
-            DoubleTwistGestureSettings.class.getName(),
             CryptKeeperSettings.class.getName(),
             DataUsageSummary.class.getName(),
             DreamSettings.class.getName(),
@@ -244,6 +233,7 @@ public class SettingsGateway {
             EnterprisePrivacySettings.class.getName(),
             WebViewAppPicker.class.getName(),
             LockscreenDashboardFragment.class.getName(),
+			GestureSettings.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -278,6 +268,7 @@ public class SettingsGateway {
             Settings.LocationSettingsActivity.class.getName(),
             // Home page > System
             Settings.LanguageAndInputSettingsActivity.class.getName(),
+			Settings.GestureSettingsActivity.class.getName(),
             Settings.DateTimeSettingsActivity.class.getName(),
             Settings.DeviceInfoSettingsActivity.class.getName(),
             Settings.EnterprisePrivacySettingsActivity.class.getName(),

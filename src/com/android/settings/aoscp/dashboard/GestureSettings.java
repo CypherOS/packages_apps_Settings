@@ -20,9 +20,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.gestures.AssistGesturePreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTapScreenPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.PickupGesturePreferenceController;
+import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
@@ -35,7 +43,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GestureSettings extends DashboardFragment implements Indexable {
+public class GestureSettings extends DashboardFragment {
 
     private static final String LOG_TAG = "GestureSettings";
 
@@ -43,12 +51,7 @@ public class GestureSettings extends DashboardFragment implements Indexable {
     public int getMetricsCategory() {
         return MetricsEvent.GESTURE_SETTINGS;
     }
-
-    @Override
-    protected int getHelpResource() {
-        return R.string.help_uri_about;
-    }
-
+	
     @Override
     protected String getLogTag() {
         return LOG_TAG;
@@ -68,34 +71,38 @@ public class GestureSettings extends DashboardFragment implements Indexable {
     private static List<PreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<PreferenceController> controllers = new ArrayList<>();
+		AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
+		controllers.add(new AssistGesturePreferenceController(context));
+		controllers.add(new DoubleTapPowerPreferenceController(context));
+		controllers.add(new DoubleTapScreenPreferenceController(
+                context, ambientDisplayConfig, UserHandle.myUserId()));
+		controllers.add(new DoubleTwistPreferenceController(context));
 		controllers.add(new TapToSleepPreferenceController(context));
+		controllers.add(new SwipeToNotificationPreferenceController(context));
+        controllers.add(new PickupGesturePreferenceController(
+                context, ambientDisplayConfig, UserHandle.myUserId()));
         return controllers;
     }
 
     /**
      * For Search.
-     */
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+     */	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider() {
-
                 @Override
-                public List<SearchIndexableResource> getXmlResourcesToIndex(
-                        Context context, boolean enabled) {
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    final ArrayList<SearchIndexableResource> result = new ArrayList<>();
+
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
                     sir.xmlResId = R.xml.gesture_settings;
-                    return Arrays.asList(sir);
+                    result.add(sir);
+                    return result;
                 }
 
                 @Override
                 public List<PreferenceController> getPreferenceControllers(Context context) {
-                    return buildPreferenceControllers(context, null /*activity */,
-                            null /* fragment */, null /* lifecycle */);
-                }
-
-                @Override
-                public List<String> getNonIndexableKeys(Context context) {
-                    List<String> keys = super.getNonIndexableKeys(context);
-                    return keys;
+                    return buildPreferenceControllers(context, null /* lifecycle */);
                 }
             };
 }
