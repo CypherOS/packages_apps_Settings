@@ -40,8 +40,6 @@ import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
 import com.android.settings.display.VrDisplayPreferenceController;
 import com.android.settings.display.WallpaperPreferenceController;
-import com.android.settings.gestures.DoubleTapScreenPreferenceController;
-import com.android.settings.gestures.PickupGesturePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -102,12 +100,6 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new NightModePreferenceController(context));
         controllers.add(new PocketLockPreferenceController(context));
         controllers.add(new ScreenSaverPreferenceController(context));
-        AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
-        controllers.add(new PickupGesturePreferenceController(
-                context, lifecycle, ambientDisplayConfig, UserHandle.myUserId(), KEY_PICK_UP));
-        controllers.add(new DoubleTapScreenPreferenceController(
-                context, lifecycle, ambientDisplayConfig, UserHandle.myUserId(),
-                KEY_DOUBLE_TAP_SCREEN));
         controllers.add(new TapToWakePreferenceController(context));
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new VrDisplayPreferenceController(context));

@@ -14,51 +14,45 @@
  * limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp.gestures;
 
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.provider.Settings;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
+import com.android.settings.core.PreferenceController;
+
 import com.android.internal.hardware.AmbientDisplayConfiguration;
-import com.android.settings.core.lifecycle.Lifecycle;
 
-public class PickupGesturePreferenceController extends GesturePreferenceController {
+import static android.provider.Settings.Secure.DOZE_PULSE_ON_PICK_UP;
 
-    private static final String PREF_VIDEO_KEY = "gesture_pick_up_video";
-    private final String mPickUpPrefKey;
+public class PickupGesturePreferenceController extends PreferenceController implements
+        Preference.OnPreferenceChangeListener {
+
+    private static final String KEY_GESTURE_PICK_UP = "gesture_pick_up";
 
     private final AmbientDisplayConfiguration mAmbientConfig;
     @UserIdInt
     private final int mUserId;
 
-    public PickupGesturePreferenceController(Context context, Lifecycle lifecycle,
-            AmbientDisplayConfiguration config, @UserIdInt int userId, String key) {
-        super(context, lifecycle);
+    public PickupGesturePreferenceController(Context context, AmbientDisplayConfiguration config, 
+	    @UserIdInt int userId) {
+        super(context);
         mAmbientConfig = config;
         mUserId = userId;
-        mPickUpPrefKey = key;
-    }
-
-    @Override
-    public boolean isAvailable() {
-        return mAmbientConfig.pulseOnPickupAvailable();
-    }
-
-    @Override
-    protected String getVideoPrefKey() {
-        return PREF_VIDEO_KEY;
-    }
-
-    @Override
-    protected boolean isSwitchPrefEnabled() {
-        return mAmbientConfig.pulseOnPickupEnabled(mUserId);
     }
 
     @Override
     public String getPreferenceKey() {
-        return mPickUpPrefKey;
+        return KEY_GESTURE_PICK_UP;
+    }
+	
+	@Override
+    public void updateState(Preference preference) {
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_PULSE_ON_PICK_UP, 1);
+        ((SwitchPreference) preference).setChecked(value != 0);
     }
 
     @Override
@@ -67,5 +61,10 @@ public class PickupGesturePreferenceController extends GesturePreferenceControll
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.DOZE_PULSE_ON_PICK_UP, enabled ? 1 : 0);
         return true;
+    }
+	
+	@Override
+    public boolean isAvailable() {
+        return mAmbientConfig.pulseOnPickupAvailable();
     }
 }
