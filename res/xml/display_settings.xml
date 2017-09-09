@@ -106,11 +106,6 @@
         android:title="@string/ambient_display_title"
         android:fragment="com.android.settings.gestures.DoubleTapScreenSettings" />
 
-    <Preference
-        android:key="gesture_pick_up_display_summary"
-        android:title="@string/ambient_display_pickup_title"
-        android:fragment="com.android.settings.gestures.PickupGestureSettings" />
-
     <SwitchPreference
         android:key="doze"
         android:title="@string/doze_title"

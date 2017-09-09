@@ -20,9 +20,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.gestures.PickupGesturePreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
@@ -68,6 +71,9 @@ public class GestureSettings extends DashboardFragment implements Indexable {
     private static List<PreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<PreferenceController> controllers = new ArrayList<>();
+		AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
+		controllers.add(new PickupGesturePreferenceController(
+                context, ambientDisplayConfig, UserHandle.myUserId()));
         controllers.add(new TapToSleepPreferenceController(context));
         return controllers;
     }
