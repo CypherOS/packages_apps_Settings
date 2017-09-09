@@ -20,9 +20,17 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.gestures.AssistGesturePreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTapScreenPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.PickupGesturePreferenceController;
+import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
@@ -68,7 +76,16 @@ public class GestureSettings extends DashboardFragment implements Indexable {
     private static List<PreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<PreferenceController> controllers = new ArrayList<>();
+		AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
+		controllers.add(new AssistGesturePreferenceController(context, lifecycle));
+		controllers.add(new DoubleTapPowerPreferenceController(context));
+		controllers.add(new DoubleTapScreenPreferenceController(
+                context, ambientDisplayConfig, UserHandle.myUserId()));
+		controllers.add(new DoubleTwistPreferenceController(context));
 		controllers.add(new TapToSleepPreferenceController(context));
+		controllers.add(new SwipeToNotificationPreferenceController(context));
+        controllers.add(new PickupGesturePreferenceController(
+                context, ambientDisplayConfig, UserHandle.myUserId()));
         return controllers;
     }
 
