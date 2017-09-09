@@ -33,6 +33,7 @@ import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accessibility.AccessibilityShortcutPreferenceFragment;
 import com.android.settings.accessibility.MagnificationPreferenceFragment;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
+import com.android.settings.aoscp.dashboard.GestureSettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.SpecialAccessSettings;
@@ -182,6 +183,7 @@ public final class SearchIndexableResources {
                 R.drawable.ic_settings_accessibility);
         addIndex(ChannelImportanceSettings.class, NO_DATA_RES_ID,
                 R.drawable.ic_settings_notifications);
+		addIndex(SystemDashboardFragment.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
     }
 
     private SearchIndexableResources() {
