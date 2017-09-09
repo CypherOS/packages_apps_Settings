@@ -18,4 +18,9 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/gesture_settings_title">
 
+    <SwitchPreference
+        android:key="tap_to_sleep"
+        android:title="@string/tap_to_sleep_title"
+        android:summary="@string/tap_to_sleep_title_summary" />
+  
 </PreferenceScreen>
