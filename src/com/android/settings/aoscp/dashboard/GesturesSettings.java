@@ -36,6 +36,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.dashboard.DashboardFragment;
@@ -191,6 +192,7 @@ public class GesturesSettings extends DashboardFragment implements
         controllers.add(new SwipeToNotificationPreferenceController(context));
         controllers.add(new TapToWakePreferenceController(context));
         controllers.add(new QuickTorchPreferenceController(context));
+	controllers.add(new TapToSleepPreferenceController(context));
         return controllers;
     }
 
