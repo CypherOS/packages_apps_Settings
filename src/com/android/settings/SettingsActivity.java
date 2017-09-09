@@ -848,6 +848,9 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.WifiDisplaySettingsActivity.class.getName()),
                 WifiDisplaySettings.isAvailable(this), isAdmin);
 
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.GestureSettingsActivity.class.getName()), true, isAdmin);
+
         if (UserHandle.MU_ENABLED && !isAdmin) {
 
             // When on restricted users, disable all extra categories (but only the settings ones).
