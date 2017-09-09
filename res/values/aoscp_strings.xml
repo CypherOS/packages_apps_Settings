@@ -30,5 +30,9 @@
     <!-- Pocket judge -->
     <string name="pocket_judge_title">Pocket detection</string>
     <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+
+    <!-- Gesture Settings -->
+    <string name="gesture_settings_title">Gestures</string>
+    <string name="gesture_settings_title_summary">Use system and device gestures</string>
  
 </resources>
