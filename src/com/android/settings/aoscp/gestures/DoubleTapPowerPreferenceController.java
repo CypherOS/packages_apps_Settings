@@ -14,38 +14,40 @@
  * limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp.gestures;
 
 import android.content.Context;
 import android.provider.Settings;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
-import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settings.core.PreferenceController;
 
-public class DoubleTapPowerPreferenceController extends GesturePreferenceController {
+import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 
-    private static final String PREF_KEY_VIDEO = "gesture_double_tap_power_video";
-    private final String mDoubleTapPowerKey;
+public class DoubleTapPowerPreferenceController extends PreferenceController implements
+        Preference.OnPreferenceChangeListener {
 
-    public DoubleTapPowerPreferenceController(Context context, Lifecycle lifecycle, String key) {
-        super(context, lifecycle);
-        mDoubleTapPowerKey = key;
+    private static final String KEY_GESTURE_DOUBLE_TAP_POWER = "gesture_double_tap_power";
+
+    public DoubleTapPowerPreferenceController(Context context) {
+        super(context);
     }
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
-    }
-
-    @Override
-    protected String getVideoPrefKey() {
-        return PREF_KEY_VIDEO;
+        return true;
     }
 
     @Override
     public String getPreferenceKey() {
-        return mDoubleTapPowerKey;
+        return KEY_GESTURE_DOUBLE_TAP_POWER;
+    }
+	
+	@Override
+    public void updateState(Preference preference) {
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
+        ((SwitchPreference) preference).setChecked(value != 0);
     }
 
     @Override
@@ -54,12 +56,5 @@ public class DoubleTapPowerPreferenceController extends GesturePreferenceControl
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, enabled ? 0 : 1);
         return true;
-    }
-
-    @Override
-    protected boolean isSwitchPrefEnabled() {
-        final int cameraDisabled = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
-        return cameraDisabled == 0;
     }
 }

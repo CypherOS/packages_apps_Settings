@@ -39,11 +39,6 @@ import com.android.settings.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.gestures.AssistGesturePreferenceController;
-import com.android.settings.gestures.DoubleTapPowerPreferenceController;
-import com.android.settings.gestures.DoubleTapScreenPreferenceController;
-import com.android.settings.gestures.DoubleTwistPreferenceController;
-import com.android.settings.gestures.PickupGesturePreferenceController;
-import com.android.settings.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.inputmethod.GameControllerPreferenceController;
 import com.android.settings.inputmethod.PhysicalKeyboardPreferenceController;
 import com.android.settings.inputmethod.SpellCheckerPreferenceController;
@@ -119,15 +114,6 @@ public class LanguageAndInputSettings extends DashboardFragment {
         controllers.add(gameControllerPreferenceController);
         // Gestures
         controllers.add(new AssistGesturePreferenceController(context, lifecycle, KEY_ASSIST));
-        controllers.add(new SwipeToNotificationPreferenceController(context, lifecycle,
-                KEY_SWIPE_DOWN));
-        controllers.add(new DoubleTwistPreferenceController(context, lifecycle, KEY_DOUBLE_TWIST));
-        controllers.add(new DoubleTapPowerPreferenceController(context, lifecycle,
-                KEY_DOUBLE_TAP_POWER));
-        controllers.add(new PickupGesturePreferenceController(context, lifecycle,
-                ambientDisplayConfiguration, UserHandle.myUserId(), KEY_PICK_UP));
-        controllers.add(new DoubleTapScreenPreferenceController(context, lifecycle,
-                ambientDisplayConfiguration, UserHandle.myUserId(), KEY_DOUBLE_TAP_SCREEN));
         controllers.add(new DefaultAutofillPreferenceController(context));
         return controllers;
     }
