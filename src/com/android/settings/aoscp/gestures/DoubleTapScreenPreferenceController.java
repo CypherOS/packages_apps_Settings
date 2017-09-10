@@ -14,31 +14,33 @@
  * limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp.gestures;
 
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.provider.Settings;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
-import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settings.core.PreferenceController;
 
-public class DoubleTapScreenPreferenceController extends GesturePreferenceController {
+import static android.provider.Settings.Secure.DOZE_PULSE_ON_DOUBLE_TAP;
 
-    private static final String PREF_KEY_VIDEO = "gesture_double_tap_screen_video";
-    private final String mDoubleTapScreenPrefKey;
+public class DoubleTapScreenPreferenceController extends PreferenceController implements
+        Preference.OnPreferenceChangeListener {
+
+    private static final String KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen";
 
     private final AmbientDisplayConfiguration mAmbientConfig;
     @UserIdInt
     private final int mUserId;
 
-    public DoubleTapScreenPreferenceController(Context context, Lifecycle lifecycle,
-            AmbientDisplayConfiguration config, @UserIdInt int userId, String key) {
-        super(context, lifecycle);
+    public DoubleTapScreenPreferenceController(Context context, AmbientDisplayConfiguration config, 
+        @UserIdInt int userId) {
+        super(context);
         mAmbientConfig = config;
         mUserId = userId;
-        mDoubleTapScreenPrefKey = key;
     }
 
     @Override
@@ -48,7 +50,13 @@ public class DoubleTapScreenPreferenceController extends GesturePreferenceContro
 
     @Override
     public String getPreferenceKey() {
-        return mDoubleTapScreenPrefKey;
+        return KEY_DOUBLE_TAP_SCREEN;
+    }
+
+    @Override
+    public void updateState(Preference preference) {
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_PULSE_ON_DOUBLE_TAP, 1);
+        ((SwitchPreference) preference).setChecked(value != 0);
     }
 
     @Override
@@ -57,15 +65,5 @@ public class DoubleTapScreenPreferenceController extends GesturePreferenceContro
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.DOZE_PULSE_ON_DOUBLE_TAP, enabled ? 1 : 0);
         return true;
-    }
-
-    @Override
-    protected String getVideoPrefKey() {
-        return PREF_KEY_VIDEO;
-    }
-
-    @Override
-    protected boolean isSwitchPrefEnabled() {
-        return mAmbientConfig.pulseOnDoubleTapEnabled(mUserId);
     }
 }

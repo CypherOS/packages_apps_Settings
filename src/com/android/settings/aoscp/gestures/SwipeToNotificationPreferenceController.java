@@ -14,33 +14,29 @@
  * limitations under the License.
  */
 
-package com.android.settings.gestures;
+package com.android.settings.aoscp.gestures;
 
 import android.content.Context;
 import android.provider.Settings;
+import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
-import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settings.core.PreferenceController;
 
-public class SwipeToNotificationPreferenceController extends GesturePreferenceController {
+import static android.provider.Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED;
 
-    private static final String PREF_KEY_VIDEO = "gesture_swipe_down_fingerprint_video";
-    private final String mSwipeDownFingerPrefKey;
+public class SwipeToNotificationPreferenceController extends PreferenceController implements
+        Preference.OnPreferenceChangeListener {
 
-    public SwipeToNotificationPreferenceController(Context context, Lifecycle lifecycle,
-            String key) {
-        super(context, lifecycle);
-        mSwipeDownFingerPrefKey = key;
+    private static final String KEY_GESTURE_SWIPE_DOWN_FINGERPRINT = "gesture_swipe_down_fingerprint";
+
+    public SwipeToNotificationPreferenceController(Context context) {
+        super(context);
     }
 
     @Override
     public String getPreferenceKey() {
-        return mSwipeDownFingerPrefKey;
-    }
-
-    @Override
-    protected String getVideoPrefKey() {
-        return PREF_KEY_VIDEO;
+        return KEY_GESTURE_SWIPE_DOWN_FINGERPRINT;
     }
 
     @Override
@@ -50,16 +46,15 @@ public class SwipeToNotificationPreferenceController extends GesturePreferenceCo
     }
 
     @Override
+    public void updateState(Preference preference) {
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), SYSTEM_NAVIGATION_KEYS_ENABLED, 1);
+        ((SwitchPreference) preference).setChecked(value != 0);
+    }
+
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Settings.Secure.putInt(mContext.getContentResolver(),
                 Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, (boolean) newValue ? 1 : 0);
         return true;
-    }
-
-    @Override
-    protected boolean isSwitchPrefEnabled() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED, 0)
-                == 1;
     }
 }
