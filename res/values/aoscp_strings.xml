@@ -34,9 +34,13 @@
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestures</string>
     <string name="gesture_settings_title_summary">Use system and device gestures</string>
-	<string name="gesture_settings_summary">Gestures can appear based on the device that supports them</string>
+    <string name="gesture_settings_summary">Gestures can appear based on the device that supports them</string>
     <!-- Tap to sleep -->
     <string name="tap_to_sleep_title">Tap to sleep</string>
     <string name="tap_to_sleep_title_summary">Double tap on the statusbar to put the device to sleep</string>
+
+    <!-- Tuning Settings -->
+    <string name="tuning_settings_title">Tuning</string>
+    <string name="tuning_settings_description">Here you can alter system specific functions to fit your suitable needs. This allows you to navigate and use some features with ease and comfort.</string>
  
 </resources>

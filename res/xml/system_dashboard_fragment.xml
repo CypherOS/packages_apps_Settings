@@ -55,6 +55,13 @@
     </Preference>
 
     <Preference
+        android:key="tuning_settings"
+        android:title="@string/tuning_settings_title"
+        android:icon="@drawable/ic_tuning"
+        android:order="-25"
+        android:fragment="com.android.settings.aoscp.dashboard.TuningSettings" />
+
+    <Preference
         android:key="reset_dashboard"
         android:title="@string/reset_dashboard_title"
         android:summary="@string/reset_dashboard_summary"
