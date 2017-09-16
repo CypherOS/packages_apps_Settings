@@ -25,6 +25,7 @@ import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.tuning.ScreenshotModePreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
@@ -41,6 +42,8 @@ public class TuningSettings extends DashboardFragment implements Indexable {
 
     private static final String LOG_TAG = "TuningSettings";
 
+    private static final String KEY_SCREENSHOT_TYPE = "screenshot_type";
+    
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -76,6 +79,7 @@ public class TuningSettings extends DashboardFragment implements Indexable {
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+		controllers.add(new ScreenshotModePreferenceController(context, KEY_SCREENSHOT_TYPE));
         return controllers;
     }
 

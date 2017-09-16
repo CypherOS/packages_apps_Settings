@@ -42,5 +42,11 @@
     <!-- Tuning Settings -->
     <string name="tuning_settings_title">Tuning</string>
     <string name="tuning_settings_description">Here you can alter system specific functions to fit your suitable needs. This allows you to navigate and use some features with ease and comfort.</string>
+    <!-- Screenshot Mode -->
+    <string name="screenshot_type_title">Screenshot mode</string>
+    <string name="screenshot_type_fullscreen">Normal</string>
+    <string name="screenshot_type_fullscreen_summary">Take a normal screenshot of the fullscreen to show all of your current contents</string>
+    <string name="screenshot_type_partial">Partial</string>
+    <string name="screenshot_type_partial_summary">Take a screenshot of the selected view area to show only your focused screen contents</string>
  
 </resources>
