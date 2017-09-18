@@ -54,5 +54,14 @@
     <string name="button_settings_title">Buttons</string>
 	<string name="button_settings_title_summary">Perform custom button actions</string>
 	<string name="button_settings_description">Set custom button actions to several hardware keys presented on your device.</string>
+	<!-- Navigation bar -->
+	<string name="navigation_bar_title">Navigation bar</string>
+    <string name="navigation_bar_title_summary">Enable on-screen navigation keys</string>
+	<!-- Swap navigation keys -->
+	<string name="swap_navigation_keys_title">Swap keys</string>
+    <string name="swap_navigation_keys_title_summary">Swap back and recents keys</string>
+	<!-- Button brightness -->
+	<string name="hardware_brightness_keys_title">Backlight</string>
+    <string name="hardware_brightness_keys_title_summary">Enable navigation keys backlight</string>
  
 </resources>
