@@ -25,6 +25,7 @@ import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.buttons.NavigationBarPreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
@@ -40,6 +41,8 @@ import java.util.List;
 public class ButtonSettings extends DashboardFragment implements Indexable {
 
     private static final String LOG_TAG = "ButtonSettings";
+	
+	private static final String KEY_NAVIGATION_BAR = "navigation_bar";
     
     private final FooterPreferenceMixin mFooterPreferenceMixin =
             new FooterPreferenceMixin(this, getLifecycle());
@@ -79,6 +82,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
     private static List<PreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<PreferenceController> controllers = new ArrayList<>();
+		controllers.add(new NavigationBarPreferenceController(context, KEY_NAVIGATION_BAR));
         return controllers;
     }
 
