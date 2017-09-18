@@ -18,6 +18,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/header_category_system">
 
+    <!-- Button Settings -->
+    <Preference
+        android:key="button_settings"
+        android:title="@string/button_settings_title"
+        android:summary="@string/button_settings_title_summary"
+        android:icon="@drawable/ic_buttons"
+        android:order="-70"
+        android:fragment="com.android.settings.aoscp.dashboard.ButtonSettings" />
+
     <!-- Backup -->
     <Preference
         android:key="backup_settings"
