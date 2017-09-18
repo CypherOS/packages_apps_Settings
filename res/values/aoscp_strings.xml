@@ -48,5 +48,10 @@
     <string name="screenshot_type_fullscreen_summary">Take a normal screenshot of the fullscreen to show all of your current contents</string>
     <string name="screenshot_type_partial">Partial</string>
     <string name="screenshot_type_partial_summary">Take a screenshot of the selected view area to show only your focused screen contents</string>
+
+    <!-- Button Settings -->
+    <string name="button_settings_title">Buttons</string>
+    <string name="button_settings_title_summary">Perform custom button actions</string>
+    <string name="button_settings_description">Set custom button actions to several hardware keys presented on your device.</string>
  
 </resources>
