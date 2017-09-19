@@ -22,6 +22,7 @@ import android.provider.SearchIndexableResource;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.display.DozeAlwaysOnPreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
@@ -93,6 +94,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new AutoRotatePreferenceController(context));
         controllers.add(new CameraGesturePreferenceController(context));
         controllers.add(new DozePreferenceController(context));
+		controllers.add(new DozeAlwaysOnPreferenceController(context));
         controllers.add(new FontSizePreferenceController(context));
         controllers.add(new LiftToWakePreferenceController(context));
         controllers.add(new NightDisplayPreferenceController(context));
