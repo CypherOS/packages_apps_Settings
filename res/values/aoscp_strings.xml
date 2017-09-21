@@ -17,8 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- About phone screen, CypherOS version -->
-    <string name="aoscp_version">CypherOS version</string>
-    <!-- About phone screen, CypherOS API level -->
-    <string name="aoscp_api">API</string>
+    <string name="aoscp_build_information_title">CypherOS version</string>
+    <string name="aoscp_build_information_summary">%1$s - %2$s</string>
  
 </resources>

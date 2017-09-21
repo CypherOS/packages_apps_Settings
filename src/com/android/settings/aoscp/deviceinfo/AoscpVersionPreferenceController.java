@@ -38,7 +38,7 @@ public class AoscpVersionPreferenceController extends AbstractPreferenceControll
         implements LifecycleObserver, OnResume {
 
     private static final String TAG = "AoscpVersionPref";
-    private static final String KEY_AOSCP_VERSION = "aoscp_version";
+    private static final String KEY_AOSCP_BUILD_INFORMATION = "aoscp_build_information";
 
     private final UserManager mUserManager;
 
@@ -63,15 +63,17 @@ public class AoscpVersionPreferenceController extends AbstractPreferenceControll
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        final Preference pref = screen.findPreference(KEY_AOSCP_VERSION);
+        final Preference pref = screen.findPreference(KEY_AOSCP_BUILD_INFORMATION);
         if (pref != null) {
-            pref.setSummary(Build.VERSION.AOSCP_VERSION);
+            pref.setSummary(String.format(
+                            mContext.getResources().getString(R.string.aoscp_build_information_summary), 
+                            Build.VERSION.AOSCP_VERSION, Build.VERSION.AOSCP_API));
         }
     }
 
     @Override
     public String getPreferenceKey() {
-        return KEY_AOSCP_VERSION;
+        return KEY_AOSCP_BUILD_INFORMATION;
     }
 
     @Override
@@ -84,7 +86,7 @@ public class AoscpVersionPreferenceController extends AbstractPreferenceControll
 
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
-        if (!TextUtils.equals(preference.getKey(), KEY_AOSCP_VERSION)) {
+        if (!TextUtils.equals(preference.getKey(), KEY_AOSCP_BUILD_INFORMATION)) {
             return false;
         }
         System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
@@ -100,7 +102,7 @@ public class AoscpVersionPreferenceController extends AbstractPreferenceControll
             }
 
             final Intent intent = new Intent(Intent.ACTION_MAIN)
-                    .putExtra("aoscp", preference.getKey().equals(KEY_AOSCP_VERSION))
+                    .putExtra("aoscp", preference.getKey().equals(KEY_AOSCP_BUILD_INFORMATION))
                     .setClassName(
                             "android", com.android.internal.app.PlatLogoActivity.class.getName());
             try {
