@@ -102,6 +102,11 @@
         android:title="@string/lift_to_wake_title" />
 
     <SwitchPreference
+        android:key="doze_always_on"
+        android:title="@string/doze_always_on_title"
+        android:summary="@string/doze_always_on_title_summary" />
+
+    <SwitchPreference
         android:key="doze"
         android:title="@string/doze_title"
         android:summary="@string/doze_summary" />
