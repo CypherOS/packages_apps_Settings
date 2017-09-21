@@ -80,14 +80,9 @@
         </Preference>
 
         <!-- CypherOS firmware version -->
-        <Preference android:key="aoscp_version"
-                android:title="@string/aoscp_version"
-                android:summary="@string/device_info_default" />
-
-        <!-- CypherOS API level -->
-        <Preference android:key="aoscp_api"
-                android:title="@string/aoscp_api"
-                android:summary="@string/device_info_default" />
+        <Preference android:key="aoscp_build_information"
+                android:title="@string/aoscp_build_information_title"
+                android:summary="@string/aoscp_build_information_summary" />
 
         <!-- Device FCC equipment id -->
         <Preference
