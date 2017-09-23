@@ -43,4 +43,9 @@
 
     </PreferenceCategory>
 
+    <SwitchPreference
+        android:key="lockscreen_power_menu_disabled"
+        android:title="@string/lockscreen_power_menu_disabled_title"
+        android:summary="@string/lockscreen_power_menu_disabled_summary" />
+
 </PreferenceScreen>
