@@ -87,5 +87,7 @@
     <!-- Alert Slider -->
     <string name="swap_slider_order_title">Swap slider</string>
     <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
-
+    <!-- Lockscreen battery info indicator -->
+    <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
+    <string name="lockscreen_battery_info_summary">Show charging current, voltage and battery temperature on lockscreen while charging</string>
 </resources>
