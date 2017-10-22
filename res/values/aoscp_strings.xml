@@ -257,4 +257,6 @@
     <!-- Night Light: Time -->
     <string name="night_display_category_time">Time</string>
 
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
 </resources>
