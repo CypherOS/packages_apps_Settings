@@ -221,6 +221,7 @@
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
 
+<<<<<<< HEAD
     <!-- Battery Light -->
     <string name="battery_light_title">Battery light</string>
     <string name="battery_light_summary">Turn on/off the battery light indicator and change it\'s color</string>
@@ -257,4 +258,6 @@
     <!-- Night Light: Time -->
     <string name="night_display_category_time">Time</string>
 
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
 </resources>
