@@ -210,6 +210,9 @@
     <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
     <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">It\u2019s at the bottom of your phone.</string>
 
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
+
     <!-- Ambient display -->
     <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>
