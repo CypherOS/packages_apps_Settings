@@ -202,4 +202,7 @@
     <!-- Auto Face Unlock -->
     <string name="face_auto_unlock_title">Automatically unlock device</string>
     <string name="face_auto_unlock_summary">When face is recognized</string>
+
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
 </resources>
