@@ -61,6 +61,7 @@ import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.display.AutoBrightnessPreferenceController;
 import com.android.settings.display.BatteryPercentagePreferenceController;
+import com.android.settings.display.BatteryChargeAlertPreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -222,6 +223,7 @@ public class PowerUsageSummary extends PowerUsageBase {
         controllers.add(new BatterySaverController(context, getLifecycle()));
         controllers.add(new BatteryPercentagePreferenceController(context));
 		controllers.add(new BatteryLightPreferenceController(context));
+        controllers.add(new BatteryChargeAlertPreferenceController(context));
         return controllers;
     }
 
