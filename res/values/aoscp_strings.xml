@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- General strings -->
+	<string name="ok">OK</string>
+	<string name="reset">Reset</string>
+
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_build_information_title">CypherOS version</string>
     <string name="aoscp_build_information_summary">%1$s - %2$s</string>
@@ -82,5 +86,26 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
+
+	<!-- Battery Light -->
+    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_title_summary">Turn on/off the battery light indicator or change it\'s behavior</string>
+	<string name="battery_light_enable">Enable</string>
+    <string name="battery_low_pulse_title">Pulse if battery low</string>
+    <string name="battery_light_only_full_charge_title">Only light up when fully charged</string>
+    <string name="battery_light_list_title">Colors</string>
+    <string name="battery_light_low_color_title">Battery low</string>
+    <string name="battery_light_medium_color_title">Charging</string>
+    <string name="battery_light_full_color_title">Charged (90%)</string>
+    <string name="battery_light_really_full_color_title">Charged (100%)</string>
+    <string name="fast_color_cat_title">Fast charging</string>
+    <string name="fast_charging_led_enabled_title">Enable fast charging color</string>
+    <string name="fast_charging_led_enabled_summary">When fast charging, use different color till 90% charged</string>
+    <string name="fast_charging_light_color_title">Color</string>
+    <string name="fast_charging_light_color_summary"></string>
+    <string name="edit_battery_settings">Edit battery settings</string>
+    <string name="led_color_green">Green</string>
+    <string name="led_color_red">Red</string>
+    <string name="led_color_blue">Blue</string>
  
 </resources>
