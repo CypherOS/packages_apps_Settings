@@ -25,6 +25,7 @@ import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.tuning.AutoBrightnessPreferenceController;
 import com.android.settings.aoscp.tuning.ScreenshotModePreferenceController;
 import com.android.settings.core.PreferenceController;
 import com.android.settings.core.lifecycle.Lifecycle;
@@ -83,6 +84,7 @@ public class TuningSettings extends DashboardFragment implements Indexable {
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<PreferenceController> controllers = new ArrayList<>();
         controllers.add(new ScreenshotModePreferenceController(context, KEY_SCREENSHOT_TYPE));
+		controllers.add(new AutoBrightnessPreferenceController(context));
         return controllers;
     }
 
