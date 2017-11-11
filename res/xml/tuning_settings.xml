@@ -23,5 +23,15 @@
         android:title="@string/screenshot_type_title"
         android:entries="@array/screenshot_type_entries"
         android:entryValues="@array/screenshot_type_values" />
+		
+	<PreferenceCategory android:key="qs_category"
+	     android:title="@string/qs_category_title">
+		 
+	    <SwitchPreference
+            android:key="qs_auto_brightness"
+            android:title="@string/brightness_icon_title"
+            android:summary="@string/brightness_icon_summary"
+            android:defaultValue="false" />
 
+	</PreferenceCategory>
 </PreferenceScreen>
