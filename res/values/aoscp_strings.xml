@@ -122,5 +122,10 @@
     <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
 	<string name="unit_sec">sec</string>
     <string name="unit_msec">ms</string>
+	
+	<string name="qs_category_title">Quick settings</string>
+	<!-- Quick Settings brightness icon -->
+    <string name="brightness_icon_title">Auto brightness</string>
+    <string name="brightness_icon_summary">Show a brightness icon beside the brightness slider to toggle auto-brightness</string>
  
 </resources>
