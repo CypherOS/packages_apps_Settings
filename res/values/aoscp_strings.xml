@@ -110,5 +110,17 @@
 	
 	<!-- Link/Unlink notification volume -->
 	<string name="link_volume_title">Link ring and notification volume</string>
+	
+	<!-- Notification light -->
+    <string name="light_customization">Notification light</string>
+	<string name="notification_light_general_title">General</string>
+    <string name="custom_light_title">Light color</string>
+    <string name="custom_light_on_time_title">"Light ON time during led pulse (ms)"</string>
+    <string name="custom_light_off_time_title">"Light OFF time during led pulse (ms)"</string>
+    <string name="app_notifications_info_desc">Tap on one of above channels to configure their light colors and other options</string>
+    <string name="value_equals_default">Auto</string>
+    <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
+	<string name="unit_sec">sec</string>
+    <string name="unit_msec">ms</string>
  
 </resources>
