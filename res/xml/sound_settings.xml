@@ -50,7 +50,8 @@
 		<!-- Link Volume Notification -->
         <SwitchPreference
                 android:key="volume_link_notification"
-                android:title="@string/link_volume_option_title"
+                android:title="@string/link_volume_title"
+                android:persistent="false"
                 android:defaultValue="true" />
 
         <!-- Also vibrate for calls -->
