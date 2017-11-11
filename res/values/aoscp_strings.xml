@@ -107,5 +107,8 @@
     <string name="led_color_green">Green</string>
     <string name="led_color_red">Red</string>
     <string name="led_color_blue">Blue</string>
+	
+	<!-- Link/Unlink notification volume -->
+	<string name="link_volume_title">Link ring and notification volume</string>
  
 </resources>
