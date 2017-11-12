@@ -164,8 +164,8 @@ public class AppNotificationSettings extends NotificationSettingsBase {
         mLights.setChecked(mChannel.shouldShowLights());
         //enable custom light prefs is light is enabled
         mCustomLight.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
-        mLightOnTime.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
-        mLightOffTime.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
+        //mLightOnTime.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
+        //mLightOffTime.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
         mLightOnZen.setEnabled(!mLights.isDisabledByAdmin() && mChannel.shouldShowLights());
 
         //light pref
