@@ -41,8 +41,8 @@ public class SwapAlertSliderPreferenceController extends PreferenceController im
     @Override
     public boolean isAvailable() {
         return mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider)
-                && !TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.alert_slider_state_path))
-                && !TextUtils.isEmpty(getResources().getString(com.android.internal.R.string.alert_slider_uevent_match_path));
+                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_state_path))
+                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_uevent_match_path));
     }
 
     @Override
