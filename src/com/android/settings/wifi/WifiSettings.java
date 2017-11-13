@@ -43,6 +43,8 @@ import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceManager.PreferenceComparisonCallback;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -197,10 +199,8 @@ public class WifiSettings extends RestrictedSettingsFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        // TODO(b/37429702): Add animations and preference comparator back after initial screen is
-        // loaded (ODR).
-        setAnimationAllowed(false);
-
+        getPreferenceManager().setPreferenceComparisonCallback(
+                new PreferenceManager.SimplePreferenceComparisonCallback());
         addPreferencesFromResource(R.xml.wifi_settings);
 
         mConnectedAccessPointPreferenceCategory =
@@ -211,6 +211,9 @@ public class WifiSettings extends RestrictedSettingsFragment
                 (PreferenceCategory) findPreference(PREF_KEY_ADDITIONAL_SETTINGS);
         mConfigureWifiSettingsPreference = findPreference(PREF_KEY_CONFIGURE_WIFI_SETTINGS);
         mSavedNetworksPreference = findPreference(PREF_KEY_SAVED_NETWORKS);
+
+        // Hide additional settings until access points are shown during onStart
+        showAdditionalSettings(false);
 
         Context prefContext = getPrefContext();
         mAddPreference = new Preference(prefContext);
@@ -224,6 +227,17 @@ public class WifiSettings extends RestrictedSettingsFragment
 
         mBgThread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
         mBgThread.start();
+    }
+
+    // TODO(b/37429702): Figure out how to temporarily disable animations during startup and remove
+    // this method.
+    private void showAdditionalSettings(boolean visible) {
+        mAdditionalSettingsPreferenceCategory.setVisible(visible);
+        mAdditionalSettingsPreferenceCategory.removeAll();
+        if (visible) {
+            mAdditionalSettingsPreferenceCategory.addPreference(mConfigureWifiSettingsPreference);
+            mAdditionalSettingsPreferenceCategory.addPreference(mSavedNetworksPreference);
+        }
     }
 
     @Override
@@ -376,6 +390,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
         getView().removeCallbacks(mUpdateAccessPointsRunnable);
         updateAccessPointPreferences();
+		showAdditionalSettings(true);
     }
 
     /**
@@ -409,6 +424,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mWifiTracker.stopTracking();
         getView().removeCallbacks(mUpdateAccessPointsRunnable);
         getView().removeCallbacks(mHideProgressBarRunnable);
+        showAdditionalSettings(false);
         super.onStop();
     }
 
