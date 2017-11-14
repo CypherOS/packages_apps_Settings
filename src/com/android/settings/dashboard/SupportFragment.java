@@ -87,10 +87,10 @@ public final class SupportFragment extends InstrumentedFragment implements View.
         setHasOptionsMenu(true);
         mActivity = getActivity();
         mAccountManager = AccountManager.get(mActivity);
-        mSupportFeatureProvider =
-                FeatureFactory.getFactory(mActivity).getSupportFeatureProvider(mActivity);
-        mSupportItemAdapter = new SupportItemAdapter(mActivity, savedInstanceState,
-                mSupportFeatureProvider, mMetricsFeatureProvider, this /* itemClickListener */);
+        // mSupportFeatureProvider =
+                // FeatureFactory.getFactory(mActivity).getSupportFeatureProvider(mActivity);
+        // mSupportItemAdapter = new SupportItemAdapter(mActivity, savedInstanceState,
+                // mSupportFeatureProvider, mMetricsFeatureProvider, this /* itemClickListener */);
         mConnectivityManager =
                 (ConnectivityManager) mActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
@@ -140,8 +140,8 @@ public final class SupportFragment extends InstrumentedFragment implements View.
     @Override
     public void onAccountsUpdated(Account[] accounts) {
         // Account changed, update support items.
-        mSupportItemAdapter.setAccounts(
-                mSupportFeatureProvider.getSupportEligibleAccounts(mActivity));
+        // mSupportItemAdapter.setAccounts(
+                // mSupportFeatureProvider.getSupportEligibleAccounts(mActivity));
     }
 
     @Override
