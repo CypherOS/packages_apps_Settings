@@ -72,9 +72,7 @@ public final class SupportFragment extends InstrumentedFragment implements View.
     private View mContent;
     private RecyclerView mRecyclerView;
     private SupportItemAdapter mSupportItemAdapter;
-    private AccountManager mAccountManager;
-    private SupportFeatureProvider mSupportFeatureProvider;
-    private ConnectivityManager mConnectivityManager;
+    // private SupportFeatureProvider mSupportFeatureProvider;
 
     @Override
     public int getMetricsCategory() {
@@ -86,13 +84,10 @@ public final class SupportFragment extends InstrumentedFragment implements View.
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         mActivity = getActivity();
-        mAccountManager = AccountManager.get(mActivity);
-        mSupportFeatureProvider =
-                FeatureFactory.getFactory(mActivity).getSupportFeatureProvider(mActivity);
-        mSupportItemAdapter = new SupportItemAdapter(mActivity, savedInstanceState,
-                mSupportFeatureProvider, mMetricsFeatureProvider, this /* itemClickListener */);
-        mConnectivityManager =
-                (ConnectivityManager) mActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        // mSupportFeatureProvider =
+                // FeatureFactory.getFactory(mActivity).getSupportFeatureProvider(mActivity);
+        // mSupportItemAdapter = new SupportItemAdapter(mActivity, savedInstanceState,
+                // mSupportFeatureProvider, mMetricsFeatureProvider, this /* itemClickListener */);
     }
 
     @Override
@@ -109,26 +104,12 @@ public final class SupportFragment extends InstrumentedFragment implements View.
     @Override
     public void onResume() {
         super.onResume();
-        // Monitor account change.
-        mAccountManager.addOnAccountsUpdatedListener(
-                this /* listener */, null /* handler */, true /* updateImmediately */);
-        // Monitor connectivity
-        mConnectivityManager.registerNetworkCallback(
-                new NetworkRequest.Builder()
-                        .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                        .build(),
-                mNetworkCallback);
-        mSupportItemAdapter.setHasInternet(hasInternet());
         mSupportItemAdapter.refreshData();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        // Stop monitor account change.
-        mAccountManager.removeOnAccountsUpdatedListener(this /* listener */);
-        // Stop monitor connectivity.
-        mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
     }
 
     @Override
@@ -140,8 +121,8 @@ public final class SupportFragment extends InstrumentedFragment implements View.
     @Override
     public void onAccountsUpdated(Account[] accounts) {
         // Account changed, update support items.
-        mSupportItemAdapter.setAccounts(
-                mSupportFeatureProvider.getSupportEligibleAccounts(mActivity));
+        // mSupportItemAdapter.setAccounts(
+                // mSupportFeatureProvider.getSupportEligibleAccounts(mActivity));
     }
 
     @Override
@@ -149,21 +130,5 @@ public final class SupportFragment extends InstrumentedFragment implements View.
         final SupportItemAdapter.ViewHolder vh =
                 (SupportItemAdapter.ViewHolder) mRecyclerView.getChildViewHolder(v);
         mSupportItemAdapter.onItemClicked(vh.getAdapterPosition());
-    }
-
-    private void postConnectivityChanged() {
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mSupportItemAdapter != null) {
-                    mSupportItemAdapter.setHasInternet(hasInternet());
-                }
-            }
-        });
-    }
-
-    private boolean hasInternet() {
-        final NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 }
