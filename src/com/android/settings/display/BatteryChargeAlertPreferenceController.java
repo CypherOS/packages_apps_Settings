@@ -49,7 +49,7 @@ public class BatteryChargeAlertPreferenceController extends AbstractPreferenceCo
     @Override
     public void updateState(Preference preference) {
         int setting = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.ALERT_ON_CHARGED_LEVEL, -1, UserHandle.USER_CURRENT);
+                Settings.System.ALERT_ON_CHARGED_LEVEL, 80, UserHandle.USER_CURRENT);
         ((ListPreference) preference).setValue(Integer.toString(setting));
     }
 
