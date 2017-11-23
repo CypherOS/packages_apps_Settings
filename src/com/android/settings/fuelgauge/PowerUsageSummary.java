@@ -222,7 +222,7 @@ public class PowerUsageSummary extends PowerUsageBase {
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new BatterySaverController(context, getLifecycle()));
         controllers.add(new BatteryPercentagePreferenceController(context));
-		controllers.add(new BatteryLightPreferenceController(context));
+		controllers.add(new BatteryLightPreferenceController(context, getLifecycle()));
         controllers.add(new BatteryChargeAlertPreferenceController(context));
         return controllers;
     }
