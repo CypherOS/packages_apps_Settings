@@ -41,6 +41,7 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
+import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
 import com.android.settings.applications.AdvancedAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.DrawOverlayDetails;
@@ -202,6 +203,7 @@ public class SettingsGateway {
             ChooseLockPattern.ChooseLockPatternFragment.class.getName(),
             InstalledAppDetails.class.getName(),
             BatterySaverSettings.class.getName(),
+            BatteryLightSettings.class.getName(),
             AppNotificationSettings.class.getName(),
             ChannelNotificationSettings.class.getName(),
             ApnSettings.class.getName(),

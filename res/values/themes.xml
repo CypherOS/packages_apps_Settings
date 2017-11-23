@@ -135,6 +135,7 @@
         <item name="preferenceStyle">@style/SettingsPreference</item>
         <item name="seekBarPreferenceStyle">@style/SettingsSeekBarPreference</item>
         <item name="switchPreferenceStyle">@style/SettingsSwitchPreference</item>
+        <item name="batteryLightPreference">@style/BatteryLightPreference</item>
     </style>
 
     <style name="PreferenceTheme.SetupWizard" parent="PreferenceTheme">
