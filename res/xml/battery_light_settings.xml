@@ -15,11 +15,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="battery_light_enabled"
-        android:title="@string/battery_light_enable"
-        android:persistent="false"/>
-
     <PreferenceCategory
         android:key="general_section"
         android:title="@string/notification_light_general_title">
@@ -27,21 +22,18 @@
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="battery_light_pulse"
             android:title="@string/battery_low_pulse_title"
-            android:dependency="battery_light_enabled"
             android:persistent="false" />
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="battery_light_only_fully_charged"
             android:title="@string/battery_light_only_full_charge_title"
-            android:dependency="battery_light_enabled"
             android:defaultValue="false" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="colors_list"
-        android:title="@string/battery_light_list_title"
-        android:dependency="battery_light_enabled" >
+        android:title="@string/battery_light_list_title">
 
         <com.android.settings.aoscp.fuelgauge.BatteryLightPreference
             android:key="low_color"
@@ -67,8 +59,7 @@
 
     <PreferenceCategory
         android:key="fast_color_cat"
-        android:title="@string/fast_color_cat_title"
-        android:dependency="battery_light_enabled" >
+        android:title="@string/fast_color_cat_title">
 
         <com.android.settings.preference.SystemSettingSwitchPreference
             android:key="fast_charging_led_enabled"
