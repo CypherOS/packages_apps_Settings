@@ -96,8 +96,9 @@
 	
 	<!-- Battery Light -->
     <string name="battery_light_title">Battery light</string>
-    <string name="battery_light_title_summary">Turn on/off the battery light indicator or change it\'s behavior</string>
-	<string name="battery_light_enable">Enable</string>
+    <string name="battery_light_title_summary_on">On / <xliff:g name="set_state" example="Battery level will indicate"></xliff:g></string>
+    <string name="battery_light_title_summary_off">Off / <xliff:g name="set_state" example="Battery level will not indicate"></xliff:g></string>
+	<string name="battery_light_description">Turn on/off the battery light indicator or change it\'s behavior</string>
     <string name="battery_low_pulse_title">Pulse if battery low</string>
     <string name="battery_light_only_full_charge_title">Only light up when fully charged</string>
     <string name="battery_light_list_title">Colors</string>
