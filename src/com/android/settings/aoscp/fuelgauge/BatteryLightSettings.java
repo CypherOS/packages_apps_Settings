@@ -19,7 +19,9 @@ package com.android.settings.aoscp.fuelgauge;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
@@ -27,26 +29,33 @@ import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.PreferenceFragment;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.provider.Settings.System;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Switch;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import com.android.settings.notification.SettingPref;
 import com.android.settings.preference.SystemSettingSwitchPreference;
+import com.android.settings.widget.SwitchBar;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class BatteryLightSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        SwitchBar.OnSwitchChangeListener, Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "BatteryLightSettings";
+	private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
     private static final String LOW_COLOR_PREF = "low_color";
     private static final String MEDIUM_COLOR_PREF = "medium_color";
@@ -55,14 +64,15 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private static final String KEY_CATEGORY_GENERAL = "general_section";
     private static final String FAST_COLOR_PREF = "fast_color";
     private static final String FAST_CHARGING_LED_PREF = "fast_charging_led_enabled";
-    private static final String BATTERY_LIGHT_PREF = "battery_light_enabled";
     private static final String BATTERY_PULSE_PREF = "battery_light_pulse";
     private static final String BATTERY_LIGHT_ONLY_FULL_PREF = "battery_light_only_fully_charged";
     private static final String KEY_CATEGORY_FAST_CHARGE = "fast_color_cat";
     private static final String KEY_CATEGORY_CHARGE_COLORS = "colors_list";
+	
+	private static final long WAIT_FOR_SWITCH_ANIM = 500;
+	private final Handler mHandler = new Handler();
 
     private boolean mMultiColorLed;
-    private SystemSettingSwitchPreference mEnabledPref;
     private SystemSettingSwitchPreference mPulsePref;
     private SystemSettingSwitchPreference mOnlyFullPref;
     private SystemSettingSwitchPreference mFastBatteryLightEnabledPref;
@@ -76,6 +86,12 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private int mLowBatteryWarningLevel;
     private boolean mBatteryLightEnabled;
     private boolean mFastBatteryLightEnabled;
+	
+	private boolean mCreated;
+	private boolean mValidListener;
+	private Context mContext;
+	private SwitchBar mSwitchBar;
+    private Switch mSwitch;
 
     @Override
     public int getMetricsCategory() {
@@ -85,7 +101,17 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		if (mCreated) {
+            mSwitchBar.show();
+            return;
+        }
+		mCreated = true;
         addPreferencesFromResource(R.xml.battery_light_settings);
+		
+		mContext = getActivity();
+        mSwitchBar = ((SettingsActivity) mContext).getSwitchBar();
+        mSwitch = mSwitchBar.getSwitch();
+        mSwitchBar.show();
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getContentResolver();
@@ -93,11 +119,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.integer.config_lowBatteryWarningLevel);
         mBatteryLightEnabled = getResources().getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed);
-
-        mEnabledPref = (SystemSettingSwitchPreference)prefSet.findPreference(BATTERY_LIGHT_PREF);
-        mEnabledPref.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.BATTERY_LIGHT_ENABLED, mBatteryLightEnabled ? 1 : 0) != 0);
-        mEnabledPref.setOnPreferenceChangeListener(this);
 
         mPulsePref = (SystemSettingSwitchPreference)prefSet.findPreference(BATTERY_PULSE_PREF);
         mPulsePref.setChecked(Settings.System.getInt(resolver,
@@ -142,11 +163,92 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
                 Settings.System.BATTERY_LIGHT_ONLY_FULLY_CHARGED, 0) != 0;
         updateEnablement(showOnlyWhenFull);
     }
+	
+	@Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mSwitchBar.hide();
+    }
 
     @Override
     public void onResume() {
         super.onResume();
+		if (!mValidListener) {
+            mSwitchBar.addOnSwitchChangeListener(this);
+            mValidListener = true;
+        }
+        updateSwitch();
         refreshDefault();
+    }
+	
+	@Override
+    public void onPause() {
+        super.onPause();
+        if (mValidListener) {
+            mSwitchBar.removeOnSwitchChangeListener(this);
+            mValidListener = false;
+        }
+    }
+	
+	@Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        mHandler.removeCallbacks(mEnableBatteryLight);
+        if (isChecked) {
+            mHandler.postDelayed(mEnableBatteryLight, WAIT_FOR_SWITCH_ANIM);
+        } else {
+            if (DEBUG) Log.d(TAG, "Disabling battery light from settings");
+            tryEnableBatteryLight(false);
+        }
+    }
+	
+	private void tryEnableBatteryLight(boolean enabled) {
+        if (!setBatteryLightEnabled(enabled)) {
+            if (DEBUG) Log.d(TAG, "Setting enabled failed, fallback to current value");
+            mHandler.post(mUpdateSwitch);
+        }
+    }
+	
+	private void updateSwitch() {
+        final boolean enabled = isBatteryLightEnabled();
+        if (DEBUG) Log.d(TAG, "updateSwitch: isChecked=" + mSwitch.isChecked() + " enabled=" + enabled);
+        if (enabled == mSwitch.isChecked()) return;
+
+        // set listener to null so that that code below doesn't trigger onCheckedChanged()
+        if (mValidListener) {
+            mSwitchBar.removeOnSwitchChangeListener(this);
+        }
+        mSwitch.setChecked(enabled);
+        if (mValidListener) {
+            mSwitchBar.addOnSwitchChangeListener(this);
+        }
+    }
+
+    private final Runnable mUpdateSwitch = new Runnable() {
+        @Override
+        public void run() {
+            updateSwitch();
+        }
+    };
+
+    private final Runnable mEnableBatteryLight = new Runnable() {
+        @Override
+        public void run() {
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    if (DEBUG) Log.d(TAG, "Enabling battery light from settings");
+                    tryEnableBatteryLight(true);
+                }
+            });
+        }
+    };
+	
+	public boolean isBatteryLightEnabled() {
+		return Settings.System.getInt(mContext.getContentResolver(), BATTERY_LIGHT_ENABLED, mBatteryLightEnabled ? 1 : 0) != 0;
+    }
+	
+	public boolean setBatteryLightEnabled(boolean enabled) {
+		return Settings.System.putInt(mContext.getContentResolver(), BATTERY_LIGHT_ENABLED, enabled ? 1 : 0);
     }
 
     private void refreshDefault() {
@@ -243,7 +345,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     }
 
     protected void resetToDefaults() {
-        if (mEnabledPref != null) mEnabledPref.setChecked(true);
         if (mPulsePref != null) mPulsePref.setChecked(false);
         if (mOnlyFullPref != null) mOnlyFullPref.setChecked(false);
         if (mFastBatteryLightEnabledPref != null) mFastBatteryLightEnabledPref.setChecked(false);
@@ -252,11 +353,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mEnabledPref) {
-            boolean value = (Boolean) objValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.BATTERY_LIGHT_ENABLED, value ? 1:0);
-        } else if (preference == mPulsePref) {
+        if (preference == mPulsePref) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.BATTERY_LIGHT_PULSE, value ? 1:0);
@@ -309,7 +406,6 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
                     ArrayList<String> result = new ArrayList<String>();
                     final Resources res = context.getResources();
                     if (!res.getBoolean(com.android.internal.R.bool.config_intrusiveBatteryLed)) {
-                        result.add(BATTERY_LIGHT_PREF);
                         result.add(BATTERY_PULSE_PREF);
                         result.add(BATTERY_LIGHT_ONLY_FULL_PREF);
                     }
