@@ -23,4 +23,6 @@
         <attr name="unitsLeft" format="string|reference" />
         <attr name="unitsRight" format="string|reference" />
     </declare-styleable>
+	
+	<attr name="batteryLightPreference" format="reference" />
 </resources>
