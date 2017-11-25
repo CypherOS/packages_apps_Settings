@@ -16,16 +16,18 @@
     android:layout_height="wrap_content"
     android:minHeight="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
-    android:paddingEnd="?android:attr/scrollbarSize"
-    android:background="@android:drawable/list_selector_background"
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:focusable="true" >
+    android:focusable="true"
+    android:clipToPadding="false">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dip"
-        android:layout_marginEnd="6dip"
+        android:layout_marginStart="56dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="10dip"
         android:layout_marginBottom="6dip"
         android:layout_weight="1">
@@ -54,8 +56,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginStart="15dip"
-            android:layout_marginEnd="6dip"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="5dip"
             android:layout_marginBottom="10dip" >
 
