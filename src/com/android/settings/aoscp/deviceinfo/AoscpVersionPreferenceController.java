@@ -28,9 +28,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.core.PreferenceController;
-import com.android.settings.core.lifecycle.Lifecycle;
-import com.android.settings.core.lifecycle.LifecycleObserver;
-import com.android.settings.core.lifecycle.events.OnResume;
+import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnResume;
 import com.android.settings.R;
 import com.android.settingslib.RestrictedLockUtils;
 

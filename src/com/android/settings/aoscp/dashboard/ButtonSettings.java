@@ -48,12 +48,12 @@ import com.android.settings.aoscp.buttons.NavigationBarPreferenceController;
 import com.android.settings.aoscp.buttons.SwapAlertSliderPreferenceController;
 import com.android.settings.aoscp.buttons.SwapNavigationKeysPreferenceController;
 import com.android.settings.core.PreferenceController;
-import com.android.settings.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
-import com.android.settings.widget.FooterPreferenceMixin;
+import com.android.settingslib.widget.FooterPreferenceMixin;
 
 import java.util.ArrayList;
 import java.util.Arrays;

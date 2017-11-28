@@ -30,10 +30,10 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
 import com.android.settings.core.PreferenceController;
-import com.android.settings.core.lifecycle.Lifecycle;
-import com.android.settings.core.lifecycle.LifecycleObserver;
-import com.android.settings.core.lifecycle.events.OnStart;
-import com.android.settings.core.lifecycle.events.OnStop;
+import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnStart;
+import com.android.settingslib.core.lifecycle.events.OnStop;
 import com.android.settings.widget.MasterSwitchPreference;
 
 import static android.provider.Settings.System.BATTERY_LIGHT_ENABLED;
