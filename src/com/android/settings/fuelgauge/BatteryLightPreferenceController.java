@@ -136,8 +136,10 @@ public class BatteryLightPreferenceController extends PreferenceController imple
             if (DEBUG) {
                 Log.d(TAG, "Received: Battery Light state");
             }
-            mBatteryLightPref.setChecked(isBatteryLightEnabled());
-            updateSummary();
+			if (isAvailable()) {
+                mBatteryLightPref.setChecked(isBatteryLightEnabled());
+                updateSummary();
+			}
         }
 
         public void setListening(boolean listening) {
