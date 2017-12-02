@@ -138,8 +138,10 @@ public class BatteryLightPreferenceController extends AbstractPreferenceControll
             if (DEBUG) {
                 Log.d(TAG, "Received: Battery Light state");
             }
-            mBatteryLightPref.setChecked(isBatteryLightEnabled());
-            updateSummary();
+            if (isAvailable()) {
+                mBatteryLightPref.setChecked(isBatteryLightEnabled());
+                updateSummary();
+            }
         }
 
         public void setListening(boolean listening) {
