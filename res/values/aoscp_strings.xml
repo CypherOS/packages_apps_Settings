@@ -142,6 +142,9 @@
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Wake device</string>
     <string name="volume_rocker_wake_summary">When pressing one of the volume keys</string>
+	<!-- Alert Slider -->
+	<string name="swap_slider_order_title">Swap slider</string>
+    <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
 
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestures</string>
