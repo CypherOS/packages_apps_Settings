@@ -127,5 +127,13 @@
 	<!-- Quick Settings brightness icon -->
     <string name="brightness_icon_title">Auto brightness</string>
     <string name="brightness_icon_summary">Show a brightness icon beside the brightness slider to toggle auto-brightness</string>
+	
+	<!-- Charging Alerts -->
+    <string name="alert_on_charged_level_title">Charging alert</string>
+    <string name="alert_on_charged_level_summary">Send an alert, when the desired charging level is reached</string>
+    <string name="alert_on_charged_level_dis">Disabled</string>
+    <string name="alert_on_charged_level_80">"80%"</string>
+    <string name="alert_on_charged_level_90">"90%"</string>
+    <string name="alert_on_charged_level_99">"99%"</string>
  
 </resources>
