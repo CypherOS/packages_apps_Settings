@@ -17,8 +17,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- General strings -->
-	<string name="ok">OK</string>
-	<string name="reset">Reset</string>
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
 
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_build_information_title">CypherOS version</string>
@@ -86,16 +86,19 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
-	<!-- Alert Slider -->
-	<string name="swap_slider_order_title">Swap slider</string>
+    <!-- Alert Slider -->
+    <string name="swap_slider_order_title">Swap slider</string>
     <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
 
-	<!-- Battery Light -->
+    <!-- Battery Light -->
     <string name="battery_light_title">Battery light</string>
-    <string name="battery_light_title_summary">Turn on/off the battery light indicator or change it\'s behavior</string>
-	<string name="battery_light_enable">Enable</string>
-    <string name="battery_low_pulse_title">Pulse if battery low</string>
-    <string name="battery_light_only_full_charge_title">Only light up when fully charged</string>
+    <string name="battery_light_title_summary_on">On / Battery level will indicate</string>
+    <string name="battery_light_title_summary_off">Off / Battery level will not indicate</string>
+    <string name="battery_light_description">Turn on/off the battery light indicator or change it\'s behavior</string>
+    <string name="battery_low_pulse_title">Pulse when low</string>
+    <string name="battery_low_pulse_title_summary">Pulse when the battery level is low</string>
+    <string name="battery_light_only_full_charge_title">Fully charged indication</string>
+    <string name="battery_light_only_full_charge_title_summary">Only show the battery light when the device is fully charged</string>
     <string name="battery_light_list_title">Colors</string>
     <string name="battery_light_low_color_title">Battery low</string>
     <string name="battery_light_medium_color_title">Charging</string>
@@ -110,36 +113,36 @@
     <string name="led_color_green">Green</string>
     <string name="led_color_red">Red</string>
     <string name="led_color_blue">Blue</string>
-	
-	<!-- Link/Unlink notification volume -->
-	<string name="link_volume_title">Link ring and notification volume</string>
-	
-	<!-- Notification light -->
+
+    <!-- Link/Unlink notification volume -->
+    <string name="link_volume_title">Link ring and notification volume</string>
+
+    <!-- Notification light -->
     <string name="light_customization">Notification light</string>
-	<string name="notification_light_general_title">General</string>
+    <string name="notification_light_general_title">General</string>
     <string name="custom_light_title">Light color</string>
     <string name="custom_light_on_time_title">"Light ON time during led pulse (ms)"</string>
     <string name="custom_light_off_time_title">"Light OFF time during led pulse (ms)"</string>
     <string name="app_notifications_info_desc">Tap on one of above channels to configure their light colors and other options</string>
     <string name="value_equals_default">Auto</string>
     <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
-	<string name="unit_sec">sec</string>
+    <string name="unit_sec">sec</string>
     <string name="unit_msec">ms</string>
-	
-	<string name="qs_category_title">Quick settings</string>
-	<!-- Quick Settings brightness icon -->
+
+    <string name="qs_category_title">Quick settings</string>
+    <!-- Quick Settings brightness icon -->
     <string name="brightness_icon_title">Auto brightness</string>
     <string name="brightness_icon_summary">Show a brightness icon beside the brightness slider to toggle auto-brightness</string>
-	
-	<!-- Charging Alerts -->
+
+    <!-- Charging Alerts -->
     <string name="alert_on_charged_level_title">Charging alert</string>
     <string name="alert_on_charged_level_summary">Send an alert, when the desired charging level is reached</string>
     <string name="alert_on_charged_level_dis">Disabled</string>
     <string name="alert_on_charged_level_80">"80%"</string>
     <string name="alert_on_charged_level_90">"90%"</string>
     <string name="alert_on_charged_level_99">"99%"</string>
-	
-	<!-- Vibrate on plug -->
+
+    <!-- Vibrate on plug -->
     <string name="vibrate_on_plug_title">Vibrate on plug</string>
  
 </resources>
