@@ -674,7 +674,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
         public List<String> getNonIndexableKeys(Context context) {
             List<String> keys = super.getNonIndexableKeys(context);
             // Duplicates in Display
-            keys.add(FONT_SIZE_PREFERENCE_SCREEN);
             keys.add(DisplaySettings.KEY_DISPLAY_SIZE);
 
             return keys;
