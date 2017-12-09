@@ -20,6 +20,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -38,6 +40,12 @@ import java.util.List;
 public class GestureSettings extends DashboardFragment implements Indexable {
 
     private static final String LOG_TAG = "GestureSettings";
+			
+	@Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+		mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_summary);
+    }
 
     @Override
     public int getMetricsCategory() {
