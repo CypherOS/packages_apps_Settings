@@ -26,5 +26,9 @@
     <string name="reset_settings_title">Feature reset</string>
     <string name="reset_settings_summary">Reset feature preferences</string>
     <string name="keywords_settings_reset">reset</string>
+
+    <!-- Pocket judge -->
+    <string name="pocket_judge_title">Pocket detection</string>
+    <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
  
 </resources>
