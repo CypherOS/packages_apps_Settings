@@ -216,5 +216,8 @@
     <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
+	<!-- Alert Slider -->
+	<string name="swap_slider_order_title">Swap slider</string>
+    <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
 
 </resources>
