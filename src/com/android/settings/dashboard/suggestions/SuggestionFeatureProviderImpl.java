@@ -36,11 +36,6 @@ import com.android.settings.Settings.DoubleTwistSuggestionActivity;
 import com.android.settings.Settings.NightDisplaySuggestionActivity;
 import com.android.settings.Settings.SwipeToNotificationSuggestionActivity;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
-import com.android.settings.gestures.DoubleTapPowerPreferenceController;
-import com.android.settings.gestures.DoubleTapScreenPreferenceController;
-import com.android.settings.gestures.DoubleTwistPreferenceController;
-import com.android.settings.gestures.PickupGesturePreferenceController;
-import com.android.settings.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.support.NewDeviceIntroSuggestionActivity;
 import com.android.settingslib.drawer.Tile;
@@ -79,21 +74,6 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
         }
         if (className.equals(NewDeviceIntroSuggestionActivity.class.getName())) {
             return NewDeviceIntroSuggestionActivity.isSuggestionComplete(context);
-        } else if (className.equals(DoubleTapPowerSuggestionActivity.class.getName())) {
-            return DoubleTapPowerPreferenceController
-                    .isSuggestionComplete(context, getSharedPrefs(context));
-        } else if (className.equals(DoubleTwistSuggestionActivity.class.getName())) {
-            return DoubleTwistPreferenceController
-                    .isSuggestionComplete(context, getSharedPrefs(context));
-        } else if (className.equals(AmbientDisplaySuggestionActivity.class.getName())) {
-            return DoubleTapScreenPreferenceController
-                    .isSuggestionComplete(context, getSharedPrefs(context));
-        } else if (className.equals(AmbientDisplayPickupSuggestionActivity.class.getName())) {
-            return PickupGesturePreferenceController
-                    .isSuggestionComplete(context, getSharedPrefs(context));
-        } else if (className.equals(SwipeToNotificationSuggestionActivity.class.getName())) {
-            return SwipeToNotificationPreferenceController
-                    .isSuggestionComplete(context, getSharedPrefs(context));
         }
         return false;
     }

@@ -27,15 +27,15 @@
             android:title="@string/doze_always_on_title"
             android:summary="@string/doze_always_on_summary" />
 
-        <Preference
+        <SwitchPreference
             android:key="ambient_display_double_tap"
             android:title="@string/ambient_display_title"
-            android:fragment="com.android.settings.gestures.DoubleTapScreenSettings" />
+            android:summary="@string/ambient_display_summary" />
 
-        <Preference
+        <SwitchPreference
             android:key="ambient_display_pick_up"
             android:title="@string/ambient_display_pickup_title"
-            android:fragment="com.android.settings.gestures.PickupGestureSettings" />
+            android:summary="@string/ambient_display_pickup_summary" />
 
     </PreferenceCategory>
 

@@ -36,9 +36,13 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
-import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
+import com.android.settings.aoscp.gestures.TapToWakePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.widget.SwitchBar;
@@ -226,6 +230,10 @@ public class GesturesSettings extends DashboardFragment implements
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
+		controllers.add(new DoubleTapPowerPreferenceController(context));
+        controllers.add(new DoubleTwistPreferenceController(context));
+        controllers.add(new SwipeToNotificationPreferenceController(context));
+        controllers.add(new TapToWakePreferenceController(context));
         return controllers;
     }
 
