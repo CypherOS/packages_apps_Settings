@@ -20,14 +20,20 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.UserHandle;
+import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
+import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
+import com.android.settings.aoscp.gestures.TapToWakePreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -76,7 +82,12 @@ public class GestureSettings extends DashboardFragment implements Indexable {
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-		controllers.add(new TapToSleepPreferenceController(context));
+        AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
+        controllers.add(new DoubleTapPowerPreferenceController(context));
+        controllers.add(new DoubleTwistPreferenceController(context));
+        controllers.add(new SwipeToNotificationPreferenceController(context));
+        controllers.add(new TapToSleepPreferenceController(context));
+        controllers.add(new TapToWakePreferenceController(context));
         return controllers;
     }
 
