@@ -31,6 +31,7 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -41,7 +42,7 @@ import com.android.settings.widget.MasterSwitchPreference;
 import static android.provider.Settings.System.BATTERY_LIGHT_ENABLED;
 
 public class BatteryLightPreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener, LifecycleObserver, OnStart, OnStop {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener, LifecycleObserver, OnStart, OnStop {
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String TAG = "BatteryLightPreferenceController";
     private static final boolean DEBUG = false;

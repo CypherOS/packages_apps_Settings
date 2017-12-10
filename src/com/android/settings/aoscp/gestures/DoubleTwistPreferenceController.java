@@ -28,6 +28,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -35,7 +36,7 @@ import com.android.settings.Utils;
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TWIST_TO_FLIP_ENABLED;
 
 public class DoubleTwistPreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_GESTURE_DOUBLE_TWIST = "gesture_double_twist";
     private final UserManager mUserManager;

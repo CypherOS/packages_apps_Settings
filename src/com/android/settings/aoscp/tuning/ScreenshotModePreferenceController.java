@@ -23,12 +23,13 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.ListWithEntrySummaryPreference;
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.System.SCREENSHOT_TYPE;
 
 public class ScreenshotModePreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "ScreenshotModePref";
   
