@@ -34,7 +34,6 @@ import com.android.settings.display.NightDisplayPreferenceController;
 import com.android.settings.display.NightModePreferenceController;
 import com.android.settings.display.PocketLockPreferenceController;
 import com.android.settings.display.ScreenSaverPreferenceController;
-import com.android.settings.display.TapToWakePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
 import com.android.settings.display.VrDisplayPreferenceController;
@@ -99,11 +98,14 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new NightModePreferenceController(context));
         controllers.add(new PocketLockPreferenceController(context));
         controllers.add(new ScreenSaverPreferenceController(context));
+<<<<<<< HEAD
         controllers.add(new AmbientDisplayPreferenceController(
                 context,
                 new AmbientDisplayConfiguration(context),
                 KEY_AMBIENT_DISPLAY));
         controllers.add(new TapToWakePreferenceController(context));
+=======
+>>>>>>> fd5421b9c1... Settings: move all gestures into a common setting
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new VrDisplayPreferenceController(context));
         controllers.add(new WallpaperPreferenceController(context));
