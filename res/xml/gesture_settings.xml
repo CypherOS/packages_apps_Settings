@@ -18,10 +18,30 @@
     android:title="@string/gesture_settings_title"
     settings:keywords="@string/keywords_gestures">
 
+    <SwitchPreference
+        android:key="tap_to_wake"
+        android:title="@string/tap_to_wake"
+        android:summary="@string/tap_to_wake_summary" />
+
+    <SwitchPreference
+        android:key="gesture_double_tap_power"
+        android:title="@string/double_tap_power_for_camera_title"
+        android:summary="@string/double_tap_power_for_camera_summary" />
+
+    <SwitchPreference
+        android:key="gesture_double_twist"
+        android:title="@string/double_twist_for_camera_mode_title"
+        android:summary="@string/double_twist_for_camera_mode_summary" />
+
+    <SwitchPreference
+        android:key="gesture_swipe_down_fingerprint"
+        android:title="@string/fingerprint_swipe_for_notifications_title"
+        android:summary="@string/fingerprint_swipe_for_notifications_summary" />
+
     <PreferenceCategory
             android:key="fingerprint_gestures"
             android:title="@string/fingerprint_gestures_title">
-      
+
         <ListPreference
             android:key="double_tap"
             android:title="@string/gestures_double_tap"
