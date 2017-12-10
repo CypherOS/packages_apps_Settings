@@ -18,9 +18,11 @@ package com.android.settings.system;
 
 import android.content.Context;
 
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
-public class FeatureResetPreferenceController extends AbstractPreferenceController {
+public class FeatureResetPreferenceController extends AbstractPreferenceController implements
+        PreferenceControllerMixin {
 
     public FeatureResetPreferenceController(Context context) {
         super(context);

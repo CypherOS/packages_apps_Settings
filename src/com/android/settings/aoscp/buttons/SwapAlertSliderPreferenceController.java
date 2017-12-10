@@ -22,12 +22,13 @@ import android.support.v14.preference.SwitchPreference;
 import android.text.TextUtils;
 
 import com.android.settings.R;
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.System.ALERT_SLIDER_ORDER;
 
 public class SwapAlertSliderPreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "SwapAlertSliderPref";
   

@@ -21,12 +21,13 @@ import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 
 public class DoubleTapPowerPreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_GESTURE_DOUBLE_TAP_POWER = "gesture_double_tap_power";
 

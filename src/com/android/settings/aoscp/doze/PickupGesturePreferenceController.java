@@ -24,12 +24,13 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.Secure.DOZE_PULSE_ON_PICK_UP;
 
 public class PickupGesturePreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_GESTURE_PICK_UP = "ambient_display_pick_up";
 

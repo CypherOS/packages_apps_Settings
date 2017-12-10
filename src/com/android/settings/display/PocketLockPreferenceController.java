@@ -18,12 +18,13 @@ import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.System.POCKET_JUDGE;
 
 public class PocketLockPreferenceController extends AbstractPreferenceController implements
-        Preference.OnPreferenceChangeListener {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
     private static final String KEY_POCKET_JUDGE = "pocket_judge";
 
