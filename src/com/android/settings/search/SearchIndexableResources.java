@@ -60,11 +60,6 @@ import com.android.settings.fuelgauge.BatterySaverSettings;
 import com.android.settings.fuelgauge.PowerUsageAdvanced;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.gestures.AssistGestureSettings;
-import com.android.settings.gestures.DoubleTapPowerSettings;
-import com.android.settings.gestures.DoubleTapScreenSettings;
-import com.android.settings.gestures.DoubleTwistGestureSettings;
-import com.android.settings.gestures.PickupGestureSettings;
-import com.android.settings.gestures.SwipeToNotificationSettings;
 import com.android.settings.inputmethod.AvailableVirtualKeyboardFragment;
 import com.android.settings.inputmethod.PhysicalKeyboardFragment;
 import com.android.settings.inputmethod.VirtualKeyboardFragment;
@@ -165,12 +160,6 @@ public final class SearchIndexableResources {
         addIndex(SpecialAccessSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_applications);
         addIndex(UserSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_multiuser);
         addIndex(AssistGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(PickupGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(DoubleTapScreenSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(DoubleTapPowerSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(DoubleTwistGestureSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
-        addIndex(SwipeToNotificationSettings.class, NO_DATA_RES_ID,
-                R.drawable.ic_settings_gestures);
         addIndex(LanguageAndInputSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_language);
         addIndex(LocationSettings.class, R.xml.location_settings, R.drawable.ic_settings_location);
         addIndex(ScanningSettings.class, R.xml.location_scanning, R.drawable.ic_settings_location);
