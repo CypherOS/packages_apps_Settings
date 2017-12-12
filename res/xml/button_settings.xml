@@ -24,11 +24,11 @@
             android:summary="@string/navigation_bar_title_summary"
             android:defaultValue="false" />
 
-    <!--<SwitchPreference
+    <SwitchPreference
             android:key="swap_navigation_keys"
             android:title="@string/swap_navigation_keys_title"
             android:summary="@string/swap_navigation_keys_title_summary"
-            android:defaultValue="false" />-->
+            android:defaultValue="false" />
 			
 	<SwitchPreference
             android:key="swap_slider_order"
