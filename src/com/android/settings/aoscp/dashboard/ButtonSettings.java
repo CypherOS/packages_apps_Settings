@@ -45,6 +45,7 @@ import com.android.settings.aoscp.buttons.LongPressCameraPreferenceController;
 import com.android.settings.aoscp.buttons.LongPressHomePreferenceController;
 import com.android.settings.aoscp.buttons.LongPressMenuPreferenceController;
 import com.android.settings.aoscp.buttons.NavigationBarPreferenceController;
+import com.android.settings.aoscp.buttons.NavigationBarAnimationPreferenceController;
 import com.android.settings.aoscp.buttons.SwapAlertSliderPreferenceController;
 import com.android.settings.aoscp.buttons.SwapNavigationKeysPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -65,6 +66,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
     // Switches
     private static final String KEY_BUTTON_BRIGHTNESS      = "button_brightness";
     private static final String KEY_NAVIGATION_BAR         = "navigation_bar";
+	private static final String KEY_NAVIGATION_BAR_ANIMATION = "navigation_bar_animation";
     //private static final String KEY_SWAP_NAVIGATION_KEYS = "swap_navigation_keys";
 	private static final String KEY_SWAP_SLIDER_ORDER      = "swap_slider_order";
 
@@ -197,6 +199,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new ButtonBrightnessPreferenceController(context, KEY_BUTTON_BRIGHTNESS));
         controllers.add(new NavigationBarPreferenceController(context, KEY_NAVIGATION_BAR));
+		controllers.add(new NavigationBarAnimationPreferenceController(context, KEY_NAVIGATION_BAR_ANIMATION));
         //controllers.add(new SwapNavigationKeysPreferenceController(context, KEY_SWAP_NAVIGATION_KEYS));
         /*Long Press/Double Tap Actions */
 		controllers.add(new SwapAlertSliderPreferenceController(context, KEY_SWAP_SLIDER_ORDER));
