@@ -324,6 +324,12 @@ public class PowerUsageSummary extends PowerUsageBase implements
     protected String getLogTag() {
         return TAG;
     }
+	
+	@Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mProgressiveDisclosureMixin.setTileLimit(8);
+    }
 
     @Override
     protected int getPreferenceScreenResId() {
