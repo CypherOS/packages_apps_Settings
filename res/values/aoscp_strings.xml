@@ -141,5 +141,9 @@
 
     <!-- Vibrate on plug -->
     <string name="vibrate_on_plug_title">Vibrate on plug</string>
+
+    <!-- Navigation bar animation -->
+    <string name="navigation_bar_animation_title">Navigationbar animation</string>
+    <string name="navigation_bar_animation_summary">Animate the navigation bar to when pressed</string>
  
 </resources>
