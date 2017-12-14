@@ -107,9 +107,6 @@ public class PowerUsageSummary extends PowerUsageBase implements
     private static final String KEY_SCREEN_USAGE = "screen_usage";
     private static final String KEY_TIME_SINCE_LAST_FULL_CHARGE = "last_full_charge";
 
-    private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness_battery";
-    private static final String KEY_SCREEN_TIMEOUT = "screen_timeout_battery";
-    private static final String KEY_AMBIENT_DISPLAY = "ambient_display_battery";
     private static final String KEY_BATTERY_SAVER_SUMMARY = "battery_saver_summary";
     private static final String KEY_HIGH_USAGE = "high_usage";
 
@@ -336,14 +333,8 @@ public class PowerUsageSummary extends PowerUsageBase implements
     @Override
     protected List<AbstractPreferenceController> getPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new AutoBrightnessPreferenceController(context, KEY_AUTO_BRIGHTNESS));
-        controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new BatterySaverController(context, getLifecycle()));
         controllers.add(new BatteryPercentagePreferenceController(context));
-        controllers.add(new AmbientDisplayPreferenceController(
-                context,
-                new AmbientDisplayConfiguration(context),
-                KEY_AMBIENT_DISPLAY));
         controllers.add(new BatteryLightPreferenceController(context, getLifecycle()));
         controllers.add(new BatteryChargeAlertPreferenceController(context));
         return controllers;
@@ -1002,10 +993,6 @@ public class PowerUsageSummary extends PowerUsageBase implements
                     List<String> niks = super.getNonIndexableKeys(context);
                     niks.add(KEY_HIGH_USAGE);
                     niks.add(KEY_BATTERY_SAVER_SUMMARY);
-                    // Duplicates in display
-                    niks.add(KEY_AUTO_BRIGHTNESS);
-                    niks.add(KEY_SCREEN_TIMEOUT);
-                    niks.add(KEY_AMBIENT_DISPLAY);
                     return niks;
                 }
             };
