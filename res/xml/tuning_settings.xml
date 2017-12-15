@@ -18,7 +18,7 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/tuning_settings_title">
 
-    <com.android.settings.ListWithEntrySummaryPreference
+    <com.android.settings.aoscp.tuning.ScreenshotModePreference
         android:key="screenshot_type"
         android:title="@string/screenshot_type_title"
         android:entries="@array/screenshot_type_entries"

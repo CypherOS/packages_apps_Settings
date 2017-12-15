@@ -22,7 +22,6 @@ import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.util.Log;
 
 import com.android.settings.R;
-import com.android.settings.ListWithEntrySummaryPreference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
@@ -35,7 +34,7 @@ public class ScreenshotModePreferenceController extends AbstractPreferenceContro
   
     private final String mScreenTypeKey;
   
-    private ListWithEntrySummaryPreference mScreenshotType;
+    private ScreenshotModePreference mScreenshotType;
 
     public ScreenshotModePreferenceController(Context context, String key) {
         super(context);
@@ -54,7 +53,7 @@ public class ScreenshotModePreferenceController extends AbstractPreferenceContro
 
     @Override
     public void updateState(Preference preference) {
-        final ListWithEntrySummaryPreference mScreenshotType = (ListWithEntrySummaryPreference) preference;
+        final ScreenshotModePreference mScreenshotType = (ScreenshotModePreference) preference;
         if (mScreenshotType != null) {
             int mScreenshotTypeValue = Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.SCREENSHOT_TYPE, 0);
@@ -71,7 +70,7 @@ public class ScreenshotModePreferenceController extends AbstractPreferenceContro
             String modeValue = (String) newValue;
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.SCREENSHOT_TYPE,
                     Integer.parseInt(modeValue));
-            updateScreenshotModeSummary((ListWithEntrySummaryPreference) preference, modeValue);
+            updateScreenshotModeSummary((ScreenshotModePreference) preference, modeValue);
         } catch (NumberFormatException e) {
             Log.e(TAG, "Could not persist screenshot mode setting", e);
         }

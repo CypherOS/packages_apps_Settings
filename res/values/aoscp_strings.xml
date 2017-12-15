@@ -19,6 +19,7 @@
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
+	<string name="select">Select</string>
 
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_build_information_title">CypherOS version</string>
