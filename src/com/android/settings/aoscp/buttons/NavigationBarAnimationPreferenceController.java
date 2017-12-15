@@ -43,15 +43,9 @@ public class NavigationBarAnimationPreferenceController extends AbstractPreferen
 
     @Override
     public boolean isAvailable() {
-        boolean available = res.getBoolean(com.android.internal.R.bool.config_allowOpaLayout);
-        if (mNavigationBarAnimationKey != null) {
-            if (available) {
-                return true;
-            }
-        }
-        return false;
+        return res.getBoolean(com.android.internal.R.bool.config_allowOpaLayout);
     }
-
+	
     @Override
     public String getPreferenceKey() {
         return mNavigationBarAnimationKey;
