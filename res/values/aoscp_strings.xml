@@ -145,5 +145,11 @@
     <!-- Navigation bar animation -->
     <string name="navigation_bar_animation_title">Navigationbar animation</string>
     <string name="navigation_bar_animation_summary">Animate the navigation bar to when pressed</string>
+	
+	<!-- Navigation bar animation -->
+    <string name="theme_settings">Theme</string>
+	<!-- Themes -->
+	<string name="theme_default">Default</string>
+	<string name="theme_teal">Teal</string>
  
 </resources>
