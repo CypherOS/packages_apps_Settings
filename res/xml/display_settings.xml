@@ -57,6 +57,12 @@
         android:summary="@string/summary_placeholder"
         android:entries="@array/screen_timeout_entries"
         android:entryValues="@array/screen_timeout_values" />
+		
+	<Preference
+        android:key="color_manager"
+        android:title="@string/color_manager_title"
+        android:summary="@string/summary_placeholder"
+		android:fragment="com.android.settings.aoscp.display.ColorManagerFragment" />
 
     <SwitchPreference
         android:key="auto_rotate"
@@ -111,11 +117,6 @@
     <SwitchPreference
         android:key="lift_to_wake"
         android:title="@string/lift_to_wake_title" />
-
-    <ListPreference
-        android:key="theme"
-        android:title="@string/device_theme"
-        android:summary="@string/summary_placeholder" />
 
     <Preference
         android:key="vr_display_pref"
