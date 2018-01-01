@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textColor="?android:attr/textColorAlertDialogListItem"
             android:gravity="center_vertical"
             android:drawableStart="?android:attr/listChoiceIndicatorSingle"
             android:drawablePadding="20dp"
