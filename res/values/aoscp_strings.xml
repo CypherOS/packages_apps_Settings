@@ -145,5 +145,18 @@
     <!-- Navigation bar animation -->
     <string name="navigation_bar_animation_title">Navigationbar animation</string>
     <string name="navigation_bar_animation_summary">Animate the navigation bar to when pressed</string>
+  
+    <!-- Color Manager -->
+    <string name="color_manager_title">Color manager</string>
+    <string name="color_manager_summary">Change system colors with various theme modes</string>
+    <!-- Color Manager: Options -->
+    <string name="theme_auto_title">Automatic</string>
+    <string name="theme_auto_title_summary">Themes the system based on chosen wallpaper</string>
+    <string name="theme_light_title">Light</string>
+    <string name="theme_light_title_summary">Themes the system to white</string>
+    <string name="theme_dark_title">Dark</string>
+    <string name="theme_dark_title_summary">Themes the system to dark grey</string>
+    <!-- Color Manager: Device accent -->
+    <string name="device_accent_title">Device accent</string>
  
 </resources>
