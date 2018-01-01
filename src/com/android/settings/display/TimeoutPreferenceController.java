@@ -13,7 +13,6 @@
  */
 package com.android.settings.display;
 
-import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.os.UserHandle;
 import android.provider.Settings;
@@ -21,9 +20,10 @@ import android.support.v7.preference.Preference;
 import android.util.Log;
 
 import com.android.settings.R;
-import com.android.settings.TimeoutListPreference;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
@@ -37,6 +37,8 @@ public class TimeoutPreferenceController extends AbstractPreferenceController im
     public static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
     private final String mScreenTimeoutKey;
+	
+	private ListPreference mTimeoutPreference;
 
     public TimeoutPreferenceController(Context context, String key) {
         super(context);
@@ -55,20 +57,11 @@ public class TimeoutPreferenceController extends AbstractPreferenceController im
 
     @Override
     public void updateState(Preference preference) {
-        final TimeoutListPreference timeoutListPreference = (TimeoutListPreference) preference;
+		final ListPreference mTimeoutPreference = (ListPreference) preference;
         final long currentTimeout = Settings.System.getLong(mContext.getContentResolver(),
                 SCREEN_OFF_TIMEOUT, FALLBACK_SCREEN_TIMEOUT_VALUE);
-        timeoutListPreference.setValue(String.valueOf(currentTimeout));
-        final DevicePolicyManager dpm = (DevicePolicyManager) mContext.getSystemService(
-                Context.DEVICE_POLICY_SERVICE);
-        if (dpm != null) {
-            final RestrictedLockUtils.EnforcedAdmin admin =
-                    RestrictedLockUtils.checkIfMaximumTimeToLockIsSet(mContext);
-            final long maxTimeout =
-                    dpm.getMaximumTimeToLockForUserAndProfiles(UserHandle.myUserId());
-            timeoutListPreference.removeUnusableTimeouts(maxTimeout, admin);
-        }
-        updateTimeoutPreferenceDescription(timeoutListPreference, currentTimeout);
+        mTimeoutPreference.setValue(String.valueOf(currentTimeout));
+        updateTimeoutPreferenceDescription(mTimeoutPreference, currentTimeout);
     }
 
     @Override
@@ -76,7 +69,7 @@ public class TimeoutPreferenceController extends AbstractPreferenceController im
         try {
             int value = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContext.getContentResolver(), SCREEN_OFF_TIMEOUT, value);
-            updateTimeoutPreferenceDescription((TimeoutListPreference) preference, value);
+            updateTimeoutPreferenceDescription((ListPreference) preference, value);
         } catch (NumberFormatException e) {
             Log.e(TAG, "could not persist screen timeout setting", e);
         }
@@ -99,19 +92,15 @@ public class TimeoutPreferenceController extends AbstractPreferenceController im
         return null;
     }
 
-    private void updateTimeoutPreferenceDescription(TimeoutListPreference preference,
+    private void updateTimeoutPreferenceDescription(ListPreference preference,
             long currentTimeout) {
         final CharSequence[] entries = preference.getEntries();
         final CharSequence[] values = preference.getEntryValues();
         final String summary;
-        if (preference.isDisabledByAdmin()) {
-            summary = mContext.getString(com.android.settings.R.string.disabled_by_policy_title);
-        } else {
-            final CharSequence timeoutDescription = getTimeoutDescription(
-                    currentTimeout, entries, values);
-            summary = timeoutDescription == null
-                    ? ""
-                    : mContext.getString(R.string.screen_timeout_summary, timeoutDescription);
+        final CharSequence timeoutDescription = getTimeoutDescription(currentTimeout, entries, values);
+        summary = timeoutDescription == null
+                ? ""
+                : mContext.getString(R.string.screen_timeout_summary, timeoutDescription);
         }
         preference.setSummary(summary);
     }
