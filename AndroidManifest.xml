@@ -2323,6 +2323,20 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+		
+		<activity android:name="Settings$ButtonBacklightSettingsActivity"
+                android:label="@string/button_backlight_title"
+                android:icon="@drawable/ic_settings_buttons"
+                android:taskAffinity="">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.BUTTON_BACKLIGHT_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.aoscp.buttons.ButtonBacklightSettings" />
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
 
         <activity android:name="Settings$AccountSyncSettingsActivity"
             android:label="@string/account_sync_settings_title"
