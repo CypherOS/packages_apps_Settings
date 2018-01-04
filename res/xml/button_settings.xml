@@ -43,11 +43,11 @@
             android:persistent="false" 
             android:defaultValue="false" />
 
-    <SwitchPreference
+    <com.android.settings.widget.MasterSwitchPreference
             android:key="button_brightness"
-            android:title="@string/hardware_brightness_keys_title"
-            android:summary="@string/hardware_brightness_keys_title_summary"
-            android:defaultValue="false" />
+            android:title="@string/button_backlight_title"
+			android:persistent="false"
+            android:fragment="com.android.settings.aoscp.buttons.ButtonBacklightSettings" />
 
     <PreferenceCategory
         android:key="home_key"

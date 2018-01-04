@@ -40,6 +40,7 @@ import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
+import com.android.settings.aoscp.buttons.ButtonBacklightSettings;
 import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
 import com.android.settings.applications.DefaultAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
@@ -199,6 +200,7 @@ public class SettingsGateway {
             InstalledAppDetails.class.getName(),
             BatterySaverSettings.class.getName(),
             BatteryLightSettings.class.getName(),
+			ButtonBacklightSettings.class.getName(),
             AppNotificationSettings.class.getName(),
             ChannelNotificationSettings.class.getName(),
             ApnSettings.class.getName(),

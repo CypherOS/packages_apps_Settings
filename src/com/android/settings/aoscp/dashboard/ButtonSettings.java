@@ -31,7 +31,7 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.settings.aoscp.buttons.ButtonBrightnessPreferenceController;
+import com.android.settings.aoscp.buttons.ButtonBacklightPreferenceController;
 import com.android.settings.aoscp.buttons.DoubleTapAppSwitchPreferenceController;
 import com.android.settings.aoscp.buttons.DoubleTapAssistPreferenceController;
 import com.android.settings.aoscp.buttons.DoubleTapBackPreferenceController;
@@ -197,7 +197,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new ButtonBrightnessPreferenceController(context, KEY_BUTTON_BRIGHTNESS));
+        controllers.add(new ButtonBacklightPreferenceController(context, KEY_BUTTON_BACKLIGHT, getLifecycle()));
         controllers.add(new NavigationBarPreferenceController(context, KEY_NAVIGATION_BAR));
         controllers.add(new NavigationBarAnimationPreferenceController(context, KEY_NAVIGATION_BAR_ANIMATION));
         //controllers.add(new SwapNavigationKeysPreferenceController(context, KEY_SWAP_NAVIGATION_KEYS));
