@@ -194,5 +194,6 @@ public class Settings extends SettingsActivity {
     // AOSCP Fragment Activities
     public static class GestureSettingsActivity extends SettingsActivity { /* empty */ }
     public static class BatteryLightSettingsActivity extends SettingsActivity { /* empty */ }
+	public static class ButtonBacklightSettingsActivity extends SettingsActivity { /* empty */ }
 
 }

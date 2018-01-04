@@ -63,9 +63,15 @@
     <!-- Swap navigation keys -->
     <string name="swap_navigation_keys_title">Swap keys</string>
     <string name="swap_navigation_keys_title_summary">Swap back and recents keys</string>
-    <!-- Button brightness -->
-    <string name="hardware_brightness_keys_title">Backlight</string>
-    <string name="hardware_brightness_keys_title_summary">Enable navigation keys backlight</string>
+    <!-- Button backlight -->
+    <string name="button_backlight_title">Backlight</string>
+    <string name="button_backlight_title_summary_on">Backlight is turned on</string>
+	<string name="button_backlight_title_summary_off">Backlight is turned off</string>
+	<!-- Button backlight: Preferences -->
+	<string name="button_lit_on_touch_title">Lit on touch</string>
+	<string name="button_lit_on_touch_title_summary">Only light up the buttons when touched</string>
+	<string name="button_timeout_title">Timeout</string>
+	<string name="button_timeout_title_summary">Change when the backlight times out, disabled when 0</string>
     <!-- Buttons: Categories -->
     <string name="home_key_title">Home button</string>
     <string name="back_key_title">Back button</string>
