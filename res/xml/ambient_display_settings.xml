@@ -36,6 +36,11 @@
             android:key="ambient_display_pick_up"
             android:title="@string/ambient_display_pickup_title"
             android:summary="@string/ambient_display_pickup_summary" />
+			
+		<SwitchPreference
+            android:key="ambient_display_hand_wave"
+            android:title="@string/ambient_display_hand_wave_title"
+            android:summary="@string/ambient_display_hand_wave_summary" />
 
     </PreferenceCategory>
 

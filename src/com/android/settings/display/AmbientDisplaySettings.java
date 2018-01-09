@@ -26,6 +26,7 @@ import com.android.settings.R;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.aoscp.doze.DoubleTapScreenPreferenceController;
+import com.android.settings.aoscp.doze.HandWaveGesturePreferenceController;
 import com.android.settings.aoscp.doze.PickupGesturePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -56,6 +57,8 @@ public class AmbientDisplaySettings extends DashboardFragment {
         controllers.add(new AmbientDisplayAlwaysOnPreferenceController(context, config,
                 aodCallback));
         controllers.add(new DoubleTapScreenPreferenceController(context, config,
+                MY_USER_ID));
+		controllers.add(new HandWaveGesturePreferenceController(context, config,
                 MY_USER_ID));
         controllers.add(new PickupGesturePreferenceController(context, config,
                 MY_USER_ID));
