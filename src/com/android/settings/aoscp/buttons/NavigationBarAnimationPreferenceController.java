@@ -53,12 +53,12 @@ public class NavigationBarAnimationPreferenceController extends AbstractPreferen
 
     @Override
     public void updateState(Preference preference) {
-        boolean defaultToNavigationBar = res.getBoolean(com.android.internal.R.bool.config_defaultToNavigationBar);
+        /*boolean defaultToNavigationBar = res.getBoolean(com.android.internal.R.bool.config_defaultToNavigationBar);
         boolean navigationBarEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.NAVIGATION_BAR_ENABLED, defaultToNavigationBar ? 1 : 0, UserHandle.USER_CURRENT) != 0;
+                Settings.System.NAVIGATION_BAR_ENABLED, defaultToNavigationBar ? 1 : 0, UserHandle.USER_CURRENT) != 0;*/
         int value = Settings.System.getInt(mContext.getContentResolver(), NAVIGATION_BAR_ANIMATION, 1);
         ((SwitchPreference) preference).setChecked(value != 0);
-        ((SwitchPreference) preference).setEnabled(navigationBarEnabled);
+        /*((SwitchPreference) preference).setEnabled(navigationBarEnabled);*/
     }
 
     @Override
