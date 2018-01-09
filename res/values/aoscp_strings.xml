@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2018 CypherOS
-
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
           http://www.apache.org/licenses/LICENSE-2.0
-
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -208,4 +205,16 @@
 
     <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
     <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">It\u2019s at the bottom of your phone.</string>
+
+    <!-- Ambient display -->
+    <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>
+    <string name="ambient_display_hand_wave_summary" product="default">To check time, notification icons, and other info, wave at your phone.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="tablet">Wave to check tablet</string>
+    <string name="ambient_display_hand_wave_summary" product="tablet">To check time, notification icons, and other info, wave at your tablet.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
+    <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
+
 </resources>
