@@ -22,6 +22,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -122,6 +123,8 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		int userThemeSetting = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                  Settings.Secure.DEVICE_THEME, 0, UserHandle.myUserId());
         String current = getTheme();
         if (Objects.equal(newValue, current)) {
             return true;
@@ -130,7 +133,13 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
             if (newValue.equals(KEY_THEMES_DISABLED)) {
                 disableTheme();
             } else {
-                mOverlayService.setEnabledExclusive((String) newValue, true, UserHandle.myUserId());
+				if (userThemeSetting == 2) {
+					mOverlayService.setEnabled((String) newValue, true, UserHandle.myUserId());
+				} else if {userThemeSetting == 3) {
+					mOverlayService.setEnabled((String) newValue, true, UserHandle.myUserId());
+				} else {
+                    mOverlayService.setEnabledExclusive((String) newValue, true, UserHandle.myUserId());
+				}
             }
         } catch (RemoteException e) {
             return false;
