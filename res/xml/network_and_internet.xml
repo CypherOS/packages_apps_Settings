@@ -62,10 +62,18 @@
         android:key="vpn_settings"
         android:title="@string/vpn_settings_title"
         android:icon="@drawable/ic_vpn_key"
-        android:order="0"
+        android:order="-2"
         android:summary="@string/summary_placeholder"
         settings:userRestriction="no_config_vpn"
         settings:useAdminDisabledSummary="true"/>
+
+    <com.android.settings.widget.MasterSwitchPreference
+        android:fragment="com.android.settings.aoscp.network.NetworkTrafficMonitoring"
+        android:key="traffic_monitor"
+        android:title="@string/network_traffic_title"
+        android:icon="@drawable/ic_traffic_monitor"
+        android:order="0"
+        android:summary="@string/summary_placeholder"/>
 
     <com.android.settingslib.RestrictedPreference
         android:key="manage_mobile_plan"

@@ -31,6 +31,7 @@ import android.view.MenuInflater;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.aoscp.network.NetworkTrafficPreferenceController;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.dashboard.SummaryLoader;
@@ -103,6 +104,8 @@ public class NetworkDashboardFragment extends DashboardFragment implements
                 new MobileNetworkPreferenceController(context);
         final VpnPreferenceController vpnPreferenceController =
                 new VpnPreferenceController(context);
+        final NetworkTrafficPreferenceController networkTrafficPreferenceController =
+                new NetworkTrafficPreferenceController(context);
 
         if (lifecycle != null) {
             lifecycle.addObserver(airplaneModePreferenceController);
@@ -120,6 +123,7 @@ public class NetworkDashboardFragment extends DashboardFragment implements
         controllers.add(new ProxyPreferenceController(context));
         controllers.add(mobilePlanPreferenceController);
         controllers.add(wifiPreferenceController);
+        controllers.add(networkTrafficPreferenceController);
         return controllers;
     }
 
