@@ -191,5 +191,12 @@
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
     <string name="ambient_display_hand_wave_summary_disabled" product="device">Cannot be used while Pocket lock is enabled</string>
+	
+	<!-- Network Traffic -->
+	<string name="network_traffic_title">Traffic monitoring</string>
+    <string name="network_traffic_summary_on">On / Monitoring network traffic</string>
+	<string name="network_traffic_summary_off">Off</string>
+	<string name="network_traffic_description">You can change the threshold of when the traffic monitor is hidden</string>
+    <string name="network_traffic_autohide_threshold_title">Autohide threshold</string>
  
 </resources>
