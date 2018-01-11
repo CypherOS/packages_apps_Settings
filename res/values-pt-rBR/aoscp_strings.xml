@@ -174,5 +174,29 @@
     <string name="volume_steps_15" translatable="false">15</string>
     <string name="volume_steps_7" translatable="false">7</string>
     <string name="volume_steps_5" translatable="false">5</string>
- 
+   
+        <!-- Ambient display -->
+    <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="default">Acene para o smartphone para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="default">Para verificar a hora, ícones de notificação e outras informações, acene para o smartphone.</string>
+    <string name="ambient_display_hand_wave_summary_disabled" product="default">Não pode ser usado enquanto detecção de bolso está ativo.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="tablet">Acene para o tablet para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="tablet">Para verificar a hora, ícones de notificação e outras informações, acene para o tablet.</string>
+    <string name="ambient_display_hand_wave_summary_disabled" product="tablet">Não pode ser usado enquanto detecção de bolso está ativo.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="device">Acene para o dispositivo para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="device">Para verificar a hora, ícones de notificação e outras informações, acene para o dispositivo.</string>
+    <string name="ambient_display_hand_wave_summary_disabled" product="device">Não pode ser usado enquanto detecção de bolso está ativo.</string>
+
+    <!-- Network Traffic -->
+    <string name="network_traffic_title">Monitoramento de tráfego</string>
+    <string name="network_traffic_summary_on">Ativado / Monitoramento de tráfego de rede</string>
+    <string name="network_traffic_summary_off">Desativado</string>
+    <string name="network_traffic_description">Você pode alterar o limite de quando o monitor de tráfego será oculto</string>
+    <string name="network_traffic_autohide_threshold_title">Ocultar limite automaticamente</string>
+    <!-- Network Traffic: Condition -->
+    <string name="condition_network_traffic_title">O monitor de tráfego está ativo</string>
+    <string name="condition_network_traffic_summary">Seus dados celulares ou wifi estão sendo monitorados. O indicador mostra na barra de status.</string>
+
 </resources>
