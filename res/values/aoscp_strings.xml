@@ -198,5 +198,8 @@
     <string name="network_traffic_summary_off">Off</string>
     <string name="network_traffic_description">You can change the threshold of when the traffic monitor is hidden</string>
     <string name="network_traffic_autohide_threshold_title">Autohide threshold</string>
+    <!-- Network Traffic: Condition -->
+    <string name="condition_network_traffic_title">Traffic monitor is on</string>
+    <string name="condition_network_traffic_summary">Your celluar or wifi data is currently being monitored. The indicator shows in the status bar.</string>
  
 </resources>

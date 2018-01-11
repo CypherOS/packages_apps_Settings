@@ -153,6 +153,7 @@ public class ConditionManager implements LifecycleObserver, OnResume, OnPause {
         addIfMissing(BackgroundDataCondition.class, conditions);
         addIfMissing(WorkModeCondition.class, conditions);
         addIfMissing(NightDisplayCondition.class, conditions);
+        addIfMissing(TrafficMonitorCondition.class, conditions);
         Collections.sort(conditions, CONDITION_COMPARATOR);
     }
 
@@ -183,6 +184,8 @@ public class ConditionManager implements LifecycleObserver, OnResume, OnPause {
             return new WorkModeCondition(this);
         } else if (NightDisplayCondition.class == clz) {
             return new NightDisplayCondition(this);
+        } else if (TrafficMonitorCondition.class == clz) {
+            return new TrafficMonitorCondition(this);
         }
         Log.e(TAG, "unknown condition class: " + clz.getSimpleName());
         return null;
