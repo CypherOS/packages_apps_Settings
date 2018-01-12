@@ -41,6 +41,7 @@ import com.android.settings.accounts.ChooseAccountActivity;
 import com.android.settings.accounts.ManagedProfileSettings;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
 import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
+import com.android.settings.aoscp.network.NetworkTrafficMonitoring;
 import com.android.settings.applications.DefaultAppSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.DrawOverlayDetails;
@@ -199,6 +200,7 @@ public class SettingsGateway {
             InstalledAppDetails.class.getName(),
             BatterySaverSettings.class.getName(),
             BatteryLightSettings.class.getName(),
+			NetworkTrafficMonitoring.class.getName(),
             AppNotificationSettings.class.getName(),
             ChannelNotificationSettings.class.getName(),
             ApnSettings.class.getName(),

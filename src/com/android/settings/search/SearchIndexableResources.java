@@ -37,6 +37,7 @@ import com.android.settings.aoscp.dashboard.ButtonSettings;
 import com.android.settings.aoscp.dashboard.GestureSettings;
 import com.android.settings.aoscp.dashboard.TuningSettings;
 import com.android.settings.aoscp.fuelgauge.BatteryLightSettings;
+import com.android.settings.aoscp.network.NetworkTrafficMonitoring;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.DefaultAppSettings;
 import com.android.settings.applications.SpecialAccessSettings;
@@ -212,6 +213,8 @@ public final class SearchIndexableResources {
         addIndex(ButtonSettings.class, NO_DATA_RES_ID, R.drawable.ic_buttons);
         addIndex(BatteryLightSettings.class,
                 R.xml.battery_light_settings, R.drawable.ic_settings_battery);
+		addIndex(NetworkTrafficMonitoring.class,
+                R.xml.network_traffic_monitor, R.drawable.ic_traffic_monitor);
     }
 
     private SearchIndexableResources() {

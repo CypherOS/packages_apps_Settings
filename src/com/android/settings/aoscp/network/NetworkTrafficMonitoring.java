@@ -34,12 +34,14 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.preference.SeekBarPreference;
 import com.android.settings.preference.SystemSettingSwitchPreference;
 import com.android.settings.widget.SwitchBar;
 
 public class NetworkTrafficMonitoring extends SettingsPreferenceFragment implements 
-        SwitchBar.OnSwitchChangeListener, Preference.OnPreferenceChangeListener {
+        SwitchBar.OnSwitchChangeListener, Preference.OnPreferenceChangeListener, Indexable {
 
     private static final String TAG = "NetworkTrafficMonitoring";
 
@@ -182,4 +184,27 @@ public class NetworkTrafficMonitoring extends SettingsPreferenceFragment impleme
         }
         return true;
     }
+	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.network_traffic_monitor;
+                    result.add(sir);
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    final Resources res = context.getResources();
+                    result.add(KEY_AUTOHIDE_THRESHOLD);
+                    return result;
+                }
+            };
 }
