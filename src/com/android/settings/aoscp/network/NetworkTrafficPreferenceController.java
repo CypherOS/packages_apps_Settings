@@ -117,7 +117,7 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
         return Settings.System.putInt(mContext.getContentResolver(), NETWORK_TRAFFIC_STATE, enabled ? 1 : 0);
     }
 
-    private final ContentObserver mObserver = new ContentObserver(new Handler()) {
+    private final ContentObserver mObserver = new ContentObserver(null) {
         @Override
         public void onChange(boolean selfChange) {
             updateSummary();
