@@ -29,6 +29,8 @@ import android.util.Log;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.dashboard.conditional.TrafficMonitorCondition;
+import com.android.settings.dashboard.conditional.ConditionManager;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
@@ -81,6 +83,7 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
                 && !setTrafficMonitorEnabled(enabled)) {
             return false;
         }
+		refreshCondition();
         updateSummary();
         return true;
     }
@@ -98,6 +101,10 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
     public void onStop() {
         mContext.getContentResolver().unregisterContentObserver(mObserver);
         mTrafficMonitorStateReceiver.setListening(false);
+    }
+		
+    private void refreshCondition() {
+        ConditionManager.get(mContext).getCondition(TrafficMonitorCondition.class).refreshState();
     }
 
     private void updateSummary() {
