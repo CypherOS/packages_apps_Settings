@@ -30,6 +30,8 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 import com.android.settings.widget.MasterSwitchPreference;
@@ -37,7 +39,7 @@ import com.android.settings.widget.MasterSwitchPreference;
 import static android.provider.Settings.System.NETWORK_TRAFFIC_STATE;
 
 public class NetworkTrafficPreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener, OnStart, OnStop {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener, LifecycleObserver, OnStart, OnStop {
 
     private static final String TAG = "NetworkTrafficPref";
     private static final boolean DEBUG = false;
@@ -47,8 +49,10 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
     private final TrafficMonitorStateReceiver mTrafficMonitorStateReceiver;
     private MasterSwitchPreference mTrafficMonitorPref;
 
-    public NetworkTrafficPreferenceController(Context context) {
+    public NetworkTrafficPreferenceController(Context context, Lifecycle lifecycle) {
         super(context);
+		
+		lifecycle.addObserver(this);
         mTrafficMonitorStateReceiver = new TrafficMonitorStateReceiver();
     }
 
