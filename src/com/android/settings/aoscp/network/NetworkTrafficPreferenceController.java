@@ -13,43 +13,39 @@
  */
 package com.android.settings.aoscp.network;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.database.ContentObserver;
-import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 
-import android.util.Log;
-
 import com.android.settings.R;
-import com.android.settings.Utils;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.lifecycle.events.OnPause;
+import com.android.settingslib.core.lifecycle.events.OnResume;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 import com.android.settings.widget.MasterSwitchPreference;
+import com.android.settings.widget.SummaryUpdater;
 
 import static android.provider.Settings.System.NETWORK_TRAFFIC_STATE;
 
 public class NetworkTrafficPreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener, OnStart, OnStop {
+        PreferenceControllerMixin, Preference.OnPreferenceChangeListener, SummaryUpdater.OnSummaryChangeListener,
+        OnResume, OnPause, OnStart, OnStop {
 
     private static final String TAG = "NetworkTrafficPref";
-    private static final boolean DEBUG = false;
 
-    private static final String KEY_TRAFFIC_MONITOR = "traffic_monitor";
-
-    private final TrafficMonitorStateReceiver mTrafficMonitorStateReceiver;
+    public static final String KEY_TRAFFIC_MONITOR = "traffic_monitor";
+	
     private MasterSwitchPreference mTrafficMonitorPref;
+	private NetworkTrafficMonitoring mTrafficMonitorSettings;
+	private final NetworkTrafficSummaryUpdater mSummaryUpdater;
 
     public NetworkTrafficPreferenceController(Context context) {
         super(context);
-        mTrafficMonitorStateReceiver = new TrafficMonitorStateReceiver();
+        mSummaryUpdater = new NetworkTrafficSummaryUpdater(mContext, this);
     }
 
     @Override
@@ -71,7 +67,6 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
     @Override
     public void updateState(Preference preference) {
         mTrafficMonitorPref.setChecked(isTrafficMonitorEnabled());
-        updateSummary();
     }
 
     @Override
@@ -81,32 +76,40 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
                 && !setTrafficMonitorEnabled(enabled)) {
             return false;
         }
-        updateSummary();
         return true;
+    }
+	
+	@Override
+    public void onResume() {
+        mSummaryUpdater.register(true);
+        if (mTrafficMonitorSettings != null) {
+            mTrafficMonitorSettings.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        if (mTrafficMonitorSettings != null) {
+            mTrafficMonitorSettings.onPause();
+        }
+        mSummaryUpdater.register(false);
     }
 
     @Override
     public void onStart() {
-        mContext.getContentResolver().registerContentObserver(
-                Settings.System.getUriFor(Settings.System.NETWORK_TRAFFIC_STATE)
-                , true, mObserver);
-
-        mTrafficMonitorStateReceiver.setListening(true);
+        mSummaryUpdater.register(true);
     }
 
     @Override
     public void onStop() {
-        mContext.getContentResolver().unregisterContentObserver(mObserver);
-        mTrafficMonitorStateReceiver.setListening(false);
+        mSummaryUpdater.register(false);
     }
-
-    private void updateSummary() {
-        final boolean enabled = isTrafficMonitorEnabled();
-        final int format = enabled ? R.string.network_traffic_summary_on
-                : R.string.network_traffic_summary_off;
-
-        final String summary = mContext.getString(format);
-        mTrafficMonitorPref.setSummary(summary);
+	
+	@Override
+    public void onSummaryChanged(String summary) {
+        if (mTrafficMonitorPref != null) {
+            mTrafficMonitorPref.setSummary(summary);
+        }
     }
 
     public boolean isTrafficMonitorEnabled() {
@@ -115,40 +118,5 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
 
     public boolean setTrafficMonitorEnabled(boolean enabled) {
         return Settings.System.putInt(mContext.getContentResolver(), NETWORK_TRAFFIC_STATE, enabled ? 1 : 0);
-    }
-
-    private final ContentObserver mObserver = new ContentObserver(new Handler()) {
-        @Override
-        public void onChange(boolean selfChange) {
-            updateSummary();
-        }
-    };
-
-    private final class TrafficMonitorStateReceiver extends BroadcastReceiver {
-        private boolean mRegistered;
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (DEBUG) {
-                Log.d(TAG, "Received: Network traffic state");
-            }
-            if (isAvailable()) {
-                mTrafficMonitorPref.setChecked(isTrafficMonitorEnabled());
-                updateSummary();
-            }
-        }
-
-        public void setListening(boolean listening) {
-            if (listening && !mRegistered) {
-                final IntentFilter intentFilter = new IntentFilter();
-                // Todo: add a real traffic monitor intent action
-                intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
-                mContext.registerReceiver(this, intentFilter);
-                mRegistered = true;
-            } else if (!listening && mRegistered) {
-                mContext.unregisterReceiver(this);
-                mRegistered = false;
-            }
-        }
     }
 }
