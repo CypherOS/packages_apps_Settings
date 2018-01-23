@@ -201,5 +201,8 @@
     <!-- Network Traffic: Condition -->
     <string name="condition_network_traffic_title">Traffic monitor is on</string>
     <string name="condition_network_traffic_summary">Your celluar or wifi data is currently being monitored. The indicator shows in the status bar.</string>
+	
+	<!-- System Update: Version summary [CHAR LIMIT=NONE] -->
+    <string name="system_update_summary">Updated to CypherOS <xliff:g id="version" example="6.0">%1$s</xliff:g></string>
  
 </resources>

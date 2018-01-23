@@ -84,8 +84,8 @@ public class SystemUpdatePreferenceController extends AbstractPreferenceControll
 
     @Override
     public void updateState(Preference preference) {
-        preference.setSummary(mContext.getString(R.string.about_summary,
-                Build.VERSION.RELEASE));
+        preference.setSummary(mContext.getString(R.string.system_update_summary,
+                Build.VERSION.AOSCP_VERSION));
     }
 
     /**
