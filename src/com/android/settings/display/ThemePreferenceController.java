@@ -138,10 +138,10 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
         return true;
     }
 
-    private boolean isChangeableOverlay(String packageName) {
+    private boolean isAccentOverlay(String packageName) {
         try {
             PackageInfo pi = mPackageManager.getPackageInfo(packageName, 0);
-            return pi != null && !pi.isStaticOverlay;
+            return pi != null && pi.isAccentOverlay;
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
@@ -152,10 +152,7 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
             List<OverlayInfo> infos = mOverlayService.getOverlayInfosForTarget("android",
                     UserHandle.myUserId());
             for (int i = 0, size = infos.size(); i < size; i++) {
-                if (infos.get(i).isEnabled() &&
-                        isChangeableOverlay(infos.get(i).packageName) &&
-                        !infos.get(i).packageName.equals("com.android.system.theme.dark") && 
-                        !infos.get(i).packageName.equals("com.android.system.theme.black")) {
+                if (infos.get(i).isEnabled() && isAccentOverlay(infos.get(i).packageName) {
                     return infos.get(i).packageName;
                 }
             }
@@ -170,7 +167,7 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
                     UserHandle.myUserId());
             for (int i = 0, size = infos.size(); i < size; i++) {
                 if (infos.get(i).isEnabled() &&
-                        isChangeableOverlay(infos.get(i).packageName)) {
+                        isAccentOverlay(infos.get(i).packageName)) {
                     mOverlayService.setEnabled(infos.get(i).packageName, false, UserHandle.myUserId());
                 }
             }
@@ -197,9 +194,7 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
                     UserHandle.myUserId());
             List<String> pkgs = new ArrayList(infos.size());
             for (int i = 0, size = infos.size(); i < size; i++) {
-                if (isChangeableOverlay(infos.get(i).packageName)) {
-                    if (!infos.get(i).packageName.equals("com.android.system.theme.dark") && 
-                        !infos.get(i).packageName.equals("com.android.system.theme.black"))
+                if (isAccentOverlay(infos.get(i).packageName)) {
                         pkgs.add(infos.get(i).packageName);
                 }
             }
