@@ -73,6 +73,7 @@
     <string name="assist_key_title">Assist button</string>
     <string name="app_switch_key_title">Recents button</string>
     <string name="camera_key_title">Camera button</string>
+    <string name="volume_key_title">Volume button</string>
     <!-- Buttons: Actions -->
     <string name="short_press_title">Short press action</string>
     <string name="long_press_title">Long press action</string>
@@ -89,6 +90,15 @@
     <!-- Alert Slider -->
     <string name="swap_slider_order_title">Swap slider</string>
     <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
+    <!-- Volume key rotation -->
+    <string name="swap_volume_buttons_title">Swap buttons</string>
+    <string name="swap_volume_buttons_summary">When the screen is rotated</string>
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Wake device</string>
+    <string name="volume_rocker_wake_summary">When pressing one of the volume keys</string>
 
     <!-- Battery Light -->
     <string name="battery_light_title">Battery light</string>
