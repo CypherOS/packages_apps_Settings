@@ -19,6 +19,7 @@ import android.content.om.OverlayInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
@@ -51,10 +52,14 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
     private final MetricsFeatureProvider mMetricsFeatureProvider;
     private final OverlayManager mOverlayService;
     private final PackageManager mPackageManager;
+	
+	private boolean mIsChangingAccent = false;
+    private Handler mHandler;
 
     public ThemePreferenceController(Context context) {
         this(context, ServiceManager.getService(Context.OVERLAY_SERVICE) != null
                 ? new OverlayManager() : null);
+		mHandler = new Handler();
     }
 
     @VisibleForTesting
@@ -128,13 +133,27 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
         }
         try {
             if (newValue.equals(KEY_THEMES_DISABLED)) {
+				if (mIsChangingAccent) {
+					return false;
+			    }
+				mIsChangingAccent = true;
                 disableTheme();
             } else {
+				if (mIsChangingAccent) {
+					return false;
+			    }
+				mIsChangingAccent = true;
                 mOverlayService.setEnabled((String) newValue, true, UserHandle.myUserId());
             }
         } catch (RemoteException e) {
             return false;
         }
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mIsChangingAccent = false;
+            }
+	    }, 1500);
         return true;
     }
 
