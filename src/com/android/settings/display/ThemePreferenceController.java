@@ -130,7 +130,7 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
             if (newValue.equals(KEY_THEMES_DISABLED)) {
                 disableTheme();
             } else {
-                mOverlayService.setEnabledExclusive((String) newValue, true, UserHandle.myUserId());
+                mOverlayService.setEnabled((String) newValue, true, UserHandle.myUserId());
             }
         } catch (RemoteException e) {
             return false;
