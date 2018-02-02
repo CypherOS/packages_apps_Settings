@@ -181,4 +181,30 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="volume_key"
+        android:title="@string/volume_key_title">
+
+        <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_rocker_wake"
+            android:title="@string/volume_rocker_wake_title"
+            android:summary="@string/volume_rocker_wake_summary"
+            android:defaultValue="false"
+            android:disableDependentsState="true" />
+
+       <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="volume_button_music_control"
+            android:title="@string/volume_button_music_control_title"
+            android:summary="@string/volume_button_music_control_summary"
+            android:defaultValue="false"
+            android:dependency="volume_rocker_wake" />
+
+       <com.android.settings.preference.SystemSettingSwitchPreference
+            android:key="swap_volume_buttons"
+            android:title="@string/swap_volume_buttons_title"
+            android:summary="@string/swap_volume_buttons_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
