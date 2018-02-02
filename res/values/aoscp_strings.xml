@@ -141,7 +141,7 @@
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Wake device</string>
     <string name="volume_rocker_wake_summary">When pressing one of the volume keys</string>
-
+	
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestures</string>
     <string name="gesture_settings_title_summary">Use system and device gestures</string>
@@ -170,6 +170,14 @@
     <string name="gestures_back">Back</string>
     <string name="gestures_appswitch">Recents</string>
     <string name="gestures_wake_device">Wake device</string>
+	<!-- Quick torch -->
+    <string name="quick_torch_title">Quick torch</string>
+    <string name="quick_torch_disabled">Disabled</string>
+    <string name="quick_torch_disabled_summary">Quick torch is disabled</string>
+    <string name="quick_torch_double_tap">Double tap</string>
+    <string name="quick_torch_double_tap_summary">Double tap the power button to torch</string>
+    <string name="quick_torch_longpress">Long press</string>
+    <string name="quick_torch_longpress_summary">Long press the power button to torch</string>
 
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Theme</string>

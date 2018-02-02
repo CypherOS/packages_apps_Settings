@@ -41,6 +41,7 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
 import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.QuickTorchPreferenceController;
 import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.TapToWakePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -189,6 +190,7 @@ public class GesturesSettings extends DashboardFragment implements
         controllers.add(new DoubleTwistPreferenceController(context));
         controllers.add(new SwipeToNotificationPreferenceController(context));
         controllers.add(new TapToWakePreferenceController(context));
+		controllers.add(new QuickTorchPreferenceController(context));
         return controllers;
     }
 
