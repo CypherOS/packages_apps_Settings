@@ -33,6 +33,12 @@
         android:title="@string/double_tap_power_for_camera_title"
         android:summary="@string/double_tap_power_for_camera_summary" />
 
+    <ListPreference
+        android:key="gesture_quick_torch"
+        android:title="@string/quick_torch_title"
+        android:entries="@array/quick_torch_entries"
+        android:entryValues="@array/quick_torch_values" />
+
     <SwitchPreference
         android:key="gesture_double_twist"
         android:title="@string/double_twist_for_camera_mode_title"

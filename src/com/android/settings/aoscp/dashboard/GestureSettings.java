@@ -31,6 +31,7 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.aoscp.gestures.DoubleTapPowerPreferenceController;
 import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
+import com.android.settings.aoscp.gestures.QuickTorchPreferenceController;
 import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.aoscp.gestures.TapToWakePreferenceController;
@@ -46,11 +47,11 @@ import java.util.List;
 public class GestureSettings extends DashboardFragment implements Indexable {
 
     private static final String LOG_TAG = "GestureSettings";
-			
-	@Override
+
+    @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-		mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_summary);
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_summary);
     }
 
     @Override
@@ -88,6 +89,7 @@ public class GestureSettings extends DashboardFragment implements Indexable {
         controllers.add(new SwipeToNotificationPreferenceController(context));
         controllers.add(new TapToSleepPreferenceController(context));
         controllers.add(new TapToWakePreferenceController(context));
+        controllers.add(new QuickTorchPreferenceController(context));
         return controllers;
     }
 
