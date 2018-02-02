@@ -214,5 +214,14 @@
 
     <!-- System Update: Version summary [CHAR LIMIT=NONE] -->
     <string name="system_update_summary">Updated to CypherOS <xliff:g id="version" example="6.0">%1$s</xliff:g></string>
+  
+    <!-- Quick torch -->
+    <string name="quick_torch_title">Quick torch</string>
+    <string name="quick_torch_disabled">Disabled</string>
+    <string name="quick_torch_disabled_summary">Quick torch is disabled</string>
+    <string name="quick_torch_double_tap">Double tap</string>
+    <string name="quick_torch_double_tap_summary">Double tap the power button to torch</string>
+    <string name="quick_torch_longpress">Long press</string>
+    <string name="quick_torch_longpress_summary">Long press the power button to torch</string>
  
 </resources>
