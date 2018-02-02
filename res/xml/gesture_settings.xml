@@ -28,6 +28,12 @@
         android:title="@string/double_tap_power_for_camera_title"
         android:summary="@string/double_tap_power_for_camera_summary" />
 
+    <com.android.settings.preference.SystemSettingSwitchPreference
+        android:key="three_finger_gesture"
+        android:title="@string/swipe_to_screenshot_title"
+        android:summary="@string/swipe_to_screenshot_summary"
+        android:defaultValue="false" />
+
     <ListPreference
         android:key="gesture_quick_torch"
         android:title="@string/quick_torch_title"
