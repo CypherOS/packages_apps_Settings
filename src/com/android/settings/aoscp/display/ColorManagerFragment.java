@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.om.OverlayInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
@@ -49,13 +50,27 @@ public class ColorManagerFragment extends DashboardFragment
 
     private static final String TAG = "ColorManagerSettings";
 
-    private static final String KEY_THEME_AUTO = "theme_auto";
-    private static final String KEY_THEME_LIGHT = "theme_light";
-    private static final String KEY_THEME_DARK = "theme_dark";
-    private static final String KEY_THEME_BLACK = "theme_black";
+	// Base Themes
+    private static final String KEY_THEME_AUTO         = "theme_auto";
+    private static final String KEY_THEME_LIGHT        = "theme_light";
+    private static final String KEY_THEME_DARK         = "theme_dark";
+    private static final String KEY_THEME_BLACK        = "theme_black";
+	
+	// Theme Accents
+	private static final String KEY_ACCENT_DEFAULT     = "accent_default";
+	private static final String KEY_ACCENT_DEEP_PURPLE = "accent_deep_purple";
+	private static final String KEY_ACCENT_INDIGO      = "accent_indigo";
+	private static final String KEY_ACCENT_PINK        = "accent_pink";
+	private static final String KEY_ACCENT_PURPLE      = "accent_purple";
+	private static final String KEY_ACCENT_RED         = "accent_red";
+	private static final String KEY_ACCENT_SKY_BLUE    = "accent_sky_blue";
+	private static final String KEY_ACCENT_TEAL        = "accent_teal";
+	private static final String KEY_ACCENT_WHITE       = "accent_white";
+	private static final String KEY_ACCENT_YELLOW      = "accent_yellow";
 
     List<RadioButtonPreference> mThemes = new ArrayList<>();
 
+	private ColorManager mColorManager;
     private Context mContext;
 
     @Override
@@ -113,13 +128,43 @@ public class ColorManagerFragment extends DashboardFragment
             case 3:
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
+			case 4:
+                updateThemeItems(KEY_ACCENT_DEFAULT);
+                break;
+			case 5:
+                updateThemeItems(KEY_ACCENT_DEEP_PURPLE);
+                break;
+			case 6:
+                updateThemeItems(KEY_ACCENT_INDIGO);
+                break;
+			case 7:
+                updateThemeItems(KEY_ACCENT_PINK);
+                break;
+			case 8:
+                updateThemeItems(KEY_ACCENT_PURPLE);
+                break;
+			case 9:
+                updateThemeItems(KEY_ACCENT_RED);
+                break;
+			case 10:
+                updateThemeItems(KEY_ACCENT_SKY_BLUE);
+                break;
+			case 11:
+                updateThemeItems(KEY_ACCENT_TEAL);
+                break;
+			case 12:
+                updateThemeItems(KEY_ACCENT_WHITE);
+                break;
+			case 13:
+                updateThemeItems(KEY_ACCENT_YELLOW);
+                break;
         }
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new ThemePreferenceController(context));
+        // controllers.add(new ThemePreferenceController(context));
         return controllers;
     }
 
@@ -152,7 +197,51 @@ public class ColorManagerFragment extends DashboardFragment
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 3);
                 break;
+			case KEY_ACCENT_DEFAULT:
+                disableTheme();
+                break;
+			case KEY_ACCENT_DEEP_PURPLE:
+                mColorManager.setEnabled("co.aoscp.accent.deeppurple", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_INDIGO:
+                mColorManager.setEnabled("co.aoscp.accent.indigo", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_PINK:
+                mColorManager.setEnabled("co.aoscp.accent.pink", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_PURPLE:
+                mColorManager.setEnabled("co.aoscp.accent.purple", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_RED:
+                mColorManager.setEnabled("co.aoscp.accent.red", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_SKY_BLUE:
+                mColorManager.setEnabled("co.aoscp.accent.skyblue", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_TEAL:
+                mColorManager.setEnabled("co.aoscp.accent.teal", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_WHITE:
+                mColorManager.setEnabled("co.aoscp.accent.white", true, UserHandle.myUserId());
+                break;
+			case KEY_ACCENT_YELLOW:
+                mColorManager.setEnabled("co.aoscp.accent.yellow", true, UserHandle.myUserId());
+                break;
         }
         updateThemeItems(pref.getKey());
+    }
+	
+	private void disableTheme() {
+        try {
+            List<OverlayInfo> infos = mColorManager.getOverlayInfosForTarget("android",
+                    UserHandle.myUserId());
+            for (int i = 0, size = infos.size(); i < size; i++) {
+                if (infos.get(i).isEnabled() &&
+                        mColorManager.isAccentOverlay(infos.get(i).packageName)) {
+                    mColorManager.setEnabled(infos.get(i).packageName, false, UserHandle.myUserId());
+                }
+            }
+        } catch (RemoteException e) {
+        }
     }
 }

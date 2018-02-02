@@ -25,22 +25,60 @@
 
     <com.android.settings.widget.RadioButtonPreference
         android:key="theme_light"
-        android:title="@string/theme_light_title"
-        android:summary="@string/theme_light_title_summary" />
+        android:title="@string/theme_light_title" />
 
     <com.android.settings.widget.RadioButtonPreference
         android:key="theme_dark"
-        android:title="@string/theme_dark_title"
-        android:summary="@string/theme_dark_title_summary" />
+        android:title="@string/theme_dark_title" />
   
     <com.android.settings.widget.RadioButtonPreference
         android:key="theme_black"
-        android:title="@string/theme_black_title"
-        android:summary="@string/theme_black_title_summary" />
+        android:title="@string/theme_black_title" />
+	
+	<PreferenceCategory android:key="accent_category"
+	    android:title="@string/accent_category_title">
+		
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_default"
+            android:title="@string/accent_default_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_deep_purple"
+            android:title="@string/accent_deep_purple_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_indigo"
+            android:title="@string/accent_indigo_title" />
+		
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_pink"
+            android:title="@string/accent_pink_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_purple"
+            android:title="@string/accent_purple_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_red"
+            android:title="@string/accent_red_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_sky_blue"
+            android:title="@string/accent_sky_blue_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_teal"
+            android:title="@string/accent_teal_title" />
+		
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_white"
+            android:title="@string/accent_white_title" />
+			
+		<com.android.settings.widget.RadioButtonPreference
+            android:key="accent_yellow"
+            android:title="@string/accent_yellow_title" />
+			
+	</PreferenceCategory>
 
-    <ListPreference
-        android:key="theme"
-        android:title="@string/device_accent_title"
-        android:summary="@string/summary_placeholder" />
 
 </PreferenceScreen>
