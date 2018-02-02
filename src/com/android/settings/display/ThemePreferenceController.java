@@ -177,8 +177,9 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
 
     @Override
     public boolean isAvailable() {
-        String[] themes = getAvailableThemes();
-        return themes != null && themes.length >= 1;
+        /*String[] themes = getAvailableThemes();
+        return themes != null && themes.length >= 1;*/
+		return false;
     }
 
 
