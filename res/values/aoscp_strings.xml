@@ -118,6 +118,7 @@
     <string name="assist_key_title">Assist button</string>
     <string name="app_switch_key_title">Recents button</string>
     <string name="camera_key_title">Camera button</string>
+    <string name="volume_key_title">Volume button</string>
     <!-- Buttons: Actions -->
     <string name="short_press_title">Short press action</string>
     <string name="long_press_title">Long press action</string>
@@ -131,6 +132,15 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
+    <!-- Volume rocker music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing the volume keys will skip music tracks</string>
+    <!-- Volume key rotation -->
+    <string name="swap_volume_buttons_title">Swap buttons</string>
+    <string name="swap_volume_buttons_summary">When the screen is rotated</string>
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Wake device</string>
+    <string name="volume_rocker_wake_summary">When pressing one of the volume keys</string>
 
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestures</string>
