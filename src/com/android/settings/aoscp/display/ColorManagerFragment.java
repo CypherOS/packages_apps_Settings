@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.om.OverlayInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
@@ -49,10 +50,23 @@ public class ColorManagerFragment extends DashboardFragment
 
     private static final String TAG = "ColorManagerSettings";
 
-    private static final String KEY_THEME_AUTO = "theme_auto";
-    private static final String KEY_THEME_LIGHT = "theme_light";
-    private static final String KEY_THEME_DARK = "theme_dark";
-    private static final String KEY_THEME_BLACK = "theme_black";
+	// Base Themes
+    private static final String KEY_THEME_AUTO         = "theme_auto";
+    private static final String KEY_THEME_LIGHT        = "theme_light";
+    private static final String KEY_THEME_DARK         = "theme_dark";
+    private static final String KEY_THEME_BLACK        = "theme_black";
+	
+	// Theme Accents
+	private static final String KEY_ACCENT_DEFAULT     = "accent_default";
+	private static final String KEY_ACCENT_DEEP_PURPLE = "accent_deep_purple";
+	private static final String KEY_ACCENT_INDIGO      = "accent_indigo";
+	private static final String KEY_ACCENT_PINK        = "accent_pink";
+	private static final String KEY_ACCENT_PURPLE      = "accent_purple";
+	private static final String KEY_ACCENT_RED         = "accent_red";
+	private static final String KEY_ACCENT_SKY_BLUE    = "accent_sky_blue";
+	private static final String KEY_ACCENT_TEAL        = "accent_teal";
+	private static final String KEY_ACCENT_WHITE       = "accent_white";
+	private static final String KEY_ACCENT_YELLOW      = "accent_yellow";
 
     List<RadioButtonPreference> mThemes = new ArrayList<>();
 
@@ -114,6 +128,39 @@ public class ColorManagerFragment extends DashboardFragment
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
+		
+		switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_ACCENT, 0)) {
+			case 0:
+                updateThemeItems(KEY_ACCENT_DEFAULT);
+                break;
+			case 1:
+                updateThemeItems(KEY_ACCENT_DEEP_PURPLE);
+                break;
+			case 2:
+                updateThemeItems(KEY_ACCENT_INDIGO);
+                break;
+			case 3:
+                updateThemeItems(KEY_ACCENT_PINK);
+                break;
+			case 4:
+                updateThemeItems(KEY_ACCENT_PURPLE);
+                break;
+			case 5:
+                updateThemeItems(KEY_ACCENT_RED);
+                break;
+			case 6:
+                updateThemeItems(KEY_ACCENT_SKY_BLUE);
+                break;
+			case 7:
+                updateThemeItems(KEY_ACCENT_TEAL);
+                break;
+			case 8:
+                updateThemeItems(KEY_ACCENT_WHITE);
+                break;
+			case 9:
+                updateThemeItems(KEY_ACCENT_YELLOW);
+                break;
+		}
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
@@ -151,6 +198,46 @@ public class ColorManagerFragment extends DashboardFragment
             case KEY_THEME_BLACK:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 3);
+                break;
+			case KEY_ACCENT_DEFAULT:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 0);
+                break;
+			case KEY_ACCENT_DEEP_PURPLE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 1);
+                break;
+			case KEY_ACCENT_INDIGO:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 2);
+                break;
+			case KEY_ACCENT_PINK:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 3);
+                break;
+			case KEY_ACCENT_PURPLE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 4);
+                break;
+			case KEY_ACCENT_RED:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 5);
+                break;
+			case KEY_ACCENT_SKY_BLUE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 6);
+                break;
+			case KEY_ACCENT_TEAL:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 7);
+                break;
+			case KEY_ACCENT_WHITE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 8);
+                break;
+			case KEY_ACCENT_YELLOW:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 9);
                 break;
         }
         updateThemeItems(pref.getKey());
