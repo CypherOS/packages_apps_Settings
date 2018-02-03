@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 CypherOS
+ * Copyright (C) 2017-2018 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.om.OverlayInfo;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
@@ -49,14 +50,43 @@ public class ColorManagerFragment extends DashboardFragment
 
     private static final String TAG = "ColorManagerSettings";
 
-    private static final String KEY_THEME_AUTO = "theme_auto";
-    private static final String KEY_THEME_LIGHT = "theme_light";
-    private static final String KEY_THEME_DARK = "theme_dark";
-    private static final String KEY_THEME_BLACK = "theme_black";
-
-    List<RadioButtonPreference> mThemes = new ArrayList<>();
+	// Base Themes
+    private static final String KEY_THEME_AUTO         = "theme_auto";
+    private static final String KEY_THEME_LIGHT        = "theme_light";
+    private static final String KEY_THEME_DARK         = "theme_dark";
+    private static final String KEY_THEME_BLACK        = "theme_black";
+	
+	// Theme Accents
+	private static final String KEY_ACCENT_DEFAULT     = "accent_default";
+	private static final String KEY_ACCENT_DEEP_PURPLE = "accent_deep_purple";
+	private static final String KEY_ACCENT_INDIGO      = "accent_indigo";
+	private static final String KEY_ACCENT_PINK        = "accent_pink";
+	private static final String KEY_ACCENT_PURPLE      = "accent_purple";
+	private static final String KEY_ACCENT_RED         = "accent_red";
+	private static final String KEY_ACCENT_SKY_BLUE    = "accent_sky_blue";
+	private static final String KEY_ACCENT_TEAL        = "accent_teal";
+	private static final String KEY_ACCENT_WHITE       = "accent_white";
+	private static final String KEY_ACCENT_YELLOW      = "accent_yellow";
 
     private Context mContext;
+	
+	// Base Themes
+	private RadioButtonPreference mThemeAuto;
+	private RadioButtonPreference mThemeLight;
+	private RadioButtonPreference mThemeDark;
+	private RadioButtonPreference mThemeBlack;
+	
+	// Theme Accents
+	private RadioButtonPreference mAccentDefault;
+	private RadioButtonPreference mAccentDeepPurple;
+	private RadioButtonPreference mAccentIndigo;
+	private RadioButtonPreference mAccentPink;
+	private RadioButtonPreference mAccentPurple;
+	private RadioButtonPreference mAccentRed;
+	private RadioButtonPreference mAccentSkyBlue;
+	private RadioButtonPreference mAccentTeal;
+	private RadioButtonPreference mAccentWhite;
+	private RadioButtonPreference mAccentYellow;
 
     @Override
     public int getMetricsCategory() {
@@ -66,6 +96,13 @@ public class ColorManagerFragment extends DashboardFragment
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+	
+	@Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mProgressiveDisclosureMixin.setTileLimit(4);
+		mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.color_manager_description);
     }
 
     @Override
@@ -91,14 +128,39 @@ public class ColorManagerFragment extends DashboardFragment
             controller.displayPreference(screen);
         }
 
-        for (int i = 0; i < screen.getPreferenceCount(); i++) {
-            Preference pref = screen.getPreference(i);
-            if (pref instanceof RadioButtonPreference) {
-                RadioButtonPreference themePref = (RadioButtonPreference) pref;
-                themePref.setOnClickListener(this);
-                mThemes.add(themePref);
-            }
-        }
+		// Search for themes
+		mThemeAuto = (RadioButtonPreference) screen.findPreference(KEY_THEME_AUTO);
+        mThemeLight = (RadioButtonPreference) screen.findPreference(KEY_THEME_LIGHT);
+        mThemeDark = (RadioButtonPreference) screen.findPreference(KEY_THEME_DARK);
+		mThemeBlack = (RadioButtonPreference) screen.findPreference(KEY_THEME_BLACK);
+		// Set theme click listeners
+        mThemeAuto.setOnClickListener(this);
+        mThemeLight.setOnClickListener(this);
+        mThemeDark.setOnClickListener(this);
+		mThemeBlack.setOnClickListener(this);
+		
+		// Search for accents
+		mAccentDefault = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_DEFAULT);
+        mAccentDeepPurple = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_DEEP_PURPLE);
+        mAccentIndigo = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_INDIGO);
+		mAccentPink = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_PINK);
+		mAccentPurple = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_PURPLE);
+        mAccentRed = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_RED);
+        mAccentSkyBlue = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_SKY_BLUE);
+		mAccentTeal = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_TEAL);
+		mAccentWhite = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_WHITE);
+		mAccentYellow = (RadioButtonPreference) screen.findPreference(KEY_ACCENT_YELLOW);
+		// Set accent click listeners
+        mAccentDefault.setOnClickListener(this);
+        mAccentDeepPurple.setOnClickListener(this);
+        mAccentIndigo.setOnClickListener(this);
+		mAccentPink.setOnClickListener(this);
+		mAccentPurple.setOnClickListener(this);
+        mAccentRed.setOnClickListener(this);
+        mAccentSkyBlue.setOnClickListener(this);
+		mAccentTeal.setOnClickListener(this);
+		mAccentWhite.setOnClickListener(this);
+		mAccentYellow.setOnClickListener(this);
 
         switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_THEME, 0)) {
             case 0:
@@ -114,6 +176,39 @@ public class ColorManagerFragment extends DashboardFragment
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
+		
+		switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_ACCENT, 0)) {
+			case 0:
+                updateAccentItems(KEY_ACCENT_DEFAULT);
+                break;
+			case 1:
+                updateAccentItems(KEY_ACCENT_DEEP_PURPLE);
+                break;
+			case 2:
+                updateAccentItems(KEY_ACCENT_INDIGO);
+                break;
+			case 3:
+                updateAccentItems(KEY_ACCENT_PINK);
+                break;
+			case 4:
+                updateAccentItems(KEY_ACCENT_PURPLE);
+                break;
+			case 5:
+                updateAccentItems(KEY_ACCENT_RED);
+                break;
+			case 6:
+                updateAccentItems(KEY_ACCENT_SKY_BLUE);
+                break;
+			case 7:
+                updateAccentItems(KEY_ACCENT_TEAL);
+                break;
+			case 8:
+                updateAccentItems(KEY_ACCENT_WHITE);
+                break;
+			case 9:
+                updateAccentItems(KEY_ACCENT_YELLOW);
+                break;
+		}
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
@@ -123,13 +218,157 @@ public class ColorManagerFragment extends DashboardFragment
         return controllers;
     }
 
-    private void updateThemeItems(String selectionKey) {
-        for (RadioButtonPreference pref : mThemes) {
-            if (selectionKey.equals(pref.getKey())) {
-                pref.setChecked(true);
-            } else {
-                pref.setChecked(false);
-            }
+    private void updateThemeItems(String themeKey) {
+        if (themeKey == null) {
+            mThemeAuto.setChecked(false);
+            mThemeLight.setChecked(false);
+            mThemeDark.setChecked(false);
+			mThemeBlack.setChecked(false);
+        } else if (themeKey == KEY_THEME_AUTO) {
+            mThemeAuto.setChecked(true);
+            mThemeLight.setChecked(false);
+            mThemeDark.setChecked(false);
+			mThemeBlack.setChecked(false);
+        } else if (themeKey == KEY_THEME_LIGHT) {
+            mThemeAuto.setChecked(false);
+            mThemeLight.setChecked(true);
+            mThemeDark.setChecked(false);
+			mThemeBlack.setChecked(false);
+        } else if (themeKey == KEY_THEME_DARK) {
+            mThemeAuto.setChecked(false);
+            mThemeLight.setChecked(false);
+            mThemeDark.setChecked(true);
+			mThemeBlack.setChecked(false);
+		} else if (themeKey == KEY_THEME_BLACK) {
+            mThemeAuto.setChecked(false);
+            mThemeLight.setChecked(false);
+            mThemeDark.setChecked(false);
+			mThemeBlack.setChecked(true);
+        }
+    }
+	
+	private void updateAccentItems(String accentKey) {
+        if (accentKey == null) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+        } else if (accentKey == KEY_ACCENT_DEFAULT) {
+            mAccentDefault.setChecked(true);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+        } else if (accentKey == KEY_ACCENT_DEEP_PURPLE) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(true);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+        } else if (accentKey == KEY_ACCENT_INDIGO) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(true);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_PINK) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(true);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_PURPLE) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(true);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_RED) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(true);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_SKY_BLUE) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(true);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_TEAL) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(true);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_WHITE) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(true);
+			mAccentYellow.setChecked(false);
+		} else if (accentKey == KEY_ACCENT_YELLOW) {
+            mAccentDefault.setChecked(false);
+            mAccentDeepPurple.setChecked(false);
+            mAccentIndigo.setChecked(false);
+			mAccentPink.setChecked(false);
+			mAccentPurple.setChecked(false);
+			mAccentRed.setChecked(false);
+			mAccentSkyBlue.setChecked(false);
+			mAccentTeal.setChecked(false);
+			mAccentWhite.setChecked(false);
+			mAccentYellow.setChecked(true);
         }
     }
 
@@ -139,20 +378,78 @@ public class ColorManagerFragment extends DashboardFragment
             case KEY_THEME_AUTO:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 0);
+				updateThemeItems(pref.getKey());
                 break;
             case KEY_THEME_LIGHT:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 1);
+				updateThemeItems(pref.getKey());
                 break;
             case KEY_THEME_DARK:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 2);
+				updateThemeItems(pref.getKey());
                 break;
             case KEY_THEME_BLACK:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_THEME, 3);
+				updateThemeItems(pref.getKey());
+                break;
+		}
+		
+		switch (pref.getKey()) {
+		    case KEY_ACCENT_DEFAULT:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 0);
+			    updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_DEEP_PURPLE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 1);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_INDIGO:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 2);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_PINK:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 3);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_PURPLE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 4);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_RED:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 5);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_SKY_BLUE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 6);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_TEAL:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 7);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_WHITE:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 8);
+				updateAccentItems(pref.getKey());
+                break;
+			case KEY_ACCENT_YELLOW:
+			    Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 9);
+				updateAccentItems(pref.getKey());
                 break;
         }
         updateThemeItems(pref.getKey());
+		updateAccentItems(pref.getKey());
     }
 }
