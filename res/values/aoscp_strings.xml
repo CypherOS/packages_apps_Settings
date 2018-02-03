@@ -159,17 +159,27 @@
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
     <string name="color_manager_summary">Change system colors with various theme modes</string>
-    <!-- Color Manager: Options -->
+    <string name="color_manager_description">The custom theme chooser will appear here when supported custom themes are installed</string>
+    <!-- Color Manager: Base Themes -->
     <string name="theme_auto_title">Automatic</string>
-    <string name="theme_auto_title_summary">Themes the system based on chosen wallpaper</string>
+    <string name="theme_auto_title_summary">The system will theme itself by grabbing the dominate color from the selected wallpaper</string>
     <string name="theme_light_title">Light</string>
-    <string name="theme_light_title_summary">Themes the system to white</string>
     <string name="theme_dark_title">Dark</string>
-    <string name="theme_dark_title_summary">Themes the system to dark grey</string>
     <string name="theme_black_title">Black</string>
-    <string name="theme_black_title_summary">Themes the system to black</string>
-    <!-- Color Manager: Device accent -->
-    <string name="device_accent_title">Device accent</string>
+    <!-- Color Manager: Accents -->
+    <string name="accent_category_title">Accent</string>
+    <string name="accent_default_title">Default</string>
+    <string name="accent_deep_purple_title">Deep Purple</string>
+    <string name="accent_indigo_title">Indigo</string>
+    <string name="accent_pink_title">Pink</string>
+    <string name="accent_purple_title">Purple</string>
+    <string name="accent_red_title">Red</string>
+    <string name="accent_sky_blue_title">Sky Blue</string>
+    <string name="accent_teal_title">Teal</string>
+    <string name="accent_white_title">White</string>
+    <string name="accent_yellow_title">Yellow</string>
+    <!-- Color Manager: User Accents -->
+    <string name="accent_user_title">Custom accent</string>
 
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume steps</string>

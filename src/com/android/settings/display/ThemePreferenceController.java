@@ -141,7 +141,7 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
     private boolean isAccentOverlay(String packageName) {
         try {
             PackageInfo pi = mPackageManager.getPackageInfo(packageName, 0);
-            return pi != null && pi.isAccentOverlay;
+            return pi != null && !pi.isAccentOverlay; // AOSCP: Only load themes that do not inclue "isAccent=true" in their manifest
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
@@ -177,8 +177,9 @@ public class ThemePreferenceController extends AbstractPreferenceController impl
 
     @Override
     public boolean isAvailable() {
-        String[] themes = getAvailableThemes();
-        return themes != null && themes.length >= 1;
+        //String[] themes = getAvailableThemes();
+        //return themes != null && themes.length >= 1;
+        return false;
     }
 
 
