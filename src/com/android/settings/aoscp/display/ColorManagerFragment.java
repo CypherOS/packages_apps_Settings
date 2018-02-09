@@ -87,6 +87,8 @@ public class ColorManagerFragment extends DashboardFragment
     private RadioButtonPreference mAccentTeal;
     private RadioButtonPreference mAccentWhite;
     private RadioButtonPreference mAccentYellow;
+	
+	private ColorManager mColorManager;
 
     @Override
     public int getMetricsCategory() {
@@ -395,42 +397,52 @@ public class ColorManagerFragment extends DashboardFragment
         
         switch (pref.getKey()) {
             case KEY_ACCENT_DEFAULT:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 0);
                 break;
             case KEY_ACCENT_DEEP_PURPLE:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 1);
                 break;
             case KEY_ACCENT_INDIGO:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 2);
                 break;
             case KEY_ACCENT_PINK:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 3);
                 break;
             case KEY_ACCENT_PURPLE:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 4);
                 break;
             case KEY_ACCENT_RED:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 5);
                 break;
             case KEY_ACCENT_SKY_BLUE:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 6);
                 break;
             case KEY_ACCENT_TEAL:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 7);
                 break;
             case KEY_ACCENT_WHITE:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 8);
                 break;
             case KEY_ACCENT_YELLOW:
+			    mColorManager.prepareAccent();
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 9);
                 break;
