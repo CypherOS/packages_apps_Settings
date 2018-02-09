@@ -72,17 +72,16 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
 
     @Override
     public void updateState(Preference preference) {
-        mTrafficMonitorPref.setChecked(isTrafficMonitorEnabled());
+        int value = Settings.System.getInt(
+                mContext.getContentResolver(), Settings.System.NETWORK_TRAFFIC_STATE, 0);
+        mTrafficMonitorPref.setChecked(value != 0);
         updateSummary();
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean enabled = (Boolean) newValue;
-        if (enabled != isTrafficMonitorEnabled()
-                && !setTrafficMonitorEnabled(enabled)) {
-            return false;
-        }
+        setTrafficMonitorEnabled(enabled);
         refreshCondition();
         updateSummary();
         return true;
@@ -133,6 +132,8 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
 
     private final class TrafficMonitorStateReceiver extends BroadcastReceiver {
         private boolean mRegistered;
+        int value = Settings.System.getInt(
+                mContext.getContentResolver(), Settings.System.NETWORK_TRAFFIC_STATE, 0);
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -140,7 +141,7 @@ public class NetworkTrafficPreferenceController extends AbstractPreferenceContro
                 Log.d(TAG, "Received: Network traffic state");
             }
             if (isAvailable()) {
-                mTrafficMonitorPref.setChecked(isTrafficMonitorEnabled());
+                mTrafficMonitorPref.setChecked(value != 0);
                 updateSummary();
             }
         }
