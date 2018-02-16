@@ -136,6 +136,12 @@
         <SwitchPreference
           android:key="vibrate_on_touch"
           android:title="@string/vibrate_on_touch_title" />
+		  
+		<!-- Ambient Play -->
+        <Preference
+          android:key="ambient_play"
+          android:title="@string/ambient_play_settings_title"
+		  android:fragment="com.android.settings.aoscp.sound.AmbientPlaySettings" />
 
         <!-- Dock speaker plays -->
         <DropDownPreference
