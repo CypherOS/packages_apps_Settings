@@ -235,4 +235,42 @@
     <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
     <string name="swipe_to_screenshot_summary">Deslize três dedos na tela para tirar uma captura de tela</string>
 
+    <!-- Ambient Play -->
+    <string name="ambient_play_settings_title">Tocando Agora</string>
+    <string name="ambient_play_lockscreen_title">Mostrar na tela de bloqueio</string>
+    <string name="ambient_play_illustration_text">Música by Artista</string>
+    <string name="ambient_play_description">Quando uma música estiver tocando nas proximidades, você poderá ver o nome da música e o artista. O Tocando Agora requer uma conexão de rede apenas para enviar dados temporariamente gravados ao banco de dados de reconhecimento.</string>
+
+    <!-- Statusbar Clock options -->
+    <string name="advanced_date_time_title">Avançado</string>
+    <string name="advanced_date_time_summary">Mais opções para o relógio e indicadores de data</string>
+    <string name="status_bar_show_clock_title">Mostrar relógio</string>
+    <string name="status_bar_show_clock_summary">Dentro da barra de status</string>
+    <string name="clock_title_enable">Local</string>
+    <string name="right_clock">Direita</string>
+    <string name="center_clock">Centro</string>
+    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+    <string name="status_bar_clock_seconds_summary">Ao lado do indicador do relógio</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">O relógio 24-horas está ativado</string>
+    <string name="am_pm_clock_normal">Normal</string>
+    <string name="am_pm_clock_small">Pequeno</string>
+    <string name="am_pm_clock_none">Desativado</string>
+    <string name="date_category_title">Data</string>
+    <string name="clock_date_display">Mostar data</string>
+    <string name="clock_date_display_summary">Ao lado do indicador do relógio</string>
+    <string name="clock_date_style">Estilo</string>
+    <string name="clock_date_format">Formato</string>
+    <string name="clock_date_string_edittext_title">Deve estar em DataFormato ex. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Digite a data</string>
+    <string name="clock_date_display_none">Desativado</string>
+    <string name="clock_date_display_small">Pequeno</string>
+    <string name="clock_date_display_normal">Normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Minúscula</string>
+    <string name="clock_date_style_uppercase">Maiúscula</string>
+    <string name="clock_date_format_custom">Formato personalizado</string>
+    <string name="menu_cancel">Cancelar</string>
+    <string name="menu_save">Salvar</string>
+
 </resources>
