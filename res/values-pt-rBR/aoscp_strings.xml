@@ -4,7 +4,9 @@
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
+
        http://www.apache.org/licenses/LICENSE-2.0
+
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,45 +17,77 @@
 
     <!-- General strings -->
     <string name="ok">OK</string>
-    <string name="reset">Reset</string>
+    <string name="reset">Resetar</string>
 
     <!-- About phone screen, CypherOS version -->
-    <string name="aoscp_build_information_title">Versão da CypherOS</string>
+    <string name="aoscp_build_information_title">Versão CypherOS</string>
     <string name="aoscp_build_information_summary">%1$s - %2$s</string>
 
     <!-- Feature Reset -->
-    <string name="reset_all_settings">RESTAURAR TUDO</string>
-    <string name="reset_selected_settings">RESTAURAR SELECIONADO</string>
-    <string name="reset_settings_title">Restaurar recurso</string>
-    <string name="reset_settings_summary">Restaurar preferencia de recursos</string>
-    <string name="keywords_settings_reset">restaurar</string>
+    <string name="reset_all_settings">REDEFINIR TUDO</string>
+    <string name="reset_selected_settings">REDEFINIR SELECIONADO</string>
+    <string name="reset_settings_title">Redefinir recurso</string>
+    <string name="reset_settings_summary">Redefinir preferências de recursos</string>
+    <string name="keywords_settings_reset">redefinir</string>
 
     <!-- Pocket judge -->
     <string name="pocket_judge_title">Detecção de bolso</string>
-    <string name="pocket_judge_summary">Bloqueia de tela e toques no botão quando o dispositivo está no bolso</string>
+    <string name="pocket_judge_summary">Bloquear toques na tela e nos botões quando o dispositivo estiver no bolso</string>
 
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestos</string>
-    <string name="gesture_settings_title_summary">Use o sistema e os gestos do dispositivo</string>
-    <string name="gesture_settings_summary">Os gestos podem aparecer com base no dispositivo que os suporta</string>
+    <string name="gesture_settings_title_summary">Usar os gestos do sistema e do dispositivo</string>
+    <string name="gesture_settings_summary">As opções de gestos aparecem conforme o dispositivo os suporta</string>
     <!-- Tap to sleep -->
-    <string name="tap_to_sleep_title">Toque para dormir</string>
-    <string name="tap_to_sleep_title_summary">Toque duas vezes na barra de status para colocar o dispositivo para dormir</string>
+    <string name="tap_to_sleep_title">Tocar para dormir</string>
+    <string name="tap_to_sleep_title_summary">Toque duas vezes na barra de status para bloquear e desligar a tela</string>
+    <!-- Off-screen Gestures -->
+    <string name="offscreen_gestures_title">Gestos de tela desligada</string>
+    <string name="keywords_gestures">Tela sensível ao deslize do dedo</string>
+    <!-- Off-screen Gestures: Options -->
+    <string name="gestures_double_tap">Toque duplo</string>
+    <string name="gestures_draw_v">Desenhar V</string>
+    <string name="gestures_draw_inverse_v">Desenhar V Inverso</string>
+    <string name="gestures_draw_o">Desenhar O</string>
+    <string name="gestures_draw_m">Desenhar M</string>
+    <string name="gestures_draw_w">Desenhar W</string>
+    <string name="gestures_draw_arrow_left">Desenhar &lt;</string>
+    <string name="gestures_draw_arrow_right">Desenhar &gt;</string>
+    <string name="gestures_one_finger_swipe_up">Delizar um dedo para cima</string>
+    <string name="gestures_one_finger_swipe_right">Deslizar um dedo para a direita</string>
+    <string name="gestures_one_finger_swipe_down">Deslizar um dedo para baixo</string>
+    <string name="gestures_one_finger_swipe_left">Deslizar um dedo para a esquerda</string>
+    <string name="gestures_two_finger_swipe">Delizar dois dedos</string>
+    <!-- Off-screen Gestures: Triggers -->
+    <string name="gestures_disabled">Desativado</string>
+    <string name="gestures_wake_device">Acordar dispositivo</string>
+    <string name="gestures_toggle_flashlight">Alternar lanterna</string>
+    <string name="gestures_toggle_airplane_mode">Alternar modo de avião</string>
+    <string name="gestures_play_pause_music">Tocar/Pausar música</string>
+    <string name="gestures_next_music">Próxima música</string>
+    <string name="gestures_previous_music">Música anterior</string>
+    <string name="gestures_open_camera">Abrir câmera</string>
+    <string name="gestures_open_dialer">Abrir discador</string>
 
     <!-- Tuning Settings -->
-    <string name="tuning_settings_title">Tuning</string>
-    <string name="tuning_settings_description">Aqui você pode alterar as funções específicas do sistema para atender às suas necessidades adequadas. Isso permite que você navegue e use alguns recursos com facilidade e conforto.</string>
+    <string name="tuning_settings_title">Ajustes</string>
+    <string name="tuning_settings_description">Aqui você pode alterar as funções específicas do sistema para atender às suas necessidades. Isso permite que você navegue e use alguns recursos com facilidade e conforto.</string>
     <!-- Screenshot Mode -->
     <string name="screenshot_type_title">Modo de captura de tela</string>
     <string name="screenshot_type_fullscreen">Normal</string>
     <string name="screenshot_type_fullscreen_summary">Tire uma captura de tela normal com tela cheia para mostrar todos os seus conteúdos atuais</string>
     <string name="screenshot_type_partial">Parcial</string>
     <string name="screenshot_type_partial_summary">Tire uma captura de tela da área de exibição selecionada para mostrar apenas o conteúdo da tela focada</string>
+    <!-- Screenrecord Resolution -->
+    <string name="screenrecord_resolution_title">Resolução da gravação de tela</string>
+    <string name="screenrecord_resolution_480">480p</string>
+    <string name="screenrecord_resolution_720_4mbs">720p (Média-Qualidade)</string>
+    <string name="screenrecord_resolution_720_8mbs">720p (Ótima-Qualidade)</string>
 
     <!-- Button Settings -->
     <string name="button_settings_title">Botões</string>
-    <string name="button_settings_title_summary">Execute ações de botão personalizadas</string>
-    <string name="button_settings_description">Defina ações de botão personalizado para várias chaves de hardware apresentadas no seu dispositivo.</string>
+    <string name="button_settings_title_summary">Usar ações personalizadas para os botões</string>
+    <string name="button_settings_description">Defina ações personalizadas para os botões presentes no seu dispositivo.</string>
     <!-- Navigation bar -->
     <string name="navigation_bar_title">Barra de navegação</string>
     <string name="navigation_bar_title_summary">Ativar as teclas de navegação na tela</string>
@@ -64,15 +98,15 @@
     <string name="hardware_brightness_keys_title">Luz de fundo</string>
     <string name="hardware_brightness_keys_title_summary">Ativar luz de fundo das teclas de navegação</string>
     <!-- Buttons: Categories -->
-    <string name="home_key_title">Botão home</string>
+    <string name="home_key_title">Botão início</string>
     <string name="back_key_title">Botão voltar</string>
     <string name="menu_key_title">Botão menu</string>
-    <string name="assist_key_title">Botão assist</string>
+    <string name="assist_key_title">Botão assistente</string>
     <string name="app_switch_key_title">Botão recentes</string>
     <string name="camera_key_title">Botão da câmera</string>
-    <string name="volume_key_title">Botão de volume</string>
+    <string name="volume_key_title">Botões de volume</string>
     <!-- Buttons: Actions -->
-    <string name="short_press_title">Acão toque curto</string>
+    <string name="short_press_title">Ação toque curto</string>
     <string name="long_press_title">Ação toque longo</string>
     <string name="double_tap_title">Ação toque duplo</string>
     <string name="action_nothing">Sem ação</string>
@@ -81,31 +115,31 @@
     <string name="action_search">Assistente de pesquisa</string>
     <string name="action_voice_search">Pesquisa por voz</string>
     <string name="action_in_app_search">Pesquisa no aplicativo</string>
-    <string name="action_launch_camera">Abrir camera</string>
-    <string name="action_last_app">Abrir ultimo app</string>
+    <string name="action_launch_camera">Abrir câmera</string>
+    <string name="action_last_app">Abrir último app</string>
     <string name="action_splitscreen">Dividir tela</string>
     <!-- Alert Slider -->
     <string name="swap_slider_order_title">Trocar controle deslizante</string>
     <string name="swap_slider_order_summary">Troque a ordem dos modos do controle deslizante de alerta</string>
     <!-- Volume rocker music control -->
     <string name="volume_button_music_control_title">Controle de reprodução</string>
-    <string name="volume_button_music_control_summary">Quando a tela está desligada, pressione longamente as teclas de volume para mudar a faixa de música.</string>
+    <string name="volume_button_music_control_summary">Quando a tela estiver desligada, pressione longamente as teclas de volume para mudar a faixa de música.</string>
     <!-- Volume key rotation -->
     <string name="swap_volume_buttons_title">Inverter botões</string>
-    <string name="swap_volume_buttons_summary">Quando a tela é girada</string>
+    <string name="swap_volume_buttons_summary">Quando a tela for girada</string>
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Acordar o dispositivo</string>
     <string name="volume_rocker_wake_summary">Ao pressionar uma das teclas de volume</string>
 
     <!-- Battery Light -->
     <string name="battery_light_title">Luz da bateria</string>
-    <string name="battery_light_title_summary_on">Ativado / Vai indicar o nivel da bateria</string>
-    <string name="battery_light_title_summary_off">Desativado / O nivel da bateria não será indicado</string>
+    <string name="battery_light_title_summary_on">Ativado / Vai indicar o nível da bateria</string>
+    <string name="battery_light_title_summary_off">Desativado / O nível da bateria não será indicado</string>
     <string name="battery_light_description">Ative/Desative o indicador de luz da bateria ou alterar o seu comportamento</string>
     <string name="battery_low_pulse_title">Pisque quando baixo</string>
     <string name="battery_low_pulse_title_summary">Piscar quando o nível da bateria estiver baixo</string>
-    <string name="battery_light_only_full_charge_title">Indicação totalmente carregada</string>
-    <string name="battery_light_only_full_charge_title_summary">Mostra a luz da bateria apenas quando o dispositivo está totalmente carregado</string>
+    <string name="battery_light_only_full_charge_title">Indicação de carga completa</string>
+    <string name="battery_light_only_full_charge_title_summary">Mostrar a luz da bateria apenas quando o dispositivo estiver totalmente carregado</string>
     <string name="battery_light_list_title">Cores</string>
     <string name="battery_light_low_color_title">Bateria fraca</string>
     <string name="battery_light_medium_color_title">Carregando</string>
@@ -127,7 +161,7 @@
     <string name="custom_light_title">Cor da luz</string>
     <string name="custom_light_on_time_title">"Tempo de ativação da luz durante o pulso led (ms)"</string>
     <string name="custom_light_off_time_title">"Tempo de desligamento da luz durante o pulso led (ms)"</string>
-    <string name="app_notifications_info_desc">Toque em um dos canais acima para configurar suas cores claras e outras opções</string>
+    <string name="app_notifications_info_desc">Toque em uma das categorias acima para configurar suas cores e outras opções</string>
     <string name="value_equals_default">Auto</string>
     <string name="show_light_on_zen_title">Piscar durate o Não Pertube</string>
     <string name="unit_sec">sec</string>
@@ -150,8 +184,8 @@
     <string name="vibrate_on_plug_title">Vibrar ao plugar</string>
 
     <!-- Navigation bar animation -->
-    <string name="navigation_bar_animation_title">Animação da Navbar</string>
-    <string name="navigation_bar_animation_summary">Animar a barra de navegação para quando pressionada</string>
+    <string name="navigation_bar_animation_title">Animação da barra de navegação</string>
+    <string name="navigation_bar_animation_summary">Animar a barra de navegação quando pressionada</string>
   
     <!-- Color Manager -->
     <string name="color_manager_title">Gerenciador de cores</string>
@@ -217,7 +251,7 @@
     <string name="network_traffic_autohide_threshold_title">Ocultar limite automaticamente</string>
     <!-- Network Traffic: Condition -->
     <string name="condition_network_traffic_title">O monitor de tráfego está ativo</string>
-    <string name="condition_network_traffic_summary">Seus dados celulares ou wifi estão sendo monitorados. O indicador mostra na barra de status.</string>
+    <string name="condition_network_traffic_summary">Seus dados móveis ou wifi estão sendo monitorados. O indicador mostra na barra de status.</string>
 
     <!-- System Update: Version summary [CHAR LIMIT=NONE] -->
     <string name="system_update_summary">Atualizado para CypherOS <xliff:g id="version" example="6.0">%1$s</xliff:g></string>
@@ -235,4 +269,44 @@
     <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
     <string name="swipe_to_screenshot_summary">Deslize três dedos na tela para tirar uma captura de tela</string>
 
+    <!-- Ambient Play -->
+    <string name="ambient_play_settings_title">Tocando Agora</string>
+    <string name="ambient_play_lockscreen_title">Mostrar na tela de bloqueio</string>
+    <string name="ambient_play_illustration_text">Música by Artista</string>
+    <string name="ambient_play_description">Quando uma música estiver tocando nas proximidades, você poderá ver o nome da música e o artista. O Tocando Agora requer uma conexão de rede apenas para enviar dados temporariamente gravados ao banco de dados de reconhecimento.</string>
+
+    <!-- Statusbar Clock options -->
+    <string name="advanced_date_time_title">Avançado</string>
+    <string name="advanced_date_time_summary">Mais opções para o relógio e indicadores de data</string>
+    <string name="status_bar_show_clock_title">Mostrar relógio</string>
+    <string name="status_bar_show_clock_summary">Dentro da barra de status</string>
+    <string name="clock_title_enable">Local</string>
+    <string name="right_clock">Direita</string>
+    <string name="center_clock">Centro</string>
+    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+    <string name="status_bar_clock_seconds_summary">Ao lado do indicador do relógio</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">O relógio 24-horas está ativado</string>
+    <string name="am_pm_clock_normal">Normal</string>
+    <string name="am_pm_clock_small">Pequeno</string>
+    <string name="am_pm_clock_none">Desativado</string>
+    <string name="date_category_title">Data</string>
+    <string name="clock_date_display">Mostar data</string>
+    <string name="clock_date_display_summary">Ao lado do indicador do relógio</string>
+    <string name="clock_date_style">Estilo</string>
+    <string name="clock_date_format">Formato</string>
+    <string name="clock_date_string_edittext_title">Deve estar em DataFormato ex. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Digite a data</string>
+    <string name="clock_date_display_none">Desativado</string>
+    <string name="clock_date_display_small">Pequeno</string>
+    <string name="clock_date_display_normal">Normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Minúscula</string>
+    <string name="clock_date_style_uppercase">Maiúscula</string>
+    <string name="clock_date_format_custom">Formato personalizado</string>
+    <string name="menu_cancel">Cancelar</string>
+    <string name="menu_save">Salvar</string>
+
+    <string name="face_auto_unlock_title">Desbloqueio facial automático</string>
+    <string name="face_auto_unlock_summary">Desbloquear após reconhecer o rosto</string> 
 </resources>
