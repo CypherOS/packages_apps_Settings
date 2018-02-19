@@ -4,7 +4,9 @@
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
+
        http://www.apache.org/licenses/LICENSE-2.0
+
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +17,7 @@
 
     <!-- General strings -->
     <string name="ok">OK</string>
-    <string name="reset">Reset</string>
+    <string name="reset">Resetar</string>
 
     <!-- About phone screen, CypherOS version -->
     <string name="aoscp_build_information_title">Versão da CypherOS</string>
@@ -39,6 +41,33 @@
     <!-- Tap to sleep -->
     <string name="tap_to_sleep_title">Toque para dormir</string>
     <string name="tap_to_sleep_title_summary">Toque duas vezes na barra de status para colocar o dispositivo para dormir</string>
+    <!-- Off-screen Gestures -->
+    <string name="offscreen_gestures_title">Gestos de tela desligada</string>
+    <string name="keywords_gestures">Tela sensível ao deslize do dedo</string>
+    <!-- Off-screen Gestures: Options -->
+    <string name="gestures_double_tap">Toque duplo</string>
+    <string name="gestures_draw_v">Desenhar V</string>
+    <string name="gestures_draw_inverse_v">Desenhar V Inverso</string>
+    <string name="gestures_draw_o">Desenhar O</string>
+    <string name="gestures_draw_m">Desenhar M</string>
+    <string name="gestures_draw_w">Desenhar W</string>
+    <string name="gestures_draw_arrow_left">Desenhar &lt;</string>
+    <string name="gestures_draw_arrow_right">Desenhar &gt;</string>
+    <string name="gestures_one_finger_swipe_up">Delizar um dedo para cima</string>
+    <string name="gestures_one_finger_swipe_right">Deslizar um dedo para a direita</string>
+    <string name="gestures_one_finger_swipe_down">Deslizar um dedo para baixo</string>
+    <string name="gestures_one_finger_swipe_left">Deslizar um dedo para a esquerda</string>
+    <string name="gestures_two_finger_swipe">Delizar dois dedos</string>
+    <!-- Off-screen Gestures: Triggers -->
+    <string name="gestures_disabled">Desativado</string>
+    <string name="gestures_wake_device">Acordar dispositivo</string>
+    <string name="gestures_toggle_flashlight">Alternar lanterna</string>
+    <string name="gestures_toggle_airplane_mode">Alternar modo de avião</string>
+    <string name="gestures_play_pause_music">Tocar/Pausar música</string>
+    <string name="gestures_next_music">Próxima música</string>
+    <string name="gestures_previous_music">Música anterior</string>
+    <string name="gestures_open_camera">Abir câmera</string>
+    <string name="gestures_open_dialer">Abrir discador</string>
 
     <!-- Tuning Settings -->
     <string name="tuning_settings_title">Tuning</string>
@@ -234,5 +263,43 @@
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
     <string name="swipe_to_screenshot_summary">Deslize três dedos na tela para tirar uma captura de tela</string>
+
+    <!-- Ambient Play -->
+    <string name="ambient_play_settings_title">Tocando Agora</string>
+    <string name="ambient_play_lockscreen_title">Mostrar na tela de bloqueio</string>
+    <string name="ambient_play_illustration_text">Música by Artista</string>
+    <string name="ambient_play_description">Quando uma música estiver tocando nas proximidades, você poderá ver o nome da música e o artista. O Tocando Agora requer uma conexão de rede apenas para enviar dados temporariamente gravados ao banco de dados de reconhecimento.</string>
+
+    <!-- Statusbar Clock options -->
+    <string name="advanced_date_time_title">Avançado</string>
+    <string name="advanced_date_time_summary">Mais opções para o relógio e indicadores de data</string>
+    <string name="status_bar_show_clock_title">Mostrar relógio</string>
+    <string name="status_bar_show_clock_summary">Dentro da barra de status</string>
+    <string name="clock_title_enable">Local</string>
+    <string name="right_clock">Direita</string>
+    <string name="center_clock">Centro</string>
+    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+    <string name="status_bar_clock_seconds_summary">Ao lado do indicador do relógio</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">O relógio 24-horas está ativado</string>
+    <string name="am_pm_clock_normal">Normal</string>
+    <string name="am_pm_clock_small">Pequeno</string>
+    <string name="am_pm_clock_none">Desativado</string>
+    <string name="date_category_title">Data</string>
+    <string name="clock_date_display">Mostar data</string>
+    <string name="clock_date_display_summary">Ao lado do indicador do relógio</string>
+    <string name="clock_date_style">Estilo</string>
+    <string name="clock_date_format">Formato</string>
+    <string name="clock_date_string_edittext_title">Deve estar em DataFormato ex. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Digite a data</string>
+    <string name="clock_date_display_none">Desativado</string>
+    <string name="clock_date_display_small">Pequeno</string>
+    <string name="clock_date_display_normal">Normal</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Minúscula</string>
+    <string name="clock_date_style_uppercase">Maiúscula</string>
+    <string name="clock_date_format_custom">Formato personalizado</string>
+    <string name="menu_cancel">Cancelar</string>
+    <string name="menu_save">Salvar</string>
 
 </resources>
