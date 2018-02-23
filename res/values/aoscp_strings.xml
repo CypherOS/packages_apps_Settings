@@ -152,5 +152,25 @@
     <string name="gestures_previous_music">Previous song</string>
     <string name="gestures_screenshot">Take screenshot</string>
     <string name="gestures_assistant">Launch assistant</string>
+	
+	<!-- Off-screen Gestures -->
+    <string name="offscreen_gestures_title">Offscreen gestures</string>
+    <!-- Off-screen Gestures: Options -->
+    <string name="gestures_draw_v">Draw V</string>
+    <string name="gestures_draw_inverse_v">Draw Inverse V</string>
+    <string name="gestures_draw_o">Draw O</string>
+    <string name="gestures_draw_m">Draw M</string>
+    <string name="gestures_draw_w">Draw W</string>
+    <string name="gestures_draw_arrow_left">Draw &lt;</string>
+    <string name="gestures_draw_arrow_right">Draw &gt;</string>
+    <string name="gestures_one_finger_swipe_up">One-finger swipe up</string>
+    <string name="gestures_one_finger_swipe_right">One-finger swipe right</string>
+    <string name="gestures_one_finger_swipe_down">One-finger swipe down</string>
+    <string name="gestures_one_finger_swipe_left">One-finger swipe left</string>
+    <string name="gestures_two_finger_swipe">Two-finger swipe</string>
+    <!-- Off-screen Gestures: Triggers -->
+    <string name="gestures_wake_device">Wake device</string>
+    <string name="gestures_open_camera">Open camera</string>
+    <string name="gestures_open_dialer">Open dialer</string>
 
 </resources>
