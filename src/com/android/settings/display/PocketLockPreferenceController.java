@@ -39,7 +39,7 @@ public class PocketLockPreferenceController extends AbstractPreferenceController
 
     @Override
     public void updateState(Preference preference) {
-        int value = Settings.System.getInt(mContext.getContentResolver(), POCKET_JUDGE, 1);
+        int value = Settings.System.getInt(mContext.getContentResolver(), POCKET_JUDGE, 0);
         ((SwitchPreference) preference).setChecked(value != 0);
     }
 
