@@ -58,7 +58,7 @@ public class HandWaveGesturePreferenceController extends AbstractPreferenceContr
 
     @Override
     public void updateState(Preference preference) {
-        int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_PULSE_ON_HAND_WAVE, 1);
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_PULSE_ON_HAND_WAVE, 0);
         ((SwitchPreference) preference).setChecked(value != 0);
         if (pocketLockEnabled()) {
             ((SwitchPreference) preference).setEnabled(false);
