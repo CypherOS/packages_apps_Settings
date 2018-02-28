@@ -15,6 +15,7 @@ package com.android.settings.aoscp.buttons;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
@@ -60,8 +61,10 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
 
     @Override
     public void updateState(Preference preference) {
-        int value = Settings.System.getInt(mContext.getContentResolver(), NAVIGATION_BAR_ENABLED, 1);
-        ((SwitchPreference) preference).setChecked(value != 0);
+        final boolean defaultToNavigationBar = mContext.getResources().getBoolean(com.android.internal.R.bool.config_defaultToNavigationBar);
+        final boolean navigationBarEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_ENABLED, defaultToNavigationBar ? 1 : 0, UserHandle.USER_CURRENT) != 0;
+        ((SwitchPreference) preference).setChecked(navigationBarEnabled);
     }
 
     @Override
