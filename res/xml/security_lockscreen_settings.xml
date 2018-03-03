@@ -47,5 +47,10 @@
         android:key="face_auto_unlock"
         android:title="@string/face_auto_unlock_title"
         android:summary="@string/face_auto_unlock_summary" />
+		
+	<SwitchPreference
+        android:key="ambient_weather_lockscreen"
+        android:title="@string/ambient_weather_lockscreen_title"
+        android:summary="@string/ambient_weather_lockscreen_summary" />
 
 </PreferenceScreen>
