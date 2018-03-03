@@ -17,17 +17,17 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- General strings -->
-  <string name="ok">OK</string>
-  <string name="reset">Reset</string>
+  <string name="ok">Đồng ý</string>
+  <string name="reset">Thiết đặt lại</string>
   <!-- About phone screen, CypherOS version -->
-  <string name="aoscp_build_information_title">CypherOS version</string>
+  <string name="aoscp_build_information_title">Phiên bản CypherOS</string>
   <string name="aoscp_build_information_summary">%1$s - %2$s</string>
   <!-- Feature Reset -->
-  <string name="reset_all_settings">RESET ALL</string>
-  <string name="reset_selected_settings">RESET SELECTED</string>
-  <string name="reset_settings_title">Feature reset</string>
-  <string name="reset_settings_summary">Reset feature preferences</string>
-  <string name="keywords_settings_reset">reset</string>
+  <string name="reset_all_settings">Thiết đặt lại tất cả</string>
+  <string name="reset_selected_settings">Thiết đặt lại những mục đã chọn</string>
+  <string name="reset_settings_title">Thiết đặt lại tính năng</string>
+  <string name="reset_settings_summary">Thiết đặt lại tính năng theo yêu cầu</string>
+  <string name="keywords_settings_reset">thiết đặt lại</string>
   <!-- Pocket judge -->
   <string name="pocket_judge_title">Pocket detection</string>
   <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
@@ -176,7 +176,7 @@
   <string name="volume_steps_ring_title">Volume steps: Ringer</string>
   <string name="volume_steps_system_title">Volume steps: System</string>
   <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
-  <string name="volume_steps_reset">Reset</string>
+  <string name="volume_steps_reset">Thiết đặt lại</string>
   <!-- Ambient display -->
   <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
   <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>

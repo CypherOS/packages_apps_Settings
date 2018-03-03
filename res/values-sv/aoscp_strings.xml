@@ -18,55 +18,55 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- General strings -->
   <string name="ok">OK</string>
-  <string name="reset">Reset</string>
+  <string name="reset">Återställ</string>
   <!-- About phone screen, CypherOS version -->
   <string name="aoscp_build_information_title">CypherOS version</string>
   <string name="aoscp_build_information_summary">%1$s - %2$s</string>
   <!-- Feature Reset -->
-  <string name="reset_all_settings">RESET ALL</string>
-  <string name="reset_selected_settings">RESET SELECTED</string>
-  <string name="reset_settings_title">Feature reset</string>
-  <string name="reset_settings_summary">Reset feature preferences</string>
-  <string name="keywords_settings_reset">reset</string>
+  <string name="reset_all_settings">ÅTERSTÄLL ALLT</string>
+  <string name="reset_selected_settings">ÅTERSTÄLL VALDA</string>
+  <string name="reset_settings_title">Funktionsåterställning</string>
+  <string name="reset_settings_summary">Återställ funktionspreferenser</string>
+  <string name="keywords_settings_reset">återställ</string>
   <!-- Pocket judge -->
-  <string name="pocket_judge_title">Pocket detection</string>
-  <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+  <string name="pocket_judge_title">Fickupptäckning</string>
+  <string name="pocket_judge_summary">Blockera skärmen och interaktion när enheten är i fickan</string>
   <!-- Gesture Settings -->
-  <string name="gesture_settings_title">Gestures</string>
-  <string name="gesture_settings_title_summary">Use system and device gestures</string>
-  <string name="gesture_settings_summary">Gestures can appear based on the device that supports them</string>
+  <string name="gesture_settings_title">Gester</string>
+  <string name="gesture_settings_title_summary">Använd system- och enhetsgester</string>
+  <string name="gesture_settings_summary">Gester kan visas ifall enheten stöder dem</string>
   <!-- Tap to sleep -->
-  <string name="tap_to_sleep_title">Tap to sleep</string>
-  <string name="tap_to_sleep_title_summary">Double tap on the statusbar to put the device to sleep</string>
+  <string name="tap_to_sleep_title">Tryck för att söva</string>
+  <string name="tap_to_sleep_title_summary">Dubbeltryck på statusbaren för att söva enheten</string>
   <!-- Tuning Settings -->
-  <string name="tuning_settings_title">Tuning</string>
-  <string name="tuning_settings_description">Here you can alter system specific functions to fit your suitable needs. This allows you to navigate and use some features with ease and comfort.</string>
+  <string name="tuning_settings_title">Anpassning</string>
+  <string name="tuning_settings_description">Här kan du anpassa systemspecificerade funktioner som möter dina önskemål. Detta tillåter dig att navigera och använda vissa funktioner på ett enkelt och bekvämt sätt.</string>
   <!-- Screenshot Mode -->
-  <string name="screenshot_type_title">Screenshot mode</string>
+  <string name="screenshot_type_title">Skärmdumpsläge</string>
   <string name="screenshot_type_fullscreen">Normal</string>
-  <string name="screenshot_type_fullscreen_summary">Take a normal screenshot of the fullscreen to show all of your current contents</string>
-  <string name="screenshot_type_partial">Partial</string>
-  <string name="screenshot_type_partial_summary">Take a screenshot of the selected view area to show only your focused screen contents</string>
+  <string name="screenshot_type_fullscreen_summary">Ta en vanlig skärmdump av hela skärmen för att visa allt innehåll</string>
+  <string name="screenshot_type_partial">Delvis</string>
+  <string name="screenshot_type_partial_summary">Ta en skärmdump på en vald del av skärmen för att se det fokuserade skärminnehållet</string>
   <!-- Button Settings -->
-  <string name="button_settings_title">Buttons</string>
-  <string name="button_settings_title_summary">Perform custom button actions</string>
-  <string name="button_settings_description">Set custom button actions to several hardware keys presented on your device.</string>
+  <string name="button_settings_title">Knappar</string>
+  <string name="button_settings_title_summary">Utför anpassade knappfunktioner</string>
+  <string name="button_settings_description">Ange anpassade knappfunktioner till flera hårdvaruknappar på din enhet.</string>
   <!-- Navigation bar -->
-  <string name="navigation_bar_title">Navigation bar</string>
-  <string name="navigation_bar_title_summary">Enable on-screen navigation keys</string>
+  <string name="navigation_bar_title">Navigeringsfält</string>
+  <string name="navigation_bar_title_summary">Aktivera navigationsknapparna på skärmen</string>
   <!-- Swap navigation keys -->
-  <string name="swap_navigation_keys_title">Swap keys</string>
-  <string name="swap_navigation_keys_title_summary">Swap back and recents keys</string>
+  <string name="swap_navigation_keys_title">Byt knappar</string>
+  <string name="swap_navigation_keys_title_summary">Byt \"tillbaka\" och \"senast\"-knappen</string>
   <!-- Button brightness -->
-  <string name="hardware_brightness_keys_title">Backlight</string>
-  <string name="hardware_brightness_keys_title_summary">Enable navigation keys backlight</string>
+  <string name="hardware_brightness_keys_title">Bakgrundsbelysning</string>
+  <string name="hardware_brightness_keys_title_summary">Aktivera bakgrundsbelysning till navigationsknapparna</string>
   <!-- Buttons: Categories -->
-  <string name="home_key_title">Home button</string>
-  <string name="back_key_title">Back button</string>
-  <string name="menu_key_title">Menu button</string>
-  <string name="assist_key_title">Assist button</string>
-  <string name="app_switch_key_title">Recents button</string>
-  <string name="camera_key_title">Camera button</string>
+  <string name="home_key_title">Hemknappen</string>
+  <string name="back_key_title">Knappen tillbaka</string>
+  <string name="menu_key_title">Menyknappen</string>
+  <string name="assist_key_title">Assistansknappen</string>
+  <string name="app_switch_key_title">Senast-knappen</string>
+  <string name="camera_key_title">Kameraknappen</string>
   <string name="volume_key_title">Volume button</string>
   <!-- Buttons: Actions -->
   <string name="short_press_title">Short press action</string>
@@ -176,7 +176,7 @@
   <string name="volume_steps_ring_title">Volume steps: Ringer</string>
   <string name="volume_steps_system_title">Volume steps: System</string>
   <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
-  <string name="volume_steps_reset">Reset</string>
+  <string name="volume_steps_reset">Återställ</string>
   <!-- Ambient display -->
   <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
   <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>

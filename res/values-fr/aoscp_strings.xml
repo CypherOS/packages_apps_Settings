@@ -18,69 +18,69 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- General strings -->
   <string name="ok">OK</string>
-  <string name="reset">Reset</string>
+  <string name="reset">Réinitialiser</string>
   <!-- About phone screen, CypherOS version -->
-  <string name="aoscp_build_information_title">CypherOS version</string>
+  <string name="aoscp_build_information_title">Version CypherOS</string>
   <string name="aoscp_build_information_summary">%1$s - %2$s</string>
   <!-- Feature Reset -->
-  <string name="reset_all_settings">RESET ALL</string>
-  <string name="reset_selected_settings">RESET SELECTED</string>
+  <string name="reset_all_settings">TOUT RÉINITIALISER</string>
+  <string name="reset_selected_settings">RÉINITIALISER LA SÉLECTION</string>
   <string name="reset_settings_title">Feature reset</string>
   <string name="reset_settings_summary">Reset feature preferences</string>
-  <string name="keywords_settings_reset">reset</string>
+  <string name="keywords_settings_reset">réinitialiser</string>
   <!-- Pocket judge -->
   <string name="pocket_judge_title">Pocket detection</string>
   <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
   <!-- Gesture Settings -->
-  <string name="gesture_settings_title">Gestures</string>
+  <string name="gesture_settings_title">Gestes</string>
   <string name="gesture_settings_title_summary">Use system and device gestures</string>
   <string name="gesture_settings_summary">Gestures can appear based on the device that supports them</string>
   <!-- Tap to sleep -->
-  <string name="tap_to_sleep_title">Tap to sleep</string>
+  <string name="tap_to_sleep_title">Toucher pour mettre en veille</string>
   <string name="tap_to_sleep_title_summary">Double tap on the statusbar to put the device to sleep</string>
   <!-- Tuning Settings -->
-  <string name="tuning_settings_title">Tuning</string>
+  <string name="tuning_settings_title">Ajuster</string>
   <string name="tuning_settings_description">Here you can alter system specific functions to fit your suitable needs. This allows you to navigate and use some features with ease and comfort.</string>
   <!-- Screenshot Mode -->
-  <string name="screenshot_type_title">Screenshot mode</string>
+  <string name="screenshot_type_title">Mode capture d\'écran</string>
   <string name="screenshot_type_fullscreen">Normal</string>
   <string name="screenshot_type_fullscreen_summary">Take a normal screenshot of the fullscreen to show all of your current contents</string>
-  <string name="screenshot_type_partial">Partial</string>
+  <string name="screenshot_type_partial">Partiel</string>
   <string name="screenshot_type_partial_summary">Take a screenshot of the selected view area to show only your focused screen contents</string>
   <!-- Button Settings -->
-  <string name="button_settings_title">Buttons</string>
+  <string name="button_settings_title">Boutons</string>
   <string name="button_settings_title_summary">Perform custom button actions</string>
   <string name="button_settings_description">Set custom button actions to several hardware keys presented on your device.</string>
   <!-- Navigation bar -->
-  <string name="navigation_bar_title">Navigation bar</string>
+  <string name="navigation_bar_title">Barre de navigation</string>
   <string name="navigation_bar_title_summary">Enable on-screen navigation keys</string>
   <!-- Swap navigation keys -->
   <string name="swap_navigation_keys_title">Swap keys</string>
   <string name="swap_navigation_keys_title_summary">Swap back and recents keys</string>
   <!-- Button brightness -->
-  <string name="hardware_brightness_keys_title">Backlight</string>
+  <string name="hardware_brightness_keys_title">Rétroéclairage</string>
   <string name="hardware_brightness_keys_title_summary">Enable navigation keys backlight</string>
   <!-- Buttons: Categories -->
-  <string name="home_key_title">Home button</string>
-  <string name="back_key_title">Back button</string>
-  <string name="menu_key_title">Menu button</string>
-  <string name="assist_key_title">Assist button</string>
-  <string name="app_switch_key_title">Recents button</string>
-  <string name="camera_key_title">Camera button</string>
+  <string name="home_key_title">Bouton d’accueil</string>
+  <string name="back_key_title">Bouton de retour</string>
+  <string name="menu_key_title">Bouton de menu</string>
+  <string name="assist_key_title">Bouton d\'assistance</string>
+  <string name="app_switch_key_title">Bouton récents</string>
+  <string name="camera_key_title">Bouton de caméra</string>
   <string name="volume_key_title">Volume button</string>
   <!-- Buttons: Actions -->
-  <string name="short_press_title">Short press action</string>
-  <string name="long_press_title">Long press action</string>
-  <string name="double_tap_title">Double tap action</string>
-  <string name="action_nothing">No action</string>
-  <string name="action_menu">Open/close menu</string>
-  <string name="action_app_switch">Recents</string>
-  <string name="action_search">Search assistant</string>
-  <string name="action_voice_search">Voice search</string>
+  <string name="short_press_title">Action de pression courte</string>
+  <string name="long_press_title">Action de pression longue</string>
+  <string name="double_tap_title">Action de pression double</string>
+  <string name="action_nothing">Aucune action</string>
+  <string name="action_menu">Ouvrir/fermer menu</string>
+  <string name="action_app_switch">Récents</string>
+  <string name="action_search">Assistant de recherche</string>
+  <string name="action_voice_search">Recherche vocale</string>
   <string name="action_in_app_search">In-app search</string>
-  <string name="action_launch_camera">Open camera</string>
-  <string name="action_last_app">Launch last app</string>
-  <string name="action_splitscreen">Splitscreen</string>
+  <string name="action_launch_camera">Ouvrir la caméra</string>
+  <string name="action_last_app">Lancer la dernière application</string>
+  <string name="action_splitscreen">Ecran partagé</string>
   <!-- Alert Slider -->
   <string name="swap_slider_order_title">Swap slider</string>
   <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
@@ -98,61 +98,61 @@
   <string name="battery_light_title_summary_on">On / Battery level will indicate</string>
   <string name="battery_light_title_summary_off">Off / Battery level will not indicate</string>
   <string name="battery_light_description">Turn on/off the battery light indicator or change it\'s behavior</string>
-  <string name="battery_low_pulse_title">Pulse when low</string>
-  <string name="battery_low_pulse_title_summary">Pulse when the battery level is low</string>
-  <string name="battery_light_only_full_charge_title">Fully charged indication</string>
+  <string name="battery_low_pulse_title">Clignoter quand faible</string>
+  <string name="battery_low_pulse_title_summary">Clignoter quand le niveau de batterie est faible</string>
+  <string name="battery_light_only_full_charge_title">Indicateur de charge complète</string>
   <string name="battery_light_only_full_charge_title_summary">Only show the battery light when the device is fully charged</string>
-  <string name="battery_light_list_title">Colors</string>
-  <string name="battery_light_low_color_title">Battery low</string>
-  <string name="battery_light_medium_color_title">Charging</string>
-  <string name="battery_light_full_color_title">Charged (90%)</string>
-  <string name="battery_light_really_full_color_title">Charged (100%)</string>
-  <string name="fast_color_cat_title">Fast charging</string>
-  <string name="fast_charging_led_enabled_title">Enable fast charging color</string>
-  <string name="fast_charging_led_enabled_summary">When fast charging, use different color till 90% charged</string>
-  <string name="fast_charging_light_color_title">Color</string>
+  <string name="battery_light_list_title">Couleurs</string>
+  <string name="battery_light_low_color_title">Batterie faible</string>
+  <string name="battery_light_medium_color_title">En charge</string>
+  <string name="battery_light_full_color_title">Chargé (90%)</string>
+  <string name="battery_light_really_full_color_title">Chargé (100%)</string>
+  <string name="fast_color_cat_title">Charge rapide</string>
+  <string name="fast_charging_led_enabled_title">Activer la couleur de charge rapide</string>
+  <string name="fast_charging_led_enabled_summary">Lors d\'une charge rapide, utiliser une couleur différente jusqu\'à 90% de chage</string>
+  <string name="fast_charging_light_color_title">Couleur</string>
   <string name="fast_charging_light_color_summary"></string>
-  <string name="edit_battery_settings">Edit battery settings</string>
-  <string name="led_color_green">Green</string>
-  <string name="led_color_red">Red</string>
-  <string name="led_color_blue">Blue</string>
+  <string name="edit_battery_settings">Editer les réglages de la batterie</string>
+  <string name="led_color_green">Vert</string>
+  <string name="led_color_red">Rouge</string>
+  <string name="led_color_blue">Bleu</string>
   <!-- Notification light -->
-  <string name="light_customization">Notification light</string>
-  <string name="notification_light_general_title">General</string>
-  <string name="custom_light_title">Light color</string>
+  <string name="light_customization">LED de notification</string>
+  <string name="notification_light_general_title">Général</string>
+  <string name="custom_light_title">Couleur de la LED</string>
   <string name="custom_light_on_time_title">"Light ON time during led pulse (ms)"</string>
   <string name="custom_light_off_time_title">"Light OFF time during led pulse (ms)"</string>
   <string name="app_notifications_info_desc">Tap on one of above channels to configure their light colors and other options</string>
-  <string name="value_equals_default">Auto</string>
-  <string name="show_light_on_zen_title">Blink during Do Not Disturb</string>
+  <string name="value_equals_default">Automatique</string>
+  <string name="show_light_on_zen_title">Clignoter en mode ne pas déranger</string>
   <string name="unit_sec">sec</string>
   <string name="unit_msec">ms</string>
-  <string name="qs_category_title">Quick settings</string>
+  <string name="qs_category_title">Réglages rapides</string>
   <!-- Quick Settings brightness icon -->
-  <string name="brightness_icon_title">Auto brightness</string>
+  <string name="brightness_icon_title">Luminosité automatique</string>
   <string name="brightness_icon_summary">Show a brightness icon beside the brightness slider to toggle auto-brightness</string>
   <!-- Charging Alerts -->
-  <string name="alert_on_charged_level_title">Charging alert</string>
+  <string name="alert_on_charged_level_title">Alerte de charge</string>
   <string name="alert_on_charged_level_summary">Send an alert, when the desired charging level is reached</string>
-  <string name="alert_on_charged_level_dis">Disabled</string>
+  <string name="alert_on_charged_level_dis">Désactivé</string>
   <string name="alert_on_charged_level_80">"80%"</string>
   <string name="alert_on_charged_level_90">"90%"</string>
   <string name="alert_on_charged_level_99">"99%"</string>
   <!-- Vibrate on plug -->
-  <string name="vibrate_on_plug_title">Vibrate on plug</string>
+  <string name="vibrate_on_plug_title">Vibrer au branchement</string>
   <!-- Navigation bar animation -->
   <string name="navigation_bar_animation_title">Navigationbar animation</string>
   <string name="navigation_bar_animation_summary">Animate the navigation bar to when pressed</string>
   <!-- Color Manager -->
-  <string name="color_manager_title">Color manager</string>
+  <string name="color_manager_title">Gestionnaire des couleurs</string>
   <string name="color_manager_summary">Change system colors with various theme modes</string>
   <string name="color_manager_description">The custom theme chooser will appear here when supported custom themes are installed</string>
   <!-- Color Manager: Base Themes -->
-  <string name="theme_auto_title">Automatic</string>
+  <string name="theme_auto_title">Automatique</string>
   <string name="theme_auto_title_summary">The system will theme itself by grabbing the dominate color from the selected wallpaper</string>
-  <string name="theme_light_title">Light</string>
-  <string name="theme_dark_title">Dark</string>
-  <string name="theme_black_title">Black</string>
+  <string name="theme_light_title">Clair</string>
+  <string name="theme_dark_title">Sombre</string>
+  <string name="theme_black_title">Noir</string>
   <!-- Color Manager: Accents -->
   <string name="accent_category_title">Accent</string>
   <string name="accent_default_title">Default</string>
@@ -160,7 +160,7 @@
   <string name="accent_indigo_title">Indigo</string>
   <string name="accent_pink_title">Pink</string>
   <string name="accent_purple_title">Purple</string>
-  <string name="accent_red_title">Red</string>
+  <string name="accent_red_title">Rouge</string>
   <string name="accent_sky_blue_title">Sky Blue</string>
   <string name="accent_teal_title">Teal</string>
   <string name="accent_white_title">White</string>
@@ -168,18 +168,18 @@
   <!-- Color Manager: User Accents -->
   <string name="accent_user_title">Custom accent</string>
   <!-- Volume Steps -->
-  <string name="volume_steps_title">Volume steps</string>
-  <string name="volume_steps_alarm_title">Volume steps: Alarm</string>
-  <string name="volume_steps_dtmf_title">Volume steps: DTMF</string>
-  <string name="volume_steps_music_title">Volume steps: Music</string>
-  <string name="volume_steps_notification_title">Volume steps: Notification</string>
-  <string name="volume_steps_ring_title">Volume steps: Ringer</string>
-  <string name="volume_steps_system_title">Volume steps: System</string>
-  <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
-  <string name="volume_steps_reset">Reset</string>
+  <string name="volume_steps_title">Paliers de volume</string>
+  <string name="volume_steps_alarm_title">Paliers de volume: Alarme</string>
+  <string name="volume_steps_dtmf_title">Paliers de volume: DMTF</string>
+  <string name="volume_steps_music_title">Paliers de volume: Musique</string>
+  <string name="volume_steps_notification_title">Paliers de volume: Notification</string>
+  <string name="volume_steps_ring_title">Paliers de volume: Sonnerie</string>
+  <string name="volume_steps_system_title">Paliers de volume: Système</string>
+  <string name="volume_steps_voice_call_title">Paliers de volume: Appel Vocal</string>
+  <string name="volume_steps_reset">Réinitialiser</string>
   <!-- Ambient display -->
   <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
-  <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>
+  <string name="ambient_display_hand_wave_title" product="default">Faire signe de la main pour vérifier le téléphone</string>
   <string name="ambient_display_hand_wave_summary" product="default">To check time, notification icons, and other info, wave at your phone.</string>
   <string name="ambient_display_hand_wave_summary_disabled" product="default">Cannot be used while Pocket lock is enabled</string>
   <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
@@ -191,19 +191,19 @@
   <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
   <string name="ambient_display_hand_wave_summary_disabled" product="device">Cannot be used while Pocket lock is enabled</string>
   <!-- Network Traffic -->
-  <string name="network_traffic_title">Traffic monitoring</string>
+  <string name="network_traffic_title">Surveillance du trafic</string>
   <string name="network_traffic_summary_on">On / Monitoring network traffic</string>
-  <string name="network_traffic_summary_off">Off</string>
+  <string name="network_traffic_summary_off">Désactivé</string>
   <string name="network_traffic_description">You can change the threshold of when the traffic monitor is hidden</string>
   <string name="network_traffic_autohide_threshold_title">Autohide threshold</string>
   <!-- Network Traffic: Condition -->
-  <string name="condition_network_traffic_title">Traffic monitor is on</string>
+  <string name="condition_network_traffic_title">La surveillance du trafic est activé</string>
   <string name="condition_network_traffic_summary">Your celluar or wifi data is currently being monitored. The indicator shows in the status bar.</string>
   <!-- System Update: Version summary [CHAR LIMIT=NONE] -->
   <string name="system_update_summary">Updated to CypherOS <xliff:g id="version" example="6.0">%1$s</xliff:g></string>
   <!-- Quick torch -->
   <string name="quick_torch_title">Quick torch</string>
-  <string name="quick_torch_disabled">Disabled</string>
+  <string name="quick_torch_disabled">Désactivé</string>
   <string name="quick_torch_disabled_summary">Quick torch is disabled</string>
   <string name="quick_torch_double_tap">Double tap</string>
   <string name="quick_torch_double_tap_summary">Double tap the power button to torch</string>
@@ -231,7 +231,7 @@
   <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
   <string name="am_pm_clock_normal">Normal</string>
   <string name="am_pm_clock_small">Small</string>
-  <string name="am_pm_clock_none">Disabled</string>
+  <string name="am_pm_clock_none">Désactivé</string>
   <string name="date_category_title">Date</string>
   <string name="clock_date_display">Show date</string>
   <string name="clock_date_display_summary">Alongside the clock indicator</string>
@@ -239,7 +239,7 @@
   <string name="clock_date_format">Format</string>
   <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
   <string name="clock_date_string_edittext_summary">Enter string</string>
-  <string name="clock_date_display_none">Disabled</string>
+  <string name="clock_date_display_none">Désactivé</string>
   <string name="clock_date_display_small">Small</string>
   <string name="clock_date_display_normal">Normal</string>
   <string name="clock_date_style_normal">Normal</string>
