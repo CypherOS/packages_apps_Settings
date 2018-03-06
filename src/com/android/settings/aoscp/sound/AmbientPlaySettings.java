@@ -76,6 +76,7 @@ public class AmbientPlaySettings extends DashboardFragment implements Indexable 
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new AmbientPlayPreferenceController(context));
         controllers.add(new AmbientPlayLockscreenPreferenceController(context));
         return controllers;
     }

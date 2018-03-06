@@ -272,6 +272,7 @@
 
     <!-- Ambient Play -->
     <string name="ambient_play_settings_title">Ambient Play</string>
+    <string name="ambient_play_title">Recognize music</string>
     <string name="ambient_play_lockscreen_title">Show on lock screen</string>
     <string name="ambient_play_illustration_text">Song by Artist</string>
     <string name="ambient_play_description">When music is playing nearby, you can see the song name and artist. Ambient Play requires a network connection and only sends temporary recorded data to the recognition database.</string>
