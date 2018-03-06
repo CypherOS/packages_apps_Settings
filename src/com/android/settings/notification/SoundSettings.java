@@ -18,6 +18,7 @@ package com.android.settings.notification;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -43,6 +44,7 @@ import java.util.List;
 public class SoundSettings extends DashboardFragment {
     private static final String TAG = "SoundSettings";
 
+	private static final String AMBIENT_PLAY_SETTINGS_KEY = "ambient_play_settings";
     private static final String SELECTED_PREFERENCE_KEY = "selected_preference";
     private static final int REQUEST_CODE = 200;
 
@@ -51,6 +53,7 @@ public class SoundSettings extends DashboardFragment {
     private final VolumePreferenceCallback mVolumeCallback = new VolumePreferenceCallback();
     private final H mHandler = new H();
 
+	private Preference mAmbientPlay;
     private RingtonePreference mRequestPreference;
 
     @Override
@@ -67,11 +70,20 @@ public class SoundSettings extends DashboardFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		final Context mContext = getActivity();
+		final PreferenceScreen prefScreen = getPreferenceScreen();
+		boolean mAmbientPlaySupported = mContext.getResources().getBoolean(
+                    com.android.internal.R.bool.config_supportAmbientPlay);
         if (savedInstanceState != null) {
             String selectedPreference = savedInstanceState.getString(SELECTED_PREFERENCE_KEY, null);
             if (!TextUtils.isEmpty(selectedPreference)) {
                 mRequestPreference = (RingtonePreference) findPreference(selectedPreference);
             }
+			if (mAmbientPlaySupported) {
+				mAmbientPlay = (Preference) findPreference(AMBIENT_PLAY_SETTINGS_KEY);
+			} else {
+				prefScreen.removePreference(AMBIENT_PLAY_SETTINGS_KEY);
+			}
         }
     }
 
