@@ -315,4 +315,7 @@
     <!-- Ambient Weather -->
     <string name="ambient_weather_lockscreen_title">Ambient weather</string>
     <string name="ambient_weather_lockscreen_summary">Show weather on the lockscreen and when dozing</string>
+
+    <!-- Link/Unlink notification volume -->
+    <string name="link_volume_title">Link ring and notification volume</string>
 </resources>
