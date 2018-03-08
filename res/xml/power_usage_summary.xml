@@ -44,11 +44,12 @@
         android:title="@string/smart_battery_manager_title"
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController" />
 
-    <SwitchPreference
+    <DropDownPreference
         android:key="battery_percentage"
-        android:title="@string/battery_percentage"
-        android:summary="@string/battery_percentage_description" />
-
+        android:title="@string/battery_percentage_title"
+        android:summary="%s"
+        android:entries="@array/battery_percentage_entries"
+        android:entryValues="@array/battery_percentage_values" />
 
     <com.android.settings.fuelgauge.PowerGaugePreference
         android:key="last_full_charge"
