@@ -24,7 +24,7 @@ import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
-import static android.provider.Settings.System.SWAP_NAVIGATION_KEYS;
+//import static android.provider.Settings.System.SWAP_NAVIGATION_KEYS;
 
 public class SwapNavigationKeysPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
@@ -50,15 +50,15 @@ public class SwapNavigationKeysPreferenceController extends AbstractPreferenceCo
 
     @Override
     public void updateState(Preference preference) {
-        int value = Settings.System.getInt(mContext.getContentResolver(), SWAP_NAVIGATION_KEYS, 1);
-        ((SwitchPreference) preference).setChecked(value != 0);
+        //int value = Settings.System.getInt(mContext.getContentResolver(), SWAP_NAVIGATION_KEYS, 1);
+        //((SwitchPreference) preference).setChecked(value != 0);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean enabled = (boolean) newValue;
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.SWAP_NAVIGATION_KEYS, enabled ? 1 : 0);
+        /*Settings.System.putInt(mContext.getContentResolver(),
+                Settings.System.SWAP_NAVIGATION_KEYS, enabled ? 1 : 0);*/
         return true;
     }
 }
