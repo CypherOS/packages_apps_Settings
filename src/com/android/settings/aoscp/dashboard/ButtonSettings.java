@@ -109,9 +109,8 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
-        final boolean defaultToNavigationBar = res.getBoolean(com.android.internal.R.bool.config_defaultToNavigationBar);
         final boolean navigationBarEnabled = Settings.System.getIntForUser(resolver,
-                Settings.System.NAVIGATION_BAR_ENABLED, defaultToNavigationBar ? 1 : 0, UserHandle.USER_CURRENT) != 0;
+                Settings.System.NAVIGATION_BAR_ENABLED, 1, UserHandle.USER_CURRENT) != 0;
 
         mDeviceHardwareKeys = res.getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
