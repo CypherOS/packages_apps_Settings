@@ -75,10 +75,24 @@ public class GestureSettings extends DashboardFragment implements
     private static final String KEY_ONE_FINGER_SWIPE_DOWN = "one_finger_swipe_down";
     private static final String KEY_ONE_FINGER_SWIPE_LEFT = "one_finger_swipe_left";
     private static final String KEY_TWO_FINGER_SWIPE = "two_finger_swipe";
+	
+	// Fingerprint Gestures
+	private static final String KEY_FINGERPRINT_GESTURES = "fingerprint_gestures";
+	private static final String KEY_FP_SINGLE_TAP = "fp_single_tap";
+	private static final String KEY_FP_DOUBLE_TAP = "fp_double_tap";
+	private static final String KEY_FP_LONG_PRESS = "fp_long_press";
+	private static final String KEY_FP_SWIPE_LEFT = "fp_swipe_left";
+	private static final String KEY_FP_SWIPE_RIGHT = "fp_swipe_right";
 
+	// Off-screen Gestures
     private static final HashMap<String, Integer> mGestureKeyCodes = new HashMap<>();
     private static final HashMap<String, Integer> mGestureDefaults = new HashMap();
     private static final HashMap<String, String> mGestureSettings = new HashMap();
+	
+	// Fingerprint Gestures
+	private static final HashMap<String, Integer> mFPGestureKeyCodes = new HashMap<>();
+    private static final HashMap<String, Integer> mFPGestureDefaults = new HashMap();
+    private static final HashMap<String, String> mFPGestureSettings = new HashMap();
 
     static {
         mGestureKeyCodes.put(KEY_DOUBLE_TAP, com.android.internal.R.integer.config_doubleTapKeyCode);
@@ -127,9 +141,35 @@ public class GestureSettings extends DashboardFragment implements
         mGestureSettings.put(KEY_ONE_FINGER_SWIPE_LEFT, Settings.System.GESTURE_ONE_FINGER_SWIPE_LEFT);
         mGestureSettings.put(KEY_TWO_FINGER_SWIPE, Settings.System.GESTURE_TWO_FINGER_SWIPE);
     }
+	
+	// Fingerprint Gestures
+	static {
+        mFPGestureKeyCodes.put(KEY_FP_SINGLE_TAP, com.android.internal.R.integer.config_fingerprintSingleTapKeyCode);
+        mFPGestureKeyCodes.put(KEY_FP_DOUBLE_TAP, com.android.internal.R.integer.config_fingerprintDoubleTapKeyCode);
+        mFPGestureKeyCodes.put(KEY_FP_LONG_PRESS, com.android.internal.R.integer.config_fingerprintLongPressKeyCode);
+        mFPGestureKeyCodes.put(KEY_FP_SWIPE_LEFT, com.android.internal.R.integer.config_fingerprintSwipeLeftKeyCode);
+        mFPGestureKeyCodes.put(KEY_FP_SWIPE_RIGHT, com.android.internal.R.integer.config_fingerprintSwipeRightKeyCode);
+    }
+
+    static {
+        mFPGestureDefaults.put(KEY_FP_SINGLE_TAP, com.android.internal.R.integer.config_fingerprintSingleTapDefault);
+        mFPGestureDefaults.put(KEY_FP_DOUBLE_TAP, com.android.internal.R.integer.config_fingerprintDoubleTapDefault);
+        mFPGestureDefaults.put(KEY_FP_LONG_PRESS, com.android.internal.R.integer.config_fingerprintLongPressDefault);
+        mFPGestureDefaults.put(KEY_FP_SWIPE_LEFT, com.android.internal.R.integer.config_fingerprintSwipeLeftDefault);
+        mFPGestureDefaults.put(KEY_FP_SWIPE_RIGHT, com.android.internal.R.integer.config_fingerprintSwipeRightDefault);
+    }
+
+    static {
+        mFPGestureSettings.put(KEY_FP_SINGLE_TAP, Settings.System.FINGERPRINT_GESTURE_SINGLE_TAP);
+        mFPGestureSettings.put(KEY_FP_DOUBLE_TAP, Settings.System.FINGERPRINT_GESTURE_DOUBLE_TAP);
+        mFPGestureSettings.put(KEY_FP_LONG_PRESS, Settings.System.FINGERPRINT_GESTURE_LONG_PRESS);
+        mFPGestureSettings.put(KEY_FP_SWIPE_LEFT, Settings.System.FINGERPRINT_GESTURE_SWIPE_LEFT);
+        mFPGestureSettings.put(KEY_FP_SWIPE_RIGHT, Settings.System.FINGERPRINT_GESTURE_SWIPE_RIGHT);
+    }
 
     private GesturesEnabler mGesturesEnabler;
     private PreferenceCategory mOffScreenGestures;
+	private PreferenceCategory mFingerprintGestures;
 
     @Override
     protected int getPreferenceScreenResId() {
@@ -150,12 +190,21 @@ public class GestureSettings extends DashboardFragment implements
         }
 
         mOffScreenGestures = (PreferenceCategory) findPreference(KEY_OFFSCREEN_GESTURES);
+		mFingerprintGestures = (PreferenceCategory) findPreference(KEY_FINGERPRINT_GESTURES);
 
         for (String gestureKey : mGestureKeyCodes.keySet()) {
             if (getResources().getInteger(mGestureKeyCodes.get(gestureKey)) != 0) {
                 screen.findPreference(gestureKey);
             } else {
                 mOffScreenGestures.removePreference(findPreference(gestureKey));
+            }
+        }
+		
+		for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
+            if (getResources().getInteger(mFPGestureKeyCodes.get(fpGestureKey)) != 0) {
+                screen.findPreference(fpGestureKey);
+            } else {
+                mFingerprintGestures.removePreference(findPreference(fpGestureKey));
             }
         }
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_summary);
@@ -192,6 +241,9 @@ public class GestureSettings extends DashboardFragment implements
         if (mGestureKeyCodes.keySet().stream().allMatch(keyCode -> getResources().getInteger(
                 mGestureKeyCodes.get(keyCode)) == 0)) {
             getPreferenceScreen().removePreference(mOffScreenGestures);
+	    } else if (mFPGestureKeyCodes.keySet().stream().allMatch(keyCode -> getResources().getInteger(
+                mFPGestureKeyCodes.get(keyCode)) == 0)) {
+            getPreferenceScreen().removePreference(mFingerprintGestures);
         } else {
             SettingsActivity activity = (SettingsActivity) getActivity();
             mGesturesEnabler = new GesturesEnabler(activity.getSwitchBar());
@@ -230,12 +282,31 @@ public class GestureSettings extends DashboardFragment implements
                 gesturePref.setValue(String.valueOf(gestureBehaviour));
             }
         }
+		
+		for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
+            if (getResources().getInteger(mFPGestureKeyCodes.get(fpGestureKey)) == 0) {
+                continue;
+            }
+            ListPreference fpGesturePref = (ListPreference) findPreference(fpGestureKey);
+            fpGesturePref.setOnPreferenceChangeListener(this);
+            fpGesturePref.setEnabled(enable);
+            if (start) {
+                int fpGestureDefault = getResources().getInteger(
+                        mFPGestureDefaults.get(fpGestureKey));
+                int fpGestureBehaviour = Settings.System.getInt(getContentResolver(),
+                        mFPGestureSettings.get(fpGestureKey), fpGestureDefault);
+                fpGesturePref.setValue(String.valueOf(fpGestureBehaviour));
+            }
+        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Settings.System.putInt(getContentResolver(),
                 mGestureSettings.get(preference.getKey()),
+                Integer.parseInt((String) newValue));
+		Settings.System.putInt(getContentResolver(),
+                mFPGestureSettings.get(preference.getKey()),
                 Integer.parseInt((String) newValue));
         return true;
     }
@@ -244,6 +315,12 @@ public class GestureSettings extends DashboardFragment implements
         for (String gestureKey : mGestureKeyCodes.keySet()) {
             if (context.getResources().getInteger(mGestureKeyCodes
                     .get(gestureKey)) > 0) {
+                return true;
+            }
+        }
+		for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
+            if (context.getResources().getInteger(mFPGestureKeyCodes
+                    .get(fpGestureKey)) > 0) {
                 return true;
             }
         }
@@ -344,6 +421,12 @@ public class GestureSettings extends DashboardFragment implements
                         if (context.getResources().getInteger(mGestureKeyCodes
                                 .get(gestureKey)) == 0) {
                             keys.add(gestureKey);
+                        }
+                    }
+					for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
+                        if (context.getResources().getInteger(mFPGestureKeyCodes
+                                .get(fpGestureKey)) == 0) {
+                            keys.add(fpGestureKey);
                         }
                     }
                     return keys;

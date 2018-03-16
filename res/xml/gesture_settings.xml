@@ -165,5 +165,51 @@
             android:entryValues="@array/gestures_values" />
 
     </PreferenceCategory>
+	
+	<PreferenceCategory
+            android:key="fingerprint_gestures"
+            android:title="@string/fingerprint_gestures_title">
+      
+        <ListPreference
+            android:key="fp_single_tap"
+            android:title="@string/fp_gestures_single_tap"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/gestures_entries"
+            android:entryValues="@array/gestures_values" />
+			
+		<ListPreference
+            android:key="fp_double_tap"
+            android:title="@string/fp_gestures_double_tap"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/gestures_entries"
+            android:entryValues="@array/gestures_values" />
+			
+		<ListPreference
+            android:key="fp_long_press"
+            android:title="@string/fp_gestures_long_press"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/gestures_entries"
+            android:entryValues="@array/gestures_values" />
+			
+		<ListPreference
+            android:key="fp_swipe_left"
+            android:title="@string/fp_gestures_swipe_left"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/gestures_entries"
+            android:entryValues="@array/gestures_values" />
+			
+		<ListPreference
+            android:key="fp_swipe_right"
+            android:title="@string/fp_gestures_swipe_right"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/gestures_entries"
+            android:entryValues="@array/gestures_values" />
+			
+	</PreferenceCategory>
   
 </PreferenceScreen>
