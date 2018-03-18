@@ -21,6 +21,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.SearchIndexableResource;
+import android.os.Build;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.deviceinfo.AoscpVersionPreferenceController;
@@ -46,12 +47,14 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class DeviceInfoSettings extends DashboardFragment implements Indexable {
 
     private static final String LOG_TAG = "DeviceInfoSettings";
 
+	private static final String KEY_AOSCP_HEADER = "aoscp_header";
     private static final String KEY_LEGAL_CONTAINER = "legal_container";
 
     @Override
@@ -82,6 +85,36 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.device_info_settings;
+    }
+	
+	@Override
+    public void displayResourceTiles() {
+        final int resId = getPreferenceScreenResId();
+        if (resId <= 0) {
+            return;
+        }
+        addPreferencesFromResource(resId);
+        final PreferenceScreen screen = getPreferenceScreen();
+        Collection<AbstractPreferenceController> controllers = mPreferenceControllers.values();
+        for (AbstractPreferenceController controller : controllers) {
+            controller.displayPreference(screen);
+        }
+
+		mHeaderLayoutPref = (LayoutPreference) findPreference(KEY_AOSCP_HEADER);
+		updateHeaderPreference();
+    }
+	
+	private void updateHeaderPreference() {
+        final Context context = getContext();
+        if (context == null) {
+            return;
+        }
+        final ImageView icon = (ImageView) mHeaderLayoutPref
+                .findViewById(R.id.about_phone_header_icon);
+        final TextView version = (TextView) mHeaderLayoutPref.findViewById(R.id.aoscp_version);
+        version.setText(String.format(
+                context.getResources().getString(R.string.aoscp_build_information_summary), 
+                Build.VERSION.AOSCP_VERSION, Build.VERSION.AOSCP_API));
     }
 
     @Override
@@ -132,7 +165,6 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
         controllers.add(new SafetyInfoPreferenceController(context));
-        controllers.add(new AoscpVersionPreferenceController(context, lifecycle));
         return controllers;
     }
 
