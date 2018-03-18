@@ -21,8 +21,8 @@
     <string name="reset">Reset</string>
 
     <!-- About phone screen, CypherOS version -->
-    <string name="aoscp_build_information_title">CypherOS version</string>
-    <string name="aoscp_build_information_summary">%1$s - %2$s</string>
+    <string name="aoscp_version">CypherOS version</string>
+    <string name="aoscp_version_info">%1$s - %2$s</string>
 
     <!-- Feature Reset -->
     <string name="reset_all_settings">RESET ALL</string>
