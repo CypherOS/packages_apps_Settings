@@ -16,6 +16,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
+		
+		<com.android.settings.applications.LayoutPreference
+		        android:key="about_header"
+				android:selectable="false"
+				android:layout="@layout/about_phone_header"/>
 
         <!-- System update settings - launches activity -->
         <Preference android:key="additional_system_update_settings"
