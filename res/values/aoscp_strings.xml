@@ -15,6 +15,12 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- About phone screen, CypherOS version info -->
+    <string name="aoscp_version">CypherOS version</string>
+    <string name="aoscp_version_info">%1$s - %2$s</string>
+	<string name="aoscp_build">Build</string>
+    <string name="aoscp_build_info">%1$s</string>
+
     <!-- Encryption and credential -->
     <string name="custom_encryption_and_credential_settings_summary_on">Device is encrypted</string>
     <string name="custom_encryption_and_credential_settings_summary_off">Device is decrypted</string>
