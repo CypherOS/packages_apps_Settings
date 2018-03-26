@@ -295,5 +295,9 @@
     <!-- Network Indication -->
     <string name="network_indication_title">Network indication</string>
     <string name="network_indication_summary">Display\'s network indicators in the statusbar, emphasizing traffic</string>
+	
+	<!-- Developer Settings: Allow untrusted overlays -->
+    <string name="allow_untrusted_overlays_title">Allow untrusted overlays</string>
+    <string name="allow_untrusted_overlays_summary">Allow installing third party overlays via theme managers</string>
 
 </resources>
