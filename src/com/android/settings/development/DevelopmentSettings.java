@@ -198,6 +198,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String TETHERING_HARDWARE_OFFLOAD = "tethering_hardware_offload";
     private static final String KEY_COLOR_MODE = "picture_color_mode";
     private static final String FORCE_RESIZABLE_KEY = "force_resizable_activities";
+    private static final String ALLOW_UNTRUSTED_OVERLAYS = "allow_untrusted_overlays";
     private static final String COLOR_TEMPERATURE_KEY = "color_temperature";
 
     private static final String BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_KEY =
@@ -341,6 +342,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ColorModePreference mColorModePreference;
 
     private SwitchPreference mForceResizable;
+
+    private SwitchPreference mAllowUntrusted;
 
     private SwitchPreference mColorTemperaturePreference;
 
@@ -535,6 +538,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mSimulateColorSpace = addListPreference(SIMULATE_COLOR_SPACE);
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
         mForceResizable = findAndInitSwitchPref(FORCE_RESIZABLE_KEY);
+        mAllowUntrusted = findAndInitSwitchPref(ALLOW_UNTRUSTED_OVERLAYS);
 
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
@@ -867,6 +871,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateSimulateColorSpace();
         updateUSBAudioOptions();
         updateForceResizableOptions();
+        updateUntrustedOverlayAuth();
         Preference webViewAppPref = findPreference(mWebViewAppPrefController.getPreferenceKey());
         mWebViewAppPrefController.updateState(webViewAppPref);
         updateOemUnlockOptions();
@@ -1463,6 +1468,17 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         Settings.Global.putInt(getContentResolver(),
                 Settings.Global.DEVELOPMENT_FORCE_RESIZABLE_ACTIVITIES,
                 mForceResizable.isChecked() ? 1 : 0);
+    }
+
+    private void updateUntrustedOverlayAuth() {
+        updateSwitchPreference(mAllowUntrusted, Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.ALLOW_UNTRUSTED_OVERLAYS, 0) != 0);
+    }
+
+    private void writeUntrustedOverlayAuth() {
+        Settings.Secure.putInt(getContentResolver(),
+                Settings.Secure.ALLOW_UNTRUSTED_OVERLAYS,
+                mAllowUntrusted.isChecked() ? 1 : 0);
     }
 
     private void updateForceRtlOptions() {
@@ -2597,6 +2613,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeUSBAudioOptions();
         } else if (preference == mForceResizable) {
             writeForceResizableOptions();
+        } else if (preference == mAllowUntrusted) {
+            writeUntrustedOverlayAuth();
         } else if (preference == mBluetoothShowDevicesWithoutNames) {
             writeBluetoothShowDevicesWithoutUserFriendlyNameOptions();
         } else if (preference == mBluetoothDisableAbsVolume) {

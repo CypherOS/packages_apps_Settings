@@ -462,6 +462,11 @@
             android:title="@string/force_resizable_activities"
             android:summary="@string/force_resizable_activities_summary"/>
 
+        <SwitchPreference
+            android:key="allow_untrusted_overlays"
+            android:title="@string/allow_untrusted_overlays_title"
+            android:summary="@string/allow_untrusted_overlays_summary"/>
+
         <Preference
             android:key="reset_shortcut_manager_throttling"
             android:title="@string/reset_shortcut_manager_throttling" />
