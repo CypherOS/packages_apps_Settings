@@ -26,6 +26,7 @@ import android.util.Log;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.aoscp.widget.RadioButtonPreferenceGroup;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
@@ -37,8 +38,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class AccentsFragment extends DashboardFragment
-        implements RadioButtonPreference.OnClickListener {
+public class AccentsFragment extends DashboardFragment implements RadioButtonPreference.OnClickListener {
 
     private static final String TAG = "ColorManager: Accents";
 
@@ -54,6 +54,10 @@ public class AccentsFragment extends DashboardFragment
 	private static final String KEY_ACCENT_YELLOW = "accent_yellow";
 
     List<RadioButtonPreference> mAccents = new ArrayList<>();
+	
+	private static final String KEY_CATEGORY_PURPLE = "category_purple";
+	
+	private RadioButtonPreferenceGroup mCategoryPurple;
 
     private Context mContext;
 
@@ -89,6 +93,8 @@ public class AccentsFragment extends DashboardFragment
         for (AbstractPreferenceController controller : controllers) {
             controller.displayPreference(screen);
         }
+		
+		mCategoryPurple = (RadioButtonPreferenceGroup) screen.findPreference(KEY_CATEGORY_PURPLE);
 
         for (int i = 0; i < screen.getPreferenceCount(); i++) {
             Preference pref = screen.getPreference(i);
