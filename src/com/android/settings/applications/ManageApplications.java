@@ -121,6 +121,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
 
     private static final String EXTRA_SORT_ORDER = "sortOrder";
     private static final String EXTRA_SHOW_SYSTEM = "showSystem";
+    private static final String EXTRA_SHOW_THEMES = "showThemes";
     private static final String EXTRA_HAS_ENTRIES = "hasEntries";
     private static final String EXTRA_HAS_BRIDGE = "hasBridge";
 
@@ -230,6 +231,9 @@ public class ManageApplications extends InstrumentedPreferenceFragment
 
     // whether showing system apps.
     private boolean mShowSystem;
+
+    // whether showing color manager overlays.
+    private boolean mShowThemes;
 
     private ApplicationsState mApplicationsState;
 
@@ -347,6 +351,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
         if (savedInstanceState != null) {
             mSortOrder = savedInstanceState.getInt(EXTRA_SORT_ORDER, mSortOrder);
             mShowSystem = savedInstanceState.getBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+            mShowThemes = savedInstanceState.getBoolean(EXTRA_SHOW_THEMES, mShowThemes);
         }
 
         mInvalidSizeStr = getActivity().getText(R.string.invalid_size_value);
@@ -559,6 +564,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
         mResetAppsHelper.onSaveInstanceState(outState);
         outState.putInt(EXTRA_SORT_ORDER, mSortOrder);
         outState.putBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+        outState.putBoolean(EXTRA_SHOW_THEMES, mShowThemes);
         outState.putBoolean(EXTRA_HAS_ENTRIES, mApplications.mHasReceivedLoadEntries);
         outState.putBoolean(EXTRA_HAS_BRIDGE, mApplications.mHasReceivedBridgeCallback);
     }
@@ -696,6 +702,11 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                 && mListType != LIST_TYPE_HIGH_POWER);
 
         mOptionsMenu.findItem(R.id.reset_app_preferences).setVisible(mListType == LIST_TYPE_MAIN);
+
+        mOptionsMenu.findItem(R.id.show_themes).setVisible(!mShowThemes
+                && mListType != LIST_TYPE_HIGH_POWER);
+        mOptionsMenu.findItem(R.id.hide_themes).setVisible(mShowThemes
+                && mListType != LIST_TYPE_HIGH_POWER);
     }
 
     @Override
@@ -713,6 +724,11 @@ public class ManageApplications extends InstrumentedPreferenceFragment
             case R.id.show_system:
             case R.id.hide_system:
                 mShowSystem = !mShowSystem;
+                mApplications.rebuild(false);
+                break;
+            case R.id.show_themes:
+            case R.id.hide_themes:
+                mShowThemes = !mShowThemes;
                 mApplications.rebuild(false);
                 break;
             case R.id.reset_app_preferences:
@@ -1050,7 +1066,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
             if (mCompositeFilter != null) {
                 filterObj = new CompoundFilter(filterObj, mCompositeFilter);
             }
-            if (!mManageApplications.mShowSystem) {
+            if (!mManageApplications.mShowSystem && !mManageApplications.mShowThemes) {
                 if (LIST_TYPES_WITH_INSTANT.contains(mManageApplications.mListType)) {
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER_AND_INSTANT);
@@ -1058,7 +1074,21 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
                 }
+                filterObj = new CompoundFilter(filterObj,
+                        ApplicationsState.FILTER_COLOR_MANAGER);
+            } else if (!mManageApplications.mShowThemes) {
+                if (LIST_TYPES_WITH_INSTANT.contains(mManageApplications.mListType)) {
+                    filterObj = new CompoundFilter(filterObj,
+                            ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER_AND_INSTANT);
+                } else {
+                    filterObj = new CompoundFilter(filterObj,
+                            ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
+                }
+            } else if (!mManageApplications.mShowSubstratum) {
+                filterObj = new CompoundFilter(filterObj,
+                        ApplicationsState.FILTER_COLOR_MANAGER);
             }
+
             switch (mLastSortMode) {
                 case R.id.sort_order_size:
                     switch (mWhichSize) {
