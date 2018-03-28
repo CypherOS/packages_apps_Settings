@@ -34,6 +34,7 @@
     <!-- Color Manager: Accents Tab [CHAR LIMIT=20] -->
     <string name="color_manager_tab_accents">Accents</string>
     <string name="accent_default_title">Default</string>
+	<string name="category_purple_title">Purple</string>
     <string name="accent_deep_purple_title">Deep Purple</string>
     <string name="accent_indigo_title">Indigo</string>
     <string name="accent_pink_title">Pink</string>
