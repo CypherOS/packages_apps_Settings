@@ -1084,7 +1084,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
                 }
-            } else if (!mManageApplications.mShowSubstratum) {
+            } else if (!mManageApplications.mShowThemes) {
                 filterObj = new CompoundFilter(filterObj,
                         ApplicationsState.FILTER_COLOR_MANAGER);
             }
