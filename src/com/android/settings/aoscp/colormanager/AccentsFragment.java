@@ -41,16 +41,33 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
 
     private static final String TAG = "ColorManager: Accents";
 
-    private static final String KEY_ACCENT_DEFAULT = "accent_default";
-    private static final String KEY_ACCENT_DEEP_PURPLE = "accent_deep_purple";
-    private static final String KEY_ACCENT_INDIGO = "accent_indigo";
-    private static final String KEY_ACCENT_PINK = "accent_pink";
-    private static final String KEY_ACCENT_PURPLE = "accent_purple";
-    private static final String KEY_ACCENT_RED = "accent_red";
-    private static final String KEY_ACCENT_SKY_BLUE = "accent_sky_blue";
-    private static final String KEY_ACCENT_TEAL = "accent_teal";
-    private static final String KEY_ACCENT_WHITE = "accent_white";
-    private static final String KEY_ACCENT_YELLOW = "accent_yellow";
+    private static final String KEY_ACCENT_DEFAULT     = "accent_default";
+	// Category: Blue
+	private static final String KEY_ACCENT_BLUE        = "accent_blue";
+	private static final String KEY_ACCENT_INDIGO      = "accent_indigo";
+	private static final String KEY_ACCENT_OCEANIC     = "accent_oceanic";
+	private static final String KEY_ACCENT_BRIGHT_SKY  = "accent_bright_sky";
+	// Category: Green
+	private static final String KEY_ACCENT_GREEN       = "accent_green";
+	private static final String KEY_ACCENT_LIMA_BEAN   = "accent_lima_bean";
+	private static final String KEY_ACCENT_LIME        = "accent_lime";
+	private static final String KEY_ACCENT_TEAL        = "accent_teal";
+	// Category: Pink
+	private static final String KEY_ACCENT_PINK        = "accent_pink";
+	private static final String KEY_ACCENT_PLAYBOY     = "accent_play_boy";
+	// Category: Purple
+	private static final String KEY_ACCENT_PURPLE      = "accent_purple";
+	private static final String KEY_ACCENT_DEEP_VALLEY = "accent_deep_valley";
+	// Category: Red
+	private static final String KEY_ACCENT_RED         = "accent_red";
+	private static final String KEY_ACCENT_BLOODY_MARY = "accent_bloody_mary";
+	// Category: Yellow
+	private static final String KEY_ACCENT_YELLOW      = "accent_yellow";
+	private static final String KEY_ACCENT_SUN_FLOWER  = "accent_sun_flower";
+	// Category: Other
+	private static final String KEY_ACCENT_BLACK       = "accent_black";
+	private static final String KEY_ACCENT_GREY        = "accent_grey";
+    private static final String KEY_ACCENT_WHITE       = "accent_white";
 
     List<RadioButtonPreference> mAccents = new ArrayList<>();
 
@@ -103,31 +120,61 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
                 updateAccentItems(KEY_ACCENT_DEFAULT);
                 break;
             case 1:
-                updateAccentItems(KEY_ACCENT_DEEP_PURPLE);
+                updateAccentItems(KEY_ACCENT_BLUE);
                 break;
             case 2:
                 updateAccentItems(KEY_ACCENT_INDIGO);
                 break;
             case 3:
-                updateAccentItems(KEY_ACCENT_PINK);
+                updateAccentItems(KEY_ACCENT_OCEANIC);
                 break;
             case 4:
-                updateAccentItems(KEY_ACCENT_PURPLE);
+                updateAccentItems(KEY_ACCENT_BRIGHT_SKY);
                 break;
             case 5:
-                updateAccentItems(KEY_ACCENT_RED);
+                updateAccentItems(KEY_ACCENT_GREEN);
                 break;
             case 6:
-                updateAccentItems(KEY_ACCENT_SKY_BLUE);
+                updateAccentItems(KEY_ACCENT_LIMA_BEAN);
                 break;
             case 7:
-                updateAccentItems(KEY_ACCENT_TEAL);
+                updateAccentItems(KEY_ACCENT_LIME);
                 break;
             case 8:
-                updateAccentItems(KEY_ACCENT_WHITE);
+                updateAccentItems(KEY_ACCENT_TEAL);
                 break;
             case 9:
+                updateAccentItems(KEY_ACCENT_PINK);
+                break;
+			case 10:
+                updateAccentItems(KEY_ACCENT_PLAYBOY);
+                break;
+            case 11:
+                updateAccentItems(KEY_ACCENT_PURPLE);
+                break;
+            case 12:
+                updateAccentItems(KEY_ACCENT_DEEP_VALLEY);
+                break;
+            case 13:
+                updateAccentItems(KEY_ACCENT_RED);
+                break;
+            case 14:
+                updateAccentItems(KEY_ACCENT_BLOODY_MARY);
+                break;
+            case 15:
                 updateAccentItems(KEY_ACCENT_YELLOW);
+                break;
+            case 16:
+                updateAccentItems(KEY_ACCENT_SUN_FLOWER);
+                break;
+            case 17:
+                updateAccentItems(KEY_ACCENT_BLACK);
+                break;
+            case 18:
+                updateAccentItems(KEY_ACCENT_GREY);
+                break;
+			case 19:
+                updateAccentItems(KEY_ACCENT_WHITE);
                 break;
         }
     }
@@ -156,7 +203,7 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 0);
                 break;
-            case KEY_ACCENT_DEEP_PURPLE:
+            case KEY_ACCENT_BLUE:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 1);
                 break;
@@ -164,33 +211,73 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 2);
                 break;
-            case KEY_ACCENT_PINK:
+            case KEY_ACCENT_OCEANIC:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 3);
                 break;
-            case KEY_ACCENT_PURPLE:
+            case KEY_ACCENT_BRIGHT_SKY:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 4);
                 break;
-            case KEY_ACCENT_RED:
+            case KEY_ACCENT_GREEN:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 5);
                 break;
-            case KEY_ACCENT_SKY_BLUE:
+            case KEY_ACCENT_LIMA_BEAN:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 6);
                 break;
-            case KEY_ACCENT_TEAL:
+            case KEY_ACCENT_LIME:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 7);
                 break;
-            case KEY_ACCENT_WHITE:
+            case KEY_ACCENT_TEAL:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 8);
                 break;
-            case KEY_ACCENT_YELLOW:
+            case KEY_ACCENT_PINK:
                 Settings.Secure.putInt(getContentResolver(), 
                          Settings.Secure.DEVICE_ACCENT, 9);
+                break;
+			case KEY_ACCENT_PLAYBOY:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 10);
+                break;
+            case KEY_ACCENT_PURPLE:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 11);
+                break;
+            case KEY_ACCENT_DEEP_VALLEY:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 12);
+                break;
+            case KEY_ACCENT_RED:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 13);
+                break;
+            case KEY_ACCENT_BLOODY_MARY:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 14);
+                break;
+            case KEY_ACCENT_YELLOW:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 15);
+                break;
+            case KEY_ACCENT_SUN_FLOWER:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 16);
+                break;
+            case KEY_ACCENT_BLACK:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 17);
+                break;
+            case KEY_ACCENT_GREY:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 18);
+                break;
+		    case KEY_ACCENT_WHITE:
+                Settings.Secure.putInt(getContentResolver(), 
+                         Settings.Secure.DEVICE_ACCENT, 19);
                 break;
         }
         updateAccentItems(pref.getKey());
