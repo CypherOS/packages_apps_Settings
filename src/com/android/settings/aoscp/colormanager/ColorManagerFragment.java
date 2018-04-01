@@ -42,8 +42,15 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     private static final int ACCENT_FRAGMENT = 1;
 
     private RtlCompatibleViewPager mViewPager;
-    private SlidingTabLayout mHeaderView;
+    private SlidingTabLayout mSlidingTabView;
     private ColorManagerPagerAdapter mPagerAdapter;
+	private View mContent;
+	
+	private ImageView mPallete;
+	private View mThemePreview;
+	
+	private int mSelectedTheme;
+	private int mSelectedAccent;
 
     @Override
     public int getMetricsCategory() {
@@ -58,24 +65,43 @@ public final class ColorManagerFragment extends InstrumentedFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        final View content = inflater.inflate(R.layout.color_manager_container, parent, false);
-        mViewPager = (RtlCompatibleViewPager) content.findViewById(R.id.pager);
+        mContent = inflater.inflate(R.layout.color_manager_container, parent, false);
+        mViewPager = (RtlCompatibleViewPager) mContent.findViewById(R.id.pager);
         mPagerAdapter = new ColorManagerPagerAdapter(getContext(),
                 getChildFragmentManager(), mViewPager);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabChangeListener(this));
         mViewPager.setCurrentItem(THEME_FRAGMENT);
+		
+        mSlidingTabView = (SlidingTabLayout) mContent.findViewById(R.id.sliding_tabs);
+        mSlidingTabView.setViewPager(mViewPager);
+		
+		updateThemePreview(mSelectedTheme);
+		updateAccentPreview(mSelectedAccent);
 
-        mHeaderView = (SlidingTabLayout) content.findViewById(R.id.sliding_tabs);
-        mHeaderView.setViewPager(mViewPager);
-
-        return content;
+        return mContent;
     }
 
     @Override
     public void onResume() {
         super.onResume();
     }
+	
+	public static void updateAccentPreview(int selectedAccent) {
+		mSelectedAccent = selectedAccent;
+
+		mPallete = (ImageView) mContent.findViewById(R.id.pallete);
+		mPallete.setColorFilter(selectedAccent);
+		
+	}
+	
+	public static void updateThemePreview(int selectedTheme) {
+		mSelectedTheme = selectedTheme;
+		
+		mThemePreview = mContent.itemView.findViewById(R.id.theme_preview);
+		mThemePreview.setBackgroundColor(selectedTheme);
+		
+	}
 
     private static final class ColorManagerPagerAdapter extends FragmentPagerAdapter {
 
