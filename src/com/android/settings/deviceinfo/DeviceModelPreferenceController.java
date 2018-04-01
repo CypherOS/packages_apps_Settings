@@ -48,7 +48,7 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
         super.displayPreference(screen);
         final Preference pref = screen.findPreference(KEY_DEVICE_MODEL);
         if (pref != null) {
-            pref.setSummary(getDeviceModel());
+            pref.setSummary(R.string.device_info_device);
         }
     }
 

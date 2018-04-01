@@ -54,7 +54,7 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
         SummaryLoader.SummaryConsumer {
     private static final String TAG = "DashboardFragment";
 
-    protected final Map<Class, AbstractPreferenceController> mPreferenceControllers =
+    private final Map<Class, AbstractPreferenceController> mPreferenceControllers =
             new ArrayMap<>();
     private final Set<String> mDashboardTilePrefKeys = new ArraySet<>();
 
@@ -248,7 +248,7 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
     /**
      * Displays resource based tiles.
      */
-    public void displayResourceTiles() {
+    private void displayResourceTiles() {
         final int resId = getPreferenceScreenResId();
         if (resId <= 0) {
             return;

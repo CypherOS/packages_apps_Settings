@@ -16,11 +16,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
-
-        <com.android.settings.applications.LayoutPreference
-                android:key="about_header"
-                android:selectable="false"
-                android:layout="@layout/header_about_phone"/>
+  
+        <!-- CypherOS logo -->
+        <PreferenceScreen android:key="aoscp_logo"
+                android:enabled="false"
+                android:layout="@layout/aoscp_about_logo" />
 
         <!-- System update settings - launches activity -->
         <Preference android:key="additional_system_update_settings"
@@ -83,6 +83,11 @@
                 <intent android:action="android.intent.action.VIEW"
                         android:data="https://source.android.com/security/bulletin/" />
         </Preference>
+
+        <!-- CypherOS firmware version -->
+        <Preference android:key="aoscp_build_information"
+                android:title="@string/aoscp_build_information_title"
+                android:summary="@string/aoscp_build_information_summary" />
 
         <!-- Device FCC equipment id -->
         <Preference
