@@ -18,6 +18,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/color_manager_tab_themes">
+	
+	<com.android.settings.applications.LayoutPreference
+	    android:key="theme_preview"
+		android:selectable="false"
+		android:layout="@layout/header_theme_preview"/>
 
     <com.android.settings.widget.RadioButtonPreference
         android:key="theme_auto"
