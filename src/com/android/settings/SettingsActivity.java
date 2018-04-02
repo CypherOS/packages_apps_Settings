@@ -51,6 +51,7 @@ import android.widget.Button;
 import android.widget.Toolbar;
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.Settings.WifiSettingsActivity;
+import com.android.settings.aoscp.ColorManagerActivity;
 import com.android.settings.backup.BackupSettingsActivity;
 import com.android.settings.core.gateway.SettingsGateway;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
@@ -843,6 +844,10 @@ public class SettingsActivity extends SettingsDrawerActivity
         somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.WifiDisplaySettingsActivity.class.getName()),
                 WifiDisplaySettings.isAvailable(this), isAdmin)
+                || somethingChanged;
+				
+        somethingChanged = setTileEnabled(new ComponentName(packageName,
+                ColorManagerActivity.class.getName()), true, isAdmin)
                 || somethingChanged;
 
         if (UserHandle.MU_ENABLED && !isAdmin) {

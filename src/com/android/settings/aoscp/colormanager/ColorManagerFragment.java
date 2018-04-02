@@ -21,7 +21,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +38,9 @@ import com.android.settings.core.InstrumentedFragment;
 import com.android.settings.widget.RtlCompatibleViewPager;
 import com.android.settings.widget.SlidingTabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Main class that acts as a container, holding theme fragments.
  */
@@ -41,9 +49,14 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     private static final int THEME_FRAGMENT = 0;
     private static final int ACCENT_FRAGMENT = 1;
 
-    private RtlCompatibleViewPager mViewPager;
-    private SlidingTabLayout mHeaderView;
-    private ColorManagerPagerAdapter mPagerAdapter;
+    private ViewPager mViewPager;
+    private TabLayout mTab;
+	private CollapsingToolbarLayout mCollapsingToolbar;
+	
+	private Context mContext;
+	private View mContent;
+	
+	private AppCompatDelegate mDelegate;
 
     @Override
     public int getMetricsCategory() {
@@ -54,109 +67,98 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+		
+		final Activity activity = getActivity();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        final View content = inflater.inflate(R.layout.color_manager_container, parent, false);
-        mViewPager = (RtlCompatibleViewPager) content.findViewById(R.id.pager);
-        mPagerAdapter = new ColorManagerPagerAdapter(getContext(),
-                getChildFragmentManager(), mViewPager);
-        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.addOnPageChangeListener(new TabChangeListener(this));
-        mViewPager.setCurrentItem(THEME_FRAGMENT);
+        mContent = inflater.inflate(R.layout.color_manager_container, parent, false);
+		
+		final Toolbar toolbar = (Toolbar) mContent.findViewById(R.id.toolbar);
 
-        mHeaderView = (SlidingTabLayout) content.findViewById(R.id.sliding_tabs);
-        mHeaderView.setViewPager(mViewPager);
+		getDelegate().setSupportActionBar(toolbar);
+        if (getDelegate().getSupportActionBar() != null) getDelegate().getSupportActionBar().setTitle("Color Manager");
+        getDelegate().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		mViewPager = (ViewPager) mContent.findViewById(R.id.pager);
+        setupViewPager(mViewPager);
 
-        return content;
+        mTab = (TabLayout) mContent.findViewById(R.id.sliding_tabs);
+		mTab.setupWithViewPager(mViewPager);
+		mTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()) {
+                    case 0:
+                        // TODO: 31/03/17
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+		
+		mCollapsingToolbar = (CollapsingToolbarLayout) mContent.findViewById(R.id.toolbar_collapse);
+
+        return mContent;
     }
 
     @Override
     public void onResume() {
         super.onResume();
     }
+	
+	private AppCompatDelegate getDelegate() {
+		if (mDelegate == null) {
+			mDelegate = AppCompatDelegate.create(this, null);
+		}
+		return mDelegate;
+	}
 
-    private static final class ColorManagerPagerAdapter extends FragmentPagerAdapter {
+	private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFrag(new ThemesFragment(), "Themes");
+        adapter.addFrag(new AccentsFragment(), "Accents");
+        viewPager.setAdapter(adapter);
+    }
+	
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
+		
+        private final List<Fragment> mFragments = new ArrayList<>();
+        private final List<String> mFragmentTitle = new ArrayList<>();
 
-        private final Context mContext;
-        private final RtlCompatibleViewPager mViewPager;
-
-        public ColorManagerPagerAdapter(Context context, FragmentManager fragmentManager,
-                RtlCompatibleViewPager viewPager) {
-            super(fragmentManager);
-            mContext = context;
-            mViewPager = viewPager;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case THEME_FRAGMENT:
-                    return mContext.getString(R.string.color_manager_tab_themes);
-                case ACCENT_FRAGMENT:
-                    return mContext.getString(R.string.color_manager_tab_accents);
-            }
-            return super.getPageTitle(position);
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case THEME_FRAGMENT:
-                    return new ThemesFragment();
-                case ACCENT_FRAGMENT:
-                    return new AccentsFragment();
-                default:
-                    throw new IllegalArgumentException(
-                            String.format(
-                                    "Position %d does not map to a valid color manager fragment",
-                                    position));
-            }
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            return super.instantiateItem(container,
-                    mViewPager.getRtlAwareIndex(position));
+            return mFragments.get(position);
         }
 
         @Override
         public int getCount() {
             return 2;
         }
-    }
 
-    private static final class TabChangeListener implements RtlCompatibleViewPager.OnPageChangeListener {
-
-        private final ColorManagerFragment mColorManager;
-
-        public TabChangeListener(ColorManagerFragment colorMgr) {
-            mColorManager = colorMgr;
+        public void addFrag(Fragment fragment, String title) {
+            mFragments.add(fragment);
+            mFragmentTitle.add(title);
         }
 
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            // Do nothing
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-            // Do nothing
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            switch (position) {
-                case THEME_FRAGMENT:
-                    //MetricsLogger.action(
-                            //mActivity, MetricsProto.MetricsEvent.ACTION_SELECT_THEMES);
-                    break;
-                case ACCENT_FRAGMENT:
-                    //MetricsLogger.action(
-                            //mActivity, MetricsProto.MetricsEvent.ACTION_SELECT_ACCENTS);
-                    break;
-            }
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitle.get(position);
         }
     }
 }
