@@ -21,6 +21,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.Toolbar;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -42,8 +44,11 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     private static final int ACCENT_FRAGMENT = 1;
 
     private RtlCompatibleViewPager mViewPager;
-    private SlidingTabLayout mHeaderView;
+    private SlidingTabLayout mSlidingTab;
     private ColorManagerPagerAdapter mPagerAdapter;
+	private CollapsingToolbarLayout mCollapsingToolbar;
+	
+	private View mContent;
 
     @Override
     public int getMetricsCategory() {
@@ -54,22 +59,32 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+		
+		final Activity activity = getActivity();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        final View content = inflater.inflate(R.layout.color_manager_container, parent, false);
-        mViewPager = (RtlCompatibleViewPager) content.findViewById(R.id.pager);
+        mContent = inflater.inflate(R.layout.color_manager_container, parent, false);
+		
+		final Toolbar toolbar = (Toolbar) mContent.findViewById(R.id.toolbar);
+		if (getActivity().getActionBar() != null) getActivity().getActionBar().setTitle("Color Manager");
+		getActivity().setActionBar(toolbar);
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+		
+        mViewPager = (RtlCompatibleViewPager) mContent.findViewById(R.id.pager);
         mPagerAdapter = new ColorManagerPagerAdapter(getContext(),
                 getChildFragmentManager(), mViewPager);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabChangeListener(this));
         mViewPager.setCurrentItem(THEME_FRAGMENT);
 
-        mHeaderView = (SlidingTabLayout) content.findViewById(R.id.sliding_tabs);
-        mHeaderView.setViewPager(mViewPager);
+        mSlidingTab = (SlidingTabLayout) mContent.findViewById(R.id.sliding_tabs);
+        mSlidingTab.setViewPager(mViewPager);
+		
+		mCollapsingToolbar = (CollapsingToolbarLayout) mContent.findViewById(R.id.toolbar_collapse);
 
-        return content;
+        return mContent;
     }
 
     @Override
