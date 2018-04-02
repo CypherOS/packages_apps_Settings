@@ -23,9 +23,12 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.applications.LayoutPreference;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
@@ -41,6 +44,8 @@ public class ThemesFragment extends DashboardFragment
         implements RadioButtonPreference.OnClickListener {
 
     private static final String TAG = "ColorManager: Themes";
+	
+	private static final String KEY_THEME_PREVIEW = "theme_preview";
 
     private static final String KEY_THEME_AUTO = "theme_auto";
     private static final String KEY_THEME_LIGHT = "theme_light";
@@ -95,15 +100,19 @@ public class ThemesFragment extends DashboardFragment
 
         switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_THEME, 0)) {
             case 0:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_AUTO);
                 break;
             case 1:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_LIGHT);
                 break;
             case 2:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 updateThemeItems(KEY_THEME_DARK);
                 break;
             case 3:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
@@ -130,20 +139,16 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 break;
         }
         updateThemeItems(pref.getKey());

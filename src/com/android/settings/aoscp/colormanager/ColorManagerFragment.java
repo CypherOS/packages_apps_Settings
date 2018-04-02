@@ -26,6 +26,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
@@ -44,6 +45,12 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     private RtlCompatibleViewPager mViewPager;
     private SlidingTabLayout mHeaderView;
     private ColorManagerPagerAdapter mPagerAdapter;
+	private static View mContent;
+	
+	private static View mThemePreview;
+	private static ImageView mAccentPreview;
+	
+	private static int mSelectedTheme;
 
     @Override
     public int getMetricsCategory() {
@@ -58,24 +65,35 @@ public final class ColorManagerFragment extends InstrumentedFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        final View content = inflater.inflate(R.layout.color_manager_container, parent, false);
-        mViewPager = (RtlCompatibleViewPager) content.findViewById(R.id.pager);
+        mContent = inflater.inflate(R.layout.color_manager_container, parent, false);
+        mViewPager = (RtlCompatibleViewPager) mContent.findViewById(R.id.pager);
         mPagerAdapter = new ColorManagerPagerAdapter(getContext(),
                 getChildFragmentManager(), mViewPager);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabChangeListener(this));
         mViewPager.setCurrentItem(THEME_FRAGMENT);
+		
+		updateThemePreview(mSelectedTheme);
 
-        mHeaderView = (SlidingTabLayout) content.findViewById(R.id.sliding_tabs);
+        mHeaderView = (SlidingTabLayout) mContent.findViewById(R.id.sliding_tabs);
         mHeaderView.setViewPager(mViewPager);
 
-        return content;
+        return mContent;
     }
 
     @Override
     public void onResume() {
         super.onResume();
     }
+	
+	private static void updateThemePreview(int selectedTheme) {
+		mSelectedTheme = selectedTheme;
+		
+		mThemePreview = (View) mContent.findViewById(R.id.theme_preview);
+		mAccentPreview = (ImageView) mContent.findViewById(R.id.accent_preview);
+		
+		mThemePreview.setBackgroundResource(selectedTheme);
+	}
 
     private static final class ColorManagerPagerAdapter extends FragmentPagerAdapter {
 

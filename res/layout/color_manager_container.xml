@@ -19,6 +19,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+	
+	<LinearLayout
+        android:id="@+id/theme_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        style="@style/EntityHeader">
+		
+		<ImageView
+            android:id="@+id/accent_preview"
+            android:layout_width="100dp"
+            android:layout_height="104dp"
+		    android:gravity="center"
+            android:src="@drawable/ic_aoscp"
+		    android:tint="?android:attr/colorAccent"
+            android:scaleType="center" />
+			
+	</LinearLayout>
 
     <com.android.settings.widget.SlidingTabLayout
         android:id="@+id/sliding_tabs"

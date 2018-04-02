@@ -70,6 +70,8 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
     private static final String KEY_ACCENT_WHITE       = "accent_white";
 
     List<RadioButtonPreference> mAccents = new ArrayList<>();
+	
+	static int mSelectedAccent = R.color.accent_preview_default;
 
     private Context mContext;
 
