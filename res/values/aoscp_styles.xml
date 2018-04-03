@@ -21,5 +21,40 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
     </style>
-	
+
+	<style name="ColorManagerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+	    <!-- action bar -->
+        <item name="actionBarTheme">@*android:style/ThemeOverlay.DeviceDefault.ActionBar.Accent</item>
+        <item name="popupTheme">@*android:style/ThemeOverlay.DeviceDefault.Popup.Light</item>
+		
+		<!-- Color palette -->
+        <item name="colorPrimary">@*android:color/primary_device_default_settings_light</item>
+        <item name="colorPrimaryDark">@*android:color/primary_dark_device_default_settings_light</item>
+        <item name="android:colorSecondary">@*android:color/secondary_device_default_settings_light</item>
+        <item name="colorAccent">@*android:color/accent_device_default_light</item>
+        <item name="android:colorEdgeEffect">@*android:color/black</item>
+
+		<!-- Add white nav bar with divider that matches material -->
+        <item name="android:navigationBarDividerColor">#1f000000</item>
+        <item name="android:navigationBarColor">@*android:color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="windowNoTitle">true</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+		<item name="preferenceTheme">@style/PreferenceTheme</item>
+		<item name="preferenceBackgroundColor">@drawable/preference_background</item>
+		<item name="side_margin">@dimen/settings_side_margin</item>
+		<item name="android:listPreferredItemHeight">72dip</item>
+		<item name="*android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>
+        <item name="*android:preferencePanelStyle">@style/PreferencePanelSinglePane</item>
+        <item name="*android:preferenceListStyle">@style/PreferenceHeaderListSinglePane</item>
+        <item name="*android:preferenceFragmentListStyle">@style/PreferenceFragmentListSinglePane</item>
+        <item name="*android:preferenceFragmentPaddingSide">@dimen/settings_side_margin</item>
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="homeAsUpIndicator">@*android:drawable/ic_ab_back_material</item>
+	</style>
+
 </resources>

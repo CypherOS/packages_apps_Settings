@@ -95,15 +95,19 @@ public class ThemesFragment extends DashboardFragment
 
         switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_THEME, 0)) {
             case 0:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default, false);
                 updateThemeItems(KEY_THEME_AUTO);
                 break;
             case 1:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default, false);
                 updateThemeItems(KEY_THEME_LIGHT);
                 break;
             case 2:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark, true);
                 updateThemeItems(KEY_THEME_DARK);
                 break;
             case 3:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_black, true);
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
@@ -130,20 +134,16 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default, false);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default, false);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark, true);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_black, true);
                 break;
         }
         updateThemeItems(pref.getKey());
