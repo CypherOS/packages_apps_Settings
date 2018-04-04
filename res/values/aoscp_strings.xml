@@ -24,6 +24,7 @@
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
     <string name="color_manager_summary">Change system colors with various theme combinations</string>
+	<string name="color_manager_footer_confirm">Are you sure?</string>
     <!-- Color Manager: Theme Tab [CHAR LIMIT=20] -->
     <string name="color_manager_tab_themes">Themes</string>
     <string name="theme_auto_title">Automatic</string>

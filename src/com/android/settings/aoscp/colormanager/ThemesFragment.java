@@ -26,6 +26,8 @@ import android.util.Log;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.aoscp.widget.FooterConfirmMixin;
+import com.android.settings.aoscp.widget.FooterConfirmMixinViewCreator;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
@@ -49,7 +51,7 @@ public class ThemesFragment extends DashboardFragment
 
     List<RadioButtonPreference> mThemes = new ArrayList<>();
 
-    private Context mContext;
+    private FooterConfirmMixinViewCreator mFooterConfirmMixinViewCreator;
 
     @Override
     public int getMetricsCategory() {
@@ -83,6 +85,8 @@ public class ThemesFragment extends DashboardFragment
         for (AbstractPreferenceController controller : controllers) {
             controller.displayPreference(screen);
         }
+		
+		mFooterConfirmMixinViewCreator = new FooterConfirmMixinViewCreator(getContext());
 
         for (int i = 0; i < screen.getPreferenceCount(); i++) {
             Preference pref = screen.getPreference(i);
@@ -95,15 +99,19 @@ public class ThemesFragment extends DashboardFragment
 
         switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_THEME, 0)) {
             case 0:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_AUTO);
                 break;
             case 1:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_LIGHT);
                 break;
             case 2:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 updateThemeItems(KEY_THEME_DARK);
                 break;
             case 3:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
@@ -114,6 +122,12 @@ public class ThemesFragment extends DashboardFragment
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         //controllers.add(new ThemePreferenceController(context));
         return controllers;
+    }
+	
+	@Override
+    public void onStop() {
+        super.onStop();
+        FooterConfirmMixin.dismiss(mFooterConfirmMixinViewCreator.getCurrentView());
     }
 
     private void updateThemeItems(String selectionKey) {
@@ -130,22 +144,20 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 break;
         }
+		FooterConfirmMixin.prompt(mFooterConfirmMixinViewCreator.getConfirmMixinView(),
+                getContext().getString(R.string.color_manager_footer_confirm));
         updateThemeItems(pref.getKey());
     }
 }

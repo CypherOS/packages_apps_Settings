@@ -14,25 +14,82 @@
      limitations under the License.
 -->
 
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <com.android.settings.widget.SlidingTabLayout
-        android:id="@+id/sliding_tabs"
+    android:fitsSystemWindows="true">
+	
+	<android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/colorPrimary"/>
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <com.android.settings.widget.RtlCompatibleViewPager
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_collapse"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+			android:layout_gravity="center"
+			android:orientation="horizontal"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@*android:color/primary_device_default_settings_light"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleEnabled="false">
+
+            <LinearLayout
+                android:id="@+id/theme_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax">
+				
+				<ImageView
+				    android:id="@+id/accent_preview"
+					android:layout_width="100dp"
+					android:layout_height="104dp"
+					android:layout_marginStart="118dp"
+					android:layout_marginTop="?attr/actionBarSize"
+					android:layout_marginBottom="18dp"
+					android:layout_gravity="center"
+					android:src="@drawable/ic_aoscp_preview" />
+				
+		    </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+				android:background="?android:attr/selectableItemBackground"
+                android:layout_gravity="top"
+                android:layout_marginBottom="48dp"
+				app:layout_collapseMode="pin"
+                android:theme="@*android:style/ThemeOverlay.DeviceDefault.ActionBar.Accent" />
+				
+			<android.support.design.widget.TabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+				android:layout_gravity="bottom"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+				app:tabTextColor="?android:attr/textColorSecondary"
+				app:tabSelectedTextColor="?android:attr/colorAccent"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+		app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
