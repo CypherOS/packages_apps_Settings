@@ -18,6 +18,7 @@ package com.android.settings.core;
 
 import android.content.Context;
 
+import com.android.settings.aoscp.widget,FooterConfirmMixin;
 import com.android.settings.core.instrumentation.Instrumentable;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.core.instrumentation.VisibilityLoggerMixin;
@@ -27,6 +28,7 @@ import com.android.settingslib.core.lifecycle.ObservableFragment;
 
 public abstract class InstrumentedFragment extends ObservableFragment implements Instrumentable {
 
+    protected FooterConfirmMixin mFooterConfirmMixin;
     protected MetricsFeatureProvider mMetricsFeatureProvider;
 
     private final VisibilityLoggerMixin mVisibilityLoggerMixin;
@@ -41,6 +43,7 @@ public abstract class InstrumentedFragment extends ObservableFragment implements
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+		mFooterConfirmMixin = new FooterConfirmMixin(getContext());
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
     }
 
