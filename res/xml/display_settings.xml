@@ -60,11 +60,12 @@
         android:entries="@array/screen_timeout_entries"
         android:entryValues="@array/screen_timeout_values" />
 
-    <Preference
+	<Preference
         android:key="color_manager"
         android:title="@string/color_manager_title"
-        android:summary="@string/color_manager_summary"
-        android:fragment="com.android.settings.aoscp.colormanager.ColorManagerFragment" />
+        android:summary="@string/color_manager_summary">
+        <intent android:action="com.android.settings.action.COLOR_MANAGER_SETTINGS" />
+    </Preference>
 
     <SwitchPreference
         android:key="auto_rotate"

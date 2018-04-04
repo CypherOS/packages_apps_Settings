@@ -45,6 +45,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.android.settings.aoscp.widget.FooterConfirmMixin;
 import com.android.settings.applications.LayoutPreference;
 import com.android.settings.core.InstrumentedPreferenceFragment;
 import com.android.settings.core.instrumentation.Instrumentable;
@@ -78,6 +79,8 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
 
     protected final FooterPreferenceMixin mFooterPreferenceMixin =
             new FooterPreferenceMixin(this, getLifecycle());
+			
+	protected FooterConfirmMixin mFooterConfirmMixin;
 
     private SettingsDialogFragment mDialogFragment;
 
@@ -160,6 +163,8 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
         if (helpResource != 0) {
             mHelpUri = getResources().getString(helpResource);
         }
+		
+		mFooterConfirmMixin = new FooterConfirmMixin(getContext());
     }
 
     @Override

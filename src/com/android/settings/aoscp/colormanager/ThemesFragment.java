@@ -49,8 +49,6 @@ public class ThemesFragment extends DashboardFragment
 
     List<RadioButtonPreference> mThemes = new ArrayList<>();
 
-    private Context mContext;
-
     @Override
     public int getMetricsCategory() {
         return -1;
@@ -95,15 +93,19 @@ public class ThemesFragment extends DashboardFragment
 
         switch (Settings.Secure.getInt(getContentResolver(), Settings.Secure.DEVICE_THEME, 0)) {
             case 0:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_AUTO);
                 break;
             case 1:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 updateThemeItems(KEY_THEME_LIGHT);
                 break;
             case 2:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 updateThemeItems(KEY_THEME_DARK);
                 break;
             case 3:
+			    ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 updateThemeItems(KEY_THEME_BLACK);
                 break;
         }
@@ -115,7 +117,15 @@ public class ThemesFragment extends DashboardFragment
         //controllers.add(new ThemePreferenceController(context));
         return controllers;
     }
-
+	
+	@Override
+    public void onDetach() {
+		if (mFooterConfirmMixin != null) {
+			mFooterConfirmMixin.dismiss(false);
+		}
+        super.onDetach();
+    }
+	
     private void updateThemeItems(String selectionKey) {
         for (RadioButtonPreference pref : mThemes) {
             if (selectionKey.equals(pref.getKey())) {
@@ -130,22 +140,19 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_default);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_dark);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                ColorManagerFragment.updateThemePreview(R.color.theme_preview_black);
                 break;
         }
+		mFooterConfirmMixin.prompt(getContext().getString(R.string.color_manager_footer_confirm), 10000);
         updateThemeItems(pref.getKey());
     }
 }
