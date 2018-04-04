@@ -3127,6 +3127,15 @@
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/support_summary"/>
         </activity>
+		
+		<activity android:name=".aoscp.ColorManagerActivity"
+                  android:label="@string/color_manager_title"
+                  android:theme="@style/ColorManagerTheme">
+            <intent-filter>
+                <action android:name="com.android.settings.action.COLOR_MANAGER_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <!-- End of information architecture host activities -->
 
