@@ -108,7 +108,7 @@ public class SimPreferenceDialog extends Activity {
     private void createEditDialog(Bundle bundle) {
         final Resources res = mContext.getResources();
         EditText nameText = (EditText)mDialogLayout.findViewById(R.id.sim_name);
-        nameText.setText(mSubInfoRecord.getDisplayName());
+        nameText.setText(mSubInfoRecord.getCarrierName());
         int textLength = nameText.getText().length();
         nameText.setSelection(textLength);
         final Spinner tintSpinner = (Spinner) mDialogLayout.findViewById(R.id.spinner);
@@ -148,7 +148,7 @@ public class SimPreferenceDialog extends Activity {
             numberView.setText(PhoneNumberUtils.formatNumber(rawNumber));
         }
 
-        String simCarrierName = tm.getSimOperatorName(mSubInfoRecord.getSubscriptionId());
+        CharSequence simCarrierName = mSubInfoRecord.getCarrierName();
         TextView carrierView = (TextView)mDialogLayout.findViewById(R.id.carrier);
         carrierView.setText(!TextUtils.isEmpty(simCarrierName) ? simCarrierName :
                 mContext.getString(com.android.internal.R.string.unknownName));
