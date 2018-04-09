@@ -21,6 +21,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -32,6 +33,9 @@ import com.android.settings.R;
 import com.android.settings.core.InstrumentedFragment;
 import com.android.settings.widget.RtlCompatibleViewPager;
 import com.android.settings.widget.SlidingTabLayout;
+import com.android.settingslib.aoscp.FooterConfirm;
+import com.android.settingslib.aoscp.FooterConfirm.onActionClickListener;
+import com.android.settingslib.aoscp.FooterConfirmMixin;
 
 /**
  * Main class that acts as a container, holding theme fragments.
@@ -76,6 +80,20 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     public void onResume() {
         super.onResume();
     }
+	
+	private static void updateTheme(int value) {
+		FooterConfirmMixin.show(FooterConfirm.with(getContext())
+            .setMessage("Tap to apply selected theme")
+	        .setAction(true)
+			.setActionTitle("Apply")
+			.setActionListener(new onActionClickListener() {
+				@Override
+				public void onActionClicked(FooterConfirm footerConfirm) {
+					Settings.Secure.putInt(getContentResolver(), 
+                            Settings.Secure.DEVICE_THEME, value);
+				}
+			}));
+	}
 
     private static final class ColorManagerPagerAdapter extends FragmentPagerAdapter {
 
@@ -149,12 +167,10 @@ public final class ColorManagerFragment extends InstrumentedFragment {
         public void onPageSelected(int position) {
             switch (position) {
                 case THEME_FRAGMENT:
-                    //MetricsLogger.action(
-                            //mActivity, MetricsProto.MetricsEvent.ACTION_SELECT_THEMES);
+                    FooterConfirmMixin.dismiss();
                     break;
                 case ACCENT_FRAGMENT:
-                    //MetricsLogger.action(
-                            //mActivity, MetricsProto.MetricsEvent.ACTION_SELECT_ACCENTS);
+                    FooterConfirmMixin.dismiss();
                     break;
             }
         }
