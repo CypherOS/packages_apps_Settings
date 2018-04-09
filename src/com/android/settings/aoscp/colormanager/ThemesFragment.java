@@ -30,6 +30,8 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
 
+import com.android.settings.aoscp.FooterConfirmMixin;
+import com.android.settings.aoscp.footerlib.FooterConfirm;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -130,22 +132,24 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                //Settings.Secure.putInt(getContentResolver(), 
+                         //Settings.Secure.DEVICE_THEME, 0);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                //Settings.Secure.putInt(getContentResolver(), 
+                         //Settings.Secure.DEVICE_THEME, 1);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                //Settings.Secure.putInt(getContentResolver(), 
+                         //Settings.Secure.DEVICE_THEME, 2);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                //Settings.Secure.putInt(getContentResolver(), 
+                         //Settings.Secure.DEVICE_THEME, 3);
                 break;
         }
+		FooterConfirmMixin.show(FooterConfirm.with(getContext())
+                .setMessage("A reboot is required to apply notification themes"));
         updateThemeItems(pref.getKey());
     }
 }
