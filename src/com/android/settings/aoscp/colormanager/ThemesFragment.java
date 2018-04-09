@@ -30,6 +30,9 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
 
+import com.android.settings.aoscp.FooterConfirm;
+import com.android.settings.aoscp.FooterConfirm.onActionClickListener;
+import com.android.settings.aoscp.FooterConfirmMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -125,25 +128,35 @@ public class ThemesFragment extends DashboardFragment
             }
         }
     }
+	
+	private void updateTheme(int value) {
+		FooterConfirmMixin.show(FooterConfirm.with(getContext())
+            .setMessage("A reboot is required to apply notification themes")
+	        .setAction(true)
+			.setActionTitle("Apply")
+			.setActionListener(new onActionClickListener() {
+				@Override
+				public void onActionClicked(Snackbar snackbar) {
+					Settings.Secure.putInt(getContentResolver(), 
+                            Settings.Secure.DEVICE_THEME, value);
+				}
+			}) this);
+	}
 
     @Override
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                updateTheme(0);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                updateTheme(1);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                updateTheme(2);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                updateTheme(3);
                 break;
         }
         updateThemeItems(pref.getKey());
