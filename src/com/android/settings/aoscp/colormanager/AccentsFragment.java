@@ -200,84 +200,64 @@ public class AccentsFragment extends DashboardFragment implements RadioButtonPre
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_ACCENT_DEFAULT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 0);
+                ColorManagerFragment.updateAccent(0);
                 break;
             case KEY_ACCENT_BLUE:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 1);
+                ColorManagerFragment.updateAccent(1);
                 break;
             case KEY_ACCENT_INDIGO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 2);
+                ColorManagerFragment.updateAccent(2);
                 break;
             case KEY_ACCENT_OCEANIC:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 3);
+                ColorManagerFragment.updateAccent(3);
                 break;
             case KEY_ACCENT_BRIGHT_SKY:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 4);
+                ColorManagerFragment.updateAccent(4);
                 break;
             case KEY_ACCENT_GREEN:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 5);
+                ColorManagerFragment.updateAccent(5);
                 break;
             case KEY_ACCENT_LIMA_BEAN:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 6);
+                ColorManagerFragment.updateAccent(6);
                 break;
             case KEY_ACCENT_LIME:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 7);
+                ColorManagerFragment.updateAccent(7);
                 break;
             case KEY_ACCENT_TEAL:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 8);
+                ColorManagerFragment.updateAccent(8);
                 break;
             case KEY_ACCENT_PINK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 9);
+                ColorManagerFragment.updateAccent(9);
                 break;
             case KEY_ACCENT_PLAYBOY:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 10);
+                ColorManagerFragment.updateAccent(10);
                 break;
             case KEY_ACCENT_PURPLE:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 11);
+                ColorManagerFragment.updateAccent(11);
                 break;
             case KEY_ACCENT_DEEP_VALLEY:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 12);
+                ColorManagerFragment.updateAccent(12);
                 break;
             case KEY_ACCENT_RED:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 13);
+                ColorManagerFragment.updateAccent(13);
                 break;
             case KEY_ACCENT_BLOODY_MARY:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 14);
+                ColorManagerFragment.updateAccent(14);
                 break;
             case KEY_ACCENT_YELLOW:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 15);
+                ColorManagerFragment.updateAccent(15);
                 break;
             case KEY_ACCENT_SUN_FLOWER:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 16);
+                ColorManagerFragment.updateAccent(16);
                 break;
             case KEY_ACCENT_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 17);
+                ColorManagerFragment.updateAccent(17);
                 break;
             case KEY_ACCENT_GREY:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 18);
+                ColorManagerFragment.updateAccent(18);
                 break;
             case KEY_ACCENT_WHITE:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_ACCENT, 19);
+                ColorManagerFragment.updateAccent(19);
                 break;
         }
         updateAccentItems(pref.getKey());
