@@ -130,20 +130,16 @@ public class ThemesFragment extends DashboardFragment
     public void onRadioButtonClicked(RadioButtonPreference pref) {
         switch (pref.getKey()) {
             case KEY_THEME_AUTO:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 0);
+                ColorManagerFragment.updateTheme(0);
                 break;
             case KEY_THEME_LIGHT:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 1);
+                ColorManagerFragment.updateTheme(1);
                 break;
             case KEY_THEME_DARK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 2);
+                ColorManagerFragment.updateTheme(2);
                 break;
             case KEY_THEME_BLACK:
-                Settings.Secure.putInt(getContentResolver(), 
-                         Settings.Secure.DEVICE_THEME, 3);
+                ColorManagerFragment.updateTheme(3);
                 break;
         }
         updateThemeItems(pref.getKey());
