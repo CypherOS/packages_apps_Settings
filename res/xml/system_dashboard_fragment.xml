@@ -25,6 +25,15 @@
         android:order="-250"
         android:fragment="com.android.settings.gestures.GestureSettings" />
 
+    <!-- Button Settings -->
+    <Preference
+        android:key="button_settings"
+        android:title="@string/button_settings_title"
+        android:summary="@string/button_settings_title_summary"
+        android:icon="@drawable/ic_buttons"
+        android:order="-70"
+        android:fragment="com.android.settings.aoscp.dashboard.ButtonSettings" />
+
     <!-- Backup -->
     <Preference
         android:key="backup_settings"
