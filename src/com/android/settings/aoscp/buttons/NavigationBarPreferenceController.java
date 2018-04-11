@@ -32,22 +32,22 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
   
     private final String mNavigationBarKey;
   
+    private boolean mSupportsFPNavigation;
     private int mDeviceHardwareKeys;
 
     public NavigationBarPreferenceController(Context context, String key) {
         super(context);
+		final Resources res = mContext.getResources();
         mNavigationBarKey = key;
+		mDeviceHardwareKeys = res.getInteger(com.android.internal.R.integer.config_deviceHardwareKeys);
     }
 
     @Override
     public boolean isAvailable() {
-        final Resources res = mContext.getResources();
-        mDeviceHardwareKeys = res.getInteger(
-                com.android.internal.R.integer.config_deviceHardwareKeys);
-        if (mNavigationBarKey != null) {
-            if (mDeviceHardwareKeys != 0) {
-                return true;
-            }
+		final Resources res = mContext.getResources();
+		mSupportsFPNavigation = res.getBoolean(com.android.internal.R.bool.config_supportsFPNavigation);
+		if (mDeviceHardwareKeys != 0 || mSupportsFPNavigation) {
+            return true;
         }
         return false;
     }
