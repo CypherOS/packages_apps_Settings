@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 CypherOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About phone screen, CypherOS version info -->
+    <string name="aoscp_version">CypherOS</string>
+    <string name="aoscp_version_info">%1$s - %2$s</string>
+    <string name="aoscp_build">Build</string>
+    <string name="aoscp_build_info">%1$s</string>
+
+    <!-- Color Manager -->
+    <string name="color_manager_title">Gerenciador de cores</string>
+    <string name="color_manager_summary">Mude as cores do sistema com várias combinações de temas</string>
+    <!-- Color Manager: Theme Tab [CHAR LIMIT=20] -->
+    <string name="color_manager_tab_themes">Temas</string>
+    <string name="theme_auto_title">Automático</string>
+    <string name="theme_auto_summary">O sistema definirá como tema a cor dominante do papel de parede selecionado</string>
+    <string name="theme_light_title">Claro</string>
+    <string name="theme_dark_title">Escuro</string>
+    <string name="theme_black_title">Preto</string>
+    <!-- Color Manager: Accents Tab [CHAR LIMIT=20] -->
+    <string name="color_manager_tab_accents">Tons</string>
+    <string name="accent_variation_default_title">Padrão</string>
+    <string name="accent_default_title">Padrão do sistema</string>
+    <!-- Color Manager: Accents Tab: Blue [CHAR LIMIT=20] -->
+    <string name="accent_blue_category">Azul</string>
+    <string name="accent_indigo_title">Índigo</string>
+    <string name="accent_oceanic_title">Oceânico</string>
+    <string name="accent_bright_sky_title">Céu brilhante</string>
+    <!-- Color Manager: Accents Tab: Pink [CHAR LIMIT=20] -->
+    <string name="accent_pink_category">Rosa</string>
+    <string name="accent_play_boy_title">Playboy</string>
+    <!-- Color Manager: Accents Tab: Purple [CHAR LIMIT=20] -->
+    <string name="accent_purple_category">Roxo</string>
+    <string name="accent_deep_valley_title">Vale profundo</string>
+    <!-- Color Manager: Accents Tab: Red [CHAR LIMIT=20] -->
+    <string name="accent_red_category">Vermelho</string>
+    <string name="accent_bloody_mary_title">Maria Sangrenta</string>
+    <!-- Color Manager: Accents Tab: Green [CHAR LIMIT=20] -->
+    <string name="accent_green_category">Verde</string>
+    <string name="accent_lima_bean_title">Feijão de lima</string>
+    <string name="accent_lime_title">Lima</string>
+    <string name="accent_teal_title">Cerceta</string>
+    <!-- Color Manager: Accents Tab: Yellow [CHAR LIMIT=20] -->
+    <string name="accent_yellow_category">Amarelo</string>
+    <string name="accent_sun_flower_title">Girassol</string>
+    <!-- Color Manager: Accents Tab: Other [CHAR LIMIT=20] -->
+    <string name="accent_other_category">Outros</string>
+    <string name="accent_black_title">Preto</string>
+    <string name="accent_grey_title">Cinza</string>
+    <string name="accent_white_title">Branco</string>
+    <!-- Color Manager: User Accents -->
+    <string name="accent_user_title">Tom personalizado</string>
+
+    <!-- Encryption and credential -->
+    <string name="custom_encryption_and_credential_settings_summary_on">Dispositivo criptografado</string>
+    <string name="custom_encryption_and_credential_settings_summary_off">Dispositivo descriptografado</string>
+
+    <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
+    <string name="local_backup_password_title">Senha do backup local</string>
+
+    <!-- Pixel color on sim card -->
+    <string name="default_sim_color">Pixel</string>
+
+    <!-- MSIM Manual provisioning -->
+    <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> is <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
+    <string name="sim_enabled">ativado</string>
+    <string name="sim_disabled">desativado</string>
+    <string name="sim_missing">faltando ou com defeito</string>
+    <string name="sim_enabler_need_disable_sim">O cartão SIM será desativado. Deseja continuar?</string>
+    <string name="sim_enabler_will_disable_sim_title">Atenção</string>
+    <string name="sim_enabler_need_switch_data_service">Este SIM será desativado e o SIM <xliff:g id="slotid">%1$s</xliff:g> será usado para serviços de dados. Deseja continar?</string>
+    <string name="sim_enabler_airplane_on">Não é possível realizar a operação enquanto o modo avião estiver ativado.</string>
+    <string name="sim_enabler_in_call">Não é possível executar a operação durante a chamada.</string>
+    <string name="sim_enabler_both_inactive">Não é possível desativar todos os cartões SIM</string>
+    <string name="sim_enabler_enabling">Ativando\u2026</string>
+    <string name="sim_enabler_disabling">Desativando\u2026</string>
+    <string name="sub_activate_success">SIM ativado.</string>
+    <string name="sub_activate_failed">Ativação falhou.</string>
+    <string name="sub_deactivate_success">SIM desativado.</string>
+    <string name="sub_deactivate_failed">Desativação falhou.</string>
+
+    <!-- Manage applications: Show Color Manager themes -->
+    <string name="filter_theme_apps">Temas</string>
+    <string name="menu_show_themes">Mostrar temas</string>
+    <string name="menu_hide_themes">Ocultar temas</string>
+
+    <!-- Button Settings -->
+    <string name="button_settings_title">Botões</string>
+    <string name="button_settings_title_summary">Executar ações de personalizadas</string>
+    <string name="button_settings_description">Defina ações personalizadas para os botões presentes no seu dispositivo.</string>
+    <!-- Navigation bar -->
+    <string name="navigation_bar_title">Barra de navegação</string>
+    <string name="navigation_bar_title_summary">Ativar as teclas de navegação na tela</string>
+    <!-- Button brightness -->
+    <string name="hardware_brightness_keys_title">Luz dos botões</string>
+    <string name="hardware_brightness_keys_title_summary">Ativar luz dos botões</string>
+    <!-- Buttons: Categories -->
+    <string name="home_key_title">Botão Início</string>
+    <string name="back_key_title">Botão Voltar</string>
+    <string name="menu_key_title">Botão Menu</string>
+    <string name="assist_key_title">Botão Assistente</string>
+    <string name="app_switch_key_title">Botão Recentes</string>
+    <string name="camera_key_title">Botão Câmera</string>
+    <!-- Buttons: Actions -->
+    <string name="short_press_title">Ação de toque simples</string>
+    <string name="long_press_title">Ação de toque longo</string>
+    <string name="double_tap_title">Ação de toque duplo</string>
+    <string name="action_nothing">Sem ação</string>
+    <string name="action_menu">Abrir/fechar menu</string>
+    <string name="action_app_switch">Recentes</string>
+    <string name="action_search">Assistente de pesquisa</string>
+    <string name="action_voice_search">Pesquisa por voz</string>
+    <string name="action_in_app_search">Pesquisa no aplicativo</string>
+    <string name="action_launch_camera">Abrir câmera</string>
+    <string name="action_last_app">Alternar para o último aplicativo</string>
+    <string name="action_splitscreen">Tela dividida</string>
+
+    <!-- Gesture Settings -->
+    <string name="gesture_settings_title">Gestos</string>
+    <string name="gesture_settings_title_summary">Use gestos do sistema e do dispositivo</string>
+    <string name="gesture_settings_summary">Gestos aparecem de acordo com o suporte do dispositivo</string>
+    <!-- Fingerprint Gestures -->
+    <string name="fingerprint_gestures_title">Gestos de impressão digital</string>
+    <string name="keywords_gestures">tela toque desenho delize dedo</string>
+    <!-- Fingerprint Gestures: Options -->
+    <string name="gestures_single_tap">Toque simples</string>
+    <string name="gestures_double_tap">Toque duplo</string>
+    <string name="gestures_longpress">Pressão longa</string>
+    <string name="gestures_swipe_up">Deslizar para cima</string>
+    <string name="gestures_swipe_down">Deslizar para baixo</string>
+    <string name="gestures_swipe_left">Deslizar para esquerda</string>
+    <string name="gestures_swipe_right">Deslizar para direita</string>
+    <!-- Fingerprint Gestures: Triggers -->
+    <string name="gestures_disabled">Desativado</string>
+    <string name="gestures_toggle_flashlight">Lanterna rápida</string>
+    <string name="gestures_toggle_airplane_mode">Modo avião</string>
+    <string name="gestures_play_pause_music">Tocar/Pausar música</string>
+    <string name="gestures_next_music">Próxima música</string>
+    <string name="gestures_previous_music">Música anterior</string>
+    <string name="gestures_screenshot">Captura de tela</string>
+    <string name="gestures_assistant">Assistente</string>
+    <string name="gestures_home">Início</string>
+    <string name="gestures_back">Voltar</string>
+    <string name="gestures_appswitch">Recentes</string>
+    <string name="gestures_wake_device">Acordar dispositivo</string>
+
+    <!-- Navigation bar theme -->
+    <string name="navbar_theme_title">Tema</string>
+    <string name="navbar_theme_default">Padrão</string>
+    <string name="navbar_theme_pixel">Pixel</string>
+    <string name="navbar_theme_pixel_hola">Pixel Hola</string>
+    <string name="navbar_theme_samsung">Sammi</string>
+    <string name="navbar_theme_xperia">Xperia</string>
+    <string name="navbar_theme_plusone">Plus One</string>
+
+</resources>
