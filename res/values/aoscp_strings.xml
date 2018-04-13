@@ -129,4 +129,28 @@
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
 
+    <!-- Gesture Settings -->
+    <string name="gesture_settings_title">Gestures</string>
+    <string name="gesture_settings_title_summary">Use system and device gestures</string>
+    <string name="gesture_settings_summary">Gestures can appear based on the device that supports them</string>
+    <!-- Fingerprint Gestures -->
+    <string name="fingerprint_gestures_title">Fingerprint gestures</string>
+    <string name="keywords_gestures">screen touchscreen draw swipe finger</string>
+    <!-- Fingerprint Gestures: Options -->
+    <string name="gestures_double_tap">Double tap</string>
+    <string name="gestures_longpress">Long press</string>
+    <string name="gestures_swipe_up">Swipe up</string>
+    <string name="gestures_swipe_down">Swipe down</string>
+    <string name="gestures_swipe_left">Swipe left</string>
+    <string name="gestures_swipe_right">Swipe right</string>
+    <!-- Fingerprint Gestures: Triggers -->
+    <string name="gestures_disabled">Disabled</string>
+    <string name="gestures_toggle_flashlight">Quick torch</string>
+    <string name="gestures_toggle_airplane_mode">Airplane mode</string>
+    <string name="gestures_play_pause_music">Play/Pause song</string>
+    <string name="gestures_next_music">Next song</string>
+    <string name="gestures_previous_music">Previous song</string>
+    <string name="gestures_screenshot">Take screenshot</string>
+    <string name="gestures_assistant">Launch assistant</string>
+
 </resources>

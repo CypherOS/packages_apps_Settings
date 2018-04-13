@@ -191,4 +191,7 @@ public class Settings extends SettingsActivity {
     public static class UserAndAccountDashboardActivity extends SettingsActivity {}
     public static class SystemDashboardActivity extends SettingsActivity {}
 
+    // AOSCP Fragment Activities
+    public static class GesturesSettingsActivity extends SettingsActivity { /* empty */ }
+
 }
