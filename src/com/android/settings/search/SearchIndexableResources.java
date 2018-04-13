@@ -34,6 +34,7 @@ import com.android.settings.accessibility.AccessibilityShortcutPreferenceFragmen
 import com.android.settings.accessibility.MagnificationPreferenceFragment;
 import com.android.settings.accounts.UserAndAccountDashboardFragment;
 import com.android.settings.aoscp.dashboard.ButtonSettings;
+import com.android.settings.aoscp.dashboard.GesturesSettings;
 import com.android.settings.applications.AppAndNotificationDashboardFragment;
 import com.android.settings.applications.DefaultAppSettings;
 import com.android.settings.applications.SpecialAccessSettings;
@@ -218,6 +219,7 @@ public final class SearchIndexableResources {
                 NO_DATA_RES_ID,
                 R.drawable.ic_settings_storage);
         addIndex(ButtonSettings.class, NO_DATA_RES_ID, R.drawable.ic_buttons);
+        addIndex(GesturesSettings.class, NO_DATA_RES_ID, R.drawable.ic_settings_gestures);
     }
 
     private SearchIndexableResources() {
