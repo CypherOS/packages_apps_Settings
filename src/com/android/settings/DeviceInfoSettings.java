@@ -20,6 +20,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.provider.SearchIndexableResource;
 import android.os.Build;
 import android.os.SystemClock;
@@ -120,6 +122,10 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         }
         final ImageView icon = (ImageView) mHeaderLayoutPref
                 .findViewById(R.id.header_icon);
+		Drawable drawable = icon.getDrawable();
+		if (drawable instanceof Animatable) {
+			((Animatable) drawable).start();
+		}
         icon.setClickable(true);
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
