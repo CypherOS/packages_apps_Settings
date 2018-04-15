@@ -10,13 +10,66 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="24dp"
-        android:height="24dp"
-        android:viewportWidth="24.0"
-        android:viewportHeight="24.0"
-        android:tint="?android:attr/colorAccent">
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M11.034304 22.479319C8.4579107 22.144981 6.4440767 21.170848 4.7964177 19.461923c-0.788459 -0.817776 -1.328651 -1.592161 -1.817399 -2.605308 -0.445173 -0.922819 -0.713743 -1.757061 -0.902497 -2.803371 -0.08925 -0.494739 -0.10473 -2.436985 -0.02356 -2.956688 0.304966 -1.9526807 1.134337 -3.7480777 2.404552 -5.2053068L4.7755057 5.5264405 3.9121797 4.2939948C2.6915417 2.5514651 2.7023427 2.568533 2.6752897 2.3393842c-0.03549 -0.3006159 0.04345 -0.5265085 0.259354 -0.7421422 0.336491 -0.3360728 0.818692 -0.3659648 1.174353 -0.072799 0.07362 0.060684 0.555768 0.7139296 1.07144 1.4516564 0.515672 0.7377267 0.95084 1.3420361 0.967039 1.3429099 0.0162 0.0008753 0.249814 -0.136582 0.519144 -0.3054568 1.19017 -0.7462605 2.657852 -1.2790983 4.0079603 -1.4550782 0.547177 -0.071322 2.227058 -0.059125 2.742124 0.019908 1.361768 0.2089553 2.778689 0.7402556 3.948763 1.4806602 0.228595 0.1446515 0.419627 0.2581805 0.424514 0.2522866 0.0049 -0.00589 0.416814 -0.5952751 0.915393 -1.3097353 0.498578 -0.7144602 0.97619 -1.3632157 1.061358 -1.441679 0.357782 -0.3296139 0.853828 -0.3142588 1.205852 0.037327 0.279431 0.2790827 0.349212 0.6656124 0.181027 1.0027451 -0.03519 0.070547 -0.499056 0.7499869 -1.030806 1.5098664 -0.661471 0.9452519 -0.955428 1.3969806 -0.930753 1.4303022 0.01984 0.026787 0.169228 0.2033064 0.331981 0.3922656 1.064391 1.235776 1.768999 2.5862482 2.162405 4.1445319 0.229903 0.910645 0.256004 1.157121 0.256004 2.417469 0 1.260347 -0.0261 1.506823 -0.256004 2.417468 -0.448746 1.777487 -1.289077 3.276014 -2.574569 4.591121 -1.71334 1.752813 -3.97995 2.813553 -6.332787 2.963652 -0.602792 0.03846 -1.49604 0.04493 -1.744774 0.01266zm1.99849 -3.030876c2.243106 -0.337887 4.197882 -1.767503 5.218322 -3.816392 0.977206 -1.96208 0.997938 -4.181641 0.05741 -6.1462657C17.373995 7.5336788 15.738194 6.1995555 13.646024 5.6831481 13.016655 5.5278018 12.609184 5.4795403 11.934673 5.480454 10.572516 5.482304 9.3050887 5.8562417 8.1764637 6.5892795c-1.045275 0.6789014 -1.984743 1.7395591 -2.533651 2.8604848 -0.247685 0.505796 -0.485213 1.2341187 -0.589764 1.8083637 -0.121452 0.667066 -0.121726 1.754088 -0.000612 2.424584 0.174295 0.964913 0.563357 1.921148 1.126507 2.76872 0.401853 0.604812 1.245299 1.448056 1.854012 1.853568 0.978425 0.651806 1.8661351 0.98473 3.1412433 1.178083 0.282028 0.04277 1.494779 0.02016 1.858595 -0.03464z" />
-</vector>
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/icon_01" android:duration="16" />
+    <item android:drawable="@drawable/icon_02" android:duration="16" />
+    <item android:drawable="@drawable/icon_03" android:duration="16" />
+    <item android:drawable="@drawable/icon_04" android:duration="16" />
+    <item android:drawable="@drawable/icon_05" android:duration="16" />
+    <item android:drawable="@drawable/icon_06" android:duration="16" />
+    <item android:drawable="@drawable/icon_07" android:duration="16" />
+    <item android:drawable="@drawable/icon_08" android:duration="16" />
+    <item android:drawable="@drawable/icon_09" android:duration="16" />
+    <item android:drawable="@drawable/icon_10" android:duration="16" />
+    <item android:drawable="@drawable/icon_11" android:duration="16" />
+    <item android:drawable="@drawable/icon_12" android:duration="16" />
+	<item android:drawable="@drawable/icon_13" android:duration="16" />
+    <item android:drawable="@drawable/icon_14" android:duration="16" />
+    <item android:drawable="@drawable/icon_15" android:duration="16" />
+    <item android:drawable="@drawable/icon_16" android:duration="16" />
+    <item android:drawable="@drawable/icon_17" android:duration="16" />
+    <item android:drawable="@drawable/icon_18" android:duration="16" />
+    <item android:drawable="@drawable/icon_19" android:duration="16" />
+    <item android:drawable="@drawable/icon_20" android:duration="16" />
+    <item android:drawable="@drawable/icon_21" android:duration="16" />
+    <item android:drawable="@drawable/icon_22" android:duration="16" />
+    <item android:drawable="@drawable/icon_23" android:duration="16" />
+    <item android:drawable="@drawable/icon_24" android:duration="16" />
+	<item android:drawable="@drawable/icon_25" android:duration="16" />
+    <item android:drawable="@drawable/icon_26" android:duration="16" />
+    <item android:drawable="@drawable/icon_27" android:duration="16" />
+    <item android:drawable="@drawable/icon_28" android:duration="16" />
+    <item android:drawable="@drawable/icon_29" android:duration="16" />
+    <item android:drawable="@drawable/icon_30" android:duration="16" />
+    <item android:drawable="@drawable/icon_31" android:duration="16" />
+    <item android:drawable="@drawable/icon_32" android:duration="16" />
+    <item android:drawable="@drawable/icon_33" android:duration="16" />
+    <item android:drawable="@drawable/icon_34" android:duration="16" />
+    <item android:drawable="@drawable/icon_35" android:duration="16" />
+    <item android:drawable="@drawable/icon_36" android:duration="16" />
+	<item android:drawable="@drawable/icon_37" android:duration="16" />
+    <item android:drawable="@drawable/icon_38" android:duration="16" />
+    <item android:drawable="@drawable/icon_39" android:duration="16" />
+    <item android:drawable="@drawable/icon_40" android:duration="16" />
+    <item android:drawable="@drawable/icon_41" android:duration="16" />
+    <item android:drawable="@drawable/icon_42" android:duration="16" />
+    <item android:drawable="@drawable/icon_43" android:duration="16" />
+    <item android:drawable="@drawable/icon_44" android:duration="16" />
+    <item android:drawable="@drawable/icon_45" android:duration="16" />
+    <item android:drawable="@drawable/icon_46" android:duration="16" />
+    <item android:drawable="@drawable/icon_47" android:duration="16" />
+    <item android:drawable="@drawable/icon_48" android:duration="16" />
+	<item android:drawable="@drawable/icon_49" android:duration="16" />
+    <item android:drawable="@drawable/icon_50" android:duration="16" />
+    <item android:drawable="@drawable/icon_51" android:duration="16" />
+    <item android:drawable="@drawable/icon_52" android:duration="16" />
+    <item android:drawable="@drawable/icon_53" android:duration="16" />
+    <item android:drawable="@drawable/icon_54" android:duration="16" />
+    <item android:drawable="@drawable/icon_55" android:duration="16" />
+    <item android:drawable="@drawable/icon_56" android:duration="16" />
+    <item android:drawable="@drawable/icon_57" android:duration="16" />
+    <item android:drawable="@drawable/icon_58" android:duration="16" />
+    <item android:drawable="@drawable/icon_59" android:duration="16" />
+</animation-list>
