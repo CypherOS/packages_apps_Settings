@@ -361,4 +361,8 @@
     <string name="menu_cancel">Cancel</string>
     <string name="menu_save">Save</string>
 
+    <!-- Search -->
+    <string name="menu_search">Search apps</string>
+    <string name="menu_search_hint">Search apps\u2026</string>
+
 </resources>
