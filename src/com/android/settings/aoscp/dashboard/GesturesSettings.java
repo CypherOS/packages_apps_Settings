@@ -97,8 +97,7 @@ public class GesturesSettings extends DashboardFragment implements
         mFPGestureSettings.put(KEY_SWIPE_LEFT, Settings.System.FINGERPRINT_GESTURES_SWIPE_LEFT);
         mFPGestureSettings.put(KEY_SWIPE_RIGHT, Settings.System.FINGERPRINT_GESTURES_SWIPE_RIGHT);
     }
-
-    private GesturesEnabler mGesturesEnabler;
+	
     private PreferenceCategory mFingerprintGestures;
 
     @Override
@@ -120,12 +119,20 @@ public class GesturesSettings extends DashboardFragment implements
         }
 
         mFingerprintGestures = (PreferenceCategory) findPreference(KEY_FINGERPRINT_GESTURES);
-
-        for (String gestureKey : mFPGestureKeyCodes.keySet()) {
-            if (getResources().getInteger(mFPGestureKeyCodes.get(gestureKey)) != 0) {
-                screen.findPreference(gestureKey);
+		boolean navBarEnabled = Settings.System.getInt(getContext().getContentResolver(),
+                Settings.System.NAVIGATION_BAR_ENABLED, 0) != 0;
+		for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
+			if (getResources().getInteger(mFPGestureKeyCodes.get(fpGestureKey)) != 0) {
+                ListPreference fpGesturePref = (ListPreference) screen.findPreference(fpGestureKey);
+                fpGesturePref.setOnPreferenceChangeListener(this);
+			    int fpGestureDefault = getResources().getInteger(
+                        mFPGestureDefaults.get(fpGestureKey));
+                int fpGestureBehaviour = Settings.System.getInt(getContentResolver(),
+                        mFPGestureSettings.get(fpGestureKey), fpGestureDefault);
+                fpGesturePref.setValue(String.valueOf(fpGestureBehaviour));
+                fpGesturePref.setEnabled(!navBarEnabled);
             } else {
-                mFingerprintGestures.removePreference(findPreference(gestureKey));
+                mFingerprintGestures.removePreference(findPreference(fpGestureKey));
             }
         }
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.gesture_settings_summary);
@@ -147,77 +154,21 @@ public class GesturesSettings extends DashboardFragment implements
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-        if (mGesturesEnabler != null) {
-            mGesturesEnabler.teardownSwitchBar();
-        }
-    }
-
-    @Override
     public void onStart() {
         super.onStart();
 
         if (mFPGestureKeyCodes.keySet().stream().allMatch(keyCode -> getResources().getInteger(
                 mFPGestureKeyCodes.get(keyCode)) == 0)) {
             getPreferenceScreen().removePreference(mFingerprintGestures);
-        } else {
-            SettingsActivity activity = (SettingsActivity) getActivity();
-            mGesturesEnabler = new GesturesEnabler(activity.getSwitchBar());
         }
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mGesturesEnabler != null) {
-            mGesturesEnabler.resume();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (mGesturesEnabler != null) {
-            mGesturesEnabler.pause();
-        }
-    }
-
-    private void enableGestures(boolean enable, boolean start) {
-        for (String gestureKey : mFPGestureKeyCodes.keySet()) {
-            if (getResources().getInteger(mFPGestureKeyCodes.get(gestureKey)) == 0) {
-                continue;
-            }
-            ListPreference gesturePref = (ListPreference) findPreference(gestureKey);
-            gesturePref.setOnPreferenceChangeListener(this);
-            gesturePref.setEnabled(enable);
-            if (start) {
-                int gestureDefault = getResources().getInteger(
-                        mFPGestureDefaults.get(gestureKey));
-                int gestureBehaviour = Settings.System.getInt(getContentResolver(),
-                        mFPGestureSettings.get(gestureKey), gestureDefault);
-                gesturePref.setValue(String.valueOf(gestureBehaviour));
-            }
-        }
-    }
-
+	
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Settings.System.putInt(getContentResolver(),
                 mFPGestureSettings.get(preference.getKey()),
                 Integer.parseInt((String) newValue));
         return true;
-    }
-
-    public static boolean supportsGestures(Context context) {
-        for (String gestureKey : mFPGestureKeyCodes.keySet()) {
-            if (context.getResources().getInteger(mFPGestureKeyCodes
-                    .get(gestureKey)) > 0) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @Override
@@ -235,54 +186,6 @@ public class GesturesSettings extends DashboardFragment implements
         controllers.add(new SwipeToNotificationPreferenceController(context));
         controllers.add(new TapToWakePreferenceController(context));
         return controllers;
-    }
-
-    private class GesturesEnabler implements SwitchBar.OnSwitchChangeListener {
-
-        private final Context mContext;
-        private final SwitchBar mSwitchBar;
-        private boolean mListeningToOnSwitchChange;
-
-        public GesturesEnabler(SwitchBar switchBar) {
-            mContext = switchBar.getContext();
-            mSwitchBar = switchBar;
-
-            mSwitchBar.show();
-
-            boolean gesturesEnabled = Settings.System.getInt(
-                    mContext.getContentResolver(),
-                    Settings.System.FINGERPRINT_GESTURES_ENABLED, 0) != 0;
-            mSwitchBar.setChecked(gesturesEnabled);
-            GesturesSettings.this.enableGestures(gesturesEnabled, true);
-        }
-
-        public void teardownSwitchBar() {
-            pause();
-            mSwitchBar.hide();
-        }
-
-        public void resume() {
-            if (!mListeningToOnSwitchChange) {
-                mSwitchBar.addOnSwitchChangeListener(this);
-                mListeningToOnSwitchChange = true;
-            }
-        }
-
-        public void pause() {
-            if (mListeningToOnSwitchChange) {
-                mSwitchBar.removeOnSwitchChangeListener(this);
-                mListeningToOnSwitchChange = false;
-            }
-        }
-
-        @Override
-        public void onSwitchChanged(Switch switchView, boolean isChecked) {
-            Settings.System.putInt(
-                    mContext.getContentResolver(),
-                    Settings.System.FINGERPRINT_GESTURES_ENABLED, isChecked ? 1 : 0);
-            GesturesSettings.this.enableGestures(isChecked, false);
-        }
-
     }
 
     /**
@@ -308,10 +211,10 @@ public class GesturesSettings extends DashboardFragment implements
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     List<String> keys = super.getNonIndexableKeys(context);
-                    for (String gestureKey : mFPGestureKeyCodes.keySet()) {
+                    for (String fpGestureKey : mFPGestureKeyCodes.keySet()) {
                         if (context.getResources().getInteger(mFPGestureKeyCodes
-                                .get(gestureKey)) == 0) {
-                            keys.add(gestureKey);
+                                .get(fpGestureKey)) == 0) {
+                            keys.add(fpGestureKey);
                         }
                     }
                     return keys;
