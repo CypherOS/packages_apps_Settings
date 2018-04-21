@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.provider.SearchIndexableResource;
 import android.os.Build;
 import android.os.SystemClock;
@@ -108,8 +109,11 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         for (AbstractPreferenceController controller : controllers) {
             controller.displayPreference(screen);
         }
+    }
 
-        mHeaderLayoutPref = (LayoutPreference) findPreference(KEY_ABOUT_HEADER);
+    @Override
+    public void onStart() {
+        super.onStart();
         updateHeaderPreference();
     }
 
@@ -118,8 +122,11 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         if (context == null) {
             return;
         }
+        mHeaderLayoutPref = (LayoutPreference) findPreference(KEY_ABOUT_HEADER);
         final ImageView icon = (ImageView) mHeaderLayoutPref
                 .findViewById(R.id.header_icon);
+        AnimationDrawable anim = (AnimationDrawable) icon.getDrawable();
+        anim.start();
         icon.setClickable(true);
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
