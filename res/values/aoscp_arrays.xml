@@ -54,6 +54,10 @@
         <item>@string/gestures_previous_music</item>
         <item>@string/gestures_screenshot</item>
         <item>@string/gestures_assistant</item>
+		<item>@string/gestures_home</item>
+		<item>@string/gestures_back</item>
+		<item>@string/gestures_appswitch</item>
+		<item>@string/gestures_wake_device</item>
     </string-array>
 
     <string-array name="fp_gestures_values">
@@ -65,6 +69,10 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>11</item>
     </string-array>
 
 </resources>
