@@ -152,5 +152,9 @@
     <string name="gestures_previous_music">Previous song</string>
     <string name="gestures_screenshot">Take screenshot</string>
     <string name="gestures_assistant">Launch assistant</string>
+    <string name="gestures_home">Home</string>
+    <string name="gestures_back">Back</string>
+    <string name="gestures_appswitch">Recents</string>
+    <string name="gestures_wake_device">Wake device</string>
 
 </resources>
