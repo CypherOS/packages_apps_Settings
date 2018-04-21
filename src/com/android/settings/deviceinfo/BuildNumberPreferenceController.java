@@ -40,6 +40,9 @@ import com.android.settings.development.DevelopmentSettingsEnabler;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.aoscp.FooterConfirm;
+import com.android.settingslib.aoscp.FooterConfirm.onActionClickListener;
+import com.android.settingslib.aoscp.FooterConfirmMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -58,7 +61,7 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
     private final UserManager mUm;
     private final MetricsFeatureProvider mMetricsFeatureProvider;
 
-    private Toast mDevHitToast;
+	private FooterConfirmMixin mDevHitFCM;
     private RestrictedLockUtils.EnforcedAdmin mDebuggingFeaturesDisallowedAdmin;
     private boolean mDebuggingFeaturesDisallowedBySystem;
     private int mDevHitCountdown;
@@ -109,7 +112,7 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
         mDevHitCountdown = mContext.getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE).getBoolean(DevelopmentSettings.PREF_SHOW,
                 android.os.Build.TYPE.equals("eng")) ? -1 : TAPS_TO_BE_A_DEVELOPER;
-        mDevHitToast = null;
+        mDevHitFCM = null;
     }
 
     @Override
@@ -164,27 +167,25 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
                                 mProcessingLastDevHit ? 0 : 1));
             } else if (mDevHitCountdown > 0
                     && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER - 2)) {
-                if (mDevHitToast != null) {
-                    mDevHitToast.cancel();
+                if (mDevHitFCM != null) {
+                    mDevHitFCM.dismiss();
                 }
-                mDevHitToast = Toast.makeText(mContext,
-                        mContext.getResources().getQuantityString(
+				mDevHitFCM.show(FooterConfirm.with(mContext)
+				    .setMessage(mContext.getResources().getQuantityString(
                                 R.plurals.show_dev_countdown, mDevHitCountdown,
-                                mDevHitCountdown),
-                        Toast.LENGTH_SHORT);
-                mDevHitToast.show();
+                                mDevHitCountdown)));
             }
             mMetricsFeatureProvider.action(
                     mContext, MetricsEvent.ACTION_SETTINGS_BUILD_NUMBER_PREF,
                     Pair.create(MetricsEvent.FIELD_SETTINGS_BUILD_NUMBER_DEVELOPER_MODE_ENABLED,
                             0));
         } else if (mDevHitCountdown < 0) {
-            if (mDevHitToast != null) {
-                mDevHitToast.cancel();
+            if (mDevHitFCM != null) {
+                mDevHitFCM.dismiss();
             }
-            mDevHitToast = Toast.makeText(mContext, R.string.show_dev_already,
-                    Toast.LENGTH_LONG);
-            mDevHitToast.show();
+			mDevHitFCM.show(FooterConfirm.with(mContext)
+				    .setMessage(mContext.getResources().getString(
+                                R.string.show_dev_already)));
             mMetricsFeatureProvider.action(
                     mContext, MetricsEvent.ACTION_SETTINGS_BUILD_NUMBER_PREF,
                     Pair.create(MetricsEvent.FIELD_SETTINGS_BUILD_NUMBER_DEVELOPER_MODE_ENABLED,
@@ -218,12 +219,21 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
         DevelopmentSettingsEnabler.enableDevelopmentSettings(mContext,
                 mContext.getSharedPreferences(DevelopmentSettings.PREF_FILE,
                         Context.MODE_PRIVATE));
-        if (mDevHitToast != null) {
-            mDevHitToast.cancel();
+        if (mDevHitFCM != null) {
+            mDevHitFCM.dismiss();
         }
-        mDevHitToast = Toast.makeText(mContext, R.string.show_dev_on,
-                Toast.LENGTH_LONG);
-        mDevHitToast.show();
+		mDevHitFCM.show(FooterConfirm.with(mContext)
+            .setMessage(mContext.getResources().getString(R.string.show_dev_on))
+	        .setAction(true)
+			.setActionTitle("Open")
+			.setActionListener(new onActionClickListener() {
+				@Override
+				public void onActionClicked(FooterConfirm footerConfirm) {
+					final Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setClassName("com.android.settings", "com.android.settings.DevelopmentSettings");
+					BuildNumberPreferenceController.this.startActivity(intent);
+				}
+			}));
         // This is good time to index the Developer Options
         FeatureFactory.getFactory(mContext).getSearchFeatureProvider().getIndexingManager(mContext)
                 .updateFromClassNameResource(DevelopmentSettings.class.getName(),
