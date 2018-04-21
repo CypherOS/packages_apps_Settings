@@ -43,6 +43,14 @@
             android:title="@string/fingerprint_gestures_title">
 
         <ListPreference
+            android:key="single_tap"
+            android:title="@string/gestures_single_tap"
+            android:summary="%s"
+            android:persistent="false"
+            android:entries="@array/fp_gestures_entries"
+            android:entryValues="@array/fp_gestures_values" />
+
+        <ListPreference
             android:key="double_tap"
             android:title="@string/gestures_double_tap"
             android:summary="%s"
