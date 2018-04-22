@@ -23,6 +23,8 @@ import android.support.v14.preference.SwitchPreference;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settingslib.aoscp.FooterConfirm;
+import com.android.settingslib.aoscp.FooterConfirmMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import static android.provider.Settings.System.NAVIGATION_BAR_ENABLED;
@@ -73,6 +75,10 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
         final boolean enabled = (boolean) newValue;
         Settings.System.putInt(mContext.getContentResolver(),
                 Settings.System.NAVIGATION_BAR_ENABLED, enabled ? 1 : 0);
+		if (mSupportsFPNavigation && !enabled) {
+			FooterConfirmMixin.show(FooterConfirm.with(mContext)
+				    .setMessage("Fingerprint navigation enabled"));
+		}
         return true;
     }
 }
