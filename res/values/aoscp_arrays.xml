@@ -74,5 +74,16 @@
         <item>10</item>
         <item>11</item>
     </string-array>
+	
+	<!-- Navigation bar theme -->
+    <string-array name="navbar_theme_entries">
+        <item>@string/navbar_theme_default</item>
+        <item>@string/navbar_theme_pixel</item>
+    </string-array>
+
+    <string-array name="navbar_theme_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 
 </resources>
