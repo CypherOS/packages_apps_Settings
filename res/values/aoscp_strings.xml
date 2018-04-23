@@ -157,5 +157,14 @@
     <string name="gestures_back">Back</string>
     <string name="gestures_appswitch">Recents</string>
     <string name="gestures_wake_device">Wake device</string>
+	
+	<!-- Navigation bar theme -->
+	<string name="navbar_theme_title">Theme</string>
+    <string name="navbar_theme_default">Default</string>
+	<string name="navbar_theme_pixel">Pixel</string>
+	<string name="navbar_theme_pixel_hola">Pixel Hola</string>
+	<string name="navbar_theme_samsung">Sammi</string>
+	<string name="navbar_theme_xperia">Xperia</string>
+	<string name="navbar_theme_plusone">Plus One</string>
 
 </resources>
