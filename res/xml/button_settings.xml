@@ -24,6 +24,13 @@
             android:summary="@string/navigation_bar_title_summary"
             android:defaultValue="false" />
 
+    <ListPreference
+            android:key="navbar_theme"
+            android:title="@string/navbar_theme_title"
+            android:dialogTitle="@string/navbar_theme_title"
+            android:entries="@array/navbar_theme_entries"
+            android:entryValues="@array/navbar_theme_values" />
+
     <SwitchPreference
             android:key="button_brightness"
             android:title="@string/hardware_brightness_keys_title"
