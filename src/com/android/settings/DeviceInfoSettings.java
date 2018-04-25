@@ -66,6 +66,8 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
 
     private LayoutPreference mHeaderLayoutPref;
     private long[] mHits = new long[3];
+	
+	private static boolean mOverrideVendorInfo;
 
     @Override
     public int getMetricsCategory() {
@@ -109,6 +111,8 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         for (AbstractPreferenceController controller : controllers) {
             controller.displayPreference(screen);
         }
+		
+		mOverrideVendorInfo = getContext().getResources().getBoolean(R.bool.config_overridesVendorInfo);
     }
 
     @Override
@@ -179,7 +183,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel());
+                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel(mOverrideVendorInfo));
             }
         }
     }

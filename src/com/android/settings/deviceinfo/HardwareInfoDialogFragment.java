@@ -53,7 +53,7 @@ public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
                 .inflate(R.layout.dialog_hardware_info, null /* parent */);
         // Model
         setText(content, R.id.model_label, R.id.model_value,
-                DeviceModelPreferenceController.getDeviceModel());
+                DeviceModelPreferenceController.getDeviceModel(DeviceModelPreferenceController.mIsOverride));
         // Hardware rev
         setText(content, R.id.hardware_rev_label, R.id.hardware_rev_value,
                 SystemProperties.get("ro.boot.hardware.revision"));
