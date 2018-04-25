@@ -33,9 +33,12 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
 
     private final Fragment mHost;
 
+    private static boolean mOverrideVendorInfo;
+
     public DeviceModelPreferenceController(Context context, Fragment host) {
         super(context);
         mHost = host;
+        mOverrideVendorInfo = mContext.getResources().getBoolean(R.bool.config_overridesVendorInfo);
     }
 
     @Override
@@ -68,6 +71,9 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
     }
 
     public static String getDeviceModel() {
+        if (mOverrideVendorInfo) {
+            return mContext.getString("ro.vendor.override.model");
+        }
         return Build.MODEL + DeviceInfoUtils.getMsvSuffix();
     }
 }

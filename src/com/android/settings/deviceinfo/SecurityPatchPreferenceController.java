@@ -35,10 +35,13 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
     private final String mPatch;
     private final PackageManager mPackageManager;
 
+    private static boolean mOverrideVendorInfo;
+
     public SecurityPatchPreferenceController(Context context) {
         super(context);
         mPackageManager = mContext.getPackageManager();
         mPatch = DeviceInfoUtils.getSecurityPatch();
+        mOverrideVendorInfo = mContext.getResources().getBoolean(R.bool.config_overridesVendorInfo);
     }
 
     @Override
@@ -56,7 +59,7 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
         super.displayPreference(screen);
         final Preference pref = screen.findPreference(KEY_SECURITY_PATCH);
         if (pref != null) {
-            pref.setSummary(mPatch);
+            pref.setSummary(getSecurityPatch());
         }
     }
 
@@ -72,5 +75,12 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
             return true;
         }
         return false;
+    }
+
+    public static String getSecurityPatch() {
+        if (mOverrideVendorInfo) {
+            return mContext.getString("ro.vendor.override.patch");
+        }
+        return mPatch;
     }
 }
