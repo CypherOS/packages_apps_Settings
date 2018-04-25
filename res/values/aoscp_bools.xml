@@ -18,5 +18,13 @@
 
     <!-- Whether notify user that switch data service -->
     <bool name="confirm_to_switch_data_service">false</bool>
+	
+	<!-- Whether to override specific vendor properties to
+         for displaying information in about phone. Supported
+         properties include:
+         Device Model = "ro.vendor.override.model" 
+		 Security Patch = "ro.vendor.override.patch" 
+	-->
+    <bool name="config_overridesVendorInfo">false</bool>
 
 </resources>
