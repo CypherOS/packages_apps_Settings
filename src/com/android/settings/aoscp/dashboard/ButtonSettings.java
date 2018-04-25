@@ -45,6 +45,7 @@ import com.android.settings.aoscp.buttons.LongPressCameraPreferenceController;
 import com.android.settings.aoscp.buttons.LongPressHomePreferenceController;
 import com.android.settings.aoscp.buttons.LongPressMenuPreferenceController;
 import com.android.settings.aoscp.buttons.NavigationBarPreferenceController;
+import com.android.settings.aoscp.buttons.NavbarThemePreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.dashboard.DashboardFragment;
@@ -63,6 +64,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
     // Switches
     private static final String KEY_BUTTON_BRIGHTNESS      = "button_brightness";
     private static final String KEY_NAVIGATION_BAR         = "navigation_bar";
+    private static final String KEY_NAVBAR_THEME           = "navbar_theme";
 
     // Long Press/Double Tap Actions
     private static final String KEY_HOME_LONG_PRESS        = "home_key_long_press";
@@ -193,6 +195,7 @@ public class ButtonSettings extends DashboardFragment implements Indexable {
         controllers.add(new DoubleTapAppSwitchPreferenceController(context, KEY_APP_SWITCH_DOUBLE_TAP));
         controllers.add(new LongPressCameraPreferenceController(context, KEY_CAMERA_LONG_PRESS));
         controllers.add(new DoubleTapCameraPreferenceController(context, KEY_CAMERA_DOUBLE_TAP));
+        controllers.add(new NavbarThemePreferenceController(context, KEY_NAVBAR_THEME));
         return controllers;
     }
 
