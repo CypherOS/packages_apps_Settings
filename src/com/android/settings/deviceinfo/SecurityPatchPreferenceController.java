@@ -17,14 +17,21 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.SystemProperties;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class SecurityPatchPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
@@ -35,10 +42,13 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
     private final String mPatch;
     private final PackageManager mPackageManager;
 
+    private static boolean mOverrideVendorInfo;
+
     public SecurityPatchPreferenceController(Context context) {
         super(context);
         mPackageManager = mContext.getPackageManager();
         mPatch = DeviceInfoUtils.getSecurityPatch();
+        mOverrideVendorInfo = mContext.getResources().getBoolean(R.bool.config_overridesVendorInfo);
     }
 
     @Override
@@ -56,7 +66,7 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
         super.displayPreference(screen);
         final Preference pref = screen.findPreference(KEY_SECURITY_PATCH);
         if (pref != null) {
-            pref.setSummary(mPatch);
+            pref.setSummary(getSecurityPatch());
         }
     }
 
@@ -72,5 +82,24 @@ public class SecurityPatchPreferenceController extends AbstractPreferenceControl
             return true;
         }
         return false;
+    }
+
+    public static String getSecurityPatch() {
+        if (mOverrideVendorInfo) {
+            String patch = SystemProperties.get("ro.vendor.override.security_patch", "");
+            if (!"".equals(patch)) {
+                try {
+                    SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
+                    Date patchDate = template.parse(patch);
+                    String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
+                    patch = DateFormat.format(format, patchDate).toString();
+                } catch (ParseException e) {
+                }
+                return patch;
+            } else {
+                return null;
+            }
+        }
+        return mPatch;
     }
 }
