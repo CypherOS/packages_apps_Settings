@@ -18,10 +18,12 @@ package com.android.settings.deviceinfo;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Build;
+import android.os.SystemProperties;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 
+import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -33,9 +35,12 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
 
     private final Fragment mHost;
 
+    private static boolean mOverrideVendorInfo;
+
     public DeviceModelPreferenceController(Context context, Fragment host) {
         super(context);
         mHost = host;
+        mOverrideVendorInfo = mContext.getResources().getBoolean(R.bool.config_overridesVendorInfo);
     }
 
     @Override
@@ -68,6 +73,9 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
     }
 
     public static String getDeviceModel() {
+        if (mOverrideVendorInfo) {
+            return mContext.getResources().getString(R.string.config_overridenVendorProductModel);
+        }
         return Build.MODEL + DeviceInfoUtils.getMsvSuffix();
     }
 }

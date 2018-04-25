@@ -20,4 +20,13 @@
          and currently depends on QC's proprietary telephony stack -->
     <bool name="config_enableManualSubProvisioning">true</bool>
 
+    <!-- Whether to override specific vendor properties for 
+	     displaying information in about phone. Supported properties include:
+         Device Model = "config_overridenVendorProductModel"
+         Security Patch = "config_overridenVendorSecurityPatch"
+    -->
+    <bool name="config_overridesVendorInfo">false</bool>
+	<string name="config_overridenVendorProductModel" translatable="false"></string>
+	<string name="config_overridenVendorSecurityPatch" translatable="false"></string>
+
 </resources>
