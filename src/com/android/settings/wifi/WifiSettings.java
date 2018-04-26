@@ -30,9 +30,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
+import android.net.NetworkBadging;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
 import android.nfc.NfcAdapter;
@@ -57,11 +59,14 @@ import com.android.settings.LinkifyUtils;
 import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.SettingsActivity;
+import com.android.settings.Utils;
+import com.android.settings.applications.LayoutPreference;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.location.ScanningSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settings.widget.EntityHeaderController;
 import com.android.settings.widget.SummaryUpdater.OnSummaryChangeListener;
 import com.android.settings.widget.SwitchBarController;
 import com.android.settings.wifi.details.WifiNetworkDetailsFragment;
@@ -172,6 +177,13 @@ public class WifiSettings extends RestrictedSettingsFragment
     private Preference mConfigureWifiSettingsPreference;
     private Preference mSavedNetworksPreference;
     private LinkablePreference mStatusMessagePreference;
+	
+	private LayoutPreference mConnectionHeader;
+	private EntityHeaderController mEntityHeaderController;
+	private WifiInfo mWifiInfo;
+	private int mRssi;
+	
+	private static final String KEY_CONNECTION_HEADER = "connected_header";
 
     // For Search
     private static final String DATA_KEY_REFERENCE = "main_toggle_wifi";
@@ -206,9 +218,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         // TODO(b/37429702): Add animations and preference comparator back after initial screen is
         // loaded (ODR).
         setAnimationAllowed(false);
-
+		
         addPreferences();
-
         mIsRestricted = isUiRestricted();
 
         mBgThread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
@@ -234,6 +245,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         mStatusMessagePreference = new LinkablePreference(prefContext);
 
         mUserBadgeCache = new AccessPointPreference.UserBadgeCache(getPackageManager());
+		
+		setupConnectionHeader();
     }
 
     @Override
@@ -365,6 +378,26 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
         getPreferenceScreen().removeAll();
     }
+	
+	private void setupConnectionHeader() {
+		mConnectionHeader = (LayoutPreference) findPreference(KEY_CONNECTION_HEADER);
+        mEntityHeaderController = EntityHeaderController.newInstance(
+		                this.getActivity(), this,
+                        mConnectionHeader.findViewById(R.id.connection_header));
+    }
+
+	private void updateConnectionHeader() {
+		int iconSignalLevel = WifiManager.calculateSignalLevel(
+                mRssi, WifiManager.RSSI_LEVELS);
+        Drawable wifiIcon = NetworkBadging.getWifiIcon(
+                iconSignalLevel, NetworkBadging.BADGING_NONE, getContext().getTheme()).mutate();
+        wifiIcon.setTint(Utils.getColorAccent(getContext()));
+        mEntityHeaderController.setIcon(wifiIcon).done(this.getActivity(), true /* rebind */);
+		
+		mEntityHeaderController.setLabel(mSelectedAccessPoint.getSsidStr());
+		mEntityHeaderController.setSummary(mSelectedAccessPoint.getSettingsSummary())
+                .done(this.getActivity(), true /* rebind */);
+	}
 
     /**
      * Only update the AP list if there are not any APs currently shown.
@@ -374,6 +407,8 @@ public class WifiSettings extends RestrictedSettingsFragment
      * from {@link WifiTracker}.
      */
     private void conditionallyForceUpdateAPs() {
+		mWifiInfo = mWifiManager.getConnectionInfo();
+		mRssi = mWifiInfo.getRssi();
         if (mAccessPointsPreferenceCategory.getPreferenceCount() > 0
                 && mAccessPointsPreferenceCategory.getPreference(0) instanceof
                         AccessPointPreference) {
@@ -390,6 +425,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
         getView().removeCallbacks(mUpdateAccessPointsRunnable);
         updateAccessPointPreferences();
+		updateConnectionHeader();
     }
 
     /**
@@ -425,6 +461,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         if (mWifiEnabler != null) {
             mWifiEnabler.pause();
         }
+		mWifiInfo = null;
     }
 
     @Override
