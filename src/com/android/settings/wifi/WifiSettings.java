@@ -18,21 +18,29 @@ package com.android.settings.wifi;
 
 import static android.os.UserManager.DISALLOW_CONFIG_WIFI;
 
+import android.annotation.ColorInt;
+import android.annotation.IntRange;
 import android.annotation.NonNull;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
+import android.net.NetworkBadging;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
 import android.nfc.NfcAdapter;
@@ -57,11 +65,14 @@ import com.android.settings.LinkifyUtils;
 import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.SettingsActivity;
+import com.android.settings.Utils;
+import com.android.settings.applications.LayoutPreference;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.location.ScanningSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settings.widget.EntityHeaderController;
 import com.android.settings.widget.SummaryUpdater.OnSummaryChangeListener;
 import com.android.settings.widget.SwitchBarController;
 import com.android.settings.wifi.details.WifiNetworkDetailsFragment;
@@ -165,13 +176,18 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     private AccessPointPreference.UserBadgeCache mUserBadgeCache;
 
-    private PreferenceCategory mConnectedAccessPointPreferenceCategory;
+    private PreferenceCategory mConnectedAPPreferenceCategory;
     private PreferenceCategory mAccessPointsPreferenceCategory;
     private PreferenceCategory mAdditionalSettingsPreferenceCategory;
     private Preference mAddPreference;
     private Preference mConfigureWifiSettingsPreference;
     private Preference mSavedNetworksPreference;
     private LinkablePreference mStatusMessagePreference;
+
+	private LayoutPreference mConnectionHeader;
+	private EntityHeaderController mEntityHeaderController;
+	
+	private static final String KEY_CONNECTION_HEADER = "connected_header";
 
     // For Search
     private static final String DATA_KEY_REFERENCE = "main_toggle_wifi";
@@ -206,9 +222,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         // TODO(b/37429702): Add animations and preference comparator back after initial screen is
         // loaded (ODR).
         setAnimationAllowed(false);
-
+		
         addPreferences();
-
         mIsRestricted = isUiRestricted();
 
         mBgThread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
@@ -218,7 +233,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private void addPreferences() {
         addPreferencesFromResource(R.xml.wifi_settings);
 
-        mConnectedAccessPointPreferenceCategory =
+        mConnectedAPPreferenceCategory =
                 (PreferenceCategory) findPreference(PREF_KEY_CONNECTED_ACCESS_POINTS);
         mAccessPointsPreferenceCategory =
                 (PreferenceCategory) findPreference(PREF_KEY_ACCESS_POINTS);
@@ -234,6 +249,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         mStatusMessagePreference = new LinkablePreference(prefContext);
 
         mUserBadgeCache = new AccessPointPreference.UserBadgeCache(getPackageManager());
+		
+		setupConnectionHeader();
     }
 
     @Override
@@ -253,6 +270,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mConnectListener = new WifiManager.ActionListener() {
                                    @Override
                                    public void onSuccess() {
+									   setConnectedApHeader(mConnectedAP);
                                    }
                                    @Override
                                    public void onFailure(int reason) {
@@ -283,6 +301,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mForgetListener = new WifiManager.ActionListener() {
                                    @Override
                                    public void onSuccess() {
+									   setDisconnectedApHeader();
                                    }
                                    @Override
                                    public void onFailure(int reason) {
@@ -364,6 +383,13 @@ public class WifiSettings extends RestrictedSettingsFragment
             getEmptyTextView().setText(R.string.wifi_empty_list_user_restricted);
         }
         getPreferenceScreen().removeAll();
+    }
+	
+	private void setupConnectionHeader() {
+		mConnectionHeader = (LayoutPreference) findPreference(KEY_CONNECTION_HEADER);
+        mEntityHeaderController = EntityHeaderController.newInstance(
+		                this.getActivity(), this,
+                        mConnectionHeader.findViewById(R.id.connection_header));
     }
 
     /**
@@ -719,6 +745,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         switch (wifiState) {
             case WifiManager.WIFI_STATE_ENABLED:
                 conditionallyForceUpdateAPs();
+				setDisconnectedApHeader();
                 break;
 
             case WifiManager.WIFI_STATE_ENABLING:
@@ -735,6 +762,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                 break;
 
             case WifiManager.WIFI_STATE_DISABLED:
+			    setDisabledApHeader();
                 setOffMessage();
                 setAdditionalSettingsSummaries();
                 setProgressBarVisible(false);
@@ -846,43 +874,92 @@ public class WifiSettings extends RestrictedSettingsFragment
     private boolean configureConnectedAccessPointPreferenceCategory(
             List<AccessPoint> accessPoints) {
         if (accessPoints.size() == 0) {
+			setDisconnectedApHeader();
             removeConnectedAccessPointPreference();
             return false;
         }
 
         AccessPoint connectedAp = accessPoints.get(0);
         if (!connectedAp.isActive()) {
+			setDisconnectedApHeader();
             removeConnectedAccessPointPreference();
             return false;
         }
 
         // Is the preference category empty?
-        if (mConnectedAccessPointPreferenceCategory.getPreferenceCount() == 0) {
+        if (mConnectedAPPreferenceCategory.getPreferenceCount() == 0) {
             addConnectedAccessPointPreference(connectedAp);
+			setConnectedApHeader(connectedAp);
             return true;
         }
 
         // Is the previous currently connected SSID different from the new one?
         AccessPointPreference preference = (AccessPointPreference)
-            (mConnectedAccessPointPreferenceCategory.getPreference(0));
+            (mConnectedAPPreferenceCategory.getPreference(0));
         // The AccessPoints need to be the same reference to ensure that updates are reflected
         // in the UI.
         if (preference.getAccessPoint() != connectedAp) {
+			setDisconnectedApHeader();
             removeConnectedAccessPointPreference();
             addConnectedAccessPointPreference(connectedAp);
+			setConnectedApHeader(connectedAp);
             return true;
         }
 
         // Else same AP is connected, simply refresh the connected access point preference
         // (first and only access point in this category).
-        ((LongPressAccessPointPreference) mConnectedAccessPointPreferenceCategory.getPreference(0))
+        ((LongPressAccessPointPreference) mConnectedAPPreferenceCategory.getPreference(0))
                 .refresh();
         return true;
     }
 
+	private AccessPoint mConnectedAP;
+	private void setConnectedApHeader(AccessPoint connectedAp) {
+		mConnectedAP = connectedAp;
+		if (connectedAp == null) {
+			return;
+		}
+		if (!connectedAp.isActive()) {
+			setDisconnectedApHeader();
+            return;
+        }
+		int iconSignalLevel = connectedAp.getLevel();
+        Drawable wifiIcon = getWifiIcon(iconSignalLevel).mutate();
+        wifiIcon.setTint(Utils.getColorAccent(getContext()));
+        mEntityHeaderController.setIcon(wifiIcon);
+		
+		mEntityHeaderController.setLabel(connectedAp.getSsidStr());
+		mEntityHeaderController.setSummary(connectedAp.getSettingsSummary());
+		mEntityHeaderController.done(this.getActivity(), true /* rebind */);
+	}
+
+	private void setDisconnectedApHeader() {
+		if (mConnectedAP != null && mConnectedAP.isActive()) {
+			setConnectedApHeader(mConnectedAP);
+            return;
+        }
+		mEntityHeaderController.setLabel("No Network");
+		mEntityHeaderController.setSummary("Not connected");
+		Drawable wifiIconDisconnected = getContext().getResources().getDrawable(R.drawable.ic_settings_wifi_disconnected);
+		wifiIconDisconnected.setTint(Utils.getColorAccent(getContext()));
+		mEntityHeaderController.setIcon(wifiIconDisconnected);
+		
+		mEntityHeaderController.done(this.getActivity(), true /* rebind */);
+	}
+
+	private void setDisabledApHeader() {
+		mEntityHeaderController.setLabel("Wifi Disabled");
+		mEntityHeaderController.setSummary("Not connected");
+		Drawable wifiIconDisabled = getContext().getResources().getDrawable(R.drawable.ic_wifi_disabled);
+		wifiIconDisabled.setTint(getColorAttr(getContext(), android.R.attr.colorControlNormal));
+		mEntityHeaderController.setIcon(wifiIconDisabled);
+		
+		mEntityHeaderController.done(this.getActivity(), true /* rebind */);
+	}
+
     /**
      * Creates a Preference for the given {@link AccessPoint} and adds it to the
-     * {@link #mConnectedAccessPointPreferenceCategory}.
+     * {@link #mConnectedAPPreferenceCategory}.
      */
     private void addConnectedAccessPointPreference(AccessPoint connectedAp) {
         String key = connectedAp.getBssid();
@@ -898,18 +975,18 @@ public class WifiSettings extends RestrictedSettingsFragment
         pref.setFragment(WifiNetworkDetailsFragment.class.getName());
         pref.refresh();
 
-        mConnectedAccessPointPreferenceCategory.addPreference(pref);
-        mConnectedAccessPointPreferenceCategory.setVisible(true);
+        mConnectedAPPreferenceCategory.addPreference(pref);
+        mConnectedAPPreferenceCategory.setVisible(true);
         if (mClickedConnect) {
             mClickedConnect = false;
-            scrollToPreference(mConnectedAccessPointPreferenceCategory);
+            scrollToPreference(mConnectedAPPreferenceCategory);
         }
     }
 
-    /** Removes all preferences and hide the {@link #mConnectedAccessPointPreferenceCategory}. */
+    /** Removes all preferences and hide the {@link #mConnectedAPPreferenceCategory}. */
     private void removeConnectedAccessPointPreference() {
-        mConnectedAccessPointPreferenceCategory.removeAll();
-        mConnectedAccessPointPreferenceCategory.setVisible(false);
+        mConnectedAPPreferenceCategory.removeAll();
+        mConnectedAPPreferenceCategory.setVisible(false);
     }
 
     private void setAdditionalSettingsSummaries() {
@@ -969,6 +1046,7 @@ public class WifiSettings extends RestrictedSettingsFragment
             }
         };
         mStatusMessagePreference.setText(title, description, clickListener);
+		setDisabledApHeader();
         removeConnectedAccessPointPreference();
         mAccessPointsPreferenceCategory.removeAll();
         mAccessPointsPreferenceCategory.addPreference(mStatusMessagePreference);
@@ -1098,6 +1176,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                     Object tag = accessPoint.getTag();
                     if (tag != null) {
                         ((LongPressAccessPointPreference) tag).refresh();
+						setConnectedApHeader(mConnectedAP);
                     }
                 }
             });
@@ -1107,6 +1186,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     @Override
     public void onLevelChanged(AccessPoint accessPoint) {
         ((LongPressAccessPointPreference) accessPoint.getTag()).onLevelChanged();
+		setConnectedApHeader(mConnectedAP);
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -1193,6 +1273,32 @@ public class WifiSettings extends RestrictedSettingsFragment
         final boolean isLockdownFeatureEnabled = Settings.Global.getInt(resolver,
                 Settings.Global.WIFI_DEVICE_OWNER_CONFIGS_LOCKDOWN, 0) != 0;
         return !isLockdownFeatureEnabled;
+    }
+
+	@NonNull 
+	public static Drawable getWifiIcon(@IntRange(from=0, to=4) int signalLevel) {
+        switch (signalLevel) {
+            case 0:
+                return R.drawable.ic_settings_wifi_signal_0;
+            case 1:
+                return R.drawable.ic_settings_wifi_signal_1;
+            case 2:
+                return R.drawable.ic_settings_wifi_signal_2;
+            case 3:
+                return R.drawable.ic_settings_wifi_signal_3;
+            case 4:
+                return R.drawable.ic_settings_wifi_signal_4;
+            default:
+                throw new IllegalArgumentException("Invalid signal level: " + signalLevel);
+        }
+    }
+	
+	@ColorInt
+    public static int getColorAttr(Context context, int attr) {
+        TypedArray ta = context.obtainStyledAttributes(new int[]{attr});
+        @ColorInt int colorAttr = ta.getColor(0, 0);
+        ta.recycle();
+        return colorAttr;
     }
 
     private static class SummaryProvider
