@@ -167,4 +167,8 @@
     <string name="navbar_theme_xperia">Xperia</string>
     <string name="navbar_theme_plusone">Plus One</string>
 
+    <!-- Connected AP Signal Preference -->
+    <string name="connected_signal_pref_title">Signal strength: %1$s</string>
+    <string name="connected_signal_pref_summary">Tap for more info</string>
+
 </resources>
