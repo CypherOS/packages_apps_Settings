@@ -26,7 +26,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-v7-cardview \
     android-support-v7-preference \
     android-support-v7-recyclerview \
-    android-support-v14-preference
+    android-support-v14-preference \
+	aoscp-support-lottie
 
 LOCAL_JAVA_LIBRARIES := \
     bouncycastle \
