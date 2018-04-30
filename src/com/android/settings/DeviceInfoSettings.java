@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -54,6 +55,8 @@ import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -68,6 +71,8 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
 
     private LayoutPreference mHeaderLayoutPref;
     private long[] mHits = new long[3];
+
+	private LottieAnimationView mAnimationView;
 
     @Override
     public int getMetricsCategory() {
@@ -125,12 +130,12 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
             return;
         }
         mHeaderLayoutPref = (LayoutPreference) findPreference(KEY_ABOUT_HEADER);
+		mAnimationView = (LottieAnimationView) 
+		                mHeaderLayoutPref.findViewById(R.id.lottieAnimationView);
         final ImageView icon = (ImageView) mHeaderLayoutPref
                 .findViewById(R.id.header_icon);
-        AnimationDrawable anim = (AnimationDrawable) icon.getDrawable();
-        anim.start();
-        icon.setClickable(true);
-        icon.setOnClickListener(new View.OnClickListener() {
+        startLunaReveal();
+        mAnimationView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
@@ -163,6 +168,23 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
                 context.getResources().getString(R.string.aoscp_build_info), 
                 Build.AOSCP.BUILD_NUMBER));
     }
+
+	private void startLunaReveal() {
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(944);
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnim) {
+                mAnimationView.setProgress((Float) valueAnim.getAnimatedValue());
+            }
+        });
+
+        if (mAnimationView.getProgress() == 0f) {
+            anim.start();
+        } else {
+            mAnimationView.setProgress(0f);
+        }
+    }
+}
 
     @Override
     protected List<AbstractPreferenceController> getPreferenceControllers(Context context) {
