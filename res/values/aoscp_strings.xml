@@ -171,4 +171,7 @@
     <string name="connected_signal_pref_title">Signal strength: %1$s</string>
     <string name="connected_signal_pref_summary">Tap for more info</string>
 
+    <!-- Auto Face Unlock -->
+    <string name="face_auto_unlock_title">Automatically unlock device</string>
+    <string name="face_auto_unlock_summary">When face is recognized</string>
 </resources>
