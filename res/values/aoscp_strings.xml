@@ -198,4 +198,8 @@
     <!-- Link/Unlink notification volume -->
     <string name="link_volume_title">Link volume</string>
     <string name="link_volume_summary">Use media and ringer volume as one stream</string>
+
+    <!-- Auto Face Unlock -->
+    <string name="face_auto_unlock_title">Automatically unlock device</string>
+    <string name="face_auto_unlock_summary">When face is recognized</string>
 </resources>
