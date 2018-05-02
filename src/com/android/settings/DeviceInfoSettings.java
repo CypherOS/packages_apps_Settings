@@ -126,7 +126,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
 
     @Override
     public void onResume() {
-        super.onStart();
+        super.onResume();
         updateHeaderPreference();
     }
 
