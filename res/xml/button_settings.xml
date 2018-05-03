@@ -24,6 +24,12 @@
             android:summary="@string/navigation_bar_title_summary"
             android:defaultValue="false" />
 
+    <SwitchPreference
+            android:key="swap_navigation_keys"
+            android:title="@string/swap_navigation_keys_title"
+            android:summary="@string/swap_navigation_keys_title_summary"
+            android:defaultValue="false" />
+
     <ListPreference
             android:key="navbar_theme"
             android:title="@string/navbar_theme_title"
