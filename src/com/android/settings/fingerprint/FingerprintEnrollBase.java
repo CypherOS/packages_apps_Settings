@@ -17,11 +17,13 @@
 package com.android.settings.fingerprint;
 
 import android.annotation.Nullable;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +77,23 @@ public abstract class FingerprintEnrollBase extends InstrumentedActivity
         super.onPostCreate(savedInstanceState);
         initViews();
     }
+	
+	@Override
+    protected void onStart() {
+        super.onStart();
+        disableNavBar(true);
+    }
+
+	@Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disableNavBar(false);
+    }
+
+	private void disableNavBar(boolean disabled) {
+		Settings.System.putInt(this.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_ENABLED, disabled ? 0 : 1);
+	}
 
     protected void initViews() {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
