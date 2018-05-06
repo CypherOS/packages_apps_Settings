@@ -58,6 +58,8 @@ public class FingerprintEnrollFindSensor extends FingerprintEnrollBase {
             mToken = savedInstanceState.getByteArray(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
         }
+		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         if (mToken == null && !mLaunchedConfirmLock) {
             launchConfirmLock();
         } else if (mToken != null) {
