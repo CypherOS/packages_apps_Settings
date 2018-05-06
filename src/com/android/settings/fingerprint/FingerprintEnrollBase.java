@@ -22,6 +22,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -75,6 +76,23 @@ public abstract class FingerprintEnrollBase extends InstrumentedActivity
         super.onPostCreate(savedInstanceState);
         initViews();
     }
+	
+	@Override
+    protected void onStart() {
+        super.onStart();
+        disableNavBar(true);
+    }
+	
+	@Override
+    protected void onStop() {
+        super.onStart();
+        disableNavBar(false);
+    }
+
+	private boolean disableNavBar(boolean disabled) {
+		Settings.System.putInt(getActivity.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_ENABLED, disabled ? 0 : 1);
+	}
 
     protected void initViews() {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
