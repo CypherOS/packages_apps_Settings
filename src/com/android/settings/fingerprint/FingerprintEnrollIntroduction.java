@@ -31,6 +31,7 @@ import android.widget.TextView;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.aoscp.fingerprint.FingerprintIntroductionAnimation;
 import com.android.settings.password.ChooseLockGeneric;
 import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settingslib.HelpUtils;
@@ -54,6 +55,8 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
     private boolean mFingerprintUnlockDisabledByAdmin;
     private TextView mErrorText;
 
+    private FingerprintIntroductionAnimation mAnimation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +76,23 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
 
         mErrorText = (TextView) findViewById(R.id.error_text);
 
+        View animationView = findViewById(R.id.introduction);
+        if (animationView instanceof FingerprintIntroductionAnimation) {
+            mAnimation = (FingerprintIntroductionAnimation) animationView;
+        } else {
+            mAnimation = null;
+        }
+
         mUserManager = UserManager.get(this);
         updatePasswordQuality();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAnimation != null) {
+            mAnimation.start();
+        }
     }
 
     @Override
@@ -100,6 +118,22 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         } else {
             mErrorText.setText(errorMsg);
             getNextButton().setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAnimation != null) {
+            mAnimation.pause();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mAnimation != null) {
+            mAnimation.stop();
         }
     }
 

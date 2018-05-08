@@ -28,4 +28,8 @@
     -->
     <string name="config_overridenVendorProductModel" translatable="false"></string>
 
+    <!-- Is the device's fingerprint sensor located on the bottom front? Used
+         for fingerprint enrollment illustration -->
+    <bool name="config_hasBottomFingerprintSensor">false</bool>
+
 </resources>
