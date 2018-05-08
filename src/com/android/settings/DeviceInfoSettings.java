@@ -174,7 +174,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     }
 
     private void doLunaReveal() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(944);
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(2000);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
