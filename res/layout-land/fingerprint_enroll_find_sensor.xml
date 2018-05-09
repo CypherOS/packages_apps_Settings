@@ -67,9 +67,9 @@
 
                 <TextView
                     style="@style/SuwDescription.Glif"
+                    android:id="@+id/header_description"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/security_settings_fingerprint_enroll_find_sensor_message"/>
+                    android:layout_height="wrap_content" />
 
                 <Space
                     android:layout_width="0dp"
