@@ -17,11 +17,13 @@
 package com.android.settings.fingerprint;
 
 import android.annotation.Nullable;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +47,10 @@ public abstract class FingerprintEnrollBase extends InstrumentedActivity
     protected byte[] mToken;
     protected int mUserId;
 
+    protected boolean mHasBottomSensor;
+    protected boolean mNavBarEnabled;
+    protected boolean mWasUsingNavbar = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,10 @@ public abstract class FingerprintEnrollBase extends InstrumentedActivity
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
         }
         mUserId = getIntent().getIntExtra(Intent.EXTRA_USER_ID, UserHandle.myUserId());
+        mHasBottomSensor = getResources().getBoolean(R.bool.config_hasBottomFingerprintSensor);
+
+        mNavBarEnabled = Settings.System.getIntForUser(this.getContentResolver(),
+                        Settings.System.NAVIGATION_BAR_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
     }
 
     @Override
@@ -76,12 +86,33 @@ public abstract class FingerprintEnrollBase extends InstrumentedActivity
         initViews();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mNavBarEnabled) {
+            mWasUsingNavbar = true;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mHasBottomSensor && mWasUsingNavbar) {
+            disableNavbar(false);
+        }
+    }
+
     protected void initViews() {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         Button nextButton = getNextButton();
         if (nextButton != null) {
             nextButton.setOnClickListener(this);
         }
+    }
+
+    protected void disableNavbar(boolean disabled) {
+        Settings.System.putInt(this.getContentResolver(),
+                Settings.System.NAVIGATION_BAR_ENABLED, disabled ? 0 : 1);
     }
 
     protected GlifLayout getLayout() {

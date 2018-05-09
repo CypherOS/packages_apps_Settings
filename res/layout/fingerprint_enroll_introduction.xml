@@ -51,12 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <ImageView
-                style="@style/SuwContentIllustration"
+        <com.android.settings.aoscp.fingerprint.FingerprintIntroductionView
+                android:id="@+id/introduction"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:src="@drawable/fingerprint_enroll_introduction" />
+                android:layout_height="match_parent"/>
 
         </com.android.setupwizardlib.view.FillContentLayout>
 
