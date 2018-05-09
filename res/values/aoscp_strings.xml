@@ -205,4 +205,7 @@
     <!-- Auto Face Unlock -->
     <string name="face_auto_unlock_title">Automatically unlock device</string>
     <string name="face_auto_unlock_summary">When face is recognized</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
+    <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">It\u2019s at the bottom of your phone.</string>
 </resources>
