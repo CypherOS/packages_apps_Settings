@@ -44,6 +44,7 @@ import com.android.settings.aoscp.gestures.DoubleTwistPreferenceController;
 import com.android.settings.aoscp.gestures.QuickTorchPreferenceController;
 import com.android.settings.aoscp.gestures.SwipeToNotificationPreferenceController;
 import com.android.settings.aoscp.gestures.SwipeToScreenshotPreferenceController;
+import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.aoscp.gestures.TapToWakePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -72,6 +73,7 @@ public class GesturesSettings extends DashboardFragment implements
 	
 	private static final String KEY_DOUBLE_TAP_POWER     = "double_tap_power";
 	private static final String KEY_SWIPE_TO_SCREENSHOT  = "swipe_to_screenshot";
+	private static final String KEY_TAP_TO_SLEEP         = "tap_to_sleep";
 	private static final String KEY_TAP_TO_WAKE          = "tap_to_wake";
 
     private static final HashMap<String, Integer> mFPGestureKeyCodes = new HashMap<>();
@@ -195,6 +197,7 @@ public class GesturesSettings extends DashboardFragment implements
         controllers.add(new DoubleTwistPreferenceController(context));
         controllers.add(new SwipeToNotificationPreferenceController(context));
 		controllers.add(new SwipeToScreenshotPreferenceController(context, KEY_SWIPE_TO_SCREENSHOT));
+		controllers.add(new TapToSleepPreferenceController(context, KEY_TAP_TO_SLEEP));
         controllers.add(new TapToWakePreferenceController(context, KEY_TAP_TO_WAKE));
         controllers.add(new QuickTorchPreferenceController(context));
         return controllers;

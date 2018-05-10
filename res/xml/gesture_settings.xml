@@ -22,6 +22,11 @@
         android:key="tap_to_wake"
         android:title="@string/tap_to_wake"
         android:fragment="com.android.settings.aoscp.gestures.TapToWakeSettings" />
+		
+	<Preference
+        android:key="tap_to_sleep"
+        android:title="@string/tap_to_sleep_title"
+        android:fragment="com.android.settings.aoscp.gestures.TapToSleepSettings" />
 
 	<Preference
         android:key="double_tap_power"
