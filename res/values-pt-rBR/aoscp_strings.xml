@@ -21,6 +21,10 @@
     <string name="aoscp_build">Build</string>
     <string name="aoscp_build_info">%1$s</string>
 
+    <!-- General strings -->
+    <string name="ok">OK</string>
+    <string name="reset">Resetar</string>
+
     <!-- Color Manager -->
     <string name="color_manager_title">Gerenciador de cores</string>
     <string name="color_manager_summary">Mude as cores do sistema com várias combinações de temas</string>
@@ -64,6 +68,11 @@
     <string name="accent_white_title">Branco</string>
     <!-- Color Manager: User Accents -->
     <string name="accent_user_title">Tom personalizado</string>
+    <!-- Color Manager: Settings -->
+    <string name="category_settings_title">Configurações</string>
+    <!-- Color Manager: Settings: Theme Alpha -->
+    <string name="theme_alpha_title">Mostrar transparência</string>
+    <string name="theme_alpha_summary">Para elementos específicos do sistema, como as configurações rápidas</string>
 
     <!-- Encryption and credential -->
     <string name="custom_encryption_and_credential_settings_summary_on">Dispositivo criptografado</string>
@@ -141,6 +150,9 @@
     <!-- Volume rocker wake -->
     <string name="volume_rocker_wake_title">Acordar o dispositivo</string>
     <string name="volume_rocker_wake_summary">Ao pressionar um dos botões de volume</string>
+    <!-- Alert Slider -->
+    <string name="swap_slider_order_title">Inverter controle deslizante</string>
+    <string name="swap_slider_order_summary">Troque a ordem dos modos de alerta do controle deslizante</string>
 
     <!-- Gesture Settings -->
     <string name="gesture_settings_title">Gestos</string>
@@ -170,6 +182,24 @@
     <string name="gestures_back">Voltar</string>
     <string name="gestures_appswitch">Recentes</string>
     <string name="gestures_wake_device">Acordar dispositivo</string>
+    <!-- Off-screen Gestures -->
+    <string name="offscreen_gestures_title">Gestos de tela desligada</string>
+    <!-- Off-screen Gestures: Options -->
+    <string name="gestures_draw_v">Desenhar V</string>
+    <string name="gestures_draw_inverse_v">Desenhar V Inverso</string>
+    <string name="gestures_draw_o">Desenhar O</string>
+    <string name="gestures_draw_m">Desenhar M</string>
+    <string name="gestures_draw_w">Desenhar W</string>
+    <string name="gestures_draw_arrow_left">Desenhar &lt;</string>
+    <string name="gestures_draw_arrow_right">Desenhar &gt;</string>
+    <string name="gestures_one_finger_swipe_up">Deslizar um dedo para cima</string>
+    <string name="gestures_one_finger_swipe_right">Deslizar um dedo para direita</string>
+    <string name="gestures_one_finger_swipe_down">Deslizar um dedo para baixo</string>
+    <string name="gestures_one_finger_swipe_left">Deslizar um dedo para esquerda</string>
+    <string name="gestures_two_finger_swipe">Deslizar dois dedos</string>
+    <!-- Off-screen Gestures: Triggers -->
+    <string name="gestures_open_camera">Abrir câmera</string>
+    <string name="gestures_open_dialer">Abrir discador</string>
     <!-- Quick torch -->
     <string name="quick_torch_title">Lanterna rápida</string>
     <string name="quick_torch_disabled">Desativado</string>
@@ -181,6 +211,9 @@
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
     <string name="swipe_to_screenshot_summary">Deslize três dedos para tirar uma captura de tela</string>
+    <!-- Tap to sleep -->
+    <string name="tap_to_sleep_title">Tocar para desligar</string>
+    <string name="tap_to_sleep_summary">Toque duas vezes na barra de status para desligar a tela</string>
 
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Tema</string>
@@ -198,4 +231,69 @@
     <!-- Link/Unlink notification volume -->
     <string name="link_volume_title">Unir volume</string>
     <string name="link_volume_summary">Unir o volume do toque e notificações</string>
+
+    <!-- Auto Face Unlock -->
+    <string name="face_auto_unlock_title">Desbloquear o dispositivo automaticamente</string>
+    <string name="face_auto_unlock_summary">Quando o rosto for reconhecido</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
+    <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">Está\u2019s na parte inferior do seu telefone.</string>
+
+    <!-- Ambient display -->
+    <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="default">Acenar para o smartphone para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="default">Para verificar a hora, ícones de notificação e outras informações, acene para o smartphone.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="tablet">Acenar para o tablet para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="tablet">Para verificar a hora, ícones de notificação e outras informações, acene para o tablet.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="device">Acenar para o dispositivo para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="device">Para verificar a hora, ícones de notificação e outras informações, acene para o dispositivo.</string>
+
+    <!-- Battery Light -->
+    <string name="battery_light_title">Luz de bateria</string>
+    <string name="battery_light_summary">Ativar / Desativar o indicador de luz da bateria e mudar a cor</string>
+    <!-- Battery Light: Pulse Light when low -->
+    <string name="battery_low_pulse_title">Pulsar luz</string>
+    <string name="battery_low_pulse_summary">Quando a bateria está baixa</string>
+    <!-- Battery Light: Pulse Light when fully charged -->
+    <string name="battery_light_only_full_charge_title">Apenas acender</string>
+    <string name="battery_light_only_full_charge_summary">Quando o dispositivo está totalmente carregado</string>
+    <!-- Battery Light: Preference/Dialog -->
+    <string name="battery_light_list_title">Cores</string>
+    <string name="battery_light_low_color_title">Bateria fraca</string>
+    <string name="battery_light_medium_color_title">Carregando</string>
+    <string name="battery_light_full_color_title">Carregado</string>
+    <string name="fast_color_cat_title">Carregamento rápido</string>
+    <string name="fast_charging_led_enabled_title">Ativar cor de carregamento rápido</string>
+    <string name="fast_charging_led_enabled_summary">Quando em carregamento rápido, usar cor diferente até 90%</string>
+    <string name="fast_charging_light_color_title">Cor</string>
+    <string name="fast_charging_light_color_summary"></string>
+    <string name="edit_battery_settings">Editar configurações da bateria</string>
+    <string name="led_color_green">Verde</string>
+    <string name="led_color_red">Vermelho</string>
+    <string name="led_color_blue">Azul</string>
+
+    <!-- Night Light: On/Off Summary -->
+    <string name="night_display_on">Ativado / Nunca será desativado automaticamente</string>
+    <string name="night_display_off">Desativado / Nunca será ativado automaticamente</string>
+    <string name="night_display_summary">Colore sua tela em tom âmbar para ajudá-lo a adormecer</string>
+    <!-- Night Light: Modes -->
+    <string name="night_display_mode_high">Alto</string>
+    <string name="night_display_mode_mid">Médio</string>
+    <string name="night_display_mode_low">Baixo</string>
+    <string name="night_display_mode_custom">Personalizado</string>
+    <!-- Night Light: Time -->
+    <string name="night_display_category_time">Hora</string>
+
+    <!-- Ambient Play -->
+    <string name="ambient_recognition_title">Música Ambiente</string>
+    <string name="ambient_recognition_summary">Seja notificado com informações da música que está sendo tocada ao seu redor. Aumenta o uso da bateria e dados.</string>
+    <string name="ambient_recognition_lockscreen_title">Mostrar informação da música</string>
+    <string name="ambient_recognition_lockscreen_summary">Na tela de bloqueio</string>
+  
+      <!-- Network Indication -->
+    <string name="network_indication_title">Indicação de rede</string>
+    <string name="network_indication_summary">Exibe os indicadores de rede na barra de status, enfatizando o tráfego</string>
+
 </resources>
