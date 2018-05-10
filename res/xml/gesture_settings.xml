@@ -18,21 +18,20 @@
     android:title="@string/gesture_settings_title"
     settings:keywords="@string/keywords_gestures">
 
-    <SwitchPreference
+    <Preference
         android:key="tap_to_wake"
         android:title="@string/tap_to_wake"
-        android:summary="@string/tap_to_wake_summary" />
+        android:fragment="com.android.settings.aoscp.gestures.TapToWakeSettings" />
 
-    <SwitchPreference
-        android:key="gesture_double_tap_power"
+    <Preference
+        android:key="double_tap_power"
         android:title="@string/double_tap_power_for_camera_title"
-        android:summary="@string/double_tap_power_for_camera_summary" />
+        android:fragment="com.android.settings.aoscp.gestures.DoubleTapPowerSettings" />
 
-    <com.android.settings.preference.SystemSettingSwitchPreference
-        android:key="three_finger_gesture"
+    <Preference
+        android:key="swipe_to_screenshot"
         android:title="@string/swipe_to_screenshot_title"
-        android:summary="@string/swipe_to_screenshot_summary"
-        android:defaultValue="false" />
+        android:fragment="com.android.settings.aoscp.gestures.SwipeToScreenshotSettings" />
 
     <ListPreference
         android:key="gesture_quick_torch"
