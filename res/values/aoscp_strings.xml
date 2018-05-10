@@ -181,6 +181,9 @@
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Swipe to screenshot</string>
     <string name="swipe_to_screenshot_summary">Swipe three fingers across the screen to take a screenshot</string>
+	<!-- Tap to sleep -->
+    <string name="tap_to_sleep_title">Tap to sleep</string>
+    <string name="tap_to_sleep_summary">Double tap on the statusbar to put the device to sleep</string>
 
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Theme</string>
