@@ -28,33 +28,32 @@ import com.android.settings.search.DatabaseIndexingUtils;
 import com.android.settings.search.InlineSwitchPayload;
 import com.android.settings.search.ResultPayload;
 
-import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
+import static android.provider.Settings.System.THREE_FINGER_GESTURE;
 
-public class TapToWakePreferenceController extends IllustrationPreferenceController {
+public class SwipeToScreenshotPreferenceController extends IllustrationPreferenceController {
 
-    private static final String PREF_KEY_ILLUSTRATION = "gesture_tap_to_wake_video";
-    private final String mTapToWakeKey;
+    private static final String PREF_KEY_ILLUSTRATION = "gesture_swipe_to_screenshot_video";
+    private final String mSwipeToScreenshotKey;
 
-    public TapToWakePreferenceController(Context context, String key) {
+    public SwipeToScreenshotPreferenceController(Context context, String key) {
         super(context);
-        mTapToWakeKey = key;
+        mSwipeToScreenshotKey = key;
     }
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_supportDoubleTapWake);
+        return true;
     }
 
     @Override
     public String getPreferenceKey() {
-        return mTapToWakeKey;
+        return mSwipeToScreenshotKey;
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean enabled = (boolean) newValue;
-        Settings.Secure.putInt(mContext.getContentResolver(), DOUBLE_TAP_TO_WAKE, enabled ? ON : OFF);
+        Settings.System.putInt(mContext.getContentResolver(), THREE_FINGER_GESTURE, enabled ? ON : OFF);
         return true;
     }
 
@@ -65,18 +64,18 @@ public class TapToWakePreferenceController extends IllustrationPreferenceControl
 
     @Override
     protected boolean isSwitchPrefEnabled() {
-        final int tapToWakeEnabled = Settings.Secure.getInt(
-		        mContext.getContentResolver(), DOUBLE_TAP_TO_WAKE, OFF);
-        return tapToWakeEnabled != 0;
+        final int swipeToScreenshotEnabled = Settings.System.getInt(
+		        mContext.getContentResolver(), THREE_FINGER_GESTURE, OFF);
+        return swipeToScreenshotEnabled != 0;
     }
 
     @Override
     public ResultPayload getResultPayload() {
         final Intent intent = DatabaseIndexingUtils.buildSubsettingIntent(mContext,
-                "TapToWakeSettings", mTapToWakeKey,
+                "SwipeToScreenshotSettings", mSwipeToScreenshotKey,
                 mContext.getString(R.string.gesture_settings_title));
 
-        return new InlineSwitchPayload(DOUBLE_TAP_TO_WAKE, ResultPayload.SettingsSource.SECURE,
+        return new InlineSwitchPayload(THREE_FINGER_GESTURE, ResultPayload.SettingsSource.SYSTEM,
                 ON /* onValue */, intent, isAvailable(), ON /* defaultValue */);
     }
 }

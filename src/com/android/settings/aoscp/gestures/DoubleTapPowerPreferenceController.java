@@ -17,53 +17,81 @@
 package com.android.settings.aoscp.gestures;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.Settings;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
-import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settings.R;
+import com.android.settings.gestures.GesturePreferenceController;
+import com.android.settings.search.DatabaseIndexingUtils;
+import com.android.settings.search.InlineSwitchPayload;
+import com.android.settings.search.ResultPayload;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 
-public class DoubleTapPowerPreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+public class DoubleTapPowerPreferenceController extends GesturePreferenceController {
 
-    private static final String KEY_GESTURE_DOUBLE_TAP_POWER = "gesture_double_tap_power";
+    private final int ON = 0;
+    private final int OFF = 1;
 
-    public DoubleTapPowerPreferenceController(Context context) {
-        super(context);
+    private static final String PREF_KEY_VIDEO = "gesture_double_tap_power_video";
+    private final String mDoubleTapPowerKey;
+
+    private final String SECURE_KEY = CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
+
+    public DoubleTapPowerPreferenceController(Context context, Lifecycle lifecycle, String key) {
+        super(context, lifecycle);
+        mDoubleTapPowerKey = key;
+    }
+
+    public static boolean isSuggestionComplete(Context context, SharedPreferences prefs) {
+        return !isGestureAvailable(context)
+                || prefs.getBoolean(DoubleTapPowerSettings.PREF_KEY_SUGGESTION_COMPLETE, false);
+    }
+
+    private static boolean isGestureAvailable(Context context) {
+        return context.getResources()
+                .getBoolean(com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
     }
 
     @Override
     public boolean isAvailable() {
-        return true;
+        return isGestureAvailable(mContext);
+    }
+
+    @Override
+    protected String getVideoPrefKey() {
+        return PREF_KEY_VIDEO;
     }
 
     @Override
     public String getPreferenceKey() {
-        return KEY_GESTURE_DOUBLE_TAP_POWER;
-    }
-
-    @Override
-    public void updateState(Preference preference) {
-        int value = Settings.Secure.getInt(mContext.getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0);
-        ((SwitchPreference) preference).setChecked(value == 0);/* Value for "enabled" must be 0, since the preference is backwards */
+        return mDoubleTapPowerKey;
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean enabled = (boolean) newValue;
-        Settings.Secure.putInt(mContext.getContentResolver(),
-                Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, enabled ? 0 : 1);
-        int previousTorchPref = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0);
-        if (enabled && (previousTorchPref == 1)) {
-            //if double tap for torch was active and we enable here double tap for camera,
-            //set torch action to long press mode
-            Settings.Secure.putInt(mContext.getContentResolver(),
-                    Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 2);
-        }
+        Settings.Secure.putInt(mContext.getContentResolver(), SECURE_KEY, enabled ? ON : OFF);
         return true;
+    }
+
+    @Override
+    protected boolean isSwitchPrefEnabled() {
+        final int cameraDisabled = Settings.Secure.getInt(mContext.getContentResolver(),
+                SECURE_KEY, ON);
+        return cameraDisabled == 0;
+    }
+
+    @Override
+    public ResultPayload getResultPayload() {
+        final Intent intent = DatabaseIndexingUtils.buildSubsettingIntent(mContext,
+                DoubleTapPowerSettings.class.getName(), mDoubleTapPowerKey,
+                mContext.getString(R.string.display_settings));
+
+        return new InlineSwitchPayload(SECURE_KEY, ResultPayload.SettingsSource.SECURE,
+                ON /* onValue */, intent, isAvailable(), ON /* defaultValue */);
     }
 }
