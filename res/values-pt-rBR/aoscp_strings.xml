@@ -181,6 +181,9 @@
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
     <string name="swipe_to_screenshot_summary">Deslize três dedos para tirar uma captura de tela</string>
+    <!-- Tap to sleep -->
+    <string name="tap_to_sleep_title">Tpque para dormir</string>
+    <string name="tap_to_sleep_summary">Toque duas vezes na barra de status para desligar a tela</string>
 
     <!-- Navigation bar theme -->
     <string name="navbar_theme_title">Tema</string>
@@ -198,4 +201,23 @@
     <!-- Link/Unlink notification volume -->
     <string name="link_volume_title">Unir volume</string>
     <string name="link_volume_summary">Unir o volume do toque e notificações</string>
+
+    <!-- Auto Face Unlock -->
+    <string name="face_auto_unlock_title">Desbloquearo o dispositivo automaticamente</string>
+    <string name="face_auto_unlock_summary">Quando o rosto for reconhecido</string>
+
+    <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
+    <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">Está\u2019s na parte inferior do seu telefone.</string>
+
+    <!-- Ambient display -->
+    <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="default">Acenar para o smartphone para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="default">Para verificar a hora, ícones de notificação e outras informações, acene para o smartphone.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="tablet">Acenar para o tablet para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="tablet">Para verificar a hora, ícones de notificação e outras informações, acene para o tablet.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="device">Acenar para o dispositivo para verificá-lo</string>
+    <string name="ambient_display_hand_wave_summary" product="device">Para verificar a hora, ícones de notificação e outras informações, acene para o dispositivo.</string>
+
 </resources>
