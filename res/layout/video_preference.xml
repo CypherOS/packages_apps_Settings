@@ -19,7 +19,7 @@
     android:id="@+id/gesture_animation_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/gestures_setting_background_color"
+    android:background="@color/selectable_card_grey"
     android:clipToPadding="false"
     android:gravity="center"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"

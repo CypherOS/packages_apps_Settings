@@ -37,10 +37,10 @@
             android:title="@string/ambient_display_pickup_title"
             android:summary="@string/ambient_display_pickup_summary" />
 
-        <SwitchPreference
+		<Preference
             android:key="ambient_display_hand_wave"
             android:title="@string/ambient_display_hand_wave_title"
-            android:summary="@string/ambient_display_hand_wave_summary" />
+            android:fragment="com.android.settings.aoscp.doze.HandWaveSettings" />
 
     </PreferenceCategory>
 

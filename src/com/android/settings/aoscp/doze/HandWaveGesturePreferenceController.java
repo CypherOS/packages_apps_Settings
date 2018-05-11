@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
- * Copyright (C) 2017 CypherOS
+ * Copyright (C) 2018 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,33 +16,32 @@
 
 package com.android.settings.aoscp.doze;
 
-import android.annotation.UserIdInt;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.Settings;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.settings.R;
-import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settings.aoscp.preference.IllustrationPreferenceController;
+import com.android.settings.search.DatabaseIndexingUtils;
+import com.android.settings.search.InlineSwitchPayload;
+import com.android.settings.search.ResultPayload;
 
 import static android.provider.Settings.Secure.DOZE_PULSE_ON_HAND_WAVE;
 
-public class HandWaveGesturePreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+public class HandWaveGesturePreferenceController extends IllustrationPreferenceController {
 
-    private static final String KEY_GESTURE_HAND_WAVE = "ambient_display_hand_wave";
+    private static final String PREF_KEY_ILLUSTRATION = "gesture_ambient_hand_wave_video";
+    private final String mAmbientHandWaveKey;
+	
+	private final AmbientDisplayConfiguration mAmbientConfig;
 
-    private final AmbientDisplayConfiguration mAmbientConfig;
-    @UserIdInt
-    private final int mUserId;
-
-    public HandWaveGesturePreferenceController(Context context, AmbientDisplayConfiguration config, 
-        @UserIdInt int userId) {
+    public HandWaveGesturePreferenceController(Context context, AmbientDisplayConfiguration config, String key) {
         super(context);
-        mAmbientConfig = config;
-        mUserId = userId;
+        mAmbientHandWaveKey = key;
+		mAmbientConfig = config;
     }
 
     @Override
@@ -53,20 +51,35 @@ public class HandWaveGesturePreferenceController extends AbstractPreferenceContr
 
     @Override
     public String getPreferenceKey() {
-        return KEY_GESTURE_HAND_WAVE;
-    }
-
-    @Override
-    public void updateState(Preference preference) {
-        int value = Settings.Secure.getInt(mContext.getContentResolver(), DOZE_PULSE_ON_HAND_WAVE, 0);
-        ((SwitchPreference) preference).setChecked(value != 0);
+        return mAmbientHandWaveKey;
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean enabled = (boolean) newValue;
-        Settings.Secure.putInt(mContext.getContentResolver(),
-                Settings.Secure.DOZE_PULSE_ON_HAND_WAVE, enabled ? 1 : 0);
+        Settings.Secure.putInt(mContext.getContentResolver(), DOZE_PULSE_ON_HAND_WAVE, enabled ? ON : OFF);
         return true;
+    }
+
+    @Override
+    protected String getIllustrationKey() {
+        return PREF_KEY_ILLUSTRATION;
+    }
+
+    @Override
+    protected boolean isSwitchPrefEnabled() {
+        final int ambientHandWaveEnabled = Settings.Secure.getInt(
+                  mContext.getContentResolver(), DOZE_PULSE_ON_HAND_WAVE, OFF);
+        return ambientHandWaveEnabled != 0;
+    }
+
+    @Override
+    public ResultPayload getResultPayload() {
+        final Intent intent = DatabaseIndexingUtils.buildSubsettingIntent(mContext,
+                "HandWaveSettings", mAmbientHandWaveKey,
+                mContext.getString(R.string.gesture_settings_title));
+
+        return new InlineSwitchPayload(DOZE_PULSE_ON_HAND_WAVE, ResultPayload.SettingsSource.SECURE,
+                ON /* onValue */, intent, isAvailable(), ON /* defaultValue */);
     }
 }

@@ -44,8 +44,9 @@ public class AmbientDisplaySettings extends DashboardFragment {
     private static final String TAG = "AmbientDisplaySettings";
     private static final int MY_USER_ID = UserHandle.myUserId();
 
-    private static final String KEY_AMBIENT_DISPLAY_ALWAYS_ON = "ambient_display_always_on";
+    private static final String KEY_AMBIENT_DISPLAY_ALWAYS_ON    = "ambient_display_always_on";
     private static final String KEY_AMBIENT_DISPLAY_NOTIFICATION = "ambient_display_notification";
+	private static final String KEY_AMBIENT_DISPLAY_HAND_WAVE    = "ambient_display_hand_wave";
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Lifecycle lifecycle, AmbientDisplayConfiguration config,
@@ -59,7 +60,7 @@ public class AmbientDisplaySettings extends DashboardFragment {
         controllers.add(new DoubleTapScreenPreferenceController(context, config,
                 MY_USER_ID));
         controllers.add(new HandWaveGesturePreferenceController(context, config,
-                MY_USER_ID));
+                KEY_AMBIENT_DISPLAY_HAND_WAVE));
         controllers.add(new PickupGesturePreferenceController(context, config,
                 MY_USER_ID));
         return controllers;
