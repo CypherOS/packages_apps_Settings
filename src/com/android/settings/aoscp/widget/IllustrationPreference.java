@@ -94,13 +94,13 @@ public class IllustrationPreference extends Preference {
         boolean blackTheme = Settings.Secure.getIntForUser(mContext.getContentResolver(),
                     Settings.Secure.DEVICE_THEME, 3, UserHandle.USER_CURRENT) != 0;
         mAnimation = (LottieAnimationView) holder.findViewById(R.id.illustration);
+        int illustration = mIllustration;
         if (darkTheme || blackTheme) {
             if (mIllustrationDark != 0) {
-                mAnimation.setAnimation(mIllustrationDark);
+                illustration = mIllustrationDark;
             }
-        } else {
-            mAnimation.setAnimation(mIllustration);
         }
+        mAnimation.setAnimation(illustration);
         doAnimation();
     }
 }
