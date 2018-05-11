@@ -24,11 +24,10 @@
     android:clipToPadding="false"
     android:gravity="center"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
     android:orientation="horizontal">
 
     <com.android.settings.widget.AspectRatioFrameLayout
-        android:layout_width="240dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content">
 
         <aoscp.support.lottie.LottieAnimationView
