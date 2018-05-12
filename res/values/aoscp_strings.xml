@@ -216,5 +216,9 @@
     <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
+	
+	<!-- Battery Light -->
+    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_summary">Turn on/off the battery light indicator and change it\'s color</string>
 
 </resources>
