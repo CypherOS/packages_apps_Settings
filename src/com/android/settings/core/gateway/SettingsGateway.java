@@ -74,7 +74,7 @@ import com.android.settings.deviceinfo.SimStatus;
 import com.android.settings.deviceinfo.Status;
 import com.android.settings.deviceinfo.StorageDashboardFragment;
 import com.android.settings.deviceinfo.StorageSettings;
-import com.android.settings.display.NightDisplaySettings;
+import com.android.settings.aoscp.display.NightDisplayFragment;
 import com.android.settings.dream.DreamSettings;
 import com.android.settings.enterprise.EnterprisePrivacySettings;
 import com.android.settings.fuelgauge.AdvancedPowerUsageDetail;
@@ -228,7 +228,7 @@ public class SettingsGateway {
             WifiInfo.class.getName(),
             MasterClear.class.getName(),
             ResetDashboardFragment.class.getName(),
-            NightDisplaySettings.class.getName(),
+            NightDisplayFragment.class.getName(),
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
             SupportFragment.class.getName(),
