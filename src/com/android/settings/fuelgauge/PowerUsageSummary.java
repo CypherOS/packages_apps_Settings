@@ -65,6 +65,7 @@ import com.android.settings.applications.LayoutPreference;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.aoscp.fuelgauge.BatteryLightPreferenceController;
 //import com.android.settings.display.AmbientDisplayPreferenceController;
 //import com.android.settings.display.AutoBrightnessPreferenceController;
 import com.android.settings.display.BatteryPercentagePreferenceController;
@@ -111,6 +112,8 @@ public class PowerUsageSummary extends PowerUsageBase implements
     //private static final String KEY_AMBIENT_DISPLAY = "ambient_display_battery";
     private static final String KEY_BATTERY_SAVER_SUMMARY = "battery_saver_summary";
     private static final String KEY_HIGH_USAGE = "high_usage";
+
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
 
     @VisibleForTesting
     static final int ANOMALY_LOADER = 1;
@@ -339,6 +342,7 @@ public class PowerUsageSummary extends PowerUsageBase implements
         //controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new BatterySaverController(context, getLifecycle()));
         controllers.add(new BatteryPercentagePreferenceController(context));
+        controllers.add(new BatteryLightPreferenceController(context, KEY_BATTERY_LIGHT));
         //controllers.add(new AmbientDisplayPreferenceController(
         //        context,
         //        new AmbientDisplayConfiguration(context),

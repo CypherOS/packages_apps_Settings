@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2018 CypherOS
+<!-- Copyright (C) 2017 CypherOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,12 +16,9 @@
 
 <resources>
 
-    <declare-styleable name="IllustrationPreference">
-        <attr name="illustration" format="reference" />
-        <attr name="illustrationDark" format="reference" />
-        <attr name="illustrationLayout" format="reference" />
-    </declare-styleable>
-
-    <attr name="batteryLightPreference" format="reference" />
+    <!-- Battery Light -->
+    <dimen name="alert_dialog_padding_material">20dp</dimen>
+    <dimen name="color_preference_width">18dip</dimen>
+    <dimen name="color_preference_height">18dip</dimen>
 
 </resources>
