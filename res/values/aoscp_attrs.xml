@@ -19,6 +19,7 @@
     <declare-styleable name="IllustrationPreference">
         <attr name="illustration" format="reference" />
         <attr name="illustrationDark" format="reference" />
+		<attr name="illustrationLayout" format="reference" />
     </declare-styleable>
 
 </resources>
