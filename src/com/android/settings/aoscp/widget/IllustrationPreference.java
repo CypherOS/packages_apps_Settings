@@ -40,6 +40,8 @@ public class IllustrationPreference extends Preference {
 
     private int mIllustration;
     private int mIllustrationDark;
+    private int mIllustrationLayout;
+
     private boolean mIllustrationAvailable;
 
     public IllustrationPreference(Context context, AttributeSet attrs) {
@@ -50,13 +52,14 @@ public class IllustrationPreference extends Preference {
         try {
             mIllustration = a.getResourceId(R.styleable.IllustrationPreference_illustration, 0);
             mIllustrationDark = a.getResourceId(R.styleable.IllustrationPreference_illustrationDark, 0);
-            if (mIllustration != 0) {
-                setVisible(true);
-                setLayoutResource(R.layout.preference_illustration);
-                mIllustrationAvailable = true;
+            mIllustrationLayout = a.getResourceId(R.styleable.IllustrationPreference_illustrationLayout, 0);
+            setVisible(true);
+            if (mIllustrationLayout != 0) {
+                setLayoutResource(mIllustrationLayout);
             } else {
-                setVisible(false);
+                setLayoutResource(R.layout.preference_illustration);
             }
+            mIllustrationAvailable = true;
         } catch (Exception e) {
             Log.w(TAG, "IllustrationPreference requires a lottie support animation to be defined.");
         } finally {
@@ -89,13 +92,11 @@ public class IllustrationPreference extends Preference {
             return;
         }
 
-        boolean darkTheme = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                    Settings.Secure.DEVICE_THEME, 2, UserHandle.USER_CURRENT) != 0;
-        boolean blackTheme = Settings.Secure.getIntForUser(mContext.getContentResolver(),
-                    Settings.Secure.DEVICE_THEME, 3, UserHandle.USER_CURRENT) != 0;
+        int themeSetting = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                    Settings.Secure.DEVICE_THEME, 0, UserHandle.USER_CURRENT);
         mAnimation = (LottieAnimationView) holder.findViewById(R.id.illustration);
         int illustration = mIllustration;
-        if (darkTheme || blackTheme) {
+        if (themeSetting == 2 || themeSetting == 3) {
             if (mIllustrationDark != 0) {
                 illustration = mIllustrationDark;
             }
