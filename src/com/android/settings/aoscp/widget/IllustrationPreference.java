@@ -50,13 +50,9 @@ public class IllustrationPreference extends Preference {
         try {
             mIllustration = a.getResourceId(R.styleable.IllustrationPreference_illustration, 0);
             mIllustrationDark = a.getResourceId(R.styleable.IllustrationPreference_illustrationDark, 0);
-            if (mIllustration != 0) {
-                setVisible(true);
-                setLayoutResource(R.layout.preference_illustration);
-                mIllustrationAvailable = true;
-            } else {
-                setVisible(false);
-            }
+            setVisible(true);
+            setLayoutResource(R.layout.preference_illustration);
+            mIllustrationAvailable = true;
         } catch (Exception e) {
             Log.w(TAG, "IllustrationPreference requires a lottie support animation to be defined.");
         } finally {
