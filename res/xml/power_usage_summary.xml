@@ -43,6 +43,11 @@
     <PreferenceCategory
         android:key="power_management"
         android:title="@string/battery_power_management">
+		
+		<Preference
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.aoscp.fuelgauge.BatteryLightSettings" />
 
         <com.android.settings.widget.MasterSwitchPreference
             android:fragment="com.android.settings.fuelgauge.BatterySaverSettings"

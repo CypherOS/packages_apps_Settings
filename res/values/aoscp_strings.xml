@@ -17,6 +17,10 @@
     <string name="aoscp_version_info">%1$s - %2$s</string>
     <string name="aoscp_build">Build</string>
     <string name="aoscp_build_info">%1$s</string>
+	
+	<!-- General strings -->
+	<string name="ok">OK</string>
+	<string name="reset">Reset</string>
 
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
@@ -216,5 +220,29 @@
     <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
+	
+	<!-- Battery Light -->
+    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_summary">Turn on/off the battery light indicator and change it\'s color</string>
+	<!-- Battery Light: Pulse Light when low -->
+	<string name="battery_low_pulse_title">Pulse light</string>
+	<string name="battery_low_pulse_summary">When the battery is low</string>
+	<!-- Battery Light: Pulse Light when fully charged -->
+    <string name="battery_light_only_full_charge_title">Only light up</string>
+	<string name="battery_light_only_full_charge_summary">When the device is fully charged</string>
+	<!-- Battery Light: Preference/Dialog -->
+	<string name="battery_light_list_title">Colors</string>
+    <string name="battery_light_low_color_title">Low battery</string>
+    <string name="battery_light_medium_color_title">Charging</string>
+    <string name="battery_light_full_color_title">Charged</string>
+    <string name="fast_color_cat_title">Fast charging</string>
+    <string name="fast_charging_led_enabled_title">Enable fast charging color</string>
+    <string name="fast_charging_led_enabled_summary">When fast charging, use different color till 90% charged</string>
+    <string name="fast_charging_light_color_title">Color</string>
+    <string name="fast_charging_light_color_summary"></string>
+    <string name="edit_battery_settings">Edit battery settings</string>
+    <string name="led_color_green">Green</string>
+    <string name="led_color_red">Red</string>
+    <string name="led_color_blue">Blue</string>
 
 </resources>
