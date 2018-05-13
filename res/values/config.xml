@@ -118,4 +118,8 @@
 
     <!-- Whether or not new device intro suggestion is supported for this device -->
     <bool name="config_new_device_intro_suggestion_supported">false</bool>
+
+    <!-- does the device have multi color led support or only
+         a fixed set of led colors -->
+    <bool name="config_has_multi_color_led">true</bool>
 </resources>
