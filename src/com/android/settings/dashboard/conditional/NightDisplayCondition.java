@@ -22,7 +22,7 @@ import com.android.internal.app.NightDisplayController;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.display.NightDisplaySettings;
+import com.android.settings.aoscp.display.NightDisplayFragment;
 
 public final class NightDisplayCondition extends Condition
         implements NightDisplayController.Callback {
@@ -62,7 +62,7 @@ public final class NightDisplayCondition extends Condition
 
     @Override
     public void onPrimaryClick() {
-        Utils.startWithFragment(mManager.getContext(), NightDisplaySettings.class.getName(), null,
+        Utils.startWithFragment(mManager.getContext(), NightDisplayFragment.class.getName(), null,
                 null, 0, R.string.night_display_title, null, MetricsEvent.DASHBOARD_SUMMARY);
     }
 

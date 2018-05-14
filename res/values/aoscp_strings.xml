@@ -245,4 +245,16 @@
     <string name="led_color_red">Red</string>
     <string name="led_color_blue">Blue</string>
 
+    <!-- Night Light: On/Off Summary -->
+    <string name="night_display_on">On / Will never turn off automatically</string>
+    <string name="night_display_off">Off / Will never turn on automatically</string>
+    <string name="night_display_summary">Tint\'s your screen amber to help you fall asleep</string>
+    <!-- Night Light: Modes -->
+    <string name="night_display_mode_high">High</string>
+    <string name="night_display_mode_mid">Mid</string>
+    <string name="night_display_mode_low">Low</string>
+    <string name="night_display_mode_custom">Custom</string>
+    <!-- Night Light: Time -->
+    <string name="night_display_category_time">Time</string>
+
 </resources>
