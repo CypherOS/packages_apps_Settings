@@ -22,6 +22,7 @@ import android.provider.SearchIndexableResource;
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.colormanager.ColorManagerPreferenceController;
+import com.android.settings.aoscp.display.NightDisplayPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.AmbientDisplayPreferenceController;
 import com.android.settings.display.AutoBrightnessPreferenceController;
@@ -31,7 +32,6 @@ import com.android.settings.display.CameraGesturePreferenceController;
 import com.android.settings.display.ColorModePreferenceController;
 import com.android.settings.display.FontSizePreferenceController;
 import com.android.settings.display.LiftToWakePreferenceController;
-import com.android.settings.display.NightDisplayPreferenceController;
 import com.android.settings.display.NightModePreferenceController;
 import com.android.settings.display.ScreenSaverPreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
@@ -48,6 +48,7 @@ import java.util.List;
 public class DisplaySettings extends DashboardFragment {
     private static final String TAG = "DisplaySettings";
 
+	private static final String KEY_NIGHT_DISPLAY = "night_display";
     public static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     public static final String KEY_DISPLAY_SIZE = "screen_zoom";
 
@@ -93,7 +94,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new CameraGesturePreferenceController(context));
         controllers.add(new FontSizePreferenceController(context));
         controllers.add(new LiftToWakePreferenceController(context));
-        controllers.add(new NightDisplayPreferenceController(context));
+        controllers.add(new NightDisplayPreferenceController(context, KEY_NIGHT_DISPLAY));
         controllers.add(new NightModePreferenceController(context));
         controllers.add(new ScreenSaverPreferenceController(context));
         controllers.add(new AmbientDisplayPreferenceController(
