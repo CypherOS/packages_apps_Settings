@@ -33,6 +33,9 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.aoscp.FooterConfirm;
+import com.android.settingslib.aoscp.FooterConfirm.onActionClickListener;
+import com.android.settingslib.aoscp.FooterConfirmMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -189,14 +192,22 @@ public class BatteryLightSettings extends DashboardFragment implements
     protected void resetColors() {
         ContentResolver resolver = getActivity().getContentResolver();
         Resources res = getResources();
-
-        // Reset to the framework default colors
-        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_LOW_COLOR,
-                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryLowARGB));
-        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_MEDIUM_COLOR,
-                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
-        Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_FULL_COLOR,
-                res.getInteger(com.android.internal.R.integer.config_notificationsBatteryFullARGB));
+		FooterConfirmMixin.show(FooterConfirm.with(getContext())
+            .setMessage("Colors will return to default")
+			.setDuration(-1)
+            .setAction(true)
+            .setActionTitle("Reset")
+            .setActionListener(new onActionClickListener() {
+                @Override
+                public void onActionClicked(FooterConfirm footerConfirm) {
+                      Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_LOW_COLOR,
+					          res.getInteger(com.android.internal.R.integer.config_notificationsBatteryLowARGB));
+				      Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_MEDIUM_COLOR,
+					          res.getInteger(com.android.internal.R.integer.config_notificationsBatteryMediumARGB));
+				      Settings.System.putInt(resolver, Settings.System.BATTERY_LIGHT_FULL_COLOR,
+					          res.getInteger(com.android.internal.R.integer.config_notificationsBatteryFullARGB));
+                }
+            }));
         refreshDefault();
     }
 
