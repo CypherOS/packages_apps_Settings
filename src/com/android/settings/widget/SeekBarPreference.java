@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
+import com.android.settings.R;
 import com.android.settings.widget.DefaultIndicatorSeekBar;
 import com.android.settingslib.RestrictedPreference;
 
@@ -59,9 +60,8 @@ public class SeekBarPreference extends RestrictedPreference
 
         a = context.obtainStyledAttributes(attrs,
                 com.android.internal.R.styleable.SeekBarPreference, defStyleAttr, defStyleRes);
-        final int layoutResId = a.getResourceId(
-                com.android.internal.R.styleable.SeekBarPreference_layout,
-                com.android.internal.R.layout.preference_widget_seekbar);
+		final int layoutResId = a.getResourceId(
+                com.android.internal.R.styleable.SeekBarPreference_layout, R.layout.preference_widget_seekbar);
         a.recycle();
 
         setLayoutResource(layoutResId);
