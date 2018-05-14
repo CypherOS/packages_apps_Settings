@@ -34,6 +34,8 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
 
     protected final int ON = 1;
     protected final int OFF = 0;
+	
+	private boolean mEnabled;
 
     public IllustrationPreferenceController(Context context) {
         super(context);
@@ -50,14 +52,12 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        final boolean isEnabled = isSwitchPrefEnabled();
+        mEnabled = isSwitchPrefEnabled();
         if (preference != null) {
             if (preference instanceof TwoStatePreference) {
-                ((TwoStatePreference) preference).setChecked(isEnabled);
+                ((TwoStatePreference) preference).setChecked(mEnabled);
             } else {
-                preference.setSummary(isEnabled
-                        ? R.string.gesture_setting_on
-                        : R.string.gesture_setting_off);
+                preference.setSummary(getSummary());
             }
             preference.setEnabled(canHandleClicks());
         }
@@ -69,5 +69,11 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
 
     protected boolean canHandleClicks() {
         return true;
+    }
+	
+	protected int getSummary() {
+        return mEnabled
+            ? R.string.gesture_setting_on
+            : R.string.gesture_setting_off;
     }
 }

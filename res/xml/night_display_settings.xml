@@ -13,30 +13,61 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
         android:title="@string/night_display_title">
+		
+	<com.android.settings.aoscp.widget.IllustrationPreference
+        android:key="night_display_video"
+        app:illustration="@raw/night_display_animation"
+        app:illustrationLayout="@layout/night_display_header" />
 
-    <DropDownPreference
+	<com.android.settings.widget.SeekBarPreference
+        android:key="night_display_temperature"
+		android:layout="@layout/preference_widget_seekbar" />
+
+    <SwitchPreference
+        android:key="night_display_activated"
+        android:title="@string/night_display_title"
+        android:summary="@string/night_display_summary" />
+		
+	<com.android.settings.widget.RadioButtonPreference
+        android:key="night_display_high"
+        android:title="@string/night_display_mode_high"
+        android:dependency="night_display_activated" />
+				
+	<com.android.settings.widget.RadioButtonPreference
+        android:key="night_display_mid"
+        android:title="@string/night_display_mode_mid"
+		android:dependency="night_display_activated" />
+		
+	<com.android.settings.widget.RadioButtonPreference
+        android:key="night_display_low"
+        android:title="@string/night_display_mode_low"
+		android:dependency="night_display_activated" />
+	
+	<com.android.settings.widget.RadioButtonPreference
+        android:key="night_display_custom"
+        android:title="@string/night_display_mode_custom"
+		android:dependency="night_display_activated" />
+
+	<PreferenceCategory
+	     android:key="category_time"
+         android:title="@string/night_display_category_time">
+
+		 <DropDownPreference
             android:key="night_display_auto_mode"
             android:title="@string/night_display_auto_mode_title"
             android:summary="%s" />
 
-    <Preference
+	     <Preference
             android:key="night_display_start_time"
             android:title="@string/night_display_start_time_title" />
 
-    <Preference
+	     <Preference
             android:key="night_display_end_time"
             android:title="@string/night_display_end_time_title" />
-
-    <com.android.settings.display.NightDisplayPreference
-            android:key="night_display_activated"
-            android:title="@string/night_display_status_title" />
-
-    <com.android.settings.widget.SeekBarPreference
-            android:key="night_display_temperature"
-            android:title="@string/night_display_temperature_title"/>
-
+			
+	</PreferenceCategory>
 </PreferenceScreen>
