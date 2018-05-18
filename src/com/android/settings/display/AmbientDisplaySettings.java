@@ -25,6 +25,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.aoscp.doze.AmbientPlayPreferenceController;
 import com.android.settings.aoscp.doze.DoubleTapScreenPreferenceController;
 import com.android.settings.aoscp.doze.HandWaveGesturePreferenceController;
 import com.android.settings.aoscp.doze.PickupGesturePreferenceController;
@@ -62,6 +63,7 @@ public class AmbientDisplaySettings extends DashboardFragment {
                 MY_USER_ID));
         controllers.add(new PickupGesturePreferenceController(context, config,
                 MY_USER_ID));
+		controllers.add(new AmbientPlayPreferenceController(context));
         return controllers;
     }
 

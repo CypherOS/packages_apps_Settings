@@ -259,5 +259,9 @@
     <string name="night_display_mode_custom">Custom</string>
     <!-- Night Light: Time -->
     <string name="night_display_category_time">Time</string>
+	
+	<!-- Ambient Play -->
+    <string name="ambient_recognition_title">Ambient Play</string>
+	<string name="ambient_recognition_summary">Be notified of the music being played around you</string>
 
 </resources>
