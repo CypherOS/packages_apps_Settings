@@ -32,6 +32,7 @@ import static android.provider.Settings.System.BATTERY_LIGHT_ENABLED;
 
 public class BatteryLightPreferenceController extends IllustrationPreferenceController {
 
+    private static final int ILLUSTRATION_DURATION = 5200;
     private static final String PREF_KEY_ILLUSTRATION = "battery_light_summary_video";
     private final String mBatteryLightKey;
 
@@ -68,6 +69,11 @@ public class BatteryLightPreferenceController extends IllustrationPreferenceCont
         final int batteryLightEnabled = Settings.System.getInt(
                   mContext.getContentResolver(), BATTERY_LIGHT_ENABLED, ON);
         return batteryLightEnabled != 0;
+    }
+
+	@Override
+	protected int getDuration() {
+        return ILLUSTRATION_DURATION;
     }
 
     @Override
