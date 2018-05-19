@@ -29,6 +29,8 @@ import com.android.settingslib.core.AbstractPreferenceController;
 
 public abstract class IllustrationPreferenceController extends AbstractPreferenceController
         implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+			
+	private static final int DEFAULT_DURATION = 4000;
 
     private IllustrationPreference mPreference;
 
@@ -46,6 +48,7 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
         super.displayPreference(screen);
         if (isAvailable()) {
             mPreference = (IllustrationPreference) screen.findPreference(getIllustrationKey());
+			mPreference.setDuration(getDuration());
         }
     }
 
@@ -75,5 +78,9 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
         return mEnabled
             ? R.string.gesture_setting_on
             : R.string.gesture_setting_off;
+    }
+
+	protected int getDuration() {
+        return DEFAULT_DURATION;
     }
 }

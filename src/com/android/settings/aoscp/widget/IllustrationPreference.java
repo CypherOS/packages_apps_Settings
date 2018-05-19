@@ -38,6 +38,7 @@ public class IllustrationPreference extends Preference {
     private Context mContext;
     private LottieAnimationView mAnimation;
 
+	private int mDuration;
     private int mIllustration;
     private int mIllustrationDark;
     private int mIllustrationLayout;
@@ -66,9 +67,14 @@ public class IllustrationPreference extends Preference {
             a.recycle();
         }
     }
+	
+	protected int setDuration(int duration) {
+		mDuration = duration;
+		return mDuration;
+	}
 
     private void doAnimation() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(4000);
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(setDuration(mDuration));
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
