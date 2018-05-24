@@ -26,8 +26,8 @@ import android.util.Log;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
+import com.android.settings.aoscp.colormanager.settings.ThemeAlphaPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.widget.RadioButtonPreference;
 
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -112,7 +112,7 @@ public class ThemesFragment extends DashboardFragment
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        //controllers.add(new ThemePreferenceController(context));
+        controllers.add(new ThemeAlphaPreferenceController(context));
         return controllers;
     }
 

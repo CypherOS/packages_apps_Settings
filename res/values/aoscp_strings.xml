@@ -65,6 +65,11 @@
     <string name="accent_white_title">White</string>
     <!-- Color Manager: User Accents -->
     <string name="accent_user_title">Custom accent</string>
+    <!-- Color Manager: Settings -->
+    <string name="category_settings_title">Settings</string>
+    <!-- Color Manager: Settings: Theme Alpha -->
+    <string name="theme_alpha_title">Show transparency</string>
+    <string name="theme_alpha_summary">For system specific elements, such as quick settings</string>
 
     <!-- Encryption and credential -->
     <string name="custom_encryption_and_credential_settings_summary_on">Device is encrypted</string>
