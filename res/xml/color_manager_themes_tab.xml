@@ -35,5 +35,15 @@
     <com.android.settings.widget.RadioButtonPreference
         android:key="theme_black"
         android:title="@string/theme_black_title" />
+		
+	<PreferenceCategory android:key="category_settings"
+	    android:title="@string/category_settings_title">
+		
+		<SwitchPreference
+		    android:key="theme_alpha"
+            android:title="@string/theme_alpha_title"
+			android:summary="@string/theme_alpha_summary" />
+
+	</PreferenceCategory>
 
 </PreferenceScreen>
