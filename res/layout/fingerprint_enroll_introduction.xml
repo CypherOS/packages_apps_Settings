@@ -52,9 +52,10 @@
             android:layout_weight="1">
 
         <com.android.settings.aoscp.fingerprint.FingerprintIntroductionView
-                android:id="@+id/introduction"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+            android:id="@+id/introduction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+	        android:layout_gravity="center" />
 
         </com.android.setupwizardlib.view.FillContentLayout>
 
