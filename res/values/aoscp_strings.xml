@@ -288,5 +288,9 @@
     <string name="ambient_recognition_summary">Be notified of music being played around you. Will increase battery and data usage.</string>
     <string name="ambient_recognition_lockscreen_title">Show ambient indication</string>
     <string name="ambient_recognition_lockscreen_summary">On the lockscreen</string>
+	
+	<!-- Network Indication -->
+    <string name="network_indication_title">Network indication</string>
+	<string name="network_indication_summary">Display\'s network indicators in the statusbar, emphasizing traffic</string>
 
 </resources>
