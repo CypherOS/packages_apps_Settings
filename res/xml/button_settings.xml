@@ -25,6 +25,12 @@
             android:defaultValue="false" />
 
     <SwitchPreference
+            android:key="navigation_bar_animation"
+            android:title="@string/navigation_bar_animation_title"
+            android:summary="@string/navigation_bar_animation_summary"
+            android:defaultValue="false" />
+
+    <SwitchPreference
             android:key="swap_navigation_keys"
             android:title="@string/swap_navigation_keys_title"
             android:summary="@string/swap_navigation_keys_title_summary"
