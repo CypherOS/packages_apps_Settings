@@ -306,5 +306,9 @@
 	<string name="sim_management_calls_title">Calls</string>
 	<string name="sim_management_sms_title">Messages</string>
 	<string name="sim_management_data_title">Data</string>
+	<!-- Sim Management: Tool settings -->
+	<string name="sim_management_tool_title">Manage %1$s Sim</string>
+	<string name="sim_management_tool_enable_sim_title">Sim status</string>
+	<string name="sim_management_tool_enable_sim_summary">Turn the sim card on/off</string>
 
 </resources>

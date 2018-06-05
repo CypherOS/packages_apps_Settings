@@ -43,7 +43,7 @@
 
 		<TextView
             android:id="@+id/sim_1_carrier"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
 			android:layout_gravity="center_horizontal"
@@ -73,7 +73,7 @@
 
 		<TextView
             android:id="@+id/sim_2_carrier"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
 			android:layout_gravity="center_horizontal"

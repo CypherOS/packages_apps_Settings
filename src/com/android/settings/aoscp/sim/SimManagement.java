@@ -19,6 +19,7 @@ package com.android.settings.aoscp.sim;
 import android.annotation.ColorInt;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -104,6 +105,8 @@ public class SimManagement extends RestrictedSettingsFragment implements Indexab
     public static final int DIALOG_SMS = 2;
 
 	private Context mContext;
+	private FragmentManager mFragmentManager;
+	
 	private IExtTelephony mExtTelephony;
 	private SubscriptionManager mSubscriptionManager;
 	
@@ -176,6 +179,10 @@ public class SimManagement extends RestrictedSettingsFragment implements Indexab
 
 		IntentFilter intentFilter = new IntentFilter(ACTION_UICC_MANUAL_PROVISION_STATUS_CHANGED);
 		mContext.registerReceiver(mReceiver, intentFilter);
+		
+		if (mFragmentManager == null) {
+            mFragmentManager = getFragmentManager();
+        }
 		
 		updateSimHeader();
 		updateAllOptions();
@@ -386,6 +393,14 @@ public class SimManagement extends RestrictedSettingsFragment implements Indexab
 		if (sir != null) {
 		    mSlot1.setImageDrawable(mSimCard);
 		    mSlot1Carrier.setText(sir.getCarrierName());
+			mSlot1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+					mFragmentManager.beginTransaction()
+                            .replace(android.R.id.content, new SimManagementTool(mContext, 0))
+                            .commit();
+                }
+            });
 		} else {
 			mSlot1.setImageDrawable(mSimCardDisabled);
             mSlot1Carrier.setText(R.string.sim_slot_empty);
@@ -398,6 +413,14 @@ public class SimManagement extends RestrictedSettingsFragment implements Indexab
 		if (sir != null) {
 			mSlot2.setImageDrawable(mSimCard);
 			mSlot2Carrier.setText(sir.getCarrierName());
+			mSlot2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+					mFragmentManager.beginTransaction()
+                            .replace(android.R.id.content, new SimManagementTool(mContext, 1))
+                            .commit();
+                }
+            });
         } else {
 			mSlot2.setImageDrawable(mSimCardDisabled);
             mSlot2Carrier.setText(R.string.sim_slot_empty);
