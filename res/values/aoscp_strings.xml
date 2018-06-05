@@ -299,5 +299,12 @@
     <!-- Developer Settings: Allow untrusted overlays -->
     <string name="allow_untrusted_overlays_title">Allow untrusted overlays</string>
     <string name="allow_untrusted_overlays_summary">Allow installing third party overlays via theme managers</string>
+	
+	<!-- Sim Management -->
+    <string name="sim_management_title">Sim management</string>
+	<string name="sim_management_summary">Manage device sim cards</string>
+	<string name="sim_management_calls_title">Calls</string>
+	<string name="sim_management_sms_title">Messages</string>
+	<string name="sim_management_data_title">Data</string>
 
 </resources>
