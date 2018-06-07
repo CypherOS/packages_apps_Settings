@@ -57,6 +57,16 @@
         settings:userRestriction="no_config_tethering"
         settings:useAdminDisabledSummary="true"/>
 
+	<com.android.settingslib.RestrictedPreference
+        android:fragment="com.android.settings.aoscp.sim.SimManagement"
+        android:key="sim_management"
+        android:title="@string/sim_management_title"
+        android:icon="@drawable/ic_settings_sim"
+        android:order="-3"
+        android:summary="@string/sim_management_summary"
+        settings:userRestriction="no_config_sim"
+        settings:useAdminDisabledSummary="true"/>
+
     <com.android.settingslib.RestrictedPreference
         android:fragment="com.android.settings.vpn2.VpnSettings"
         android:key="vpn_settings"
