@@ -51,6 +51,7 @@ import com.android.settings.deviceinfo.SafetyInfoPreferenceController;
 import com.android.settings.deviceinfo.SecurityPatchPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
@@ -131,11 +132,15 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     }
 
     private void updateHeaderPreference() {
+		final Activity activity = getActivity();
         final Context context = getContext();
         if (context == null) {
             return;
         }
         mHeaderLayoutPref = (LayoutPreference) findPreference(KEY_ABOUT_HEADER);
+		EntityHeaderController.newInstance(activity, this, mHeaderLayoutPref.findViewById(R.id.entity_header))
+                .setRecyclerView(getListView(), getLifecycle())
+                .styleActionBar(activity);
         mAnimationView = (LottieAnimationView) 
                 mHeaderLayoutPref.findViewById(R.id.header_icon);
         doLunaReveal();
@@ -158,23 +163,13 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
             }
         });
         final TextView version = (TextView) mHeaderLayoutPref.findViewById(R.id.version);
-        final TextView versionInfo = (TextView) mHeaderLayoutPref.findViewById(R.id.version_info);
-        final TextView buildInfo = (TextView) mHeaderLayoutPref.findViewById(R.id.build_info);
-        final TextView buildNumber = (TextView) mHeaderLayoutPref.findViewById(R.id.build_number);
-
-        version.setText(context.getResources().getString(R.string.aoscp_version));
-        versionInfo.setText(String.format(
-                context.getResources().getString(R.string.aoscp_version_info), 
-                Build.AOSCP.VERSION, Build.AOSCP.CODENAME));
-
-        buildInfo.setText(context.getResources().getString(R.string.aoscp_build));
-        buildNumber.setText(String.format(
-                context.getResources().getString(R.string.aoscp_build_info), 
-                Build.AOSCP.BUILD_NUMBER));
+        final TextView versionCode = (TextView) mHeaderLayoutPref.findViewById(R.id.version_code);
+        version.setText(Build.AOSCP.VERSION);
+        versionCode.setText(Build.AOSCP.CODENAME);
     }
 
     private void doLunaReveal() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(944);
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(4000);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
