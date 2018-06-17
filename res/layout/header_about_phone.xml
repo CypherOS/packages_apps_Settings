@@ -18,7 +18,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/about_phone_header"
+    android:id="@+id/entity_header"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -32,50 +32,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginStart="56dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <aoscp.support.lottie.LottieAnimationView
+            android:id="@+id/header_icon"
+            android:layout_width="90dp"
+            android:layout_height="94dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:clickable="true"
+            app:lottie_fileName="ic_aoscp.json" />
 
         <TextView
             android:id="@+id/version"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@*android:string/config_headlineFontFamily"
-            android:textAppearance="@android:style/TextAppearance.Material.Subhead"/>
+            android:textAppearance="@android:style/TextAppearance.Material.Display1"/>
 
         <TextView
-            android:id="@+id/version_info"
-            android:layout_width="match_parent"
+            android:id="@+id/version_code"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:fontFamily="@*android:string/config_headlineFontFamily"
-            android:textAppearance="@android:style/TextAppearance.Material.Small"/>
-
-        <TextView
-            android:id="@+id/build_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:fontFamily="@*android:string/config_headlineFontFamily"
-            android:textAppearance="@android:style/TextAppearance.Material.Subhead"/>
-
-        <TextView
-            android:id="@+id/build_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@*android:string/config_headlineFontFamily"
             android:textAppearance="@android:style/TextAppearance.Material.Small"/>
 
     </LinearLayout>
-
-    <aoscp.support.lottie.LottieAnimationView
-        android:id="@+id/header_icon"
-        android:layout_width="100dp"
-        android:layout_height="104dp"
-        android:layout_marginEnd="16dp"
-        android:background="?android:attr/actionBarItemBackground"
-        android:clickable="true"
-        app:lottie_fileName="ic_aoscp.json"/>
 
 </LinearLayout>
