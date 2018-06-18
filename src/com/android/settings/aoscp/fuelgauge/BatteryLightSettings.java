@@ -116,6 +116,12 @@ public class BatteryLightSettings extends DashboardFragment implements
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mProgressiveDisclosureMixin.setTileLimit(3);
+    }
+
+    @Override
     protected int getPreferenceScreenResId() {
         return R.xml.power_usage_summary_battery;
     }
