@@ -114,6 +114,12 @@ public class BatteryLightSettings extends DashboardFragment implements
     protected String getLogTag() {
         return TAG;
     }
+	
+	@Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mProgressiveDisclosureMixin.setTileLimit(3);
+    }
 
     @Override
     protected int getPreferenceScreenResId() {
