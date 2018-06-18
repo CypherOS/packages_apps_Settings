@@ -77,6 +77,7 @@ import com.android.settings.fuelgauge.anomaly.AnomalyLoader;
 import com.android.settings.fuelgauge.anomaly.AnomalySummaryPreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import java.util.ArrayList;
@@ -738,10 +739,14 @@ public class PowerUsageSummary extends PowerUsageBase implements
 
     @VisibleForTesting
     void updateHeaderPreference(BatteryInfo info) {
+		final Activity activity = getActivity();
         final Context context = getContext();
         if (context == null) {
             return;
         }
+		EntityHeaderController.newInstance(activity, this, mBatteryLayoutPref.findViewById(R.id.entity_header))
+                .setRecyclerView(getListView(), getLifecycle())
+                .styleActionBar(activity);
         final BatteryMeterView batteryView = (BatteryMeterView) mBatteryLayoutPref
                 .findViewById(R.id.battery_header_icon);
         final TextView timeText = (TextView) mBatteryLayoutPref.findViewById(R.id.battery_percent);

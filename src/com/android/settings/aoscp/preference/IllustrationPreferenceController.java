@@ -16,6 +16,7 @@
 
 package com.android.settings.aoscp.preference;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
@@ -25,6 +26,7 @@ import android.support.v7.preference.TwoStatePreference;
 import com.android.settings.R;
 import com.android.settings.aoscp.widget.IllustrationPreference;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 public abstract class IllustrationPreferenceController extends AbstractPreferenceController
@@ -44,8 +46,11 @@ public abstract class IllustrationPreferenceController extends AbstractPreferenc
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
+		final Activity activity = getActivity();
         if (isAvailable()) {
             mPreference = (IllustrationPreference) screen.findPreference(getIllustrationKey());
+			EntityHeaderController.newInstance(activity, this, mPreference.findViewById(R.id.illustration_view))
+                .styleActionBar(activity);
         }
     }
 
