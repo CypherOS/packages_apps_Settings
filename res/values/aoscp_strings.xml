@@ -17,6 +17,8 @@
     <string name="aoscp_version_info">%1$s - %2$s</string>
     <string name="aoscp_build">Build</string>
     <string name="aoscp_build_info">%1$s</string>
+	<!-- Summary of system update preference [CHAR LIMIT=NONE] -->
+    <string name="about_summary_aoscp">Updated to CypherOS <xliff:g id="version" example="6.0.0">%1$s</xliff:g></string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
