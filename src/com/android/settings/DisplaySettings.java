@@ -23,6 +23,7 @@ import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.colormanager.ColorManagerPreferenceController;
 import com.android.settings.aoscp.display.NightDisplayPreferenceController;
+import com.android.settings.aoscp.display.ScreenshotModePreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.AmbientDisplayPreferenceController;
 import com.android.settings.display.AutoBrightnessPreferenceController;
@@ -54,6 +55,7 @@ public class DisplaySettings extends DashboardFragment {
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_AMBIENT_DISPLAY = "ambient_display";
+	private static final String KEY_SCREENSHOT_MODE = "screenshot_mode";
 
     @Override
     public int getMetricsCategory() {
@@ -107,6 +109,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new ColorManagerPreferenceController(context));
         controllers.add(new BrightnessLevelPreferenceController(context, lifecycle));
         controllers.add(new ColorModePreferenceController(context));
+		controllers.add(new ScreenshotModePreferenceController(context, KEY_SCREENSHOT_MODE));
         return controllers;
     }
 

@@ -98,6 +98,15 @@
         android:title="@string/ambient_display_screen_title"
         android:fragment="com.android.settings.display.AmbientDisplaySettings" />
 
+	<!-- Screenshot Mode -->
+	<ListPreference
+        android:key="screenshot_mode"
+        android:dialogTitle="@string/screen_shot_mode_title"
+        android:title="@string/screen_shot_mode_title"
+        android:entries="@array/screenshot_mode_entries"
+        android:entryValues="@array/screenshot_mode_values"
+        android:persistent="false" />
+
     <!-- Hide night mode for now
     <ListPreference
         android:key="night_mode"
