@@ -302,4 +302,9 @@
     <string name="allow_untrusted_overlays_title">Allow untrusted overlays</string>
     <string name="allow_untrusted_overlays_summary">Allow installing third party overlays via theme managers</string>
 
+    <!-- Screenshot Mode -->
+    <string name="screen_shot_mode_title">Screenshot mode</string>
+    <string name="screen_shot_mode_fullscreen">Fullscreen</string>
+    <string name="screen_shot_mode_partial">Partial</string>
+
 </resources>
