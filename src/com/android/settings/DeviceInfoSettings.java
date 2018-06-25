@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.aoscp.deviceinfo.MaintenancePatchPreferenceController;
 import com.android.settings.applications.LayoutPreference;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.dashboard.SummaryLoader;
@@ -244,6 +245,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
         controllers.add(new SafetyInfoPreferenceController(context));
+		controllers.add(new MaintenancePatchPreferenceController(context));
         return controllers;
     }
 

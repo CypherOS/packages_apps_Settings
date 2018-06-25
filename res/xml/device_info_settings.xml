@@ -102,6 +102,12 @@
                 android:title="@string/kernel_version"
                 android:summary="@string/summary_placeholder"/>
 
+		<!-- Maintenance patch level -->
+        <Preference
+                android:key="maintenance_patch"
+                android:title="@string/maintenance_patch"
+                android:summary="@string/summary_placeholder"/>
+
         <!-- Detailed build version -->
         <Preference
                 android:key="build_number"
