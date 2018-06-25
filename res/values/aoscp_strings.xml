@@ -329,6 +329,7 @@
     <string name="clock_title_enable">Location</string>
     <string name="right_clock">Right</string>
     <string name="center_clock">Center</string>
+    <string name="left_clock">Left</string>
     <string name="status_bar_clock_seconds_title">Show seconds</string>
     <string name="status_bar_clock_seconds_summary">Alongside the clock indicator</string>
     <string name="status_bar_am_pm_title">AM/PM</string>
