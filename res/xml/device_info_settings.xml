@@ -22,6 +22,13 @@
                 android:selectable="false"
                 android:layout="@layout/header_about_phone"/>
 
+		<!-- Software certification - More info -->
+        <Preference 
+		        android:key="certification_status"
+                android:title="@string/device_certification_status_unknown"
+                android:summary="@string/device_certification_summary"
+                android:fragment="com.android.settings.aoscp.deviceinfo.CertificationStatus"/>
+
         <!-- System update settings - launches activity -->
         <Preference android:key="additional_system_update_settings"
                     android:title="@string/additional_system_update_settings_list_item_title">
