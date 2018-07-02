@@ -4,7 +4,6 @@
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-
           http://www.apache.org/licenses/LICENSE-2.0
 
      Unless required by applicable law or agreed to in writing, software
@@ -14,16 +13,14 @@
      limitations under the License.
 -->
 
-<resources>
-    <color name="ic_signal_meter_poor">#F44336</color>
-    <color name="ic_signal_meter_fair">#FF9800</color>
-    <color name="ic_signal_meter_good_excellent">#4CAF50</color>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/device_certification_status_title">
 
-    <!-- Suggestion/condition colors -->
-    <color name="suggestion_tile_background">@*android:color/white</color>
-    <color name="suggestion_title_text_color">@*android:color/black</color>
-    <color name="suggestion_summary_text_color">@*android:color/black</color>
-
-	<!-- Certification status -->
-	<color name="certification_status_uncertified">#FF9800</color>
-</resources>
+    <!-- Maintenance patch level -->
+    <Preference
+        android:key="maintenance_patch"
+        android:title="@string/maintenance_patch"
+        android:summary="@string/summary_placeholder"/>
+  
+</PreferenceScreen>
