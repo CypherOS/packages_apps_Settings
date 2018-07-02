@@ -17,8 +17,17 @@
     <string name="aoscp_version_info">%1$s - %2$s</string>
     <string name="aoscp_build">Build</string>
     <string name="aoscp_build_info">%1$s</string>
+	<!-- Summary of maintenance patch level [CHAR LIMIT=NONE] -->
+	<string name="maintenance_patch">Maintenance patch level</string>
     <!-- Summary of system update preference [CHAR LIMIT=NONE] -->
     <string name="about_summary_aoscp">Updated to CypherOS <xliff:g id="version" example="6.0.0">%1$s</xliff:g></string>
+	<!-- About phone screen, Device certification -->
+    <string name="device_certification_status_certified">Device is certified</string>
+	<string name="device_certification_status_uncertified">Device is uncertified</string>
+	<string name="device_certification_status_unknown">Certification is unknown</string>
+	<string name="device_certification_summary">Tap for more info</string>
+	<string name="device_certification_status_title">Device status</string>
+	<string name="device_certification_status_desc">This device does not meet certification standards provided by aoscp, and is not supported by this software.</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
