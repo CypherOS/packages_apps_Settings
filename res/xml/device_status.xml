@@ -23,4 +23,10 @@
         android:title="@string/maintenance_patch"
         android:summary="@string/summary_placeholder"/>
 
+	<!-- Aoscp Build number -->
+    <Preference
+        android:key="build_number_aoscp"
+        android:title="@string/build_number_aoscp"
+        android:summary="@string/summary_placeholder"/>
+
 </PreferenceScreen>

@@ -35,6 +35,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.R;
+import com.android.settings.aoscp.deviceinfo.devicestatus.BuildNumberAoscpPreferenceController;
 import com.android.settings.aoscp.deviceinfo.devicestatus.MaintenancePatchPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -89,6 +90,7 @@ public class CertificationStatus extends DashboardFragment implements Indexable 
             Activity activity, Fragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new MaintenancePatchPreferenceController(context));
+		controllers.add(new BuildNumberAoscpPreferenceController(context));
         return controllers;
     }
 
