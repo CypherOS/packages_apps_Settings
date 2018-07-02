@@ -88,6 +88,7 @@ import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
+import com.android.settings.aoscp.development.CameraHal3PreferenceController;
 import com.android.settings.dashboard.DashboardFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.password.ChooseLockSettingsHelper;
@@ -369,6 +370,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private TelephonyMonitorPreferenceController mTelephonyMonitorController;
     private CameraHalHdrplusPreferenceController mCameraHalHdrplusController;
     private CameraLaserSensorPreferenceController mCameraLaserSensorController;
+	private CameraHal3PreferenceController mCameraHal3Controller;
 
     private BroadcastReceiver mEnableAdbReceiver;
 
@@ -414,6 +416,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mVerifyAppsOverUsbController = new VerifyAppsOverUsbPreferenceController(getActivity());
         mCameraHalHdrplusController = new CameraHalHdrplusPreferenceController(getActivity());
         mCameraLaserSensorController = new CameraLaserSensorPreferenceController(getActivity());
+		mCameraHal3Controller = new CameraHal3PreferenceController(getActivity());
 
         setIfOnlyAvailableForAdmins(true);
         if (isUiRestricted() || !Utils.isDeviceProvisioned(getActivity())) {
@@ -447,6 +450,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mTelephonyMonitorController.displayPreference(getPreferenceScreen());
         mWebViewAppPrefController.displayPreference(getPreferenceScreen());
         mCameraHalHdrplusController.displayPreference(getPreferenceScreen());
+		mCameraHal3Controller.displayPreference(getPreferenceScreen());
         mEnableAdbController.displayPreference(getPreferenceScreen());
 
         mCameraLaserSensorController.displayPreference(getPreferenceScreen());
@@ -690,6 +694,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mWebViewAppPrefController.enablePreference(enabled);
         mCameraHalHdrplusController.enablePreference(enabled);
         mCameraLaserSensorController.enablePreference(enabled);
+		mCameraHal3Controller.enablePreference(enabled);
         updateAllOptions();
     }
 
@@ -825,6 +830,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mHaveDebugSettings |= mTelephonyMonitorController.updatePreference();
         mHaveDebugSettings |= mCameraHalHdrplusController.updatePreference();
         mHaveDebugSettings |= mCameraLaserSensorController.updatePreference();
+		mHaveDebugSettings |= mCameraHal3Controller.updatePreference();
         updateSwitchPreference(mKeepScreenOn, Settings.Global.getInt(cr,
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         updateSwitchPreference(mBtHciSnoopLog, SystemProperties.getBoolean(
@@ -2507,6 +2513,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 
         if (mCameraHalHdrplusController.handlePreferenceTreeClick(preference)) {
+            return true;
+        }
+		
+		if (mCameraHal3Controller.handlePreferenceTreeClick(preference)) {
             return true;
         }
 

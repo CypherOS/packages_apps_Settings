@@ -32,4 +32,7 @@
          for fingerprint enrollment illustration -->
     <bool name="config_hasBottomFingerprintSensor">false</bool>
 
+	<!-- Whether to show Camera HAL3 switch in Developer Options -->
+    <bool name="config_deviceSupportsHal3Switch">false</bool>
+
 </resources>

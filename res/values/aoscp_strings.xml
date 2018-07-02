@@ -354,4 +354,10 @@
     <string name="menu_cancel">Cancel</string>
     <string name="menu_save">Save</string>
 
+	<!-- Dev Settings: HAL3 switch -->
+    <string name="camera_hal3_switch_title">Use camera hal3</string>
+    <string name="camera_hal3_switch_summary">For camera applications and extended camera features</string>
+	<!-- Toast message letting the user know how to enable Camera HAL3 -->
+    <string name="camera_hal3_toast">To apply camera hal3 settings, reboot the device</string>
+
 </resources>
