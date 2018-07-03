@@ -28,6 +28,8 @@
     <string name="device_certification_summary">Tap for more info</string>
     <string name="device_certification_status_title">Device status</string>
     <string name="device_certification_status_desc">This device does not meet certification standards provided by aoscp, and is not supported by this software.</string>
+    <!-- Summary of aoscp build number [CHAR LIMIT=NONE] -->
+    <string name="build_number_aoscp">Build</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
