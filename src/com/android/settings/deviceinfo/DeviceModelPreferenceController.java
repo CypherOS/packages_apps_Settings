@@ -64,12 +64,13 @@ public class DeviceModelPreferenceController extends AbstractPreferenceControlle
 
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
-        if (!TextUtils.equals(preference.getKey(), KEY_DEVICE_MODEL)) {
+        /*if (!TextUtils.equals(preference.getKey(), KEY_DEVICE_MODEL)) {
             return false;
         }
         final HardwareInfoDialogFragment fragment = HardwareInfoDialogFragment.newInstance();
         fragment.show(mHost.getFragmentManager(), HardwareInfoDialogFragment.TAG);
-        return true;
+        return true;*/
+		return false;
     }
 
     public static String getDeviceModel() {
