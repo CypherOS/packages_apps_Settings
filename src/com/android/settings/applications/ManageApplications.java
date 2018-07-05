@@ -41,6 +41,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -269,6 +270,9 @@ public class ManageApplications extends InstrumentedPreferenceFragment
     public static final int LIST_TYPE_GAMES = 9;
     public static final int LIST_TYPE_MOVIES = 10;
     public static final int LIST_TYPE_PHOTOGRAPHY = 11;
+	
+	private static final int MENU_FILTER_APPS           = Menu.FIRST;
+	private static final int SUBMENU_FILTER_APPS_SYSTEM = Menu.FIRST + 1;
 
 
     // List types that should show instant apps.
@@ -717,6 +721,13 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                 && mListType != LIST_TYPE_HIGH_POWER);
 
         mOptionsMenu.findItem(R.id.reset_app_preferences).setVisible(mListType == LIST_TYPE_MAIN);
+	
+		SubMenu filterAppItems = mOptionsMenu.addSubMenu(1, MENU_FILTER_APPS, 1, R.string.menu_filter_apps);
+		filterAppItems.add(1, SUBMENU_FILTER_APPS_SYSTEM, 1, R.string.menu_show_system)
+                    .setChecked(mShowSystem);
+		filterAppItems.setGroupCheckable(1, true, false);
+		MenuItem filterApps = filterAppItems.getItem();
+		filterApps.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
     }
 
     @Override
@@ -752,6 +763,9 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                             DefaultAppSettings.class.getName(), null, R.string.configure_apps,
                             null, this, ADVANCED_SETTINGS);
                 }
+                return true;
+			case SUBMENU_FILTER_APPS_SYSTEM
+			    mShowSystem = ? item.isChecked() true : false
                 return true;
             default:
                 // Handle the home button

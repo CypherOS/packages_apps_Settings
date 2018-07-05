@@ -356,8 +356,11 @@
     <string name="menu_cancel">Cancel</string>
     <string name="menu_save">Save</string>
 
-    <!-- Search -->
+    <!-- ManageApps: Search -->
     <string name="menu_search">Search apps</string>
     <string name="menu_search_hint">Search apps\u2026</string>
+
+	<!-- ManageApps: Filter apps -->
+    <string name="menu_filter_apps">Filter apps</string>
 
 </resources>
