@@ -41,6 +41,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -122,6 +123,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
 
     private static final String EXTRA_SORT_ORDER = "sortOrder";
     private static final String EXTRA_SHOW_SYSTEM = "showSystem";
+	private static final String EXTRA_SHOW_THEMES = "showThemes";
     private static final String EXTRA_HAS_ENTRIES = "hasEntries";
     private static final String EXTRA_HAS_BRIDGE = "hasBridge";
 
@@ -232,6 +234,9 @@ public class ManageApplications extends InstrumentedPreferenceFragment
     // whether showing system apps.
     private boolean mShowSystem;
 
+	// whether showing system themes.
+    private boolean mShowThemes;
+
     private ApplicationsState mApplicationsState;
 
     public int mListType;
@@ -269,7 +274,12 @@ public class ManageApplications extends InstrumentedPreferenceFragment
     public static final int LIST_TYPE_GAMES = 9;
     public static final int LIST_TYPE_MOVIES = 10;
     public static final int LIST_TYPE_PHOTOGRAPHY = 11;
+	
+	private static final int MENU_FILTER_APPS           = Menu.FIRST;
+	private static final int SUBMENU_FILTER_APPS_SYSTEM = Menu.FIRST + 1;
+	private static final int SUBMENU_FILTER_APPS_THEMES = Menu.FIRST + 2;
 
+	private SubMenu mFilteredApps;
 
     // List types that should show instant apps.
     public static final Set<Integer> LIST_TYPES_WITH_INSTANT = new ArraySet<>(Arrays.asList(
@@ -348,6 +358,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
         if (savedInstanceState != null) {
             mSortOrder = savedInstanceState.getInt(EXTRA_SORT_ORDER, mSortOrder);
             mShowSystem = savedInstanceState.getBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+			mShowThemes = savedInstanceState.getBoolean(EXTRA_SHOW_THEMES, mShowThemes);
         }
 
         mInvalidSizeStr = getActivity().getText(R.string.invalid_size_value);
@@ -560,6 +571,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
         mResetAppsHelper.onSaveInstanceState(outState);
         outState.putInt(EXTRA_SORT_ORDER, mSortOrder);
         outState.putBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+		outState.putBoolean(EXTRA_SHOW_THEMES, mShowThemes);
         outState.putBoolean(EXTRA_HAS_ENTRIES, mApplications.mHasReceivedLoadEntries);
         outState.putBoolean(EXTRA_HAS_BRIDGE, mApplications.mHasReceivedBridgeCallback);
     }
@@ -654,7 +666,6 @@ public class ManageApplications extends InstrumentedPreferenceFragment
         HelpUtils.prepareHelpMenuItem(getActivity(), menu, getHelpResource(), getClass().getName());
         mOptionsMenu = menu;
         inflater.inflate(R.menu.manage_apps, menu);
-        updateOptionsMenu();
 
         // Search
         MenuItem item = menu.findItem(R.id.action_search);
@@ -675,6 +686,16 @@ public class ManageApplications extends InstrumentedPreferenceFragment
             }
         });
 
+		mFilteredApps = menu.addSubMenu(0, MENU_FILTER_APPS, Menu.NONE, R.string.menu_filter_apps);
+		mFilteredApps.add(0, SUBMENU_FILTER_APPS_SYSTEM, 1, R.string.menu_show_system_apps)
+                .setChecked(mShowSystem);
+		mFilteredApps.add(0, SUBMENU_FILTER_APPS_THEMES, 2, R.string.menu_show_themes)
+                .setChecked(mShowThemes);
+		mFilteredApps.setGroupCheckable(0, true, false);
+		MenuItem filterApp = mFilteredApps.getItem();
+        filterApp.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		
+		updateOptionsMenu();
     }
 
     @Override
@@ -717,6 +738,12 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                 && mListType != LIST_TYPE_HIGH_POWER);
 
         mOptionsMenu.findItem(R.id.reset_app_preferences).setVisible(mListType == LIST_TYPE_MAIN);
+
+		MenuItem filterSystem = mOptionsMenu.findItem(SUBMENU_FILTER_APPS_SYSTEM);
+		filterSystem.setChecked(mShowSystem && mListType != LIST_TYPE_HIGH_POWER);
+
+		MenuItem filterThemes = mOptionsMenu.findItem(SUBMENU_FILTER_APPS_THEMES);
+		filterThemes.setChecked(mShowThemes && mListType != LIST_TYPE_HIGH_POWER);
     }
 
     @Override
@@ -753,6 +780,14 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                             null, this, ADVANCED_SETTINGS);
                 }
                 return true;
+			case SUBMENU_FILTER_APPS_SYSTEM:
+			    mShowSystem = !mShowSystem;
+                mApplications.rebuild(false);
+                break;
+			case SUBMENU_FILTER_APPS_THEMES:
+			    mShowThemes = !mShowThemes;
+                mApplications.rebuild(false);
+                break;
             default:
                 // Handle the home button
                 return false;
@@ -1073,6 +1108,7 @@ public class ManageApplications extends InstrumentedPreferenceFragment
             if (mCompositeFilter != null) {
                 filterObj = new CompoundFilter(filterObj, mCompositeFilter);
             }
+
             if (!mManageApplications.mShowSystem) {
                 if (LIST_TYPES_WITH_INSTANT.contains(mManageApplications.mListType)) {
                     filterObj = new CompoundFilter(filterObj,
@@ -1081,6 +1117,11 @@ public class ManageApplications extends InstrumentedPreferenceFragment
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER);
                 }
+            }
+
+			if (mManageApplications.mShowThemes) {
+                filterObj = new CompoundFilter(filterObj,
+                        ApplicationsState.FILTER_COLOR_MANAGER);
             }
 
             switch (mLastSortMode) {

@@ -28,6 +28,18 @@
         android:icon="@drawable/ic_settings_24dp"
         android:showAsAction="collapseActionView|ifRoom" />
 
+	<item
+        android:id="@+id/filter_apps"
+        android:title="@string/menu_filter_apps"
+        android:showAsAction="never">
+        <menu>
+            <item
+			    android:id="@+id/show_system_apps"
+				android:title="@string/menu_show_system"
+				android:showAsAction="never" />
+        </menu>
+    </item>
+
     <item
         android:id="@+id/show_system"
         android:title="@string/menu_show_system"
