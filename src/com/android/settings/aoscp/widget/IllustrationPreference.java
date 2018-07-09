@@ -68,19 +68,20 @@ public class IllustrationPreference extends Preference {
     }
 
     private void doAnimation() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(4000);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        //mValueAnimator.ValueAnimator.ofFloat(0f, 1f).getDuration();
+        mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
-                mAnimation.setProgress((Float) valueAnim.getAnimatedValue());
+                if (compositionLayer != null) {
+                 compositionLayer.setProgress(animator.getAnimatedValueAbsolute());
+                }
             }
         });
 
-        if (mAnimation.getProgress() == 0f) {
-            anim.start();
-            anim.setRepeatCount(ValueAnimator.INFINITE);
+        if (mAnimationView.getProgress() == 0f) {
+            mValueAnimator.start();
         } else {
-            mAnimation.setProgress(0f);
+            mAnimationView.setProgress(0f);
         }
     }
 
