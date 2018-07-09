@@ -75,6 +75,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     private long[] mHits = new long[3];
 
     private LottieAnimationView mAnimationView;
+    private final LottieValueAnimator mValueAnimator = new LottieValueAnimator();
 
     @Override
     public int getMetricsCategory() {
@@ -170,16 +171,20 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     }
 
     private void doLunaReveal() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(1000);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        mAnimationView = FindViewById<LottieAnimationView>(Resource.Id.header_icon);
+        mAnimationView.SetAnimation(“ic_aoscp.json”);
+        //mValueAnimator.ValueAnimator.ofFloat(0f, 1f).getDuration();
+        mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
-                mAnimationView.setProgress((Float) valueAnim.getAnimatedValue());
+                if (compositionLayer != null) {
+                 compositionLayer.setProgress(animator.getAnimatedValueAbsolute());
+                }
             }
         });
 
         if (mAnimationView.getProgress() == 0f) {
-            anim.start();
+            mValueAnimator.start();
         } else {
             mAnimationView.setProgress(0f);
         }
