@@ -36,7 +36,7 @@ public class IllustrationPreference extends Preference {
     private static final String TAG = "IllustrationPreference";
 
     private Context mContext;
-    private LottieAnimationView mAnimation;
+    private LottieAnimationView mAnimationView;
 
     private int mIllustration;
     private int mIllustrationDark;
@@ -68,20 +68,8 @@ public class IllustrationPreference extends Preference {
     }
 
     private void doAnimation() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(4000);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnim) {
-                mAnimation.setProgress((Float) valueAnim.getAnimatedValue());
-            }
-        });
-
-        if (mAnimation.getProgress() == 0f) {
-            anim.start();
-            anim.setRepeatCount(ValueAnimator.INFINITE);
-        } else {
-            mAnimation.setProgress(0f);
-        }
+        mAnimationView.setRepeatCount(ValueAnimator.INFINITE);
+        mAnimationView.playAnimation();
     }
 
     @Override
@@ -94,14 +82,14 @@ public class IllustrationPreference extends Preference {
 
         int themeSetting = Settings.Secure.getIntForUser(mContext.getContentResolver(),
                     Settings.Secure.DEVICE_THEME, 0, UserHandle.USER_CURRENT);
-        mAnimation = (LottieAnimationView) holder.findViewById(R.id.illustration);
+        mAnimationView = (LottieAnimationView) holder.findViewById(R.id.illustration);
         int illustration = mIllustration;
         if (themeSetting == 2 || themeSetting == 3) {
             if (mIllustrationDark != 0) {
                 illustration = mIllustrationDark;
             }
         }
-        mAnimation.setAnimation(illustration);
+        mAnimationView.setAnimation(illustration);
         doAnimation();
     }
 }

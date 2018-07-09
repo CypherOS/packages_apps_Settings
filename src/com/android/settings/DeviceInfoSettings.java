@@ -170,19 +170,7 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
     }
 
     private void doLunaReveal() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(1000);
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnim) {
-                mAnimationView.setProgress((Float) valueAnim.getAnimatedValue());
-            }
-        });
-
-        if (mAnimationView.getProgress() == 0f) {
-            anim.start();
-        } else {
-            mAnimationView.setProgress(0f);
-        }
+        mAnimationView.playAnimation();
     }
 
     @Override
