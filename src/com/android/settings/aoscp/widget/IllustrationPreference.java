@@ -68,7 +68,7 @@ public class IllustrationPreference extends Preference {
     }
 
     private void doAnimation() {
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f).setDuration(4000);
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnim) {
