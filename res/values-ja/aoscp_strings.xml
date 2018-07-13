@@ -18,21 +18,21 @@
   <string name="aoscp_build">Build</string>
   <string name="aoscp_build_info">%1$s</string>
   <!-- Summary of maintenance patch level [CHAR LIMIT=NONE] -->
-  <string name="maintenance_patch">Nível do patch de manutenção</string>
+  <string name="maintenance_patch">メンテナンスパッチレベル</string>
   <!-- Summary of system update preference [CHAR LIMIT=NONE] -->
-  <string name="about_summary_aoscp">Atualizado para CypherOS <xliff:g id="version" example="6.0.0">%1$s</xliff:g></string>
+  <string name="about_summary_aoscp">CypherOS <xliff:g id="version" example="6.0.0">%1$s</xliff:g> へ更新されました</string>
   <!-- About phone screen, Device certification -->
-  <string name="device_certification_status_certified">Dispositivo certificado</string>
-  <string name="device_certification_status_uncertified">Dispositivo não certificado</string>
-  <string name="device_certification_status_unknown">Certificação desconhecida</string>
+  <string name="device_certification_status_certified">端末は認証済みです</string>
+  <string name="device_certification_status_uncertified">端末は未認証です</string>
+  <string name="device_certification_status_unknown">認証状態は不明です</string>
   <string name="device_certification_summary">Toque para mais informações</string>
-  <string name="device_certification_status_title">Status do dispositivo</string>
-  <string name="device_certification_status_desc">Este dispositivo não atende aos padrões exigidos pela aoscp para certificação, portanto não é suportado oficialmente por este software.</string>
+  <string name="device_certification_status_title">端末の状態</string>
+  <string name="device_certification_status_desc">この端末はAOSCPが提供する認証基準を満たしておらず、このソフトウェアではサポートされていません。</string>
   <!-- Summary of aoscp build number [CHAR LIMIT=NONE] -->
   <string name="build_number_aoscp">Build</string>
   <!-- General strings -->
   <string name="ok">OK</string>
-  <string name="reset">Resetar</string>
+  <string name="reset">リセット</string>
   <!-- Color Manager -->
   <string name="color_manager_title">Gerenciador de cores</string>
   <string name="color_manager_summary">Mude as cores do sistema com várias combinações de temas</string>
@@ -77,10 +77,10 @@
   <!-- Color Manager: User Accents -->
   <string name="accent_user_title">Tom personalizado</string>
   <!-- Color Manager: Settings -->
-  <string name="category_settings_title">Configurações</string>
+  <string name="category_settings_title">設定</string>
   <!-- Color Manager: Settings: Theme Alpha -->
-  <string name="theme_alpha_title">Mostrar transparência</string>
-  <string name="theme_alpha_summary">Para elementos específicos do sistema, como as configurações rápidas</string>
+  <string name="theme_alpha_title">透明度を表示</string>
+  <string name="theme_alpha_summary">クイック設定などのシステム固有の要素のために</string>
   <!-- Encryption and credential -->
   <string name="custom_encryption_and_credential_settings_summary_on">Dispositivo criptografado</string>
   <string name="custom_encryption_and_credential_settings_summary_off">Dispositivo descriptografado</string>
@@ -96,7 +96,7 @@
   <string name="sim_enabler_need_disable_sim">O cartão SIM será desativado. Deseja continuar?</string>
   <string name="sim_enabler_will_disable_sim_title">Atenção</string>
   <string name="sim_enabler_need_switch_data_service">Este SIM será desativado e o SIM <xliff:g id="slotid">%1$s</xliff:g> será usado para serviços de dados. Deseja continar?</string>
-  <string name="sim_enabler_airplane_on">Não é possível executar a operação enquanto o modo avião estiver ativado.</string>
+  <string name="sim_enabler_airplane_on">Não é possível realizar a operação enquanto o modo avião estiver ativado.</string>
   <string name="sim_enabler_in_call">Não é possível executar a operação durante a chamada.</string>
   <string name="sim_enabler_both_inactive">Não é possível desativar todos os cartões SIM</string>
   <string name="sim_enabler_enabling">Ativando\u2026</string>
@@ -107,14 +107,14 @@
   <string name="sub_deactivate_failed">Desativação falhou.</string>
   <!-- Button Settings -->
   <string name="button_settings_title">Botões</string>
-  <string name="button_settings_title_summary">Executar ações personalizadas</string>
+  <string name="button_settings_title_summary">Executar ações de personalizadas</string>
   <string name="button_settings_description">Defina ações personalizadas para os botões presentes no seu dispositivo.</string>
   <!-- Navigation bar -->
   <string name="navigation_bar_title">Barra de navegação</string>
   <string name="navigation_bar_title_summary">Ativar botões de navegação na tela</string>
   <!-- Navigation bar Animation-->
-  <string name="navigation_bar_animation_title">Mostrar animação</string>
-  <string name="navigation_bar_animation_summary">Quando pressionado, anime o botão de início na barra de navegação</string>
+  <string name="navigation_bar_animation_title">アニメーションを表示する</string>
+  <string name="navigation_bar_animation_summary">押された時ナビゲーションバーのホームボタンをアニメーションさせる</string>
   <!-- Swap navigation keys -->
   <string name="swap_navigation_keys_title">Inverter botões</string>
   <string name="swap_navigation_keys_title_summary">Inverter botão voltar e recentes</string>
@@ -130,9 +130,9 @@
   <string name="camera_key_title">Botão Câmera</string>
   <string name="volume_key_title">Botão Volume</string>
   <!-- Buttons: Actions -->
-  <string name="short_press_title">Ação de toque único</string>
+  <string name="short_press_title">Ação de toque simples</string>
   <string name="long_press_title">Ação de toque longo</string>
-  <string name="double_tap_title">Ação toque duplo</string>
+  <string name="double_tap_title">Ação de toque duplo</string>
   <string name="action_nothing">Sem ação</string>
   <string name="action_menu">Abrir/fechar menu</string>
   <string name="action_app_switch">Recentes</string>
@@ -144,7 +144,7 @@
   <string name="action_splitscreen">Tela dividida</string>
   <!-- Volume rocker music control -->
   <string name="volume_button_music_control_title">Controlar reprodução</string>
-  <string name="volume_button_music_control_summary">Quando a tela estiver desligada, pressione e segure as teclas de volume para pular faixas de música</string>
+  <string name="volume_button_music_control_summary">Quando a tela estiver desligada, pressione longamente as teclas de volume para pular faixas de música</string>
   <!-- Volume key rotation -->
   <string name="swap_volume_buttons_title">Inverter botões</string>
   <string name="swap_volume_buttons_summary">Ao girar a tela</string>
@@ -152,17 +152,17 @@
   <string name="volume_rocker_wake_title">Acordar o dispositivo</string>
   <string name="volume_rocker_wake_summary">Ao pressionar um dos botões de volume</string>
   <!-- Alert Slider -->
-  <string name="swap_slider_order_title">Inverter controle deslizante</string>
-  <string name="swap_slider_order_summary">Troque a ordem dos modos de alerta do controle deslizante</string>
+  <string name="swap_slider_order_title">スライダー方向を入れ替える</string>
+  <string name="swap_slider_order_summary">アラートスライダーモードの順序を入れ替える</string>
   <!-- Gesture Settings -->
   <string name="gesture_settings_title">Gestos</string>
-  <string name="gesture_settings_title_summary">Usar gestos do sistema e do dispositivo</string>
+  <string name="gesture_settings_title_summary">Use gestos do sistema e do dispositivo</string>
   <string name="gesture_settings_summary">Gestos aparecem de acordo com o suporte do dispositivo</string>
   <!-- Fingerprint Gestures -->
-  <string name="fingerprint_gestures_title">Gestos no sensor biométrico</string>
+  <string name="fingerprint_gestures_title">Gestos de impressão digital</string>
   <string name="keywords_gestures">tela toque desenho delize dedo</string>
   <!-- Fingerprint Gestures: Options -->
-  <string name="gestures_single_tap">Toque único</string>
+  <string name="gestures_single_tap">Toque simples</string>
   <string name="gestures_double_tap">Toque duplo</string>
   <string name="gestures_longpress">Pressão longa</string>
   <string name="gestures_swipe_up">Deslizar para cima</string>
@@ -173,7 +173,7 @@
   <string name="gestures_disabled">Desativado</string>
   <string name="gestures_toggle_flashlight">Lanterna rápida</string>
   <string name="gestures_toggle_airplane_mode">Modo avião</string>
-  <string name="gestures_play_pause_music">Reproduzir/Pausar música</string>
+  <string name="gestures_play_pause_music">Tocar/Pausar música</string>
   <string name="gestures_next_music">Próxima música</string>
   <string name="gestures_previous_music">Música anterior</string>
   <string name="gestures_screenshot">Captura de tela</string>
@@ -183,23 +183,23 @@
   <string name="gestures_appswitch">Recentes</string>
   <string name="gestures_wake_device">Acordar dispositivo</string>
   <!-- Off-screen Gestures -->
-  <string name="offscreen_gestures_title">Gestos de tela desligada</string>
+  <string name="offscreen_gestures_title">画面オフ時のジェスチャー</string>
   <!-- Off-screen Gestures: Options -->
-  <string name="gestures_draw_v">Desenhar V</string>
-  <string name="gestures_draw_inverse_v">Desenhar V Inverso</string>
-  <string name="gestures_draw_o">Desenhar O</string>
-  <string name="gestures_draw_m">Desenhar M</string>
-  <string name="gestures_draw_w">Desenhar W</string>
-  <string name="gestures_draw_arrow_left">Desenhar &lt;</string>
-  <string name="gestures_draw_arrow_right">Desenhar &gt;</string>
-  <string name="gestures_one_finger_swipe_up">Delizar um dedo para cima</string>
-  <string name="gestures_one_finger_swipe_right">Deslizar um dedo para a direita</string>
-  <string name="gestures_one_finger_swipe_down">Deslizar um dedo para baixo</string>
-  <string name="gestures_one_finger_swipe_left">Deslizar um dedo para a esquerda</string>
-  <string name="gestures_two_finger_swipe">Delizar dois dedos</string>
+  <string name="gestures_draw_v">Vを描く</string>
+  <string name="gestures_draw_inverse_v">Vの逆を描く</string>
+  <string name="gestures_draw_o">Oを描く</string>
+  <string name="gestures_draw_m">Mを描く</string>
+  <string name="gestures_draw_w">Wを描く</string>
+  <string name="gestures_draw_arrow_left">&lt;を描く</string>
+  <string name="gestures_draw_arrow_right">&gt;を描く</string>
+  <string name="gestures_one_finger_swipe_up">1本指で上にスワイプ</string>
+  <string name="gestures_one_finger_swipe_right">1本指で右にスワイプ</string>
+  <string name="gestures_one_finger_swipe_down">1本指で下にスワイプ</string>
+  <string name="gestures_one_finger_swipe_left">1本指で左にスワイプ</string>
+  <string name="gestures_two_finger_swipe">2本指でスワイプ</string>
   <!-- Off-screen Gestures: Triggers -->
   <string name="gestures_open_camera">Abrir câmera</string>
-  <string name="gestures_open_dialer">Abrir discador</string>
+  <string name="gestures_open_dialer">電話アプリを起動</string>
   <!-- Quick torch -->
   <string name="quick_torch_title">Lanterna rápida</string>
   <string name="quick_torch_disabled">Desativado</string>
@@ -212,8 +212,8 @@
   <string name="swipe_to_screenshot_title">Deslize para captura de tela</string>
   <string name="swipe_to_screenshot_summary">Deslize três dedos para tirar uma captura de tela</string>
   <!-- Tap to sleep -->
-  <string name="tap_to_sleep_title">Tocar para dormir</string>
-  <string name="tap_to_sleep_summary">Toque duas vezes na barra de status para bloquear e desligar a tela</string>
+  <string name="tap_to_sleep_title">タップでスリープ</string>
+  <string name="tap_to_sleep_summary">ステータスバーをダブルタップして端末をスリープさせる</string>
   <!-- Navigation bar theme -->
   <string name="navbar_theme_title">Tema</string>
   <string name="navbar_theme_default">Padrão</string>
@@ -229,114 +229,114 @@
   <string name="link_volume_title">Unir volume</string>
   <string name="link_volume_summary">Unir o volume do toque e notificações</string>
   <!-- Message shown in fingerprint enrollment dialog to locate the front/bottom sensor -->
-  <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">Está\u2019s na parte inferior do seu telefone.</string>
+  <string name="security_settings_fingerprint_enroll_find_bottom_sensor_message">端末の下部にあります</string>
   <!-- Ambient display -->
   <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
-  <string name="ambient_display_hand_wave_title" product="default">Acenar para o smartphone para verificá-lo</string>
-  <string name="ambient_display_hand_wave_summary" product="default">Para verificar a hora, ícones de notificação e outras informações, acene para o smartphone.</string>
+  <string name="ambient_display_hand_wave_title" product="default">振って確認</string>
+  <string name="ambient_display_hand_wave_summary" product="default">振って時刻・通知アイコン・その他の情報を確認する</string>
   <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
-  <string name="ambient_display_hand_wave_title" product="tablet">Acenar para o tablet para verificá-lo</string>
-  <string name="ambient_display_hand_wave_summary" product="tablet">Para verificar a hora, ícones de notificação e outras informações, acene para o tablet.</string>
+  <string name="ambient_display_hand_wave_title" product="tablet">振って確認</string>
+  <string name="ambient_display_hand_wave_summary" product="tablet">振って時刻・通知アイコン・その他の情報を確認する</string>
   <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
-  <string name="ambient_display_hand_wave_title" product="device">Acenar para o dispositivo para verificá-lo</string>
-  <string name="ambient_display_hand_wave_summary" product="device">Para verificar a hora, ícones de notificação e outras informações, acene para o dispositivo.</string>
+  <string name="ambient_display_hand_wave_title" product="device">振って確認</string>
+  <string name="ambient_display_hand_wave_summary" product="device">振って時刻・通知アイコン・その他の情報を確認する</string>
   <!-- Battery Light -->
-  <string name="battery_light_title">Luz de bateria</string>
-  <string name="battery_light_summary">Ativar / Desativar o indicador de luz da bateria e mudar a cor</string>
+  <string name="battery_light_title">バッテリーライト</string>
+  <string name="battery_light_summary">バッテリーライト表示のオン/オフと色の変更</string>
   <!-- Battery Light: Pulse Light when low -->
-  <string name="battery_low_pulse_title">Pulsar luz</string>
-  <string name="battery_low_pulse_summary">Quando a bateria está fraca</string>
+  <string name="battery_low_pulse_title">ライトを点滅</string>
+  <string name="battery_low_pulse_summary">バッテリー残量が低い時</string>
   <!-- Battery Light: Pulse Light when fully charged -->
-  <string name="battery_light_only_full_charge_title">Apenas acender</string>
-  <string name="battery_light_only_full_charge_summary">Quando o dispositivo está totalmente carregado</string>
+  <string name="battery_light_only_full_charge_title">点灯のみ</string>
+  <string name="battery_light_only_full_charge_summary">デバイスが完全に充電された時</string>
   <!-- Battery Light: Preference/Dialog -->
-  <string name="battery_light_list_title">Cores</string>
-  <string name="battery_light_low_color_title">Bateria fraca</string>
-  <string name="battery_light_medium_color_title">Carregando</string>
-  <string name="battery_light_full_color_title">Carregado</string>
-  <string name="fast_color_cat_title">Carregamento rápido</string>
-  <string name="fast_charging_led_enabled_title">Ativar cor de carregamento rápido</string>
-  <string name="fast_charging_led_enabled_summary">Quando em carregamento rápido, usar cor diferente até 90%</string>
-  <string name="fast_charging_light_color_title">Cor</string>
-  <string name="edit_battery_settings">Editar configurações da bateria</string>
+  <string name="battery_light_list_title">色</string>
+  <string name="battery_light_low_color_title">バッテリー残量低下</string>
+  <string name="battery_light_medium_color_title">充電中</string>
+  <string name="battery_light_full_color_title">充電完了</string>
+  <string name="fast_color_cat_title">急速充電中</string>
+  <string name="fast_charging_led_enabled_title">急速充電カラーを有効化</string>
+  <string name="fast_charging_led_enabled_summary">急速充電の場合は90％充電されるまで異なる色を使用する</string>
+  <string name="fast_charging_light_color_title">色</string>
+  <string name="edit_battery_settings">バッテリー設定を変更する</string>
   <string name="led_color_green">Verde</string>
   <string name="led_color_red">Vermelho</string>
   <string name="led_color_blue">Azul</string>
   <!-- Night Light: On/Off Summary -->
-  <string name="night_display_on">Ativado / Nunca será desativado automaticamente</string>
-  <string name="night_display_off">Desativado / Nunca será ativado automaticamente</string>
-  <string name="night_display_summary">Colore sua tela em tom âmbar para ajudá-lo a adormecer</string>
+  <string name="night_display_on">オン / 自動的にオフになりません</string>
+  <string name="night_display_off">オフ / 自動的にオンになりません</string>
+  <string name="night_display_summary">あなたの睡眠を助けるために画面を薄暗くします</string>
   <!-- Night Light: Modes -->
-  <string name="night_display_mode_high">Alto</string>
-  <string name="night_display_mode_mid">Médio</string>
-  <string name="night_display_mode_low">Baixo</string>
-  <string name="night_display_mode_custom">Personalizado</string>
+  <string name="night_display_mode_high">高</string>
+  <string name="night_display_mode_mid">通常</string>
+  <string name="night_display_mode_low">低</string>
+  <string name="night_display_mode_custom">カスタム</string>
   <!-- Night Light: Time -->
-  <string name="night_display_category_time">Hora</string>
+  <string name="night_display_category_time">時刻</string>
   <!-- Ambient Play -->
-  <string name="ambient_recognition_title">Música Ambiente</string>
-  <string name="ambient_recognition_summary">Seja notificado com informações da música que está tocando ao seu redor. Aumenta o uso da bateria e dados.</string>
-  <string name="ambient_recognition_lockscreen_title">Mostrar informação da música</string>
-  <string name="ambient_recognition_lockscreen_summary">Na tela de bloqueio</string>
+  <string name="ambient_recognition_title">Ambient Play</string>
+  <string name="ambient_recognition_summary">あなたの周りで流れている音楽を知らせてください。 バッテリーとデータの使用量が増加します。</string>
+  <string name="ambient_recognition_lockscreen_title">アンビエントインジケーターを表示</string>
+  <string name="ambient_recognition_lockscreen_summary">ロック画面に</string>
   <!-- Network Indication -->
-  <string name="network_indication_title">Indicador de tráfego</string>
-  <string name="network_indication_summary">Exibe os indicadores de rede na barra de status, enfatizando o tráfego</string>
+  <string name="network_indication_title">ネットワークインジケーター</string>
+  <string name="network_indication_summary">ステータスバーにネットワークインジケーターを表示しトラフィックを強調する</string>
   <!-- Developer Settings: Allow untrusted overlays -->
-  <string name="allow_untrusted_overlays_title">Permitir temas não confiáveis</string>
-  <string name="allow_untrusted_overlays_summary">Permitir a instalação de temas de terceiros por meio do gerenciadores de cores</string>
+  <string name="allow_untrusted_overlays_title">信頼されていないオーバーレイを許可する</string>
+  <string name="allow_untrusted_overlays_summary">テーママネージャーを介してサードパーティのオーバーレイをインストールできるようにする</string>
   <!-- Screenshot Mode -->
-  <string name="screen_shot_mode_title">Modo de captura de tela</string>
-  <string name="screen_shot_mode_fullscreen">Tela cheia</string>
-  <string name="screen_shot_mode_partial">Parcial</string>
+  <string name="screen_shot_mode_title">スクリーンショットモード</string>
+  <string name="screen_shot_mode_fullscreen">全画面</string>
+  <string name="screen_shot_mode_partial">範囲指定</string>
   <!-- Battery Styles -->
-  <string name="battery_style_title">Estilo do ícone da bateria</string>
+  <string name="battery_style_title">バッテリースタイル</string>
   <!-- Battery styles: Icons -->
-  <string name="battery_style_portrait">Vertical</string>
-  <string name="battery_style_landscape">Horizontal</string>
-  <string name="battery_style_circle">Círculo</string>
-  <string name="battery_style_text">Texto</string>
-  <string name="battery_style_hidden">Oculto</string>
+  <string name="battery_style_portrait">縦向き</string>
+  <string name="battery_style_landscape">横向き</string>
+  <string name="battery_style_circle">円</string>
+  <string name="battery_style_text">テキスト</string>
+  <string name="battery_style_hidden">非表示</string>
   <!-- Battery styles: Precentage -->
-  <string name="battery_percentage_title">Porcentagem da Bateria</string>
-  <string name="battery_percentage_dont_show">Não mostrar</string>
-  <string name="battery_percentage_beside">Mostrar ao lado do ícone</string>
-  <string name="battery_percentage_inside">Mostrar dentro do ícone</string>
+  <string name="battery_percentage_title">電池のパーセント表示</string>
+  <string name="battery_percentage_dont_show">表示しない</string>
+  <string name="battery_percentage_beside">バッテリーアイコンのそばに表示</string>
+  <string name="battery_percentage_inside">バッテリーアイコンの中に表示</string>
   <!-- Statusbar Clock options -->
-  <string name="advanced_date_time_title">Avançado</string>
-  <string name="advanced_date_time_summary">Mais opções para os indicadores de Data e Hora</string>
-  <string name="status_bar_show_clock_title">Mostrar relógio</string>
-  <string name="status_bar_show_clock_summary">Na barra de status</string>
-  <string name="clock_title_enable">Local</string>
-  <string name="right_clock">Direita</string>
-  <string name="center_clock">Centro</string>
-  <string name="left_clock">Esquerda</string>
-  <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
-  <string name="status_bar_clock_seconds_summary">Ao lado do relógio</string>
-  <string name="status_bar_am_pm_title">AM/PM</string>
-  <string name="status_bar_am_pm_info">O relógio de 24 horas está ativado</string>
-  <string name="am_pm_clock_normal">Normal</string>
-  <string name="am_pm_clock_small">Pequeno</string>
+  <string name="advanced_date_time_title">高度な設定</string>
+  <string name="advanced_date_time_summary">システム時計と日付表示のその他のオプション</string>
+  <string name="status_bar_show_clock_title">時計を表示</string>
+  <string name="status_bar_show_clock_summary">ステータスバーの中</string>
+  <string name="clock_title_enable">位置</string>
+  <string name="right_clock">右</string>
+  <string name="center_clock">中央</string>
+  <string name="left_clock">左</string>
+  <string name="status_bar_clock_seconds_title">秒を表示</string>
+  <string name="status_bar_clock_seconds_summary">時計アイコンの横</string>
+  <string name="status_bar_am_pm_title">午前/午後</string>
+  <string name="status_bar_am_pm_info">24時間表示が有効です</string>
+  <string name="am_pm_clock_normal">標準</string>
+  <string name="am_pm_clock_small">小</string>
   <string name="am_pm_clock_none">Desativado</string>
-  <string name="date_category_title">Data</string>
-  <string name="clock_date_display">Mostrar data</string>
-  <string name="clock_date_display_summary">Ao lado do relógio</string>
-  <string name="clock_date_style">Estilo</string>
-  <string name="clock_date_format">Formato</string>
-  <string name="clock_date_string_edittext_title">Exibir no formato: MM/dd/aa</string>
-  <string name="clock_date_string_edittext_summary">Inserir texto</string>
+  <string name="date_category_title">日付</string>
+  <string name="clock_date_display">日付を表示する</string>
+  <string name="clock_date_display_summary">時計アイコンの横</string>
+  <string name="clock_date_style">スタイル</string>
+  <string name="clock_date_format">形式</string>
+  <string name="clock_date_string_edittext_title">MM/dd/yyの形式でなければなりません</string>
+  <string name="clock_date_string_edittext_summary">文字列を入力</string>
   <string name="clock_date_display_none">Desativado</string>
-  <string name="clock_date_display_small">Pequeno</string>
-  <string name="clock_date_display_normal">Normal</string>
-  <string name="clock_date_style_normal">Normal</string>
-  <string name="clock_date_style_lowercase">Minúscula</string>
-  <string name="clock_date_style_uppercase">Maiúscula</string>
-  <string name="clock_date_format_custom">Formato personalizado</string>
-  <string name="menu_cancel">Cancelar</string>
-  <string name="menu_save">Salvar</string>
+  <string name="clock_date_display_small">小</string>
+  <string name="clock_date_display_normal">標準</string>
+  <string name="clock_date_style_normal">標準</string>
+  <string name="clock_date_style_lowercase">小文字</string>
+  <string name="clock_date_style_uppercase">大文字</string>
+  <string name="clock_date_format_custom">カスタムフォーマット</string>
+  <string name="menu_cancel">キャンセル</string>
+  <string name="menu_save">保存</string>
   <!-- ManageApps: Search -->
-  <string name="menu_search">Pesquisar aplicativos</string>
-  <string name="menu_search_hint">Pesquisar aplicativos\u2026</string>
+  <string name="menu_search">アプリを検索</string>
+  <string name="menu_search_hint">アプリを検索中\u2026</string>
   <!-- ManageApps: Filter apps -->
-  <string name="menu_filter_apps">Filtrar aplicativos</string>
-  <string name="menu_show_system_apps">Sistema</string>
+  <string name="menu_filter_apps">アプリをフィルターする</string>
+  <string name="menu_show_system_apps">システム</string>
 </resources>
