@@ -1002,6 +1002,7 @@
 
     <!-- Array of titles for sim color for multi-sim -->
     <string-array name="color_picker">
+        <item>System accent</item>
         <item>Teal</item>
         <item>Blue</item>
         <item>Indigo</item>

@@ -91,8 +91,8 @@
     <!-- Local (desktop) backup password menu title [CHAR LIMIT=25] -->
     <string name="local_backup_password_title">Desktop backup password</string>
 
-    <!-- Pixel color on sim card -->
-    <string name="default_sim_color">Pixel</string>
+    <!-- Default color on sim card -->
+    <string name="default_sim_color">System accent</string>
 
     <!-- MSIM Manual provisioning -->
     <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> is <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
