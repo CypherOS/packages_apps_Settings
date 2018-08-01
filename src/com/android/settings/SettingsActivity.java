@@ -737,6 +737,25 @@ public class SettingsActivity extends SettingsDrawerActivity
         return f;
     }
 
+	/**
+     * Switch to a specific Fragment with taking care of validation, Title and BackStack
+	 * while maintaining any defined instance.
+     */
+    public Fragment startFragWithInstance(Fragment fragment, boolean addToBackStack, String title) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_content, fragment);
+        TransitionManager.beginDelayedTransition(mContent);
+        if (addToBackStack) {
+            transaction.addToBackStack(SettingsActivity.BACK_STACK_PREFS);
+        }
+        if (title != null) {
+            transaction.setBreadCrumbTitle(title);
+        }
+        transaction.commitAllowingStateLoss();
+        getFragmentManager().executePendingTransactions();
+        return fragment;
+    }
+
     private void updateTilesList() {
         // Generally the items that are will be changing from these updates will
         // not be in the top list of tiles, so run it in the background and the
