@@ -24,6 +24,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v13.app.FragmentPagerAdapter;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +33,9 @@ import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.core.InstrumentedFragment;
+import com.android.settings.sim.SimSettings;
 import com.android.settings.widget.RtlCompatibleViewPager;
 import com.android.settings.widget.SlidingTabLayout;
 import com.android.settingslib.aoscp.FooterConfirm;
@@ -51,6 +55,7 @@ public final class ColorManagerFragment extends InstrumentedFragment {
     private ColorManagerPagerAdapter mPagerAdapter;
 
     private static Context mContext;
+	private static SubscriptionInfo mSubInfoRecord;
 
     @Override
     public int getMetricsCategory() {
@@ -62,6 +67,11 @@ public final class ColorManagerFragment extends InstrumentedFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         mContext = getContext();
+
+		final Bundle extras = getIntent().getExtras();
+        int simSlot = extras.getInt(SimSettings.EXTRA_SLOT_ID, -1);
+		final SubscriptionManager subMgr = SubscriptionManager.from(getContext());
+        mSubInfoRecord = subMgr.getActiveSubscriptionInfoForSimSlotIndex(simSlot);
     }
 
     @Override
@@ -107,8 +117,9 @@ public final class ColorManagerFragment extends InstrumentedFragment {
             .setActionListener(new onActionClickListener() {
                 @Override
                 public void onActionClicked(FooterConfirm footerConfirm) {
-                      Settings.Secure.putInt(mContext.getContentResolver(), 
-                              Settings.Secure.DEVICE_ACCENT, value);
+                    Settings.Secure.putInt(mContext.getContentResolver(), 
+                            Settings.Secure.DEVICE_ACCENT, value);
+					mSubInfoRecord.setIconTint(Utils.getColorAccent(getContext()));
                 }
             }));
     }
