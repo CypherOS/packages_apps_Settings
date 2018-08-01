@@ -2827,6 +2827,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+		<!-- Moved to SimManagement
         <activity android:name="Settings$SimSettingsActivity"
                 android:label="@string/sim_settings_title"
                 android:icon="@drawable/ic_settings_sim"
@@ -2846,7 +2847,7 @@
                 android:value="com.android.settings.category.ia.wireless" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.sim.SimSettings" />
-        </activity>
+        </activity>-->
 
         <activity android:name=".sim.SimPreferenceDialog"
             android:excludeFromRecents="true">
