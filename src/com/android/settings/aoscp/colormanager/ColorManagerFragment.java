@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
+import com.android.settingslib.aoscp.sim.SimManagementTool;
 import com.android.settings.core.InstrumentedFragment;
 import com.android.settings.widget.RtlCompatibleViewPager;
 import com.android.settings.widget.SlidingTabLayout;
@@ -107,8 +108,9 @@ public final class ColorManagerFragment extends InstrumentedFragment {
             .setActionListener(new onActionClickListener() {
                 @Override
                 public void onActionClicked(FooterConfirm footerConfirm) {
-                      Settings.Secure.putInt(mContext.getContentResolver(), 
-                              Settings.Secure.DEVICE_ACCENT, value);
+                    Settings.Secure.putInt(mContext.getContentResolver(), 
+                            Settings.Secure.DEVICE_ACCENT, value);
+					SimManagementTool.updateSubscriptionColor();		
                 }
             }));
     }
