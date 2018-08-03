@@ -32,11 +32,17 @@ public class ClockStylePreferenceController extends AbstractPreferenceController
 
     private static final String TAG = "ClockStylePref";
     private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock_style";
+	
+	private boolean mHasNotch;
+	private int mClockStyleDefault;
   
     private ListPreference mClockStyle;
 
     public ClockStylePreferenceController(Context context) {
         super(context);
+		final Resources res = context.getResources();
+		mHasNotch = res.getBoolean(com.android.internal.R.bool.config_deviceHasNotchDisplay);
+		mClockStyleDefault = res.getInteger(com.android.internal.R.integer.config_defaultClockPosition);
     }
 
     @Override
@@ -55,7 +61,7 @@ public class ClockStylePreferenceController extends AbstractPreferenceController
         final Resources res = mContext.getResources();
         if (mClockStyle != null) {
             int clockStyleKey = Settings.System.getIntForUser(mContext.getContentResolver(),
-                    Settings.System.STATUSBAR_CLOCK_STYLE, 0,
+                    Settings.System.STATUSBAR_CLOCK_STYLE, mClockStyleDefault,
                     UserHandle.USER_CURRENT);
             String styleKey = String.valueOf(clockStyleKey);
             mClockStyle.setValue(styleKey);
@@ -78,9 +84,15 @@ public class ClockStylePreferenceController extends AbstractPreferenceController
 
     private void updateClockStyleSummary(Preference mClockStyle, String styleKey) {
         if (styleKey != null) {
-            String[] values = mContext.getResources().getStringArray(R.array
-                    .clock_style_values);
-            final int summaryArrayResId = R.array.clock_style_entries;
+			if (mHasNotch) {
+				String[] values = mContext.getResources().getStringArray(R.array
+                        .clock_style_values_notch);
+				final int summaryArrayResId = R.array.clock_style_entries_notch;
+			} else {
+				String[] values = mContext.getResources().getStringArray(R.array
+                        .clock_style_values);
+				final int summaryArrayResId = R.array.clock_style_entries;
+			}
             String[] summaries = mContext.getResources().getStringArray(summaryArrayResId);
             for (int i = 0; i < values.length; i++) {
                 if (styleKey.equals(values[i])) {
