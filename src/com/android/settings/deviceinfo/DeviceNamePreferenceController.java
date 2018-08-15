@@ -26,9 +26,11 @@ import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.SpannedString;
+import android.text.TextUtils;
 
 import com.android.internal.annotations.VisibleForTesting;
 
+import com.android.settings.R;
 import com.android.settings.bluetooth.BluetoothLengthDeviceNameFilter;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.widget.ValidatedEditTextPreference;
@@ -50,6 +52,7 @@ public class DeviceNamePreferenceController extends BasePreferenceController
     public static final int DEVICE_NAME_SET_WARNING_ID = 1;
     private static final String KEY_PENDING_DEVICE_NAME = "key_pending_device_name";
     private String mDeviceName;
+	private String mDeviceNameDefault;
     protected WifiManager mWifiManager;
     private final WifiDeviceNameTextValidator mWifiDeviceNameTextValidator;
     private ValidatedEditTextPreference mPreference;
@@ -63,6 +66,7 @@ public class DeviceNamePreferenceController extends BasePreferenceController
 
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         mWifiDeviceNameTextValidator = new WifiDeviceNameTextValidator();
+		mDeviceNameDefault = context.getResources().getString(R.string.device_name_configure_default);
 
         initializeDeviceName();
     }
@@ -81,7 +85,11 @@ public class DeviceNamePreferenceController extends BasePreferenceController
         mDeviceName = Settings.Global.getString(mContext.getContentResolver(),
                 Settings.Global.DEVICE_NAME);
         if (mDeviceName == null) {
-            mDeviceName = Build.MODEL;
+			if (TextUtils.isEmpty(mDeviceNameDefault)) {
+				mDeviceName = Build.MODEL;
+			} else {
+				mDeviceName = mDeviceNameDefault;
+			}
         }
     }
 
