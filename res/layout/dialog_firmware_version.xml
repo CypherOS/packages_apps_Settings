@@ -51,6 +51,18 @@
             android:background="?android:attr/selectableItemBackground"
             android:textColor="?android:attr/colorAccent"/>
 
+		<TextView
+            style="@style/device_info_dialog_label"
+            android:id="@+id/aoscp_firmware_version_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aoscp_firmware_version"/>
+        <TextView
+            style="@style/device_info_dialog_value"
+            android:id="@+id/aoscp_firmware_version_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <TextView
             style="@style/device_info_dialog_label"
             android:id="@+id/baseband_version_label"
