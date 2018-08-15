@@ -49,7 +49,7 @@ public class DeviceNamePreferenceController extends BasePreferenceController
     private static final String PREF_KEY = "device_name";
     public static final int DEVICE_NAME_SET_WARNING_ID = 1;
     private static final String KEY_PENDING_DEVICE_NAME = "key_pending_device_name";
-    private String mDeviceName;
+    private static String mDeviceName;
     protected WifiManager mWifiManager;
     private final WifiDeviceNameTextValidator mWifiDeviceNameTextValidator;
     private ValidatedEditTextPreference mPreference;
@@ -83,6 +83,10 @@ public class DeviceNamePreferenceController extends BasePreferenceController
         if (mDeviceName == null) {
             mDeviceName = Build.MODEL;
         }
+    }
+
+	public static CharSequence getDeviceName() {
+        return mDeviceName;
     }
 
     @Override
