@@ -190,7 +190,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel());
+                mSummaryLoader.setSummary(this, DeviceNamePreferenceController.getDeviceName());
             }
         }
     }
