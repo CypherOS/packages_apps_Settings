@@ -108,7 +108,7 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
             }
             return patchOverride;
         } else {
-            return null;
+            return mCurrentPatch;
         }
     }
 }
