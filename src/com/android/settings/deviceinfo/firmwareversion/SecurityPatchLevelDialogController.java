@@ -50,7 +50,7 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
     private final FirmwareVersionDialogFragment mDialog;
     private final Context mContext;
     private final PackageManagerWrapper mPackageManager;
-    private final String mCurrentPatch;
+    private static final String mCurrentPatch;
     private final String mCurrentPatchOverride;
 
     public SecurityPatchLevelDialogController(FirmwareVersionDialogFragment dialog) {
@@ -108,7 +108,7 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
             }
             return patchOverride;
         } else {
-            return null;
+            return mCurrentPatch;
         }
     }
 }
