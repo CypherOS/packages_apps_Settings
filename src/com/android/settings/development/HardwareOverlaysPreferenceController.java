@@ -21,12 +21,16 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.SystemProperties;
 import android.support.annotation.VisibleForTesting;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.text.TextUtils;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
+
+import java.lang.Integer;
 
 public class HardwareOverlaysPreferenceController extends DeveloperOptionsPreferenceController
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
@@ -42,6 +46,8 @@ public class HardwareOverlaysPreferenceController extends DeveloperOptionsPrefer
 
     private static final int SURFACE_FLINGER_DISABLE_OVERLAYS_CODE = 1008;
     private static final String SURFACE_COMPOSER_INTERFACE_KEY = "android.ui.ISurfaceComposer";
+
+	static final String DISABLE_HARDWARE_OVERLAYS_PROPERTY = "debug.sf.disable_hwcomposer";
 
     private final IBinder mSurfaceFlinger;
 
@@ -95,7 +101,8 @@ public class HardwareOverlaysPreferenceController extends DeveloperOptionsPrefer
             @SuppressWarnings("unused") final int showUpdates = reply.readInt();
             @SuppressWarnings("unused") final int showBackground = reply.readInt();
             final int disableOverlays = reply.readInt();
-            ((SwitchPreference) mPreference).setChecked(disableOverlays != SETTING_VALUE_OFF);
+			final boolean isEnabled = disableOverlays != SETTING_VALUE_OFF || isHwOverlaysPropDisabled();
+            ((SwitchPreference) mPreference).setChecked(isEnabled);
             reply.recycle();
             data.recycle();
         } catch (RemoteException ex) {
@@ -120,5 +127,11 @@ public class HardwareOverlaysPreferenceController extends DeveloperOptionsPrefer
             // intentional no-op
         }
         updateHardwareOverlaysSetting();
+    }
+
+	private boolean isHwOverlaysPropDisabled() {
+        final String prop = SystemProperties.get(DISABLE_HARDWARE_OVERLAYS_PROPERTY,
+                Integer.toString(SETTING_VALUE_ON));
+        return TextUtils.equals(Integer.toString(SETTING_VALUE_ON), prop);
     }
 }
