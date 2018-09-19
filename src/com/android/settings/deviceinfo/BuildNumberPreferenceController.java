@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v7.preference.Preference;
@@ -64,6 +65,8 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
     private boolean mDebuggingFeaturesDisallowedBySystem;
     private int mDevHitCountdown;
     private boolean mProcessingLastDevHit;
+	
+	private String mBuildNumberOverride;
 
     public BuildNumberPreferenceController(Context context, Activity activity, Fragment fragment,
             Lifecycle lifecycle) {
@@ -72,6 +75,7 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
         mFragment = fragment;
         mUm = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
+		mBuildNumberOverride = SystemProperties.get(Build.LUNA.BUILD_NUMBER_OVERRIDE, "");
         if (lifecycle != null) {
             lifecycle.addObserver(this);
         }
@@ -84,7 +88,7 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
         if (preference != null) {
             try {
                 preference.setSummary(BidiFormatter.getInstance().unicodeWrap(
-                        TextUtils.isEmpty(Build.LUNA.BUILD_NUMBER_OVERRIDE) ? Build.DISPLAY : Build.LUNA.BUILD_NUMBER_OVERRIDE));
+                        TextUtils.isEmpty(mBuildNumberOverride) ? Build.DISPLAY : mBuildNumberOverride));
                 preference.setEnabled(true);
             } catch (Exception e) {
                 preference.setSummary(R.string.device_info_default);

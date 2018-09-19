@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.SystemProperties;
 import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
@@ -96,7 +97,7 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
     }
 
     public static String getSecurityPatchOverride() {
-        String patchOverride = Build.LUNA.SECURITY_PATCH_OVERRIDE;
+        String patchOverride = SystemProperties.get(Build.LUNA.SECURITY_PATCH_OVERRIDE, "");
         if (!"".equals(patchOverride)) {
             try {
                 SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
