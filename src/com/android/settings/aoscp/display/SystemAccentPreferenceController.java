@@ -14,16 +14,15 @@
  * limitations under the License
  */
 
-package com.android.settings.display;
+package com.android.settings.aoscp.display;
 
-import static android.provider.Settings.Secure.THEME_MODE;
+import static android.provider.Settings.Secure.SYSTEM_ACCENT;
 
 import android.content.Context;
 import android.provider.Settings;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
-import android.util.FeatureFlagUtils;
 
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -33,43 +32,47 @@ import com.android.settingslib.core.AbstractPreferenceController;
  * Setting where user can pick if SystemUI will be light, dark or try to match
  * the wallpaper colors.
  */
-public class SystemUiThemePreferenceController extends BasePreferenceController
+public class SystemAccentPreferenceController extends BasePreferenceController
         implements Preference.OnPreferenceChangeListener {
 
-    private ListPreference mSystemUiThemePref;
+    private ListPreference mAccentPref;
+	private final String mKey;
 
-    public SystemUiThemePreferenceController(Context context, String preferenceKey) {
-        super(context, preferenceKey);
+    public SystemAccentPreferenceController(Context context, String key) {
+        super(context, key);
+		mKey = key;
     }
 
     @Override
     public int getAvailabilityStatus() {
-		boolean colorManagerAvailable = mContext.getResources().getBoolean(
-		        com.android.internal.R.bool.config_colorManagerAvailable);
-        boolean enabled = FeatureFlagUtils.isEnabled(mContext, "settings_systemui_theme");
-        return !colorManagerAvailable && enabled ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
+		return true;
+    }
+
+	@Override
+    public String getPreferenceKey() {
+        return mKey;
     }
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        mSystemUiThemePref = (ListPreference) screen.findPreference(getPreferenceKey());
-        int value = Settings.Secure.getInt(mContext.getContentResolver(), THEME_MODE, 0);
-        mSystemUiThemePref.setValue(Integer.toString(value));
+        mAccentPref = (ListPreference) screen.findPreference(getPreferenceKey());
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), SYSTEM_ACCENT, 0);
+        mAccentPref.setValue(Integer.toString(value));
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         int value = Integer.parseInt((String) newValue);
-        Settings.Secure.putInt(mContext.getContentResolver(), THEME_MODE, value);
+        Settings.Secure.putInt(mContext.getContentResolver(), SYSTEM_ACCENT, value);
         refreshSummary(preference);
         return true;
     }
 
     @Override
     public CharSequence getSummary() {
-        int value = Settings.Secure.getInt(mContext.getContentResolver(), THEME_MODE, 0);
-        int index = mSystemUiThemePref.findIndexOfValue(Integer.toString(value));
-        return mSystemUiThemePref.getEntries()[index];
+        int value = Settings.Secure.getInt(mContext.getContentResolver(), SYSTEM_ACCENT, 0);
+        int index = mAccentPref.findIndexOfValue(Integer.toString(value));
+        return mAccentPref.getEntries()[index];
     }
 }
