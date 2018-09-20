@@ -30,8 +30,6 @@ import android.text.TextUtils;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
-import java.lang.Integer;
-
 public class HardwareOverlaysPreferenceController extends DeveloperOptionsPreferenceController
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
 
@@ -130,8 +128,7 @@ public class HardwareOverlaysPreferenceController extends DeveloperOptionsPrefer
     }
 
     private boolean isHwOverlaysPropDisabled() {
-        final String prop = SystemProperties.get(DISABLE_HARDWARE_OVERLAYS_PROPERTY,
-                Integer.toString(SETTING_VALUE_ON));
-        return TextUtils.equals(Integer.toString(SETTING_VALUE_ON), prop);
+        final String prop = SystemProperties.get(DISABLE_HARDWARE_OVERLAYS_PROPERTY, "false");
+        return TextUtils.equals("true", prop);
     }
 }
