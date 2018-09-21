@@ -18,4 +18,36 @@
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="aoscp_firmware_version">CypherOS version</string>
 
+    <!-- Color Manager -->
+    <string name="color_manager_title">Color manager</string>
+    <string name="color_manager_summary">Change system theme with various color combinations</string>
+    <string name="color_manager_accent_title">Device accent</string>
+    <!-- Color Manager: Themes -->
+    <string name="theme_auto_title">Automatic</string>
+    <string name="theme_auto_summary">Based on wallpaper</string>
+    <string name="theme_light_title">Light</string>
+    <string name="theme_dark_title">Dark</string>
+    <string name="theme_black_title">Black</string>
+    <!-- Color Manager: Accents -->
+    <string name="system_accent_default">Default</string>
+    <string name="system_accent_blue">Blue</string>
+    <string name="system_accent_indigo">Indigo</string>
+    <string name="system_accent_oceanic">Oceanic</string>
+    <string name="system_accent_brightsky">Bright Sky</string>
+    <string name="system_accent_green">Green</string>
+    <string name="system_accent_limabean">Lima Bean</string>
+    <string name="system_accent_lime">Lime</string>
+    <string name="system_accent_teal">Teal</string>
+    <string name="system_accent_pink">Pink</string>
+    <string name="system_accent_playboy">Play Boy</string>
+    <string name="system_accent_purple">Purple</string>
+    <string name="system_accent_deepvalley">Deep Valley</string>
+    <string name="system_accent_red">Red</string>
+    <string name="system_accent_bloodymary">Bloody Mary</string>
+    <string name="system_accent_yellow">Yellow</string>
+    <string name="system_accent_sunflower">Sunflower</string>
+    <string name="system_accent_black">Black</string>
+    <string name="system_accent_grey">Grey</string>
+    <string name="system_accent_white">White</string>
+
 </resources>
