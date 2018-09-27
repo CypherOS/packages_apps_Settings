@@ -18,4 +18,8 @@
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="aoscp_firmware_version">CypherOS version</string>
 
+	<!-- Tap to sleep -->
+    <string name="tap_to_sleep_title">Tap to sleep</string>
+	<string name="tap_to_sleep_summary">Double tap on the statusbar or lockscreen to put the device to sleep</string>
+
 </resources>
