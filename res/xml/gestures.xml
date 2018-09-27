@@ -69,4 +69,9 @@
         android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
         settings:controller="com.android.settings.gestures.PreventRingingPreferenceController" />
 
+    <SwitchPreference
+        android:key="tap_to_sleep"
+        android:title="@string/tap_to_sleep_title"
+        android:summary="@string/tap_to_sleep_summary" />
+
 </PreferenceScreen>
