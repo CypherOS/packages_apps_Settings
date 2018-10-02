@@ -52,6 +52,8 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
     private final PackageManagerWrapper mPackageManager;
     private final String mCurrentPatch;
     private final String mCurrentPatchOverride;
+	
+	private boolean mVendorOverride;
 
     public SecurityPatchLevelDialogController(FirmwareVersionDialogFragment dialog) {
         mDialog = dialog;
@@ -59,6 +61,7 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
         mPackageManager = new PackageManagerWrapper(mContext.getPackageManager());
         mCurrentPatch = DeviceInfoUtils.getSecurityPatch();
         mCurrentPatchOverride = getSecurityPatchOverride();
+		mVendorOverride = mContext.getResources().getBoolean(R.bool.config_usesVendorPropertyOverrides);
     }
 
     @Override
@@ -86,8 +89,11 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
             return;
         }
         registerListeners();
-        mDialog.setText(SECURITY_PATCH_VALUE_ID,
-                TextUtils.isEmpty(mCurrentPatchOverride) ? mCurrentPatch : mCurrentPatchOverride);
+		if (mVendorOverride) {
+			mDialog.setText(SECURITY_PATCH_VALUE_ID, mCurrentPatchOverride);
+		} else {
+			mDialog.setText(SECURITY_PATCH_VALUE_ID, mCurrentPatch);
+		}
     }
 
     private void registerListeners() {
