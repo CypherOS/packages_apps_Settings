@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2018 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,12 +52,15 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
     private final String mCurrentPatch;
     private final String mCurrentPatchOverride;
 
+    private boolean mVendorOverride;
+
     public SecurityPatchLevelDialogController(FirmwareVersionDialogFragment dialog) {
         mDialog = dialog;
         mContext = dialog.getContext();
         mPackageManager = new PackageManagerWrapper(mContext.getPackageManager());
         mCurrentPatch = DeviceInfoUtils.getSecurityPatch();
         mCurrentPatchOverride = getSecurityPatchOverride();
+        mVendorOverride = mContext.getResources().getBoolean(R.bool.config_usesVendorPropertyOverrides);
     }
 
     @Override
@@ -86,8 +88,11 @@ public class SecurityPatchLevelDialogController implements View.OnClickListener 
             return;
         }
         registerListeners();
-        mDialog.setText(SECURITY_PATCH_VALUE_ID,
-                TextUtils.isEmpty(mCurrentPatchOverride) ? mCurrentPatch : mCurrentPatchOverride);
+        if (mVendorOverride) {
+            mDialog.setText(SECURITY_PATCH_VALUE_ID, mCurrentPatchOverride);
+        } else {
+            mDialog.setText(SECURITY_PATCH_VALUE_ID, mCurrentPatch);
+        }
     }
 
     private void registerListeners() {
