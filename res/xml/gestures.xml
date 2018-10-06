@@ -74,4 +74,9 @@
         android:title="@string/tap_to_sleep_title"
         android:summary="@string/tap_to_sleep_summary" />
 
+	<SwitchPreference
+        android:key="quick_pulldown"
+        android:title="@string/quick_pulldown_title"
+        android:summary="@string/quick_pulldown_summary" />
+
 </PreferenceScreen>

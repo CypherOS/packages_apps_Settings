@@ -85,4 +85,8 @@
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
 
+	<!-- Quick Pulldown -->
+    <string name="quick_pulldown_title">Quick pulldown</string>
+    <string name="quick_pulldown_summary">Quickly reveal the quick settings when dragging from left/right side</string>
+
 </resources>

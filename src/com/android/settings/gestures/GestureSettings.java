@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.aoscp.gestures.QuickPulldownPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -48,6 +49,7 @@ public class GestureSettings extends DashboardFragment {
     private static final String KEY_PREVENT_RINGING = "gesture_prevent_ringing_summary";
     private static final String KEY_SWIPE_UP = "gesture_swipe_up_input_summary";
 
+	private static final String KEY_QUICK_PULLDOWN = "quick_pulldown";
     private static final String KEY_TAP_TO_SLEEP = "tap_to_sleep";
 
     private AmbientDisplayConfiguration mAmbientDisplayConfig;
@@ -79,6 +81,7 @@ public class GestureSettings extends DashboardFragment {
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         final Lifecycle lifecycle = getLifecycle();
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
+		controllers.add(new QuickPulldownPreferenceController(context, KEY_QUICK_PULLDOWN));
         controllers.add(new TapToSleepPreferenceController(context, KEY_TAP_TO_SLEEP));
         return controllers;
     }
@@ -113,6 +116,7 @@ public class GestureSettings extends DashboardFragment {
                     keys.add(KEY_PICK_UP);
                     keys.add(KEY_PREVENT_RINGING);
                     keys.add(KEY_TAP_TO_SLEEP);
+					keys.add(KEY_QUICK_PULLDOWN);
 
                     return keys;
                 }
