@@ -25,6 +25,10 @@ import android.content.pm.UserInfo;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -60,6 +64,10 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
     private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
     private static final String KEY_LEGAL_CONTAINER = "legal_container";
+	
+	private static final int MENU_MULTI_USER             = Menu.FIRST;
+	private static final int SUBMENU_MULTI_USER_ACCOUNT  = Menu.FIRST + 2;
+	private static final int SUBMENU_MULTI_USER_SETTINGS = Menu.FIRST + 3;
 
     @Override
     public int getMetricsCategory() {
@@ -167,6 +175,27 @@ public class MyDeviceInfoFragment extends DashboardFragment
     public void onSetDeviceNameConfirm() {
         final DeviceNamePreferenceController controller = use(DeviceNamePreferenceController.class);
         controller.confirmDeviceName();
+    }
+
+	@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		final Bundle bundle = getArguments();
+		final int iconId = bundle.getInt("icon_id", 0);
+		UserManager userManager = (UserManager) getActivity().getSystemService(
+                    Context.USER_SERVICE);
+        UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
+
+		if (iconId == 0) {
+			SubMenu multiUser = menu.addSubMenu(1, MENU_MULTI_USER, 1, R.string.multi_user_menu);
+			multiUser.add(1, SUBMENU_MULTI_USER_ACCOUNT, 1, info.name);
+			multiUser.add(1, SUBMENU_MULTI_USER_SETTINGS, 2, R.string.multi_user_settings);
+
+			MenuItem multiUserIcon = multiUser.getItem();
+			multiUserIcon.setIcon(com.android.settingslib.Utils.getSmallUserIcon(getActivity(), userManager, info))
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		}
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     private static class SummaryProvider implements SummaryLoader.SummaryProvider {

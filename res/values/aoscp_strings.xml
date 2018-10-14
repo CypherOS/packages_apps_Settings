@@ -85,4 +85,8 @@
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
 
+	<!-- Multi User v2 -->
+    <string name="multi_user_menu">Multiple users</string>
+	<string name="multi_user_settings">Multiple users</string>
+
 </resources>
