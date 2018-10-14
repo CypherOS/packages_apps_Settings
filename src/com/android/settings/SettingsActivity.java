@@ -677,11 +677,12 @@ public class SettingsActivity extends SettingsDrawerActivity
                 Utils.isBandwidthControlEnabled() && !isDataUsageSettingsV2Enabled, isAdmin)
                 || somethingChanged;
 
+		/*
         somethingChanged = setTileEnabled(changedList, new ComponentName(packageName,
                         Settings.UserSettingsActivity.class.getName()),
                 UserHandle.MU_ENABLED && UserManager.supportsMultipleUsers()
                         && !Utils.isMonkeyRunning(), isAdmin)
-                || somethingChanged;
+                || somethingChanged;*/
 
         somethingChanged = setTileEnabled(changedList, new ComponentName(packageName,
                         Settings.NetworkDashboardActivity.class.getName()),
