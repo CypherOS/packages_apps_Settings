@@ -64,9 +64,11 @@ public class MyDeviceInfoFragment extends DashboardFragment
         implements DeviceNamePreferenceController.DeviceNamePreferenceHost {
     private static final String LOG_TAG = "MyDeviceInfoFragment";
 
+	private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
     private static final String KEY_LEGAL_CONTAINER = "legal_container";
 
-    private static final int MENU_MULTI_USER             = Menu.FIRST;
+    private static final int MENU_MULTI_USER = Menu.FIRST;
+	private int mMultiUserVersion;
 
     @Override
     public int getMetricsCategory() {
@@ -81,6 +83,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onResume() {
         super.onResume();
+		initHeader();
     }
 
     @Override
@@ -92,6 +95,11 @@ public class MyDeviceInfoFragment extends DashboardFragment
     protected int getPreferenceScreenResId() {
         return R.xml.my_device_info;
     }
+
+	public void displayResourceTiles() {
+		super.displayResourceTiles();
+		mMultiUserVersion = UserManager.getMultiUserVersion();
+	}
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
@@ -138,6 +146,36 @@ public class MyDeviceInfoFragment extends DashboardFragment
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+	private void initHeader() {
+		if (mMultiUserVersion == UserManager.MULTI_USER_V1) {
+            // TODO: Migrate into its own controller.
+            final LayoutPreference headerPreference =
+                (LayoutPreference) getPreferenceScreen().findPreference(KEY_MY_DEVICE_INFO_HEADER);
+            final View appSnippet = headerPreference.findViewById(R.id.entity_header);
+            final Activity context = getActivity();
+            final Bundle bundle = getArguments();
+            EntityHeaderController controller = EntityHeaderController
+                    .newInstance(context, this, appSnippet)
+                    .setRecyclerView(getListView(), getLifecycle())
+                    .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
+                            EntityHeaderController.ActionType.ACTION_NONE);
+		
+            // TODO: There may be an avatar setting action we can use here.
+            final int iconId = bundle.getInt("icon_id", 0);
+            if (iconId == 0) {
+                UserManager userManager = (UserManager) getActivity().getSystemService(
+                        Context.USER_SERVICE);
+                UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
+                controller.setLabel(info.name);
+                controller.setIcon(
+                        com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
+            }
+            controller.done(context, true /* rebindActions */);
+		} else {
+			getPreferenceScreen().removePreference(KEY_MY_DEVICE_INFO_HEADER);
+		}
+    }
+
     @Override
     public void showDeviceNameWarningDialog(String deviceName) {
         DeviceNameWarningDialog.show(this);
@@ -150,33 +188,36 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        final Bundle bundle = getArguments();
-        final int iconId = bundle.getInt("icon_id", 0);
-        UserManager userManager = (UserManager) getActivity().getSystemService(
+		if (mMultiUserVersion == UserManager.MULTI_USER_V2) {
+            final Bundle bundle = getArguments();
+            final int iconId = bundle.getInt("icon_id", 0);
+            UserManager userManager = (UserManager) getActivity().getSystemService(
                     Context.USER_SERVICE);
-        UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
+            UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
 
-        if (iconId == 0) {
-            SubMenu multiUser = menu.addSubMenu(1, MENU_MULTI_USER, 1, info.name);
-            MenuItem multiUserIcon = multiUser.getItem();
-            multiUserIcon.setIcon(com.android.settingslib.Utils.getSmallUserIcon(
-                    getActivity(), userManager, info)).setShowAsAction(
-                    MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        }
-
+            if (iconId == 0) {
+                SubMenu multiUser = menu.addSubMenu(1, MENU_MULTI_USER, 1, info.name);
+                MenuItem multiUserIcon = multiUser.getItem();
+                multiUserIcon.setIcon(com.android.settingslib.Utils.getSmallUserIcon(
+                        getActivity(), userManager, info)).setShowAsAction(
+                        MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+            }
+		}
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case MENU_MULTI_USER:
-                new SubSettingLauncher(getContext())
-                        .setDestination(UserSettings.class.getName())
-                        .setSourceMetricsCategory(getMetricsCategory())
-                        .setTitle(R.string.user_settings_title)
-                        .launch();
+			if (mMultiUserVersion == UserManager.MULTI_USER_V2) {
+                case MENU_MULTI_USER:
+                    new SubSettingLauncher(getContext())
+                            .setDestination(UserSettings.class.getName())
+                            .setSourceMetricsCategory(getMetricsCategory())
+                            .setTitle(R.string.user_settings_title)
+                            .launch();
                 return true;
+			}
             default:
                 return super.onOptionsItemSelected(item);
         }
