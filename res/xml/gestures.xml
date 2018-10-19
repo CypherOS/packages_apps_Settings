@@ -74,4 +74,8 @@
         android:title="@string/tap_to_sleep_title"
         android:summary="@string/tap_to_sleep_summary" />
 
+    <SwitchPreference
+        android:key="ambient_display_hand_wave"
+        android:title="@string/ambient_display_hand_wave_title"
+        android:summary="@string/ambient_display_hand_wave_summary" />
 </PreferenceScreen>
