@@ -25,6 +25,7 @@ import android.support.annotation.Nullable;
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.aoscp.gestures.HandWaveGesturePreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -37,6 +38,7 @@ import java.util.List;
 public class GestureSettings extends DashboardFragment {
 
     private static final String TAG = "GestureSettings";
+    private static final int MY_USER_ID = UserHandle.myUserId();
 
     private static final String KEY_ASSIST = "gesture_assist_input_summary";
     private static final String KEY_SWIPE_DOWN = "gesture_swipe_down_fingerprint_input_summary";
@@ -49,6 +51,7 @@ public class GestureSettings extends DashboardFragment {
 
     private static final String KEY_TAP_TO_SLEEP = "tap_to_sleep_summary";
     private static final String KEY_SWIPE_TO_SCREENSHOT = "swipe_to_screenshot_summary";
+	private static final String KEY_GESTURE_HAND_WAVE = "ambient_display_hand_wave";
 
     private AmbientDisplayConfiguration mAmbientDisplayConfig;
 
@@ -73,6 +76,14 @@ public class GestureSettings extends DashboardFragment {
         use(AssistGestureSettingsPreferenceController.class).setAssistOnly(false);
         use(PickupGesturePreferenceController.class).setConfig(getConfig(context));
         use(DoubleTapScreenPreferenceController.class).setConfig(getConfig(context));
+    }
+
+    @Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        final Lifecycle lifecycle = getLifecycle();
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new HandWaveGesturePreferenceController(context);
+        return controllers;
     }
 
     private AmbientDisplayConfiguration getConfig(Context context) {
@@ -106,6 +117,7 @@ public class GestureSettings extends DashboardFragment {
                     keys.add(KEY_PREVENT_RINGING);
                     keys.add(KEY_TAP_TO_SLEEP);
                     keys.add(KEY_SWIPE_TO_SCREENSHOT);
+                    keys.add(KEY_GESTURE_HAND_WAVE);
 
                     return keys;
                 }
