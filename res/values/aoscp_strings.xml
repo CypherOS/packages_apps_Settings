@@ -160,4 +160,14 @@
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Swipe to screenshot</string>
     <string name="swipe_to_screenshot_summary">Swipe 3 fingers down the screen to take a screenshot</string>
+
+    <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>
+    <string name="ambient_display_hand_wave_summary" product="default">To check time, notification icons, and other info, wave at your phone.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="tablet">Wave to check tablet</string>
+    <string name="ambient_display_hand_wave_summary" product="tablet">To check time, notification icons, and other info, wave at your tablet.</string>
+    <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
+    <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
 </resources>
