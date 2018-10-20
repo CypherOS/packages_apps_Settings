@@ -48,11 +48,14 @@ public class AoscpVersionDialogController implements View.OnClickListener {
 
     private RestrictedLockUtils.EnforcedAdmin mFunDisallowedAdmin;
     private boolean mFunDisallowedBySystem;
+	
+	private int mMultiUserVersion;
 
     public AoscpVersionDialogController(FirmwareVersionDialogFragment dialog) {
         mDialog = dialog;
         mContext = dialog.getContext();
         mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
+		mMultiUserVersion = UserManager.getMultiUserVersion();
     }
 
     @Override
@@ -86,8 +89,12 @@ public class AoscpVersionDialogController implements View.OnClickListener {
     public void initialize() {
         initializeAdminPermissions();
         registerClickListeners();
-
-        mDialog.setText(FIRMWARE_VERSION_VALUE_ID, Build.LUNA.VERSION);
+		if (mMultiUserVersion == UserManager.MULTI_USER_V2) {
+			mDialog.removeSettingFromScreen(FIRMWARE_VERSION_LABEL_ID);
+			mDialog.removeSettingFromScreen(FIRMWARE_VERSION_VALUE_ID);
+		} else {
+			mDialog.setText(FIRMWARE_VERSION_VALUE_ID, Build.LUNA.VERSION);
+		}
     }
 
     private void registerClickListeners() {
