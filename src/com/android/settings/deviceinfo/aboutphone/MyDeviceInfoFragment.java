@@ -22,14 +22,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.UserInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -56,6 +60,8 @@ import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
+import aoscp.support.lottie.LottieAnimationView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,8 +75,10 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
     private static final int MENU_MULTI_USER = Menu.FIRST;
     private int mMultiUserVersion;
+	private long[] mHits = new long[3];
 
     private LayoutPreference mHeaderPreference;
+	private LottieAnimationView mAnimationView;
 
     @Override
     public int getMetricsCategory() {
@@ -152,11 +160,13 @@ public class MyDeviceInfoFragment extends DashboardFragment
     private void initHeader() {
         mHeaderPreference =
                 (LayoutPreference) getPreferenceScreen().findPreference(KEY_MY_DEVICE_INFO_HEADER);
+		final View appSnippet = mHeaderPreference.findViewById(R.id.entity_header);
+		final Activity context = getActivity();
         if (mMultiUserVersion == UserManager.MULTI_USER_V1) {
             // TODO: Migrate into its own controller.
-            final View appSnippet = mHeaderPreference.findViewById(R.id.entity_header);
-            final Activity context = getActivity();
             final Bundle bundle = getArguments();
+			mHeaderPreference.isCustom(true);
+			mHeaderPreference.setCustomLayout(R.layout.settings_entity_header);
             EntityHeaderController controller = EntityHeaderController
                     .newInstance(context, this, appSnippet)
                     .setRecyclerView(getListView(), getLifecycle())
@@ -175,10 +185,43 @@ public class MyDeviceInfoFragment extends DashboardFragment
             }
             controller.done(context, true /* rebindActions */);
         } else {
-            if (mHeaderPreference != null) {
-                getPreferenceScreen().removePreference(mHeaderPreference);
-            }
+			mHeaderPreference.isCustom(true);
+			mHeaderPreference.setCustomLayout(R.layout.header_about_phone);
+            EntityHeaderController controller = EntityHeaderController
+                    .newInstance(context, this, appSnippet)
+                    .setRecyclerView(getListView(), getLifecycle())
+					.styleActionBar(context)
+                    .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
+                            EntityHeaderController.ActionType.ACTION_NONE);
+			mAnimationView = (LottieAnimationView) mHeaderPreference.findViewById(R.id.header_icon);
+			doLunaReveal();
+			mAnimationView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+                    System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+                    mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+                    if (mHits[0] >= (SystemClock.uptimeMillis() - 500)) {
+                        final Intent intent = new Intent(Intent.ACTION_MAIN)
+                                .putExtra("aoscp", true)
+                                .setClassName(
+                                        "android", com.android.internal.app.PlatLogoActivity.class.getName());
+                        try {
+                            context.startActivity(intent);
+                        } catch (Exception e) {
+                            Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
+                        }
+                    }
+                }
+            });
+			final TextView version = (TextView) mHeaderPreference.findViewById(R.id.version);
+			final TextView versionCode = (TextView) mHeaderPreference.findViewById(R.id.version_code);
+			version.setText(Build.LUNA.VERSION);
+			versionCode.setText(Build.LUNA.VERSION_CODE);
         }
+    }
+	
+	private void doLunaReveal() {
+        mAnimationView.playAnimation();
     }
 
     @Override
