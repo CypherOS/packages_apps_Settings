@@ -36,6 +36,9 @@ public class LayoutPreference extends Preference {
     private final View.OnClickListener mClickListener = v -> performClick(v);
     private boolean mAllowDividerAbove;
     private boolean mAllowDividerBelow;
+	
+	private boolean mIsCustom = false;
+	private int mCustomLayout;
 
     @VisibleForTesting
     View mRootView;
@@ -71,14 +74,18 @@ public class LayoutPreference extends Preference {
                 attrs, com.android.internal.R.styleable.Preference, defStyleAttr, 0);
         int layoutResource = a.getResourceId(com.android.internal.R.styleable.Preference_layout,
                 0);
-        if (layoutResource == 0) {
+        if (!mIsCustom && layoutResource == 0) {
             throw new IllegalArgumentException("LayoutPreference requires a layout to be defined");
+        }
+
+		if (mIsCustom && mCustomLayout == 0) {
+            throw new IllegalArgumentException("LayoutPreference requires a custom layout to be defined");
         }
         a.recycle();
 
         // Need to create view now so that findViewById can be called immediately.
         final View view = LayoutInflater.from(getContext())
-                .inflate(layoutResource, null, false);
+                .inflate(mIsCustom ? mCustomLayout : layoutResource, null, false);
         setView(view);
     }
 
@@ -91,6 +98,14 @@ public class LayoutPreference extends Preference {
         mRootView = view;
         setShouldDisableView(false);
     }
+
+	private void isCustom(boolean isCustom) {
+		mIsCustom = isCustom;
+	}
+	
+	private void setCustomLayout(int customLayout) {
+		mCustomLayout = customLayout;
+	}
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
