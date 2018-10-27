@@ -129,4 +129,10 @@
     <string name="display_mode_option_2">Mode 2</string>
     <string name="display_mode_option_3">Mode 3</string>
     <string name="display_mode_option_4">Mode 4</string>
+
+    <!-- SELinux -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
 </resources>
