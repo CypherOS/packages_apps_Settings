@@ -20,6 +20,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v14.preference.SwitchPreference;
+import android.widget.Toast;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -31,6 +32,7 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
 
     private Context mContext;
     private String mKey;
+	private Toast mNotifyFpNavStatus;
 
     private boolean mIsFingerprintNavigation;
     private int mDeviceHardwareKeys;
@@ -64,6 +66,8 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
                 mContext.getContentResolver(), NAVIGATION_BAR_ENABLED, 
                 defaultToNavigationBar ? 1 : 0, UserHandle.USER_CURRENT) != 0;
         ((SwitchPreference) preference).setChecked(navigationBarEnabled);
+		mNotifyFpNavStatus = Toast.makeText(mContext, "Fingerprint navigation enabled",
+                Toast.LENGTH_LONG);
     }
 
     @Override
@@ -71,6 +75,9 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
         boolean enabled = (Boolean) newValue;
         Settings.System.putInt(mContext.getContentResolver(), NAVIGATION_BAR_ENABLED,
                 enabled ? 1 : 0);
+		if (mIsFingerprintNavigation && !enabled) {
+			mNotifyFpNavStatus.show();
+		}
         return true;
     }
 }
