@@ -37,4 +37,7 @@
             android:title="@string/ambient_play_notifications_title"
             settings:controller="com.android.settings.aoscp.ambient.play.AmbientPlayNotificationPreferenceController" />
 
+		<com.android.settings.aoscp.ambient.play.AmbientPlayHistoryPreference
+            android:key="ambient_recognition_history_preference" />
+
 </PreferenceScreen>
