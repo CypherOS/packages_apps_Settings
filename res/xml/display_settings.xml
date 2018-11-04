@@ -106,6 +106,13 @@
         android:title="@string/screensaver_settings_title"
         android:fragment="com.android.settings.dream.DreamSettings" />
 
+    <!-- VoLTE ICON -->
+    <com.android.settings.aoscp.preferences.SystemSettingSwitchPreference
+        android:key="volte_icon"
+        android:title="@string/volte_icon_title"
+        android:summary="@string/volte_icon_summary"
+        android:defaultValue="true"/>
+
     <com.android.settingslib.RestrictedPreference
         android:key="ambient_display"
         android:title="@string/ambient_display_screen_title"
