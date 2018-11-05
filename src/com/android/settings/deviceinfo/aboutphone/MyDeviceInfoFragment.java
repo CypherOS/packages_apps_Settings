@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -269,16 +270,24 @@ public class MyDeviceInfoFragment extends DashboardFragment
     private static class SummaryProvider implements SummaryLoader.SummaryProvider {
 
         private final SummaryLoader mSummaryLoader;
+        private static Context mContext;
 
         public SummaryProvider(SummaryLoader summaryLoader) {
             mSummaryLoader = summaryLoader;
+            mContext = getContext();
         }
 
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel());
+                getDeviceName();
             }
+        }
+
+        public void getDeviceName() {
+            final String deviceName = Settings.Global.getString(
+                    mContext.getContentResolver(), Settings.Global.DEVICE_NAME);
+            mSummaryLoader.setSummary(this, deviceName != null ? deviceName : DeviceModelPreferenceController.getDeviceModel());
         }
     }
 
