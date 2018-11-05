@@ -276,8 +276,9 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
         @Override
         public void setListening(boolean listening) {
+            final DeviceNamePreferenceController controller = use(DeviceNamePreferenceController.class);
             if (listening) {
-                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel());
+                mSummaryLoader.setSummary(this, controller.getSummary());
             }
         }
     }
