@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -266,9 +267,9 @@ public class MyDeviceInfoFragment extends DashboardFragment
         }
     }
 
-    private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+    private class SummaryProvider implements SummaryLoader.SummaryProvider {
 
-        private final SummaryLoader mSummaryLoader;
+        private SummaryLoader mSummaryLoader;
 
         public SummaryProvider(SummaryLoader summaryLoader) {
             mSummaryLoader = summaryLoader;
@@ -277,12 +278,18 @@ public class MyDeviceInfoFragment extends DashboardFragment
         @Override
         public void setListening(boolean listening) {
             if (listening) {
-                mSummaryLoader.setSummary(this, DeviceModelPreferenceController.getDeviceModel());
+                getDeviceName();
             }
+        }
+
+        public void getDeviceName() {
+            final String deviceName = Settings.Global.getString(
+                    getContext().getContentResolver(), Settings.Global.DEVICE_NAME);
+            mSummaryLoader.setSummary(this, deviceName != null ? deviceName : DeviceModelPreferenceController.getDeviceModel());
         }
     }
 
-    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+    public final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
             = (activity, summaryLoader) -> new SummaryProvider(summaryLoader);
 
     /**
