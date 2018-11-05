@@ -34,12 +34,14 @@ import java.util.List;
 public class EmergencyInfoPreferenceController extends AbstractPreferenceController
         implements PreferenceControllerMixin {
 
-    private static final String KEY_EMERGENCY_INFO = "emergency_info";
     private static final String ACTION_EDIT_EMERGENCY_INFO = "android.settings.EDIT_EMERGENCY_INFO";
     private static final String PACKAGE_NAME_EMERGENCY = "com.android.emergency";
+	
+	private final String mPrefKey;
 
-    public EmergencyInfoPreferenceController(Context context) {
+    public EmergencyInfoPreferenceController(Context context, String key) {
         super(context);
+		mPrefKey = key;
     }
 
     @Override
@@ -61,7 +63,7 @@ public class EmergencyInfoPreferenceController extends AbstractPreferenceControl
 
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
-        if (KEY_EMERGENCY_INFO.equals(preference.getKey())) {
+        if (mPrefKey.equals(preference.getKey())) {
             Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             mContext.startActivity(intent);
@@ -79,6 +81,6 @@ public class EmergencyInfoPreferenceController extends AbstractPreferenceControl
 
     @Override
     public String getPreferenceKey() {
-        return KEY_EMERGENCY_INFO;
+        return mPrefKey;
     }
 }
