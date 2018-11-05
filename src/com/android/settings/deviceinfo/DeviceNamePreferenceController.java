@@ -90,6 +90,11 @@ public class DeviceNamePreferenceController extends BasePreferenceController
         return mDeviceName;
     }
 
+    public static String getDeviceName() {
+        return Settings.Global.getString(mContext.getContentResolver(),
+                       Settings.Global.DEVICE_NAME);
+    }
+
     @Override
     public int getAvailabilityStatus() {
         return AVAILABLE;
