@@ -38,7 +38,6 @@ import android.widget.TextView;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.accounts.EmergencyInfoPreferenceController;
 import com.android.settings.applications.LayoutPreference;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.DashboardFragment;
@@ -124,7 +123,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
             MyDeviceInfoFragment fragment,
             Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new EmergencyInfoPreferenceController(context));
         controllers.add(new BrandedAccountPreferenceController(context));
         DeviceNamePreferenceController deviceNamePreferenceController =
                 new DeviceNamePreferenceController(context);
