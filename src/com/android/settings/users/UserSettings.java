@@ -64,6 +64,7 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.accounts.EmergencyInfoPreferenceController;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.password.ChooseLockGeneric;
@@ -104,6 +105,7 @@ public class UserSettings extends SettingsPreferenceFragment
     private static final String KEY_USER_ME = "user_me";
     private static final String KEY_ADD_USER = "user_add";
     private static final String KEY_ADD_USER_WHEN_LOCKED = "user_settings_add_users_when_locked";
+    private static final String KEY_EMERGENCY_INFO = "emergency_info";
 
     private static final int MENU_REMOVE_USER = Menu.FIRST;
 
@@ -148,6 +150,7 @@ public class UserSettings extends SettingsPreferenceFragment
 
     private EditUserInfoController mEditUserInfoController = new EditUserInfoController();
     private AddUserWhenLockedPreferenceController mAddUserWhenLockedPreferenceController;
+    private EmergencyInfoPreferenceController mEmergencyInfoPreferenceController;
 
     // A place to cache the generated default avatar
     private Drawable mDefaultIconDrawable;
@@ -205,6 +208,10 @@ public class UserSettings extends SettingsPreferenceFragment
 
         screen.findPreference(mAddUserWhenLockedPreferenceController.getPreferenceKey())
                 .setOnPreferenceChangeListener(mAddUserWhenLockedPreferenceController);
+
+        mEmergencyInfoPreferenceController = new EmergencyInfoPreferenceController(context, KEY_EMERGENCY_INFO);
+        mEmergencyInfoPreferenceController.displayPreference(screen);
+        screen.findPreference(mEmergencyInfoPreferenceController.getPreferenceKey());
 
         if (icicle != null) {
             if (icicle.containsKey(SAVE_ADDING_USER)) {
@@ -266,6 +273,11 @@ public class UserSettings extends SettingsPreferenceFragment
         if (mAddUserWhenLockedPreferenceController.isAvailable()) {
             mAddUserWhenLockedPreferenceController.updateState(screen.findPreference(
                     mAddUserWhenLockedPreferenceController.getPreferenceKey()));
+        }
+
+        if (mEmergencyInfoPreferenceController.isAvailable()) {
+            mEmergencyInfoPreferenceController.updateState(screen.findPreference(
+                    mEmergencyInfoPreferenceController.getPreferenceKey()));
         }
 
         if (mShouldUpdateUserList) {
@@ -1185,6 +1197,8 @@ public class UserSettings extends SettingsPreferenceFragment
                     new AutoSyncPersonalDataPreferenceController(context, null /* parent */)
                             .updateNonIndexableKeys(niks);
                     new AutoSyncWorkDataPreferenceController(context, null /* parent */)
+                            .updateNonIndexableKeys(niks);
+                    new EmergencyInfoPreferenceController(context, KEY_EMERGENCY_INFO)
                             .updateNonIndexableKeys(niks);
                     return niks;
                 }
