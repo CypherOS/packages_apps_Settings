@@ -221,6 +221,14 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         updateBatteryTipFlag(icicle);
     }
 
+	@Override
+    public void onActivityCreated(Bundle outState) {
+        super.onActivityCreated(outState);
+        if (outState != null) {
+			mBatteryHeaderPreferenceController.saveInstanceState(outState);
+        }
+    }
+
     @Override
     public int getMetricsCategory() {
         return MetricsEvent.FUELGAUGE_POWER_USAGE_SUMMARY_V2;
