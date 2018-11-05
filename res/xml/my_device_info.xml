@@ -34,17 +34,19 @@
         android:title="@string/my_device_info_device_name_preference_title"
         android:summary="@string/summary_placeholder"/>
 
+    <!-- Android version -->
+    <Preference
+        android:key="firmware_version"
+        android:order="2"
+        android:title="@string/firmware_version"
+        settings:keywords="@string/keywords_android_version"
+        android:summary="@string/summary_placeholder"/>
+
     <!-- Account name -->
     <Preference
         android:key="branded_account"
-        android:order="2"
+        android:order="3"
         android:title="@string/my_device_info_account_preference_title"
-        android:summary="@string/summary_placeholder"/>
-
-    <Preference
-        android:key="emergency_info"
-        android:order="4"
-        android:title="@string/emergency_info_title"
         android:summary="@string/summary_placeholder"/>
 
     <!-- SIM status -->
@@ -62,14 +64,6 @@
         android:order="21"
         android:title="@string/hardware_info"
         settings:keywords="@string/keywords_model_and_hardware"
-        android:summary="@string/summary_placeholder"/>
-
-    <!-- Android version -->
-    <Preference
-        android:key="firmware_version"
-        android:order="32"
-        android:title="@string/firmware_version"
-        settings:keywords="@string/keywords_android_version"
         android:summary="@string/summary_placeholder"/>
 
     <!--IP address -->

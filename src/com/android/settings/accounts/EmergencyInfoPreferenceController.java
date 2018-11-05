@@ -23,6 +23,7 @@ import android.content.res.Resources;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.Preference.OnPreferenceClickListener;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -32,14 +33,16 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import java.util.List;
 
 public class EmergencyInfoPreferenceController extends AbstractPreferenceController
-        implements PreferenceControllerMixin {
+        implements OnPreferenceClickListener, PreferenceControllerMixin {
 
-    private static final String KEY_EMERGENCY_INFO = "emergency_info";
     private static final String ACTION_EDIT_EMERGENCY_INFO = "android.settings.EDIT_EMERGENCY_INFO";
     private static final String PACKAGE_NAME_EMERGENCY = "com.android.emergency";
 
-    public EmergencyInfoPreferenceController(Context context) {
+    private final String mPrefKey;
+
+    public EmergencyInfoPreferenceController(Context context, String key) {
         super(context);
+        mPrefKey = key;
     }
 
     @Override
@@ -59,15 +62,18 @@ public class EmergencyInfoPreferenceController extends AbstractPreferenceControl
         preference.setSummary(mContext.getString(R.string.emergency_info_summary, info.name));
     }
 
+	@Override
+    public boolean onPreferenceClick(Preference pref) {
+		handlePreferenceTreeClick(pref);
+		return true;
+	}
+
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
-        if (KEY_EMERGENCY_INFO.equals(preference.getKey())) {
-            Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            mContext.startActivity(intent);
-            return true;
-        }
-        return false;
+        Intent intent = new Intent(ACTION_EDIT_EMERGENCY_INFO);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        mContext.startActivity(intent);
+        return true;
     }
 
     @Override
@@ -79,6 +85,6 @@ public class EmergencyInfoPreferenceController extends AbstractPreferenceControl
 
     @Override
     public String getPreferenceKey() {
-        return KEY_EMERGENCY_INFO;
+        return mPrefKey;
     }
 }
