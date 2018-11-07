@@ -29,12 +29,13 @@
 
         <SwitchPreference
             android:key="ambient_recognition_keyguard"
-            android:title="@string/ambient_play_lockscreen_title"
-            settings:controller="com.android.settings.aoscp.ambient.play.AmbientPlayKeyguardPreferenceController" />
+            android:title="@string/ambient_play_lockscreen_title" />
 
         <SwitchPreference
             android:key="ambient_recognition_notification"
-            android:title="@string/ambient_play_notifications_title"
-            settings:controller="com.android.settings.aoscp.ambient.play.AmbientPlayNotificationPreferenceController" />
+            android:title="@string/ambient_play_notifications_title" />
+
+		<com.android.settings.aoscp.ambient.play.AmbientPlayHistoryPreference
+            android:key="ambient_recognition_history_preference" />
 
 </PreferenceScreen>
