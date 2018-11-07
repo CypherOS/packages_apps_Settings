@@ -48,11 +48,9 @@ public class AmbientPlayKeyguardPreferenceController extends AbstractPreferenceC
 
     @Override
     public void updateState(Preference preference) {
-        final boolean ambientPlay = Settings.System.getInt(mContext.getContentResolver(),
-                AMBIENT_RECOGNITION, 0) != 0;
         final boolean setting = Settings.System.getInt(mContext.getContentResolver(),
                 AMBIENT_RECOGNITION_KEYGUARD, 1) != 0;
-        ((SwitchPreference) preference).setChecked(ambientPlay && setting);
+        ((SwitchPreference) preference).setChecked(setting);
     }
 
     @Override
