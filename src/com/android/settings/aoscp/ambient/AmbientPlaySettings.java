@@ -19,6 +19,9 @@ package com.android.settings.aoscp.ambient;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -37,7 +40,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.util.ambient.play.AmbientPlayHistoryManager;
 import com.android.settings.R;
+import com.android.settings.aoscp.ambient.play.AmbientPlayHistoryPreference;
 import com.android.settings.aoscp.ambient.play.AmbientPlayKeyguardPreferenceController;
 import com.android.settings.aoscp.ambient.play.AmbientPlayNotificationPreferenceController;
 import com.android.settings.applications.LayoutPreference;
@@ -58,9 +63,25 @@ public class AmbientPlaySettings extends DashboardFragment implements CompoundBu
     private static final String KEY_AMBIENT_HEADER       = "ambient_header";
     private static final String KEY_AMBIENT_KEYGUARD     = "ambient_recognition_keyguard";
     private static final String KEY_AMBIENT_NOTIFICATION = "ambient_recognition_notification";
+    private static final String KEY_AMBIENT_HISTORY      = "ambient_recognition_history";
 
+    private AmbientPlayHistoryPreference mAmbientHistoryPreference;
     private LayoutPreference mHeaderPreference;
     private TextView mTextView;
+
+    private BroadcastReceiver onSongMatch = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent == null || intent.getAction() == null) {
+                return;
+            }
+            if (intent.getAction().equals(AmbientPlayHistoryManager.INTENT_SONG_MATCH.getAction())) {
+                if (mAmbientHistoryPreference != null){
+                    mAmbientHistoryPreference.updateSummary(getActivity());
+                }
+            }
+        }
+    };
 
     @Override
     public int getMetricsCategory() {
@@ -80,7 +101,23 @@ public class AmbientPlaySettings extends DashboardFragment implements CompoundBu
     @Override
     public void displayResourceTiles() {
         super.displayResourceTiles();
+        mAmbientHistoryPreference = (AmbientPlayHistoryPreference) findPreference(KEY_AMBIENT_HISTORY);
         mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.ambient_play_help_text);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().registerReceiver(onSongMatch, new IntentFilter(AmbientPlayHistoryManager.INTENT_SONG_MATCH.getAction()));
+        if (mAmbientHistoryPreference != null){
+            mAmbientHistoryPreference.updateSummary(getActivity());
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(onSongMatch);
     }
 
     @Override
