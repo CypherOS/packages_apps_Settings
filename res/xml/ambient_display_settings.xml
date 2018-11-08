@@ -44,6 +44,11 @@
             android:fragment="com.android.settings.gestures.PickupGestureSettings"
             settings:controller="com.android.settings.gestures.PickupGesturePreferenceController" />
 
+		<SwitchPreference
+		    android:key="ambient_display_hand_wave"
+            android:title="@string/ambient_display_hand_wave_title"
+            android:summary="@string/ambient_display_hand_wave_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
