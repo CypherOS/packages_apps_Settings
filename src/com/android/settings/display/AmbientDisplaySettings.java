@@ -23,6 +23,7 @@ import android.provider.SearchIndexableResource;
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
+import com.android.settings.aoscp.gestures.HandWaveGesturePreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.gestures.DoubleTapScreenPreferenceController;
 import com.android.settings.gestures.PickupGesturePreferenceController;
@@ -42,6 +43,7 @@ import java.util.List;
 public class AmbientDisplaySettings extends DashboardFragment {
 
     public static final String KEY_AMBIENT_DISPLAY_ALWAYS_ON = "ambient_display_always_on";
+	public static final String KEY_AMBIENT_DISPLAY_HAND_WAVE_GESTURE = "ambient_display_hand_wave";
 
     private static final String TAG = "AmbientDisplaySettings";
 
@@ -71,6 +73,14 @@ public class AmbientDisplaySettings extends DashboardFragment {
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.AMBIENT_DISPLAY_SETTINGS;
+    }
+
+	@Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        final Lifecycle lifecycle = getLifecycle();
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new HandWaveGesturePreferenceController(context, KEY_AMBIENT_DISPLAY_HAND_WAVE_GESTURE));
+        return controllers;
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
