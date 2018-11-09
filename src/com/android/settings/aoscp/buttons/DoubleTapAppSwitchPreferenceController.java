@@ -59,8 +59,10 @@ public class DoubleTapAppSwitchPreferenceController extends BasePreferenceContro
         super.displayPreference(screen);
         mPref = (ListPreference) screen.findPreference(getPreferenceKey());
         if (mPref == null) return;
+		final int defaultValue = mContext.getResources()
+                .getBoolean(com.android.internal.R.bool.config_swipe_up_gesture_default) ? 1 : 0;
         boolean isQuickStep = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.SWIPE_UP_TO_SWITCH_APPS_ENABLED, 0) != 0;
+                Settings.Secure.SWIPE_UP_TO_SWITCH_APPS_ENABLED, defaultValue) != 0;
         mDefaultBehavior = mContext.getResources().getInteger(
                 com.android.internal.R.integer.config_doubleTapOnAppSwitchKeyBehavior);
         int value = Settings.System.getInt(mContext.getContentResolver(), KEY_APP_SWITCH_DOUBLE_TAP_ACTION, mDefaultBehavior);
