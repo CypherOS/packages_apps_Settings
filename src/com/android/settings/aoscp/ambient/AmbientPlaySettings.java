@@ -40,7 +40,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.internal.util.ambient.play.AmbientPlayHistoryManager;
+import com.android.internal.ambient.play.AmbientPlayHistoryManager;
 import com.android.settings.R;
 import com.android.settings.aoscp.ambient.play.AmbientPlayHistoryPreference;
 import com.android.settings.aoscp.ambient.play.AmbientPlayKeyguardPreferenceController;
