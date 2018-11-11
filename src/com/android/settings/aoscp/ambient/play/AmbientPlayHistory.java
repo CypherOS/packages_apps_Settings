@@ -36,8 +36,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.android.internal.util.ambient.play.AmbientPlayHistoryEntry;
-import com.android.internal.util.ambient.play.AmbientPlayHistoryManager;
+import com.android.internal.ambient.play.AmbientPlayHistoryEntry;
+import com.android.internal.ambient.play.AmbientPlayHistoryManager;
 import com.android.settings.aoscp.ambient.play.utils.TimeDateUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;

@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.support.v7.preference.Preference;
 import android.util.AttributeSet;
 
-import com.android.internal.util.ambient.play.AmbientPlayHistoryEntry;
-import com.android.internal.util.ambient.play.AmbientPlayHistoryManager;
+import com.android.internal.ambient.play.AmbientPlayHistoryEntry;
+import com.android.internal.ambient.play.AmbientPlayHistoryManager;
 
 import com.android.settings.R;
 
