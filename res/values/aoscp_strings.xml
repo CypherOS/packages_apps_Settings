@@ -18,6 +18,13 @@
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="aoscp_firmware_version">CypherOS version</string>
 
+	<!-- Device Introduction -->
+    <string name="first_time_introduction_header">Welcome to CypherOS</string>
+	<string name="first_time_introduction_message">Experience Android like never before, fast, minimal and compact. Your privacy is our priority, personal data will
+	never be sent to us or any third party we may associate with. You are protected with trust verification steps provided by Google. Here\'s something's you can do
+	to get started:\n\n- Setup lockscreen credentials\n- Turn on Adaptive brightness\n- Setup Nightlight\n- Try out themes with Color Manager</string>
+	<string name="first_time_confirm_button">GOT IT</string>
+
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
     <string name="color_manager_summary">Change system theme with various color combinations</string>
