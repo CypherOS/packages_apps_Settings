@@ -17,6 +17,11 @@
 
     <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
     <string name="aoscp_firmware_version">CypherOS version</string>
+	
+	<!-- Device Introduction -->
+    <string name="first_time_introduction_header">Welcome to CypherOS</string>
+	<string name="first_time_introduction_message">Add some text here</string>
+	<string name="first_time_confirm_button">GOT IT</string>
 
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
