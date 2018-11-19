@@ -38,9 +38,7 @@ public class SwapAlertSliderPreferenceController extends AbstractPreferenceContr
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider)
-                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_state_path))
-                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_uevent_match_path));
+        return hasAlertSlider();
     }
 
     @Override
@@ -61,4 +59,15 @@ public class SwapAlertSliderPreferenceController extends AbstractPreferenceContr
                 enabled ? 1 : 0);
         return true;
     }
+
+	private boolean hasAlertSlider() {
+		boolean sliderWithPath = mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider)
+                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_state_path))
+                && !TextUtils.isEmpty(mContext.getResources().getString(com.android.internal.R.string.alert_slider_uevent_match_path));
+		boolean sliderWithCode = mContext.getResources().getBoolean(com.android.internal.R.bool.config_hasAlertSlider)
+		        && mContext.getResources().getInteger(com.android.internal.R.integer.config_sliderTopCode) != 0
+				&& mContext.getResources().getInteger(com.android.internal.R.integer.config_sliderMiddleCode) != 0
+				&& mContext.getResources().getInteger(com.android.internal.R.integer.config_sliderBottomCode) != 0;
+		return sliderWithPath || sliderWithCode;
+	}
 }
