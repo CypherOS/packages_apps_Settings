@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 CypherOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <string name="aoscp_firmware_version">Versão CypherOS</string>
+
+    <!-- Device Introduction -->
+    <string name="first_time_introduction_header">Bem vindo ao Beta</string>
+    <string name="first_time_introduction_message">Experimente o Android como nunca antes, rápido, mínimo e compacto. Sua privacidade é nossa prioridade, seus dados pessoais
+    nunca serão enviados a nós ou a terceiros associados. Você está protegido por etapas de verificação confiáveis ​​fornecidas pelo Google. Aqui estão algumas coisas que você pode fazer
+    para começar:\n\n- Configurar credenciais da tela de bloqueio\n- Ativar o brilho adaptável\n- Configurar luz noturna\n- Experimentar temas com o Color Manager</string>
+    <string name="first_time_confirm_button">ENTENDI</string>
+
+    <!-- Color Manager -->
+    <string name="color_manager_title">Gerenciador de cores</string>
+    <string name="color_manager_summary">Mude as cores do sistema com várias combinações de temas</string>
+    <string name="color_manager_accent_title">Tonalidade do dispositivo</string>
+    <!-- Color Manager: Themes -->
+    <string name="theme_auto_title">Automático</string>
+    <string name="theme_auto_summary">O sistema definirá como tema a cor dominante do papel de parede</string>
+    <string name="theme_light_title">Claro</string>
+    <string name="theme_dark_title">Escuro</string>
+    <string name="theme_black_title">Preto</string>
+    <!-- Color Manager: Accents -->
+    <string name="system_accent_default">Padrão</string>
+    <string name="system_accent_blue">Azul</string>
+    <string name="system_accent_indigo">Índigo</string>
+    <string name="system_accent_oceanic">Oceânico</string>
+    <string name="system_accent_brightsky">Céu Brilhante</string>
+    <string name="system_accent_green">Verde</string>
+    <string name="system_accent_limabean">Feijão de Lima</string>
+    <string name="system_accent_lime">Lima</string>
+    <string name="system_accent_teal">Teal</string>
+    <string name="system_accent_pink">Rosa</string>
+    <string name="system_accent_playboy">Play Boy</string>
+    <string name="system_accent_purple">Roxo</string>
+    <string name="system_accent_deepvalley">Vale Profundo</string>
+    <string name="system_accent_red">Vermelho</string>
+    <string name="system_accent_bloodymary">Maria Sangrenta</string>
+    <string name="system_accent_yellow">Amarelo</string>
+    <string name="system_accent_sunflower">Girassol</string>
+    <string name="system_accent_black">Preto</string>
+    <string name="system_accent_grey">Cinza</string>
+    <string name="system_accent_white">Branco</string>
+
+    <!-- Tap to sleep -->
+    <string name="tap_to_sleep_title">Tocar para dormir</string>
+    <string name="tap_to_sleep_summary">Toque duas vezes na barra de status para bloquear e desligar a tela</string>
+
+    <!-- Button Settings -->
+    <string name="button_settings_title">Botões</string>
+    <string name="button_settings_title_summary">Adicionar ações personalizadas</string>
+    <string name="button_settings_description">Defina ações personalizadas para os botões presentes no seu dispositivo.</string>
+    <!-- Navigation bar -->
+    <string name="navigation_bar_title">Barra de navegação</string>
+    <string name="navigation_bar_title_summary">Ativar botões de navegação na tela</string>
+    <!-- Button brightness -->
+    <string name="hardware_brightness_keys_title">Luz dos botões</string>
+    <string name="hardware_brightness_keys_title_summary">Ativar luz dos botões</string>
+    <!-- Buttons: Categories -->
+    <string name="home_key_title">Botão Início</string>
+    <string name="back_key_title">Botão Voltar</string>
+    <string name="menu_key_title">Botão Menu</string>
+    <string name="assist_key_title">Botão Assistente</string>
+    <string name="app_switch_key_title">Botão Recents</string>
+    <string name="camera_key_title">Botão Camera</string>
+    <!-- Buttons: Actions -->
+    <string name="short_press_title">Ação de toque único</string>
+    <string name="long_press_title">Ação de toque longo</string>
+    <string name="double_tap_title">Ação toque duplo</string>
+    <string name="action_nothing">Sem ação</string>
+    <string name="action_menu">Abrir/fechar menu</string>
+    <string name="action_app_switch">Recentes</string>
+    <string name="action_search">Assistente de pesquisa</string>
+    <string name="action_voice_search">Pesquisa por voz</string>
+    <string name="action_in_app_search">Pesquisa no aplicativo</string>
+    <string name="action_launch_camera">Abir câmera</string>
+    <string name="action_last_app">Alternar para o último aplicativo</string>
+    <string name="action_splitscreen">Tela dividida</string>
+    <!-- Alert Slider -->
+    <string name="swap_slider_order_title">Inverter controle deslizante</string>
+    <string name="swap_slider_order_summary">Troque a ordem dos modos de alerta do controle deslizante</string>
+
+    <!-- Ambient Play -->
+    <string name="ambient_play_summary">Mostrar músicas próximas</string>
+    <string name="ambient_play_lockscreen_title">Mostrar na tela de bloqueio</string>
+    <string name="ambient_play_notifications_title">Notificações</string>
+    <string name="ambient_play_switch_bar_on">Ligado</string>
+    <string name="ambient_play_switch_bar_off">Desligado</string>
+    <string name="ambient_play_help_text">Quando alguma música estiver tocando nas proximidades, você poderá ver o nome e o artista. O uso de bateria e de dados podem ser afetados se isso estiver ativado.</string>
+    <string name="ambient_play_history">Histórico de músicas</string>
+    <string name="ambient_play_loading_data">Carregando dados…</string>
+    <string name="ambient_play_history_today">Hoje</string>
+    <string name="ambient_play_history_yesterday">Ontem</string>
+    <string name="ambient_play_history_dialog_play">Escutar agora</string>
+    <string name="ambient_play_history_dialog_search">Procurar na web</string>
+    <string name="ambient_play_history_dialog_remove">Remover</string>
+    <string name="ambient_play_history_empty">O histórico de música está vazio</string>
+    <string name="ambient_play_history_menu_remove_all">Limpar</string>
+    <string name="ambient_play_history_menu_add_to_home">Adicionar à tela inicial</string>
+    <string name="ambient_play_history_dialog_remove_all_confirmation">Você tem certeza?</string>
+
+    <!-- Weather -->
+    <string name="weather_title">Mostrar previsão do tempo</string>
+    <string name="weather_unit_metric" translatable="false">Celsius</string>
+    <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
+
+</resources>
