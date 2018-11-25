@@ -26,6 +26,10 @@
             android:layout="@layout/ambient_play_illustration"
             android:selectable="false"/>
 
+		<SwitchPreference
+            android:key="ambient_recognition_manual_mode"
+            android:title="@string/ambient_play_manual_mode_title" />
+
         <SwitchPreference
             android:key="ambient_recognition_keyguard"
             android:title="@string/ambient_play_lockscreen_title" />

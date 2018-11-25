@@ -44,6 +44,7 @@ import com.android.internal.ambient.play.AmbientPlayHistoryManager;
 import com.android.settings.R;
 import com.android.settings.aoscp.ambient.play.AmbientPlayHistoryPreference;
 import com.android.settings.aoscp.ambient.play.AmbientPlayKeyguardPreferenceController;
+import com.android.settings.aoscp.ambient.play.AmbientPlayManualModePreferenceController;
 import com.android.settings.aoscp.ambient.play.AmbientPlayNotificationPreferenceController;
 import com.android.settings.applications.LayoutPreference;
 import com.android.settings.dashboard.DashboardFragment;
@@ -62,6 +63,7 @@ public class AmbientPlaySettings extends DashboardFragment implements CompoundBu
 
     private static final String KEY_AMBIENT_HEADER       = "ambient_header";
     private static final String KEY_AMBIENT_KEYGUARD     = "ambient_recognition_keyguard";
+	private static final String KEY_AMBIENT_MANUAL_MODE  = "ambient_recognition_manual_mode";
     private static final String KEY_AMBIENT_NOTIFICATION = "ambient_recognition_notification";
     private static final String KEY_AMBIENT_HISTORY      = "ambient_recognition_history";
 
@@ -125,6 +127,7 @@ public class AmbientPlaySettings extends DashboardFragment implements CompoundBu
         final Lifecycle lifecycle = getLifecycle();
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new AmbientPlayKeyguardPreferenceController(context, KEY_AMBIENT_KEYGUARD));
+		controllers.add(new AmbientPlayManualModePreferenceController(context, KEY_AMBIENT_MANUAL_MODE));
         controllers.add(new AmbientPlayNotificationPreferenceController(context, KEY_AMBIENT_NOTIFICATION));
         return controllers;
     }
