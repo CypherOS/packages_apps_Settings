@@ -44,8 +44,9 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-arch-lifecycle-runtime \
     android-arch-lifecycle-extensions \
     guava \
-    jsr305 \
-    settings-logtags \
+	hardware.aoscp \
+	jsr305 \
+	settings-logtags \
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
