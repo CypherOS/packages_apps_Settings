@@ -121,4 +121,10 @@
     <string name="weather_unit_metric" translatable="false">Celsius</string>
     <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
 
+	<!-- Display Mode -->
+	<string name="display_mode_title">Display mode</string>
+	<string name="display_mode_option_normal">Normal</string>
+	<string name="display_mode_option_vivid">Vivid</string>
+	<string name="display_mode_option_3">Option 3</string>
+	<string name="display_mode_option_4">Option 4</string>
 </resources>
