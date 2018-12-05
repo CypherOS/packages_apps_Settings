@@ -44,6 +44,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-arch-lifecycle-runtime \
     android-arch-lifecycle-extensions \
     guava \
+    hardware.aoscp \
     jsr305 \
     settings-logtags \
 
