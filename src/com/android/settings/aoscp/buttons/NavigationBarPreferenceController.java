@@ -22,6 +22,8 @@ import android.support.v7.preference.Preference;
 import android.support.v14.preference.SwitchPreference;
 import android.widget.Toast;
 
+import aoscp.hardware.DeviceHardwareManager;
+
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
@@ -41,10 +43,11 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
         super(context);
         mContext = context;
         mKey = key;
+        final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(context);
         mDeviceHardwareKeys = context.getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
-        mIsFingerprintNavigation = context.getResources().getBoolean(
-                com.android.internal.R.bool.config_supportsFingerprintNavigation);
+        mIsFingerprintNavigation = hwManager.isSupported(
+                DeviceHardwareManager.FEATURE_FINGERPRINT_NAVIGATION)
     }
 
     @Override
