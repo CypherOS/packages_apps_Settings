@@ -121,4 +121,12 @@
     <string name="weather_unit_metric" translatable="false">Celsius</string>
     <string name="weather_unit_imperial" translatable="false">Fahrenheit</string>
 
+	<!-- Display Mode -->
+	<string name="display_mode_title">Display mode</string>
+	<!-- Display Mode: Placeholder names that should be overlayed -->
+	<string name="display_mode_option_default">Mode default</string>
+	<string name="display_mode_option_1">Mode 1</string>
+	<string name="display_mode_option_2">Mode 2</string>
+	<string name="display_mode_option_3">Mode 3</string>
+	<string name="display_mode_option_4">Mode 4</string>
 </resources>
