@@ -129,4 +129,8 @@
     <string name="display_mode_option_2">Mode 2</string>
     <string name="display_mode_option_3">Mode 3</string>
     <string name="display_mode_option_4">Mode 4</string>
+
+    <!-- Reading Mode -->
+    <string name="reading_mode_title">Reading enhancement</string>
+    <string name="reading_mode_summary">Tints the display to gray to allow a better reading experience</string>
 </resources>
