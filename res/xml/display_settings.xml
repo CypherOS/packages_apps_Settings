@@ -46,6 +46,11 @@
         android:fragment="com.android.settings.display.AutoBrightnessSettings"
         settings:controller="com.android.settings.display.AutoBrightnessPreferenceController" />
 
+    <SwitchPreference
+        android:key="reading_mode"
+        android:title="@string/reading_mode_title"
+        android:summary="@string/reading_mode_summary" />
+
     <com.android.settingslib.RestrictedPreference
         android:key="wallpaper"
         android:title="@string/wallpaper_settings_title"
