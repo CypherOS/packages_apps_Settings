@@ -46,7 +46,7 @@ public class WeatherTempPreferenceController extends BasePreferenceController
 
     @Override
     public int getAvailabilityStatus() {
-        return WeatherClient.isAvailable(mContext) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return AVAILABLE;
     }
 
     @Override
