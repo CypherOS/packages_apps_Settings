@@ -51,6 +51,12 @@
         android:entries="@array/battery_percentage_entries"
         android:entryValues="@array/battery_percentage_values" />
 
+    <Preference
+        android:key="battery_light"
+        android:title="@string/battery_light_settings"
+        android:summary="@string/battery_light_summary"
+        android:fragment="com.android.settings.aoscp.fuelgauge.BatteryLightSettings" />
+
     <com.android.settings.fuelgauge.PowerGaugePreference
         android:key="last_full_charge"
         android:title="@string/battery_last_full_charge"
