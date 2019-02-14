@@ -79,7 +79,9 @@ public class EntityHeaderController {
     private Lifecycle mLifecycle;
     private RecyclerView mRecyclerView;
     private Drawable mIcon;
+	private ImageView mIconView;
     private String mIconContentDescription;
+	private View.OnClickListener mIconClickListener;
     private CharSequence mLabel;
     private CharSequence mSummary;
     // Required for hearing aid devices.
@@ -153,6 +155,11 @@ public class EntityHeaderController {
 
     public EntityHeaderController setIconContentDescription(String contentDescription) {
         mIconContentDescription = contentDescription;
+        return this;
+    }
+
+	public EntityHeaderController setIconAction(View.OnClickListener listener) {
+		mIconClickListener = listener;
         return this;
     }
 
@@ -244,10 +251,15 @@ public class EntityHeaderController {
      */
     public View done(Activity activity, boolean rebindActions) {
         styleActionBar(activity);
-        ImageView iconView = mHeader.findViewById(R.id.entity_header_icon);
-        if (iconView != null) {
-            iconView.setImageDrawable(mIcon);
-            iconView.setContentDescription(mIconContentDescription);
+        mIconView = mHeader.findViewById(R.id.entity_header_icon);
+        if (mIconView != null) {
+            mIconView.setImageDrawable(mIcon);
+            mIconView.setContentDescription(mIconContentDescription);
+			mIconView.setOnClickListener(mIconClickListener);
+			if (mIconClickListener != null) {
+				mIconView.setClickable(true);
+				mIconView.postOnAnimationDelayed(mStartPresenter, 1500);
+			}
         }
         setText(R.id.entity_header_title, mLabel);
         setText(R.id.entity_header_summary, mSummary);
@@ -381,4 +393,19 @@ public class EntityHeaderController {
             textView.setVisibility(TextUtils.isEmpty(text) ? View.GONE : View.VISIBLE);
         }
     }
+
+	private Runnable mStartPresenter = new Runnable() {
+        @Override
+        public void run() {
+            mIconView.setPressed(true);
+            mIconView.postOnAnimationDelayed(mEndPresenter, 200);
+        }
+    };
+
+    private Runnable mEndPresenter = new Runnable() {
+        @Override
+        public void run() {
+            mIconView.setPressed(false);
+        }
+    };
 }

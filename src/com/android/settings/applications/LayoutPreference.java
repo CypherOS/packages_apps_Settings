@@ -92,6 +92,12 @@ public class LayoutPreference extends Preference {
         setShouldDisableView(false);
     }
 
+	public void setLayout(int resourceId) {
+		final View view = LayoutInflater.from(getContext())
+                .inflate(resourceId, null, false);
+        setView(view);
+	}
+
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         holder.itemView.setOnClickListener(mClickListener);
