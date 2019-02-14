@@ -25,7 +25,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import aoscp.support.lottie.LottieAnimationView;
+
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.settings.aoscp.deviceinfo.FirmwareVersionHeaderController;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 
@@ -62,6 +65,18 @@ public class FirmwareVersionDialogFragment extends InstrumentedDialogFragment {
         return builder.setView(mRootView).create();
     }
 
+	public void setHeader(int viewId, boolean animate) {
+		final LottieAnimationView view = mRootView.findViewById(viewId);
+		if (view != null) {
+			if (view.getVisibility() != View.VISIBLE) {
+			    view.setVisibility(View.VISIBLE);
+			}
+		}
+		if (animate) {
+			view.playAnimation();
+		}
+	}
+
     public void setText(int viewId, CharSequence text) {
         final TextView view = mRootView.findViewById(viewId);
         if (view != null) {
@@ -84,6 +99,7 @@ public class FirmwareVersionDialogFragment extends InstrumentedDialogFragment {
     }
 
     private void initializeControllers() {
+		new FirmwareVersionHeaderController(this).initialize();
         new FirmwareVersionDialogController(this).initialize();
         new SecurityPatchLevelDialogController(this).initialize();
         new AoscpVersionDialogController(this).initialize();

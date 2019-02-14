@@ -19,11 +19,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/sim_content_padding">
+		
+		<include layout="@layout/dialog_firmware_version_header" />
 
         <TextView
             style="@style/device_info_dialog_label"
