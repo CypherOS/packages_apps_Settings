@@ -60,8 +60,6 @@ import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
-import aoscp.support.lottie.LottieAnimationView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,12 +71,9 @@ public class MyDeviceInfoFragment extends DashboardFragment
     private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
     private static final String KEY_LEGAL_CONTAINER = "legal_container";
 
-    private static final int MENU_MULTI_USER = Menu.FIRST;
     private int mMultiUserVersion;
-    private long[] mHits = new long[3];
 
     private LayoutPreference mHeaderPreference;
-    private LottieAnimationView mAnimationView;
 
     @Override
     public int getMetricsCategory() {
@@ -161,64 +156,26 @@ public class MyDeviceInfoFragment extends DashboardFragment
         mHeaderPreference =
                 (LayoutPreference) getPreferenceScreen().findPreference(KEY_MY_DEVICE_INFO_HEADER);
         final Activity context = getActivity();
-        /* Todo: Convert into a fallback for MultiUserV1
-        if (mMultiUserVersion == UserManager.MULTI_USER_V1) {
-            // TODO: Migrate into its own controller.
-            final Bundle bundle = getArguments();
-            final View appSnippet = mHeaderPreference.findViewById(R.id.entity_header);
-            EntityHeaderController controller = EntityHeaderController
-                    .newInstance(context, this, appSnippet)
-                    .setRecyclerView(getListView(), getLifecycle())
-                    .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
-                            EntityHeaderController.ActionType.ACTION_NONE);
-
-            // TODO: There may be an avatar setting action we can use here.
-            final int iconId = bundle.getInt("icon_id", 0);
-            if (iconId == 0) {
-                UserManager userManager = (UserManager) getActivity().getSystemService(
-                        Context.USER_SERVICE);
-                UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
-                controller.setLabel(info.name);
-                controller.setIcon(
-                        com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
-            }
-            controller.done(context, true);
-        }*/
+        // TODO: Migrate into its own controller.
+        final Bundle bundle = getArguments();
         final View appSnippet = mHeaderPreference.findViewById(R.id.entity_header);
         EntityHeaderController controller = EntityHeaderController
                 .newInstance(context, this, appSnippet)
                 .setRecyclerView(getListView(), getLifecycle())
-                .styleActionBar(context)
                 .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
                         EntityHeaderController.ActionType.ACTION_NONE);
-        mAnimationView = (LottieAnimationView) mHeaderPreference.findViewById(R.id.header_icon);
-        doLunaReveal();
-        mAnimationView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
-                mHits[mHits.length - 1] = SystemClock.uptimeMillis();
-                if (mHits[0] >= (SystemClock.uptimeMillis() - 500)) {
-                    final Intent intent = new Intent(Intent.ACTION_MAIN)
-                            .putExtra("aoscp", true)
-                            .setClassName(
-                                    "android", com.android.internal.app.PlatLogoActivity.class.getName());
-                    try {
-                        context.startActivity(intent);
-                    } catch (Exception e) {
-                        Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
-                    }
-                }
-            }
-        });
-        final TextView version = (TextView) mHeaderPreference.findViewById(R.id.version);
-        final TextView versionCode = (TextView) mHeaderPreference.findViewById(R.id.version_code);
-        version.setText(Build.LUNA.VERSION);
-        versionCode.setText(Build.LUNA.VERSION_CODE);
-    }
 
-    private void doLunaReveal() {
-        mAnimationView.playAnimation();
+        // TODO: There may be an avatar setting action we can use here.
+        final int iconId = bundle.getInt("icon_id", 0);
+        if (iconId == 0) {
+            UserManager userManager = (UserManager) getActivity().getSystemService(
+                    Context.USER_SERVICE);
+            UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
+            controller.setLabel(info.name);
+            controller.setIcon(
+                    com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
+        }
+        controller.done(context, true);
     }
 
     @Override
@@ -229,43 +186,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
     public void onSetDeviceNameConfirm() {
         final DeviceNamePreferenceController controller = use(DeviceNamePreferenceController.class);
         controller.confirmDeviceName();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        if (mMultiUserVersion == UserManager.MULTI_USER_V2) {
-            final Bundle bundle = getArguments();
-            final int iconId = bundle.getInt("icon_id", 0);
-            UserManager userManager = (UserManager) getActivity().getSystemService(
-                    Context.USER_SERVICE);
-            UserInfo info = Utils.getExistingUser(userManager, android.os.Process.myUserHandle());
-
-            if (iconId == 0) {
-                SubMenu multiUser = menu.addSubMenu(1, MENU_MULTI_USER, 1, info.name);
-                MenuItem multiUserIcon = multiUser.getItem();
-                multiUserIcon.setIcon(com.android.settingslib.Utils.getSmallUserIcon(
-                        getActivity(), userManager, info)).setShowAsAction(
-                        MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-            }
-        }
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_MULTI_USER:
-                if (mMultiUserVersion == UserManager.MULTI_USER_V2) {
-                    new SubSettingLauncher(getContext())
-                            .setDestination(UserSettings.class.getName())
-                            .setSourceMetricsCategory(getMetricsCategory())
-                            .setTitle(R.string.user_settings_title)
-                            .launch();
-                    return true;
-                }
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private static class SummaryProvider implements SummaryLoader.SummaryProvider {

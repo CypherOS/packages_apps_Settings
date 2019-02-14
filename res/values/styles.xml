@@ -420,6 +420,10 @@
         <item name="android:paddingBottom">8dp</item>
     </style>
 
+    <style name="EntityHeader.Dialog" parent="@style/EntityHeader">
+        <item name="android:background">@null</item>
+    </style>
+
     <style name="TextAppearance.EntityHeaderTitle"
            parent="@android:style/TextAppearance.Material.Subhead">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
