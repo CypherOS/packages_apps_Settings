@@ -97,4 +97,17 @@
         <item>1</item>
     </string-array>
 
+	<!-- Battery Control -->
+    <string-array name="battery_light_entries" translatable="false">
+        <item>@string/battery_light_off</item>
+        <item>@string/battery_light_on</item>
+		<item>@string/battery_light_on_minus_charging</item>
+    </string-array>
+
+    <string-array name="battery_light_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+		<item>2</item>
+    </string-array>
+
 </resources>
