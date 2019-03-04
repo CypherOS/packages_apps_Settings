@@ -127,4 +127,10 @@
     <string name="display_mode_option_2">Modo 2</string>
     <string name="display_mode_option_3">Modo 3</string>
     <string name="display_mode_option_4">Modo 4</string>
+
+    <!-- Battery Light -->
+    <string name="battery_light_title">Permitir luz de bateria</string>
+    <string name="battery_light_off">Nunca</string>
+    <string name="battery_light_on">Sempre</string>
+    <string name="battery_light_on_minus_charging">Exceto quando carregando</string>
 </resources>
