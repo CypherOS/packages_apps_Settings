@@ -114,4 +114,12 @@
     <string name="battery_light_off">Never</string>
     <string name="battery_light_on">Always</string>
     <string name="battery_light_on_minus_charging">Except when charging</string>
+
+	<!-- Ambient Play -->
+    <string name="ambient_play_title">Ambient Play</string>
+	<string name="ambient_play_summary">Identify music playing around you</string>
+	<string name="ambient_play_activation_on">Turn on</string>
+	<string name="ambient_play_activation_off">Turn off</string>
+	<string name="ambient_play_keyguard_title">Show songs on lockscreen</string>
+	<string name="ambient_play_description">When music is playing nearby, you can see the song name and artist. Battery life and data usage may be affected when enabled.</string>
 </resources>
