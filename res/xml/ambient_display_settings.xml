@@ -58,4 +58,10 @@
 
     </PreferenceCategory>
 
+    <Preference
+        android:key="ambient_play"
+        android:title="@string/ambient_play_title"
+        android:fragment="com.android.settings.aoscp.display.AmbientPlaySettings"
+        settings:controller="com.android.settings.aoscp.display.AmbientPlayPreferenceController" />
+
 </PreferenceScreen>
