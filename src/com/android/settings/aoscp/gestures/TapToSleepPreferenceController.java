@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 CypherOS
+ * Copyright (C) 2019 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,48 +15,67 @@
  */
 package com.android.settings.aoscp.gestures;
 
-import android.content.Context;
-import android.provider.Settings;
-import android.support.v7.preference.Preference;
-import android.support.v14.preference.SwitchPreference;
-
-import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.core.AbstractPreferenceController;
-
 import static android.provider.Settings.System.DOUBLE_TAP_SLEEP_GESTURE;
 
-public class TapToSleepPreferenceController extends AbstractPreferenceController implements
-        PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
+import android.content.Context;
+import android.content.Intent;
+import android.provider.Settings;
+import android.support.v7.preference.Preference;
+import android.text.TextUtils;
 
-    private String mKey;
+import com.android.settings.R;
+import com.android.settings.aoscp.widget.IllustrationPreferenceController
+import com.android.settings.search.DatabaseIndexingUtils;
+import com.android.settings.search.InlineSwitchPayload;
+import com.android.settings.search.ResultPayload;
+
+public class TapToSleepPreferenceController extends IllustrationPreferenceController {
+
+	private final int ON = 1;
+    private final int OFF = 0;
+
+    private static final String PREF_KEY_ILLUSTRATION = "tap_to_sleep_video";
+	private final String mTapToSleepPrefKey;
 
     public TapToSleepPreferenceController(Context context, String key) {
-        super(context);
-        mKey = key;
+        super(context, key);
+		mTapToSleepPrefKey = key;
     }
 
     @Override
-    public boolean isAvailable() {
-        return true;
+    public int getAvailabilityStatus() {
+        return AVAILABLE;
+    }
+
+	@Override
+    public boolean isSliceable() {
+        return TextUtils.equals(getPreferenceKey(), "tap_to_sleep");
     }
 
     @Override
-    public String getPreferenceKey() {
-        return mKey;
+    public boolean setChecked(boolean isChecked) {
+        return Settings.System.putInt(mContext.getContentResolver(), DOUBLE_TAP_SLEEP_GESTURE,
+                isChecked ? ON : OFF);
     }
 
-    @Override
-    public void updateState(Preference preference) {
-        int setting = Settings.System.getInt(mContext.getContentResolver(),
-                DOUBLE_TAP_SLEEP_GESTURE, 0);
-        ((SwitchPreference) preference).setChecked(setting != 0);
+	@Override
+    protected String getIllustrationKey() {
+        return PREF_KEY_ILLUSTRATION;
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean allowTapToSleep = (Boolean) newValue;
-        Settings.System.putInt(mContext.getContentResolver(), DOUBLE_TAP_SLEEP_GESTURE,
-                allowTapToSleep ? 1 : 0);
-        return true;
+	@Override
+    public boolean isChecked() {
+        boolean isEnabled = Settings.System.getInt(mContext.getContentResolver(), 
+                DOUBLE_TAP_SLEEP_GESTURE, 0) != 0;
+        return isEnabled;
+    }
+
+	@Override
+    public ResultPayload getResultPayload() {
+        final Intent intent = DatabaseIndexingUtils.buildSearchResultPageIntent(mContext,
+                TapToSleepGestureSettings.class.getName(), mTapToSleepPrefKey,
+                mContext.getString(R.string.gesture_preference_title));
+        return new InlineSwitchPayload(DOUBLE_TAP_SLEEP_GESTURE, ResultPayload.SettingsSource.SYSTEM,
+                ON /* onValue */, intent, isAvailable(), OFF /* defaultValue */);
     }
 }
