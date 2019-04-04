@@ -15,41 +15,65 @@
  */
 package com.android.settings.aoscp.gestures;
 
+import static android.provider.Settings.System.DOUBLE_TAP_SLEEP_GESTURE;
+
 import android.content.Context;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.support.v14.preference.SwitchPreference;
 
+import com.android.settings.R;
+import com.android.settings.aoscp.widget.IllustrationPreference;
+import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.core.AbstractPreferenceController;
 
-import static android.provider.Settings.System.DOUBLE_TAP_SLEEP_GESTURE;
-
-public class TapToSleepPreferenceController extends AbstractPreferenceController implements
+public class TapToSleepPreferenceController extends BasePreferenceController implements
         PreferenceControllerMixin, Preference.OnPreferenceChangeListener {
 
-    private String mKey;
+    private static final String PREF_KEY_ILLUSTRATION = "tap_to_sleep_video";
+
+    private IllustrationPreference mIllustrationPreference;
 
     public TapToSleepPreferenceController(Context context, String key) {
-        super(context);
-        mKey = key;
+        super(context, key);
     }
 
     @Override
-    public boolean isAvailable() {
-        return true;
+    public int getAvailabilityStatus() {
+        return AVAILABLE;
     }
 
     @Override
-    public String getPreferenceKey() {
-        return mKey;
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        if (isAvailable()) {
+            mIllustrationPreference = (IllustrationPreference) screen.findPreference(PREF_KEY_ILLUSTRATION);
+        }
     }
 
     @Override
     public void updateState(Preference preference) {
-        int setting = Settings.System.getInt(mContext.getContentResolver(),
-                DOUBLE_TAP_SLEEP_GESTURE, 0);
-        ((SwitchPreference) preference).setChecked(setting != 0);
+        if (preference != null) {
+            if (preference instanceof SwitchPreference) {
+                int setting = Settings.System.getInt(mContext.getContentResolver(),
+                        DOUBLE_TAP_SLEEP_GESTURE, 0);
+                ((SwitchPreference) preference).setChecked(setting != 0);
+            }
+        }
+    }
+
+    @Override
+    public CharSequence getSummary() {
+        CharSequence summary;
+        boolean enabled = Settings.System.getInt(mContext.getContentResolver(), 
+                DOUBLE_TAP_SLEEP_GESTURE, 0) != 0;
+        if (enabled) {
+            summary = mContext.getText(R.string.gesture_setting_on);
+        } else {
+            summary = mContext.getText(R.string.gesture_setting_off);
+        }
+        return summary;
     }
 
     @Override
@@ -57,6 +81,7 @@ public class TapToSleepPreferenceController extends AbstractPreferenceController
         boolean allowTapToSleep = (Boolean) newValue;
         Settings.System.putInt(mContext.getContentResolver(), DOUBLE_TAP_SLEEP_GESTURE,
                 allowTapToSleep ? 1 : 0);
+        preference.setSummary(getSummary());
         return true;
     }
 }
