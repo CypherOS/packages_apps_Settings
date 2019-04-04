@@ -23,6 +23,7 @@ import android.support.annotation.NonNull;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.settings.R;
+import com.android.settings.aoscp.gestures.SwipeToScreenshotPreferenceController;
 import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
@@ -78,6 +79,7 @@ public class GesturesSettingPreferenceController extends BasePreferenceControlle
                 .setConfig(ambientDisplayConfiguration));
         controllers.add(new PreventRingingPreferenceController(context, FAKE_PREF_KEY));
         controllers.add(new TapToSleepPreferenceController(context, FAKE_PREF_KEY));
+		controllers.add(new SwipeToScreenshotPreferenceController(context, FAKE_PREF_KEY));
         return controllers;
     }
 
