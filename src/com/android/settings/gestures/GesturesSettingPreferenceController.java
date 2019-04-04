@@ -23,6 +23,7 @@ import android.support.annotation.NonNull;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.settings.R;
+import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -76,6 +77,7 @@ public class GesturesSettingPreferenceController extends BasePreferenceControlle
         controllers.add(new DoubleTapScreenPreferenceController(context, FAKE_PREF_KEY)
                 .setConfig(ambientDisplayConfiguration));
         controllers.add(new PreventRingingPreferenceController(context, FAKE_PREF_KEY));
+        controllers.add(new TapToSleepPreferenceController(context, FAKE_PREF_KEY));
         return controllers;
     }
 
