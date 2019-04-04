@@ -25,7 +25,6 @@ import android.support.annotation.Nullable;
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-import com.android.settings.aoscp.gestures.TapToSleepPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -73,14 +72,6 @@ public class GestureSettings extends DashboardFragment {
         use(AssistGestureSettingsPreferenceController.class).setAssistOnly(false);
         use(PickupGesturePreferenceController.class).setConfig(getConfig(context));
         use(DoubleTapScreenPreferenceController.class).setConfig(getConfig(context));
-    }
-
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        final Lifecycle lifecycle = getLifecycle();
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new TapToSleepPreferenceController(context, KEY_TAP_TO_SLEEP));
-        return controllers;
     }
 
     private AmbientDisplayConfiguration getConfig(Context context) {
