@@ -16,6 +16,9 @@
 
 package com.android.settings;
 
+import static android.arch.lifecycle.Lifecycle.Event.ON_CREATE;
+import static android.arch.lifecycle.Lifecycle.Event.ON_PAUSE;
+import static android.arch.lifecycle.Lifecycle.Event.ON_RESUME;
 import static android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO;
 
 import android.app.ActionBar;
@@ -52,10 +55,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toolbar;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.Settings.WifiSettingsActivity;
+import com.android.settings.aoscp.accounts.AvatarViewMixin;
 import com.android.settings.applications.manageapplications.ManageApplications;
 import com.android.settings.backup.BackupSettingsActivity;
 import com.android.settings.core.FeatureFlags;
@@ -67,6 +72,7 @@ import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.DeviceIndexFeatureProvider;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.widget.SwitchBar;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.instrumentation.Instrumentable;
 import com.android.settingslib.core.instrumentation.SharedPreferencesLogger;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
@@ -188,6 +194,8 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private DashboardFeatureProvider mDashboardFeatureProvider;
 
+	private final Lifecycle mLifecycle = new Lifecycle(this);
+
     public SwitchBar getSwitchBar() {
         return mSwitchBar;
     }
@@ -232,6 +240,8 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     @Override
     protected void onCreate(Bundle savedState) {
+		mLifecycle.onCreate(savedState);
+        mLifecycle.handleLifecycleEvent(ON_CREATE);
         super.onCreate(savedState);
         Log.d(LOG_TAG, "Starting onCreate");
         long startTime = System.currentTimeMillis();
@@ -299,6 +309,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             final Toolbar toolbar = findViewById(R.id.search_action_bar);
             FeatureFactory.getFactory(this).getSearchFeatureProvider()
                     .initSearchToolbar(this, toolbar);
+			mLifecycle.addObserver(new AvatarViewMixin(this, (ImageView) findViewById(R.id.account_avatar)));
             setActionBar(toolbar);
 
             // Please forgive me for what I am about to do.
@@ -465,6 +476,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+		mLifecycle.onSaveInstanceState(outState);
         saveState(outState);
     }
 
@@ -480,6 +492,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     @Override
     protected void onResume() {
+		mLifecycle.handleLifecycleEvent(ON_RESUME);
         super.onResume();
 
         mDevelopmentSettingsListener = new BroadcastReceiver() {
@@ -499,6 +512,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     @Override
     protected void onPause() {
+		mLifecycle.handleLifecycleEvent(ON_PAUSE);
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mDevelopmentSettingsListener);
         mDevelopmentSettingsListener = null;
