@@ -52,10 +52,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toolbar;
 
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.Settings.WifiSettingsActivity;
+import com.android.settings.aoscp.accounts.AvatarViewMixin;
 import com.android.settings.applications.manageapplications.ManageApplications;
 import com.android.settings.backup.BackupSettingsActivity;
 import com.android.settings.core.FeatureFlags;
@@ -299,6 +301,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             final Toolbar toolbar = findViewById(R.id.search_action_bar);
             FeatureFactory.getFactory(this).getSearchFeatureProvider()
                     .initSearchToolbar(this, toolbar);
+			getLifecycle().addObserver(new AvatarViewMixin(this, (ImageView) findViewById(R.id.account_avatar)));
             setActionBar(toolbar);
 
             // Please forgive me for what I am about to do.
