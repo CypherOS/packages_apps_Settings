@@ -46,7 +46,7 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
     private static final String TAG = "FingerprintIntro";
 
     protected static final int CHOOSE_LOCK_GENERIC_REQUEST = 1;
-    protected static final int FINGERPRINT_FIND_SENSOR_REQUEST = 2;
+    protected static final int FIRST_TIME_PRIVACY_REQUEST = 2;
     protected static final int LEARN_MORE_REQUEST = 3;
 
     private UserManager mUserManager;
@@ -60,21 +60,8 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         mFingerprintUnlockDisabledByAdmin = RestrictedLockUtils.checkIfKeyguardFeaturesDisabled(
                 this, DevicePolicyManager.KEYGUARD_DISABLE_FINGERPRINT, mUserId) != null;
 
-        setContentView(R.layout.fingerprint_enroll_introduction);
-        if (mFingerprintUnlockDisabledByAdmin) {
-            setHeaderText(R.string
-                    .security_settings_fingerprint_enroll_introduction_title_unlock_disabled);
-        } else {
-            setHeaderText(R.string.security_settings_fingerprint_enroll_introduction_title);
-        }
-
-        Button cancelButton = (Button) findViewById(R.id.fingerprint_cancel_button);
-        cancelButton.setOnClickListener(this);
-
-        mErrorText = (TextView) findViewById(R.id.error_text);
-
-        mUserManager = UserManager.get(this);
-        updatePasswordQuality();
+        setContentView(R.layout.first_time_introduction);
+        setHeaderText(R.string.security_settings_fingerprint_enroll_introduction_title);
     }
 
     @Override
@@ -103,52 +90,22 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
         }
     }
 
-    private void updatePasswordQuality() {
-        final int passwordQuality = new ChooseLockSettingsHelper(this).utils()
-                .getActivePasswordQuality(mUserManager.getCredentialOwnerProfile(mUserId));
-        mHasPassword = passwordQuality != DevicePolicyManager.PASSWORD_QUALITY_UNSPECIFIED;
-    }
-
     @Override
     protected Button getNextButton() {
-        return (Button) findViewById(R.id.fingerprint_next_button);
+        return (Button) findViewById(R.id.first_time_next_button);
     }
 
     @Override
     protected void onNextButtonClick() {
-        if (!mHasPassword) {
-            // No fingerprints registered, launch into enrollment wizard.
-            launchChooseLock();
-        } else {
-            // Lock thingy is already set up, launch directly into find sensor step from wizard.
-            launchFindSensor(null);
-        }
+        launchPrivacyStep();
     }
 
-    private void launchChooseLock() {
-        Intent intent = getChooseLockIntent();
-        long challenge = Utils.getFingerprintManagerOrNull(this).preEnroll();
-        intent.putExtra(ChooseLockGeneric.ChooseLockGenericFragment.MINIMUM_QUALITY_KEY,
-                DevicePolicyManager.PASSWORD_QUALITY_SOMETHING);
-        intent.putExtra(ChooseLockGeneric.ChooseLockGenericFragment.HIDE_DISABLED_PREFS, true);
-        intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE, true);
-        intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE, challenge);
-        intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_FOR_FINGERPRINT, true);
-        if (mUserId != UserHandle.USER_NULL) {
-            intent.putExtra(Intent.EXTRA_USER_ID, mUserId);
-        }
-        startActivityForResult(intent, CHOOSE_LOCK_GENERIC_REQUEST);
-    }
-
-    private void launchFindSensor(byte[] token) {
+    private void launchPrivacyStep() {
         Intent intent = getFindSensorIntent();
-        if (token != null) {
-            intent.putExtra(ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN, token);
-        }
         if (mUserId != UserHandle.USER_NULL) {
             intent.putExtra(Intent.EXTRA_USER_ID, mUserId);
         }
-        startActivityForResult(intent, FINGERPRINT_FIND_SENSOR_REQUEST);
+        startActivityForResult(intent, FIRST_TIME_PRIVACY_REQUEST);
     }
 
     protected Intent getChooseLockIntent() {
@@ -162,43 +119,20 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         final boolean isResultFinished = resultCode == RESULT_FINISHED;
-        if (requestCode == FINGERPRINT_FIND_SENSOR_REQUEST) {
+        if (requestCode == FIRST_TIME_PRIVACY_REQUEST) {
             if (isResultFinished || resultCode == RESULT_SKIP) {
                 final int result = isResultFinished ? RESULT_OK : RESULT_SKIP;
                 setResult(result, data);
                 finish();
                 return;
             }
-        } else if (requestCode == CHOOSE_LOCK_GENERIC_REQUEST) {
-            if (isResultFinished) {
-                updatePasswordQuality();
-                byte[] token = data.getByteArrayExtra(
-                        ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
-                launchFindSensor(token);
-                return;
-            }
-        } else if (requestCode == LEARN_MORE_REQUEST) {
-            overridePendingTransition(R.anim.suw_slide_back_in, R.anim.suw_slide_back_out);
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.fingerprint_cancel_button) {
-            onCancelButtonClick();
-        } else {
-            super.onClick(v);
-        }
-    }
-
-    @Override
     public int getMetricsCategory() {
         return MetricsEvent.FINGERPRINT_ENROLL_INTRO;
-    }
-
-    protected void onCancelButtonClick() {
-        finish();
     }
 
     @Override
