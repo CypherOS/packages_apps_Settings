@@ -19,11 +19,19 @@
     <string name="aoscp_firmware_version">CypherOS version</string>
 
     <!-- Device Introduction -->
-    <string name="first_time_introduction_header">Welcome to the beta</string>
-    <string name="first_time_introduction_message">Experience Android like never before, fast, minimal and compact. Your privacy is our priority, personal data will
+	<string name="first_time_introduction">Welcome to CypherOS</string>
+	<string name="first_time_introduction_desc">Experience Android like never before. Fast, minimal and compact\n\nContinue to learn more about features and capabilities.</string>
+    <string name="first_time_introduction_beta">Welcome to the beta</string>
+    <string name="first_time_introduction_desc_beta">Experience Android like never before. Fast, minimal and compact. Your privacy is our priority, personal data will
     never be sent to us or any third party we may associate with. You are protected with trusted verification steps provided by Google. Here\'s something\'s you can do
     to get started:\n\n- Setup lockscreen credentials\n- Turn on Adaptive brightness\n- Setup Nightlight\n- Try out themes with Color Manager</string>
-    <string name="first_time_confirm_button">GOT IT</string>
+	<!-- Device Introduction: Privacy -->
+	<string name="first_time_privacy">Safe and secure</string>
+	<string name="first_time_privacy_desc">Your personal data is protected and never shared with anyone else. With our fast monthly installments of Android security releases, you will
+	always remain up to date. We also offer multiple solutions to help protect your privacy and always be in the know.</string>
+	<!-- Device Introduction: Buttons -->
+    <string name="first_time_confirm_button">Got it</string>
+	<string name="first_time_next_button">Next</string>
 
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
