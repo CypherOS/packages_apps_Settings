@@ -22,7 +22,7 @@
     android:id="@+id/setup_wizard_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:suwFooter="@layout/first_time_introduction_footer">
+    app:suwFooter="@layout/first_time_device_intro_footer">
 
     <LinearLayout
         style="@style/SuwContentFrame"
@@ -36,8 +36,23 @@
             android:id="@+id/description_text"
             style="@style/SuwDescription.Glif"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+			
+		<com.android.setupwizardlib.view.FillContentLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/first_time_introduction_message" />
+            android:layout_weight="1">
+
+            <aoscp.support.lottie.LottieAnimationView
+                android:id="@+id/illustration"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:clickable="false"
+				android:visibility="gone"
+                android:paddingTop="5dp"
+                android:layout_gravity="center" />
+
+        </com.android.setupwizardlib.view.FillContentLayout>
 
     </LinearLayout>
 

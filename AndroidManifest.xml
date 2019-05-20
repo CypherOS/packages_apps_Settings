@@ -1028,7 +1028,12 @@
                        android:value="true" />
         </activity>
 
-        <activity android:name=".aoscp.FirstTimeIntroduction"
+        <activity android:name=".aoscp.deviceintro.FirstTimePrivacy" android:exported="false"/>
+		<activity android:name=".aoscp.deviceintro.FirstTimeAmbient" android:exported="false"/>
+		<activity android:name=".aoscp.deviceintro.FirstTimeColorManager" android:exported="false"/>
+		<activity android:name=".aoscp.deviceintro.FirstTimeBugReport" android:exported="false"/>
+		<activity android:name=".aoscp.deviceintro.FirstTimeFinished" android:exported="false"/>
+        <activity android:name=".aoscp.deviceintro.FirstTimeIntroduction"
             android:exported="true"
             android:theme="@style/GlifTheme.Light">
             <intent-filter>
