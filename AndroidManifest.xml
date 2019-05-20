@@ -1028,7 +1028,7 @@
                        android:value="true" />
         </activity>
 
-        <activity android:name=".aoscp.FirstTimeIntroduction"
+        <activity android:name=".aoscp.deviceintro.FirstTimeIntroduction"
             android:exported="true"
             android:theme="@style/GlifTheme.Light">
             <intent-filter>
