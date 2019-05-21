@@ -28,6 +28,7 @@ import android.util.Pair;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.Settings.NightDisplaySuggestionActivity;
+import com.android.settings.aoscp.suggestions.DeviceIntroSuggestionActivity;
 import com.android.settings.display.NightDisplayPreferenceController;
 import com.android.settings.fingerprint.FingerprintEnrollSuggestionActivity;
 import com.android.settings.fingerprint.FingerprintSuggestionActivity;
@@ -91,6 +92,8 @@ public class SuggestionFeatureProviderImpl implements SuggestionFeatureProvider 
             return NewDeviceIntroSuggestionActivity.isSuggestionComplete(context);
         } else if (className.equals(ZenSuggestionActivity.class.getName())) {
             return ZenOnboardingActivity.isSuggestionComplete(context);
+		} else if (className.equals(DeviceIntroSuggestionActivity.class.getName())) {
+            return DeviceIntroSuggestionActivity.isSuggestionComplete(context);
         }
         return false;
     }
