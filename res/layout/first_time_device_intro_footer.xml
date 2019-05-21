@@ -26,10 +26,9 @@
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/confirm_button"
+        android:id="@+id/button"
         style="@style/SuwGlifButton.Primary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/first_time_confirm_button" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

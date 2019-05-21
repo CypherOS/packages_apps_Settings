@@ -19,11 +19,36 @@
     <string name="aoscp_firmware_version">CypherOS version</string>
 
     <!-- Device Introduction -->
-    <string name="first_time_introduction_header">Welcome to the beta</string>
-    <string name="first_time_introduction_message">Experience Android like never before, fast, minimal and compact. Your privacy is our priority, personal data will
+	<string name="first_time_introduction">Welcome to CypherOS</string>
+	<string name="first_time_introduction_desc">Experience Android like never before. Fast, minimal and compact\n\nContinue to learn more about features and capabilities.</string>
+    <string name="first_time_introduction_beta">Welcome to the beta</string>
+    <string name="first_time_introduction_desc_beta">Experience Android like never before. Fast, minimal and compact. Your privacy is our priority, personal data will
     never be sent to us or any third party we may associate with. You are protected with trusted verification steps provided by Google. Here\'s something\'s you can do
     to get started:\n\n- Setup lockscreen credentials\n- Turn on Adaptive brightness\n- Setup Nightlight\n- Try out themes with Color Manager</string>
-    <string name="first_time_confirm_button">GOT IT</string>
+	<string name="first_time_introduction_suggestion_summary">Take a small tour of what\'s exciting</string>
+	<!-- Device Introduction: Privacy -->
+	<string name="first_time_privacy">Safe and secure</string>
+	<string name="first_time_privacy_desc">Your personal data is protected and never shared with anyone else. With our fast monthly installments of Android security releases, you will
+	always remain up to date. We also offer multiple solutions to help protect your privacy and always be in the know.</string>
+	<!-- Device Introduction: Ambient Play -->
+	<string name="first_time_ambient">Music recognition on-the-go</string>
+	<string name="first_time_ambient_desc">Never miss a beat with Ambient Play music recognition at your fingertips. Ambient Play will notify you of a song nearby along with the artist,
+	with search capabilities on tap. You can access this feature in Ambient Display settings to learn more.</string>
+	<!-- Device Introduction: ColorManager -->
+	<string name="first_time_color_manager">What\'s yours, is yours</string>
+	<string name="first_time_color_manager_desc">Seperate yourself from the rest and explore your artistic capabilities with Color Manager, a built-in theming platform at your disposal. Color Manager
+	let\'s you apply themes as well as system accent tones. From blue to green, make your device, yours. You can access this feature in Display settings.</string>
+	<!-- Device Introduction: Bug Report -->
+	<string name="first_time_bug_report">Become a bug buster</string>
+	<string name="first_time_bug_report_desc">Bug\'s can be annoying and can either happen at random or consitently. Sometimes during testing, a bug may slip through and become an inconvenience for
+	you. To help us make that bug, begone, file a report to an official aoscp team member or your device maintainer. Try to provide a logcat as well, as it helps us identify what\'s causing the bug.</string>
+	<!-- Device Introduction: Finished -->
+	<string name="first_time_finished">That\'s all for now</string>
+	<string name="first_time_finished_desc">There are plenty more features and support capabilities in CypherOS that may be too much to share here, be sure to check out our website for more information
+	about CypherOS, support, and updates. CypherOS is one of the top leading operating system\'s to date with pure innovation and more to come.</string>
+	<!-- Device Introduction: Buttons -->
+    <string name="first_time_confirm_button">Got it</string>
+	<string name="first_time_next_button">Next</string>
 
     <!-- Color Manager -->
     <string name="color_manager_title">Color manager</string>
