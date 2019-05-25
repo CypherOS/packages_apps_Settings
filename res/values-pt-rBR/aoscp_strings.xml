@@ -19,11 +19,36 @@
     <string name="aoscp_firmware_version">Versão CypherOS</string>
 
     <!-- Device Introduction -->
-    <string name="first_time_introduction_header">Bem vindo ao Beta</string>
-    <string name="first_time_introduction_message">Experimente o Android como nunca antes, rápido, mínimo e compacto. Sua privacidade é nossa prioridade, seus dados pessoais
+    <string name="first_time_introduction">Bem vindo à CypherOS</string>
+    <string name="first_time_introduction_desc">Experimente o Android como nunca antes. Rápido, mínimo e compacto\n\nContinue para saber mais sobre recursos e personalizações.</string>
+    <string name="first_time_introduction_beta">Bem vindo ao beta</string>
+    <string name="first_time_introduction_desc_beta">Experimente o Android como nunca antes, rápido, mínimo e compacto. Sua privacidade é nossa prioridade, seus dados pessoais
     nunca serão enviados a nós ou a terceiros associados. Você está protegido por etapas de verificação confiáveis ​​fornecidas pelo Google. Aqui estão algumas coisas que você pode fazer
     para começar:\n\n- Configurar credenciais da tela de bloqueio\n- Ativar o brilho adaptável\n- Configurar luz noturna\n- Experimentar temas com o Color Manager</string>
-    <string name="first_time_confirm_button">ENTENDI</string>
+    <string name="first_time_introduction_suggestion_summary">Faça um pequeno tour em nossos recursos</string>
+    <!-- Device Introduction: Privacy -->
+    <string name="first_time_privacy">Seguro e protegido</string>
+    <string name="first_time_privacy_desc">Seus dados pessoais são protegidos e nunca compartilhados com ninguém. Com nossas atualizações de segurança mensais do Android, você
+        permanecerá sempre protegido. Também oferecemos várias soluções para ajudar a assegurar sua privacidade e estar sempre informado.</string>
+    <!-- Device Introduction: Ambient Play -->
+    <string name="first_time_ambient">Reconhecimento musical constante</string>
+    <string name="first_time_ambient_desc">Nunca perca uma batida com o Tocando Agora, reconhecimento de músicas ao seu alcance. O Tocando Agora irá notificá-lo sobre uma música próxima junto ao artista,
+        com recursos de pesquisa em um toque. Você pode acessar este recurso nas configurações de Visualização na Tela para saber mais.</string>
+    <!-- Device Introduction: ColorManager -->
+    <string name="first_time_color_manager">O que é seu, é seu</string>
+    <string name="first_time_color_manager_desc">Seja diferente e explore seu lado artístico com o Gerenciador de Cores, uma plataforma de temas nativos à sua disposição. O Gerenciador de Cores
+        permite que você alterne temas bem como as tonalidades do sistema. Do azul ao verde, faça do seu dispositivo, seu. Você pode acessar esse recurso nas configurações de Tela.</string>
+    <!-- Device Introduction: Bug Report -->
+    <string name="first_time_bug_report">Torne-se um destruidor de bugs</string>
+    <string name="first_time_bug_report_desc">Bugs podem ser chatos e acontecer de forma aleatória ou consistente. Às vezes durante um teste, um bug pode aparecer e se tornar uma inconveniência para
+        você. Para nos ajudar a fazer esse bug ir embora, mande um relatório para um membro oficial da equipe AOSCP ou para o mantenedor do seu dispositivo. Tente fornecer um logcat também, pois isso nos ajuda a identificar o que está causando o bug.</string>
+    <!-- Device Introduction: Finished -->
+    <string name="first_time_finished">É tudo por agora</string>
+    <string name="first_time_finished_desc">Há muito mais recursos e atributos de suporte em CypherOS, é muito para compartilhar aqui, então não deixe de conferir nosso site para mais informações 
+        sobre a CypherOS, suporte, e atualizações. CypherOS é um dos sistemas operacionais líderes em pureza e inovação e há mais por vir.</string>
+    <!-- Device Introduction: Buttons -->
+    <string name="first_time_confirm_button">Entendi</string>
+    <string name="first_time_next_button">Próximo</string>
 
     <!-- Color Manager -->
     <string name="color_manager_title">Gerenciador de cores</string>
@@ -95,25 +120,6 @@
     <string name="swap_slider_order_title">Inverter controle deslizante</string>
     <string name="swap_slider_order_summary">Troque a ordem dos modos de alerta do controle deslizante</string>
 
-    <!-- Ambient Play -->
-    <string name="ambient_play_summary">Mostrar músicas próximas</string>
-    <string name="ambient_play_lockscreen_title">Mostrar na tela de bloqueio</string>
-    <string name="ambient_play_notifications_title">Notificações</string>
-    <string name="ambient_play_switch_bar_on">Ligado</string>
-    <string name="ambient_play_switch_bar_off">Desligado</string>
-    <string name="ambient_play_help_text">Quando alguma música estiver tocando nas proximidades, você poderá ver o nome e o artista. O uso de bateria e de dados podem ser afetados se isso estiver ativado.</string>
-    <string name="ambient_play_history">Histórico de músicas</string>
-    <string name="ambient_play_loading_data">Carregando dados…</string>
-    <string name="ambient_play_history_today">Hoje</string>
-    <string name="ambient_play_history_yesterday">Ontem</string>
-    <string name="ambient_play_history_dialog_play">Escutar agora</string>
-    <string name="ambient_play_history_dialog_search">Procurar na web</string>
-    <string name="ambient_play_history_dialog_remove">Remover</string>
-    <string name="ambient_play_history_empty">O histórico de música está vazio</string>
-    <string name="ambient_play_history_menu_remove_all">Limpar</string>
-    <string name="ambient_play_history_menu_add_to_home">Adicionar à tela inicial</string>
-    <string name="ambient_play_history_dialog_remove_all_confirmation">Você tem certeza?</string>
-
     <!-- Weather -->
     <string name="weather_title">Mostrar previsão do tempo</string>
     <string name="weather_unit_metric" translatable="false">Celsius</string>
@@ -127,4 +133,37 @@
     <string name="display_mode_option_2">Modo 2</string>
     <string name="display_mode_option_3">Modo 3</string>
     <string name="display_mode_option_4">Modo 4</string>
+
+    <!-- Battery Light -->
+    <string name="battery_light_title">Permitir luz de bateria</string>
+    <string name="battery_light_off">Nunca</string>
+    <string name="battery_light_on">Sempre</string>
+    <string name="battery_light_on_minus_charging">Exceto quando carregando</string>
+
+    <!-- Ambient Play -->
+    <string name="ambient_play_title">Tocando Agora</string>
+    <string name="ambient_play_summary">Identifique musicas tocando ao seu redor</string>
+    <string name="ambient_play_summary_on">Ativado</string>
+    <string name="ambient_play_summary_on_keyguard">Ativado / Aparecerá na tela de bloqueio</string>
+    <string name="ambient_play_summary_off">Desativado</string>
+    <string name="ambient_play_activation_on">Ativar</string>
+    <string name="ambient_play_activation_off">Desativar</string>
+    <string name="ambient_play_keyguard_title">Mostrar músicas na tela de bloqueio</string>
+    <string name="ambient_play_description">Quando uma música estiver tocando nas proximidades, você poderá ver o nome da música e o artista. A duração da bateria e o uso de dados podem ser afetados quando ativado.</string>
+    <string name="ambient_play_history">Histórico</string>
+    <string name="ambient_play_recognition_information" translatable="false">%1$s por %2$s</string>
+    <string name="ambient_play_loading_data">Carregando dados…</string>
+    <string name="ambient_play_history_today">Hoje</string>
+    <string name="ambient_play_history_yesterday">Ontem</string>
+    <string name="ambient_play_history_dialog_play">Escutar agora</string>
+    <string name="ambient_play_history_dialog_search">Pesquisar na internet</string>
+    <string name="ambient_play_history_dialog_remove">Remover</string>
+    <string name="ambient_play_history_empty">O histórico de músicas está vazio</string>
+    <string name="ambient_play_history_menu_remove_all">Limpar</string>
+    <string name="ambient_play_history_menu_add_to_home">Adicionar à tela inicial</string>
+    <string name="ambient_play_history_dialog_remove_all_confirmation">Você tem certeza?</string>
+
+    <!-- Swipe to screenshot -->
+    <string name="swipe_to_screenshot_title">Deslize para capturar a tela</string>
+    <string name="swipe_to_screenshot_summary">Deslize três dedos para tirar uma captura de tela</string>
 </resources>
