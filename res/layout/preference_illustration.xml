@@ -19,7 +19,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/illustration_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="240dp"
     android:background="@color/gestures_setting_background_color"
     android:clipToPadding="false"
     android:gravity="center"
@@ -28,10 +28,11 @@
 
     <aoscp.support.lottie.LottieAnimationView
         android:id="@+id/illustration"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="false"
         android:paddingTop="5dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:scaleType="centerInside"/>
 
 </LinearLayout>
