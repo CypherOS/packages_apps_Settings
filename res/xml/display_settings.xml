@@ -89,6 +89,11 @@
         android:fragment="com.android.settings.aoscp.display.DisplayModePreferenceFragment"
         settings:keywords="@string/keywords_color_mode" />
 
+	<ListPreference
+        android:key="display_modes"
+        android:title="@string/display_mode_title"
+        android:persistent="false" />
+
     <Preference
         android:key="font_size"
         android:title="@string/title_font_size"
