@@ -36,26 +36,7 @@ public class DisplayModePreferenceController extends BasePreferenceController {
     @Override
     public int getAvailabilityStatus() {
         final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(mContext);
-        return hwManager.isSupported(DeviceHardwareManager.FEATURE_DISPLAY_ENGINE) ? 
-                AVAILABLE : DISABLED_FOR_USER;
-    }
-
-    @Override
-    public CharSequence getSummary() {
-        final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(mContext);
-        final int currentMode = hwManager.getCurrentDisplayMode();
-        if (currentMode == 4) {
-            return mContext.getText(R.string.display_mode_option_4);
-        }
-        if (currentMode == 3) {
-            return mContext.getText(R.string.display_mode_option_3);
-        }
-        if (currentMode == 2) {
-            return mContext.getText(R.string.display_mode_option_2);
-        }
-        if (currentMode == 1) {
-            return mContext.getText(R.string.display_mode_option_1);
-        }
-        return mContext.getText(R.string.display_mode_option_default);
+        return hwManager.isSupported(DeviceHardwareManager.FEATURE_DISPLAY_MODES) 
+                && hwManager.getDisplayModes() != null ? AVAILABLE : DISABLED_FOR_USER;
     }
 }
