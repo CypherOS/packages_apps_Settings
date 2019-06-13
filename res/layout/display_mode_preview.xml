@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2019 CypherOS
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:aapt="http://schemas.android.com/aapt"
+	android:orientation="vertical"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+    <FrameLayout
+	    android:layout_width="match_parent"
+		android:layout_height="270dp">
+
+        <android.support.v4.view.ViewPager 
+		    android:layout_gravity="center"
+			android:id="@+id/mode_preview"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+
+            <android.support.v4.view.PagerTitleStrip
+			    android:textColor="@*android:color/white"
+				android:layout_gravity="bottom"
+				android:id="@+id/mode_preview_pager_title"
+				android:background="#0000"
+				android:layout_width="wrap_content"
+				android:layout_height="0dp"/>
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+		    android:layout_gravity="bottom"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+            <LinearLayout
+			    android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+                <LinearLayout
+				    android:gravity="center_horizontal"
+					android:layout_gravity="bottom"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="30dp">
+
+                    <ImageView
+					    android:id="@+id/page0"
+						android:layout_width="8dp"
+						android:layout_height="8dp"
+						android:src="@drawable/display_mode_preview_page_current"
+						android:scaleType="fitXY"/>
+
+                    <ImageView
+					    android:id="@+id/page1"
+						android:layout_width="8dp"
+						android:layout_height="8dp"
+						android:layout_marginLeft="10dp"
+						android:src="@drawable/display_mode_preview_page"
+						android:scaleType="fitXY"/>
+
+                    <ImageView
+					    android:id="@+id/page2"
+						android:layout_width="8dp"
+						android:layout_height="8dp"
+						android:layout_marginLeft="10dp"
+						android:src="@drawable/display_mode_preview_page"
+						android:scaleType="fitXY"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
