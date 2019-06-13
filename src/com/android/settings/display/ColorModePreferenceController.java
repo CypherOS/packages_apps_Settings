@@ -20,6 +20,8 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.util.Log;
 
+import aoscp.hardware.DeviceHardwareManager;
+
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.ColorDisplayController;
 import com.android.settings.R;
@@ -41,8 +43,10 @@ public class ColorModePreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
+        final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(mContext);
         return mConfigWrapper.isScreenWideColorGamut()
-                && !getColorDisplayController().getAccessibilityTransformActivated() ?
+                && !getColorDisplayController().getAccessibilityTransformActivated()
+                && !hwManager.isSupported(DeviceHardwareManager.FEATURE_DISPLAY_MODES) ?
                 AVAILABLE : DISABLED_FOR_USER;
     }
 
