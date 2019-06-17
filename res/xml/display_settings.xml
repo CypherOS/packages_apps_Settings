@@ -71,6 +71,12 @@
         settings:keywords="@string/keywords_auto_rotate"
         settings:controller="com.android.settings.display.AutoRotatePreferenceController"/>
 
+	<SwitchPreference
+        android:key="proximity_on_wake"
+        android:title="@string/proximity_wake_title"
+		android:summary="@string/proximity_wake_summary"
+        settings:controller="com.android.settings.aoscp.display.ProximityCheckPreferenceController"/>
+
     <Preference
         android:key="color_manager"
         android:title="@string/color_manager_title"
