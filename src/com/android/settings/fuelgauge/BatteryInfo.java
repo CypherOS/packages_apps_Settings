@@ -14,19 +14,16 @@
 
 package com.android.settings.fuelgauge;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.os.BatteryStats;
 import android.os.BatteryStats.HistoryItem;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.os.UserHandle;
 import android.support.annotation.WorkerThread;
 import android.text.format.Formatter;
 import android.util.SparseIntArray;
@@ -53,11 +50,6 @@ public class BatteryInfo {
     private BatteryStats mStats;
     private static final String LOG_TAG = "BatteryInfo";
     private long timePeriod;
-
-    private static final Uri POWER_ESTIMATE_PROVIDER = Uri.parse("content://co.aoscp.miservices.providers.batterybridge/estimate");
-    private static final String KEY_ESTIMATE = "battery_estimate";
-    private static String ACTION_UPDATE_ESTIMATE = "co.aoscp.miservices.battery.bridge.UPDATE_ESTIMATE";
-    public static Intent INTENT_UPDATE_ESTIMATE = new Intent(ACTION_UPDATE_ESTIMATE);
 
     public interface Callback {
         void onBatteryInfoLoaded(BatteryInfo info);
@@ -283,20 +275,10 @@ public class BatteryInfo {
                     info.batteryPercentString,
                     estimate.isBasedOnUsage && !shortString
             );
-            String shortEstimate = PowerUtil.getBatteryRemainingShortStringFormatted(
-                    context, PowerUtil.convertUsToMs(drainTimeUs));
-            sendEstimateToProvider(shortEstimate, context);
         } else {
             info.remainingLabel = null;
             info.chargeLabel = info.batteryPercentString;
         }
-    }
-
-    private static void sendEstimateToProvider(String shortEstimate, Context context) {
-        ContentValues values = new ContentValues();
-        values.put(KEY_ESTIMATE, shortEstimate);
-        context.getContentResolver().insert(POWER_ESTIMATE_PROVIDER, values);
-        context.sendBroadcastAsUser(INTENT_UPDATE_ESTIMATE, UserHandle.CURRENT);
     }
 
     public interface BatteryDataParser {
