@@ -43,17 +43,15 @@ public class NavigationBarPreferenceController extends AbstractPreferenceControl
         super(context);
         mContext = context;
         mKey = key;
-        final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(context);
         mDeviceHardwareKeys = context.getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
-        mIsFingerprintNavigation = hwManager.isSupported(
-                DeviceHardwareManager.FEATURE_FINGERPRINT_NAVIGATION);
     }
 
     @Override
     public boolean isAvailable() {
-        return mDeviceHardwareKeys != 0
-                || mIsFingerprintNavigation;
+		final DeviceHardwareManager hwManager = DeviceHardwareManager.getInstance(mContext);
+		mIsFingerprintNavigation = hwManager.get(DeviceHardwareManager.FEATURE_FINGERPRINT_NAVIGATION);
+        return mDeviceHardwareKeys != 0 || mIsFingerprintNavigation;
     }
 
     @Override
