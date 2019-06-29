@@ -19,4 +19,9 @@
     <!-- When true allow properties overriden from vendor.
          Props must be specified to work properly. -->
     <bool name="config_usesVendorPropertyOverrides">false</bool>
+
+	<!-- Default action ids for a device's touchscreen gestures
+         The array should be sorted in the same order as the
+         touchscreen gestures advertised by the device's DeviceHW impl. -->
+    <integer-array name="config_defaultTouchscreenGestureActions" />
 </resources>
