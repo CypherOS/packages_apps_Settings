@@ -170,4 +170,8 @@
     <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
+
+	<!-- Touchscreen Gestures -->
+    <string name="touchscreen_gesture_settings_title">Offscreen gestures</string>
+    <string name="touchscreen_gesture_settings_summary">Perform system actions with various swipe gestures while the screen is off</string>
 </resources>
