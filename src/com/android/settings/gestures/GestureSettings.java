@@ -52,6 +52,7 @@ public class GestureSettings extends DashboardFragment {
     private static final String KEY_TAP_TO_SLEEP = "tap_to_sleep_summary";
     private static final String KEY_SWIPE_TO_SCREENSHOT = "swipe_to_screenshot_summary";
     private static final String KEY_GESTURE_HAND_WAVE = "ambient_display_hand_wave";
+    private static final String KEY_VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control_summary";
 
     private AmbientDisplayConfiguration mAmbientDisplayConfig;
 
@@ -118,6 +119,7 @@ public class GestureSettings extends DashboardFragment {
                     keys.add(KEY_TAP_TO_SLEEP);
                     keys.add(KEY_SWIPE_TO_SCREENSHOT);
                     keys.add(KEY_GESTURE_HAND_WAVE);
+                    keys.add(KEY_VOLUME_BUTTON_MUSIC_CONTROL);
 
                     return keys;
                 }

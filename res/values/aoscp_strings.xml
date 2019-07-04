@@ -161,10 +161,11 @@
     <string name="ambient_play_history_menu_add_to_home">Add to Home Screen</string>
     <string name="ambient_play_history_dialog_remove_all_confirmation">Are you sure?</string>
 
+    <!-- Gestures -->
     <!-- Swipe to screenshot -->
     <string name="swipe_to_screenshot_title">Swipe to screenshot</string>
     <string name="swipe_to_screenshot_summary">Swipe 3 fingers down the screen to take a screenshot</string>
-
+    <!-- Hand wave -->
     <!-- Ambient display: Title & summary for ambient display hand wave (phone) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="default">Wave to check phone</string>
     <string name="ambient_display_hand_wave_summary" product="default">To check time, notification icons, and other info, wave at your phone.</string>
@@ -174,8 +175,10 @@
     <!-- Ambient display: Title & summary for ambient display hand wave (device) [CHAR LIMIT=60]-->
     <string name="ambient_display_hand_wave_title" product="device">Wave to check device</string>
     <string name="ambient_display_hand_wave_summary" product="device">To check time, notification icons, and other info, wave at your device.</string>
-
     <!-- Proximity on wake -->
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking device</string>
+    <!-- Volume button music control -->
+    <string name="volume_button_music_control_title">Playback control</string>
+    <string name="volume_button_music_control_summary">When the screen is off, long-pressing volume keys will skip music tracks</string>
 </resources>
