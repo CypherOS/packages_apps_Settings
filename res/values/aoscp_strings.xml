@@ -174,4 +174,21 @@
     <!-- Proximity on wake -->
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking device</string>
+
+	<!-- Touchscreen Gestures -->
+    <string name="touchscreen_gesture_settings_title">Offscreen gestures</string>
+    <string name="touchscreen_gesture_settings_summary">Perform system actions with various swipe gestures while the screen is off</string>
+	<string name="touchscreen_gesture_action_dialog_title">Action</string>
+    <string name="touchscreen_gesture_action_do_nothing">No action</string>
+    <string name="touchscreen_gesture_action_flashlight">Toggle flashlight</string>
+    <string name="touchscreen_gesture_action_camera">Open camera</string>
+    <string name="touchscreen_gesture_action_browser">Open browser</string>
+    <string name="touchscreen_gesture_action_dialer">Open dialer</string>
+    <string name="touchscreen_gesture_action_email">View emails</string>
+    <string name="touchscreen_gesture_action_messages">View messages</string>
+    <string name="touchscreen_gesture_action_play_pause_music">Play/pause music</string>
+    <string name="touchscreen_gesture_action_previous_track">Navigate to the previous music track</string>
+    <string name="touchscreen_gesture_action_next_track">Skip to the next music track</string>
+    <string name="touchscreen_gesture_action_volume_down">Lower media volume</string>
+    <string name="touchscreen_gesture_action_volume_up">Raise media volume</string>
 </resources>
