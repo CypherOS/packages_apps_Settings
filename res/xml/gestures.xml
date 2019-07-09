@@ -85,4 +85,13 @@
         android:key="ambient_display_hand_wave"
         android:title="@string/ambient_display_hand_wave_title"
         android:summary="@string/ambient_display_hand_wave_summary" />
+
+	<!-- Touchscreen Gesture Settings -->
+    <Preference
+        android:key="touchscreen_gesture_settings"
+        android:title="@string/touchscreen_gesture_settings_title"
+        android:summary="@string/touchscreen_gesture_settings_summary"
+        android:icon="@drawable/ic_settings_gestures_touchscreen"
+        android:fragment="com.android.settings.aoscp.gestures.TouchscreenGestureSettings"
+        settings:controller="com.android.settings.aoscp.gestures.TouchscreenGesturePreferenceController"/>
 </PreferenceScreen>
