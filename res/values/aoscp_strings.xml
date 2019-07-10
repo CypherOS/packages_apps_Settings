@@ -103,6 +103,7 @@
     <string name="assist_key_title">Assist button</string>
     <string name="app_switch_key_title">Recents button</string>
     <string name="camera_key_title">Camera button</string>
+    <string name="volume_key_title">Volume button</string>
     <!-- Buttons: Actions -->
     <string name="short_press_title">Short press action</string>
     <string name="long_press_title">Long press action</string>
@@ -119,6 +120,9 @@
     <!-- Alert Slider -->
     <string name="swap_slider_order_title">Swap slider</string>
     <string name="swap_slider_order_summary">Swap the alert slider modes order</string>
+    <!-- Volume rocker wake -->
+    <string name="volume_rocker_wake_title">Wake device</string>
+    <string name="volume_rocker_wake_summary">When pressing one of the volume keys</string>
 
     <!-- Weather -->
     <string name="weather_title">Show weather temp</string>
