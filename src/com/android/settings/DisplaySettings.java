@@ -24,6 +24,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.aoscp.display.ColorManagerPreferenceController;
 import com.android.settings.aoscp.display.DisplayModePreferenceController;
 import com.android.settings.aoscp.display.ProximityCheckPreferenceController;
+import com.android.settings.aoscp.display.ScreenrecordResolutionPreferenceController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.AmbientDisplayPreferenceController;
 import com.android.settings.display.BrightnessLevelPreferenceController;
@@ -57,6 +58,7 @@ public class DisplaySettings extends DashboardFragment {
     private static final String KEY_NIGHT_DISPLAY = "night_display";
 
     private static final String KEY_COLOR_MANAGER = "color_manager";
+    private static final String KEY_SCREENRECORD_RESOLUTION = "screenrecord_resolution";
 
     @Override
     public int getMetricsCategory() {
@@ -105,6 +107,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new ColorManagerPreferenceController(context, KEY_COLOR_MANAGER));
         controllers.add(new DisplayModePreferenceController(context));
         controllers.add(new ProximityCheckPreferenceController(context));
+        controllers.add(new ScreenrecordResolutionPreferenceController(context, KEY_SCREENRECORD_RESOLUTION));
         return controllers;
     }
 

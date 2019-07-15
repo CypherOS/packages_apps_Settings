@@ -110,4 +110,16 @@
         <item>2</item>
     </string-array>
 
+    <!-- Screenrecord Resolution -->
+    <string-array name="screenrecord_resolution_entries" translatable="false">
+        <item>@string/screenrecord_resolution_480</item>
+        <item>@string/screenrecord_resolution_720_4mbs</item>
+        <item>@string/screenrecord_resolution_720_8mbs</item>
+    </string-array>
+
+    <string-array name="screenrecord_resolution_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>
