@@ -76,6 +76,14 @@
         android:title="@string/proximity_wake_title"
         android:summary="@string/proximity_wake_summary" />
 
+    <ListPreference
+        android:key="screenrecord_resolution"
+        android:dialogTitle="@string/screenrecord_resolution_title"
+        android:title="@string/screenrecord_resolution_title"
+        android:entries="@array/screenrecord_resolution_entries"
+        android:entryValues="@array/screenrecord_resolution_values"
+        android:persistent="false" />
+
     <Preference
         android:key="color_manager"
         android:title="@string/color_manager_title"
