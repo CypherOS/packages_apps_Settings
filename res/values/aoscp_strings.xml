@@ -182,4 +182,10 @@
     <!-- Proximity on wake -->
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking device</string>
+
+    <!-- Screenrecord Resolution -->
+    <string name="screenrecord_resolution_title">Screenrecord Resolution</string>
+    <string name="screenrecord_resolution_480">480p</string>
+    <string name="screenrecord_resolution_720_4mbs">720p (Mid-Quality)</string>
+    <string name="screenrecord_resolution_720_8mbs">720p (High-Quality)</string>
 </resources>
