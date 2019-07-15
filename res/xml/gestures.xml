@@ -75,6 +75,12 @@
         android:fragment="com.android.settings.aoscp.gestures.TapToSleepGestureSettings"
         settings:controller="com.android.settings.aoscp.gestures.TapToSleepPreferenceController" />
 
+	<Preference
+        android:key="tap_to_wake_summary"
+        android:title="@string/tap_to_wake"
+        android:fragment="com.android.settings.aoscp.gestures.TapToWakeGestureSettings"
+        settings:controller="com.android.settings.aoscp.gestures.TapToWakePreferenceController" />
+
     <Preference
         android:key="swipe_to_screenshot_summary"
         android:title="@string/swipe_to_screenshot_title"
