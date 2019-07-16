@@ -51,7 +51,7 @@ public class VolumeRockerWakePreferenceController extends AbstractPreferenceCont
     @Override
     public void updateState(Preference preference) {
         int setting = Settings.System.getInt(mContext.getContentResolver(),
-                VOLUME_ROCKER_WAKE, 1);
+                VOLUME_ROCKER_WAKE, 0);
         ((SwitchPreference) preference).setChecked(setting != 0);
     }
 
